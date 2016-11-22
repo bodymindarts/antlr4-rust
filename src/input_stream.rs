@@ -1,14 +1,6 @@
 use super::tokens::{Token,TOKEN_EOF};
 use std::str;
-
-fn intMin(a: i32, b: i32) -> i32 {
-    if a < b {
-        return a
-    }
-    else {
-        return b
-    }
-}
+use std::cmp;
 
 pub struct InputStream<'a>{
     name: &'a str,
@@ -79,18 +71,19 @@ impl<'a> InputStream<'a> {
             return
         }
         // seek forward
-        self.index = intMin(index, self.size)
+        self.index = cmp::min(index, self.size)
     }
 
-    pub fn get_text(&self, start: i32, mut stop: i32) -> &str {
-        if stop >= self.size {
-            stop = self.size - 1
+    pub fn get_text(&self, start: i32, stop: i32) -> &str {
+        let mut end = stop;
+        if end >= self.size {
+            end = self.size - 1
         }
         if start >= self.size {
             return ""
         }
 
-        let section = &self.data[start as usize .. (stop+1) as usize];
+        let section = &self.data[start as usize .. (end+1) as usize];
         unsafe {
             str::from_utf8_unchecked(section)
         }

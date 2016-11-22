@@ -22,3 +22,9 @@ fn consume_panic() {
     is.consume();
     is.consume();
 }
+
+#[test]
+fn get_text() {
+    let is = antlr::InputStream::new("1+2^3");
+    assert_eq!(is.get_text(1,3), "+2^")
+}
