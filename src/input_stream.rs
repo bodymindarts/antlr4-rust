@@ -1,4 +1,3 @@
-use super::tokens::{Token};
 use super::interval_set::Interval;
 use super::int_stream::IntStream;
 use super::char_stream::CharStream;
@@ -40,7 +39,7 @@ impl<'a> InputStream<'a> {
     // }
 }
 
-impl<'a> IntStream<'a> for InputStream<'a> {
+impl<'a> IntStream for InputStream<'a> {
     fn consume(&mut self) {
         if self.index >= self.size {
             panic!("cannot consume EOF")
@@ -54,11 +53,7 @@ impl<'a> IntStream<'a> for InputStream<'a> {
             return 0 // nil
         }
 
-        let mut i = offset;
-
-        if i < 0 {
-           i += 1 // e.g., translate LA(-1) to use offset=0
-        }
+        let i = if offset < 0 { offset + 1 } else { offset };// e.g., translate LA(-1) to use offset=0
         let pos = self.index + i - 1;
 
         if pos < 0 || pos >= self.size { // invalid
@@ -98,16 +93,18 @@ impl<'a> IntStream<'a> for InputStream<'a> {
     }
 }
 
-impl<'a> CharStream<'a> for InputStream<'a> {
+impl<'a> CharStream for InputStream<'a> {
     fn get_text(&self, interval: Interval) -> &str {
         let start = interval.start;
         if start >= self.size {
             return ""
         }
-        let mut stop = interval.stop;
-        if stop >= self.size {
-            stop = self.size - 1
+        let stop = if interval.stop >= self.size {
+            self.size - 1
         }
+        else {
+            interval.stop
+        };
 
         let section = &self.data[start as usize .. (stop+1) as usize];
         unsafe {

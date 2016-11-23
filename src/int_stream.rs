@@ -1,6 +1,6 @@
 pub const EOF: i32 = -1;
 
-pub trait IntStream<'a> {
+pub trait IntStream {
     fn consume(&mut self);
     fn la(&self, i32) -> i32;
     fn mark(&self) -> i32;
