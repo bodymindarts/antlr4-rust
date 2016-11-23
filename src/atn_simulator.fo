@@ -23,7 +23,7 @@
 //	return b
 //}
 //
-//pub fn getCachedContext(context PredictionContext) -> PredictionContext {
+//pub fn getCachedContext(context: PredictionContext) -> PredictionContext {
 //	if b.sharedContextCache == nil {
 //		return context
 //	}

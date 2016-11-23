@@ -60,7 +60,7 @@
 //	isCtxDependent: bool
 //}
 //
-//impl Predicate {§//  pub fn new(ruleIndex, predIndex int, isCtxDependent bool) -> *Predicate {
+//impl Predicate {§//  pub fn new(ruleIndex, predIndex: int, isCtxDependent: bool) -> *Predicate {
 //	p := new(Predicate)
 //
 //	p.ruleIndex = ruleIndex
@@ -74,11 +74,11 @@
 //
 //var SemanticContextNone SemanticContext = NewPredicate(-1, -1, false)
 //
-//pub fn evalPrecedence(parser Recognizer, outerContext RuleContext) -> SemanticContext {
+//pub fn evalPrecedence(parser: Recognizer, outerContext: RuleContext) -> SemanticContext {
 //	return p
 //}
 //
-//pub fn evaluate(parser Recognizer, outerContext RuleContext) -> bool {
+//pub fn evaluate(parser: Recognizer, outerContext: RuleContext) -> bool {
 //
 //	var localctx RuleContext
 //
@@ -113,7 +113,7 @@
 //	precedence: int
 //}
 //
-//impl PrecedencePredicate {§//  pub fn new(precedence int) -> *PrecedencePredicate {
+//impl PrecedencePredicate {§//  pub fn new(precedence: int) -> *PrecedencePredicate {
 //
 //	p := new(PrecedencePredicate)
 //	p.precedence = precedence
@@ -121,11 +121,11 @@
 //	return p
 //}
 //
-//pub fn evaluate(parser Recognizer, outerContext RuleContext) -> bool {
+//pub fn evaluate(parser: Recognizer, outerContext: RuleContext) -> bool {
 //	return parser.Precpred(outerContext, p.precedence)
 //}
 //
-//pub fn evalPrecedence(parser Recognizer, outerContext RuleContext) -> SemanticContext {
+//pub fn evalPrecedence(parser: Recognizer, outerContext: RuleContext) -> SemanticContext {
 //	if parser.Precpred(outerContext, p.precedence) {
 //		return SemanticContextNone
 //	}
@@ -174,7 +174,7 @@
 //	opnds []SemanticContext
 //}
 //
-//impl AND {§//  pub fn new(a, b SemanticContext) -> *AND {
+//impl AND {§//  pub fn new(a, b: SemanticContext) -> *AND {
 //
 //	operands := NewSet(nil, nil)
 //	if aa, ok := a.(*AND); ok {
@@ -244,7 +244,7 @@
 //// The evaluation of predicates by a context is short-circuiting, but
 //// unordered.</p>
 ////
-//pub fn evaluate(parser Recognizer, outerContext RuleContext) -> bool {
+//pub fn evaluate(parser: Recognizer, outerContext: RuleContext) -> bool {
 //	for i := 0; i < len(a.opnds); i++ {
 //		if !a.opnds[i].evaluate(parser, outerContext) {
 //			return false
@@ -253,7 +253,7 @@
 //	return true
 //}
 //
-//pub fn evalPrecedence(parser Recognizer, outerContext RuleContext) -> SemanticContext {
+//pub fn evalPrecedence(parser: Recognizer, outerContext: RuleContext) -> SemanticContext {
 //	differs := false
 //	operands := make([]SemanticContext, 0)
 //
@@ -314,7 +314,7 @@
 //	opnds []SemanticContext
 //}
 //
-//impl OR {§//  pub fn new(a, b SemanticContext) -> *OR {
+//impl OR {§//  pub fn new(a, b: SemanticContext) -> *OR {
 //
 //	operands := NewSet(nil, nil)
 //	if aa, ok := a.(*OR); ok {
@@ -382,7 +382,7 @@
 //// The evaluation of predicates by o context is short-circuiting, but
 //// unordered.</p>
 ////
-//pub fn evaluate(parser Recognizer, outerContext RuleContext) -> bool {
+//pub fn evaluate(parser: Recognizer, outerContext: RuleContext) -> bool {
 //	for i := 0; i < len(o.opnds); i++ {
 //		if o.opnds[i].evaluate(parser, outerContext) {
 //			return true
@@ -391,7 +391,7 @@
 //	return false
 //}
 //
-//pub fn evalPrecedence(parser Recognizer, outerContext RuleContext) -> SemanticContext {
+//pub fn evalPrecedence(parser: Recognizer, outerContext: RuleContext) -> SemanticContext {
 //	differs := false
 //	operands := make([]SemanticContext, 0)
 //	for i := 0; i < len(o.opnds); i++ {

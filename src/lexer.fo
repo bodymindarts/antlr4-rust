@@ -46,7 +46,7 @@
 //	text:                   string
 //}
 //
-//impl BaseLexer {§//  pub fn new(input CharStream) -> *BaseLexer {
+//impl BaseLexer {§//  pub fn new(input: CharStream) -> *BaseLexer {
 //
 //	lexer := new(BaseLexer)
 //
@@ -146,7 +146,7 @@
 //	return b.GrammarFileName
 //}
 //
-//pub fn setChannel(v int) {
+//pub fn setChannel(v: int) {
 //	b.channel = v
 //}
 //
@@ -154,11 +154,11 @@
 //	return b.factory
 //}
 //
-//pub fn setTokenFactory(f TokenFactory) {
+//pub fn setTokenFactory(f: TokenFactory) {
 //	b.factory = f
 //}
 //
-//pub fn (ret int) {
+//pub fn (ret: int) {
 //	defer func() {
 //		if e := recover(); e != nil {
 //			if re, ok := e.(RecognitionException); ok {
@@ -246,11 +246,11 @@
 //	b.thetype = LexerMore
 //}
 //
-//pub fn setMode(m int) {
+//pub fn setMode(m: int) {
 //	b.mode = m
 //}
 //
-//pub fn pushMode(m int) {
+//pub fn pushMode(m: int) {
 //	if LexerATNSimulatorDebug {
 //		fmt.Println("pushMode " + strconv.Itoa(m))
 //	}
@@ -274,7 +274,7 @@
 //	return b.input
 //}
 //
-//pub fn setInputStream(input CharStream) {
+//pub fn setInputStream(input: CharStream) {
 //	b.input = nil
 //	b.tokenFactorySourcePair = &TokenSourceCharStreamPair{b, b.input}
 //	b.reset()
@@ -287,7 +287,7 @@
 //// and GetToken (to push tokens into a list and pull from that list
 //// rather than a single variable as l implementation does).
 //// /
-//pub fn EmitToken(token Token) {
+//pub fn EmitToken(token: Token) {
 //	b.token = token
 //}
 //
@@ -323,7 +323,7 @@
 //	return b.thetype
 //}
 //
-//pub fn setType(t int) {
+//pub fn setType(t: int) {
 //	b.thetype = t
 //}
 //
@@ -342,7 +342,7 @@
 //	return b.Interpreter.GetText(b.input)
 //}
 //
-//pub fn SetText(text string) {
+//pub fn SetText(text: string) {
 //	b.text = text
 //}
 //
@@ -364,7 +364,7 @@
 //	return tokens
 //}
 //
-//pub fn notifyListeners(e RecognitionException) {
+//pub fn notifyListeners(e: RecognitionException) {
 //	start := b.TokenStartCharIndex
 //	stop := b.input.Index()
 //	text := b.input.GetTextFromInterval(NewInterval(start, stop))
@@ -373,7 +373,7 @@
 //	listener.SyntaxError(b, nil, b.TokenStartLine, b.TokenStartColumn, msg, e)
 //}
 //
-//pub fn getErrorDisplayForChar(c rune) -> string {
+//pub fn getErrorDisplayForChar(c: rune) -> string {
 //	if c == TokenEOF {
 //		return "<EOF>"
 //	} else if c == '\n' {
@@ -387,7 +387,7 @@
 //	}
 //}
 //
-//pub fn getCharErrorDisplay(c rune) -> string {
+//pub fn getCharErrorDisplay(c: rune) -> string {
 //	return "'" + b.getErrorDisplayForChar(c) + "'"
 //}
 //
@@ -396,7 +396,7 @@
 //// it all works out. You can instead use the rule invocation stack
 //// to do sophisticated error recovery if you are in a fragment rule.
 //// /
-//pub fn Recover(re RecognitionException) {
+//pub fn Recover(re: RecognitionException) {
 //	if b.input.LA(1) != TokenEOF {
 //		if _, ok := re.(*LexerNoViableAltException); ok {
 //			// Skip a char and try again

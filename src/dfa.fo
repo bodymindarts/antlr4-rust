@@ -19,7 +19,7 @@
 //	precedenceDfa: bool
 //}
 //
-//impl DFA {§//  pub fn new(atnStartState DecisionState, decision int) -> *DFA {
+//impl DFA {§//  pub fn new(atnStartState: DecisionState, decision: int) -> *DFA {
 //	return &DFA{
 //		atnStartState: atnStartState,
 //		decision:      decision,
@@ -31,7 +31,7 @@
 //// returns the start state corresponding to the specified precedence if a start
 //// state exists for the specified precedence and nil otherwise. d must be a
 //// precedence DFA. See also isPrecedenceDfa.
-//pub fn getPrecedenceStartState(precedence int) -> *DFAState {
+//pub fn getPrecedenceStartState(precedence: int) -> *DFAState {
 //	if !d.precedenceDfa {
 //		panic("only precedence DFAs may contain a precedence start state")
 //	}
@@ -46,7 +46,7 @@
 //
 //// setPrecedenceStartState sets the start state for the current precedence. d
 //// must be a precedence DFA. See also isPrecedenceDfa.
-//pub fn setPrecedenceStartState(precedence int, startState *DFAState) {
+//pub fn setPrecedenceStartState(precedence: int, startState *DFAState) {
 //	if !d.precedenceDfa {
 //		panic("only precedence DFAs may contain a precedence start state")
 //	}
@@ -70,7 +70,7 @@
 //// state s0 is set to a new DFAState with an empty outgoing DFAState.edges to
 //// store the start states for individual precedence values if precedenceDfa is
 //// true or nil otherwise, and d.precedenceDfa is updated.
-//pub fn setPrecedenceDfa(precedenceDfa bool) {
+//pub fn setPrecedenceDfa(precedenceDfa: bool) {
 //	if d.precedenceDfa != precedenceDfa {
 //		d.states = make(map[string]*DFAState)
 //
@@ -96,8 +96,8 @@
 //type DFAStateList []*DFAState
 //
 //pub fn Len() int           { return len(d) -> }
-//pub fn Less(i, j int) -> bool { return d[i].stateNumber < d[j].stateNumber }
-//pub fn Swap(i, j int) ->      { d[i], d[j] = d[j], d[i] }
+//pub fn Less(i, j: int) -> bool { return d[i].stateNumber < d[j].stateNumber }
+//pub fn Swap(i, j: int) ->      { d[i], d[j] = d[j], d[i] }
 //
 //// sortedStates returns the states in d sorted by their state number.
 //pub fn sortedStates() -> []*DFAState {

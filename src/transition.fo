@@ -31,7 +31,7 @@
 //	serializationType: int
 //}
 //
-//impl BaseTransition {§//  pub fn new(target ATNState) -> *BaseTransition {
+//impl BaseTransition {§//  pub fn new(target: ATNState) -> *BaseTransition {
 //
 //	if target == nil {
 //		panic("target cannot be nil.")
@@ -51,7 +51,7 @@
 //	return t.target
 //}
 //
-//pub fn setTarget(s ATNState) {
+//pub fn setTarget(s: ATNState) {
 //	t.target = s
 //}
 //
@@ -67,7 +67,7 @@
 //	return t.serializationType
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	panic("Not implemented")
 //}
 //
@@ -127,7 +127,7 @@
 //	*BaseTransition
 //}
 //
-//impl AtomTransition {§//  pub fn new(target ATNState, intervalSet int) -> *AtomTransition {
+//impl AtomTransition {§//  pub fn new(target: ATNState, intervalSet: int) -> *AtomTransition {
 //
 //	t := new(AtomTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -145,7 +145,7 @@
 //	return s
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	return t.label == symbol
 //}
 //
@@ -160,7 +160,7 @@
 //	ruleIndex, precedence int
 //}
 //
-//impl RuleTransition {§//  pub fn new(ruleStart ATNState, ruleIndex, precedence int, followState ATNState) -> *RuleTransition {
+//impl RuleTransition {§//  pub fn new(ruleStart ATNState, ruleIndex, precedence: int, followState: ATNState) -> *RuleTransition {
 //
 //	t := new(RuleTransition)
 //	t.BaseTransition = NewBaseTransition(ruleStart)
@@ -174,7 +174,7 @@
 //	return t
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	return false
 //}
 //
@@ -184,7 +184,7 @@
 //	outermostPrecedenceReturn: int
 //}
 //
-//impl EpsilonTransition {§//  pub fn new(target ATNState, outermostPrecedenceReturn int) -> *EpsilonTransition {
+//impl EpsilonTransition {§//  pub fn new(target: ATNState, outermostPrecedenceReturn: int) -> *EpsilonTransition {
 //
 //	t := new(EpsilonTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -195,7 +195,7 @@
 //	return t
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	return false
 //}
 //
@@ -209,7 +209,7 @@
 //	start, stop int
 //}
 //
-//impl RangeTransition {§//  pub fn new(target ATNState, start, stop int) -> *RangeTransition {
+//impl RangeTransition {§//  pub fn new(target ATNState,: start, stop: int) -> *RangeTransition {
 //
 //	t := new(RangeTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -227,7 +227,7 @@
 //	return s
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	return symbol >= t.start && symbol <= t.stop
 //}
 //
@@ -244,7 +244,7 @@
 //	*BaseTransition
 //}
 //
-//impl BasePredicateTransition {§//  pub fn new(target ATNState) -> *BaseAbstractPredicateTransition {
+//impl BasePredicateTransition {§//  pub fn new(target: ATNState) -> *BaseAbstractPredicateTransition {
 //
 //	t := new(BaseAbstractPredicateTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -261,7 +261,7 @@
 //	ruleIndex, predIndex int
 //}
 //
-//impl PredicateTransition {§//  pub fn new(target ATNState, ruleIndex, predIndex int, isCtxDependent bool) -> *PredicateTransition {
+//impl PredicateTransition {§//  pub fn new(target ATNState, ruleIndex, predIndex: int, isCtxDependent: bool) -> *PredicateTransition {
 //
 //	t := new(PredicateTransition)
 //	t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
@@ -274,7 +274,7 @@
 //	return t
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	return false
 //}
 //
@@ -293,7 +293,7 @@
 //	ruleIndex, actionIndex, predIndex int
 //}
 //
-//impl ActionTransition {§//  pub fn new(target ATNState, ruleIndex, actionIndex int, isCtxDependent bool) -> *ActionTransition {
+//impl ActionTransition {§//  pub fn new(target ATNState, ruleIndex, actionIndex: int, isCtxDependent: bool) -> *ActionTransition {
 //
 //	t := new(ActionTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -306,7 +306,7 @@
 //	return t
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	return false
 //}
 //
@@ -318,7 +318,7 @@
 //	*BaseTransition
 //}
 //
-//impl SetTransition {§//  pub fn new(target ATNState, set *IntervalSet) -> *SetTransition {
+//impl SetTransition {§//  pub fn new(target: ATNState, set *IntervalSet) -> *SetTransition {
 //
 //	t := new(SetTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -334,7 +334,7 @@
 //	return t
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	return t.intervalSet.contains(symbol)
 //}
 //
@@ -346,7 +346,7 @@
 //	*SetTransition
 //}
 //
-//impl NotSetTransition {§//  pub fn new(target ATNState, set *IntervalSet) -> *NotSetTransition {
+//impl NotSetTransition {§//  pub fn new(target: ATNState, set *IntervalSet) -> *NotSetTransition {
 //
 //	t := new(NotSetTransition)
 //
@@ -357,7 +357,7 @@
 //	return t
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	return symbol >= minVocabSymbol && symbol <= maxVocabSymbol && !t.intervalSet.contains(symbol)
 //}
 //
@@ -369,7 +369,7 @@
 //	*BaseTransition
 //}
 //
-//impl WildcardTransition {§//  pub fn new(target ATNState) -> *WildcardTransition {
+//impl WildcardTransition {§//  pub fn new(target: ATNState) -> *WildcardTransition {
 //
 //	t := new(WildcardTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -378,7 +378,7 @@
 //	return t
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	return symbol >= minVocabSymbol && symbol <= maxVocabSymbol
 //}
 //
@@ -392,7 +392,7 @@
 //	precedence: int
 //}
 //
-//impl PrecedencePredicateTransition {§//  pub fn new(target ATNState, precedence int) -> *PrecedencePredicateTransition {
+//impl PrecedencePredicateTransition {§//  pub fn new(target: ATNState, precedence: int) -> *PrecedencePredicateTransition {
 //
 //	t := new(PrecedencePredicateTransition)
 //	t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
@@ -404,7 +404,7 @@
 //	return t
 //}
 //
-//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
+//pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: int) -> bool {
 //	return false
 //}
 //

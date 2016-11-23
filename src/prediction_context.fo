@@ -37,7 +37,7 @@
 //	cachedHashString: string
 //}
 //
-//impl BasePredictionContext {§//  pub fn new(cachedHashString string) -> *BasePredictionContext {
+//impl BasePredictionContext {§//  pub fn new(cachedHashString: string) -> *BasePredictionContext {
 //	pc := new(BasePredictionContext)
 //	pc.cachedHashString = cachedHashString
 //
@@ -103,7 +103,7 @@
 //// return that one instead and do not add a Newcontext to the cache.
 //// Protect shared cache from unsafe thread access.
 ////
-//pub fn add(ctx PredictionContext) -> PredictionContext {
+//pub fn add(ctx: PredictionContext) -> PredictionContext {
 //	if ctx == BasePredictionContextEMPTY {
 //		return BasePredictionContextEMPTY
 //	}
@@ -115,7 +115,7 @@
 //	return ctx
 //}
 //
-//pub fn Get(ctx PredictionContext) -> PredictionContext {
+//pub fn Get(ctx: PredictionContext) -> PredictionContext {
 //	return p.cache[ctx]
 //}
 //
@@ -134,7 +134,7 @@
 //	returnState: int
 //}
 //
-//impl BaseSingletonPredictionContext {§//  pub fn new(parent PredictionContext, returnState int) -> *BaseSingletonPredictionContext {
+//impl BaseSingletonPredictionContext {§//  pub fn new(parent: PredictionContext, returnState: int) -> *BaseSingletonPredictionContext {
 //
 //	s := new(BaseSingletonPredictionContext)
 //	s.BasePredictionContext = NewBasePredictionContext("")
@@ -164,11 +164,11 @@
 //	return 1
 //}
 //
-//pub fn GetParent(index int) -> PredictionContext {
+//pub fn GetParent(index: int) -> PredictionContext {
 //	return b.parentCtx
 //}
 //
-//pub fn getReturnState(index int) -> int {
+//pub fn getReturnState(index: int) -> int {
 //	return b.returnState
 //}
 //
@@ -176,7 +176,7 @@
 //	return b.returnState == BasePredictionContextEmptyReturnState
 //}
 //
-//pub fn equals(other PredictionContext) -> bool {
+//pub fn equals(other: PredictionContext) -> bool {
 //	if b == other {
 //		return true
 //	} else if _, ok := other.(*BaseSingletonPredictionContext); !ok {
@@ -239,15 +239,15 @@
 //	return true
 //}
 //
-//pub fn GetParent(index int) -> PredictionContext {
+//pub fn GetParent(index: int) -> PredictionContext {
 //	return nil
 //}
 //
-//pub fn getReturnState(index int) -> int {
+//pub fn getReturnState(index: int) -> int {
 //	return e.returnState
 //}
 //
-//pub fn equals(other PredictionContext) -> bool {
+//pub fn equals(other: PredictionContext) -> bool {
 //	return e == other
 //}
 //
@@ -299,15 +299,15 @@
 //	return len(a.returnStates)
 //}
 //
-//pub fn GetParent(index int) -> PredictionContext {
+//pub fn GetParent(index: int) -> PredictionContext {
 //	return a.parents[index]
 //}
 //
-//pub fn getReturnState(index int) -> int {
+//pub fn getReturnState(index: int) -> int {
 //	return a.returnStates[index]
 //}
 //
-//pub fn equals(other PredictionContext) -> bool {
+//pub fn equals(other: PredictionContext) -> bool {
 //	if _, ok := other.(*ArrayPredictionContext); !ok {
 //		return false
 //	} else if a.cachedHashString != other.Hash() {

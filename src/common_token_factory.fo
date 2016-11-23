@@ -21,7 +21,7 @@
 //	copyText: bool
 //}
 //
-//impl CommonTokenFactory {§//  pub fn new(copyText bool) -> *CommonTokenFactory {
+//impl CommonTokenFactory {§//  pub fn new(copyText: bool) -> *CommonTokenFactory {
 //	return &CommonTokenFactory{copyText: copyText}
 //}
 //
@@ -29,7 +29,7 @@
 //// explicitly copy token text when constructing tokens.
 //var CommonTokenFactoryDEFAULT = NewCommonTokenFactory(false)
 //
-//pub fn Create(source *TokenSourceCharStreamPair, ttype int, text string, channel, start, stop, line, column int) -> Token {
+//pub fn Create(source *TokenSourceCharStreamPair, ttype int, text string, channel, start, stop,: line, column: int) -> Token {
 //	t := NewCommonToken(source, ttype, channel, start, stop)
 //
 //	t.line = line
@@ -44,7 +44,7 @@
 //	return t
 //}
 //
-//pub fn createThin(ttype int, text string) -> Token {
+//pub fn createThin(ttype: int, text: string) -> Token {
 //	t := NewCommonToken(nil, ttype, TokenDefaultChannel, -1, -1)
 //	t.SetText(text)
 //

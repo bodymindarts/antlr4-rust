@@ -12,17 +12,17 @@
 //	return tl
 //}
 //
-//pub fn VisitErrorNode(_ ErrorNode) {
+//pub fn VisitErrorNode(_: ErrorNode) {
 //}
 //
-//pub fn EnterEveryRule(ctx ParserRuleContext) {
+//pub fn EnterEveryRule(ctx: ParserRuleContext) {
 //	fmt.Println("enter   " + t.parser.GetRuleNames()[ctx.GetRuleIndex()] + ", LT(1)=" + t.parser.input.LT(1).GetText())
 //}
 //
-//pub fn VisitTerminal(node TerminalNode) {
+//pub fn VisitTerminal(node: TerminalNode) {
 //	fmt.Println("consume " + fmt.Sprint(node.GetSymbol()) + " rule " + t.parser.GetRuleNames()[t.parser.ctx.GetRuleIndex()])
 //}
 //
-//pub fn ExitEveryRule(ctx ParserRuleContext) {
+//pub fn ExitEveryRule(ctx: ParserRuleContext) {
 //	fmt.Println("exit    " + t.parser.GetRuleNames()[ctx.GetRuleIndex()] + ", LT(1)=" + t.parser.input.LT(1).GetText())
 //}

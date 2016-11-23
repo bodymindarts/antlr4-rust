@@ -13,7 +13,7 @@
 //	symbolicNames []string
 //}
 //
-//impl DFASerializer {§//  pub fn new(dfa *DFA, literalNames, symbolicNames []string) -> *DFASerializer {
+//impl DFASerializer {§//  pub fn new(dfa *DFA,: literalNames, symbolicNames []string) -> *DFASerializer {
 //	if literalNames == nil {
 //		literalNames = make([]string, 0)
 //	}
@@ -63,7 +63,7 @@
 //	return buf
 //}
 //
-//pub fn getEdgeLabel(i int) -> string {
+//pub fn getEdgeLabel(i: int) -> string {
 //	if i == 0 {
 //		return "EOF"
 //	} else if d.literalNames != nil && i-1 < len(d.literalNames) {
@@ -107,7 +107,7 @@
 //	return &LexerDFASerializer{DFASerializer: NewDFASerializer(dfa, nil, nil)}
 //}
 //
-//pub fn getEdgeLabel(i int) -> string {
+//pub fn getEdgeLabel(i: int) -> string {
 //	return "'" + string(i) + "'"
 //}
 //

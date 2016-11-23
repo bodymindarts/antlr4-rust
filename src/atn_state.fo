@@ -75,7 +75,7 @@
 //	return as.ruleIndex
 //}
 //
-//pub fn SetRuleIndex(v int) {
+//pub fn SetRuleIndex(v: int) {
 //	as.ruleIndex = v
 //}
 //pub fn GetEpsilonOnlyTransitions() -> bool {
@@ -106,7 +106,7 @@
 //	return as.stateNumber
 //}
 //
-//pub fn SetStateNumber(stateNumber int) {
+//pub fn SetStateNumber(stateNumber: int) {
 //	as.stateNumber = stateNumber
 //}
 //
@@ -134,7 +134,7 @@
 //	return false
 //}
 //
-//pub fn AddTransition(trans Transition, index int) {
+//pub fn AddTransition(trans: Transition, index: int) {
 //	if len(as.transitions) == 0 {
 //		as.epsilonOnlyTransitions = trans.getIsEpsilon()
 //	} else if as.epsilonOnlyTransitions != trans.getIsEpsilon() {
@@ -185,7 +185,7 @@
 //	return s.decision
 //}
 //
-//pub fn setDecision(b int) {
+//pub fn setDecision(b: int) {
 //	s.decision = b
 //}
 //
@@ -193,7 +193,7 @@
 //	return s.nonGreedy
 //}
 //
-//pub fn setNonGreedy(b bool) {
+//pub fn setNonGreedy(b: bool) {
 //	s.nonGreedy = b
 //}
 //

@@ -40,7 +40,7 @@
 //	tokens []Token
 //}
 //
-//impl CommonTokenStream {§//  pub fn new(lexer Lexer, channel int) -> *CommonTokenStream {
+//impl CommonTokenStream {§//  pub fn new(lexer: Lexer, channel: int) -> *CommonTokenStream {
 //	return &CommonTokenStream{
 //		channel:     channel,
 //		index:       -1,
@@ -57,18 +57,18 @@
 //	return 0
 //}
 //
-//pub fn Release(marker int) {}
+//pub fn Release(marker: int) {}
 //
 //pub fn reset() {
 //	c.Seek(0)
 //}
 //
-//pub fn Seek(index int) {
+//pub fn Seek(index: int) {
 //	c.lazyInit()
 //	c.index = c.adjustSeekIndex(index)
 //}
 //
-//pub fn Get(index int) -> Token {
+//pub fn Get(index: int) -> Token {
 //	c.lazyInit()
 //
 //	return c.tokens[index]
@@ -102,7 +102,7 @@
 //
 //// Sync makes sure index i in tokens has a token and returns true if a token is
 //// located at index i and otherwise false.
-//pub fn Sync(i int) -> bool {
+//pub fn Sync(i: int) -> bool {
 //	n := i - len(c.tokens) + 1 // TODO: How many more elements do we need?
 //
 //	if n > 0 {
@@ -115,7 +115,7 @@
 //
 //// fetch adds n elements to buffer and returns the actual number of elements
 //// added to the buffer.
-//pub fn fetch(n int) -> int {
+//pub fn fetch(n: int) -> int {
 //	if c.fetchedEOF {
 //		return 0
 //	}
@@ -137,7 +137,7 @@
 //}
 //
 //// GetTokens gets all tokens from start to stop inclusive.
-//pub fn GetTokens(start int, stop int, types *IntervalSet) -> []Token {
+//pub fn GetTokens(start int, stop: int, types *IntervalSet) -> []Token {
 //	if start < 0 || stop < 0 {
 //		return nil
 //	}
@@ -165,7 +165,7 @@
 //	return subset
 //}
 //
-//pub fn LA(i int) -> int {
+//pub fn LA(i: int) -> int {
 //	return c.LT(i).GetTokenType()
 //}
 //
@@ -185,7 +185,7 @@
 //}
 //
 //// SetTokenSource resets the c token stream by setting its token source.
-//pub fn SetTokenSource(tokenSource TokenSource) {
+//pub fn SetTokenSource(tokenSource: TokenSource) {
 //	c.tokenSource = tokenSource
 //	c.tokens = make([]Token, 0)
 //	c.index = -1
@@ -194,7 +194,7 @@
 //// NextTokenOnChannel returns the index of the next token on channel given a
 //// starting index. Returns i if tokens[i] is on channel. Returns -1 if there are
 //// no tokens on channel between i and EOF.
-//pub fn NextTokenOnChannel(i, channel int) -> int {
+//pub fn NextTokenOnChannel(i, channel: int) -> int {
 //	c.Sync(i)
 //
 //	if i >= len(c.tokens) {
@@ -219,7 +219,7 @@
 //// previousTokenOnChannel returns the index of the previous token on channel
 //// given a starting index. Returns i if tokens[i] is on channel. Returns -1 if
 //// there are no tokens on channel between i and 0.
-//pub fn previousTokenOnChannel(i, channel int) -> int {
+//pub fn previousTokenOnChannel(i, channel: int) -> int {
 //	for i >= 0 && c.tokens[i].GetChannel() != channel {
 //		i--
 //	}
@@ -230,7 +230,7 @@
 //// getHiddenTokensToRight collects all tokens on a specified channel to the
 //// right of the current token up until we see a token on DEFAULT_TOKEN_CHANNEL
 //// or EOF. If channel is -1, it finds any non-default channel token.
-//pub fn getHiddenTokensToRight(tokenIndex, channel int) -> []Token {
+//pub fn getHiddenTokensToRight(tokenIndex, channel: int) -> []Token {
 //	c.lazyInit()
 //
 //	if tokenIndex < 0 || tokenIndex >= len(c.tokens) {
@@ -255,7 +255,7 @@
 //// getHiddenTokensToLeft collects all tokens on channel to the left of the
 //// current token until we see a token on DEFAULT_TOKEN_CHANNEL. If channel is
 //// -1, it finds any non default channel token.
-//pub fn getHiddenTokensToLeft(tokenIndex, channel int) -> []Token {
+//pub fn getHiddenTokensToLeft(tokenIndex, channel: int) -> []Token {
 //	c.lazyInit()
 //
 //	if tokenIndex < 0 || tokenIndex >= len(c.tokens) {
@@ -275,7 +275,7 @@
 //	return c.filterForChannel(from, to, channel)
 //}
 //
-//pub fn filterForChannel(left, right, channel int) -> []Token {
+//pub fn filterForChannel(left,: right, channel: int) -> []Token {
 //	hidden := make([]Token, 0)
 //
 //	for i := left; i < right+1; i++ {
@@ -313,7 +313,7 @@
 //	return c.GetTextFromInterval(nil)
 //}
 //
-//pub fn GetTextFromTokens(start, end Token) -> string {
+//pub fn GetTextFromTokens(start, end: Token) -> string {
 //	if start == nil || end == nil {
 //		return ""
 //	}
@@ -321,7 +321,7 @@
 //	return c.GetTextFromInterval(NewInterval(start.GetTokenIndex(), end.GetTokenIndex()))
 //}
 //
-//pub fn GetTextFromRuleContext(interval RuleContext) -> string {
+//pub fn GetTextFromRuleContext(interval: RuleContext) -> string {
 //	return c.GetTextFromInterval(interval.GetSourceInterval())
 //}
 //
@@ -368,11 +368,11 @@
 //	}
 //}
 //
-//pub fn adjustSeekIndex(i int) -> int {
+//pub fn adjustSeekIndex(i: int) -> int {
 //	return c.NextTokenOnChannel(i, c.channel)
 //}
 //
-//pub fn LB(k int) -> Token {
+//pub fn LB(k: int) -> Token {
 //	if k == 0 || c.index-k < 0 {
 //		return nil
 //	}
@@ -394,7 +394,7 @@
 //	return c.tokens[i]
 //}
 //
-//pub fn LT(k int) -> Token {
+//pub fn LT(k: int) -> Token {
 //	c.lazyInit()
 //
 //	if k == 0 {

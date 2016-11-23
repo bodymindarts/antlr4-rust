@@ -34,7 +34,7 @@
 //	children    []Tree
 //}
 //
-//impl BaseParserRuleContext {§//  pub fn new(parent ParserRuleContext, invokingStateNumber int) -> *BaseParserRuleContext {
+//impl BaseParserRuleContext {§//  pub fn new(parent: ParserRuleContext, invokingStateNumber: int) -> *BaseParserRuleContext {
 //	prc := new(BaseParserRuleContext)
 //
 //	prc.BaseRuleContext = NewBaseRuleContext(parent, invokingStateNumber)
@@ -56,7 +56,7 @@
 //	return prc
 //}
 //
-//pub fn SetException(e RecognitionException) {
+//pub fn SetException(e: RecognitionException) {
 //	prc.exception = e
 //}
 //
@@ -87,14 +87,14 @@
 //}
 //
 //// Double dispatch methods for listeners
-//pub fn EnterRule(listener ParseTreeListener) {
+//pub fn EnterRule(listener: ParseTreeListener) {
 //}
 //
-//pub fn ExitRule(listener ParseTreeListener) {
+//pub fn ExitRule(listener: ParseTreeListener) {
 //}
 //
 //// * Does not set parent link other add methods do that///
-//pub fn addTerminalNodeChild(child TerminalNode) -> TerminalNode {
+//pub fn addTerminalNodeChild(child: TerminalNode) -> TerminalNode {
 //	if prc.children == nil {
 //		prc.children = make([]Tree, 0)
 //	}
@@ -105,7 +105,7 @@
 //	return child
 //}
 //
-//pub fn AddChild(child RuleContext) -> RuleContext {
+//pub fn AddChild(child: RuleContext) -> RuleContext {
 //	if prc.children == nil {
 //		prc.children = make([]Tree, 0)
 //	}
@@ -126,7 +126,7 @@
 //	}
 //}
 //
-//pub fn AddTokenNode(token Token) -> *TerminalNodeImpl {
+//pub fn AddTokenNode(token: Token) -> *TerminalNodeImpl {
 //
 //	node := NewTerminalNodeImpl(token)
 //	prc.addTerminalNodeChild(node)
@@ -135,14 +135,14 @@
 //
 //}
 //
-//pub fn AddErrorNode(badToken Token) -> *ErrorNodeImpl {
+//pub fn AddErrorNode(badToken: Token) -> *ErrorNodeImpl {
 //	node := NewErrorNodeImpl(badToken)
 //	prc.addTerminalNodeChild(node)
 //	node.parentCtx = prc
 //	return node
 //}
 //
-//pub fn GetChild(i int) -> Tree {
+//pub fn GetChild(i: int) -> Tree {
 //	if prc.children != nil && len(prc.children) >= i {
 //		return prc.children[i]
 //	}
@@ -150,7 +150,7 @@
 //	return nil
 //}
 //
-//pub fn GetChildOfType(i int, childType reflect.Type) -> RuleContext {
+//pub fn GetChildOfType(i: int, childType reflect.Type) -> RuleContext {
 //	if childType == nil {
 //		return prc.GetChild(i).(RuleContext)
 //	}
@@ -169,7 +169,7 @@
 //	return nil
 //}
 //
-//pub fn ToStringTree(ruleNames []string, recog Recognizer) -> string {
+//pub fn ToStringTree(ruleNames []string, recog: Recognizer) -> string {
 //	return TreesStringTree(prc, ruleNames, recog)
 //}
 //
@@ -177,11 +177,11 @@
 //	return prc
 //}
 //
-//pub fn Accept(visitor ParseTreeVisitor) -> interface{} {
+//pub fn Accept(visitor: ParseTreeVisitor) -> interface{} {
 //	return visitor.VisitChildren(prc)
 //}
 //
-//pub fn SetStart(t Token) {
+//pub fn SetStart(t: Token) {
 //	prc.start = t
 //}
 //
@@ -189,7 +189,7 @@
 //	return prc.start
 //}
 //
-//pub fn SetStop(t Token) {
+//pub fn SetStop(t: Token) {
 //	prc.stop = t
 //}
 //
@@ -197,7 +197,7 @@
 //	return prc.stop
 //}
 //
-//pub fn GetToken(ttype int, i int) -> TerminalNode {
+//pub fn GetToken(ttype: int, i: int) -> TerminalNode {
 //
 //	for j := 0; j < len(prc.children); j++ {
 //		child := prc.children[j]
@@ -214,7 +214,7 @@
 //	return nil
 //}
 //
-//pub fn GetTokens(ttype int) -> []TerminalNode {
+//pub fn GetTokens(ttype: int) -> []TerminalNode {
 //	if prc.children == nil {
 //		return make([]TerminalNode, 0)
 //	}
@@ -237,7 +237,7 @@
 //	return prc
 //}
 //
-//pub fn getChild(ctxType reflect.Type, i int) -> RuleContext {
+//pub fn getChild(ctxType reflect.Type, i: int) -> RuleContext {
 //	if prc.children == nil || i < 0 || i >= len(prc.children) {
 //		return nil
 //	}
@@ -260,7 +260,7 @@
 //// Go lacks generics, so it's not possible for us to return the child with the correct type, but we do
 //// check for convertibility
 //
-//pub fn GetTypedRuleContext(ctxType reflect.Type, i int) -> RuleContext {
+//pub fn GetTypedRuleContext(ctxType reflect.Type, i: int) -> RuleContext {
 //	return prc.getChild(ctxType, i)
 //}
 //
@@ -303,7 +303,7 @@
 //// (root child1 .. childN). Print just a node if b is a leaf.
 ////
 //
-//pub fn String(ruleNames []string, stop RuleContext) -> string {
+//pub fn String(ruleNames []string, stop: RuleContext) -> string {
 //
 //	var p ParserRuleContext = prc
 //	s := "["
@@ -346,7 +346,7 @@
 //	*BaseParserRuleContext
 //}
 //
-//impl BaseInterpreterRuleContext {§//  pub fn new(parent BaseInterpreterRuleContext, invokingStateNumber, ruleIndex int) -> *BaseInterpreterRuleContext {
+//impl BaseInterpreterRuleContext {§//  pub fn new(parent BaseInterpreterRuleContext,: invokingStateNumber, ruleIndex: int) -> *BaseInterpreterRuleContext {
 //
 //	prc := new(BaseInterpreterRuleContext)
 //

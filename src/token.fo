@@ -101,7 +101,7 @@
 //	return b.tokenIndex
 //}
 //
-//pub fn SetTokenIndex(v int) {
+//pub fn SetTokenIndex(v: int) {
 //	b.tokenIndex = v
 //}
 //
@@ -117,7 +117,7 @@
 //	*BaseToken
 //}
 //
-//impl CommonToken {§//  pub fn new(source *TokenSourceCharStreamPair, tokenType, channel, start, stop int) -> *CommonToken {
+//impl CommonToken {§//  pub fn new(source *TokenSourceCharStreamPair, tokenType, channel,: start, stop: int) -> *CommonToken {
 //
 //	t := new(CommonToken)
 //
@@ -179,7 +179,7 @@
 //	return "<EOF>"
 //}
 //
-//pub fn SetText(text string) {
+//pub fn SetText(text: string) {
 //	c.text = text
 //}
 //

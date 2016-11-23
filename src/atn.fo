@@ -35,7 +35,7 @@
 //	states []ATNState
 //}
 //
-//impl ATN {§//  pub fn new(grammarType int, maxTokenType int) -> *ATN {
+//impl ATN {§//  pub fn new(grammarType: int, maxTokenType: int) -> *ATN {
 //	return &ATN{
 //		grammarType:          grammarType,
 //		maxTokenType:         maxTokenType,
@@ -47,14 +47,14 @@
 //// in state s. If ctx is nil, the set of tokens will not include what can follow
 //// the rule surrounding s. In other words, the set will be restricted to tokens
 //// reachable staying within the rule of s.
-//pub fn NextTokensInContext(s ATNState, ctx RuleContext) -> *IntervalSet {
+//pub fn NextTokensInContext(s: ATNState, ctx: RuleContext) -> *IntervalSet {
 //	return NewLL1Analyzer(a).Look(s, nil, ctx)
 //}
 //
 //// NextTokensNoContext computes the set of valid tokens that can occur starting
 //// in s and staying in same rule. Token.EPSILON is in set if we reach end of
 //// rule.
-//pub fn NextTokensNoContext(s ATNState) -> *IntervalSet {
+//pub fn NextTokensNoContext(s: ATNState) -> *IntervalSet {
 //	if s.GetNextTokenWithinRule() != nil {
 //		return s.GetNextTokenWithinRule()
 //	}
@@ -65,7 +65,7 @@
 //	return s.GetNextTokenWithinRule()
 //}
 //
-//pub fn NextTokens(s ATNState, ctx RuleContext) -> *IntervalSet {
+//pub fn NextTokens(s: ATNState, ctx: RuleContext) -> *IntervalSet {
 //	if ctx == nil {
 //		return a.NextTokensNoContext(s)
 //	}
@@ -73,7 +73,7 @@
 //	return a.NextTokensInContext(s, ctx)
 //}
 //
-//pub fn addState(state ATNState) {
+//pub fn addState(state: ATNState) {
 //	if state != nil {
 //		state.SetATN(a)
 //		state.SetStateNumber(len(a.states))
@@ -82,18 +82,18 @@
 //	a.states = append(a.states, state)
 //}
 //
-//pub fn removeState(state ATNState) {
+//pub fn removeState(state: ATNState) {
 //	a.states[state.GetStateNumber()] = nil // Just free the memory; don't shift states in the slice
 //}
 //
-//pub fn defineDecisionState(s DecisionState) -> int {
+//pub fn defineDecisionState(s: DecisionState) -> int {
 //	a.DecisionToState = append(a.DecisionToState, s)
 //	s.setDecision(len(a.DecisionToState) - 1)
 //
 //	return s.getDecision()
 //}
 //
-//pub fn getDecisionState(decision int) -> DecisionState {
+//pub fn getDecisionState(decision: int) -> DecisionState {
 //	if len(a.DecisionToState) == 0 {
 //		return nil
 //	}
@@ -113,7 +113,7 @@
 //// A nil ctx defaults to ParserRuleContext.EMPTY.
 ////
 //// It panics if the ATN does not contain state stateNumber.
-//pub fn getExpectedTokens(stateNumber int, ctx RuleContext) -> *IntervalSet {
+//pub fn getExpectedTokens(stateNumber: int, ctx: RuleContext) -> *IntervalSet {
 //	if stateNumber < 0 || stateNumber >= len(a.states) {
 //		panic("Invalid state number.")
 //	}

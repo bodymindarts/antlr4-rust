@@ -30,7 +30,7 @@
 //
 //var ErrEmptyStack = errors.New("Stack is empty")
 //
-//pub fn (int, error) {
+//pub fn (int,: error) {
 //	l := len(*s) - 1
 //	if l < 0 {
 //		return 0, ErrEmptyStack
@@ -40,7 +40,7 @@
 //	return v, nil
 //}
 //
-//pub fn Push(e int) {
+//pub fn Push(e: int) {
 //	*s = append(*s, e)
 //}
 //
@@ -50,7 +50,7 @@
 //	equalsFunction func(interface{}, interface{}) bool
 //}
 //
-//impl Set {§//  pub fn new(hashFunction func(interface{}) string, equalsFunction func(interface{}, interface{}) bool) -> *Set {
+//impl Set {§//  pub fn new(hashFunction func(interface{}): string, equalsFunction func(interface{}, interface{}): bool) -> *Set {
 //
 //	s := new(Set)
 //
@@ -191,11 +191,11 @@
 //	return b
 //}
 //
-//pub fn add(value int) {
+//pub fn add(value: int) {
 //	b.data[value] = true
 //}
 //
-//pub fn clear(index int) {
+//pub fn clear(index: int) {
 //	delete(b.data, index)
 //}
 //
@@ -205,11 +205,11 @@
 //	}
 //}
 //
-//pub fn remove(value int) {
+//pub fn remove(value: int) {
 //	delete(b.data, value)
 //}
 //
-//pub fn contains(value int) -> bool {
+//pub fn contains(value: int) -> bool {
 //	return b.data[value] == true
 //}
 //
@@ -279,12 +279,12 @@
 //	return d
 //}
 //
-//pub fn Get(key string) -> interface{} {
+//pub fn Get(key: string) -> interface{} {
 //	key = "k-" + key
 //	return a.data[key]
 //}
 //
-//pub fn put(key string, value interface{}) {
+//pub fn put(key: string, value interface{}) {
 //	key = "k-" + key
 //	a.data[key] = value
 //}
@@ -309,7 +309,7 @@
 //	return dd
 //}
 //
-//pub fn Get(a string, b string) -> interface{} {
+//pub fn Get(a: string, b: string) -> interface{} {
 //	data := d.data[a]
 //
 //	if data == nil {
@@ -319,7 +319,7 @@
 //	return data[b]
 //}
 //
-//pub fn set(a, b string, o interface{}) {
+//pub fn set(a, b: string, o interface{}) {
 //	data := d.data[a]
 //
 //	if data == nil {
@@ -370,7 +370,7 @@
 //
 //func TitleCase(str string) string {
 //
-//	//	pub fn ReplaceAllStringFunc(src string, repl func(string) string) -> string
+//	//	pub fn ReplaceAllStringFunc(src: string, repl func(string): string) -> string
 //	//	return str.replace(//g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1)})
 //
 //	panic("Not implemented")

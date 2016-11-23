@@ -88,7 +88,7 @@
 //	uniqueAlt: int
 //}
 //
-//impl BaseATNConfigSet {§//  pub fn new(fullCtx bool) -> *BaseATNConfigSet {
+//impl BaseATNConfigSet {§//  pub fn new(fullCtx: bool) -> *BaseATNConfigSet {
 //	return &BaseATNConfigSet{
 //		cachedHashString: "-1",
 //		configLookup:     NewSet(hashATNConfig, equalATNConfigs),
@@ -100,7 +100,7 @@
 //// ATNConfig.state, i is the ATNConfig.alt, and pi is the
 //// ATNConfig.semanticContext. We use (s,i,pi) as the key. Updates
 //// dipsIntoOuterContext and hasSemanticContext when necessary.
-//pub fn Add(config ATNConfig, mergeCache *DoubleDict) -> bool {
+//pub fn Add(config: ATNConfig, mergeCache *DoubleDict) -> bool {
 //	if b.readOnly {
 //		panic("set is read-only")
 //	}
@@ -156,7 +156,7 @@
 //	return b.hasSemanticContext
 //}
 //
-//pub fn SetHasSemanticContext(v bool) {
+//pub fn SetHasSemanticContext(v: bool) {
 //	b.hasSemanticContext = v
 //}
 //
@@ -250,7 +250,7 @@
 //	return len(b.configs) == 0
 //}
 //
-//pub fn Contains(item ATNConfig) -> bool {
+//pub fn Contains(item: ATNConfig) -> bool {
 //	if b.configLookup == nil {
 //		panic("not implemented for read-only sets")
 //	}
@@ -258,7 +258,7 @@
 //	return b.configLookup.contains(item)
 //}
 //
-//pub fn ContainsFast(item ATNConfig) -> bool {
+//pub fn ContainsFast(item: ATNConfig) -> bool {
 //	if b.configLookup == nil {
 //		panic("not implemented for read-only sets")
 //	}
@@ -284,7 +284,7 @@
 //	return b.dipsIntoOuterContext
 //}
 //
-//pub fn SetDipsIntoOuterContext(v bool) {
+//pub fn SetDipsIntoOuterContext(v: bool) {
 //	b.dipsIntoOuterContext = v
 //}
 //
@@ -292,7 +292,7 @@
 //	return b.uniqueAlt
 //}
 //
-//pub fn SetUniqueAlt(v int) {
+//pub fn SetUniqueAlt(v: int) {
 //	b.uniqueAlt = v
 //}
 //
@@ -308,7 +308,7 @@
 //	return b.readOnly
 //}
 //
-//pub fn SetReadOnly(readOnly bool) {
+//pub fn SetReadOnly(readOnly: bool) {
 //	b.readOnly = readOnly
 //
 //	if readOnly {

@@ -64,7 +64,7 @@
 //// being deserialized. It returns true if actualUuid represents a serialized ATN
 //// at or after the feature identified by feature was introduced, and otherwise
 //// false.
-//pub fn isFeatureSupported(feature, actualUUID string) -> bool {
+//pub fn isFeatureSupported(feature, actualUUID: string) -> bool {
 //	idx1 := stringInSlice(feature, SupportedUUIDs)
 //
 //	if idx1 < 0 {
@@ -420,7 +420,7 @@
 //	}
 //}
 //
-//pub fn generateRuleBypassTransition(atn *ATN, idx int) {
+//pub fn generateRuleBypassTransition(atn *ATN, idx: int) {
 //	bypassStart := NewBasicBlockStartState()
 //
 //	bypassStart.ruleIndex = idx
@@ -500,7 +500,7 @@
 //	bypassStart.AddTransition(NewEpsilonTransition(MatchState, -1), -1)
 //}
 //
-//pub fn stateIsEndStateFor(state ATNState, idx int) -> ATNState {
+//pub fn stateIsEndStateFor(state: ATNState, idx: int) -> ATNState {
 //	if state.GetRuleIndex() != idx {
 //		return nil
 //	}
@@ -620,7 +620,7 @@
 //	}
 //}
 //
-//pub fn checkCondition(condition bool, message string) {
+//pub fn checkCondition(condition: bool, message: string) {
 //	if !condition {
 //		if message == "" {
 //			message = "IllegalState"
@@ -678,7 +678,7 @@
 //		byteToHex[bb[14]] + byteToHex[bb[15]]
 //}
 //
-//pub fn edgeFactory(atn *ATN, typeIndex, src, trg, arg1, arg2, arg3 int, sets []*IntervalSet) -> Transition {
+//pub fn edgeFactory(atn *ATN, typeIndex, src, trg, arg1, arg2, arg3: int, sets []*IntervalSet) -> Transition {
 //	target := atn.states[trg]
 //
 //	switch typeIndex {
@@ -724,7 +724,7 @@
 //	panic("The specified transition type is not valid.")
 //}
 //
-//pub fn stateFactory(typeIndex, ruleIndex int) -> ATNState {
+//pub fn stateFactory(typeIndex, ruleIndex: int) -> ATNState {
 //	var s ATNState
 //
 //	switch typeIndex {
@@ -776,7 +776,7 @@
 //	return s
 //}
 //
-//pub fn lexerActionFactory(typeIndex, data1, data2 int) -> LexerAction {
+//pub fn lexerActionFactory(typeIndex, data1, data2: int) -> LexerAction {
 //	switch typeIndex {
 //	case LexerActionTypeChannel:
 //		return NewLexerChannelAction(data1)

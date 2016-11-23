@@ -11,7 +11,7 @@
 //}
 //
 ///* stop is not included! */
-//impl Interval {§//  pub fn new(start, stop int) -> *Interval {
+//impl Interval {§//  pub fn new(start, stop: int) -> *Interval {
 //	i := new(Interval)
 //
 //	i.start = start
@@ -19,7 +19,7 @@
 //	return i
 //}
 //
-//pub fn contains(item int) -> bool {
+//pub fn contains(item: int) -> bool {
 //	return item >= i.start && item < i.stop
 //}
 //
@@ -58,11 +58,11 @@
 //	return i.intervals[0].start
 //}
 //
-//pub fn addOne(v int) {
+//pub fn addOne(v: int) {
 //	i.addInterval(NewInterval(v, v+1))
 //}
 //
-//pub fn addRange(l, h int) {
+//pub fn addRange(l, h: int) {
 //	i.addInterval(NewInterval(l, h+1))
 //}
 //
@@ -113,7 +113,7 @@
 //	return i
 //}
 //
-//pub fn complement(start int, stop int) -> *IntervalSet {
+//pub fn complement(start: int, stop: int) -> *IntervalSet {
 //	result := NewIntervalSet()
 //	result.addInterval(NewInterval(start, stop+1))
 //	for j := 0; j < len(i.intervals); j++ {
@@ -122,7 +122,7 @@
 //	return result
 //}
 //
-//pub fn contains(item int) -> bool {
+//pub fn contains(item: int) -> bool {
 //	if i.intervals == nil {
 //		return false
 //	}
@@ -174,7 +174,7 @@
 //	}
 //}
 //
-//pub fn removeOne(v int) {
+//pub fn removeOne(v: int) {
 //	if i.intervals != nil {
 //		for k := 0; k < len(i.intervals); k++ {
 //			ki := i.intervals[k]
@@ -206,7 +206,7 @@
 //	return i.StringVerbose(nil, nil, false)
 //}
 //
-//pub fn StringVerbose(literalNames []string, symbolicNames []string, elemsAreChar bool) -> string {
+//pub fn StringVerbose(literalNames []string, symbolicNames []string, elemsAreChar: bool) -> string {
 //
 //	if i.intervals == nil {
 //		return "{}"
@@ -277,7 +277,7 @@
 //	return names[0]
 //}
 //
-//pub fn elementName(literalNames []string, symbolicNames []string, a int) -> string {
+//pub fn elementName(literalNames []string, symbolicNames []string, a: int) -> string {
 //	if a == TokenEOF {
 //		return "<EOF>"
 //	} else if a == TokenEpsilon {
