@@ -5,7 +5,7 @@
 //}
 //
 //// CommonTokenFactory is the default TokenFactory implementation.
-//type CommonTokenFactory struct {
+//pub struct CommonTokenFactory {
 //	// copyText indicates whether CommonToken.setText should be called after
 //	// constructing tokens to explicitly set the text. This is useful for cases
 //	// where the input stream might not be able to provide arbitrary substrings of

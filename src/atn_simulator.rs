@@ -7,7 +7,7 @@
 //	DecisionToDFA() []*DFA
 //}
 //
-//type BaseATNSimulator struct {
+//pub struct BaseATNSimulator {
 //	atn                *ATN
 //	sharedContextCache *PredictionContextCache
 //	decisionToDFA  []*DFA

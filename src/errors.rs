@@ -11,7 +11,7 @@
 //	GetInputStream() IntStream
 //}
 //
-//type BaseRecognitionException struct {
+//pub struct BaseRecognitionException {
 //	message        string
 //	recognizer     Recognizer
 //	offendingToken Token
@@ -91,7 +91,7 @@
 //	return b.message
 //}
 //
-//type LexerNoViableAltException struct {
+//pub struct LexerNoViableAltException {
 //	*BaseRecognitionException
 //
 //	startIndex     int
@@ -118,7 +118,7 @@
 //	return "LexerNoViableAltException" + symbol
 //}
 //
-//type NoViableAltException struct {
+//pub struct NoViableAltException {
 //	*BaseRecognitionException
 //
 //	startToken     Token
@@ -166,7 +166,7 @@
 //	return n
 //}
 //
-//type InputMisMatchException struct {
+//pub struct InputMisMatchException {
 //	*BaseRecognitionException
 //}
 //
@@ -189,7 +189,7 @@
 //// Disambiguating predicate evaluation occurs when we test a predicate during
 //// prediction.
 //
-//type FailedPredicateException struct {
+//pub struct FailedPredicateException {
 //	*BaseRecognitionException
 //
 //	ruleIndex      int
@@ -226,7 +226,7 @@
 //	return "failed predicate: {" + predicate + "}?"
 //}
 //
-//type ParseCancellationException struct {
+//pub struct ParseCancellationException {
 //}
 //
 //func NewParseCancellationException() *ParseCancellationException {

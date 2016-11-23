@@ -22,7 +22,7 @@
 //// d situation occurs.</li>
 //// </ul>
 //
-//type DiagnosticErrorListener struct {
+//pub struct DiagnosticErrorListener {
 //	*DefaultErrorListener
 //
 //	exactOnly bool

@@ -23,7 +23,7 @@
 //	setMode(int)
 //}
 //
-//type BaseLexer struct {
+//pub struct BaseLexer {
 //	*BaseRecognizer
 //
 //	Interpreter         ILexerATNSimulator

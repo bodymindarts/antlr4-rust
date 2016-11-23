@@ -22,7 +22,7 @@
 //	Matches(int, int, int) bool
 //}
 //
-//type BaseTransition struct {
+//pub struct BaseTransition {
 //	target            ATNState
 //	isEpsilon         bool
 //	label             int
@@ -122,7 +122,7 @@
 ////}
 //
 //// TODO: make all transitions sets? no, should remove set edges
-//type AtomTransition struct {
+//pub struct AtomTransition {
 //	*BaseTransition
 //}
 //
@@ -152,7 +152,7 @@
 //	return strconv.Itoa(t.label)
 //}
 //
-//type RuleTransition struct {
+//pub struct RuleTransition {
 //	*BaseTransition
 //
 //	followState           ATNState
@@ -177,7 +177,7 @@
 //	return false
 //}
 //
-//type EpsilonTransition struct {
+//pub struct EpsilonTransition {
 //	*BaseTransition
 //
 //	outermostPrecedenceReturn int
@@ -202,7 +202,7 @@
 //	return "epsilon"
 //}
 //
-//type RangeTransition struct {
+//pub struct RangeTransition {
 //	*BaseTransition
 //
 //	start, stop int
@@ -239,7 +239,7 @@
 //	IAbstractPredicateTransitionFoo()
 //}
 //
-//type BaseAbstractPredicateTransition struct {
+//pub struct BaseAbstractPredicateTransition {
 //	*BaseTransition
 //}
 //
@@ -253,7 +253,7 @@
 //
 //func (a *BaseAbstractPredicateTransition) IAbstractPredicateTransitionFoo() {}
 //
-//type PredicateTransition struct {
+//pub struct PredicateTransition {
 //	*BaseAbstractPredicateTransition
 //
 //	isCtxDependent       bool
@@ -285,7 +285,7 @@
 //	return "pred_" + strconv.Itoa(t.ruleIndex) + ":" + strconv.Itoa(t.predIndex)
 //}
 //
-//type ActionTransition struct {
+//pub struct ActionTransition {
 //	*BaseTransition
 //
 //	isCtxDependent                    bool
@@ -313,7 +313,7 @@
 //	return "action_" + strconv.Itoa(t.ruleIndex) + ":" + strconv.Itoa(t.actionIndex)
 //}
 //
-//type SetTransition struct {
+//pub struct SetTransition {
 //	*BaseTransition
 //}
 //
@@ -341,7 +341,7 @@
 //	return t.intervalSet.String()
 //}
 //
-//type NotSetTransition struct {
+//pub struct NotSetTransition {
 //	*SetTransition
 //}
 //
@@ -364,7 +364,7 @@
 //	return "~" + t.intervalSet.String()
 //}
 //
-//type WildcardTransition struct {
+//pub struct WildcardTransition {
 //	*BaseTransition
 //}
 //
@@ -385,7 +385,7 @@
 //	return "."
 //}
 //
-//type PrecedencePredicateTransition struct {
+//pub struct PrecedencePredicateTransition {
 //	*BaseAbstractPredicateTransition
 //
 //	precedence int

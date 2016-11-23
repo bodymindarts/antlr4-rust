@@ -4,7 +4,7 @@
 //	"strings"
 //)
 //
-//type Interval struct {
+//pub struct Interval {
 //	start int
 //	stop  int
 //}
@@ -34,7 +34,7 @@
 //	return i.stop - i.start
 //}
 //
-//type IntervalSet struct {
+//pub struct IntervalSet {
 //	intervals []*Interval
 //	readOnly  bool
 //}

@@ -32,7 +32,7 @@
 //	String() string
 //}
 //
-//type BasePredictionContext struct {
+//pub struct BasePredictionContext {
 //	cachedHashString string
 //}
 //
@@ -88,7 +88,7 @@
 //// context cash associated with contexts in DFA states. This cache
 //// can be used for both lexers and parsers.
 //
-//type PredictionContextCache struct {
+//pub struct PredictionContextCache {
 //	cache map[PredictionContext]PredictionContext
 //}
 //
@@ -126,7 +126,7 @@
 //	PredictionContext
 //}
 //
-//type BaseSingletonPredictionContext struct {
+//pub struct BaseSingletonPredictionContext {
 //	*BasePredictionContext
 //
 //	parentCtx   PredictionContext
@@ -221,7 +221,7 @@
 //
 //var BasePredictionContextEMPTY = NewEmptyPredictionContext()
 //
-//type EmptyPredictionContext struct {
+//pub struct EmptyPredictionContext {
 //	*BaseSingletonPredictionContext
 //}
 //
@@ -254,7 +254,7 @@
 //	return "$"
 //}
 //
-//type ArrayPredictionContext struct {
+//pub struct ArrayPredictionContext {
 //	*BasePredictionContext
 //
 //	parents      []PredictionContext

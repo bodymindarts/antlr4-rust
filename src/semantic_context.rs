@@ -53,7 +53,7 @@
 //	return result
 //}
 //
-//type Predicate struct {
+//pub struct Predicate {
 //	ruleIndex      int
 //	predIndex      int
 //	isCtxDependent bool
@@ -108,7 +108,7 @@
 //	return "{" + strconv.Itoa(p.ruleIndex) + ":" + strconv.Itoa(p.predIndex) + "}?"
 //}
 //
-//type PrecedencePredicate struct {
+//pub struct PrecedencePredicate {
 //	precedence int
 //}
 //
@@ -169,7 +169,7 @@
 //// A semantic context which is true whenever none of the contained contexts
 //// is false.`
 //
-//type AND struct {
+//pub struct AND {
 //	opnds []SemanticContext
 //}
 //
@@ -309,7 +309,7 @@
 //// contexts is true.
 ////
 //
-//type OR struct {
+//pub struct OR {
 //	opnds []SemanticContext
 //}
 //

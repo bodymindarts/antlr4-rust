@@ -35,7 +35,7 @@
 //	String([]string, RuleContext) string
 //}
 //
-//type BaseRuleContext struct {
+//pub struct BaseRuleContext {
 //	parentCtx     RuleContext
 //	invokingState int
 //	RuleIndex     int

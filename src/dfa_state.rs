@@ -5,7 +5,7 @@
 //)
 //
 //// PredPrediction maps a predicate to a predicted alternative.
-//type PredPrediction struct {
+//pub struct PredPrediction {
 //	alt  int
 //	pred SemanticContext
 //}
@@ -39,7 +39,7 @@
 //// A DFAState may have multiple references to a particular state, but with
 //// different ATN contexts (with same or different alts) meaning that state was
 //// reached via a different set of rule invocations.
-//type DFAState struct {
+//pub struct DFAState {
 //	stateNumber int
 //	configs     ATNConfigSet
 //

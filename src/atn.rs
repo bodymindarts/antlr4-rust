@@ -1,7 +1,7 @@
 //
 //var ATNInvalidAltNumber int
 //
-//type ATN struct {
+//pub struct ATN {
 //	// DecisionToState is the decision points for all rules, subrules, optional
 //	// blocks, ()+, ()*, etc. Used to build DFA predictors for them.
 //	DecisionToState []DecisionState

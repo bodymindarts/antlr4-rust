@@ -1,7 +1,7 @@
 //
 //import "fmt"
 //
-//type TraceListener struct {
+//pub struct TraceListener {
 //	parser *BaseParser
 //}
 //

@@ -6,7 +6,7 @@
 //
 //// DFASerializer is a DFA walker that knows how to dump them to serialized
 //// strings.
-//type DFASerializer struct {
+//pub struct DFASerializer {
 //	dfa           *DFA
 //	literalNames  []string
 //	symbolicNames []string
@@ -98,7 +98,7 @@
 //	return baseStateStr
 //}
 //
-//type LexerDFASerializer struct {
+//pub struct LexerDFASerializer {
 //	*DFASerializer
 //}
 //

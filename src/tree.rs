@@ -55,7 +55,7 @@
 //	VisitErrorNode(node ErrorNode) interface{}
 //}
 //
-//type BaseParseTreeVisitor struct{}
+//pub struct BaseParseTreeVisitor{}
 //
 //var _ ParseTreeVisitor = &BaseParseTreeVisitor{}
 //
@@ -92,7 +92,7 @@
 //	ExitEveryRule(ctx ParserRuleContext)
 //}
 //
-//type BaseParseTreeListener struct{}
+//pub struct BaseParseTreeListener{}
 //
 //var _ ParseTreeListener = &BaseParseTreeListener{}
 //
@@ -101,7 +101,7 @@
 //func (l *BaseParseTreeListener) EnterEveryRule(ctx ParserRuleContext) {}
 //func (l *BaseParseTreeListener) ExitEveryRule(ctx ParserRuleContext)  {}
 //
-//type TerminalNodeImpl struct {
+//pub struct TerminalNodeImpl {
 //	parentCtx RuleContext
 //
 //	symbol Token
@@ -184,7 +184,7 @@
 //// and deletion as well as during "consume until error recovery set"
 //// upon no viable alternative exceptions.
 //
-//type ErrorNodeImpl struct {
+//pub struct ErrorNodeImpl {
 //	*TerminalNodeImpl
 //}
 //
@@ -202,7 +202,7 @@
 //	return v.VisitErrorNode(e)
 //}
 //
-//type ParseTreeWalker struct {
+//pub struct ParseTreeWalker {
 //}
 //
 //func NewParseTreeWalker() *ParseTreeWalker {

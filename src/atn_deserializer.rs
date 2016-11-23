@@ -20,17 +20,17 @@
 //// This is the current serialized UUID.
 //var SerializedUUID = BaseSerializedUUID
 //
-//type LoopEndStateIntPair struct {
+//pub struct LoopEndStateIntPair {
 //	item0 *LoopEndState
 //	item1 int
 //}
 //
-//type BlockStartStateIntPair struct {
+//pub struct BlockStartStateIntPair {
 //	item0 BlockStartState
 //	item1 int
 //}
 //
-//type ATNDeserializer struct {
+//pub struct ATNDeserializer {
 //	deserializationOptions *ATNDeserializationOptions
 //	data                   []rune
 //	pos                    int

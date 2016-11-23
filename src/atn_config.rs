@@ -35,7 +35,7 @@
 //	shortHash() string
 //}
 //
-//type BaseATNConfig struct {
+//pub struct BaseATNConfig {
 //	precedenceFilterSuppressed bool
 //	state                      ATNState
 //	alt                        int
@@ -199,7 +199,7 @@
 //
 //
 //
-//type LexerATNConfig struct {
+//pub struct LexerATNConfig {
 //	*BaseATNConfig
 //	lexerActionExecutor            *LexerActionExecutor
 //	passedThroughNonGreedyDecision bool

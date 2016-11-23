@@ -19,7 +19,7 @@
 //// This is the default implementation of {@link ANTLRErrorStrategy} used for
 //// error Reporting and recovery in ANTLR parsers.
 ////
-//type DefaultErrorStrategy struct {
+//pub struct DefaultErrorStrategy {
 //	errorRecoveryMode bool
 //	lastErrorIndex    int
 //	lastErrorStates   *IntervalSet
@@ -712,7 +712,7 @@
 ////
 //// @see Parser//setErrorHandler(ANTLRErrorStrategy)
 //
-//type BailErrorStrategy struct {
+//pub struct BailErrorStrategy {
 //	*DefaultErrorStrategy
 //}
 //

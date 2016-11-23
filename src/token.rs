@@ -4,7 +4,7 @@
 //	"strings"
 //)
 //
-//type TokenSourceCharStreamPair struct {
+//pub struct TokenSourceCharStreamPair {
 //	tokenSource TokenSource
 //	charStream  CharStream
 //}
@@ -32,7 +32,7 @@
 //	GetInputStream() CharStream
 //}
 //
-//type BaseToken struct {
+//pub struct BaseToken {
 //	source     *TokenSourceCharStreamPair
 //	tokenType  int    // token type of the token
 //	channel    int    // The parser ignores everything not on DEFAULT_CHANNEL
@@ -112,7 +112,7 @@
 //	return b.source.charStream
 //}
 //
-//type CommonToken struct {
+//pub struct CommonToken {
 //	*BaseToken
 //}
 //

@@ -43,7 +43,7 @@
 //// BaseATNConfigSet is a specialized set of ATNConfig that tracks information
 //// about its elements and can combine similar configurations using a
 //// graph-structured stack.
-//type BaseATNConfigSet struct {
+//pub struct BaseATNConfigSet {
 //	cachedHashString string
 //
 //	// configLookup is used to determine whether two BaseATNConfigSets are equal. We
@@ -347,7 +347,7 @@
 //	return s
 //}
 //
-//type OrderedATNConfigSet struct {
+//pub struct OrderedATNConfigSet {
 //	*BaseATNConfigSet
 //}
 //

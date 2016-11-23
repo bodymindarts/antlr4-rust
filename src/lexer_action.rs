@@ -20,7 +20,7 @@
 //	equals(other LexerAction) bool
 //}
 //
-//type BaseLexerAction struct {
+//pub struct BaseLexerAction {
 //	actionType          int
 //	isPositionDependent bool
 //}
@@ -59,7 +59,7 @@
 ////
 //// <p>The {@code Skip} command does not have any parameters, so l action is
 //// implemented as a singleton instance exposed by {@link //INSTANCE}.</p>
-//type LexerSkipAction struct {
+//pub struct LexerSkipAction {
 //	*BaseLexerAction
 //}
 //
@@ -82,7 +82,7 @@
 //
 ////  Implements the {@code type} lexer action by calling {@link Lexer//setType}
 //// with the assigned type.
-//type LexerTypeAction struct {
+//pub struct LexerTypeAction {
 //	*BaseLexerAction
 //
 //	thetype int
@@ -119,7 +119,7 @@
 //
 //// Implements the {@code pushMode} lexer action by calling
 //// {@link Lexer//pushMode} with the assigned mode.
-//type LexerPushModeAction struct {
+//pub struct LexerPushModeAction {
 //	*BaseLexerAction
 //
 //	mode int
@@ -162,7 +162,7 @@
 ////
 //// <p>The {@code popMode} command does not have any parameters, so l action is
 //// implemented as a singleton instance exposed by {@link //INSTANCE}.</p>
-//type LexerPopModeAction struct {
+//pub struct LexerPopModeAction {
 //	*BaseLexerAction
 //}
 //
@@ -191,7 +191,7 @@
 //// <p>The {@code more} command does not have any parameters, so l action is
 //// implemented as a singleton instance exposed by {@link //INSTANCE}.</p>
 //
-//type LexerMoreAction struct {
+//pub struct LexerMoreAction {
 //	*BaseLexerAction
 //}
 //
@@ -215,7 +215,7 @@
 //
 //// Implements the {@code mode} lexer action by calling {@link Lexer//mode} with
 //// the assigned mode.
-//type LexerModeAction struct {
+//pub struct LexerModeAction {
 //	*BaseLexerAction
 //
 //	mode int
@@ -269,7 +269,7 @@
 //// @param actionIndex The action index to use for calls to
 //// {@link Recognizer//action}.
 //
-//type LexerCustomAction struct {
+//pub struct LexerCustomAction {
 //	*BaseLexerAction
 //	ruleIndex, actionIndex int
 //}
@@ -307,7 +307,7 @@
 //// {@link Lexer//setChannel} with the assigned channel.
 //// Constructs a New{@code channel} action with the specified channel value.
 //// @param channel The channel value to pass to {@link Lexer//setChannel}.
-//type LexerChannelAction struct {
+//pub struct LexerChannelAction {
 //	*BaseLexerAction
 //
 //	channel int
@@ -364,7 +364,7 @@
 //// executed.
 //// @param action The lexer action to execute at a particular offset in the
 //// input {@link CharStream}.
-//type LexerIndexedCustomAction struct {
+//pub struct LexerIndexedCustomAction {
 //	*BaseLexerAction
 //
 //	offset              int

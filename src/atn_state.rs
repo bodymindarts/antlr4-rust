@@ -46,7 +46,7 @@
 //	String() string
 //}
 //
-//type BaseATNState struct {
+//pub struct BaseATNState {
 //	// NextTokenWithinRule caches lookahead during parsing. Not used during construction.
 //	NextTokenWithinRule *IntervalSet
 //
@@ -148,7 +148,7 @@
 //	}
 //}
 //
-//type BasicState struct {
+//pub struct BasicState {
 //	*BaseATNState
 //}
 //
@@ -170,7 +170,7 @@
 //	setNonGreedy(bool)
 //}
 //
-//type BaseDecisionState struct {
+//pub struct BaseDecisionState {
 //	*BaseATNState
 //	decision  int
 //	nonGreedy bool
@@ -204,7 +204,7 @@
 //}
 //
 //// BaseBlockStartState is the start of a regular (...) block.
-//type BaseBlockStartState struct {
+//pub struct BaseBlockStartState {
 //	*BaseDecisionState
 //	endState *BlockEndState
 //}
@@ -221,7 +221,7 @@
 //	s.endState = b
 //}
 //
-//type BasicBlockStartState struct {
+//pub struct BasicBlockStartState {
 //	*BaseBlockStartState
 //}
 //
@@ -234,7 +234,7 @@
 //}
 //
 //// BlockEndState is a terminal node of a simple (a|b|c) block.
-//type BlockEndState struct {
+//pub struct BlockEndState {
 //	*BaseATNState
 //	startState ATNState
 //}
@@ -251,7 +251,7 @@
 //// start symbol. In that case, there is one transition to EOF. Later, we might
 //// encode references to all calls to this rule to compute FOLLOW sets for error
 //// handling.
-//type RuleStopState struct {
+//pub struct RuleStopState {
 //	*BaseATNState
 //}
 //
@@ -263,7 +263,7 @@
 //	return &RuleStopState{BaseATNState: b}
 //}
 //
-//type RuleStartState struct {
+//pub struct RuleStartState {
 //	*BaseATNState
 //	stopState        ATNState
 //	isPrecedenceRule bool
@@ -279,7 +279,7 @@
 //
 //// PlusLoopbackState is a decision state for A+ and (A|B)+. It has two
 //// transitions: one to the loop back to start of the block, and one to exit.
-//type PlusLoopbackState struct {
+//pub struct PlusLoopbackState {
 //	*BaseDecisionState
 //}
 //
@@ -295,7 +295,7 @@
 //// decision state; we don't use it for code generation. Somebody might need it,
 //// it is included for completeness. In reality, PlusLoopbackState is the real
 //// decision-making node for A+.
-//type PlusBlockStartState struct {
+//pub struct PlusBlockStartState {
 //	*BaseBlockStartState
 //	loopBackState ATNState
 //}
@@ -309,7 +309,7 @@
 //}
 //
 //// StarBlockStartState is the block that begins a closure loop.
-//type StarBlockStartState struct {
+//pub struct StarBlockStartState {
 //	*BaseBlockStartState
 //}
 //
@@ -321,7 +321,7 @@
 //	return &StarBlockStartState{BaseBlockStartState: b}
 //}
 //
-//type StarLoopbackState struct {
+//pub struct StarLoopbackState {
 //	*BaseATNState
 //}
 //
@@ -333,7 +333,7 @@
 //	return &StarLoopbackState{BaseATNState: b}
 //}
 //
-//type StarLoopEntryState struct {
+//pub struct StarLoopEntryState {
 //	*BaseDecisionState
 //	loopBackState          ATNState
 //	precedenceRuleDecision bool
@@ -349,7 +349,7 @@
 //}
 //
 //// LoopEndState marks the end of a * or + loop.
-//type LoopEndState struct {
+//pub struct LoopEndState {
 //	*BaseATNState
 //	loopBackState ATNState
 //}
@@ -363,7 +363,7 @@
 //}
 //
 //// TokensStartState is the Tokens rule start state linking to each lexer rule start state.
-//type TokensStartState struct {
+//pub struct TokensStartState {
 //	*BaseDecisionState
 //}
 //

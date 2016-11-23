@@ -12,7 +12,7 @@
 //	ParserATNSimulatorRetryDebug = false
 //)
 //
-//type ParserATNSimulator struct {
+//pub struct ParserATNSimulator {
 //	*BaseATNSimulator
 //
 //	parser         Parser
@@ -909,7 +909,7 @@
 ////  Assumption: the input stream has been restored to the starting point
 ////  prediction, which is where predicates need to evaluate.
 //
-//type ATNConfigSetPair struct {
+//pub struct ATNConfigSetPair {
 //	item0, item1 ATNConfigSet
 //}
 //

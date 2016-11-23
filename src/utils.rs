@@ -43,7 +43,7 @@
 //	*s = append(*s, e)
 //}
 //
-//type Set struct {
+//pub struct Set {
 //	data           map[string][]interface{}
 //	hashFunction   func(interface{}) string
 //	equalsFunction func(interface{}, interface{}) bool
@@ -180,7 +180,7 @@
 //	return r
 //}
 //
-//type BitSet struct {
+//pub struct BitSet {
 //	data map[int]bool
 //}
 //
@@ -268,7 +268,7 @@
 //	return "{" + strings.Join(valsS, ", ") + "}"
 //}
 //
-//type AltDict struct {
+//pub struct AltDict {
 //	data map[string]interface{}
 //}
 //
@@ -298,7 +298,7 @@
 //	return vs
 //}
 //
-//type DoubleDict struct {
+//pub struct DoubleDict {
 //	data map[string]map[string]interface{}
 //}
 //

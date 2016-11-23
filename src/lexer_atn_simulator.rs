@@ -25,7 +25,7 @@
 //	Consume(input CharStream)
 //}
 //
-//type LexerATNSimulator struct {
+//pub struct LexerATNSimulator {
 //	*BaseATNSimulator
 //
 //	recog              Lexer
@@ -635,7 +635,7 @@
 //	sim.dfaState = nil
 //}
 //
-//type SimState struct {
+//pub struct SimState {
 //	index    int
 //	line     int
 //	column   int

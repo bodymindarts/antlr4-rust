@@ -27,7 +27,7 @@
 //	GetRuleInvocationStack(ParserRuleContext) []string
 //}
 //
-//type BaseParser struct {
+//pub struct BaseParser {
 //	*BaseRecognizer
 //
 //	Interpreter     *ParserATNSimulator

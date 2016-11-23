@@ -1,7 +1,7 @@
 //
 //var ATNDeserializationOptionsdefaultOptions = &ATNDeserializationOptions{true, false, false}
 //
-//type ATNDeserializationOptions struct {
+//pub struct ATNDeserializationOptions {
 //	readOnly                      bool
 //	verifyATN                     bool
 //	generateRuleBypassTransitions bool

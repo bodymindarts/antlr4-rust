@@ -25,7 +25,7 @@
 //	RemoveLastChild()
 //}
 //
-//type BaseParserRuleContext struct {
+//pub struct BaseParserRuleContext {
 //	*BaseRuleContext
 //
 //	start, stop Token
@@ -341,7 +341,7 @@
 //	ParserRuleContext
 //}
 //
-//type BaseInterpreterRuleContext struct {
+//pub struct BaseInterpreterRuleContext {
 //	*BaseParserRuleContext
 //}
 //

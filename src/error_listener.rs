@@ -16,7 +16,7 @@
 //	ReportContextSensitivity(recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction int, configs ATNConfigSet)
 //}
 //
-//type DefaultErrorListener struct {
+//pub struct DefaultErrorListener {
 //}
 //
 //func NewDefaultErrorListener() *DefaultErrorListener {
@@ -35,7 +35,7 @@
 //func (d *DefaultErrorListener) ReportContextSensitivity(recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction int, configs ATNConfigSet) {
 //}
 //
-//type ConsoleErrorListener struct {
+//pub struct ConsoleErrorListener {
 //	*DefaultErrorListener
 //}
 //
@@ -64,7 +64,7 @@
 //	fmt.Fprintln(os.Stderr, "line "+strconv.Itoa(line)+":"+strconv.Itoa(column)+" "+msg)
 //}
 //
-//type ProxyErrorListener struct {
+//pub struct ProxyErrorListener {
 //	*DefaultErrorListener
 //	delegates []ErrorListener
 //}

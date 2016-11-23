@@ -9,7 +9,7 @@
 //// Token.getChannel. If your parser requires the token stream filter tokens to
 //// only those on a particular channel, such as Token.DEFAULT_CHANNEL or
 //// Token.HIDDEN_CHANNEL, use a filtering token stream such a CommonTokenStream.
-//type CommonTokenStream struct {
+//pub struct CommonTokenStream {
 //	channel int
 //
 //	// fetchedEOF indicates whether the Token.EOF token has been fetched from

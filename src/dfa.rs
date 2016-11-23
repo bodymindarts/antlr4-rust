@@ -1,7 +1,7 @@
 //
 //import "sort"
 //
-//type DFA struct {
+//pub struct DFA {
 //	// atnStartState is the ATN state in which this was created
 //	atnStartState DecisionState
 //

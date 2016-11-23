@@ -23,7 +23,7 @@
 //	GetErrorListenerDispatch() ErrorListener
 //}
 //
-//type BaseRecognizer struct {
+//pub struct BaseRecognizer {
 //	listeners []ErrorListener
 //	state     int
 //
