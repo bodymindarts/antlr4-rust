@@ -283,7 +283,7 @@
 //	return l.BaseATNConfig.equals(othert.BaseATNConfig)
 //}
 //
-//func checkNonGreedyDecision(source *LexerATNConfig, target ATNState) bool {
+//pub fn checkNonGreedyDecision(source *LexerATNConfig, target: ATNState) -> bool { // non-member
 //	var ds, ok = target.(DecisionState)
 //
 //	return source.passedThroughNonGreedyDecision || (ok && ds.getNonGreedy())

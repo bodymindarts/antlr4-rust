@@ -629,7 +629,7 @@
 //	return "'" + string(tt) + "'"
 //}
 //
-//func resetSimState(sim *SimState) {
+//pub fn resetSimState(sim *SimState) { // non-member
 //	sim.index = -1
 //	sim.line = 0
 //	sim.column = -1

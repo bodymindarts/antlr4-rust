@@ -360,11 +360,11 @@
 //	return &OrderedATNConfigSet{BaseATNConfigSet: b}
 //}
 //
-//func hashATNConfig(c interface{}) string {
+//pub fn hashATNConfig(c interface{}) -> string { // non-member
 //	return c.(ATNConfig).shortHash()
 //}
 //
-//func equalATNConfigs(a, b interface{}) bool {
+//pub fn equalATNConfigs(a, b interface{}) -> bool { // non-member
 //	if a == nil || b == nil {
 //		return false
 //	}

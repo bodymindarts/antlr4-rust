@@ -77,11 +77,11 @@
 //	return b.cachedHashString
 //}
 //
-//func calculateHashString(parent PredictionContext, returnState int) string {
+//pub fn calculateHashString(parent: PredictionContext, returnState: int) -> string { // non-member
 //	return parent.String() + strconv.Itoa(returnState)
 //}
 //
-//func calculateEmptyHashString() string {
+//pub fn calculateEmptyHashString() -> string { // non-member
 //	return ""
 //}
 //
@@ -151,7 +151,7 @@
 //	return s
 //}
 //
-//func SingletonBasePredictionContextCreate(parent PredictionContext, returnState int) PredictionContext {
+//pub fn SingletonBasePredictionContextCreate(parent: PredictionContext, returnState: int) -> PredictionContext { // non-member
 //	if returnState == BasePredictionContextEmptyReturnState && parent == nil {
 //		// someone can pass in the bits of an array ctx that mean $
 //		return BasePredictionContextEMPTY
@@ -346,7 +346,7 @@
 //// Convert a {@link RuleContext} tree to a {@link BasePredictionContext} graph.
 //// Return {@link //EMPTY} if {@code outerContext} is empty or nil.
 //// /
-//func predictionContextFromRuleContext(a *ATN, outerContext RuleContext) PredictionContext {
+//pub fn predictionContextFromRuleContext(a *ATN, outerContext: RuleContext) -> PredictionContext { // non-member
 //	if outerContext == nil {
 //		outerContext = RuleContextEmpty
 //	}
@@ -363,7 +363,7 @@
 //	return SingletonBasePredictionContextCreate(parent, transition.(*RuleTransition).followState.GetStateNumber())
 //}
 //
-//func calculateListsHashString(parents []BasePredictionContext, returnStates []int) string {
+//pub fn calculateListsHashString(parents []BasePredictionContext, returnStates []int) -> string { // non-member
 //	s := ""
 //
 //	for _, p := range parents {
@@ -377,7 +377,7 @@
 //	return s
 //}
 //
-//func merge(a, b PredictionContext, rootIsWildcard bool, mergeCache *DoubleDict) PredictionContext {
+//pub fn merge(a, b PredictionContext, rootIsWildcard: bool, mergeCache *DoubleDict) -> PredictionContext { // non-member
 //	// share same graph if both same
 //	if a == b {
 //		return a
@@ -440,7 +440,7 @@
 //// otherwise false to indicate a full-context merge
 //// @param mergeCache
 //// /
-//func mergeSingletons(a, b *BaseSingletonPredictionContext, rootIsWildcard bool, mergeCache *DoubleDict) PredictionContext {
+//pub fn mergeSingletons(a, b *BaseSingletonPredictionContext, rootIsWildcard: bool, mergeCache *DoubleDict) -> PredictionContext { // non-member
 //	if mergeCache != nil {
 //		previous := mergeCache.Get(a.Hash(), b.Hash())
 //		if previous != nil {
@@ -556,7 +556,7 @@
 //// @param rootIsWildcard {@code true} if this is a local-context merge,
 //// otherwise false to indicate a full-context merge
 //// /
-//func mergeRoot(a, b SingletonPredictionContext, rootIsWildcard bool) PredictionContext {
+//pub fn mergeRoot(a, b: SingletonPredictionContext, rootIsWildcard: bool) -> PredictionContext { // non-member
 //	if rootIsWildcard {
 //		if a == BasePredictionContextEMPTY {
 //			return BasePredictionContextEMPTY // // + b =//
@@ -600,7 +600,7 @@
 //// {@link SingletonBasePredictionContext}.<br>
 //// <embed src="images/ArrayMerge_EqualTop.svg" type="image/svg+xml"/></p>
 //// /
-//func mergeArrays(a, b *ArrayPredictionContext, rootIsWildcard bool, mergeCache *DoubleDict) PredictionContext {
+//pub fn mergeArrays(a, b *ArrayPredictionContext, rootIsWildcard: bool, mergeCache *DoubleDict) -> PredictionContext { // non-member
 //	if mergeCache != nil {
 //		previous := mergeCache.Get(a.Hash(), b.Hash())
 //		if previous != nil {
@@ -706,7 +706,7 @@
 //// Make pass over all <em>M</em> {@code parents} merge any {@code equals()}
 //// ones.
 //// /
-//func combineCommonParents(parents []PredictionContext) {
+//pub fn combineCommonParents(parents []PredictionContext) { // non-member
 //	uniqueParents := make(map[PredictionContext]PredictionContext)
 //
 //	for p := 0; p < len(parents); p++ {
@@ -720,7 +720,7 @@
 //	}
 //}
 //
-//func getCachedBasePredictionContext(context PredictionContext, contextCache *PredictionContextCache, visited map[PredictionContext]PredictionContext) PredictionContext {
+//pub fn getCachedBasePredictionContext(context: PredictionContext, contextCache *PredictionContextCache, visited map[PredictionContext]PredictionContext) -> PredictionContext { // non-member
 //
 //	if context.isEmpty() {
 //		return context

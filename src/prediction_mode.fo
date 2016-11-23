@@ -164,7 +164,7 @@
 //// the configurations to strip out all of the predicates so that a standard
 //// {@link ATNConfigSet} will merge everything ignoring predicates.</p>
 ////
-//func PredictionModehasSLLConflictTerminatingPrediction(mode int, configs ATNConfigSet) bool {
+//pub fn PredictionModehasSLLConflictTerminatingPrediction(mode: int, configs: ATNConfigSet) -> bool { // non-member
 //	// Configs in rule stop states indicate reaching the end of the decision
 //	// rule (local context) or end of start rule (full context). If all
 //	// configs meet this condition, then none of the configurations is able
@@ -204,7 +204,7 @@
 //// @param configs the configuration set to test
 //// @return {@code true} if any configuration in {@code configs} is in a
 //// {@link RuleStopState}, otherwise {@code false}
-//func PredictionModehasConfigInRuleStopState(configs ATNConfigSet) bool {
+//pub fn PredictionModehasConfigInRuleStopState(configs: ATNConfigSet) -> bool { // non-member
 //	for _, c := range configs.GetItems() {
 //		if _, ok := c.GetState().(*RuleStopState); ok {
 //			return true
@@ -221,7 +221,7 @@
 //// @param configs the configuration set to test
 //// @return {@code true} if all configurations in {@code configs} are in a
 //// {@link RuleStopState}, otherwise {@code false}
-//func PredictionModeallConfigsInRuleStopStates(configs ATNConfigSet) bool {
+//pub fn PredictionModeallConfigsInRuleStopStates(configs: ATNConfigSet) -> bool { // non-member
 //
 //	for _, c := range configs.GetItems() {
 //		if _, ok := c.GetState().(*RuleStopState); !ok {
@@ -372,7 +372,7 @@
 //// we need exact ambiguity detection when the sets look like
 //// {@code A={{1,2}}} or {@code {{1,2},{1,2}}}, etc...</p>
 ////
-//func PredictionModeresolvesToJustOneViableAlt(altsets []*BitSet) int {
+//pub fn PredictionModeresolvesToJustOneViableAlt(altsets []*BitSet) -> int { // non-member
 //	return PredictionModegetSingleViableAlt(altsets)
 //}
 //
@@ -384,7 +384,7 @@
 //// @return {@code true} if every {@link BitSet} in {@code altsets} has
 //// {@link BitSet//cardinality cardinality} &gt 1, otherwise {@code false}
 ////
-//func PredictionModeallSubsetsConflict(altsets []*BitSet) bool {
+//pub fn PredictionModeallSubsetsConflict(altsets []*BitSet) -> bool { // non-member
 //	return !PredictionModehasNonConflictingAltSet(altsets)
 //}
 //
@@ -396,7 +396,7 @@
 //// @return {@code true} if {@code altsets} contains a {@link BitSet} with
 //// {@link BitSet//cardinality cardinality} 1, otherwise {@code false}
 ////
-//func PredictionModehasNonConflictingAltSet(altsets []*BitSet) bool {
+//pub fn PredictionModehasNonConflictingAltSet(altsets []*BitSet) -> bool { // non-member
 //	for i := 0; i < len(altsets); i++ {
 //		alts := altsets[i]
 //		if alts.length() == 1 {
@@ -414,7 +414,7 @@
 //// @return {@code true} if {@code altsets} contains a {@link BitSet} with
 //// {@link BitSet//cardinality cardinality} &gt 1, otherwise {@code false}
 ////
-//func PredictionModehasConflictingAltSet(altsets []*BitSet) bool {
+//pub fn PredictionModehasConflictingAltSet(altsets []*BitSet) -> bool { // non-member
 //	for i := 0; i < len(altsets); i++ {
 //		alts := altsets[i]
 //		if alts.length() > 1 {
@@ -431,7 +431,7 @@
 //// @return {@code true} if every member of {@code altsets} is equal to the
 //// others, otherwise {@code false}
 ////
-//func PredictionModeallSubsetsEqual(altsets []*BitSet) bool {
+//pub fn PredictionModeallSubsetsEqual(altsets []*BitSet) -> bool { // non-member
 //	var first *BitSet
 //
 //	for i := 0; i < len(altsets); i++ {
@@ -453,7 +453,7 @@
 ////
 //// @param altsets a collection of alternative subsets
 ////
-//func PredictionModegetUniqueAlt(altsets []*BitSet) int {
+//pub fn PredictionModegetUniqueAlt(altsets []*BitSet) -> int { // non-member
 //	all := PredictionModeGetAlts(altsets)
 //	if all.length() == 1 {
 //		return all.minValue()
@@ -469,7 +469,7 @@
 //// @param altsets a collection of alternative subsets
 //// @return the set of represented alternatives in {@code altsets}
 ////
-//func PredictionModeGetAlts(altsets []*BitSet) *BitSet {
+//pub fn PredictionModeGetAlts(altsets []*BitSet) -> *BitSet { // non-member
 //	all := NewBitSet()
 //	for _, alts := range altsets {
 //		all.or(alts)
@@ -486,7 +486,7 @@
 //// alt and not pred
 //// </pre>
 ////
-//func PredictionModegetConflictingAltSubsets(configs ATNConfigSet) []*BitSet {
+//pub fn PredictionModegetConflictingAltSubsets(configs: ATNConfigSet) -> []*BitSet { // non-member
 //	configToAlts := make(map[string]*BitSet)
 //
 //	for _, c := range configs.GetItems() {
@@ -518,7 +518,7 @@
 //// map[c.{@link ATNConfig//state state}] U= c.{@link ATNConfig//alt alt}
 //// </pre>
 ////
-//func PredictionModeGetStateToAltMap(configs ATNConfigSet) *AltDict {
+//pub fn PredictionModeGetStateToAltMap(configs: ATNConfigSet) -> *AltDict { // non-member
 //	m := NewAltDict()
 //
 //	for _, c := range configs.GetItems() {
@@ -532,7 +532,7 @@
 //	return m
 //}
 //
-//func PredictionModehasStateAssociatedWithOneAlt(configs ATNConfigSet) bool {
+//pub fn PredictionModehasStateAssociatedWithOneAlt(configs: ATNConfigSet) -> bool { // non-member
 //	values := PredictionModeGetStateToAltMap(configs).values()
 //	for i := 0; i < len(values); i++ {
 //		if values[i].(*BitSet).length() == 1 {
@@ -542,7 +542,7 @@
 //	return false
 //}
 //
-//func PredictionModegetSingleViableAlt(altsets []*BitSet) int {
+//pub fn PredictionModegetSingleViableAlt(altsets []*BitSet) -> int { // non-member
 //	result := ATNInvalidAltNumber
 //
 //	for i := 0; i < len(altsets); i++ {

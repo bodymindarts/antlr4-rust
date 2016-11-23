@@ -75,7 +75,7 @@
 ////	}
 ////}
 ////
-////func VisitAtom(Visitor, ctx) {
+////pub fn VisitAtom(Visitor,: ctx) { // non-member
 ////	if (ctx.parser == nil) { //is terminal
 ////		return
 ////	}

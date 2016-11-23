@@ -46,7 +46,7 @@
 //	return &ATNDeserializer{deserializationOptions: options}
 //}
 //
-//func stringInSlice(a string, list []string) int {
+//pub fn stringInSlice(a: string, list []string) -> int { // non-member
 //	for i, b := range list {
 //		if b == a {
 //			return i
@@ -646,7 +646,7 @@
 ////    return (low & 0x00000000FFFFFFFF) | (high << int32)
 ////}
 //
-//func createByteToHex() []string {
+//pub fn createByteToHex() -> []string { // non-member
 //	bth := make([]string, 256)
 //
 //	for i := 0; i < 256; i++ {

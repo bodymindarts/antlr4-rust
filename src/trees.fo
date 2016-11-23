@@ -7,7 +7,7 @@
 //// Print out a whole tree in LISP form. {@link //getNodeText} is used on the
 ////  node payloads to get the text for the nodes.  Detect
 ////  parse trees and extract data appropriately.
-//func TreesStringTree(tree Tree, ruleNames []string, recog Recognizer) string {
+//pub fn TreesStringTree(tree: Tree, ruleNames []string, recog: Recognizer) -> string { // non-member
 //
 //	if recog != nil {
 //		ruleNames = recog.GetRuleNames()
@@ -33,7 +33,7 @@
 //	return res
 //}
 //
-//func TreesGetNodeText(t Tree, ruleNames []string, recog Parser) string {
+//pub fn TreesGetNodeText(t: Tree, ruleNames []string, recog: Parser) -> string { // non-member
 //	if recog != nil {
 //		ruleNames = recog.GetRuleNames()
 //	}
@@ -67,7 +67,7 @@
 //}
 //
 //// Return ordered list of all children of this node
-//func TreesGetChildren(t Tree) []Tree {
+//pub fn TreesGetChildren(t: Tree) -> []Tree { // non-member
 //	list := make([]Tree, 0)
 //	for i := 0; i < t.GetChildCount(); i++ {
 //		list = append(list, t.GetChild(i))
@@ -78,7 +78,7 @@
 //// Return a list of all ancestors of this node.  The first node of
 ////  list is the root and the last is the parent of this node.
 ////
-//func TreesgetAncestors(t Tree) []Tree {
+//pub fn TreesgetAncestors(t: Tree) -> []Tree { // non-member
 //	ancestors := make([]Tree, 0)
 //	t = t.GetParent()
 //	for t != nil {
@@ -89,21 +89,21 @@
 //	return ancestors
 //}
 //
-//func TreesFindAllTokenNodes(t ParseTree, ttype int) []ParseTree {
+//pub fn TreesFindAllTokenNodes(t: ParseTree, ttype: int) -> []ParseTree { // non-member
 //	return TreesfindAllNodes(t, ttype, true)
 //}
 //
-//func TreesfindAllRuleNodes(t ParseTree, ruleIndex int) []ParseTree {
+//pub fn TreesfindAllRuleNodes(t: ParseTree, ruleIndex: int) -> []ParseTree { // non-member
 //	return TreesfindAllNodes(t, ruleIndex, false)
 //}
 //
-//func TreesfindAllNodes(t ParseTree, index int, findTokens bool) []ParseTree {
+//pub fn TreesfindAllNodes(t ParseTree, index: int, findTokens: bool) -> []ParseTree { // non-member
 //	nodes := make([]ParseTree, 0)
 //	TreesFindAllNodes(t, index, findTokens, nodes)
 //	return nodes
 //}
 //
-//func TreesFindAllNodes(t ParseTree, index int, findTokens bool, nodes []ParseTree) {
+//pub fn TreesFindAllNodes(t ParseTree, index int, findTokens: bool, nodes []ParseTree) { // non-member
 //	// check this node (the root) first
 //
 //	t2, ok := t.(TerminalNode)
@@ -124,7 +124,7 @@
 //	}
 //}
 //
-//func TreesDescendants(t ParseTree) []ParseTree {
+//pub fn TreesDescendants(t: ParseTree) -> []ParseTree { // non-member
 //	nodes := []ParseTree{t}
 //	for i := 0; i < t.GetChildCount(); i++ {
 //		nodes = append(nodes, TreesDescendants(t.GetChild(i).(ParseTree))...)

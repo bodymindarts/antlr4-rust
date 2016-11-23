@@ -10,14 +10,14 @@
 //	"strconv"
 //)
 //
-//func intMin(a, b int) int {
+//pub fn intMin(a, b: int) -> int { // non-member
 //	if a < b {
 //		return a
 //	}
 //	return b
 //}
 //
-//func intMax(a, b int) int {
+//pub fn intMax(a, b: int) -> int { // non-member
 //	if a > b {
 //		return a
 //	}
@@ -71,7 +71,7 @@
 //	return s
 //}
 //
-//func standardEqualsFunction(a interface{}, b interface{}) bool {
+//pub fn standardEqualsFunction(a interface{}, b interface{}) -> bool { // non-member
 //
 //	ac, oka := a.(Comparable)
 //	bc, okb := b.(Comparable)
@@ -83,7 +83,7 @@
 //	return ac.equals(bc)
 //}
 //
-//func standardHashFunction(a interface{}) string {
+//pub fn standardHashFunction(a interface{}) -> string { // non-member
 //	h, ok := a.(Hasher)
 //
 //	if ok {
@@ -93,7 +93,7 @@
 //	panic("Not Hasher")
 //}
 //
-////func getBytes(key interface{}) ([]byte, error) {
+////pub fn getBytes(key interface{}) -> ([]byte,: error) { // non-member
 ////	var buf bytes.Buffer
 ////	enc := gob.NewEncoder(&buf)
 ////	err := enc.Encode(key)
@@ -107,7 +107,7 @@
 //	Hash() string
 //}
 //
-//func hashCode(s string) string {
+//pub fn hashCode(s: string) -> string { // non-member
 //	h := fnv.New32a()
 //	h.Write([]byte((s)))
 //	return fmt.Sprint(h.Sum32())
@@ -330,7 +330,7 @@
 //	data[b] = o
 //}
 //
-//func EscapeWhitespace(s string, escapeSpaces bool) string {
+//pub fn EscapeWhitespace(s: string, escapeSpaces: bool) -> string { // non-member
 //
 //	s = strings.Replace(s, "\t", "\\t", -1)
 //	s = strings.Replace(s, "\n", "\\n", -1)
@@ -341,7 +341,7 @@
 //	return s
 //}
 //
-//func TerminalNodeToStringArray(sa []TerminalNode) []string {
+//pub fn TerminalNodeToStringArray(sa []TerminalNode) -> []string { // non-member
 //	st := make([]string, len(sa))
 //
 //	for i, s := range sa {
@@ -351,7 +351,7 @@
 //	return st
 //}
 //
-//func PrintArrayJavaStyle(sa []string) string {
+//pub fn PrintArrayJavaStyle(sa []string) -> string { // non-member
 //	var buffer bytes.Buffer
 //
 //	buffer.WriteString("[")
@@ -368,7 +368,7 @@
 //	return buffer.String()
 //}
 //
-//func TitleCase(str string) string {
+//pub fn TitleCase(str: string) -> string { // non-member
 //
 //	//	pub fn ReplaceAllStringFunc(src: string, repl func(string): string) -> string
 //	//	return str.replace(//g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1)})
