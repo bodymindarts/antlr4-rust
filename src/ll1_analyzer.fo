@@ -4,7 +4,7 @@
 //	atn *ATN
 //}
 //
-//func NewLL1Analyzer(atn *ATN) *LL1Analyzer {
+//impl LL {§//  pub fn new1Analyzer(atn *ATN) *LL1Analyzer {
 //	la := new(LL1Analyzer)
 //	la.atn = atn
 //	return la

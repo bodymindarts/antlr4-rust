@@ -40,7 +40,7 @@
 //	MatchCalls         int
 //}
 //
-//func NewLexerATNSimulator(recog Lexer, atn *ATN, decisionToDFA []*DFA, sharedContextCache *PredictionContextCache) *LexerATNSimulator {
+//impl LexerATNSimulator {§//  pub fn new(recog Lexer, atn *ATN, decisionToDFA []*DFA, sharedContextCache *PredictionContextCache) *LexerATNSimulator {
 //	l := new(LexerATNSimulator)
 //
 //	l.BaseATNSimulator = NewBaseATNSimulator(atn, sharedContextCache)
@@ -643,7 +643,7 @@
 //	dfaState *DFAState
 //}
 //
-//func NewSimState() *SimState {
+//impl SimState {§//  pub fn new() *SimState {
 //	s := new(SimState)
 //	resetSimState(s)
 //	return s

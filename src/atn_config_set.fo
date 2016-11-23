@@ -88,7 +88,7 @@
 //	uniqueAlt int
 //}
 //
-//func NewBaseATNConfigSet(fullCtx bool) *BaseATNConfigSet {
+//impl BaseATNConfigSet {§//  pub fn new(fullCtx bool) *BaseATNConfigSet {
 //	return &BaseATNConfigSet{
 //		cachedHashString: "-1",
 //		configLookup:     NewSet(hashATNConfig, equalATNConfigs),
@@ -352,7 +352,7 @@
 //	*BaseATNConfigSet
 //}
 //
-//func NewOrderedATNConfigSet() *OrderedATNConfigSet {
+//impl OrderedATNConfigSet {§//  pub fn new() *OrderedATNConfigSet {
 //	b := NewBaseATNConfigSet(false)
 //
 //	b.configLookup = NewSet(nil, nil)

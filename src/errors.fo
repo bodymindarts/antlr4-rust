@@ -21,7 +21,7 @@
 //	input          IntStream
 //}
 //
-//func NewBaseRecognitionException(message string, recognizer Recognizer, input IntStream, ctx RuleContext) *BaseRecognitionException {
+//impl BaseRecognitionException {§//  pub fn new(message string, recognizer Recognizer, input IntStream, ctx RuleContext) *BaseRecognitionException {
 //
 //	// todo
 //	//	Error.call(this)
@@ -99,7 +99,7 @@
 //	deadEndConfigs ATNConfigSet
 //}
 //
-//func NewLexerNoViableAltException(lexer Lexer, input CharStream, startIndex int, deadEndConfigs ATNConfigSet) *LexerNoViableAltException {
+//impl LexerNoViableAltException {§//  pub fn new(lexer Lexer, input CharStream, startIndex int, deadEndConfigs ATNConfigSet) *LexerNoViableAltException {
 //
 //	l := new(LexerNoViableAltException)
 //
@@ -133,7 +133,7 @@
 //// of the offending input and also knows where the parser was
 //// in the various paths when the error. Reported by ReportNoViableAlternative()
 ////
-//func NewNoViableAltException(recognizer Parser, input TokenStream, startToken Token, offendingToken Token, deadEndConfigs ATNConfigSet, ctx ParserRuleContext) *NoViableAltException {
+//impl NoViableAltException {§//  pub fn new(recognizer Parser, input TokenStream, startToken Token, offendingToken Token, deadEndConfigs ATNConfigSet, ctx ParserRuleContext) *NoViableAltException {
 //
 //	if ctx == nil {
 //		ctx = recognizer.GetParserRuleContext()
@@ -174,7 +174,7 @@
 //// This signifies any kind of mismatched input exceptions such as
 //// when the current input does not Match the expected token.
 ////
-//func NewInputMisMatchException(recognizer Parser) *InputMisMatchException {
+//impl InputMisMatchException {§//  pub fn new(recognizer Parser) *InputMisMatchException {
 //
 //	i := new(InputMisMatchException)
 //	i.BaseRecognitionException = NewBaseRecognitionException("", recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
@@ -198,7 +198,7 @@
 //	predicate      string
 //}
 //
-//func NewFailedPredicateException(recognizer Parser, predicate string, message string) *FailedPredicateException {
+//impl FailedPredicateException {§//  pub fn new(recognizer Parser, predicate string, message string) *FailedPredicateException {
 //
 //	f := new(FailedPredicateException)
 //
@@ -230,7 +230,7 @@
 //pub struct ParseCancellationException {
 //}
 //
-//func NewParseCancellationException() *ParseCancellationException {
+//impl ParseCancellationException {§//  pub fn new() *ParseCancellationException {
 //	//	Error.call(this)
 //	//	Error.captureStackTrace(this, ParseCancellationException)
 //	return new(ParseCancellationException)

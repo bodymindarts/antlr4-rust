@@ -11,7 +11,7 @@
 //	pred SemanticContext
 //}
 //
-//func NewPredPrediction(pred SemanticContext, alt int) *PredPrediction {
+//impl PredPrediction {§//  pub fn new(pred SemanticContext, alt int) *PredPrediction {
 //	return &PredPrediction{alt: alt, pred: pred}
 //}
 //
@@ -78,7 +78,7 @@
 //	predicates []*PredPrediction
 //}
 //
-//func NewDFAState(stateNumber int, configs ATNConfigSet) *DFAState {
+//impl DFAState {§//  pub fn new(stateNumber int, configs ATNConfigSet) *DFAState {
 //	if configs == nil {
 //		configs = NewBaseATNConfigSet(false)
 //	}

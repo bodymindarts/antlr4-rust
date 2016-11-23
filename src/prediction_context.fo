@@ -37,7 +37,7 @@
 //	cachedHashString string
 //}
 //
-//func NewBasePredictionContext(cachedHashString string) *BasePredictionContext {
+//impl BasePredictionContext {§//  pub fn new(cachedHashString string) *BasePredictionContext {
 //	pc := new(BasePredictionContext)
 //	pc.cachedHashString = cachedHashString
 //
@@ -93,7 +93,7 @@
 //	cache map[PredictionContext]PredictionContext
 //}
 //
-//func NewPredictionContextCache() *PredictionContextCache {
+//impl PredictionContextCache {§//  pub fn new() *PredictionContextCache {
 //	t := new(PredictionContextCache)
 //	t.cache = make(map[PredictionContext]PredictionContext)
 //	return t
@@ -134,7 +134,7 @@
 //	returnState int
 //}
 //
-//func NewBaseSingletonPredictionContext(parent PredictionContext, returnState int) *BaseSingletonPredictionContext {
+//impl BaseSingletonPredictionContext {§//  pub fn new(parent PredictionContext, returnState int) *BaseSingletonPredictionContext {
 //
 //	s := new(BaseSingletonPredictionContext)
 //	s.BasePredictionContext = NewBasePredictionContext("")
@@ -226,7 +226,7 @@
 //	*BaseSingletonPredictionContext
 //}
 //
-//func NewEmptyPredictionContext() *EmptyPredictionContext {
+//impl EmptyPredictionContext {§//  pub fn new() *EmptyPredictionContext {
 //
 //	p := new(EmptyPredictionContext)
 //
@@ -262,7 +262,7 @@
 //	returnStates []int
 //}
 //
-//func NewArrayPredictionContext(parents []PredictionContext, returnStates []int) *ArrayPredictionContext {
+//impl ArrayPredictionContext {§//  pub fn new(parents []PredictionContext, returnStates []int) *ArrayPredictionContext {
 //	// Parent can be nil only if full ctx mode and we make an array
 //	// from {@link //EMPTY} and non-empty. We merge {@link //EMPTY} by using
 //	// nil parent and

@@ -14,7 +14,7 @@
 //	decisionToDFA  []*DFA
 //}
 //
-//func NewBaseATNSimulator(atn *ATN, sharedContextCache *PredictionContextCache) *BaseATNSimulator {
+//impl BaseATNSimulator {§//  pub fn new(atn *ATN, sharedContextCache *PredictionContextCache) *BaseATNSimulator {
 //	b := new(BaseATNSimulator)
 //
 //	b.atn = atn

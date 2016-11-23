@@ -12,7 +12,7 @@
 //	cachedHashString string
 //}
 //
-//func NewLexerActionExecutor(lexerActions []LexerAction) *LexerActionExecutor {
+//impl LexerActionExecutor {§//  pub fn new(lexerActions []LexerAction) *LexerActionExecutor {
 //
 //	if lexerActions == nil {
 //		lexerActions = make([]LexerAction, 0)

@@ -26,7 +26,7 @@
 //	isPositionDependent bool
 //}
 //
-//func NewBaseLexerAction(action int) *BaseLexerAction {
+//impl BaseLexerAction {§//  pub fn new(action int) *BaseLexerAction {
 //	la := new(BaseLexerAction)
 //
 //	la.actionType = action
@@ -64,7 +64,7 @@
 //	*BaseLexerAction
 //}
 //
-//func NewLexerSkipAction() *LexerSkipAction {
+//impl LexerSkipAction {§//  pub fn new() *LexerSkipAction {
 //	la := new(LexerSkipAction)
 //	la.BaseLexerAction = NewBaseLexerAction(LexerActionTypeSkip)
 //	return la
@@ -89,7 +89,7 @@
 //	thetype int
 //}
 //
-//func NewLexerTypeAction(thetype int) *LexerTypeAction {
+//impl LexerTypeAction {§//  pub fn new(thetype int) *LexerTypeAction {
 //	l := new(LexerTypeAction)
 //	l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeType)
 //	l.thetype = thetype
@@ -126,7 +126,7 @@
 //	mode int
 //}
 //
-//func NewLexerPushModeAction(mode int) *LexerPushModeAction {
+//impl LexerPushModeAction {§//  pub fn new(mode int) *LexerPushModeAction {
 //
 //	l := new(LexerPushModeAction)
 //	l.BaseLexerAction = NewBaseLexerAction(LexerActionTypePushMode)
@@ -167,7 +167,7 @@
 //	*BaseLexerAction
 //}
 //
-//func NewLexerPopModeAction() *LexerPopModeAction {
+//impl LexerPopModeAction {§//  pub fn new() *LexerPopModeAction {
 //
 //	l := new(LexerPopModeAction)
 //
@@ -196,7 +196,7 @@
 //	*BaseLexerAction
 //}
 //
-//func NewLexerMoreAction() *LexerMoreAction {
+//impl LexerMoreAction {§//  pub fn new() *LexerMoreAction {
 //	l := new(LexerMoreAction)
 //	l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeMore)
 //
@@ -222,7 +222,7 @@
 //	mode int
 //}
 //
-//func NewLexerModeAction(mode int) *LexerModeAction {
+//impl LexerModeAction {§//  pub fn new(mode int) *LexerModeAction {
 //	l := new(LexerModeAction)
 //	l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeMode)
 //	l.mode = mode
@@ -275,7 +275,7 @@
 //	ruleIndex, actionIndex int
 //}
 //
-//func NewLexerCustomAction(ruleIndex, actionIndex int) *LexerCustomAction {
+//impl LexerCustomAction {§//  pub fn new(ruleIndex, actionIndex int) *LexerCustomAction {
 //	l := new(LexerCustomAction)
 //	l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeCustom)
 //	l.ruleIndex = ruleIndex
@@ -314,7 +314,7 @@
 //	channel int
 //}
 //
-//func NewLexerChannelAction(channel int) *LexerChannelAction {
+//impl LexerChannelAction {§//  pub fn new(channel int) *LexerChannelAction {
 //	l := new(LexerChannelAction)
 //	l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeChannel)
 //	l.channel = channel
@@ -373,7 +373,7 @@
 //	isPositionDependent bool
 //}
 //
-//func NewLexerIndexedCustomAction(offset int, lexerAction LexerAction) *LexerIndexedCustomAction {
+//impl LexerIndexedCustomAction {§//  pub fn new(offset int, lexerAction LexerAction) *LexerIndexedCustomAction {
 //
 //	l := new(LexerIndexedCustomAction)
 //	l.BaseLexerAction = NewBaseLexerAction(lexerAction.getActionType())

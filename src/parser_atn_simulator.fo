@@ -25,7 +25,7 @@
 //	outerContext   ParserRuleContext
 //}
 //
-//func NewParserATNSimulator(parser Parser, atn *ATN, decisionToDFA []*DFA, sharedContextCache *PredictionContextCache) *ParserATNSimulator {
+//impl ParserATNSimulator {§//  pub fn new(parser Parser, atn *ATN, decisionToDFA []*DFA, sharedContextCache *PredictionContextCache) *ParserATNSimulator {
 //
 //	p := new(ParserATNSimulator)
 //

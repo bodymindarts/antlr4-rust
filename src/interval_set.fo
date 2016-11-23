@@ -11,7 +11,7 @@
 //}
 //
 ///* stop is not included! */
-//func NewInterval(start, stop int) *Interval {
+//impl Interval {§//  pub fn new(start, stop int) *Interval {
 //	i := new(Interval)
 //
 //	i.start = start
@@ -40,7 +40,7 @@
 //	readOnly  bool
 //}
 //
-//func NewIntervalSet() *IntervalSet {
+//impl IntervalSet {§//  pub fn new() *IntervalSet {
 //
 //	i := new(IntervalSet)
 //

@@ -20,7 +20,7 @@
 //pub struct DefaultErrorListener {
 //}
 //
-//func NewDefaultErrorListener() *DefaultErrorListener {
+//impl DefaultErrorListener {§//  pub fn new() *DefaultErrorListener {
 //	return new(DefaultErrorListener)
 //}
 //
@@ -40,7 +40,7 @@
 //	*DefaultErrorListener
 //}
 //
-//func NewConsoleErrorListener() *ConsoleErrorListener {
+//impl ConsoleErrorListener {§//  pub fn new() *ConsoleErrorListener {
 //	return new(ConsoleErrorListener)
 //}
 //
@@ -70,7 +70,7 @@
 //	delegates []ErrorListener
 //}
 //
-//func NewProxyErrorListener(delegates []ErrorListener) *ProxyErrorListener {
+//impl ProxyErrorListener {§//  pub fn new(delegates []ErrorListener) *ProxyErrorListener {
 //	if delegates == nil {
 //		panic("delegates is not provided")
 //	}

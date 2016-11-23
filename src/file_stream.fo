@@ -15,7 +15,7 @@
 //	filename string
 //}
 //
-//func NewFileStream(fileName string) *FileStream {
+//impl FileStream {§//  pub fn new(fileName string) *FileStream {
 //
 //	buf := bytes.NewBuffer(nil)
 //

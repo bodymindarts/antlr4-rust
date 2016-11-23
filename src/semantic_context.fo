@@ -60,7 +60,7 @@
 //	isCtxDependent bool
 //}
 //
-//func NewPredicate(ruleIndex, predIndex int, isCtxDependent bool) *Predicate {
+//impl Predicate {§//  pub fn new(ruleIndex, predIndex int, isCtxDependent bool) *Predicate {
 //	p := new(Predicate)
 //
 //	p.ruleIndex = ruleIndex
@@ -113,7 +113,7 @@
 //	precedence int
 //}
 //
-//func NewPrecedencePredicate(precedence int) *PrecedencePredicate {
+//impl PrecedencePredicate {§//  pub fn new(precedence int) *PrecedencePredicate {
 //
 //	p := new(PrecedencePredicate)
 //	p.precedence = precedence
@@ -174,7 +174,7 @@
 //	opnds []SemanticContext
 //}
 //
-//func NewAND(a, b SemanticContext) *AND {
+//impl AND {§//  pub fn new(a, b SemanticContext) *AND {
 //
 //	operands := NewSet(nil, nil)
 //	if aa, ok := a.(*AND); ok {
@@ -314,7 +314,7 @@
 //	opnds []SemanticContext
 //}
 //
-//func NewOR(a, b SemanticContext) *OR {
+//impl OR {§//  pub fn new(a, b SemanticContext) *OR {
 //
 //	operands := NewSet(nil, nil)
 //	if aa, ok := a.(*OR); ok {

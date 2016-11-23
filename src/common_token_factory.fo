@@ -21,7 +21,7 @@
 //	copyText bool
 //}
 //
-//func NewCommonTokenFactory(copyText bool) *CommonTokenFactory {
+//impl CommonTokenFactory {§//  pub fn new(copyText bool) *CommonTokenFactory {
 //	return &CommonTokenFactory{copyText: copyText}
 //}
 //

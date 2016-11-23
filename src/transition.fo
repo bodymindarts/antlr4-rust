@@ -31,7 +31,7 @@
 //	serializationType int
 //}
 //
-//func NewBaseTransition(target ATNState) *BaseTransition {
+//impl BaseTransition {§//  pub fn new(target ATNState) *BaseTransition {
 //
 //	if target == nil {
 //		panic("target cannot be nil.")
@@ -127,7 +127,7 @@
 //	*BaseTransition
 //}
 //
-//func NewAtomTransition(target ATNState, intervalSet int) *AtomTransition {
+//impl AtomTransition {§//  pub fn new(target ATNState, intervalSet int) *AtomTransition {
 //
 //	t := new(AtomTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -160,7 +160,7 @@
 //	ruleIndex, precedence int
 //}
 //
-//func NewRuleTransition(ruleStart ATNState, ruleIndex, precedence int, followState ATNState) *RuleTransition {
+//impl RuleTransition {§//  pub fn new(ruleStart ATNState, ruleIndex, precedence int, followState ATNState) *RuleTransition {
 //
 //	t := new(RuleTransition)
 //	t.BaseTransition = NewBaseTransition(ruleStart)
@@ -184,7 +184,7 @@
 //	outermostPrecedenceReturn int
 //}
 //
-//func NewEpsilonTransition(target ATNState, outermostPrecedenceReturn int) *EpsilonTransition {
+//impl EpsilonTransition {§//  pub fn new(target ATNState, outermostPrecedenceReturn int) *EpsilonTransition {
 //
 //	t := new(EpsilonTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -209,7 +209,7 @@
 //	start, stop int
 //}
 //
-//func NewRangeTransition(target ATNState, start, stop int) *RangeTransition {
+//impl RangeTransition {§//  pub fn new(target ATNState, start, stop int) *RangeTransition {
 //
 //	t := new(RangeTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -244,7 +244,7 @@
 //	*BaseTransition
 //}
 //
-//func NewBasePredicateTransition(target ATNState) *BaseAbstractPredicateTransition {
+//impl BasePredicateTransition {§//  pub fn new(target ATNState) *BaseAbstractPredicateTransition {
 //
 //	t := new(BaseAbstractPredicateTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -261,7 +261,7 @@
 //	ruleIndex, predIndex int
 //}
 //
-//func NewPredicateTransition(target ATNState, ruleIndex, predIndex int, isCtxDependent bool) *PredicateTransition {
+//impl PredicateTransition {§//  pub fn new(target ATNState, ruleIndex, predIndex int, isCtxDependent bool) *PredicateTransition {
 //
 //	t := new(PredicateTransition)
 //	t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
@@ -293,7 +293,7 @@
 //	ruleIndex, actionIndex, predIndex int
 //}
 //
-//func NewActionTransition(target ATNState, ruleIndex, actionIndex int, isCtxDependent bool) *ActionTransition {
+//impl ActionTransition {§//  pub fn new(target ATNState, ruleIndex, actionIndex int, isCtxDependent bool) *ActionTransition {
 //
 //	t := new(ActionTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -318,7 +318,7 @@
 //	*BaseTransition
 //}
 //
-//func NewSetTransition(target ATNState, set *IntervalSet) *SetTransition {
+//impl SetTransition {§//  pub fn new(target ATNState, set *IntervalSet) *SetTransition {
 //
 //	t := new(SetTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -346,7 +346,7 @@
 //	*SetTransition
 //}
 //
-//func NewNotSetTransition(target ATNState, set *IntervalSet) *NotSetTransition {
+//impl NotSetTransition {§//  pub fn new(target ATNState, set *IntervalSet) *NotSetTransition {
 //
 //	t := new(NotSetTransition)
 //
@@ -369,7 +369,7 @@
 //	*BaseTransition
 //}
 //
-//func NewWildcardTransition(target ATNState) *WildcardTransition {
+//impl WildcardTransition {§//  pub fn new(target ATNState) *WildcardTransition {
 //
 //	t := new(WildcardTransition)
 //	t.BaseTransition = NewBaseTransition(target)
@@ -392,7 +392,7 @@
 //	precedence int
 //}
 //
-//func NewPrecedencePredicateTransition(target ATNState, precedence int) *PrecedencePredicateTransition {
+//impl PrecedencePredicateTransition {§//  pub fn new(target ATNState, precedence int) *PrecedencePredicateTransition {
 //
 //	t := new(PrecedencePredicateTransition)
 //	t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
