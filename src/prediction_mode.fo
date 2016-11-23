@@ -1,8 +1,8 @@
 //package antlr
 //
 //import (
-//	"strconv"
-//	"strings"
+//  "strconv"
+//  "strings"
 //)
 //
 ////
@@ -11,65 +11,65 @@
 //// ambiguities.
 //
 //const (
-//	//
-//	// The SLL(*) prediction mode. This prediction mode ignores the current
-//	// parser context when making predictions. This is the fastest prediction
-//	// mode, and provides correct results for many grammars. This prediction
-//	// mode is more powerful than the prediction mode provided by ANTLR 3, but
-//	// may result in syntax errors for grammar and input combinations which are
-//	// not SLL.
-//	//
-//	// <p>
-//	// When using this prediction mode, the parser will either return a correct
-//	// parse tree (i.e. the same parse tree that would be returned with the
-//	// {@link //LL} prediction mode), or it will Report a syntax error. If a
-//	// syntax error is encountered when using the {@link //SLL} prediction mode,
-//	// it may be due to either an actual syntax error in the input or indicate
-//	// that the particular combination of grammar and input requires the more
-//	// powerful {@link //LL} prediction abilities to complete successfully.</p>
-//	//
-//	// <p>
-//	// This prediction mode does not provide any guarantees for prediction
-//	// behavior for syntactically-incorrect inputs.</p>
-//	//
-//	PredictionModeSLL = 0
-//	//
-//	// The LL(*) prediction mode. This prediction mode allows the current parser
-//	// context to be used for resolving SLL conflicts that occur during
-//	// prediction. This is the fastest prediction mode that guarantees correct
-//	// parse results for all combinations of grammars with syntactically correct
-//	// inputs.
-//	//
-//	// <p>
-//	// When using this prediction mode, the parser will make correct decisions
-//	// for all syntactically-correct grammar and input combinations. However, in
-//	// cases where the grammar is truly ambiguous this prediction mode might not
-//	// Report a precise answer for <em>exactly which</em> alternatives are
-//	// ambiguous.</p>
-//	//
-//	// <p>
-//	// This prediction mode does not provide any guarantees for prediction
-//	// behavior for syntactically-incorrect inputs.</p>
-//	//
-//	PredictionModeLL = 1
-//	//
-//	// The LL(*) prediction mode with exact ambiguity detection. In addition to
-//	// the correctness guarantees provided by the {@link //LL} prediction mode,
-//	// this prediction mode instructs the prediction algorithm to determine the
-//	// complete and exact set of ambiguous alternatives for every ambiguous
-//	// decision encountered while parsing.
-//	//
-//	// <p>
-//	// This prediction mode may be used for diagnosing ambiguities during
-//	// grammar development. Due to the performance overhead of calculating sets
-//	// of ambiguous alternatives, this prediction mode should be avoided when
-//	// the exact results are not necessary.</p>
-//	//
-//	// <p>
-//	// This prediction mode does not provide any guarantees for prediction
-//	// behavior for syntactically-incorrect inputs.</p>
-//	//
-//	PredictionModeLLExactAmbigDetection = 2
+//  //
+//  // The SLL(*) prediction mode. This prediction mode ignores the current
+//  // parser context when making predictions. This is the fastest prediction
+//  // mode, and provides correct results for many grammars. This prediction
+//  // mode is more powerful than the prediction mode provided by ANTLR 3, but
+//  // may result in syntax errors for grammar and input combinations which are
+//  // not SLL.
+//  //
+//  // <p>
+//  // When using this prediction mode, the parser will either return a correct
+//  // parse tree (i.e. the same parse tree that would be returned with the
+//  // {@link //LL} prediction mode), or it will Report a syntax error. If a
+//  // syntax error is encountered when using the {@link //SLL} prediction mode,
+//  // it may be due to either an actual syntax error in the input or indicate
+//  // that the particular combination of grammar and input requires the more
+//  // powerful {@link //LL} prediction abilities to complete successfully.</p>
+//  //
+//  // <p>
+//  // This prediction mode does not provide any guarantees for prediction
+//  // behavior for syntactically-incorrect inputs.</p>
+//  //
+//  PredictionModeSLL = 0
+//  //
+//  // The LL(*) prediction mode. This prediction mode allows the current parser
+//  // context to be used for resolving SLL conflicts that occur during
+//  // prediction. This is the fastest prediction mode that guarantees correct
+//  // parse results for all combinations of grammars with syntactically correct
+//  // inputs.
+//  //
+//  // <p>
+//  // When using this prediction mode, the parser will make correct decisions
+//  // for all syntactically-correct grammar and input combinations. However, in
+//  // cases where the grammar is truly ambiguous this prediction mode might not
+//  // Report a precise answer for <em>exactly which</em> alternatives are
+//  // ambiguous.</p>
+//  //
+//  // <p>
+//  // This prediction mode does not provide any guarantees for prediction
+//  // behavior for syntactically-incorrect inputs.</p>
+//  //
+//  PredictionModeLL = 1
+//  //
+//  // The LL(*) prediction mode with exact ambiguity detection. In addition to
+//  // the correctness guarantees provided by the {@link //LL} prediction mode,
+//  // this prediction mode instructs the prediction algorithm to determine the
+//  // complete and exact set of ambiguous alternatives for every ambiguous
+//  // decision encountered while parsing.
+//  //
+//  // <p>
+//  // This prediction mode may be used for diagnosing ambiguities during
+//  // grammar development. Due to the performance overhead of calculating sets
+//  // of ambiguous alternatives, this prediction mode should be avoided when
+//  // the exact results are not necessary.</p>
+//  //
+//  // <p>
+//  // This prediction mode does not provide any guarantees for prediction
+//  // behavior for syntactically-incorrect inputs.</p>
+//  //
+//  PredictionModeLLExactAmbigDetection = 2
 //)
 //
 ////
@@ -165,35 +165,35 @@
 //// {@link ATNConfigSet} will merge everything ignoring predicates.</p>
 ////
 //pub fn PredictionModehasSLLConflictTerminatingPrediction(mode: i32, configs: ATNConfigSet) -> bool { // non-member
-//	// Configs in rule stop states indicate reaching the end of the decision
-//	// rule (local context) or end of start rule (full context). If all
-//	// configs meet this condition, then none of the configurations is able
-//	// to Match additional input so we terminate prediction.
-//	//
-//	if PredictionModeallConfigsInRuleStopStates(configs) {
-//		return true
-//	}
-//	// pure SLL mode parsing
-//	if mode == PredictionModeSLL {
-//		// Don't bother with combining configs from different semantic
-//		// contexts if we can fail over to full LL costs more time
-//		// since we'll often fail over anyway.
-//		if configs.HasSemanticContext() {
-//			// dup configs, tossing out semantic predicates
-//			dup := NewBaseATNConfigSet(false)
-//			for _, c := range configs.GetItems() {
+//  // Configs in rule stop states indicate reaching the end of the decision
+//  // rule (local context) or end of start rule (full context). If all
+//  // configs meet this condition, then none of the configurations is able
+//  // to Match additional input so we terminate prediction.
+//  //
+//  if PredictionModeallConfigsInRuleStopStates(configs) {
+//    return true
+//  }
+//  // pure SLL mode parsing
+//  if mode == PredictionModeSLL {
+//    // Don't bother with combining configs from different semantic
+//    // contexts if we can fail over to full LL costs more time
+//    // since we'll often fail over anyway.
+//    if configs.HasSemanticContext() {
+//      // dup configs, tossing out semantic predicates
+//      dup := NewBaseATNConfigSet(false)
+//      for _, c := range configs.GetItems() {
 //
-//				//				NewBaseATNConfig({semanticContext:}, c)
-//				c = NewBaseATNConfig2(c, SemanticContextNone)
-//				dup.Add(c, nil)
-//			}
-//			configs = dup
-//		}
-//		// now we have combined contexts for configs with dissimilar preds
-//	}
-//	// pure SLL or combined SLL+LL mode parsing
-//	altsets := PredictionModegetConflictingAltSubsets(configs)
-//	return PredictionModehasConflictingAltSet(altsets) && !PredictionModehasStateAssociatedWithOneAlt(configs)
+//        //        NewBaseATNConfig({semanticContext:}, c)
+//        c = NewBaseATNConfig2(c, SemanticContextNone)
+//        dup.Add(c, nil)
+//      }
+//      configs = dup
+//    }
+//    // now we have combined contexts for configs with dissimilar preds
+//  }
+//  // pure SLL or combined SLL+LL mode parsing
+//  altsets := PredictionModegetConflictingAltSubsets(configs)
+//  return PredictionModehasConflictingAltSet(altsets) && !PredictionModehasStateAssociatedWithOneAlt(configs)
 //}
 //
 //// Checks if any configuration in {@code configs} is in a
@@ -205,12 +205,12 @@
 //// @return {@code true} if any configuration in {@code configs} is in a
 //// {@link RuleStopState}, otherwise {@code false}
 //pub fn PredictionModehasConfigInRuleStopState(configs: ATNConfigSet) -> bool { // non-member
-//	for _, c := range configs.GetItems() {
-//		if _, ok := c.GetState().(*RuleStopState); ok {
-//			return true
-//		}
-//	}
-//	return false
+//  for _, c := range configs.GetItems() {
+//    if _, ok := c.GetState().(*RuleStopState); ok {
+//      return true
+//    }
+//  }
+//  return false
 //}
 //
 //// Checks if all configurations in {@code configs} are in a
@@ -223,12 +223,12 @@
 //// {@link RuleStopState}, otherwise {@code false}
 //pub fn PredictionModeallConfigsInRuleStopStates(configs: ATNConfigSet) -> bool { // non-member
 //
-//	for _, c := range configs.GetItems() {
-//		if _, ok := c.GetState().(*RuleStopState); !ok {
-//			return false
-//		}
-//	}
-//	return true
+//  for _, c := range configs.GetItems() {
+//    if _, ok := c.GetState().(*RuleStopState); !ok {
+//      return false
+//    }
+//  }
+//  return true
 //}
 //
 ////
@@ -373,7 +373,7 @@
 //// {@code A={{1,2}}} or {@code {{1,2},{1,2}}}, etc...</p>
 ////
 //pub fn PredictionModeresolvesToJustOneViableAlt(altsets []*BitSet) -> i32 { // non-member
-//	return PredictionModegetSingleViableAlt(altsets)
+//  return PredictionModegetSingleViableAlt(altsets)
 //}
 //
 ////
@@ -385,7 +385,7 @@
 //// {@link BitSet//cardinality cardinality} &gt 1, otherwise {@code false}
 ////
 //pub fn PredictionModeallSubsetsConflict(altsets []*BitSet) -> bool { // non-member
-//	return !PredictionModehasNonConflictingAltSet(altsets)
+//  return !PredictionModehasNonConflictingAltSet(altsets)
 //}
 //
 ////
@@ -397,13 +397,13 @@
 //// {@link BitSet//cardinality cardinality} 1, otherwise {@code false}
 ////
 //pub fn PredictionModehasNonConflictingAltSet(altsets []*BitSet) -> bool { // non-member
-//	for i := 0; i < len(altsets); i++ {
-//		alts := altsets[i]
-//		if alts.length() == 1 {
-//			return true
-//		}
-//	}
-//	return false
+//  for i := 0; i < len(altsets); i++ {
+//    alts := altsets[i]
+//    if alts.length() == 1 {
+//      return true
+//    }
+//  }
+//  return false
 //}
 //
 ////
@@ -415,13 +415,13 @@
 //// {@link BitSet//cardinality cardinality} &gt 1, otherwise {@code false}
 ////
 //pub fn PredictionModehasConflictingAltSet(altsets []*BitSet) -> bool { // non-member
-//	for i := 0; i < len(altsets); i++ {
-//		alts := altsets[i]
-//		if alts.length() > 1 {
-//			return true
-//		}
-//	}
-//	return false
+//  for i := 0; i < len(altsets); i++ {
+//    alts := altsets[i]
+//    if alts.length() > 1 {
+//      return true
+//    }
+//  }
+//  return false
 //}
 //
 ////
@@ -432,18 +432,18 @@
 //// others, otherwise {@code false}
 ////
 //pub fn PredictionModeallSubsetsEqual(altsets []*BitSet) -> bool { // non-member
-//	var first *BitSet
+//  var first *BitSet
 //
-//	for i := 0; i < len(altsets); i++ {
-//		alts := altsets[i]
-//		if first == nil {
-//			first = alts
-//		} else if alts != first {
-//			return false
-//		}
-//	}
+//  for i := 0; i < len(altsets); i++ {
+//    alts := altsets[i]
+//    if first == nil {
+//      first = alts
+//    } else if alts != first {
+//      return false
+//    }
+//  }
 //
-//	return true
+//  return true
 //}
 //
 ////
@@ -454,12 +454,12 @@
 //// @param altsets a collection of alternative subsets
 ////
 //pub fn PredictionModegetUniqueAlt(altsets []*BitSet) -> i32 { // non-member
-//	all := PredictionModeGetAlts(altsets)
-//	if all.length() == 1 {
-//		return all.minValue()
-//	}
+//  all := PredictionModeGetAlts(altsets)
+//  if all.length() == 1 {
+//    return all.minValue()
+//  }
 //
-//	return ATNInvalidAltNumber
+//  return ATNInvalidAltNumber
 //}
 //
 //// Gets the complete set of represented alternatives for a collection of
@@ -470,11 +470,11 @@
 //// @return the set of represented alternatives in {@code altsets}
 ////
 //pub fn PredictionModeGetAlts(altsets []*BitSet) -> *BitSet { // non-member
-//	all := NewBitSet()
-//	for _, alts := range altsets {
-//		all.or(alts)
-//	}
-//	return all
+//  all := NewBitSet()
+//  for _, alts := range altsets {
+//    all.or(alts)
+//  }
+//  return all
 //}
 //
 ////
@@ -487,27 +487,27 @@
 //// </pre>
 ////
 //pub fn PredictionModegetConflictingAltSubsets(configs: ATNConfigSet) -> []*BitSet { // non-member
-//	configToAlts := make(map[string]*BitSet)
+//  configToAlts := make(map[string]*BitSet)
 //
-//	for _, c := range configs.GetItems() {
-//		key := "key_" + strconv.Itoa(c.GetState().GetStateNumber()) + "/" + c.GetContext().String()
-//		alts := configToAlts[key]
-//		if alts == nil {
-//			alts = NewBitSet()
-//			configToAlts[key] = alts
-//		}
-//		alts.add(c.GetAlt())
-//	}
+//  for _, c := range configs.GetItems() {
+//    key := "key_" + strconv.Itoa(c.GetState().GetStateNumber()) + "/" + c.GetContext().String()
+//    alts := configToAlts[key]
+//    if alts == nil {
+//      alts = NewBitSet()
+//      configToAlts[key] = alts
+//    }
+//    alts.add(c.GetAlt())
+//  }
 //
-//	values := make([]*BitSet, 0)
+//  values := make([]*BitSet, 0)
 //
-//	for k := range configToAlts {
-//		if &strs.Index(k, "key_") != 0 {
-//			continue
-//		}
-//		values = append(values, configToAlts[k])
-//	}
-//	return values
+//  for k := range configToAlts {
+//    if &strs.Index(k, "key_") != 0 {
+//      continue
+//    }
+//    values = append(values, configToAlts[k])
+//  }
+//  return values
 //}
 //
 ////
@@ -519,40 +519,40 @@
 //// </pre>
 ////
 //pub fn PredictionModeGetStateToAltMap(configs: ATNConfigSet) -> *AltDict { // non-member
-//	m := NewAltDict()
+//  m := NewAltDict()
 //
-//	for _, c := range configs.GetItems() {
-//		alts := m.Get(c.GetState().String())
-//		if alts == nil {
-//			alts = NewBitSet()
-//			m.put(c.GetState().String(), alts)
-//		}
-//		alts.(*BitSet).add(c.GetAlt())
-//	}
-//	return m
+//  for _, c := range configs.GetItems() {
+//    alts := m.Get(c.GetState().String())
+//    if alts == nil {
+//      alts = NewBitSet()
+//      m.put(c.GetState().String(), alts)
+//    }
+//    alts.(*BitSet).add(c.GetAlt())
+//  }
+//  return m
 //}
 //
 //pub fn PredictionModehasStateAssociatedWithOneAlt(configs: ATNConfigSet) -> bool { // non-member
-//	values := PredictionModeGetStateToAltMap(configs).values()
-//	for i := 0; i < len(values); i++ {
-//		if values[i].(*BitSet).length() == 1 {
-//			return true
-//		}
-//	}
-//	return false
+//  values := PredictionModeGetStateToAltMap(configs).values()
+//  for i := 0; i < len(values); i++ {
+//    if values[i].(*BitSet).length() == 1 {
+//      return true
+//    }
+//  }
+//  return false
 //}
 //
 //pub fn PredictionModegetSingleViableAlt(altsets []*BitSet) -> i32 { // non-member
-//	result := ATNInvalidAltNumber
+//  result := ATNInvalidAltNumber
 //
-//	for i := 0; i < len(altsets); i++ {
-//		alts := altsets[i]
-//		minAlt := alts.minValue()
-//		if result == ATNInvalidAltNumber {
-//			result = minAlt
-//		} else if result != minAlt { // more than 1 viable alt
-//			return ATNInvalidAltNumber
-//		}
-//	}
-//	return result
+//  for i := 0; i < len(altsets); i++ {
+//    alts := altsets[i]
+//    minAlt := alts.minValue()
+//    if result == ATNInvalidAltNumber {
+//      result = minAlt
+//    } else if result != minAlt { // more than 1 viable alt
+//      return ATNInvalidAltNumber
+//    }
+//  }
+//  return result
 //}

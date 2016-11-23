@@ -1,15 +1,15 @@
 //package antlr
 //
 //import (
-//	"fmt"
-//	"strconv"
+//  "fmt"
+//  "strconv"
 //)
 //
 //// Represents {@code $} in local context prediction, which means wildcard.
 //// {@code//+x =//}.
 //// /
 //const (
-//	BasePredictionContextEmptyReturnState = 0x7FFFFFFF
+//  BasePredictionContextEmptyReturnState = 0x7FFFFFFF
 //)
 //
 //// Represents {@code $} in an array in full context mode, when {@code $}
@@ -18,30 +18,30 @@
 //// /
 //
 //var (
-//	BasePredictionContextglobalNodeCount = 1
-//	BasePredictionContextid = BasePredictionContextglobalNodeCount
+//  BasePredictionContextglobalNodeCount = 1
+//  BasePredictionContextid = BasePredictionContextglobalNodeCount
 //)
 //
 //pub trait PredictionContext {
-//	Hash() &str
-//	GetParent(int) PredictionContext
-//	getReturnState(int) i32
-//	equals(PredictionContext) bool
-//	length() i32
-//	isEmpty() bool
-//	hasEmptyPath() bool
-//	String() &str
+//  Hash() &str
+//  GetParent(int) PredictionContext
+//  getReturnState(int) i32
+//  equals(PredictionContext) bool
+//  length() i32
+//  isEmpty() bool
+//  hasEmptyPath() bool
+//  String() &str
 //}
 //
 //pub struct BasePredictionContext {
-//	cachedHashString: &str
+//  cachedHashString: &str
 //}
 //
 //impl BasePredictionContext {§//  pub fn new(cachedHashString: &str) -> *BasePredictionContext {
-//	pc := new(BasePredictionContext)
-//	pc.cachedHashString = cachedHashString
+//  pc := new(BasePredictionContext)
+//  pc.cachedHashString = cachedHashString
 //
-//	return pc
+//  return pc
 //}
 //
 //// Stores the computed hash code of this {@link BasePredictionContext}. The hash
@@ -70,19 +70,19 @@
 ////
 //
 //pub fn isEmpty() -> bool {
-//	return false
+//  return false
 //}
 //
 //pub fn Hash() -> &str {
-//	return b.cachedHashString
+//  return b.cachedHashString
 //}
 //
 //pub fn calculateHashString(parent: PredictionContext, returnState: i32) -> &str { // non-member
-//	return parent.String() + strconv.Itoa(returnState)
+//  return parent.String() + strconv.Itoa(returnState)
 //}
 //
 //pub fn calculateEmptyHashString() -> &str { // non-member
-//	return ""
+//  return ""
 //}
 //
 //// Used to cache {@link BasePredictionContext} objects. Its used for the shared
@@ -90,13 +90,13 @@
 //// can be used for both lexers and parsers.
 //
 //pub struct PredictionContextCache {
-//	cache map[PredictionContext]PredictionContext
+//  cache map[PredictionContext]PredictionContext
 //}
 //
 //impl PredictionContextCache {§//  pub fn new() -> *PredictionContextCache {
-//	t := new(PredictionContextCache)
-//	t.cache = make(map[PredictionContext]PredictionContext)
-//	return t
+//  t := new(PredictionContextCache)
+//  t.cache = make(map[PredictionContext]PredictionContext)
+//  return t
 //}
 //
 //// Add a context to the cache and return it. If the context already exists,
@@ -104,309 +104,309 @@
 //// Protect shared cache from unsafe thread access.
 ////
 //pub fn add(ctx: PredictionContext) -> PredictionContext {
-//	if ctx == BasePredictionContextEMPTY {
-//		return BasePredictionContextEMPTY
-//	}
-//	existing := p.cache[ctx]
-//	if existing != nil {
-//		return existing
-//	}
-//	p.cache[ctx] = ctx
-//	return ctx
+//  if ctx == BasePredictionContextEMPTY {
+//    return BasePredictionContextEMPTY
+//  }
+//  existing := p.cache[ctx]
+//  if existing != nil {
+//    return existing
+//  }
+//  p.cache[ctx] = ctx
+//  return ctx
 //}
 //
 //pub fn Get(ctx: PredictionContext) -> PredictionContext {
-//	return p.cache[ctx]
+//  return p.cache[ctx]
 //}
 //
 //pub fn length() -> i32 {
-//	return len(p.cache)
+//  return len(p.cache)
 //}
 //
 //pub trait SingletonPredictionContext {
-//	PredictionContext
+//  PredictionContext
 //}
 //
 //pub struct BaseSingletonPredictionContext {
-//	*BasePredictionContext
+//  *BasePredictionContext
 //
-//	parentCtx:   PredictionContext
-//	returnState: i32
+//  parentCtx:   PredictionContext
+//  returnState: i32
 //}
 //
 //impl BaseSingletonPredictionContext {§//  pub fn new(parent: PredictionContext, returnState: i32) -> *BaseSingletonPredictionContext {
 //
-//	s := new(BaseSingletonPredictionContext)
-//	s.BasePredictionContext = NewBasePredictionContext("")
+//  s := new(BaseSingletonPredictionContext)
+//  s.BasePredictionContext = NewBasePredictionContext("")
 //
-//	if parent != nil {
-//		s.cachedHashString = calculateHashString(parent, returnState)
-//	} else {
-//		s.cachedHashString = calculateEmptyHashString()
-//	}
+//  if parent != nil {
+//    s.cachedHashString = calculateHashString(parent, returnState)
+//  } else {
+//    s.cachedHashString = calculateEmptyHashString()
+//  }
 //
-//	s.parentCtx = parent
-//	s.returnState = returnState
+//  s.parentCtx = parent
+//  s.returnState = returnState
 //
-//	return s
+//  return s
 //}
 //
 //pub fn SingletonBasePredictionContextCreate(parent: PredictionContext, returnState: i32) -> PredictionContext { // non-member
-//	if returnState == BasePredictionContextEmptyReturnState && parent == nil {
-//		// someone can pass in the bits of an array ctx that mean $
-//		return BasePredictionContextEMPTY
-//	}
+//  if returnState == BasePredictionContextEmptyReturnState && parent == nil {
+//    // someone can pass in the bits of an array ctx that mean $
+//    return BasePredictionContextEMPTY
+//  }
 //
-//	return NewBaseSingletonPredictionContext(parent, returnState)
+//  return NewBaseSingletonPredictionContext(parent, returnState)
 //}
 //
 //pub fn length() -> i32 {
-//	return 1
+//  return 1
 //}
 //
 //pub fn GetParent(index: i32) -> PredictionContext {
-//	return b.parentCtx
+//  return b.parentCtx
 //}
 //
 //pub fn getReturnState(index: i32) -> i32 {
-//	return b.returnState
+//  return b.returnState
 //}
 //
 //pub fn hasEmptyPath() -> bool {
-//	return b.returnState == BasePredictionContextEmptyReturnState
+//  return b.returnState == BasePredictionContextEmptyReturnState
 //}
 //
 //pub fn equals(other: PredictionContext) -> bool {
-//	if b == other {
-//		return true
-//	} else if _, ok := other.(*BaseSingletonPredictionContext); !ok {
-//		return false
-//	} else if b.Hash() != other.Hash() {
-//		return false // can't be same if hash is different
-//	}
+//  if b == other {
+//    return true
+//  } else if _, ok := other.(*BaseSingletonPredictionContext); !ok {
+//    return false
+//  } else if b.Hash() != other.Hash() {
+//    return false // can't be same if hash is different
+//  }
 //
-//	otherP := other.(*BaseSingletonPredictionContext)
+//  otherP := other.(*BaseSingletonPredictionContext)
 //
-//	if b.returnState != other.getReturnState(0) {
-//		return false
-//	} else if b.parentCtx == nil {
-//		return otherP.parentCtx == nil
-//	}
+//  if b.returnState != other.getReturnState(0) {
+//    return false
+//  } else if b.parentCtx == nil {
+//    return otherP.parentCtx == nil
+//  }
 //
-//	return b.parentCtx.equals(otherP.parentCtx)
+//  return b.parentCtx.equals(otherP.parentCtx)
 //}
 //
 //pub fn Hash() -> &str {
-//	return b.cachedHashString
+//  return b.cachedHashString
 //}
 //
 //pub fn String() -> &str {
-//	var up &str
+//  var up &str
 //
-//	if b.parentCtx == nil {
-//		up = ""
-//	} else {
-//		up = b.parentCtx.String()
-//	}
+//  if b.parentCtx == nil {
+//    up = ""
+//  } else {
+//    up = b.parentCtx.String()
+//  }
 //
-//	if len(up) == 0 {
-//		if b.returnState == BasePredictionContextEmptyReturnState {
-//			return "$"
-//		}
+//  if len(up) == 0 {
+//    if b.returnState == BasePredictionContextEmptyReturnState {
+//      return "$"
+//    }
 //
-//		return strconv.Itoa(b.returnState)
-//	}
+//    return strconv.Itoa(b.returnState)
+//  }
 //
-//	return strconv.Itoa(b.returnState) + " " + up
+//  return strconv.Itoa(b.returnState) + " " + up
 //}
 //
 //var BasePredictionContextEMPTY = NewEmptyPredictionContext()
 //
 //pub struct EmptyPredictionContext {
-//	*BaseSingletonPredictionContext
+//  *BaseSingletonPredictionContext
 //}
 //
 //impl EmptyPredictionContext {§//  pub fn new() -> *EmptyPredictionContext {
 //
-//	p := new(EmptyPredictionContext)
+//  p := new(EmptyPredictionContext)
 //
-//	p.BaseSingletonPredictionContext = NewBaseSingletonPredictionContext(nil, BasePredictionContextEmptyReturnState)
+//  p.BaseSingletonPredictionContext = NewBaseSingletonPredictionContext(nil, BasePredictionContextEmptyReturnState)
 //
-//	return p
+//  return p
 //}
 //
 //pub fn isEmpty() -> bool {
-//	return true
+//  return true
 //}
 //
 //pub fn GetParent(index: i32) -> PredictionContext {
-//	return nil
+//  return nil
 //}
 //
 //pub fn getReturnState(index: i32) -> i32 {
-//	return e.returnState
+//  return e.returnState
 //}
 //
 //pub fn equals(other: PredictionContext) -> bool {
-//	return e == other
+//  return e == other
 //}
 //
 //pub fn String() -> &str {
-//	return "$"
+//  return "$"
 //}
 //
 //pub struct ArrayPredictionContext {
-//	*BasePredictionContext
+//  *BasePredictionContext
 //
-//	parents      []PredictionContext
-//	returnStates []int
+//  parents      []PredictionContext
+//  returnStates []int
 //}
 //
 //impl ArrayPredictionContext {§//  pub fn new(parents []PredictionContext, returnStates []int) -> *ArrayPredictionContext {
-//	// Parent can be nil only if full ctx mode and we make an array
-//	// from {@link //EMPTY} and non-empty. We merge {@link //EMPTY} by using
-//	// nil parent and
-//	// returnState == {@link //EmptyReturnState}.
+//  // Parent can be nil only if full ctx mode and we make an array
+//  // from {@link //EMPTY} and non-empty. We merge {@link //EMPTY} by using
+//  // nil parent and
+//  // returnState == {@link //EmptyReturnState}.
 //
-//	c := new(ArrayPredictionContext)
-//	c.BasePredictionContext = NewBasePredictionContext("")
+//  c := new(ArrayPredictionContext)
+//  c.BasePredictionContext = NewBasePredictionContext("")
 //
-//	for i := range parents {
-//		c.cachedHashString += calculateHashString(parents[i], returnStates[i])
-//	}
+//  for i := range parents {
+//    c.cachedHashString += calculateHashString(parents[i], returnStates[i])
+//  }
 //
-//	c.parents = parents
-//	c.returnStates = returnStates
+//  c.parents = parents
+//  c.returnStates = returnStates
 //
-//	return c
+//  return c
 //}
 //
 //pub fn GetReturnStates() -> []int {
-//	return a.returnStates
+//  return a.returnStates
 //}
 //
 //pub fn hasEmptyPath() -> bool {
-//	return a.getReturnState(a.length()-1) == BasePredictionContextEmptyReturnState
+//  return a.getReturnState(a.length()-1) == BasePredictionContextEmptyReturnState
 //}
 //
 //pub fn isEmpty() -> bool {
-//	// since EmptyReturnState can only appear in the last position, we
-//	// don't need to verify that size==1
-//	return a.returnStates[0] == BasePredictionContextEmptyReturnState
+//  // since EmptyReturnState can only appear in the last position, we
+//  // don't need to verify that size==1
+//  return a.returnStates[0] == BasePredictionContextEmptyReturnState
 //}
 //
 //pub fn length() -> i32 {
-//	return len(a.returnStates)
+//  return len(a.returnStates)
 //}
 //
 //pub fn GetParent(index: i32) -> PredictionContext {
-//	return a.parents[index]
+//  return a.parents[index]
 //}
 //
 //pub fn getReturnState(index: i32) -> i32 {
-//	return a.returnStates[index]
+//  return a.returnStates[index]
 //}
 //
 //pub fn equals(other: PredictionContext) -> bool {
-//	if _, ok := other.(*ArrayPredictionContext); !ok {
-//		return false
-//	} else if a.cachedHashString != other.Hash() {
-//		return false // can't be same if hash is different
-//	} else {
-//		otherP := other.(*ArrayPredictionContext)
-//		return &a.returnStates == &otherP.returnStates && &a.parents == &otherP.parents
-//	}
+//  if _, ok := other.(*ArrayPredictionContext); !ok {
+//    return false
+//  } else if a.cachedHashString != other.Hash() {
+//    return false // can't be same if hash is different
+//  } else {
+//    otherP := other.(*ArrayPredictionContext)
+//    return &a.returnStates == &otherP.returnStates && &a.parents == &otherP.parents
+//  }
 //}
 //
 //pub fn String() -> &str {
-//	if a.isEmpty() {
-//		return "[]"
-//	}
+//  if a.isEmpty() {
+//    return "[]"
+//  }
 //
-//	s := "["
-//	for i := 0; i < len(a.returnStates); i++ {
-//		if i > 0 {
-//			s = s + ", "
-//		}
-//		if a.returnStates[i] == BasePredictionContextEmptyReturnState {
-//			s = s + "$"
-//			continue
-//		}
-//		s = s + strconv.Itoa(a.returnStates[i])
-//		if a.parents[i] != nil {
-//			s = s + " " + a.parents[i].String()
-//		} else {
-//			s = s + "nil"
-//		}
-//	}
+//  s := "["
+//  for i := 0; i < len(a.returnStates); i++ {
+//    if i > 0 {
+//      s = s + ", "
+//    }
+//    if a.returnStates[i] == BasePredictionContextEmptyReturnState {
+//      s = s + "$"
+//      continue
+//    }
+//    s = s + strconv.Itoa(a.returnStates[i])
+//    if a.parents[i] != nil {
+//      s = s + " " + a.parents[i].String()
+//    } else {
+//      s = s + "nil"
+//    }
+//  }
 //
-//	return s + "]"
+//  return s + "]"
 //}
 //
 //// Convert a {@link RuleContext} tree to a {@link BasePredictionContext} graph.
 //// Return {@link //EMPTY} if {@code outerContext} is empty or nil.
 //// /
 //pub fn predictionContextFromRuleContext(a *ATN, outerContext: RuleContext) -> PredictionContext { // non-member
-//	if outerContext == nil {
-//		outerContext = RuleContextEmpty
-//	}
-//	// if we are in RuleContext of start rule, s, then BasePredictionContext
-//	// is EMPTY. Nobody called us. (if we are empty, return empty)
-//	if outerContext.GetParent() == nil || outerContext == RuleContextEmpty {
-//		return BasePredictionContextEMPTY
-//	}
-//	// If we have a parent, convert it to a BasePredictionContext graph
-//	parent := predictionContextFromRuleContext(a, outerContext.GetParent().(RuleContext))
-//	state := a.states[outerContext.GetInvokingState()]
-//	transition := state.GetTransitions()[0]
+//  if outerContext == nil {
+//    outerContext = RuleContextEmpty
+//  }
+//  // if we are in RuleContext of start rule, s, then BasePredictionContext
+//  // is EMPTY. Nobody called us. (if we are empty, return empty)
+//  if outerContext.GetParent() == nil || outerContext == RuleContextEmpty {
+//    return BasePredictionContextEMPTY
+//  }
+//  // If we have a parent, convert it to a BasePredictionContext graph
+//  parent := predictionContextFromRuleContext(a, outerContext.GetParent().(RuleContext))
+//  state := a.states[outerContext.GetInvokingState()]
+//  transition := state.GetTransitions()[0]
 //
-//	return SingletonBasePredictionContextCreate(parent, transition.(*RuleTransition).followState.GetStateNumber())
+//  return SingletonBasePredictionContextCreate(parent, transition.(*RuleTransition).followState.GetStateNumber())
 //}
 //
 //pub fn calculateListsHashString(parents []BasePredictionContext, returnStates []int) -> &str { // non-member
-//	s := ""
+//  s := ""
 //
-//	for _, p := range parents {
-//		s += fmt.Sprint(p)
-//	}
+//  for _, p := range parents {
+//    s += fmt.Sprint(p)
+//  }
 //
-//	for _, r := range returnStates {
-//		s += fmt.Sprint(r)
-//	}
+//  for _, r := range returnStates {
+//    s += fmt.Sprint(r)
+//  }
 //
-//	return s
+//  return s
 //}
 //
 //pub fn merge(a, b PredictionContext, rootIsWildcard: bool, mergeCache *DoubleDict) -> PredictionContext { // non-member
-//	// share same graph if both same
-//	if a == b {
-//		return a
-//	}
+//  // share same graph if both same
+//  if a == b {
+//    return a
+//  }
 //
-//	ac, ok1 := a.(*BaseSingletonPredictionContext)
-//	bc, ok2 := b.(*BaseSingletonPredictionContext)
+//  ac, ok1 := a.(*BaseSingletonPredictionContext)
+//  bc, ok2 := b.(*BaseSingletonPredictionContext)
 //
-//	if ok1 && ok2 {
-//		return mergeSingletons(ac, bc, rootIsWildcard, mergeCache)
-//	}
-//	// At least one of a or b is array
-//	// If one is $ and rootIsWildcard, return $ as// wildcard
-//	if rootIsWildcard {
-//		if _, ok := a.(*EmptyPredictionContext); ok {
-//			return a
-//		}
-//		if _, ok := b.(*EmptyPredictionContext); ok {
-//			return b
-//		}
-//	}
-//	// convert singleton so both are arrays to normalize
-//	if _, ok := a.(*BaseSingletonPredictionContext); ok {
-//		a = NewArrayPredictionContext([]PredictionContext{a.GetParent(0)}, []int{a.getReturnState(0)})
-//	}
-//	if _, ok := b.(*BaseSingletonPredictionContext); ok {
-//		b = NewArrayPredictionContext([]PredictionContext{b.GetParent(0)}, []int{b.getReturnState(0)})
-//	}
-//	return mergeArrays(a.(*ArrayPredictionContext), b.(*ArrayPredictionContext), rootIsWildcard, mergeCache)
+//  if ok1 && ok2 {
+//    return mergeSingletons(ac, bc, rootIsWildcard, mergeCache)
+//  }
+//  // At least one of a or b is array
+//  // If one is $ and rootIsWildcard, return $ as// wildcard
+//  if rootIsWildcard {
+//    if _, ok := a.(*EmptyPredictionContext); ok {
+//      return a
+//    }
+//    if _, ok := b.(*EmptyPredictionContext); ok {
+//      return b
+//    }
+//  }
+//  // convert singleton so both are arrays to normalize
+//  if _, ok := a.(*BaseSingletonPredictionContext); ok {
+//    a = NewArrayPredictionContext([]PredictionContext{a.GetParent(0)}, []int{a.getReturnState(0)})
+//  }
+//  if _, ok := b.(*BaseSingletonPredictionContext); ok {
+//    b = NewArrayPredictionContext([]PredictionContext{b.GetParent(0)}, []int{b.getReturnState(0)})
+//  }
+//  return mergeArrays(a.(*ArrayPredictionContext), b.(*ArrayPredictionContext), rootIsWildcard, mergeCache)
 //}
 //
 ////
@@ -441,81 +441,81 @@
 //// @param mergeCache
 //// /
 //pub fn mergeSingletons(a, b *BaseSingletonPredictionContext, rootIsWildcard: bool, mergeCache *DoubleDict) -> PredictionContext { // non-member
-//	if mergeCache != nil {
-//		previous := mergeCache.Get(a.Hash(), b.Hash())
-//		if previous != nil {
-//			return previous.(PredictionContext)
-//		}
-//		previous = mergeCache.Get(b.Hash(), a.Hash())
-//		if previous != nil {
-//			return previous.(PredictionContext)
-//		}
-//	}
+//  if mergeCache != nil {
+//    previous := mergeCache.Get(a.Hash(), b.Hash())
+//    if previous != nil {
+//      return previous.(PredictionContext)
+//    }
+//    previous = mergeCache.Get(b.Hash(), a.Hash())
+//    if previous != nil {
+//      return previous.(PredictionContext)
+//    }
+//  }
 //
-//	rootMerge := mergeRoot(a, b, rootIsWildcard)
-//	if rootMerge != nil {
-//		if mergeCache != nil {
-//			mergeCache.set(a.Hash(), b.Hash(), rootMerge)
-//		}
-//		return rootMerge
-//	}
-//	if a.returnState == b.returnState {
-//		parent := merge(a.parentCtx, b.parentCtx, rootIsWildcard, mergeCache)
-//		// if parent is same as existing a or b parent or reduced to a parent,
-//		// return it
-//		if parent == a.parentCtx {
-//			return a // ax + bx = ax, if a=b
-//		}
-//		if parent == b.parentCtx {
-//			return b // ax + bx = bx, if a=b
-//		}
-//		// else: ax + ay = a'[x,y]
-//		// merge parents x and y, giving array node with x,y then remainders
-//		// of those graphs. dup a, a' points at merged array
-//		// Newjoined parent so create Newsingleton pointing to it, a'
-//		spc := SingletonBasePredictionContextCreate(parent, a.returnState)
-//		if mergeCache != nil {
-//			mergeCache.set(a.Hash(), b.Hash(), spc)
-//		}
-//		return spc
-//	}
-//	// a != b payloads differ
-//	// see if we can collapse parents due to $+x parents if local ctx
-//	var singleParent PredictionContext
-//	if a == b || (a.parentCtx != nil && a.parentCtx == b.parentCtx) { // ax +
-//		// bx =
-//		// [a,b]x
-//		singleParent = a.parentCtx
-//	}
-//	if singleParent != nil { // parents are same
-//		// sort payloads and use same parent
-//		payloads := []int{a.returnState, b.returnState}
-//		if a.returnState > b.returnState {
-//			payloads[0] = b.returnState
-//			payloads[1] = a.returnState
-//		}
-//		parents := []PredictionContext{singleParent, singleParent}
-//		apc := NewArrayPredictionContext(parents, payloads)
-//		if mergeCache != nil {
-//			mergeCache.set(a.Hash(), b.Hash(), apc)
-//		}
-//		return apc
-//	}
-//	// parents differ and can't merge them. Just pack together
-//	// i32o array can't merge.
-//	// ax + by = [ax,by]
-//	payloads := []int{a.returnState, b.returnState}
-//	parents := []PredictionContext{a.parentCtx, b.parentCtx}
-//	if a.returnState > b.returnState { // sort by payload
-//		payloads[0] = b.returnState
-//		payloads[1] = a.returnState
-//		parents = []PredictionContext{b.parentCtx, a.parentCtx}
-//	}
-//	apc := NewArrayPredictionContext(parents, payloads)
-//	if mergeCache != nil {
-//		mergeCache.set(a.Hash(), b.Hash(), apc)
-//	}
-//	return apc
+//  rootMerge := mergeRoot(a, b, rootIsWildcard)
+//  if rootMerge != nil {
+//    if mergeCache != nil {
+//      mergeCache.set(a.Hash(), b.Hash(), rootMerge)
+//    }
+//    return rootMerge
+//  }
+//  if a.returnState == b.returnState {
+//    parent := merge(a.parentCtx, b.parentCtx, rootIsWildcard, mergeCache)
+//    // if parent is same as existing a or b parent or reduced to a parent,
+//    // return it
+//    if parent == a.parentCtx {
+//      return a // ax + bx = ax, if a=b
+//    }
+//    if parent == b.parentCtx {
+//      return b // ax + bx = bx, if a=b
+//    }
+//    // else: ax + ay = a'[x,y]
+//    // merge parents x and y, giving array node with x,y then remainders
+//    // of those graphs. dup a, a' points at merged array
+//    // Newjoined parent so create Newsingleton pointing to it, a'
+//    spc := SingletonBasePredictionContextCreate(parent, a.returnState)
+//    if mergeCache != nil {
+//      mergeCache.set(a.Hash(), b.Hash(), spc)
+//    }
+//    return spc
+//  }
+//  // a != b payloads differ
+//  // see if we can collapse parents due to $+x parents if local ctx
+//  var singleParent PredictionContext
+//  if a == b || (a.parentCtx != nil && a.parentCtx == b.parentCtx) { // ax +
+//    // bx =
+//    // [a,b]x
+//    singleParent = a.parentCtx
+//  }
+//  if singleParent != nil { // parents are same
+//    // sort payloads and use same parent
+//    payloads := []int{a.returnState, b.returnState}
+//    if a.returnState > b.returnState {
+//      payloads[0] = b.returnState
+//      payloads[1] = a.returnState
+//    }
+//    parents := []PredictionContext{singleParent, singleParent}
+//    apc := NewArrayPredictionContext(parents, payloads)
+//    if mergeCache != nil {
+//      mergeCache.set(a.Hash(), b.Hash(), apc)
+//    }
+//    return apc
+//  }
+//  // parents differ and can't merge them. Just pack together
+//  // i32o array can't merge.
+//  // ax + by = [ax,by]
+//  payloads := []int{a.returnState, b.returnState}
+//  parents := []PredictionContext{a.parentCtx, b.parentCtx}
+//  if a.returnState > b.returnState { // sort by payload
+//    payloads[0] = b.returnState
+//    payloads[1] = a.returnState
+//    parents = []PredictionContext{b.parentCtx, a.parentCtx}
+//  }
+//  apc := NewArrayPredictionContext(parents, payloads)
+//  if mergeCache != nil {
+//    mergeCache.set(a.Hash(), b.Hash(), apc)
+//  }
+//  return apc
 //}
 //
 ////
@@ -557,27 +557,27 @@
 //// otherwise false to indicate a full-context merge
 //// /
 //pub fn mergeRoot(a, b: SingletonPredictionContext, rootIsWildcard: bool) -> PredictionContext { // non-member
-//	if rootIsWildcard {
-//		if a == BasePredictionContextEMPTY {
-//			return BasePredictionContextEMPTY // // + b =//
-//		}
-//		if b == BasePredictionContextEMPTY {
-//			return BasePredictionContextEMPTY // a +// =//
-//		}
-//	} else {
-//		if a == BasePredictionContextEMPTY && b == BasePredictionContextEMPTY {
-//			return BasePredictionContextEMPTY // $ + $ = $
-//		} else if a == BasePredictionContextEMPTY { // $ + x = [$,x]
-//			payloads := []int{b.getReturnState(-1), BasePredictionContextEmptyReturnState}
-//			parents := []PredictionContext{b.GetParent(-1), nil}
-//			return NewArrayPredictionContext(parents, payloads)
-//		} else if b == BasePredictionContextEMPTY { // x + $ = [$,x] ($ is always first if present)
-//			payloads := []int{a.getReturnState(-1), BasePredictionContextEmptyReturnState}
-//			parents := []PredictionContext{a.GetParent(-1), nil}
-//			return NewArrayPredictionContext(parents, payloads)
-//		}
-//	}
-//	return nil
+//  if rootIsWildcard {
+//    if a == BasePredictionContextEMPTY {
+//      return BasePredictionContextEMPTY // // + b =//
+//    }
+//    if b == BasePredictionContextEMPTY {
+//      return BasePredictionContextEMPTY // a +// =//
+//    }
+//  } else {
+//    if a == BasePredictionContextEMPTY && b == BasePredictionContextEMPTY {
+//      return BasePredictionContextEMPTY // $ + $ = $
+//    } else if a == BasePredictionContextEMPTY { // $ + x = [$,x]
+//      payloads := []int{b.getReturnState(-1), BasePredictionContextEmptyReturnState}
+//      parents := []PredictionContext{b.GetParent(-1), nil}
+//      return NewArrayPredictionContext(parents, payloads)
+//    } else if b == BasePredictionContextEMPTY { // x + $ = [$,x] ($ is always first if present)
+//      payloads := []int{a.getReturnState(-1), BasePredictionContextEmptyReturnState}
+//      parents := []PredictionContext{a.GetParent(-1), nil}
+//      return NewArrayPredictionContext(parents, payloads)
+//    }
+//  }
+//  return nil
 //}
 //
 ////
@@ -601,105 +601,105 @@
 //// <embed src="images/ArrayMerge_EqualTop.svg" type="image/svg+xml"/></p>
 //// /
 //pub fn mergeArrays(a, b *ArrayPredictionContext, rootIsWildcard: bool, mergeCache *DoubleDict) -> PredictionContext { // non-member
-//	if mergeCache != nil {
-//		previous := mergeCache.Get(a.Hash(), b.Hash())
-//		if previous != nil {
-//			return previous.(PredictionContext)
-//		}
-//		previous = mergeCache.Get(b.Hash(), a.Hash())
-//		if previous != nil {
-//			return previous.(PredictionContext)
-//		}
-//	}
-//	// merge sorted payloads a + b => M
-//	i := 0 // walks a
-//	j := 0 // walks b
-//	k := 0 // walks target M array
+//  if mergeCache != nil {
+//    previous := mergeCache.Get(a.Hash(), b.Hash())
+//    if previous != nil {
+//      return previous.(PredictionContext)
+//    }
+//    previous = mergeCache.Get(b.Hash(), a.Hash())
+//    if previous != nil {
+//      return previous.(PredictionContext)
+//    }
+//  }
+//  // merge sorted payloads a + b => M
+//  i := 0 // walks a
+//  j := 0 // walks b
+//  k := 0 // walks target M array
 //
-//	mergedReturnStates := make([]int, len(a.returnStates) + len(b.returnStates))
-//	mergedParents := make([]PredictionContext, len(a.returnStates) + len(b.returnStates))
-//	// walk and merge to yield mergedParents, mergedReturnStates
-//	for i < len(a.returnStates) && j < len(b.returnStates) {
-//		aParent := a.parents[i]
-//		bParent := b.parents[j]
-//		if a.returnStates[i] == b.returnStates[j] {
-//			// same payload (stack tops are equal), must yield merged singleton
-//			payload := a.returnStates[i]
-//			// $+$ = $
-//			bothDollars := payload == BasePredictionContextEmptyReturnState && aParent == nil && bParent == nil
-//			axAX := (aParent != nil && bParent != nil && aParent == bParent) // ax+ax
-//			// ->
-//			// ax
-//			if bothDollars || axAX {
-//				mergedParents[k] = aParent // choose left
-//				mergedReturnStates[k] = payload
-//			} else { // ax+ay -> a'[x,y]
-//				mergedParent := merge(aParent, bParent, rootIsWildcard, mergeCache)
-//				mergedParents[k] = mergedParent
-//				mergedReturnStates[k] = payload
-//			}
-//			i++ // hop over left one as usual
-//			j++ // but also Skip one in right side since we merge
-//		} else if a.returnStates[i] < b.returnStates[j] { // copy a[i] to M
-//			mergedParents[k] = aParent
-//			mergedReturnStates[k] = a.returnStates[i]
-//			i++
-//		} else { // b > a, copy b[j] to M
-//			mergedParents[k] = bParent
-//			mergedReturnStates[k] = b.returnStates[j]
-//			j++
-//		}
-//		k++
-//	}
-//	// copy over any payloads remaining in either array
-//	if i < len(a.returnStates) {
-//		for p := i; p < len(a.returnStates); p++ {
-//			mergedParents[k] = a.parents[p]
-//			mergedReturnStates[k] = a.returnStates[p]
-//			k++
-//		}
-//	} else {
-//		for p := j; p < len(b.returnStates); p++ {
-//			mergedParents[k] = b.parents[p]
-//			mergedReturnStates[k] = b.returnStates[p]
-//			k++
-//		}
-//	}
-//	// trim merged if we combined a few that had same stack tops
-//	if k < len(mergedParents) { // write index < last position trim
-//		if k == 1 { // for just one merged element, return singleton top
-//			pc := SingletonBasePredictionContextCreate(mergedParents[0], mergedReturnStates[0])
-//			if mergeCache != nil {
-//				mergeCache.set(a.Hash(), b.Hash(), pc)
-//			}
-//			return pc
-//		}
-//		mergedParents = mergedParents[0:k]
-//		mergedReturnStates = mergedReturnStates[0:k]
-//	}
+//  mergedReturnStates := make([]int, len(a.returnStates) + len(b.returnStates))
+//  mergedParents := make([]PredictionContext, len(a.returnStates) + len(b.returnStates))
+//  // walk and merge to yield mergedParents, mergedReturnStates
+//  for i < len(a.returnStates) && j < len(b.returnStates) {
+//    aParent := a.parents[i]
+//    bParent := b.parents[j]
+//    if a.returnStates[i] == b.returnStates[j] {
+//      // same payload (stack tops are equal), must yield merged singleton
+//      payload := a.returnStates[i]
+//      // $+$ = $
+//      bothDollars := payload == BasePredictionContextEmptyReturnState && aParent == nil && bParent == nil
+//      axAX := (aParent != nil && bParent != nil && aParent == bParent) // ax+ax
+//      // ->
+//      // ax
+//      if bothDollars || axAX {
+//        mergedParents[k] = aParent // choose left
+//        mergedReturnStates[k] = payload
+//      } else { // ax+ay -> a'[x,y]
+//        mergedParent := merge(aParent, bParent, rootIsWildcard, mergeCache)
+//        mergedParents[k] = mergedParent
+//        mergedReturnStates[k] = payload
+//      }
+//      i++ // hop over left one as usual
+//      j++ // but also Skip one in right side since we merge
+//    } else if a.returnStates[i] < b.returnStates[j] { // copy a[i] to M
+//      mergedParents[k] = aParent
+//      mergedReturnStates[k] = a.returnStates[i]
+//      i++
+//    } else { // b > a, copy b[j] to M
+//      mergedParents[k] = bParent
+//      mergedReturnStates[k] = b.returnStates[j]
+//      j++
+//    }
+//    k++
+//  }
+//  // copy over any payloads remaining in either array
+//  if i < len(a.returnStates) {
+//    for p := i; p < len(a.returnStates); p++ {
+//      mergedParents[k] = a.parents[p]
+//      mergedReturnStates[k] = a.returnStates[p]
+//      k++
+//    }
+//  } else {
+//    for p := j; p < len(b.returnStates); p++ {
+//      mergedParents[k] = b.parents[p]
+//      mergedReturnStates[k] = b.returnStates[p]
+//      k++
+//    }
+//  }
+//  // trim merged if we combined a few that had same stack tops
+//  if k < len(mergedParents) { // write index < last position trim
+//    if k == 1 { // for just one merged element, return singleton top
+//      pc := SingletonBasePredictionContextCreate(mergedParents[0], mergedReturnStates[0])
+//      if mergeCache != nil {
+//        mergeCache.set(a.Hash(), b.Hash(), pc)
+//      }
+//      return pc
+//    }
+//    mergedParents = mergedParents[0:k]
+//    mergedReturnStates = mergedReturnStates[0:k]
+//  }
 //
-//	M := NewArrayPredictionContext(mergedParents, mergedReturnStates)
+//  M := NewArrayPredictionContext(mergedParents, mergedReturnStates)
 //
-//	// if we created same array as a or b, return that instead
-//	// TODO: track whether this is possible above during merge sort for speed
-//	if M == a {
-//		if mergeCache != nil {
-//			mergeCache.set(a.Hash(), b.Hash(), a)
-//		}
-//		return a
-//	}
-//	if M == b {
-//		if mergeCache != nil {
-//			mergeCache.set(a.Hash(), b.Hash(), b)
-//		}
-//		return b
-//	}
-//	combineCommonParents(mergedParents)
+//  // if we created same array as a or b, return that instead
+//  // TODO: track whether this is possible above during merge sort for speed
+//  if M == a {
+//    if mergeCache != nil {
+//      mergeCache.set(a.Hash(), b.Hash(), a)
+//    }
+//    return a
+//  }
+//  if M == b {
+//    if mergeCache != nil {
+//      mergeCache.set(a.Hash(), b.Hash(), b)
+//    }
+//    return b
+//  }
+//  combineCommonParents(mergedParents)
 //
-//	if mergeCache != nil {
-//		mergeCache.set(a.Hash(), b.Hash(), M)
-//	}
-//	return M
+//  if mergeCache != nil {
+//    mergeCache.set(a.Hash(), b.Hash(), M)
+//  }
+//  return M
 //}
 //
 ////
@@ -707,64 +707,64 @@
 //// ones.
 //// /
 //pub fn combineCommonParents(parents []PredictionContext) { // non-member
-//	uniqueParents := make(map[PredictionContext]PredictionContext)
+//  uniqueParents := make(map[PredictionContext]PredictionContext)
 //
-//	for p := 0; p < len(parents); p++ {
-//		parent := parents[p]
-//		if uniqueParents[parent] == nil {
-//			uniqueParents[parent] = parent
-//		}
-//	}
-//	for q := 0; q < len(parents); q++ {
-//		parents[q] = uniqueParents[parents[q]]
-//	}
+//  for p := 0; p < len(parents); p++ {
+//    parent := parents[p]
+//    if uniqueParents[parent] == nil {
+//      uniqueParents[parent] = parent
+//    }
+//  }
+//  for q := 0; q < len(parents); q++ {
+//    parents[q] = uniqueParents[parents[q]]
+//  }
 //}
 //
 //pub fn getCachedBasePredictionContext(context: PredictionContext, contextCache *PredictionContextCache, visited map[PredictionContext]PredictionContext) -> PredictionContext { // non-member
 //
-//	if context.isEmpty() {
-//		return context
-//	}
-//	existing := visited[context]
-//	if existing != nil {
-//		return existing
-//	}
-//	existing = contextCache.Get(context)
-//	if existing != nil {
-//		visited[context] = existing
-//		return existing
-//	}
-//	changed := false
-//	parents := make([]PredictionContext, context.length())
-//	for i := 0; i < len(parents); i++ {
-//		parent := getCachedBasePredictionContext(context.GetParent(i), contextCache, visited)
-//		if changed || parent != context.GetParent(i) {
-//			if !changed {
-//				parents = make([]PredictionContext, context.length())
-//				for j := 0; j < context.length(); j++ {
-//					parents[j] = context.GetParent(j)
-//				}
-//				changed = true
-//			}
-//			parents[i] = parent
-//		}
-//	}
-//	if !changed {
-//		contextCache.add(context)
-//		visited[context] = context
-//		return context
-//	}
-//	var updated PredictionContext
-//	if len(parents) == 0 {
-//		updated = BasePredictionContextEMPTY
-//	} else if len(parents) == 1 {
-//		updated = SingletonBasePredictionContextCreate(parents[0], context.getReturnState(0))
-//	} else {
-//		updated = NewArrayPredictionContext(parents, context.(*ArrayPredictionContext).GetReturnStates())
-//	}
-//	contextCache.add(updated)
-//	visited[updated] = updated
-//	visited[context] = updated
+//  if context.isEmpty() {
+//    return context
+//  }
+//  existing := visited[context]
+//  if existing != nil {
+//    return existing
+//  }
+//  existing = contextCache.Get(context)
+//  if existing != nil {
+//    visited[context] = existing
+//    return existing
+//  }
+//  changed := false
+//  parents := make([]PredictionContext, context.length())
+//  for i := 0; i < len(parents); i++ {
+//    parent := getCachedBasePredictionContext(context.GetParent(i), contextCache, visited)
+//    if changed || parent != context.GetParent(i) {
+//      if !changed {
+//        parents = make([]PredictionContext, context.length())
+//        for j := 0; j < context.length(); j++ {
+//          parents[j] = context.GetParent(j)
+//        }
+//        changed = true
+//      }
+//      parents[i] = parent
+//    }
+//  }
+//  if !changed {
+//    contextCache.add(context)
+//    visited[context] = context
+//    return context
+//  }
+//  var updated PredictionContext
+//  if len(parents) == 0 {
+//    updated = BasePredictionContextEMPTY
+//  } else if len(parents) == 1 {
+//    updated = SingletonBasePredictionContextCreate(parents[0], context.getReturnState(0))
+//  } else {
+//    updated = NewArrayPredictionContext(parents, context.(*ArrayPredictionContext).GetReturnStates())
+//  }
+//  contextCache.add(updated)
+//  visited[updated] = updated
+//  visited[context] = updated
 //
-//	return updated
+//  return updated
 //}

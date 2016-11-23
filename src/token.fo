@@ -1,13 +1,13 @@
 //package antlr
 //
 //import (
-//	"strconv"
-//	"strings"
+//  "strconv"
+//  "strings"
 //)
 //
 //pub struct TokenSourceCharStreamPair {
-//	tokenSource: TokenSource
-//	charStream:  CharStream
+//  tokenSource: TokenSource
+//  charStream:  CharStream
 //}
 //
 //// A token has properties: text, type, line, character position in the line
@@ -15,127 +15,127 @@
 //// we obtained this token.
 //
 //pub trait Token {
-//	GetSource() *TokenSourceCharStreamPair
-//	GetTokenType() i32
-//	GetChannel() i32
-//	GetStart() i32
-//	GetStop() i32
-//	GetLine() i32
-//	GetColumn() i32
+//  GetSource() *TokenSourceCharStreamPair
+//  GetTokenType() i32
+//  GetChannel() i32
+//  GetStart() i32
+//  GetStop() i32
+//  GetLine() i32
+//  GetColumn() i32
 //
-//	GetText() &str
-//	SetText(s &str)
+//  GetText() &str
+//  SetText(s &str)
 //
-//	GetTokenIndex() i32
-//	SetTokenIndex(v i32)
+//  GetTokenIndex() i32
+//  SetTokenIndex(v i32)
 //
-//	GetTokenSource() TokenSource
-//	GetInputStream() CharStream
+//  GetTokenSource() TokenSource
+//  GetInputStream() CharStream
 //}
 //
 //pub struct BaseToken {
-//	source:     *TokenSourceCharStreamPair
-//	tokenType  i32    // token type of the token
-//	channel    i32    // The parser ignores everything not on DEFAULT_CHANNEL
-//	start      i32    // optional return -1 if not implemented.
-//	stop       i32    // optional return -1 if not implemented.
-//	tokenIndex i32    // from 0..n-1 of the token object in the input stream
-//	line       i32    // line=1..n of the 1st character
-//	column     i32    // beginning of the line at which it occurs, 0..n-1
-//	text       &str // text of the token.
-//	readOnly:   bool
+//  source:     *TokenSourceCharStreamPair
+//  tokenType  i32    // token type of the token
+//  channel    i32    // The parser ignores everything not on DEFAULT_CHANNEL
+//  start      i32    // optional return -1 if not implemented.
+//  stop       i32    // optional return -1 if not implemented.
+//  tokenIndex i32    // from 0..n-1 of the token object in the input stream
+//  line       i32    // line=1..n of the 1st character
+//  column     i32    // beginning of the line at which it occurs, 0..n-1
+//  text       &str // text of the token.
+//  readOnly:   bool
 //}
 //
 //const (
-//	TokenInvalidType = 0
+//  TokenInvalidType = 0
 //
-//	// During lookahead operations, this "token" signifies we hit rule end ATN state
-//	// and did not follow it despite needing to.
-//	TokenEpsilon = -2
+//  // During lookahead operations, this "token" signifies we hit rule end ATN state
+//  // and did not follow it despite needing to.
+//  TokenEpsilon = -2
 //
-//	TokenMinUserTokenType = 1
+//  TokenMinUserTokenType = 1
 //
-//	TokenEOF = -1
+//  TokenEOF = -1
 //
-//	// All tokens go to the parser (unless Skip() is called in that rule)
-//	// on a particular "channel". The parser tunes to a particular channel
-//	// so that whitespace etc... can go to the parser on a "hidden" channel.
+//  // All tokens go to the parser (unless Skip() is called in that rule)
+//  // on a particular "channel". The parser tunes to a particular channel
+//  // so that whitespace etc... can go to the parser on a "hidden" channel.
 //
-//	TokenDefaultChannel = 0
+//  TokenDefaultChannel = 0
 //
-//	// Anything on different channel than DEFAULT_CHANNEL is not parsed
-//	// by parser.
+//  // Anything on different channel than DEFAULT_CHANNEL is not parsed
+//  // by parser.
 //
-//	TokenHiddenChannel = 1
+//  TokenHiddenChannel = 1
 //)
 //
 //pub fn GetChannel() -> i32 {
-//	return b.channel
+//  return b.channel
 //}
 //
 //pub fn GetStart() -> i32 {
-//	return b.start
+//  return b.start
 //}
 //
 //pub fn GetStop() -> i32 {
-//	return b.stop
+//  return b.stop
 //}
 //
 //pub fn GetLine() -> i32 {
-//	return b.line
+//  return b.line
 //}
 //
 //pub fn GetColumn() -> i32 {
-//	return b.column
+//  return b.column
 //}
 //
 //pub fn GetTokenType() -> i32 {
-//	return b.tokenType
+//  return b.tokenType
 //}
 //
 //pub fn GetSource() -> *TokenSourceCharStreamPair {
-//	return b.source
+//  return b.source
 //}
 //
 //pub fn GetTokenIndex() -> i32 {
-//	return b.tokenIndex
+//  return b.tokenIndex
 //}
 //
 //pub fn SetTokenIndex(v: i32) {
-//	b.tokenIndex = v
+//  b.tokenIndex = v
 //}
 //
 //pub fn GetTokenSource() -> TokenSource {
-//	return b.source.tokenSource
+//  return b.source.tokenSource
 //}
 //
 //pub fn GetInputStream() -> CharStream {
-//	return b.source.charStream
+//  return b.source.charStream
 //}
 //
 //pub struct CommonToken {
-//	*BaseToken
+//  *BaseToken
 //}
 //
 //impl CommonToken {§//  pub fn new(source *TokenSourceCharStreamPair, tokenType, channel,: start, stop: i32) -> *CommonToken {
 //
-//	t := new(CommonToken)
+//  t := new(CommonToken)
 //
-//	t.BaseToken = new(BaseToken)
+//  t.BaseToken = new(BaseToken)
 //
-//	t.source = source
-//	t.tokenType = tokenType
-//	t.channel = channel
-//	t.start = start
-//	t.stop = stop
-//	t.tokenIndex = -1
-//	if t.source.tokenSource != nil {
-//		t.line = source.tokenSource.GetLine()
-//		t.column = source.tokenSource.GetCharPositionInLine()
-//	} else {
-//		t.column = -1
-//	}
-//	return t
+//  t.source = source
+//  t.tokenType = tokenType
+//  t.channel = channel
+//  t.start = start
+//  t.stop = stop
+//  t.tokenIndex = -1
+//  if t.source.tokenSource != nil {
+//    t.line = source.tokenSource.GetLine()
+//    t.column = source.tokenSource.GetCharPositionInLine()
+//  } else {
+//    t.column = -1
+//  }
+//  return t
 //}
 //
 //// An empty {@link Pair} which is used as the default value of
@@ -156,51 +156,51 @@
 //// @param oldToken The token to copy.
 ////
 //pub fn clone() -> *CommonToken {
-//	t := NewCommonToken(c.source, c.tokenType, c.channel, c.start, c.stop)
-//	t.tokenIndex = c.GetTokenIndex()
-//	t.line = c.GetLine()
-//	t.column = c.GetColumn()
-//	t.text = c.GetText()
-//	return t
+//  t := NewCommonToken(c.source, c.tokenType, c.channel, c.start, c.stop)
+//  t.tokenIndex = c.GetTokenIndex()
+//  t.line = c.GetLine()
+//  t.column = c.GetColumn()
+//  t.text = c.GetText()
+//  return t
 //}
 //
 //pub fn GetText() -> &str {
-//	if c.text != "" {
-//		return c.text
-//	}
-//	input := c.GetInputStream()
-//	if input == nil {
-//		return ""
-//	}
-//	n := input.Size()
-//	if c.start < n && c.stop < n {
-//		return input.GetTextFromInterval(NewInterval(c.start, c.stop))
-//	}
-//	return "<EOF>"
+//  if c.text != "" {
+//    return c.text
+//  }
+//  input := c.GetInputStream()
+//  if input == nil {
+//    return ""
+//  }
+//  n := input.Size()
+//  if c.start < n && c.stop < n {
+//    return input.GetTextFromInterval(NewInterval(c.start, c.stop))
+//  }
+//  return "<EOF>"
 //}
 //
 //pub fn SetText(text: &str) {
-//	c.text = text
+//  c.text = text
 //}
 //
 //pub fn String() -> &str {
-//	txt := c.GetText()
-//	if txt != "" {
-//		txt = &strs.Replace(txt, "\n", "\\n", -1)
-//		txt = &strs.Replace(txt, "\r", "\\r", -1)
-//		txt = &strs.Replace(txt, "\t", "\\t", -1)
-//	} else {
-//		txt = "<no text>"
-//	}
+//  txt := c.GetText()
+//  if txt != "" {
+//    txt = &strs.Replace(txt, "\n", "\\n", -1)
+//    txt = &strs.Replace(txt, "\r", "\\r", -1)
+//    txt = &strs.Replace(txt, "\t", "\\t", -1)
+//  } else {
+//    txt = "<no text>"
+//  }
 //
-//	var ch &str
-//	if c.channel > 0 {
-//		ch = ",channel=" + strconv.Itoa(c.channel)
-//	} else {
-//		ch = ""
-//	}
+//  var ch &str
+//  if c.channel > 0 {
+//    ch = ",channel=" + strconv.Itoa(c.channel)
+//  } else {
+//    ch = ""
+//  }
 //
-//	return "[@" + strconv.Itoa(c.tokenIndex) + "," + strconv.Itoa(c.start) + ":" + strconv.Itoa(c.stop) + "='" +
-//		txt + "',<" + strconv.Itoa(c.tokenType) + ">" +
-//		ch + "," + strconv.Itoa(c.line) + ":" + strconv.Itoa(c.column) + "]"
+//  return "[@" + strconv.Itoa(c.tokenIndex) + "," + strconv.Itoa(c.start) + ":" + strconv.Itoa(c.stop) + "='" +
+//    txt + "',<" + strconv.Itoa(c.tokenType) + ">" +
+//    ch + "," + strconv.Itoa(c.line) + ":" + strconv.Itoa(c.column) + "]"
 //}

@@ -1,7 +1,7 @@
 //package antlr
 //
 //import (
-//	"strconv"
+//  "strconv"
 //)
 //
 ////
@@ -24,63 +24,63 @@
 //// </ul>
 //
 //pub struct DiagnosticErrorListener {
-//	*DefaultErrorListener
+//  *DefaultErrorListener
 //
-//	exactOnly: bool
+//  exactOnly: bool
 //}
 //
 //impl DiagnosticErrorListener {§//  pub fn new(exactOnly: bool) -> *DiagnosticErrorListener {
 //
-//	n := new(DiagnosticErrorListener)
+//  n := new(DiagnosticErrorListener)
 //
-//	// whether all ambiguities or only exact ambiguities are Reported.
-//	n.exactOnly = exactOnly
-//	return n
+//  // whether all ambiguities or only exact ambiguities are Reported.
+//  n.exactOnly = exactOnly
+//  return n
 //}
 //
 //pub fn ReportAmbiguity(recognizer Parser, dfa *DFA, startIndex, stopIndex i32, exact: bool, ambigAlts *BitSet, configs: ATNConfigSet) {
-//	if d.exactOnly && !exact {
-//		return
-//	}
-//	msg := "reportAmbiguity d=" +
-//		d.getDecisionDescription(recognizer, dfa) +
-//		": ambigAlts=" +
-//		d.getConflictingAlts(ambigAlts, configs).String() +
-//		", input='" +
-//		recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
-//	recognizer.NotifyErrorListeners(msg, nil, nil)
+//  if d.exactOnly && !exact {
+//    return
+//  }
+//  msg := "reportAmbiguity d=" +
+//    d.getDecisionDescription(recognizer, dfa) +
+//    ": ambigAlts=" +
+//    d.getConflictingAlts(ambigAlts, configs).String() +
+//    ", input='" +
+//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
+//  recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
 //pub fn ReportAttemptingFullContext(recognizer Parser, dfa *DFA, startIndex, stopIndex: i32, conflictingAlts *BitSet, configs: ATNConfigSet) {
 //
-//	msg := "reportAttemptingFullContext d=" +
-//		d.getDecisionDescription(recognizer, dfa) +
-//		", input='" +
-//		recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
-//	recognizer.NotifyErrorListeners(msg, nil, nil)
+//  msg := "reportAttemptingFullContext d=" +
+//    d.getDecisionDescription(recognizer, dfa) +
+//    ", input='" +
+//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
+//  recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
 //pub fn ReportContextSensitivity(recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction: i32, configs: ATNConfigSet) {
-//	msg := "reportContextSensitivity d=" +
-//		d.getDecisionDescription(recognizer, dfa) +
-//		", input='" +
-//		recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
-//	recognizer.NotifyErrorListeners(msg, nil, nil)
+//  msg := "reportContextSensitivity d=" +
+//    d.getDecisionDescription(recognizer, dfa) +
+//    ", input='" +
+//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
+//  recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
 //pub fn getDecisionDescription(recognizer: Parser, dfa *DFA) -> &str {
-//	decision := dfa.decision
-//	ruleIndex := dfa.atnStartState.GetRuleIndex()
+//  decision := dfa.decision
+//  ruleIndex := dfa.atnStartState.GetRuleIndex()
 //
-//	ruleNames := recognizer.GetRuleNames()
-//	if ruleIndex < 0 || ruleIndex >= len(ruleNames) {
-//		return strconv.Itoa(decision)
-//	}
-//	ruleName := ruleNames[ruleIndex]
-//	if ruleName == "" {
-//		return strconv.Itoa(decision)
-//	}
-//	return strconv.Itoa(decision) + " (" + ruleName + ")"
+//  ruleNames := recognizer.GetRuleNames()
+//  if ruleIndex < 0 || ruleIndex >= len(ruleNames) {
+//    return strconv.Itoa(decision)
+//  }
+//  ruleName := ruleNames[ruleIndex]
+//  if ruleName == "" {
+//    return strconv.Itoa(decision)
+//  }
+//  return strconv.Itoa(decision) + " (" + ruleName + ")"
 //}
 //
 ////
@@ -95,13 +95,13 @@
 //// returns the set of alternatives represented in {@code configs}.
 ////
 //pub fn getConflictingAlts(ReportedAlts *BitSet, set: ATNConfigSet) -> *BitSet {
-//	if ReportedAlts != nil {
-//		return ReportedAlts
-//	}
-//	result := NewBitSet()
-//	for _, c := range set.GetItems() {
-//		result.add(c.GetAlt())
-//	}
+//  if ReportedAlts != nil {
+//    return ReportedAlts
+//  }
+//  result := NewBitSet()
+//  for _, c := range set.GetItems() {
+//    result.add(c.GetAlt())
+//  }
 //
-//	return result
+//  return result
 //}

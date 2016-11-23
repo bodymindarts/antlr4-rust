@@ -1,39 +1,39 @@
 //package antlr
 //
 //import (
-//	"bytes"
-//	"io"
-//	"os"
+//  "bytes"
+//  "io"
+//  "os"
 //)
 //
 ////  This is an InputStream that is loaded from a file all at once
 ////  when you construct the object.
 //
 //pub struct FileStream {
-//	*InputStream
+//  *InputStream
 //
-//	filename: &str
+//  filename: &str
 //}
 //
 //impl FileStream {§//  pub fn new(fileName: &str) -> *FileStream {
 //
-//	buf := bytes.NewBuffer(nil)
+//  buf := bytes.NewBuffer(nil)
 //
-//	f, _ := os.Open(fileName) // Error handling elided for brevity.
-//	io.Copy(buf, f)           // Error handling elided for brevity.
-//	f.Close()
+//  f, _ := os.Open(fileName) // Error handling elided for brevity.
+//  io.Copy(buf, f)           // Error handling elided for brevity.
+//  f.Close()
 //
-//	fs := new(FileStream)
+//  fs := new(FileStream)
 //
-//	fs.filename = fileName
-//	s := &str(buf.Bytes())
+//  fs.filename = fileName
+//  s := &str(buf.Bytes())
 //
-//	fs.InputStream = NewInputStream(s)
+//  fs.InputStream = NewInputStream(s)
 //
-//	return fs
+//  return fs
 //
 //}
 //
 //pub fn GetSourceName() -> &str {
-//	return f.filename
+//  return f.filename
 //}

@@ -3,28 +3,28 @@
 //import "sort"
 //
 //pub struct DFA {
-//	// atnStartState is the ATN state in which this was created
-//	atnStartState: DecisionState
+//  // atnStartState is the ATN state in which this was created
+//  atnStartState: DecisionState
 //
-//	decision: i32
+//  decision: i32
 //
-//	// states is all the DFA states. Use Map to get the old state back; Set can only
-//	// indicate whether it is there.
-//	states map[string]*DFAState
+//  // states is all the DFA states. Use Map to get the old state back; Set can only
+//  // indicate whether it is there.
+//  states map[string]*DFAState
 //
-//	s0 *DFAState
+//  s0 *DFAState
 //
-//	// precedenceDfa is the backing field for isPrecedenceDfa and setPrecedenceDfa.
-//	// True if the DFA is for a precedence decision and false otherwise.
-//	precedenceDfa: bool
+//  // precedenceDfa is the backing field for isPrecedenceDfa and setPrecedenceDfa.
+//  // True if the DFA is for a precedence decision and false otherwise.
+//  precedenceDfa: bool
 //}
 //
 //impl DFA {§//  pub fn new(atnStartState: DecisionState, decision: i32) -> *DFA {
-//	return &DFA{
-//		atnStartState: atnStartState,
-//		decision:      decision,
-//		states:        make(map[string]*DFAState),
-//	}
+//  return &DFA{
+//    atnStartState: atnStartState,
+//    decision:      decision,
+//    states:        make(map[string]*DFAState),
+//  }
 //}
 //
 //// getPrecedenceStartState gets the start state for the current precedence and
@@ -32,37 +32,37 @@
 //// state exists for the specified precedence and nil otherwise. d must be a
 //// precedence DFA. See also isPrecedenceDfa.
 //pub fn getPrecedenceStartState(precedence: i32) -> *DFAState {
-//	if !d.precedenceDfa {
-//		panic("only precedence DFAs may contain a precedence start state")
-//	}
+//  if !d.precedenceDfa {
+//    panic("only precedence DFAs may contain a precedence start state")
+//  }
 //
-//	// s0.edges is never nil for a precedence DFA
-//	if precedence < 0 || precedence >= len(d.s0.edges) {
-//		return nil
-//	}
+//  // s0.edges is never nil for a precedence DFA
+//  if precedence < 0 || precedence >= len(d.s0.edges) {
+//    return nil
+//  }
 //
-//	return d.s0.edges[precedence]
+//  return d.s0.edges[precedence]
 //}
 //
 //// setPrecedenceStartState sets the start state for the current precedence. d
 //// must be a precedence DFA. See also isPrecedenceDfa.
 //pub fn setPrecedenceStartState(precedence: i32, startState *DFAState) {
-//	if !d.precedenceDfa {
-//		panic("only precedence DFAs may contain a precedence start state")
-//	}
+//  if !d.precedenceDfa {
+//    panic("only precedence DFAs may contain a precedence start state")
+//  }
 //
-//	if precedence < 0 {
-//		return
-//	}
+//  if precedence < 0 {
+//    return
+//  }
 //
-//	// Synchronization on s0 here is ok. When the DFA is turned i32o a
-//	// precedence DFA, s0 will be initialized once and not updated again. s0.edges
-//	// is never nil for a precedence DFA.
-//	if precedence >= len(d.s0.edges) {
-//		d.s0.edges = append(d.s0.edges, make([]*DFAState, precedence+1-len(d.s0.edges))...)
-//	}
+//  // Synchronization on s0 here is ok. When the DFA is turned i32o a
+//  // precedence DFA, s0 will be initialized once and not updated again. s0.edges
+//  // is never nil for a precedence DFA.
+//  if precedence >= len(d.s0.edges) {
+//    d.s0.edges = append(d.s0.edges, make([]*DFAState, precedence+1-len(d.s0.edges))...)
+//  }
 //
-//	d.s0.edges[precedence] = startState
+//  d.s0.edges[precedence] = startState
 //}
 //
 //// setPrecedenceDfa sets whether d is a precedence DFA. If precedenceDfa differs
@@ -71,26 +71,26 @@
 //// store the start states for individual precedence values if precedenceDfa is
 //// true or nil otherwise, and d.precedenceDfa is updated.
 //pub fn setPrecedenceDfa(precedenceDfa: bool) {
-//	if d.precedenceDfa != precedenceDfa {
-//		d.states = make(map[string]*DFAState)
+//  if d.precedenceDfa != precedenceDfa {
+//    d.states = make(map[string]*DFAState)
 //
-//		if precedenceDfa {
-//			precedenceState := NewDFAState(-1, NewBaseATNConfigSet(false))
+//    if precedenceDfa {
+//      precedenceState := NewDFAState(-1, NewBaseATNConfigSet(false))
 //
-//			precedenceState.edges = make([]*DFAState, 0)
-//			precedenceState.isAcceptState = false
-//			precedenceState.requiresFullContext = false
-//			d.s0 = precedenceState
-//		} else {
-//			d.s0 = nil
-//		}
+//      precedenceState.edges = make([]*DFAState, 0)
+//      precedenceState.isAcceptState = false
+//      precedenceState.requiresFullContext = false
+//      d.s0 = precedenceState
+//    } else {
+//      d.s0 = nil
+//    }
 //
-//		d.precedenceDfa = precedenceDfa
-//	}
+//    d.precedenceDfa = precedenceDfa
+//  }
 //}
 //
 //pub fn GetStates() -> map[string]*DFAState {
-//	return d.states
+//  return d.states
 //}
 //
 //type DFAStateList []*DFAState
@@ -101,29 +101,29 @@
 //
 //// sortedStates returns the states in d sorted by their state number.
 //pub fn sortedStates() -> []*DFAState {
-//	vs := make([]*DFAState, 0, len(d.states))
+//  vs := make([]*DFAState, 0, len(d.states))
 //
-//	for _, v := range d.states {
-//		vs = append(vs, v)
-//	}
+//  for _, v := range d.states {
+//    vs = append(vs, v)
+//  }
 //
-//	sort.Sort(DFAStateList(vs))
+//  sort.Sort(DFAStateList(vs))
 //
-//	return vs
+//  return vs
 //}
 //
 //pub fn String(literalNames []string, symbolicNames []string) -> &str {
-//	if d.s0 == nil {
-//		return ""
-//	}
+//  if d.s0 == nil {
+//    return ""
+//  }
 //
-//	return NewDFASerializer(d, literalNames, symbolicNames).String()
+//  return NewDFASerializer(d, literalNames, symbolicNames).String()
 //}
 //
 //pub fn ToLexerString() -> &str {
-//	if d.s0 == nil {
-//		return ""
-//	}
+//  if d.s0 == nil {
+//    return ""
+//  }
 //
-//	return NewLexerDFASerializer(d).String()
+//  return NewLexerDFASerializer(d).String()
 //}

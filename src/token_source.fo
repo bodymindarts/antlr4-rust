@@ -1,13 +1,13 @@
 //package antlr
 //
 //pub trait TokenSource {
-//	NextToken() Token
-//	Skip()
-//	More()
-//	GetLine() i32
-//	GetCharPositionInLine() i32
-//	GetInputStream() CharStream
-//	GetSourceName() &str
-//	setTokenFactory(factory TokenFactory)
-//	GetTokenFactory() TokenFactory
+//  NextToken() Token
+//  Skip()
+//  More()
+//  GetLine() i32
+//  GetCharPositionInLine() i32
+//  GetInputStream() CharStream
+//  GetSourceName() &str
+//  setTokenFactory(factory TokenFactory)
+//  GetTokenFactory() TokenFactory
 //}

@@ -3,44 +3,44 @@
 //var ATNSimulatorError = NewDFAState(0x7FFFFFFF, NewBaseATNConfigSet(false))
 //
 //pub trait IATNSimulator {
-//	SharedContextCache() *PredictionContextCache
-//	ATN() *ATN
-//	DecisionToDFA() []*DFA
+//  SharedContextCache() *PredictionContextCache
+//  ATN() *ATN
+//  DecisionToDFA() []*DFA
 //}
 //
 //pub struct BaseATNSimulator {
-//	atn:                *ATN
-//	sharedContextCache: *PredictionContextCache
-//	decisionToDFA  []*DFA
+//  atn:                *ATN
+//  sharedContextCache: *PredictionContextCache
+//  decisionToDFA  []*DFA
 //}
 //
 //impl BaseATNSimulator {§//  pub fn new(atn *ATN, sharedContextCache *PredictionContextCache) -> *BaseATNSimulator {
-//	b := new(BaseATNSimulator)
+//  b := new(BaseATNSimulator)
 //
-//	b.atn = atn
-//	b.sharedContextCache = sharedContextCache
+//  b.atn = atn
+//  b.sharedContextCache = sharedContextCache
 //
-//	return b
+//  return b
 //}
 //
 //pub fn getCachedContext(context: PredictionContext) -> PredictionContext {
-//	if b.sharedContextCache == nil {
-//		return context
-//	}
+//  if b.sharedContextCache == nil {
+//    return context
+//  }
 //
-//	visited := make(map[PredictionContext]PredictionContext)
+//  visited := make(map[PredictionContext]PredictionContext)
 //
-//	return getCachedBasePredictionContext(context, b.sharedContextCache, visited)
+//  return getCachedBasePredictionContext(context, b.sharedContextCache, visited)
 //}
 //
 //pub fn SharedContextCache() -> *PredictionContextCache {
-//	return b.sharedContextCache
+//  return b.sharedContextCache
 //}
 //
 //pub fn ATN() -> *ATN {
-//	return b.atn
+//  return b.atn
 //}
 //
 //pub fn DecisionToDFA() -> []*DFA {
-//	return b.decisionToDFA
+//  return b.decisionToDFA
 //}

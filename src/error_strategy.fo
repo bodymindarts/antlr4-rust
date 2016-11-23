@@ -1,60 +1,60 @@
 //package antlr
 //
 //import (
-//	"fmt"
-//	"reflect"
-//	"strconv"
-//	"strings"
+//  "fmt"
+//  "reflect"
+//  "strconv"
+//  "strings"
 //)
 //
 //pub trait ErrorStrategy {
-//	reset(Parser)
-//	RecoverInline(Parser) Token
-//	Recover(Parser, RecognitionException)
-//	Sync(Parser)
-//	inErrorRecoveryMode(Parser) bool
-//	ReportError(Parser, RecognitionException)
-//	ReportMatch(Parser)
+//  reset(Parser)
+//  RecoverInline(Parser) Token
+//  Recover(Parser, RecognitionException)
+//  Sync(Parser)
+//  inErrorRecoveryMode(Parser) bool
+//  ReportError(Parser, RecognitionException)
+//  ReportMatch(Parser)
 //}
 //
 //// This is the default implementation of {@link ANTLRErrorStrategy} used for
 //// error Reporting and recovery in ANTLR parsers.
 ////
 //pub struct DefaultErrorStrategy {
-//	errorRecoveryMode: bool
-//	lastErrorIndex:    i32
-//	lastErrorStates:   *IntervalSet
+//  errorRecoveryMode: bool
+//  lastErrorIndex:    i32
+//  lastErrorStates:   *IntervalSet
 //}
 //
 //var _ ErrorStrategy = &DefaultErrorStrategy{}
 //
 //impl DefaultErrorStrategy {§//  pub fn new() -> *DefaultErrorStrategy {
 //
-//	d := new(DefaultErrorStrategy)
+//  d := new(DefaultErrorStrategy)
 //
-//	// Indicates whether the error strategy is currently "recovering from an
-//	// error". This is used to suppress Reporting multiple error messages while
-//	// attempting to recover from a detected syntax error.
-//	//
-//	// @see //inErrorRecoveryMode
-//	//
-//	d.errorRecoveryMode = false
+//  // Indicates whether the error strategy is currently "recovering from an
+//  // error". This is used to suppress Reporting multiple error messages while
+//  // attempting to recover from a detected syntax error.
+//  //
+//  // @see //inErrorRecoveryMode
+//  //
+//  d.errorRecoveryMode = false
 //
-//	// The index i32o the input stream where the last error occurred.
-//	// This is used to prevent infinite loops where an error is found
-//	// but no token is consumed during recovery...another error is found,
-//	// ad nauseum. This is a failsafe mechanism to guarantee that at least
-//	// one token/tree node is consumed for two errors.
-//	//
-//	d.lastErrorIndex = -1
-//	d.lastErrorStates = nil
-//	return d
+//  // The index i32o the input stream where the last error occurred.
+//  // This is used to prevent infinite loops where an error is found
+//  // but no token is consumed during recovery...another error is found,
+//  // ad nauseum. This is a failsafe mechanism to guarantee that at least
+//  // one token/tree node is consumed for two errors.
+//  //
+//  d.lastErrorIndex = -1
+//  d.lastErrorStates = nil
+//  return d
 //}
 //
 //// <p>The default implementation simply calls {@link //endErrorCondition} to
 //// ensure that the handler is not in error recovery mode.</p>
 //pub fn reset(recognizer: Parser) {
-//	d.endErrorCondition(recognizer)
+//  d.endErrorCondition(recognizer)
 //}
 //
 ////
@@ -64,11 +64,11 @@
 //// @param recognizer the parser instance
 ////
 //pub fn beginErrorCondition(recognizer: Parser) {
-//	d.errorRecoveryMode = true
+//  d.errorRecoveryMode = true
 //}
 //
 //pub fn inErrorRecoveryMode(recognizer: Parser) -> bool {
-//	return d.errorRecoveryMode
+//  return d.errorRecoveryMode
 //}
 //
 ////
@@ -78,9 +78,9 @@
 //// @param recognizer
 ////
 //pub fn endErrorCondition(recognizer: Parser) {
-//	d.errorRecoveryMode = false
-//	d.lastErrorStates = nil
-//	d.lastErrorIndex = -1
+//  d.errorRecoveryMode = false
+//  d.lastErrorStates = nil
+//  d.lastErrorIndex = -1
 //}
 //
 ////
@@ -89,7 +89,7 @@
 //// <p>The default implementation simply calls {@link //endErrorCondition}.</p>
 ////
 //pub fn ReportMatch(recognizer: Parser) {
-//	d.endErrorCondition(recognizer)
+//  d.endErrorCondition(recognizer)
 //}
 //
 ////
@@ -112,25 +112,25 @@
 //// </ul>
 ////
 //pub fn ReportError(recognizer: Parser, e: RecognitionException) {
-//	// if we've already Reported an error and have not Matched a token
-//	// yet successfully, don't Report any errors.
-//	if d.inErrorRecoveryMode(recognizer) {
-//		return // don't Report spurious errors
-//	}
-//	d.beginErrorCondition(recognizer)
+//  // if we've already Reported an error and have not Matched a token
+//  // yet successfully, don't Report any errors.
+//  if d.inErrorRecoveryMode(recognizer) {
+//    return // don't Report spurious errors
+//  }
+//  d.beginErrorCondition(recognizer)
 //
-//	switch t := e.(type) {
-//	default:
-//		fmt.Println("unknown recognition error type: " + reflect.TypeOf(e).Name())
-//		//            fmt.Println(e.stack)
-//		recognizer.NotifyErrorListeners(e.GetMessage(), e.GetOffendingToken(), e)
-//	case *NoViableAltException:
-//		d.ReportNoViableAlternative(recognizer, t)
-//	case *InputMisMatchException:
-//		d.ReportInputMisMatch(recognizer, t)
-//	case *FailedPredicateException:
-//		d.ReportFailedPredicate(recognizer, t)
-//	}
+//  switch t := e.(type) {
+//  default:
+//    fmt.Println("unknown recognition error type: " + reflect.TypeOf(e).Name())
+//    //            fmt.Println(e.stack)
+//    recognizer.NotifyErrorListeners(e.GetMessage(), e.GetOffendingToken(), e)
+//  case *NoViableAltException:
+//    d.ReportNoViableAlternative(recognizer, t)
+//  case *InputMisMatchException:
+//    d.ReportInputMisMatch(recognizer, t)
+//  case *FailedPredicateException:
+//    d.ReportFailedPredicate(recognizer, t)
+//  }
 //}
 //
 //// {@inheritDoc}
@@ -141,21 +141,21 @@
 ////
 //pub fn Recover(recognizer: Parser, e: RecognitionException) {
 //
-//	if d.lastErrorIndex == recognizer.GetInputStream().Index() &&
-//		d.lastErrorStates != nil && d.lastErrorStates.contains(recognizer.GetState()) {
-//		// uh oh, another error at same token index and previously-Visited
-//		// state in ATN must be a case where LT(1) is in the recovery
-//		// token set so nothing got consumed. Consume a single token
-//		// at least to prevent an infinite loop d is a failsafe.
-//		recognizer.Consume()
-//	}
-//	d.lastErrorIndex = recognizer.GetInputStream().Index()
-//	if d.lastErrorStates == nil {
-//		d.lastErrorStates = NewIntervalSet()
-//	}
-//	d.lastErrorStates.addOne(recognizer.GetState())
-//	followSet := d.getErrorRecoverySet(recognizer)
-//	d.consumeUntil(recognizer, followSet)
+//  if d.lastErrorIndex == recognizer.GetInputStream().Index() &&
+//    d.lastErrorStates != nil && d.lastErrorStates.contains(recognizer.GetState()) {
+//    // uh oh, another error at same token index and previously-Visited
+//    // state in ATN must be a case where LT(1) is in the recovery
+//    // token set so nothing got consumed. Consume a single token
+//    // at least to prevent an infinite loop d is a failsafe.
+//    recognizer.Consume()
+//  }
+//  d.lastErrorIndex = recognizer.GetInputStream().Index()
+//  if d.lastErrorStates == nil {
+//    d.lastErrorStates = NewIntervalSet()
+//  }
+//  d.lastErrorStates.addOne(recognizer.GetState())
+//  followSet := d.getErrorRecoverySet(recognizer)
+//  d.consumeUntil(recognizer, followSet)
 //}
 //
 //// The default implementation of {@link ANTLRErrorStrategy//Sync} makes sure
@@ -204,39 +204,39 @@
 //// functionality by simply overriding d method as a blank { }.</p>
 ////
 //pub fn Sync(recognizer: Parser) {
-//	// If already recovering, don't try to Sync
-//	if d.inErrorRecoveryMode(recognizer) {
-//		return
-//	}
+//  // If already recovering, don't try to Sync
+//  if d.inErrorRecoveryMode(recognizer) {
+//    return
+//  }
 //
-//	s := recognizer.GetInterpreter().atn.states[recognizer.GetState()]
-//	la := recognizer.GetTokenStream().LA(1)
+//  s := recognizer.GetInterpreter().atn.states[recognizer.GetState()]
+//  la := recognizer.GetTokenStream().LA(1)
 //
-//	// try cheaper subset first might get lucky. seems to shave a wee bit off
-//	if la == TokenEOF || recognizer.GetATN().NextTokens(s, nil).contains(la) {
-//		return
-//	}
-//	// Return but don't end recovery. only do that upon valid token Match
-//	if recognizer.IsExpectedToken(la) {
-//		return
-//	}
+//  // try cheaper subset first might get lucky. seems to shave a wee bit off
+//  if la == TokenEOF || recognizer.GetATN().NextTokens(s, nil).contains(la) {
+//    return
+//  }
+//  // Return but don't end recovery. only do that upon valid token Match
+//  if recognizer.IsExpectedToken(la) {
+//    return
+//  }
 //
-//	switch s.GetStateType() {
-//	case ATNStateBlockStart, ATNStateStarBlockStart, ATNStatePlusBlockStart, ATNStateStarLoopEntry:
-//		// Report error and recover if possible
-//		if d.SingleTokenDeletion(recognizer) != nil {
-//			return
-//		}
-//		panic(NewInputMisMatchException(recognizer))
-//	case ATNStatePlusLoopBack, ATNStateStarLoopBack:
-//		d.ReportUnwantedToken(recognizer)
-//		expecting := NewIntervalSet()
-//		expecting.addSet(recognizer.GetExpectedTokens())
-//		whatFollowsLoopIterationOrRule := expecting.addSet(d.getErrorRecoverySet(recognizer))
-//		d.consumeUntil(recognizer, whatFollowsLoopIterationOrRule)
-//	default:
-//		// do nothing if we can't identify the exact kind of ATN state
-//	}
+//  switch s.GetStateType() {
+//  case ATNStateBlockStart, ATNStateStarBlockStart, ATNStatePlusBlockStart, ATNStateStarLoopEntry:
+//    // Report error and recover if possible
+//    if d.SingleTokenDeletion(recognizer) != nil {
+//      return
+//    }
+//    panic(NewInputMisMatchException(recognizer))
+//  case ATNStatePlusLoopBack, ATNStateStarLoopBack:
+//    d.ReportUnwantedToken(recognizer)
+//    expecting := NewIntervalSet()
+//    expecting.addSet(recognizer.GetExpectedTokens())
+//    whatFollowsLoopIterationOrRule := expecting.addSet(d.getErrorRecoverySet(recognizer))
+//    d.consumeUntil(recognizer, whatFollowsLoopIterationOrRule)
+//  default:
+//    // do nothing if we can't identify the exact kind of ATN state
+//  }
 //}
 //
 //// This is called by {@link //ReportError} when the exception is a
@@ -248,19 +248,19 @@
 //// @param e the recognition exception
 ////
 //pub fn ReportNoViableAlternative(recognizer: Parser, e *NoViableAltException) {
-//	tokens := recognizer.GetTokenStream()
-//	var input &str
-//	if tokens != nil {
-//		if e.startToken.GetTokenType() == TokenEOF {
-//			input = "<EOF>"
-//		} else {
-//			input = tokens.GetTextFromTokens(e.startToken, e.offendingToken)
-//		}
-//	} else {
-//		input = "<unknown input>"
-//	}
-//	msg := "no viable alternative at input " + d.escapeWSAndQuote(input)
-//	recognizer.NotifyErrorListeners(msg, e.offendingToken, e)
+//  tokens := recognizer.GetTokenStream()
+//  var input &str
+//  if tokens != nil {
+//    if e.startToken.GetTokenType() == TokenEOF {
+//      input = "<EOF>"
+//    } else {
+//      input = tokens.GetTextFromTokens(e.startToken, e.offendingToken)
+//    }
+//  } else {
+//    input = "<unknown input>"
+//  }
+//  msg := "no viable alternative at input " + d.escapeWSAndQuote(input)
+//  recognizer.NotifyErrorListeners(msg, e.offendingToken, e)
 //}
 //
 ////
@@ -273,9 +273,9 @@
 //// @param e the recognition exception
 ////
 //pub fn ReportInputMisMatch(recognizer: Parser, e *InputMisMatchException) {
-//	msg := "mismatched input " + this.GetTokenErrorDisplay(e.offendingToken) +
-//		" expecting " + e.getExpectedTokens().StringVerbose(recognizer.GetLiteralNames(), recognizer.GetSymbolicNames(), false)
-//	recognizer.NotifyErrorListeners(msg, e.offendingToken, e)
+//  msg := "mismatched input " + this.GetTokenErrorDisplay(e.offendingToken) +
+//    " expecting " + e.getExpectedTokens().StringVerbose(recognizer.GetLiteralNames(), recognizer.GetSymbolicNames(), false)
+//  recognizer.NotifyErrorListeners(msg, e.offendingToken, e)
 //}
 //
 ////
@@ -288,9 +288,9 @@
 //// @param e the recognition exception
 ////
 //pub fn ReportFailedPredicate(recognizer: Parser, e *FailedPredicateException) {
-//	ruleName := recognizer.GetRuleNames()[recognizer.GetParserRuleContext().GetRuleIndex()]
-//	msg := "rule " + ruleName + " " + e.message
-//	recognizer.NotifyErrorListeners(msg, e.offendingToken, e)
+//  ruleName := recognizer.GetRuleNames()[recognizer.GetParserRuleContext().GetRuleIndex()]
+//  msg := "rule " + ruleName + " " + e.message
+//  recognizer.NotifyErrorListeners(msg, e.offendingToken, e)
 //}
 //
 //// This method is called to Report a syntax error which requires the removal
@@ -311,16 +311,16 @@
 //// @param recognizer the parser instance
 ////
 //pub fn ReportUnwantedToken(recognizer: Parser) {
-//	if d.inErrorRecoveryMode(recognizer) {
-//		return
-//	}
-//	d.beginErrorCondition(recognizer)
-//	t := recognizer.GetCurrentToken()
-//	tokenName := d.GetTokenErrorDisplay(t)
-//	expecting := d.GetExpectedTokens(recognizer)
-//	msg := "extraneous input " + tokenName + " expecting " +
-//		expecting.StringVerbose(recognizer.GetLiteralNames(), recognizer.GetSymbolicNames(), false)
-//	recognizer.NotifyErrorListeners(msg, t, nil)
+//  if d.inErrorRecoveryMode(recognizer) {
+//    return
+//  }
+//  d.beginErrorCondition(recognizer)
+//  t := recognizer.GetCurrentToken()
+//  tokenName := d.GetTokenErrorDisplay(t)
+//  expecting := d.GetExpectedTokens(recognizer)
+//  msg := "extraneous input " + tokenName + " expecting " +
+//    expecting.StringVerbose(recognizer.GetLiteralNames(), recognizer.GetSymbolicNames(), false)
+//  recognizer.NotifyErrorListeners(msg, t, nil)
 //}
 //
 //// This method is called to Report a syntax error which requires the
@@ -340,15 +340,15 @@
 //// @param recognizer the parser instance
 ////
 //pub fn ReportMissingToken(recognizer: Parser) {
-//	if d.inErrorRecoveryMode(recognizer) {
-//		return
-//	}
-//	d.beginErrorCondition(recognizer)
-//	t := recognizer.GetCurrentToken()
-//	expecting := d.GetExpectedTokens(recognizer)
-//	msg := "missing " + expecting.StringVerbose(recognizer.GetLiteralNames(), recognizer.GetSymbolicNames(), false) +
-//		" at " + d.GetTokenErrorDisplay(t)
-//	recognizer.NotifyErrorListeners(msg, t, nil)
+//  if d.inErrorRecoveryMode(recognizer) {
+//    return
+//  }
+//  d.beginErrorCondition(recognizer)
+//  t := recognizer.GetCurrentToken()
+//  expecting := d.GetExpectedTokens(recognizer)
+//  msg := "missing " + expecting.StringVerbose(recognizer.GetLiteralNames(), recognizer.GetSymbolicNames(), false) +
+//    " at " + d.GetTokenErrorDisplay(t)
+//  recognizer.NotifyErrorListeners(msg, t, nil)
 //}
 //
 //// <p>The default implementation attempts to recover from the mismatched input
@@ -401,20 +401,20 @@
 //// in rule {@code atom}. It can assume that you forgot the {@code ')'}.
 ////
 //pub fn RecoverInline(recognizer: Parser) -> Token {
-//	// SINGLE TOKEN DELETION
-//	MatchedSymbol := d.SingleTokenDeletion(recognizer)
-//	if MatchedSymbol != nil {
-//		// we have deleted the extra token.
-//		// now, move past ttype token as if all were ok
-//		recognizer.Consume()
-//		return MatchedSymbol
-//	}
-//	// SINGLE TOKEN INSERTION
-//	if d.SingleTokenInsertion(recognizer) {
-//		return d.GetMissingSymbol(recognizer)
-//	}
-//	// even that didn't work must panic the exception
-//	panic(NewInputMisMatchException(recognizer))
+//  // SINGLE TOKEN DELETION
+//  MatchedSymbol := d.SingleTokenDeletion(recognizer)
+//  if MatchedSymbol != nil {
+//    // we have deleted the extra token.
+//    // now, move past ttype token as if all were ok
+//    recognizer.Consume()
+//    return MatchedSymbol
+//  }
+//  // SINGLE TOKEN INSERTION
+//  if d.SingleTokenInsertion(recognizer) {
+//    return d.GetMissingSymbol(recognizer)
+//  }
+//  // even that didn't work must panic the exception
+//  panic(NewInputMisMatchException(recognizer))
 //}
 //
 ////
@@ -435,20 +435,20 @@
 //// strategy for the current mismatched input, otherwise {@code false}
 ////
 //pub fn SingleTokenInsertion(recognizer: Parser) -> bool {
-//	currentSymbolType := recognizer.GetTokenStream().LA(1)
-//	// if current token is consistent with what could come after current
-//	// ATN state, then we know we're missing a token error recovery
-//	// is free to conjure up and insert the missing token
-//	atn := recognizer.GetInterpreter().atn
-//	currentState := atn.states[recognizer.GetState()]
-//	next := currentState.GetTransitions()[0].getTarget()
-//	expectingAtLL2 := atn.NextTokens(next, recognizer.GetParserRuleContext())
-//	if expectingAtLL2.contains(currentSymbolType) {
-//		d.ReportMissingToken(recognizer)
-//		return true
-//	}
+//  currentSymbolType := recognizer.GetTokenStream().LA(1)
+//  // if current token is consistent with what could come after current
+//  // ATN state, then we know we're missing a token error recovery
+//  // is free to conjure up and insert the missing token
+//  atn := recognizer.GetInterpreter().atn
+//  currentState := atn.states[recognizer.GetState()]
+//  next := currentState.GetTransitions()[0].getTarget()
+//  expectingAtLL2 := atn.NextTokens(next, recognizer.GetParserRuleContext())
+//  if expectingAtLL2.contains(currentSymbolType) {
+//    d.ReportMissingToken(recognizer)
+//    return true
+//  }
 //
-//	return false
+//  return false
 //}
 //
 //// This method implements the single-token deletion inline error recovery
@@ -470,22 +470,22 @@
 //// {@code nil}
 ////
 //pub fn SingleTokenDeletion(recognizer: Parser) -> Token {
-//	NextTokenType := recognizer.GetTokenStream().LA(2)
-//	expecting := d.GetExpectedTokens(recognizer)
-//	if expecting.contains(NextTokenType) {
-//		d.ReportUnwantedToken(recognizer)
-//		// print("recoverFromMisMatchedToken deleting " \
-//		// + str(recognizer.GetTokenStream().LT(1)) \
-//		// + " since " + str(recognizer.GetTokenStream().LT(2)) \
-//		// + " is what we want", file=sys.stderr)
-//		recognizer.Consume() // simply delete extra token
-//		// we want to return the token we're actually Matching
-//		MatchedSymbol := recognizer.GetCurrentToken()
-//		d.ReportMatch(recognizer) // we know current token is correct
-//		return MatchedSymbol
-//	}
+//  NextTokenType := recognizer.GetTokenStream().LA(2)
+//  expecting := d.GetExpectedTokens(recognizer)
+//  if expecting.contains(NextTokenType) {
+//    d.ReportUnwantedToken(recognizer)
+//    // print("recoverFromMisMatchedToken deleting " \
+//    // + str(recognizer.GetTokenStream().LT(1)) \
+//    // + " since " + str(recognizer.GetTokenStream().LT(2)) \
+//    // + " is what we want", file=sys.stderr)
+//    recognizer.Consume() // simply delete extra token
+//    // we want to return the token we're actually Matching
+//    MatchedSymbol := recognizer.GetCurrentToken()
+//    d.ReportMatch(recognizer) // we know current token is correct
+//    return MatchedSymbol
+//  }
 //
-//	return nil
+//  return nil
 //}
 //
 //// Conjure up a missing token during error recovery.
@@ -508,34 +508,34 @@
 //// override d method to create the appropriate tokens.
 ////
 //pub fn GetMissingSymbol(recognizer: Parser) -> Token {
-//	currentSymbol := recognizer.GetCurrentToken()
-//	expecting := d.GetExpectedTokens(recognizer)
-//	expectedTokenType := expecting.first()
-//	var tokenText &str
+//  currentSymbol := recognizer.GetCurrentToken()
+//  expecting := d.GetExpectedTokens(recognizer)
+//  expectedTokenType := expecting.first()
+//  var tokenText &str
 //
-//	if expectedTokenType == TokenEOF {
-//		tokenText = "<missing EOF>"
-//	} else {
-//		ln := recognizer.GetLiteralNames()
-//		if expectedTokenType > 0 && expectedTokenType < len(ln) {
-//			tokenText = "<missing " + recognizer.GetLiteralNames()[expectedTokenType] + ">"
-//		} else {
-//			tokenText = "<missing undefined>" // TODO matches the JS impl
-//		}
-//	}
-//	current := currentSymbol
-//	lookback := recognizer.GetTokenStream().LT(-1)
-//	if current.GetTokenType() == TokenEOF && lookback != nil {
-//		current = lookback
-//	}
+//  if expectedTokenType == TokenEOF {
+//    tokenText = "<missing EOF>"
+//  } else {
+//    ln := recognizer.GetLiteralNames()
+//    if expectedTokenType > 0 && expectedTokenType < len(ln) {
+//      tokenText = "<missing " + recognizer.GetLiteralNames()[expectedTokenType] + ">"
+//    } else {
+//      tokenText = "<missing undefined>" // TODO matches the JS impl
+//    }
+//  }
+//  current := currentSymbol
+//  lookback := recognizer.GetTokenStream().LT(-1)
+//  if current.GetTokenType() == TokenEOF && lookback != nil {
+//    current = lookback
+//  }
 //
-//	tf := recognizer.GetTokenFactory()
+//  tf := recognizer.GetTokenFactory()
 //
-//	return tf.Create(current.GetSource(), expectedTokenType, tokenText, TokenDefaultChannel, -1, -1, current.GetLine(), current.GetColumn())
+//  return tf.Create(current.GetSource(), expectedTokenType, tokenText, TokenDefaultChannel, -1, -1, current.GetLine(), current.GetColumn())
 //}
 //
 //pub fn GetExpectedTokens(recognizer: Parser) -> *IntervalSet {
-//	return recognizer.GetExpectedTokens()
+//  return recognizer.GetExpectedTokens()
 //}
 //
 //// How should a token be displayed in an error message? The default
@@ -547,25 +547,25 @@
 //// so that it creates a NewJava type.
 ////
 //pub fn GetTokenErrorDisplay(t: Token) -> &str {
-//	if t == nil {
-//		return "<no token>"
-//	}
-//	s := t.GetText()
-//	if s == "" {
-//		if t.GetTokenType() == TokenEOF {
-//			s = "<EOF>"
-//		} else {
-//			s = "<" + strconv.Itoa(t.GetTokenType()) + ">"
-//		}
-//	}
-//	return d.escapeWSAndQuote(s)
+//  if t == nil {
+//    return "<no token>"
+//  }
+//  s := t.GetText()
+//  if s == "" {
+//    if t.GetTokenType() == TokenEOF {
+//      s = "<EOF>"
+//    } else {
+//      s = "<" + strconv.Itoa(t.GetTokenType()) + ">"
+//    }
+//  }
+//  return d.escapeWSAndQuote(s)
 //}
 //
 //pub fn escapeWSAndQuote(s: &str) -> &str {
-//	s = &strs.Replace(s, "\t", "\\t", -1)
-//	s = &strs.Replace(s, "\n", "\\n", -1)
-//	s = &strs.Replace(s, "\r", "\\r", -1)
-//	return "'" + s + "'"
+//  s = &strs.Replace(s, "\t", "\\t", -1)
+//  s = &strs.Replace(s, "\n", "\\n", -1)
+//  s = &strs.Replace(s, "\r", "\\r", -1)
+//  return "'" + s + "'"
 //}
 //
 //// Compute the error recovery set for the current rule. During
@@ -661,28 +661,28 @@
 //// at run-time upon error to avoid overhead during parsing.
 ////
 //pub fn getErrorRecoverySet(recognizer: Parser) -> *IntervalSet {
-//	atn := recognizer.GetInterpreter().atn
-//	ctx := recognizer.GetParserRuleContext()
-//	recoverSet := NewIntervalSet()
-//	for ctx != nil && ctx.GetInvokingState() >= 0 {
-//		// compute what follows who invoked us
-//		invokingState := atn.states[ctx.GetInvokingState()]
-//		rt := invokingState.GetTransitions()[0]
-//		follow := atn.NextTokens(rt.(*RuleTransition).followState, nil)
-//		recoverSet.addSet(follow)
-//		ctx = ctx.GetParent().(ParserRuleContext)
-//	}
-//	recoverSet.removeOne(TokenEpsilon)
-//	return recoverSet
+//  atn := recognizer.GetInterpreter().atn
+//  ctx := recognizer.GetParserRuleContext()
+//  recoverSet := NewIntervalSet()
+//  for ctx != nil && ctx.GetInvokingState() >= 0 {
+//    // compute what follows who invoked us
+//    invokingState := atn.states[ctx.GetInvokingState()]
+//    rt := invokingState.GetTransitions()[0]
+//    follow := atn.NextTokens(rt.(*RuleTransition).followState, nil)
+//    recoverSet.addSet(follow)
+//    ctx = ctx.GetParent().(ParserRuleContext)
+//  }
+//  recoverSet.removeOne(TokenEpsilon)
+//  return recoverSet
 //}
 //
 //// Consume tokens until one Matches the given token set.//
 //pub fn consumeUntil(recognizer: Parser, set *IntervalSet) {
-//	ttype := recognizer.GetTokenStream().LA(1)
-//	for ttype != TokenEOF && !set.contains(ttype) {
-//		recognizer.Consume()
-//		ttype = recognizer.GetTokenStream().LA(1)
-//	}
+//  ttype := recognizer.GetTokenStream().LA(1)
+//  for ttype != TokenEOF && !set.contains(ttype) {
+//    recognizer.Consume()
+//    ttype = recognizer.GetTokenStream().LA(1)
+//  }
 //}
 //
 ////
@@ -714,18 +714,18 @@
 //// @see Parser//setErrorHandler(ANTLRErrorStrategy)
 //
 //pub struct BailErrorStrategy {
-//	*DefaultErrorStrategy
+//  *DefaultErrorStrategy
 //}
 //
 //var _ ErrorStrategy = &BailErrorStrategy{}
 //
 //impl BailErrorStrategy {§//  pub fn new() -> *BailErrorStrategy {
 //
-//	b := new(BailErrorStrategy)
+//  b := new(BailErrorStrategy)
 //
-//	b.DefaultErrorStrategy = NewDefaultErrorStrategy()
+//  b.DefaultErrorStrategy = NewDefaultErrorStrategy()
 //
-//	return b
+//  return b
 //}
 //
 //// Instead of recovering from exception {@code e}, re-panic it wrapped
@@ -734,24 +734,24 @@
 //// original {@link RecognitionException}.
 ////
 //pub fn Recover(recognizer: Parser, e: RecognitionException) {
-//	context := recognizer.GetParserRuleContext()
-//	for context != nil {
-//		context.SetException(e)
-//		context = context.GetParent().(ParserRuleContext)
-//	}
-//	panic(NewParseCancellationException()) // TODO we don't emit e properly
+//  context := recognizer.GetParserRuleContext()
+//  for context != nil {
+//    context.SetException(e)
+//    context = context.GetParent().(ParserRuleContext)
+//  }
+//  panic(NewParseCancellationException()) // TODO we don't emit e properly
 //}
 //
 //// Make sure we don't attempt to recover inline if the parser
 //// successfully recovers, it won't panic an exception.
 ////
 //pub fn RecoverInline(recognizer: Parser) -> Token {
-//	b.Recover(recognizer, NewInputMisMatchException(recognizer))
+//  b.Recover(recognizer, NewInputMisMatchException(recognizer))
 //
-//	return nil
+//  return nil
 //}
 //
 //// Make sure we don't attempt to recover from problems in subrules.//
 //pub fn Sync(recognizer: Parser) {
-//	// pass
+//  // pass
 //}

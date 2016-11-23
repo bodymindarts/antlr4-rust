@@ -8,31 +8,31 @@
 //// not cause bloating of the {@link DFA} created for the lexer.</p>
 //
 //pub struct LexerActionExecutor {
-//	lexerActions     []LexerAction
-//	cachedHashString: &str
+//  lexerActions     []LexerAction
+//  cachedHashString: &str
 //}
 //
 //impl LexerActionExecutor {§//  pub fn new(lexerActions []LexerAction) -> *LexerActionExecutor {
 //
-//	if lexerActions == nil {
-//		lexerActions = make([]LexerAction, 0)
-//	}
+//  if lexerActions == nil {
+//    lexerActions = make([]LexerAction, 0)
+//  }
 //
-//	l := new(LexerActionExecutor)
+//  l := new(LexerActionExecutor)
 //
-//	l.lexerActions = lexerActions
+//  l.lexerActions = lexerActions
 //
-//	// Caches the result of {@link //hashCode} since the hash code is an element
-//	// of the performance-critical {@link LexerATNConfig//hashCode} operation.
+//  // Caches the result of {@link //hashCode} since the hash code is an element
+//  // of the performance-critical {@link LexerATNConfig//hashCode} operation.
 //
-//	var s &str
-//	for _, a := range lexerActions {
-//		s += a.Hash()
-//	}
+//  var s &str
+//  for _, a := range lexerActions {
+//    s += a.Hash()
+//  }
 //
-//	l.cachedHashString = s // "".join([str(la) for la in
+//  l.cachedHashString = s // "".join([str(la) for la in
 //
-//	return l
+//  return l
 //}
 //
 //// Creates a {@link LexerActionExecutor} which executes the actions for
@@ -49,14 +49,14 @@
 //// @return A {@link LexerActionExecutor} for executing the combine actions
 //// of {@code lexerActionExecutor} and {@code lexerAction}.
 //pub fn LexerActionExecutorappend(lexerActionExecutor *LexerActionExecutor, lexerAction: LexerAction) -> *LexerActionExecutor { // non-member
-//	if lexerActionExecutor == nil {
-//		return NewLexerActionExecutor([]LexerAction{lexerAction})
-//	}
+//  if lexerActionExecutor == nil {
+//    return NewLexerActionExecutor([]LexerAction{lexerAction})
+//  }
 //
-//	lexerActions := append(lexerActionExecutor.lexerActions, lexerAction)
+//  lexerActions := append(lexerActionExecutor.lexerActions, lexerAction)
 //
-//	//	lexerActions := lexerActionExecutor.lexerActions.concat([ lexerAction ])
-//	return NewLexerActionExecutor(lexerActions)
+//  //  lexerActions := lexerActionExecutor.lexerActions.concat([ lexerAction ])
+//  return NewLexerActionExecutor(lexerActions)
 //}
 //
 //// Creates a {@link LexerActionExecutor} which encodes the current offset
@@ -88,26 +88,26 @@
 //// for all position-dependent lexer actions.
 //// /
 //pub fn fixOffsetBeforeMatch(offset: i32) -> *LexerActionExecutor {
-//	var updatedLexerActions []LexerAction
-//	for i := 0; i < len(l.lexerActions); i++ {
-//		_, ok := l.lexerActions[i].(*LexerIndexedCustomAction)
-//		if l.lexerActions[i].getIsPositionDependent() && !ok {
-//			if updatedLexerActions == nil {
-//				updatedLexerActions = make([]LexerAction, 0)
+//  var updatedLexerActions []LexerAction
+//  for i := 0; i < len(l.lexerActions); i++ {
+//    _, ok := l.lexerActions[i].(*LexerIndexedCustomAction)
+//    if l.lexerActions[i].getIsPositionDependent() && !ok {
+//      if updatedLexerActions == nil {
+//        updatedLexerActions = make([]LexerAction, 0)
 //
-//				for _, a := range l.lexerActions {
-//					updatedLexerActions = append(updatedLexerActions, a)
-//				}
-//			}
+//        for _, a := range l.lexerActions {
+//          updatedLexerActions = append(updatedLexerActions, a)
+//        }
+//      }
 //
-//			updatedLexerActions[i] = NewLexerIndexedCustomAction(offset, l.lexerActions[i])
-//		}
-//	}
-//	if updatedLexerActions == nil {
-//		return l
-//	}
+//      updatedLexerActions[i] = NewLexerIndexedCustomAction(offset, l.lexerActions[i])
+//    }
+//  }
+//  if updatedLexerActions == nil {
+//    return l
+//  }
 //
-//	return NewLexerActionExecutor(updatedLexerActions)
+//  return NewLexerActionExecutor(updatedLexerActions)
 //}
 //
 //// Execute the actions encapsulated by l executor within the context of a
@@ -129,41 +129,41 @@
 //// of the token.
 //// /
 //pub fn execute(lexer Lexer, input: CharStream, startIndex: i32) {
-//	requiresSeek := false
-//	stopIndex := input.Index()
+//  requiresSeek := false
+//  stopIndex := input.Index()
 //
-//	defer func() {
-//		if requiresSeek {
-//			input.Seek(stopIndex)
-//		}
-//	}()
+//  defer func() {
+//    if requiresSeek {
+//      input.Seek(stopIndex)
+//    }
+//  }()
 //
-//	for i := 0; i < len(l.lexerActions); i++ {
-//		lexerAction := l.lexerActions[i]
-//		if la, ok := lexerAction.(*LexerIndexedCustomAction); ok {
-//			offset := la.offset
-//			input.Seek(startIndex + offset)
-//			lexerAction = la.lexerAction
-//			requiresSeek = (startIndex + offset) != stopIndex
-//		} else if lexerAction.getIsPositionDependent() {
-//			input.Seek(stopIndex)
-//			requiresSeek = false
-//		}
-//		lexerAction.execute(lexer)
-//	}
+//  for i := 0; i < len(l.lexerActions); i++ {
+//    lexerAction := l.lexerActions[i]
+//    if la, ok := lexerAction.(*LexerIndexedCustomAction); ok {
+//      offset := la.offset
+//      input.Seek(startIndex + offset)
+//      lexerAction = la.lexerAction
+//      requiresSeek = (startIndex + offset) != stopIndex
+//    } else if lexerAction.getIsPositionDependent() {
+//      input.Seek(stopIndex)
+//      requiresSeek = false
+//    }
+//    lexerAction.execute(lexer)
+//  }
 //}
 //
 //pub fn Hash() -> &str {
-//	return l.cachedHashString
+//  return l.cachedHashString
 //}
 //
 //pub fn equals(other i32erface{}) -> bool {
-//	if l == other {
-//		return true
-//	} else if _, ok := other.(*LexerActionExecutor); !ok {
-//		return false
-//	} else {
-//		return l.cachedHashString == other.(*LexerActionExecutor).cachedHashString &&
-//			&l.lexerActions == &other.(*LexerActionExecutor).lexerActions
-//	}
+//  if l == other {
+//    return true
+//  } else if _, ok := other.(*LexerActionExecutor); !ok {
+//    return false
+//  } else {
+//    return l.cachedHashString == other.(*LexerActionExecutor).cachedHashString &&
+//      &l.lexerActions == &other.(*LexerActionExecutor).lexerActions
+//  }
 //}

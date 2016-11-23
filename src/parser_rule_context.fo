@@ -1,89 +1,89 @@
 //package antlr
 //
 //import (
-//	"reflect"
-//	"strconv"
+//  "reflect"
+//  "strconv"
 //)
 //
 //pub trait ParserRuleContext {
-//	RuleContext
+//  RuleContext
 //
-//	SetException(RecognitionException)
+//  SetException(RecognitionException)
 //
-//	AddTokenNode(token Token) *TerminalNodeImpl
-//	AddErrorNode(badToken Token) *ErrorNodeImpl
+//  AddTokenNode(token Token) *TerminalNodeImpl
+//  AddErrorNode(badToken Token) *ErrorNodeImpl
 //
-//	EnterRule(listener ParseTreeListener)
-//	ExitRule(listener ParseTreeListener)
+//  EnterRule(listener ParseTreeListener)
+//  ExitRule(listener ParseTreeListener)
 //
-//	SetStart(Token)
-//	GetStart() Token
+//  SetStart(Token)
+//  GetStart() Token
 //
-//	SetStop(Token)
-//	GetStop() Token
+//  SetStop(Token)
+//  GetStop() Token
 //
-//	AddChild(child RuleContext) RuleContext
-//	RemoveLastChild()
+//  AddChild(child RuleContext) RuleContext
+//  RemoveLastChild()
 //}
 //
 //pub struct BaseParserRuleContext {
-//	*BaseRuleContext
+//  *BaseRuleContext
 //
-//	start, stop Token
-//	exception:   RecognitionException
-//	children    []Tree
+//  start, stop Token
+//  exception:   RecognitionException
+//  children    []Tree
 //}
 //
 //impl BaseParserRuleContext {§//  pub fn new(parent: ParserRuleContext, invokingStateNumber: i32) -> *BaseParserRuleContext {
-//	prc := new(BaseParserRuleContext)
+//  prc := new(BaseParserRuleContext)
 //
-//	prc.BaseRuleContext = NewBaseRuleContext(parent, invokingStateNumber)
+//  prc.BaseRuleContext = NewBaseRuleContext(parent, invokingStateNumber)
 //
-//	prc.RuleIndex = -1
-//	// * If we are debugging or building a parse tree for a Visitor,
-//	// we need to track all of the tokens and rule invocations associated
-//	// with prc rule's context. This is empty for parsing w/o tree constr.
-//	// operation because we don't the need to track the details about
-//	// how we parse prc rule.
-//	// /
-//	prc.children = nil
-//	prc.start = nil
-//	prc.stop = nil
-//	// The exception that forced prc rule to return. If the rule successfully
-//	// completed, prc is {@code nil}.
-//	prc.exception = nil
+//  prc.RuleIndex = -1
+//  // * If we are debugging or building a parse tree for a Visitor,
+//  // we need to track all of the tokens and rule invocations associated
+//  // with prc rule's context. This is empty for parsing w/o tree constr.
+//  // operation because we don't the need to track the details about
+//  // how we parse prc rule.
+//  // /
+//  prc.children = nil
+//  prc.start = nil
+//  prc.stop = nil
+//  // The exception that forced prc rule to return. If the rule successfully
+//  // completed, prc is {@code nil}.
+//  prc.exception = nil
 //
-//	return prc
+//  return prc
 //}
 //
 //pub fn SetException(e: RecognitionException) {
-//	prc.exception = e
+//  prc.exception = e
 //}
 //
 //pub fn GetChildren() -> []Tree {
-//	return prc.children
+//  return prc.children
 //}
 //
 //pub fn CopyFrom(ctx *BaseParserRuleContext) {
-//	// from RuleContext
-//	prc.parentCtx = ctx.parentCtx
-//	prc.invokingState = ctx.invokingState
-//	prc.children = nil
-//	prc.start = ctx.start
-//	prc.stop = ctx.stop
+//  // from RuleContext
+//  prc.parentCtx = ctx.parentCtx
+//  prc.invokingState = ctx.invokingState
+//  prc.children = nil
+//  prc.start = ctx.start
+//  prc.stop = ctx.stop
 //}
 //
 //pub fn GetText() -> &str {
-//	if prc.GetChildCount() == 0 {
-//		return ""
-//	}
+//  if prc.GetChildCount() == 0 {
+//    return ""
+//  }
 //
-//	var s &str
-//	for _, child := range prc.children {
-//		s += child.(ParseTree).GetText()
-//	}
+//  var s &str
+//  for _, child := range prc.children {
+//    s += child.(ParseTree).GetText()
+//  }
 //
-//	return s
+//  return s
 //}
 //
 //// Double dispatch methods for listeners
@@ -95,25 +95,25 @@
 //
 //// * Does not set parent link other add methods do that///
 //pub fn addTerminalNodeChild(child: TerminalNode) -> TerminalNode {
-//	if prc.children == nil {
-//		prc.children = make([]Tree, 0)
-//	}
-//	if child == nil {
-//		panic("Child may not be null")
-//	}
-//	prc.children = append(prc.children, child)
-//	return child
+//  if prc.children == nil {
+//    prc.children = make([]Tree, 0)
+//  }
+//  if child == nil {
+//    panic("Child may not be null")
+//  }
+//  prc.children = append(prc.children, child)
+//  return child
 //}
 //
 //pub fn AddChild(child: RuleContext) -> RuleContext {
-//	if prc.children == nil {
-//		prc.children = make([]Tree, 0)
-//	}
-//	if child == nil {
-//		panic("Child may not be null")
-//	}
-//	prc.children = append(prc.children, child)
-//	return child
+//  if prc.children == nil {
+//    prc.children = make([]Tree, 0)
+//  }
+//  if child == nil {
+//    panic("Child may not be null")
+//  }
+//  prc.children = append(prc.children, child)
+//  return child
 //}
 //
 //// * Used by EnterOuterAlt to toss out a RuleContext previously added as
@@ -121,180 +121,180 @@
 //// generic ruleContext object.
 //// /
 //pub fn RemoveLastChild() {
-//	if prc.children != nil && len(prc.children) > 0 {
-//		prc.children = prc.children[0 : len(prc.children)-1]
-//	}
+//  if prc.children != nil && len(prc.children) > 0 {
+//    prc.children = prc.children[0 : len(prc.children)-1]
+//  }
 //}
 //
 //pub fn AddTokenNode(token: Token) -> *TerminalNodeImpl {
 //
-//	node := NewTerminalNodeImpl(token)
-//	prc.addTerminalNodeChild(node)
-//	node.parentCtx = prc
-//	return node
+//  node := NewTerminalNodeImpl(token)
+//  prc.addTerminalNodeChild(node)
+//  node.parentCtx = prc
+//  return node
 //
 //}
 //
 //pub fn AddErrorNode(badToken: Token) -> *ErrorNodeImpl {
-//	node := NewErrorNodeImpl(badToken)
-//	prc.addTerminalNodeChild(node)
-//	node.parentCtx = prc
-//	return node
+//  node := NewErrorNodeImpl(badToken)
+//  prc.addTerminalNodeChild(node)
+//  node.parentCtx = prc
+//  return node
 //}
 //
 //pub fn GetChild(i: i32) -> Tree {
-//	if prc.children != nil && len(prc.children) >= i {
-//		return prc.children[i]
-//	}
+//  if prc.children != nil && len(prc.children) >= i {
+//    return prc.children[i]
+//  }
 //
-//	return nil
+//  return nil
 //}
 //
 //pub fn GetChildOfType(i: i32, childType reflect.Type) -> RuleContext {
-//	if childType == nil {
-//		return prc.GetChild(i).(RuleContext)
-//	}
+//  if childType == nil {
+//    return prc.GetChild(i).(RuleContext)
+//  }
 //
-//	for j := 0; j < len(prc.children); j++ {
-//		child := prc.children[j]
-//		if reflect.TypeOf(child) == childType {
-//			if i == 0 {
-//				return child.(RuleContext)
-//			}
+//  for j := 0; j < len(prc.children); j++ {
+//    child := prc.children[j]
+//    if reflect.TypeOf(child) == childType {
+//      if i == 0 {
+//        return child.(RuleContext)
+//      }
 //
-//			i--
-//		}
-//	}
+//      i--
+//    }
+//  }
 //
-//	return nil
+//  return nil
 //}
 //
 //pub fn ToStringTree(ruleNames []string, recog: Recognizer) -> &str {
-//	return TreesStringTree(prc, ruleNames, recog)
+//  return TreesStringTree(prc, ruleNames, recog)
 //}
 //
 //pub fn GetRuleContext() -> RuleContext {
-//	return prc
+//  return prc
 //}
 //
 //pub fn Accept(visitor: ParseTreeVisitor) -> i32erface{} {
-//	return visitor.VisitChildren(prc)
+//  return visitor.VisitChildren(prc)
 //}
 //
 //pub fn SetStart(t: Token) {
-//	prc.start = t
+//  prc.start = t
 //}
 //
 //pub fn GetStart() -> Token {
-//	return prc.start
+//  return prc.start
 //}
 //
 //pub fn SetStop(t: Token) {
-//	prc.stop = t
+//  prc.stop = t
 //}
 //
 //pub fn GetStop() -> Token {
-//	return prc.stop
+//  return prc.stop
 //}
 //
 //pub fn GetToken(ttype: i32, i: i32) -> TerminalNode {
 //
-//	for j := 0; j < len(prc.children); j++ {
-//		child := prc.children[j]
-//		if c2, ok := child.(TerminalNode); ok {
-//			if c2.GetSymbol().GetTokenType() == ttype {
-//				if i == 0 {
-//					return c2
-//				}
+//  for j := 0; j < len(prc.children); j++ {
+//    child := prc.children[j]
+//    if c2, ok := child.(TerminalNode); ok {
+//      if c2.GetSymbol().GetTokenType() == ttype {
+//        if i == 0 {
+//          return c2
+//        }
 //
-//				i--
-//			}
-//		}
-//	}
-//	return nil
+//        i--
+//      }
+//    }
+//  }
+//  return nil
 //}
 //
 //pub fn GetTokens(ttype: i32) -> []TerminalNode {
-//	if prc.children == nil {
-//		return make([]TerminalNode, 0)
-//	}
+//  if prc.children == nil {
+//    return make([]TerminalNode, 0)
+//  }
 //
-//	tokens := make([]TerminalNode, 0)
+//  tokens := make([]TerminalNode, 0)
 //
-//	for j := 0; j < len(prc.children); j++ {
-//		child := prc.children[j]
-//		if tchild, ok := child.(TerminalNode); ok {
-//			if tchild.GetSymbol().GetTokenType() == ttype {
-//				tokens = append(tokens, tchild)
-//			}
-//		}
-//	}
+//  for j := 0; j < len(prc.children); j++ {
+//    child := prc.children[j]
+//    if tchild, ok := child.(TerminalNode); ok {
+//      if tchild.GetSymbol().GetTokenType() == ttype {
+//        tokens = append(tokens, tchild)
+//      }
+//    }
+//  }
 //
-//	return tokens
+//  return tokens
 //}
 //
 //pub fn GetPayload() -> i32erface{} {
-//	return prc
+//  return prc
 //}
 //
 //pub fn getChild(ctxType reflect.Type, i: i32) -> RuleContext {
-//	if prc.children == nil || i < 0 || i >= len(prc.children) {
-//		return nil
-//	}
+//  if prc.children == nil || i < 0 || i >= len(prc.children) {
+//    return nil
+//  }
 //
-//	j := -1 // what element have we found with ctxType?
-//	for _, o := range prc.children {
+//  j := -1 // what element have we found with ctxType?
+//  for _, o := range prc.children {
 //
-//		childType := reflect.TypeOf(o)
+//    childType := reflect.TypeOf(o)
 //
-//		if childType.Implements(ctxType) {
-//			j++
-//			if j == i {
-//				return o.(RuleContext)
-//			}
-//		}
-//	}
-//	return nil
+//    if childType.Implements(ctxType) {
+//      j++
+//      if j == i {
+//        return o.(RuleContext)
+//      }
+//    }
+//  }
+//  return nil
 //}
 //
 //// Go lacks generics, so it's not possible for us to return the child with the correct type, but we do
 //// check for convertibility
 //
 //pub fn GetTypedRuleContext(ctxType reflect.Type, i: i32) -> RuleContext {
-//	return prc.getChild(ctxType, i)
+//  return prc.getChild(ctxType, i)
 //}
 //
 //pub fn GetTypedRuleContexts(ctxType reflect.Type) -> []RuleContext {
-//	if prc.children == nil {
-//		return make([]RuleContext, 0)
-//	}
+//  if prc.children == nil {
+//    return make([]RuleContext, 0)
+//  }
 //
-//	contexts := make([]RuleContext, 0)
+//  contexts := make([]RuleContext, 0)
 //
-//	for _, child := range prc.children {
-//		childType := reflect.TypeOf(child)
+//  for _, child := range prc.children {
+//    childType := reflect.TypeOf(child)
 //
-//		if childType.ConvertibleTo(ctxType) {
-//			contexts = append(contexts, child.(RuleContext))
-//		}
-//	}
-//	return contexts
+//    if childType.ConvertibleTo(ctxType) {
+//      contexts = append(contexts, child.(RuleContext))
+//    }
+//  }
+//  return contexts
 //}
 //
 //pub fn GetChildCount() -> i32 {
-//	if prc.children == nil {
-//		return 0
-//	}
+//  if prc.children == nil {
+//    return 0
+//  }
 //
-//	return len(prc.children)
+//  return len(prc.children)
 //}
 //
 //pub fn GetSourceInterval() -> *Interval {
-//	if prc.start == nil || prc.stop == nil {
-//		return TreeInvalidInterval
-//	}
+//  if prc.start == nil || prc.stop == nil {
+//    return TreeInvalidInterval
+//  }
 //
-//	return NewInterval(prc.start.GetTokenIndex(), prc.stop.GetTokenIndex())
+//  return NewInterval(prc.start.GetTokenIndex(), prc.stop.GetTokenIndex())
 //}
 //
 ////need to manage circular dependencies, so export now
@@ -305,54 +305,54 @@
 //
 //pub fn String(ruleNames []string, stop: RuleContext) -> &str {
 //
-//	var p ParserRuleContext = prc
-//	s := "["
-//	for p != nil && p != stop {
-//		if ruleNames == nil {
-//			if !p.IsEmpty() {
-//				s += strconv.Itoa(p.GetInvokingState())
-//			}
-//		} else {
-//			ri := p.GetRuleIndex()
-//			var ruleName &str
-//			if ri >= 0 && ri < len(ruleNames) {
-//				ruleName = ruleNames[ri]
-//			} else {
-//				ruleName = strconv.Itoa(ri)
-//			}
-//			s += ruleName
-//		}
-//		if p.GetParent() != nil && (ruleNames != nil || !p.GetParent().(ParserRuleContext).IsEmpty()) {
-//			s += " "
-//		}
-//		pi := p.GetParent()
-//		if pi != nil {
-//			p = pi.(ParserRuleContext)
-//		} else {
-//			p = nil
-//		}
-//	}
-//	s += "]"
-//	return s
+//  var p ParserRuleContext = prc
+//  s := "["
+//  for p != nil && p != stop {
+//    if ruleNames == nil {
+//      if !p.IsEmpty() {
+//        s += strconv.Itoa(p.GetInvokingState())
+//      }
+//    } else {
+//      ri := p.GetRuleIndex()
+//      var ruleName &str
+//      if ri >= 0 && ri < len(ruleNames) {
+//        ruleName = ruleNames[ri]
+//      } else {
+//        ruleName = strconv.Itoa(ri)
+//      }
+//      s += ruleName
+//    }
+//    if p.GetParent() != nil && (ruleNames != nil || !p.GetParent().(ParserRuleContext).IsEmpty()) {
+//      s += " "
+//    }
+//    pi := p.GetParent()
+//    if pi != nil {
+//      p = pi.(ParserRuleContext)
+//    } else {
+//      p = nil
+//    }
+//  }
+//  s += "]"
+//  return s
 //}
 //
 //var RuleContextEmpty = NewBaseParserRuleContext(nil, -1)
 //
 //pub trait InterpreterRuleContext {
-//	ParserRuleContext
+//  ParserRuleContext
 //}
 //
 //pub struct BaseInterpreterRuleContext {
-//	*BaseParserRuleContext
+//  *BaseParserRuleContext
 //}
 //
 //impl BaseInterpreterRuleContext {§//  pub fn new(parent BaseInterpreterRuleContext,: invokingStateNumber, ruleIndex: i32) -> *BaseInterpreterRuleContext {
 //
-//	prc := new(BaseInterpreterRuleContext)
+//  prc := new(BaseInterpreterRuleContext)
 //
-//	prc.BaseParserRuleContext = NewBaseParserRuleContext(parent, invokingStateNumber)
+//  prc.BaseParserRuleContext = NewBaseParserRuleContext(parent, invokingStateNumber)
 //
-//	prc.RuleIndex = ruleIndex
+//  prc.RuleIndex = ruleIndex
 //
-//	return prc
+//  return prc
 //}

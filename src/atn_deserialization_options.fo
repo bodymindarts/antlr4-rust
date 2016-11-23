@@ -3,19 +3,19 @@
 //var ATNDeserializationOptionsdefaultOptions = &ATNDeserializationOptions{true, false, false}
 //
 //pub struct ATNDeserializationOptions {
-//	readOnly:                      bool
-//	verifyATN:                     bool
-//	generateRuleBypassTransitions: bool
+//  readOnly:                      bool
+//  verifyATN:                     bool
+//  generateRuleBypassTransitions: bool
 //}
 //
 //impl ATNDeserializationOptions {§//  pub fn new(CopyFrom *ATNDeserializationOptions) -> *ATNDeserializationOptions {
-//	o := new(ATNDeserializationOptions)
+//  o := new(ATNDeserializationOptions)
 //
-//	if CopyFrom != nil {
-//		o.readOnly = CopyFrom.readOnly
-//		o.verifyATN = CopyFrom.verifyATN
-//		o.generateRuleBypassTransitions = CopyFrom.generateRuleBypassTransitions
-//	}
+//  if CopyFrom != nil {
+//    o.readOnly = CopyFrom.readOnly
+//    o.verifyATN = CopyFrom.verifyATN
+//    o.generateRuleBypassTransitions = CopyFrom.generateRuleBypassTransitions
+//  }
 //
-//	return o
+//  return o
 //}

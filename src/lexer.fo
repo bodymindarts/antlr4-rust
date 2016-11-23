@@ -1,8 +1,8 @@
 //package antlr
 //
 //import (
-//	"fmt"
-//	"strconv"
+//  "fmt"
+//  "strconv"
 //)
 //
 //// A lexer is recognizer that draws input symbols from a character stream.
@@ -12,224 +12,224 @@
 /////
 //
 //pub trait Lexer {
-//	TokenSource
-//	Recognizer
+//  TokenSource
+//  Recognizer
 //
-//	Emit() Token
+//  Emit() Token
 //
-//	setChannel(int)
-//	pushMode(int)
-//	popMode() i32
-//	setType(int)
-//	setMode(int)
+//  setChannel(int)
+//  pushMode(int)
+//  popMode() i32
+//  setType(int)
+//  setMode(int)
 //}
 //
 //pub struct BaseLexer {
-//	*BaseRecognizer
+//  *BaseRecognizer
 //
-//	Interpreter:         ILexerATNSimulator
-//	TokenStartCharIndex: i32
-//	TokenStartLine:      i32
-//	TokenStartColumn:    i32
-//	ActionType:          i32
-//	Virt                Lexer // The most derived lexer implementation. Allows virtual method calls.
+//  Interpreter:         ILexerATNSimulator
+//  TokenStartCharIndex: i32
+//  TokenStartLine:      i32
+//  TokenStartColumn:    i32
+//  ActionType:          i32
+//  Virt                Lexer // The most derived lexer implementation. Allows virtual method calls.
 //
-//	input:                  CharStream
-//	factory:                TokenFactory
-//	tokenFactorySourcePair: *TokenSourceCharStreamPair
-//	token:                  Token
-//	hitEOF:                 bool
-//	channel:                i32
-//	thetype:                i32
-//	modeStack:              IntStack
-//	mode:                   i32
-//	text:                   &str
+//  input:                  CharStream
+//  factory:                TokenFactory
+//  tokenFactorySourcePair: *TokenSourceCharStreamPair
+//  token:                  Token
+//  hitEOF:                 bool
+//  channel:                i32
+//  thetype:                i32
+//  modeStack:              IntStack
+//  mode:                   i32
+//  text:                   &str
 //}
 //
 //impl BaseLexer {§//  pub fn new(input: CharStream) -> *BaseLexer {
 //
-//	lexer := new(BaseLexer)
+//  lexer := new(BaseLexer)
 //
-//	lexer.BaseRecognizer = NewBaseRecognizer()
+//  lexer.BaseRecognizer = NewBaseRecognizer()
 //
-//	lexer.input = input
-//	lexer.factory = CommonTokenFactoryDEFAULT
-//	lexer.tokenFactorySourcePair = &TokenSourceCharStreamPair{lexer, input}
+//  lexer.input = input
+//  lexer.factory = CommonTokenFactoryDEFAULT
+//  lexer.tokenFactorySourcePair = &TokenSourceCharStreamPair{lexer, input}
 //
-//	lexer.Virt = lexer
+//  lexer.Virt = lexer
 //
-//	lexer.Interpreter = nil // child classes must populate it
+//  lexer.Interpreter = nil // child classes must populate it
 //
-//	// The goal of all lexer rules/methods is to create a token object.
-//	// l is an instance variable as multiple rules may collaborate to
-//	// create a single token. NextToken will return l object after
-//	// Matching lexer rule(s). If you subclass to allow multiple token
-//	// emissions, then set l to the last token to be Matched or
-//	// something nonnil so that the auto token emit mechanism will not
-//	// emit another token.
-//	lexer.token = nil
+//  // The goal of all lexer rules/methods is to create a token object.
+//  // l is an instance variable as multiple rules may collaborate to
+//  // create a single token. NextToken will return l object after
+//  // Matching lexer rule(s). If you subclass to allow multiple token
+//  // emissions, then set l to the last token to be Matched or
+//  // something nonnil so that the auto token emit mechanism will not
+//  // emit another token.
+//  lexer.token = nil
 //
-//	// What character index in the stream did the current token start at?
-//	// Needed, for example, to get the text for current token. Set at
-//	// the start of NextToken.
-//	lexer.TokenStartCharIndex = -1
+//  // What character index in the stream did the current token start at?
+//  // Needed, for example, to get the text for current token. Set at
+//  // the start of NextToken.
+//  lexer.TokenStartCharIndex = -1
 //
-//	// The line on which the first character of the token resides///
-//	lexer.TokenStartLine = -1
+//  // The line on which the first character of the token resides///
+//  lexer.TokenStartLine = -1
 //
-//	// The character position of first character within the line///
-//	lexer.TokenStartColumn = -1
+//  // The character position of first character within the line///
+//  lexer.TokenStartColumn = -1
 //
-//	// Once we see EOF on char stream, next token will be EOF.
-//	// If you have DONE : EOF  then you see DONE EOF.
-//	lexer.hitEOF = false
+//  // Once we see EOF on char stream, next token will be EOF.
+//  // If you have DONE : EOF  then you see DONE EOF.
+//  lexer.hitEOF = false
 //
-//	// The channel number for the current token///
-//	lexer.channel = TokenDefaultChannel
+//  // The channel number for the current token///
+//  lexer.channel = TokenDefaultChannel
 //
-//	// The token type for the current token///
-//	lexer.thetype = TokenInvalidType
+//  // The token type for the current token///
+//  lexer.thetype = TokenInvalidType
 //
-//	lexer.modeStack = make([]int, 0)
-//	lexer.mode = LexerDefaultMode
+//  lexer.modeStack = make([]int, 0)
+//  lexer.mode = LexerDefaultMode
 //
-//	// You can set the text for the current token to override what is in
-//	// the input char buffer. Use setText() or can set l instance var.
-//	// /
-//	lexer.text = ""
+//  // You can set the text for the current token to override what is in
+//  // the input char buffer. Use setText() or can set l instance var.
+//  // /
+//  lexer.text = ""
 //
-//	return lexer
+//  return lexer
 //}
 //
 //const (
-//	LexerDefaultMode = 0
-//	LexerMore        = -2
-//	LexerSkip        = -3
+//  LexerDefaultMode = 0
+//  LexerMore        = -2
+//  LexerSkip        = -3
 //)
 //
 //const (
-//	LexerDefaultTokenChannel = TokenDefaultChannel
-//	LexerHidden              = TokenHiddenChannel
-//	LexerMinCharValue        = '\u0000'
-//	LexerMaxCharValue        = '\uFFFE'
+//  LexerDefaultTokenChannel = TokenDefaultChannel
+//  LexerHidden              = TokenHiddenChannel
+//  LexerMinCharValue        = '\u0000'
+//  LexerMaxCharValue        = '\uFFFE'
 //)
 //
 //pub fn reset() {
-//	// wack Lexer state variables
-//	if b.input != nil {
-//		b.input.Seek(0) // rewind the input
-//	}
-//	b.token = nil
-//	b.thetype = TokenInvalidType
-//	b.channel = TokenDefaultChannel
-//	b.TokenStartCharIndex = -1
-//	b.TokenStartColumn = -1
-//	b.TokenStartLine = -1
-//	b.text = ""
+//  // wack Lexer state variables
+//  if b.input != nil {
+//    b.input.Seek(0) // rewind the input
+//  }
+//  b.token = nil
+//  b.thetype = TokenInvalidType
+//  b.channel = TokenDefaultChannel
+//  b.TokenStartCharIndex = -1
+//  b.TokenStartColumn = -1
+//  b.TokenStartLine = -1
+//  b.text = ""
 //
-//	b.hitEOF = false
-//	b.mode = LexerDefaultMode
-//	b.modeStack = make([]int, 0)
+//  b.hitEOF = false
+//  b.mode = LexerDefaultMode
+//  b.modeStack = make([]int, 0)
 //
-//	b.Interpreter.reset()
+//  b.Interpreter.reset()
 //}
 //
 //pub fn GetInterpreter() -> ILexerATNSimulator {
-//	return b.Interpreter
+//  return b.Interpreter
 //}
 //
 //pub fn GetInputStream() -> CharStream {
-//	return b.input
+//  return b.input
 //}
 //
 //pub fn GetSourceName() -> &str {
-//	return b.GrammarFileName
+//  return b.GrammarFileName
 //}
 //
 //pub fn setChannel(v: i32) {
-//	b.channel = v
+//  b.channel = v
 //}
 //
 //pub fn GetTokenFactory() -> TokenFactory {
-//	return b.factory
+//  return b.factory
 //}
 //
 //pub fn setTokenFactory(f: TokenFactory) {
-//	b.factory = f
+//  b.factory = f
 //}
 //
 //pub fn (ret: i32) {
-//	defer func() {
-//		if e := recover(); e != nil {
-//			if re, ok := e.(RecognitionException); ok {
-//				b.notifyListeners(re) // Report error
-//				b.Recover(re)
-//				ret = LexerSkip // default
-//			}
-//		}
-//	}()
+//  defer func() {
+//    if e := recover(); e != nil {
+//      if re, ok := e.(RecognitionException); ok {
+//        b.notifyListeners(re) // Report error
+//        b.Recover(re)
+//        ret = LexerSkip // default
+//      }
+//    }
+//  }()
 //
-//	return b.Interpreter.Match(b.input, b.mode)
+//  return b.Interpreter.Match(b.input, b.mode)
 //}
 //
 //// Return a token from l source i.e., Match a token on the char stream.
 //pub fn NextToken() -> Token {
-//	if b.input == nil {
-//		panic("NextToken requires a non-nil input stream.")
-//	}
+//  if b.input == nil {
+//    panic("NextToken requires a non-nil input stream.")
+//  }
 //
-//	tokenStartMarker := b.input.Mark()
+//  tokenStartMarker := b.input.Mark()
 //
-//	// previously in finally block
-//	defer func() {
-//		// make sure we release marker after Match or
-//		// unbuffered char stream will keep buffering
-//		b.input.Release(tokenStartMarker)
-//	}()
+//  // previously in finally block
+//  defer func() {
+//    // make sure we release marker after Match or
+//    // unbuffered char stream will keep buffering
+//    b.input.Release(tokenStartMarker)
+//  }()
 //
-//	for {
-//		if b.hitEOF {
-//			b.EmitEOF()
-//			return b.token
-//		}
-//		b.token = nil
-//		b.channel = TokenDefaultChannel
-//		b.TokenStartCharIndex = b.input.Index()
-//		b.TokenStartColumn = b.Interpreter.GetCharPositionInLine()
-//		b.TokenStartLine = b.Interpreter.GetLine()
-//		b.text = ""
-//		continueOuter := false
-//		for {
-//			b.thetype = TokenInvalidType
-//			ttype := LexerSkip
+//  for {
+//    if b.hitEOF {
+//      b.EmitEOF()
+//      return b.token
+//    }
+//    b.token = nil
+//    b.channel = TokenDefaultChannel
+//    b.TokenStartCharIndex = b.input.Index()
+//    b.TokenStartColumn = b.Interpreter.GetCharPositionInLine()
+//    b.TokenStartLine = b.Interpreter.GetLine()
+//    b.text = ""
+//    continueOuter := false
+//    for {
+//      b.thetype = TokenInvalidType
+//      ttype := LexerSkip
 //
-//			ttype = b.safeMatch()
+//      ttype = b.safeMatch()
 //
-//			if b.input.LA(1) == TokenEOF {
-//				b.hitEOF = true
-//			}
-//			if b.thetype == TokenInvalidType {
-//				b.thetype = ttype
-//			}
-//			if b.thetype == LexerSkip {
-//				continueOuter = true
-//				break
-//			}
-//			if b.thetype != LexerMore {
-//				break
-//			}
-//		}
+//      if b.input.LA(1) == TokenEOF {
+//        b.hitEOF = true
+//      }
+//      if b.thetype == TokenInvalidType {
+//        b.thetype = ttype
+//      }
+//      if b.thetype == LexerSkip {
+//        continueOuter = true
+//        break
+//      }
+//      if b.thetype != LexerMore {
+//        break
+//      }
+//    }
 //
-//		if continueOuter {
-//			continue
-//		}
-//		if b.token == nil {
-//			b.Virt.Emit()
-//		}
-//		return b.token
-//	}
+//    if continueOuter {
+//      continue
+//    }
+//    if b.token == nil {
+//      b.Virt.Emit()
+//    }
+//    return b.token
+//  }
 //
-//	return nil
+//  return nil
 //}
 //
 //// Instruct the lexer to Skip creating a token for current lexer rule
@@ -239,47 +239,47 @@
 //// and emits it.
 //// /
 //pub fn Skip() {
-//	b.thetype = LexerSkip
+//  b.thetype = LexerSkip
 //}
 //
 //pub fn More() {
-//	b.thetype = LexerMore
+//  b.thetype = LexerMore
 //}
 //
 //pub fn setMode(m: i32) {
-//	b.mode = m
+//  b.mode = m
 //}
 //
 //pub fn pushMode(m: i32) {
-//	if LexerATNSimulatorDebug {
-//		fmt.Println("pushMode " + strconv.Itoa(m))
-//	}
-//	b.modeStack.Push(b.mode)
-//	b.mode = m
+//  if LexerATNSimulatorDebug {
+//    fmt.Println("pushMode " + strconv.Itoa(m))
+//  }
+//  b.modeStack.Push(b.mode)
+//  b.mode = m
 //}
 //
 //pub fn popMode() -> i32 {
-//	if len(b.modeStack) == 0 {
-//		panic("Empty Stack")
-//	}
-//	if LexerATNSimulatorDebug {
-//		fmt.Println("popMode back to " + fmt.Sprint(b.modeStack[0:len(b.modeStack)-1]))
-//	}
-//	i, _ := b.modeStack.Pop()
-//	b.mode = i
-//	return b.mode
+//  if len(b.modeStack) == 0 {
+//    panic("Empty Stack")
+//  }
+//  if LexerATNSimulatorDebug {
+//    fmt.Println("popMode back to " + fmt.Sprint(b.modeStack[0:len(b.modeStack)-1]))
+//  }
+//  i, _ := b.modeStack.Pop()
+//  b.mode = i
+//  return b.mode
 //}
 //
 //pub fn inputStream() -> CharStream {
-//	return b.input
+//  return b.input
 //}
 //
 //pub fn setInputStream(input: CharStream) {
-//	b.input = nil
-//	b.tokenFactorySourcePair = &TokenSourceCharStreamPair{b, b.input}
-//	b.reset()
-//	b.input = input
-//	b.tokenFactorySourcePair = &TokenSourceCharStreamPair{b, b.input}
+//  b.input = nil
+//  b.tokenFactorySourcePair = &TokenSourceCharStreamPair{b, b.input}
+//  b.reset()
+//  b.input = input
+//  b.tokenFactorySourcePair = &TokenSourceCharStreamPair{b, b.input}
 //}
 //
 //// By default does not support multiple emits per NextToken invocation
@@ -288,7 +288,7 @@
 //// rather than a single variable as l implementation does).
 //// /
 //pub fn EmitToken(token: Token) {
-//	b.token = token
+//  b.token = token
 //}
 //
 //// The standard method called to automatically emit a token at the
@@ -298,97 +298,97 @@
 //// custom Token objects or provide a Newfactory.
 //// /
 //pub fn Emit() -> Token {
-//	t := b.factory.Create(b.tokenFactorySourcePair, b.thetype, b.text, b.channel, b.TokenStartCharIndex, b.GetCharIndex()-1, b.TokenStartLine, b.TokenStartColumn)
-//	b.EmitToken(t)
-//	return t
+//  t := b.factory.Create(b.tokenFactorySourcePair, b.thetype, b.text, b.channel, b.TokenStartCharIndex, b.GetCharIndex()-1, b.TokenStartLine, b.TokenStartColumn)
+//  b.EmitToken(t)
+//  return t
 //}
 //
 //pub fn EmitEOF() -> Token {
-//	cpos := b.GetCharPositionInLine()
-//	lpos := b.GetLine()
-//	eof := b.factory.Create(b.tokenFactorySourcePair, TokenEOF, "", TokenDefaultChannel, b.input.Index(), b.input.Index()-1, lpos, cpos)
-//	b.EmitToken(eof)
-//	return eof
+//  cpos := b.GetCharPositionInLine()
+//  lpos := b.GetLine()
+//  eof := b.factory.Create(b.tokenFactorySourcePair, TokenEOF, "", TokenDefaultChannel, b.input.Index(), b.input.Index()-1, lpos, cpos)
+//  b.EmitToken(eof)
+//  return eof
 //}
 //
 //pub fn GetCharPositionInLine() -> i32 {
-//	return b.Interpreter.GetCharPositionInLine()
+//  return b.Interpreter.GetCharPositionInLine()
 //}
 //
 //pub fn GetLine() -> i32 {
-//	return b.Interpreter.GetLine()
+//  return b.Interpreter.GetLine()
 //}
 //
 //pub fn GetType() -> i32 {
-//	return b.thetype
+//  return b.thetype
 //}
 //
 //pub fn setType(t: i32) {
-//	b.thetype = t
+//  b.thetype = t
 //}
 //
 //// What is the index of the current character of lookahead?///
 //pub fn GetCharIndex() -> i32 {
-//	return b.input.Index()
+//  return b.input.Index()
 //}
 //
 //// Return the text Matched so far for the current token or any text override.
 ////Set the complete text of l token it wipes any previous changes to the text.
 //pub fn GetText() -> &str {
-//	if b.text != "" {
-//		return b.text
-//	}
+//  if b.text != "" {
+//    return b.text
+//  }
 //
-//	return b.Interpreter.GetText(b.input)
+//  return b.Interpreter.GetText(b.input)
 //}
 //
 //pub fn SetText(text: &str) {
-//	b.text = text
+//  b.text = text
 //}
 //
 //pub fn GetATN() -> *ATN {
-//	return b.Interpreter.ATN()
+//  return b.Interpreter.ATN()
 //}
 //
 //// Return a list of all Token objects in input char stream.
 //// Forces load of all tokens. Does not include EOF token.
 //// /
 //pub fn getAllTokens() -> []Token {
-//	vl := b.Virt
-//	tokens := make([]Token, 0)
-//	t := vl.NextToken()
-//	for t.GetTokenType() != TokenEOF {
-//		tokens = append(tokens, t)
-//		t = vl.NextToken()
-//	}
-//	return tokens
+//  vl := b.Virt
+//  tokens := make([]Token, 0)
+//  t := vl.NextToken()
+//  for t.GetTokenType() != TokenEOF {
+//    tokens = append(tokens, t)
+//    t = vl.NextToken()
+//  }
+//  return tokens
 //}
 //
 //pub fn notifyListeners(e: RecognitionException) {
-//	start := b.TokenStartCharIndex
-//	stop := b.input.Index()
-//	text := b.input.GetTextFromInterval(NewInterval(start, stop))
-//	msg := "token recognition error at: '" + text + "'"
-//	listener := b.GetErrorListenerDispatch()
-//	listener.SyntaxError(b, nil, b.TokenStartLine, b.TokenStartColumn, msg, e)
+//  start := b.TokenStartCharIndex
+//  stop := b.input.Index()
+//  text := b.input.GetTextFromInterval(NewInterval(start, stop))
+//  msg := "token recognition error at: '" + text + "'"
+//  listener := b.GetErrorListenerDispatch()
+//  listener.SyntaxError(b, nil, b.TokenStartLine, b.TokenStartColumn, msg, e)
 //}
 //
 //pub fn getErrorDisplayForChar(c: rune) -> &str {
-//	if c == TokenEOF {
-//		return "<EOF>"
-//	} else if c == '\n' {
-//		return "\\n"
-//	} else if c == '\t' {
-//		return "\\t"
-//	} else if c == '\r' {
-//		return "\\r"
-//	} else {
-//		return &str(c)
-//	}
+//  if c == TokenEOF {
+//    return "<EOF>"
+//  } else if c == '\n' {
+//    return "\\n"
+//  } else if c == '\t' {
+//    return "\\t"
+//  } else if c == '\r' {
+//    return "\\r"
+//  } else {
+//    return &str(c)
+//  }
 //}
 //
 //pub fn getCharErrorDisplay(c: rune) -> &str {
-//	return "'" + b.getErrorDisplayForChar(c) + "'"
+//  return "'" + b.getErrorDisplayForChar(c) + "'"
 //}
 //
 //// Lexers can normally Match any char in it's vocabulary after Matching
@@ -397,13 +397,13 @@
 //// to do sophisticated error recovery if you are in a fragment rule.
 //// /
 //pub fn Recover(re: RecognitionException) {
-//	if b.input.LA(1) != TokenEOF {
-//		if _, ok := re.(*LexerNoViableAltException); ok {
-//			// Skip a char and try again
-//			b.Interpreter.Consume(b.input)
-//		} else {
-//			// TODO: Do we lose character or line position information?
-//			b.input.Consume()
-//		}
-//	}
+//  if b.input.LA(1) != TokenEOF {
+//    if _, ok := re.(*LexerNoViableAltException); ok {
+//      // Skip a char and try again
+//      b.Interpreter.Consume(b.input)
+//    } else {
+//      // TODO: Do we lose character or line position information?
+//      b.input.Consume()
+//    }
+//  }
 //}

@@ -1,8 +1,8 @@
 //package antlr
 //
 //import (
-//	"fmt"
-//	"strconv"
+//  "fmt"
+//  "strconv"
 //)
 //
 ////  atom, set, epsilon, action, predicate, rule transitions.
@@ -15,403 +15,403 @@
 ////  ATN transitions.</p>
 //
 //pub trait Transition {
-//	getTarget() ATNState
-//	setTarget(ATNState)
-//	getIsEpsilon() bool
-//	getLabel() *IntervalSet
-//	getSerializationType() i32
-//	Matches(int, i32, i32) bool
+//  getTarget() ATNState
+//  setTarget(ATNState)
+//  getIsEpsilon() bool
+//  getLabel() *IntervalSet
+//  getSerializationType() i32
+//  Matches(int, i32, i32) bool
 //}
 //
 //pub struct BaseTransition {
-//	target:            ATNState
-//	isEpsilon:         bool
-//	label:             i32
-//	intervalSet:       *IntervalSet
-//	serializationType: i32
+//  target:            ATNState
+//  isEpsilon:         bool
+//  label:             i32
+//  intervalSet:       *IntervalSet
+//  serializationType: i32
 //}
 //
 //impl BaseTransition {§//  pub fn new(target: ATNState) -> *BaseTransition {
 //
-//	if target == nil {
-//		panic("target cannot be nil.")
-//	}
+//  if target == nil {
+//    panic("target cannot be nil.")
+//  }
 //
-//	t := new(BaseTransition)
+//  t := new(BaseTransition)
 //
-//	t.target = target
-//	// Are we epsilon, action, sempred?
-//	t.isEpsilon = false
-//	t.intervalSet = nil
+//  t.target = target
+//  // Are we epsilon, action, sempred?
+//  t.isEpsilon = false
+//  t.intervalSet = nil
 //
-//	return t
+//  return t
 //}
 //
 //pub fn getTarget() -> ATNState {
-//	return t.target
+//  return t.target
 //}
 //
 //pub fn setTarget(s: ATNState) {
-//	t.target = s
+//  t.target = s
 //}
 //
 //pub fn getIsEpsilon() -> bool {
-//	return t.isEpsilon
+//  return t.isEpsilon
 //}
 //
 //pub fn getLabel() -> *IntervalSet {
-//	return t.intervalSet
+//  return t.intervalSet
 //}
 //
 //pub fn getSerializationType() -> i32 {
-//	return t.serializationType
+//  return t.serializationType
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	panic("Not implemented")
+//  panic("Not implemented")
 //}
 //
 //const (
-//	TransitionEPSILON    = 1
-//	TransitionRANGE      = 2
-//	TransitionRULE       = 3
-//	TransitionPREDICATE  = 4 // e.g., {isType(input.LT(1))}?
-//	TransitionATOM       = 5
-//	TransitionACTION     = 6
-//	TransitionSET        = 7 // ~(A|B) or ~atom, wildcard, which convert to next 2
-//	TransitionNOTSET     = 8
-//	TransitionWILDCARD   = 9
-//	TransitionPRECEDENCE = 10
+//  TransitionEPSILON    = 1
+//  TransitionRANGE      = 2
+//  TransitionRULE       = 3
+//  TransitionPREDICATE  = 4 // e.g., {isType(input.LT(1))}?
+//  TransitionATOM       = 5
+//  TransitionACTION     = 6
+//  TransitionSET        = 7 // ~(A|B) or ~atom, wildcard, which convert to next 2
+//  TransitionNOTSET     = 8
+//  TransitionWILDCARD   = 9
+//  TransitionPRECEDENCE = 10
 //)
 //
 //var TransitionserializationNames = []string{
-//	"INVALID",
-//	"EPSILON",
-//	"RANGE",
-//	"RULE",
-//	"PREDICATE",
-//	"ATOM",
-//	"ACTION",
-//	"SET",
-//	"NOT_SET",
-//	"WILDCARD",
-//	"PRECEDENCE",
+//  "INVALID",
+//  "EPSILON",
+//  "RANGE",
+//  "RULE",
+//  "PREDICATE",
+//  "ATOM",
+//  "ACTION",
+//  "SET",
+//  "NOT_SET",
+//  "WILDCARD",
+//  "PRECEDENCE",
 //}
 //
 ////var TransitionserializationTypes struct {
-////	EpsilonTransition: i32
-////	RangeTransition: i32
-////	RuleTransition: i32
-////	PredicateTransition: i32
-////	AtomTransition: i32
-////	ActionTransition: i32
-////	SetTransition: i32
-////	NotSetTransition: i32
-////	WildcardTransition: i32
-////	PrecedencePredicateTransition: i32
+////  EpsilonTransition: i32
+////  RangeTransition: i32
+////  RuleTransition: i32
+////  PredicateTransition: i32
+////  AtomTransition: i32
+////  ActionTransition: i32
+////  SetTransition: i32
+////  NotSetTransition: i32
+////  WildcardTransition: i32
+////  PrecedencePredicateTransition: i32
 ////}{
-////	TransitionEPSILON,
-////	TransitionRANGE,
-////	TransitionRULE,
-////	TransitionPREDICATE,
-////	TransitionATOM,
-////	TransitionACTION,
-////	TransitionSET,
-////	TransitionNOTSET,
-////	TransitionWILDCARD,
-////	TransitionPRECEDENCE
+////  TransitionEPSILON,
+////  TransitionRANGE,
+////  TransitionRULE,
+////  TransitionPREDICATE,
+////  TransitionATOM,
+////  TransitionACTION,
+////  TransitionSET,
+////  TransitionNOTSET,
+////  TransitionWILDCARD,
+////  TransitionPRECEDENCE
 ////}
 //
 //// TODO: make all transitions sets? no, should remove set edges
 //pub struct AtomTransition {
-//	*BaseTransition
+//  *BaseTransition
 //}
 //
 //impl AtomTransition {§//  pub fn new(target: ATNState, i32ervalSet: i32) -> *AtomTransition {
 //
-//	t := new(AtomTransition)
-//	t.BaseTransition = NewBaseTransition(target)
+//  t := new(AtomTransition)
+//  t.BaseTransition = NewBaseTransition(target)
 //
-//	t.label = i32ervalSet // The token type or character value or, signifies special i32ervalSet.
-//	t.intervalSet = t.makeLabel()
-//	t.serializationType = TransitionATOM
+//  t.label = i32ervalSet // The token type or character value or, signifies special i32ervalSet.
+//  t.intervalSet = t.makeLabel()
+//  t.serializationType = TransitionATOM
 //
-//	return t
+//  return t
 //}
 //
 //pub fn makeLabel() -> *IntervalSet {
-//	s := NewIntervalSet()
-//	s.addOne(t.label)
-//	return s
+//  s := NewIntervalSet()
+//  s.addOne(t.label)
+//  return s
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	return t.label == symbol
+//  return t.label == symbol
 //}
 //
 //pub fn String() -> &str {
-//	return strconv.Itoa(t.label)
+//  return strconv.Itoa(t.label)
 //}
 //
 //pub struct RuleTransition {
-//	*BaseTransition
+//  *BaseTransition
 //
-//	followState:           ATNState
-//	ruleIndex, precedence i32
+//  followState:           ATNState
+//  ruleIndex, precedence i32
 //}
 //
 //impl RuleTransition {§//  pub fn new(ruleStart ATNState, ruleIndex, precedence: i32, followState: ATNState) -> *RuleTransition {
 //
-//	t := new(RuleTransition)
-//	t.BaseTransition = NewBaseTransition(ruleStart)
+//  t := new(RuleTransition)
+//  t.BaseTransition = NewBaseTransition(ruleStart)
 //
-//	t.ruleIndex = ruleIndex
-//	t.precedence = precedence
-//	t.followState = followState
-//	t.serializationType = TransitionRULE
-//	t.isEpsilon = true
+//  t.ruleIndex = ruleIndex
+//  t.precedence = precedence
+//  t.followState = followState
+//  t.serializationType = TransitionRULE
+//  t.isEpsilon = true
 //
-//	return t
+//  return t
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	return false
+//  return false
 //}
 //
 //pub struct EpsilonTransition {
-//	*BaseTransition
+//  *BaseTransition
 //
-//	outermostPrecedenceReturn: i32
+//  outermostPrecedenceReturn: i32
 //}
 //
 //impl EpsilonTransition {§//  pub fn new(target: ATNState, outermostPrecedenceReturn: i32) -> *EpsilonTransition {
 //
-//	t := new(EpsilonTransition)
-//	t.BaseTransition = NewBaseTransition(target)
+//  t := new(EpsilonTransition)
+//  t.BaseTransition = NewBaseTransition(target)
 //
-//	t.serializationType = TransitionEPSILON
-//	t.isEpsilon = true
-//	t.outermostPrecedenceReturn = outermostPrecedenceReturn
-//	return t
+//  t.serializationType = TransitionEPSILON
+//  t.isEpsilon = true
+//  t.outermostPrecedenceReturn = outermostPrecedenceReturn
+//  return t
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	return false
+//  return false
 //}
 //
 //pub fn String() -> &str {
-//	return "epsilon"
+//  return "epsilon"
 //}
 //
 //pub struct RangeTransition {
-//	*BaseTransition
+//  *BaseTransition
 //
-//	start, stop i32
+//  start, stop i32
 //}
 //
 //impl RangeTransition {§//  pub fn new(target ATNState,: start, stop: i32) -> *RangeTransition {
 //
-//	t := new(RangeTransition)
-//	t.BaseTransition = NewBaseTransition(target)
+//  t := new(RangeTransition)
+//  t.BaseTransition = NewBaseTransition(target)
 //
-//	t.serializationType = TransitionRANGE
-//	t.start = start
-//	t.stop = stop
-//	t.intervalSet = t.makeLabel()
-//	return t
+//  t.serializationType = TransitionRANGE
+//  t.start = start
+//  t.stop = stop
+//  t.intervalSet = t.makeLabel()
+//  return t
 //}
 //
 //pub fn makeLabel() -> *IntervalSet {
-//	s := NewIntervalSet()
-//	s.addRange(t.start, t.stop)
-//	return s
+//  s := NewIntervalSet()
+//  s.addRange(t.start, t.stop)
+//  return s
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	return symbol >= t.start && symbol <= t.stop
+//  return symbol >= t.start && symbol <= t.stop
 //}
 //
 //pub fn String() -> &str {
-//	return "'" + &str(t.start) + "'..'" + &str(t.stop) + "'"
+//  return "'" + &str(t.start) + "'..'" + &str(t.stop) + "'"
 //}
 //
 //pub trait AbstractPredicateTransition {
-//	Transition
-//	IAbstractPredicateTransitionFoo()
+//  Transition
+//  IAbstractPredicateTransitionFoo()
 //}
 //
 //pub struct BaseAbstractPredicateTransition {
-//	*BaseTransition
+//  *BaseTransition
 //}
 //
 //impl BasePredicateTransition {§//  pub fn new(target: ATNState) -> *BaseAbstractPredicateTransition {
 //
-//	t := new(BaseAbstractPredicateTransition)
-//	t.BaseTransition = NewBaseTransition(target)
+//  t := new(BaseAbstractPredicateTransition)
+//  t.BaseTransition = NewBaseTransition(target)
 //
-//	return t
+//  return t
 //}
 //
 //pub fn IAbstractPredicateTransitionFoo() {}
 //
 //pub struct PredicateTransition {
-//	*BaseAbstractPredicateTransition
+//  *BaseAbstractPredicateTransition
 //
-//	isCtxDependent:       bool
-//	ruleIndex, predIndex i32
+//  isCtxDependent:       bool
+//  ruleIndex, predIndex i32
 //}
 //
 //impl PredicateTransition {§//  pub fn new(target ATNState, ruleIndex, predIndex: i32, isCtxDependent: bool) -> *PredicateTransition {
 //
-//	t := new(PredicateTransition)
-//	t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
+//  t := new(PredicateTransition)
+//  t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
 //
-//	t.serializationType = TransitionPREDICATE
-//	t.ruleIndex = ruleIndex
-//	t.predIndex = predIndex
-//	t.isCtxDependent = isCtxDependent // e.g., $i ref in pred
-//	t.isEpsilon = true
-//	return t
+//  t.serializationType = TransitionPREDICATE
+//  t.ruleIndex = ruleIndex
+//  t.predIndex = predIndex
+//  t.isCtxDependent = isCtxDependent // e.g., $i ref in pred
+//  t.isEpsilon = true
+//  return t
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	return false
+//  return false
 //}
 //
 //pub fn getPredicate() -> *Predicate {
-//	return NewPredicate(t.ruleIndex, t.predIndex, t.isCtxDependent)
+//  return NewPredicate(t.ruleIndex, t.predIndex, t.isCtxDependent)
 //}
 //
 //pub fn String() -> &str {
-//	return "pred_" + strconv.Itoa(t.ruleIndex) + ":" + strconv.Itoa(t.predIndex)
+//  return "pred_" + strconv.Itoa(t.ruleIndex) + ":" + strconv.Itoa(t.predIndex)
 //}
 //
 //pub struct ActionTransition {
-//	*BaseTransition
+//  *BaseTransition
 //
-//	isCtxDependent:                    bool
-//	ruleIndex, actionIndex, predIndex i32
+//  isCtxDependent:                    bool
+//  ruleIndex, actionIndex, predIndex i32
 //}
 //
 //impl ActionTransition {§//  pub fn new(target ATNState, ruleIndex, actionIndex: i32, isCtxDependent: bool) -> *ActionTransition {
 //
-//	t := new(ActionTransition)
-//	t.BaseTransition = NewBaseTransition(target)
+//  t := new(ActionTransition)
+//  t.BaseTransition = NewBaseTransition(target)
 //
-//	t.serializationType = TransitionACTION
-//	t.ruleIndex = ruleIndex
-//	t.actionIndex = actionIndex
-//	t.isCtxDependent = isCtxDependent // e.g., $i ref in pred
-//	t.isEpsilon = true
-//	return t
+//  t.serializationType = TransitionACTION
+//  t.ruleIndex = ruleIndex
+//  t.actionIndex = actionIndex
+//  t.isCtxDependent = isCtxDependent // e.g., $i ref in pred
+//  t.isEpsilon = true
+//  return t
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	return false
+//  return false
 //}
 //
 //pub fn String() -> &str {
-//	return "action_" + strconv.Itoa(t.ruleIndex) + ":" + strconv.Itoa(t.actionIndex)
+//  return "action_" + strconv.Itoa(t.ruleIndex) + ":" + strconv.Itoa(t.actionIndex)
 //}
 //
 //pub struct SetTransition {
-//	*BaseTransition
+//  *BaseTransition
 //}
 //
 //impl SetTransition {§//  pub fn new(target: ATNState, set *IntervalSet) -> *SetTransition {
 //
-//	t := new(SetTransition)
-//	t.BaseTransition = NewBaseTransition(target)
+//  t := new(SetTransition)
+//  t.BaseTransition = NewBaseTransition(target)
 //
-//	t.serializationType = TransitionSET
-//	if set != nil {
-//		t.intervalSet = set
-//	} else {
-//		t.intervalSet = NewIntervalSet()
-//		t.intervalSet.addOne(TokenInvalidType)
-//	}
+//  t.serializationType = TransitionSET
+//  if set != nil {
+//    t.intervalSet = set
+//  } else {
+//    t.intervalSet = NewIntervalSet()
+//    t.intervalSet.addOne(TokenInvalidType)
+//  }
 //
-//	return t
+//  return t
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	return t.intervalSet.contains(symbol)
+//  return t.intervalSet.contains(symbol)
 //}
 //
 //pub fn String() -> &str {
-//	return t.intervalSet.String()
+//  return t.intervalSet.String()
 //}
 //
 //pub struct NotSetTransition {
-//	*SetTransition
+//  *SetTransition
 //}
 //
 //impl NotSetTransition {§//  pub fn new(target: ATNState, set *IntervalSet) -> *NotSetTransition {
 //
-//	t := new(NotSetTransition)
+//  t := new(NotSetTransition)
 //
-//	t.SetTransition = NewSetTransition(target, set)
+//  t.SetTransition = NewSetTransition(target, set)
 //
-//	t.serializationType = TransitionNOTSET
+//  t.serializationType = TransitionNOTSET
 //
-//	return t
+//  return t
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	return symbol >= minVocabSymbol && symbol <= maxVocabSymbol && !t.intervalSet.contains(symbol)
+//  return symbol >= minVocabSymbol && symbol <= maxVocabSymbol && !t.intervalSet.contains(symbol)
 //}
 //
 //pub fn String() -> &str {
-//	return "~" + t.intervalSet.String()
+//  return "~" + t.intervalSet.String()
 //}
 //
 //pub struct WildcardTransition {
-//	*BaseTransition
+//  *BaseTransition
 //}
 //
 //impl WildcardTransition {§//  pub fn new(target: ATNState) -> *WildcardTransition {
 //
-//	t := new(WildcardTransition)
-//	t.BaseTransition = NewBaseTransition(target)
+//  t := new(WildcardTransition)
+//  t.BaseTransition = NewBaseTransition(target)
 //
-//	t.serializationType = TransitionWILDCARD
-//	return t
+//  t.serializationType = TransitionWILDCARD
+//  return t
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	return symbol >= minVocabSymbol && symbol <= maxVocabSymbol
+//  return symbol >= minVocabSymbol && symbol <= maxVocabSymbol
 //}
 //
 //pub fn String() -> &str {
-//	return "."
+//  return "."
 //}
 //
 //pub struct PrecedencePredicateTransition {
-//	*BaseAbstractPredicateTransition
+//  *BaseAbstractPredicateTransition
 //
-//	precedence: i32
+//  precedence: i32
 //}
 //
 //impl PrecedencePredicateTransition {§//  pub fn new(target: ATNState, precedence: i32) -> *PrecedencePredicateTransition {
 //
-//	t := new(PrecedencePredicateTransition)
-//	t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
+//  t := new(PrecedencePredicateTransition)
+//  t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
 //
-//	t.serializationType = TransitionPRECEDENCE
-//	t.precedence = precedence
-//	t.isEpsilon = true
+//  t.serializationType = TransitionPRECEDENCE
+//  t.precedence = precedence
+//  t.isEpsilon = true
 //
-//	return t
+//  return t
 //}
 //
 //pub fn Matches(symbol,: minVocabSymbol, maxVocabSymbol: i32) -> bool {
-//	return false
+//  return false
 //}
 //
 //pub fn getPredicate() -> *PrecedencePredicate {
-//	return NewPrecedencePredicate(t.precedence)
+//  return NewPrecedencePredicate(t.precedence)
 //}
 //
 //pub fn String() -> &str {
-//	return fmt.Sprint(t.precedence) + " >= _p"
+//  return fmt.Sprint(t.precedence) + " >= _p"
 //}

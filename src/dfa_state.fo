@@ -1,22 +1,22 @@
 //package antlr
 //
 //import (
-//	"fmt"
-//	"strconv"
+//  "fmt"
+//  "strconv"
 //)
 //
 //// PredPrediction maps a predicate to a predicted alternative.
 //pub struct PredPrediction {
-//	alt:  i32
-//	pred: SemanticContext
+//  alt:  i32
+//  pred: SemanticContext
 //}
 //
 //impl PredPrediction {§//  pub fn new(pred: SemanticContext, alt: i32) -> *PredPrediction {
-//	return &PredPrediction{alt: alt, pred: pred}
+//  return &PredPrediction{alt: alt, pred: pred}
 //}
 //
 //pub fn String() -> &str {
-//	return "(" + fmt.Sprint(p.pred) + ", " + fmt.Sprint(p.alt) + ")"
+//  return "(" + fmt.Sprint(p.pred) + ", " + fmt.Sprint(p.alt) + ")"
 //}
 //
 //// DFAState represents a set of possible ATN configurations. As Aho, Sethi,
@@ -41,70 +41,70 @@
 //// different ATN contexts (with same or different alts) meaning that state was
 //// reached via a different set of rule invocations.
 //pub struct DFAState {
-//	stateNumber: i32
-//	configs:     ATNConfigSet
+//  stateNumber: i32
+//  configs:     ATNConfigSet
 //
-//	// edges elements point to the target of the symbol. Shift up by 1 so (-1)
-//	// Token.EOF maps to the first element.
-//	edges []*DFAState
+//  // edges elements point to the target of the symbol. Shift up by 1 so (-1)
+//  // Token.EOF maps to the first element.
+//  edges []*DFAState
 //
-//	isAcceptState: bool
+//  isAcceptState: bool
 //
-//	// prediction is the ttype we match or alt we predict if the state is accept.
-//	// Set to ATN.INVALID_ALT_NUMBER when predicates != nil or
-//	// requiresFullContext.
-//	prediction: i32
+//  // prediction is the ttype we match or alt we predict if the state is accept.
+//  // Set to ATN.INVALID_ALT_NUMBER when predicates != nil or
+//  // requiresFullContext.
+//  prediction: i32
 //
-//	lexerActionExecutor: *LexerActionExecutor
+//  lexerActionExecutor: *LexerActionExecutor
 //
-//	// requiresFullContext indicates it was created during an SLL prediction that
-//	// discovered a conflict between the configurations in the state. Future
-//	// ParserATNSimulator.execATN invocations immediately jump doing
-//	// full context prediction if true.
-//	requiresFullContext: bool
+//  // requiresFullContext indicates it was created during an SLL prediction that
+//  // discovered a conflict between the configurations in the state. Future
+//  // ParserATNSimulator.execATN invocations immediately jump doing
+//  // full context prediction if true.
+//  requiresFullContext: bool
 //
-//	// predicates is the predicates associated with the ATN configurations of the
-//	// DFA state during SLL parsing. When we have predicates, requiresFullContext
-//	// is false, since full context prediction evaluates predicates on-the-fly. If
-//	// d is
-//	// not nil, then prediction is ATN.INVALID_ALT_NUMBER.
-//	//
-//	// We only use these for non-requiresFullContext but conflicting states. That
-//	// means we know from the context (it's $ or we don't dip i32o outer context)
-//	// that it's an ambiguity not a conflict.
-//	//
-//	// This list is computed by
-//	// ParserATNSimulator.predicateDFAState.
-//	predicates []*PredPrediction
+//  // predicates is the predicates associated with the ATN configurations of the
+//  // DFA state during SLL parsing. When we have predicates, requiresFullContext
+//  // is false, since full context prediction evaluates predicates on-the-fly. If
+//  // d is
+//  // not nil, then prediction is ATN.INVALID_ALT_NUMBER.
+//  //
+//  // We only use these for non-requiresFullContext but conflicting states. That
+//  // means we know from the context (it's $ or we don't dip i32o outer context)
+//  // that it's an ambiguity not a conflict.
+//  //
+//  // This list is computed by
+//  // ParserATNSimulator.predicateDFAState.
+//  predicates []*PredPrediction
 //}
 //
 //impl DFAState {§//  pub fn new(stateNumber: i32, configs: ATNConfigSet) -> *DFAState {
-//	if configs == nil {
-//		configs = NewBaseATNConfigSet(false)
-//	}
+//  if configs == nil {
+//    configs = NewBaseATNConfigSet(false)
+//  }
 //
-//	return &DFAState{configs: configs, stateNumber: stateNumber}
+//  return &DFAState{configs: configs, stateNumber: stateNumber}
 //}
 //
 //// GetAltSet gets the set of all alts mentioned by all ATN configurations in d.
 //pub fn GetAltSet() -> *Set {
-//	alts := NewSet(nil, nil)
+//  alts := NewSet(nil, nil)
 //
-//	if d.configs != nil {
-//		for _, c := range d.configs.GetItems() {
-//			alts.add(c.GetAlt())
-//		}
-//	}
+//  if d.configs != nil {
+//    for _, c := range d.configs.GetItems() {
+//      alts.add(c.GetAlt())
+//    }
+//  }
 //
-//	if alts.length() == 0 {
-//		return nil
-//	}
+//  if alts.length() == 0 {
+//    return nil
+//  }
 //
-//	return alts
+//  return alts
 //}
 //
 //pub fn setPrediction(v: i32) {
-//	d.prediction = v
+//  d.prediction = v
 //}
 //
 //// equals returns whether d equals other. Two DFAStates are equal if their ATN
@@ -119,29 +119,29 @@
 //// ParserATNSimulator.addDFAState we need to know if any other state exists that
 //// has d exact set of ATN configurations. The stateNumber is irrelevant.
 //pub fn equals(other i32erface{}) -> bool {
-//	if d == other {
-//		return true
-//	} else if _, ok := other.(*DFAState); !ok {
-//		return false
-//	}
+//  if d == other {
+//    return true
+//  } else if _, ok := other.(*DFAState); !ok {
+//    return false
+//  }
 //
-//	return d.configs.Equals(other.(*DFAState).configs)
+//  return d.configs.Equals(other.(*DFAState).configs)
 //}
 //
 //pub fn String() -> &str {
-//	return strconv.Itoa(d.stateNumber) + ":" + d.Hash()
+//  return strconv.Itoa(d.stateNumber) + ":" + d.Hash()
 //}
 //
 //pub fn Hash() -> &str {
-//	var s &str
+//  var s &str
 //
-//	if d.isAcceptState {
-//		if d.predicates != nil {
-//			s = "=>" + fmt.Sprint(d.predicates)
-//		} else {
-//			s = "=>" + fmt.Sprint(d.prediction)
-//		}
-//	}
+//  if d.isAcceptState {
+//    if d.predicates != nil {
+//      s = "=>" + fmt.Sprint(d.predicates)
+//    } else {
+//      s = "=>" + fmt.Sprint(d.prediction)
+//    }
+//  }
 //
-//	return fmt.Sprint(d.configs) + s
+//  return fmt.Sprint(d.configs) + s
 //}

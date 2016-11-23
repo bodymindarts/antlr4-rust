@@ -1,16 +1,16 @@
 //package antlr
 //
 //pub trait TokenStream {
-//	IntStream
+//  IntStream
 //
-//	LT(k i32) Token
+//  LT(k i32) Token
 //
-//	Get(index i32) Token
-//	GetTokenSource() TokenSource
-//	SetTokenSource(TokenSource)
+//  Get(index i32) Token
+//  GetTokenSource() TokenSource
+//  SetTokenSource(TokenSource)
 //
-//	GetAllText() &str
-//	GetTextFromInterval(*Interval) &str
-//	GetTextFromRuleContext(RuleContext) &str
-//	GetTextFromTokens(Token, Token) &str
+//  GetAllText() &str
+//  GetTextFromInterval(*Interval) &str
+//  GetTextFromRuleContext(RuleContext) &str
+//  GetTextFromTokens(Token, Token) &str
 //}

@@ -1,27 +1,27 @@
 //package antlr
 //
 //import (
-//	"errors"
-//	"fmt"
-//	"hash/fnv"
-//	"sort"
-//	"strings"
-//	"bytes"
-//	"strconv"
+//  "errors"
+//  "fmt"
+//  "hash/fnv"
+//  "sort"
+//  "strings"
+//  "bytes"
+//  "strconv"
 //)
 //
 //pub fn i32Min(a, b: i32) -> i32 { // non-member
-//	if a < b {
-//		return a
-//	}
-//	return b
+//  if a < b {
+//    return a
+//  }
+//  return b
 //}
 //
 //pub fn i32Max(a, b: i32) -> i32 { // non-member
-//	if a > b {
-//		return a
-//	}
-//	return b
+//  if a > b {
+//    return a
+//  }
+//  return b
 //}
 //
 //// A simple i32eger stack
@@ -31,353 +31,353 @@
 //var ErrEmptyStack = errors.New("Stack is empty")
 //
 //pub fn (int,: error) {
-//	l := len(*s) - 1
-//	if l < 0 {
-//		return 0, ErrEmptyStack
-//	}
-//	v := (*s)[l]
-//	*s = (*s)[0:l]
-//	return v, nil
+//  l := len(*s) - 1
+//  if l < 0 {
+//    return 0, ErrEmptyStack
+//  }
+//  v := (*s)[l]
+//  *s = (*s)[0:l]
+//  return v, nil
 //}
 //
 //pub fn Push(e: i32) {
-//	*s = append(*s, e)
+//  *s = append(*s, e)
 //}
 //
 //pub struct Set {
-//	data           map[string][]interface{}
-//	hashFunction   func(interface{}) &str
-//	equalsFunction func(interface{}, i32erface{}) bool
+//  data           map[string][]interface{}
+//  hashFunction   func(interface{}) &str
+//  equalsFunction func(interface{}, i32erface{}) bool
 //}
 //
 //impl Set {§//  pub fn new(hashFunction func(interface{}): &str, equalsFunction func(interface{}, i32erface{}): bool) -> *Set {
 //
-//	s := new(Set)
+//  s := new(Set)
 //
-//	s.data = make(map[string][]interface{})
+//  s.data = make(map[string][]interface{})
 //
-//	if hashFunction == nil {
-//		s.hashFunction = standardHashFunction
-//	} else {
-//		s.hashFunction = hashFunction
-//	}
+//  if hashFunction == nil {
+//    s.hashFunction = standardHashFunction
+//  } else {
+//    s.hashFunction = hashFunction
+//  }
 //
-//	if equalsFunction == nil {
-//		s.equalsFunction = standardEqualsFunction
-//	} else {
-//		s.equalsFunction = equalsFunction
-//	}
+//  if equalsFunction == nil {
+//    s.equalsFunction = standardEqualsFunction
+//  } else {
+//    s.equalsFunction = equalsFunction
+//  }
 //
-//	return s
+//  return s
 //}
 //
 //pub fn standardEqualsFunction(a i32erface{}, b i32erface{}) -> bool { // non-member
 //
-//	ac, oka := a.(Comparable)
-//	bc, okb := b.(Comparable)
+//  ac, oka := a.(Comparable)
+//  bc, okb := b.(Comparable)
 //
-//	if !oka || !okb {
-//		panic("Not Comparable")
-//	}
+//  if !oka || !okb {
+//    panic("Not Comparable")
+//  }
 //
-//	return ac.equals(bc)
+//  return ac.equals(bc)
 //}
 //
 //pub fn standardHashFunction(a i32erface{}) -> &str { // non-member
-//	h, ok := a.(Hasher)
+//  h, ok := a.(Hasher)
 //
-//	if ok {
-//		return h.Hash()
-//	}
+//  if ok {
+//    return h.Hash()
+//  }
 //
-//	panic("Not Hasher")
+//  panic("Not Hasher")
 //}
 //
 ////pub fn getBytes(key i32erface{}) -> ([]byte,: error) { // non-member
-////	var buf bytes.Buffer
-////	enc := gob.NewEncoder(&buf)
-////	err := enc.Encode(key)
-////	if err != nil {
-////		return nil, err
-////	}
-////	return buf.Bytes(), nil
+////  var buf bytes.Buffer
+////  enc := gob.NewEncoder(&buf)
+////  err := enc.Encode(key)
+////  if err != nil {
+////    return nil, err
+////  }
+////  return buf.Bytes(), nil
 ////}
 //
 //pub trait Hasher {
-//	Hash() &str
+//  Hash() &str
 //}
 //
 //pub fn hashCode(s: &str) -> &str { // non-member
-//	h := fnv.New32a()
-//	h.Write([]byte((s)))
-//	return fmt.Sprint(h.Sum32())
+//  h := fnv.New32a()
+//  h.Write([]byte((s)))
+//  return fmt.Sprint(h.Sum32())
 //}
 //
 //pub fn length() -> i32 {
-//	return len(s.data)
+//  return len(s.data)
 //}
 //
 //pub fn add(value i32erface{}) -> i32erface{} {
 //
-//	hash := s.hashFunction(value)
-//	key := "hash_" + hashCode(hash)
+//  hash := s.hashFunction(value)
+//  key := "hash_" + hashCode(hash)
 //
-//	values := s.data[key]
+//  values := s.data[key]
 //
-//	if s.data[key] != nil {
+//  if s.data[key] != nil {
 //
-//		for i := 0; i < len(values); i++ {
-//			if s.equalsFunction(value, values[i]) {
-//				return values[i]
-//			}
-//		}
+//    for i := 0; i < len(values); i++ {
+//      if s.equalsFunction(value, values[i]) {
+//        return values[i]
+//      }
+//    }
 //
-//		s.data[key] = append(s.data[key], value)
-//		return value
-//	}
+//    s.data[key] = append(s.data[key], value)
+//    return value
+//  }
 //
-//	s.data[key] = []interface{}{value}
-//	return value
+//  s.data[key] = []interface{}{value}
+//  return value
 //}
 //
 //pub fn contains(value i32erface{}) -> bool {
 //
-//	hash := s.hashFunction(value)
-//	key := "hash_" + hashCode(hash)
+//  hash := s.hashFunction(value)
+//  key := "hash_" + hashCode(hash)
 //
-//	values := s.data[key]
+//  values := s.data[key]
 //
-//	if s.data[key] != nil {
-//		for i := 0; i < len(values); i++ {
-//			if s.equalsFunction(value, values[i]) {
-//				return true
-//			}
-//		}
-//	}
-//	return false
+//  if s.data[key] != nil {
+//    for i := 0; i < len(values); i++ {
+//      if s.equalsFunction(value, values[i]) {
+//        return true
+//      }
+//    }
+//  }
+//  return false
 //}
 //
 //pub fn values() -> []interface{} {
-//	l := make([]interface{}, 0)
+//  l := make([]interface{}, 0)
 //
-//	for key := range s.data {
-//		if &strs.Index(key, "hash_") == 0 {
-//			l = append(l, s.data[key]...)
-//		}
-//	}
-//	return l
+//  for key := range s.data {
+//    if &strs.Index(key, "hash_") == 0 {
+//      l = append(l, s.data[key]...)
+//    }
+//  }
+//  return l
 //}
 //
 //pub fn String() -> &str {
 //
-//	r := ""
+//  r := ""
 //
-//	for _, av := range s.data {
-//		for _, v := range av {
-//			r += fmt.Sprint(v)
-//		}
-//	}
+//  for _, av := range s.data {
+//    for _, v := range av {
+//      r += fmt.Sprint(v)
+//    }
+//  }
 //
-//	return r
+//  return r
 //}
 //
 //pub struct BitSet {
-//	data map[int]bool
+//  data map[int]bool
 //}
 //
 //impl BitSet {§//  pub fn new() -> *BitSet {
-//	b := new(BitSet)
-//	b.data = make(map[int]bool)
-//	return b
+//  b := new(BitSet)
+//  b.data = make(map[int]bool)
+//  return b
 //}
 //
 //pub fn add(value: i32) {
-//	b.data[value] = true
+//  b.data[value] = true
 //}
 //
 //pub fn clear(index: i32) {
-//	delete(b.data, index)
+//  delete(b.data, index)
 //}
 //
 //pub fn or(set *BitSet) {
-//	for k := range set.data {
-//		b.add(k)
-//	}
+//  for k := range set.data {
+//    b.add(k)
+//  }
 //}
 //
 //pub fn remove(value: i32) {
-//	delete(b.data, value)
+//  delete(b.data, value)
 //}
 //
 //pub fn contains(value: i32) -> bool {
-//	return b.data[value] == true
+//  return b.data[value] == true
 //}
 //
 //pub fn values() -> []int {
-//	ks := make([]int, len(b.data))
-//	i := 0
-//	for k := range b.data {
-//		ks[i] = k
-//		i++
-//	}
-//	sort.Ints(ks)
-//	return ks
+//  ks := make([]int, len(b.data))
+//  i := 0
+//  for k := range b.data {
+//    ks[i] = k
+//    i++
+//  }
+//  sort.Ints(ks)
+//  return ks
 //}
 //
 //pub fn minValue() -> i32 {
-//	min := 2147483647
+//  min := 2147483647
 //
-//	for k := range b.data {
-//		if k < min {
-//			min = k
-//		}
-//	}
+//  for k := range b.data {
+//    if k < min {
+//      min = k
+//    }
+//  }
 //
-//	return min
+//  return min
 //}
 //
 //pub fn equals(other i32erface{}) -> bool {
-//	otherBitSet, ok := other.(*BitSet)
-//	if !ok {
-//		return false
-//	}
+//  otherBitSet, ok := other.(*BitSet)
+//  if !ok {
+//    return false
+//  }
 //
-//	if len(b.data) != len(otherBitSet.data) {
-//		return false
-//	}
+//  if len(b.data) != len(otherBitSet.data) {
+//    return false
+//  }
 //
-//	for k, v := range b.data {
-//		if otherBitSet.data[k] != v {
-//			return false
-//		}
-//	}
+//  for k, v := range b.data {
+//    if otherBitSet.data[k] != v {
+//      return false
+//    }
+//  }
 //
-//	return true
+//  return true
 //}
 //
 //pub fn length() -> i32 {
-//	return len(b.data)
+//  return len(b.data)
 //}
 //
 //pub fn String() -> &str {
-//	vals := b.values()
-//	valsS := make([]string, len(vals))
+//  vals := b.values()
+//  valsS := make([]string, len(vals))
 //
-//	for i, val := range vals {
-//		valsS[i] = strconv.Itoa(val)
-//	}
-//	return "{" + &strs.Join(valsS, ", ") + "}"
+//  for i, val := range vals {
+//    valsS[i] = strconv.Itoa(val)
+//  }
+//  return "{" + &strs.Join(valsS, ", ") + "}"
 //}
 //
 //pub struct AltDict {
-//	data map[string]interface{}
+//  data map[string]interface{}
 //}
 //
 //impl AltDict {§//  pub fn new() -> *AltDict {
-//	d := new(AltDict)
-//	d.data = make(map[string]interface{})
-//	return d
+//  d := new(AltDict)
+//  d.data = make(map[string]interface{})
+//  return d
 //}
 //
 //pub fn Get(key: &str) -> i32erface{} {
-//	key = "k-" + key
-//	return a.data[key]
+//  key = "k-" + key
+//  return a.data[key]
 //}
 //
 //pub fn put(key: &str, value i32erface{}) {
-//	key = "k-" + key
-//	a.data[key] = value
+//  key = "k-" + key
+//  a.data[key] = value
 //}
 //
 //pub fn values() -> []interface{} {
-//	vs := make([]interface{}, len(a.data))
-//	i := 0
-//	for _, v := range a.data {
-//		vs[i] = v
-//		i++
-//	}
-//	return vs
+//  vs := make([]interface{}, len(a.data))
+//  i := 0
+//  for _, v := range a.data {
+//    vs[i] = v
+//    i++
+//  }
+//  return vs
 //}
 //
 //pub struct DoubleDict {
-//	data map[string]map[string]interface{}
+//  data map[string]map[string]interface{}
 //}
 //
 //impl DoubleDict {§//  pub fn new() -> *DoubleDict {
-//	dd := new(DoubleDict)
-//	dd.data = make(map[string]map[string]interface{})
-//	return dd
+//  dd := new(DoubleDict)
+//  dd.data = make(map[string]map[string]interface{})
+//  return dd
 //}
 //
 //pub fn Get(a: &str, b: &str) -> i32erface{} {
-//	data := d.data[a]
+//  data := d.data[a]
 //
-//	if data == nil {
-//		return nil
-//	}
+//  if data == nil {
+//    return nil
+//  }
 //
-//	return data[b]
+//  return data[b]
 //}
 //
 //pub fn set(a, b: &str, o i32erface{}) {
-//	data := d.data[a]
+//  data := d.data[a]
 //
-//	if data == nil {
-//		data = make(map[string]interface{})
-//		d.data[a] = data
-//	}
+//  if data == nil {
+//    data = make(map[string]interface{})
+//    d.data[a] = data
+//  }
 //
-//	data[b] = o
+//  data[b] = o
 //}
 //
 //pub fn EscapeWhitespace(s: &str, escapeSpaces: bool) -> &str { // non-member
 //
-//	s = &strs.Replace(s, "\t", "\\t", -1)
-//	s = &strs.Replace(s, "\n", "\\n", -1)
-//	s = &strs.Replace(s, "\r", "\\r", -1)
-//	if escapeSpaces {
-//		s = &strs.Replace(s, " ", "\u00B7", -1)
-//	}
-//	return s
+//  s = &strs.Replace(s, "\t", "\\t", -1)
+//  s = &strs.Replace(s, "\n", "\\n", -1)
+//  s = &strs.Replace(s, "\r", "\\r", -1)
+//  if escapeSpaces {
+//    s = &strs.Replace(s, " ", "\u00B7", -1)
+//  }
+//  return s
 //}
 //
 //pub fn TerminalNodeToStringArray(sa []TerminalNode) -> []string { // non-member
-//	st := make([]string, len(sa))
+//  st := make([]string, len(sa))
 //
-//	for i, s := range sa {
-//		st[i] = fmt.Sprintf("%v", s)
-//	}
+//  for i, s := range sa {
+//    st[i] = fmt.Sprintf("%v", s)
+//  }
 //
-//	return st
+//  return st
 //}
 //
 //pub fn PrintArrayJavaStyle(sa []string) -> &str { // non-member
-//	var buffer bytes.Buffer
+//  var buffer bytes.Buffer
 //
-//	buffer.WriteString("[")
+//  buffer.WriteString("[")
 //
-//	for i, s := range sa {
-//		buffer.WriteString(s)
-//		if i != len(sa)-1 {
-//			buffer.WriteString(", ")
-//		}
-//	}
+//  for i, s := range sa {
+//    buffer.WriteString(s)
+//    if i != len(sa)-1 {
+//      buffer.WriteString(", ")
+//    }
+//  }
 //
-//	buffer.WriteString("]")
+//  buffer.WriteString("]")
 //
-//	return buffer.String()
+//  return buffer.String()
 //}
 //
 //pub fn TitleCase(str: &str) -> &str { // non-member
 //
-//	//	pub fn ReplaceAllStringFunc(src: &str, repl func(string): &str) -> &str
-//	//	return str.replace(//g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1)})
+//  //  pub fn ReplaceAllStringFunc(src: &str, repl func(string): &str) -> &str
+//  //  return str.replace(//g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1)})
 //
-//	panic("Not implemented")
+//  panic("Not implemented")
 //
-//	//	re := regexp.MustCompile("\w\S*")
-//	//	return re.ReplaceAllStringFunc(str, func(s &str) {
-//	//		return &strs.ToUpper(s[0:1]) + s[1:2]
-//	//	})
+//  //  re := regexp.MustCompile("\w\S*")
+//  //  return re.ReplaceAllStringFunc(str, func(s &str) {
+//  //    return &strs.ToUpper(s[0:1]) + s[1:2]
+//  //  })
 //
 //}

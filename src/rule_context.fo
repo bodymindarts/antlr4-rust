@@ -22,71 +22,71 @@
 ////
 //
 //pub trait RuleContext {
-//	RuleNode
+//  RuleNode
 //
-//	GetInvokingState() i32
-//	SetInvokingState(int)
+//  GetInvokingState() i32
+//  SetInvokingState(int)
 //
-//	GetRuleIndex() i32
-//	IsEmpty() bool
+//  GetRuleIndex() i32
+//  IsEmpty() bool
 //
-//	GetAltNumber() i32
-//	SetAltNumber(altNumber i32)
+//  GetAltNumber() i32
+//  SetAltNumber(altNumber i32)
 //
-//	String([]string, RuleContext) &str
+//  String([]string, RuleContext) &str
 //}
 //
 //pub struct BaseRuleContext {
-//	parentCtx:     RuleContext
-//	invokingState: i32
-//	RuleIndex:     i32
+//  parentCtx:     RuleContext
+//  invokingState: i32
+//  RuleIndex:     i32
 //}
 //
 //impl BaseRuleContext {§//  pub fn new(parent: RuleContext, invokingState: i32) -> *BaseRuleContext {
 //
-//	rn := new(BaseRuleContext)
+//  rn := new(BaseRuleContext)
 //
-//	// What context invoked b rule?
-//	rn.parentCtx = parent
+//  // What context invoked b rule?
+//  rn.parentCtx = parent
 //
-//	// What state invoked the rule associated with b context?
-//	// The "return address" is the followState of invokingState
-//	// If parent is nil, b should be -1.
-//	if parent == nil {
-//		rn.invokingState = -1
-//	} else {
-//		rn.invokingState = invokingState
-//	}
+//  // What state invoked the rule associated with b context?
+//  // The "return address" is the followState of invokingState
+//  // If parent is nil, b should be -1.
+//  if parent == nil {
+//    rn.invokingState = -1
+//  } else {
+//    rn.invokingState = invokingState
+//  }
 //
-//	return rn
+//  return rn
 //}
 //
 //pub fn GetBaseRuleContext() -> *BaseRuleContext {
-//	return b
+//  return b
 //}
 //
 //pub fn SetParent(v: Tree) {
-//	if v == nil {
-//		b.parentCtx = nil
-//	} else {
-//		b.parentCtx = v.(RuleContext)
-//	}
+//  if v == nil {
+//    b.parentCtx = nil
+//  } else {
+//    b.parentCtx = v.(RuleContext)
+//  }
 //}
 //
 //pub fn GetInvokingState() -> i32 {
-//	return b.invokingState
+//  return b.invokingState
 //}
 //
 //pub fn SetInvokingState(t: i32) {
-//	b.invokingState = t
+//  b.invokingState = t
 //}
 //
 //pub fn GetRuleIndex() -> i32 {
-//	return b.RuleIndex
+//  return b.RuleIndex
 //}
 //
 //pub fn GetAltNumber() -> i32 {
-//	return ATNInvalidAltNumber
+//  return ATNInvalidAltNumber
 //}
 //
 //pub fn SetAltNumber(altNumber: i32) {}
@@ -94,7 +94,7 @@
 //// A context is empty if there is no invoking state meaning nobody call
 //// current context.
 //pub fn IsEmpty() -> bool {
-//	return b.invokingState == -1
+//  return b.invokingState == -1
 //}
 //
 //// Return the combined text of all child nodes. This method only considers
@@ -106,5 +106,5 @@
 ////
 //
 //pub fn GetParent() -> Tree {
-//	return b.parentCtx
+//  return b.parentCtx
 //}
