@@ -37,12 +37,12 @@
 //}
 //
 //pub struct BaseATNConfig {
-//	precedenceFilterSuppressed bool
-//	state                      ATNState
-//	alt                        int
-//	context                    PredictionContext
-//	semanticContext            SemanticContext
-//	reachesIntoOuterContext    int
+//	precedenceFilterSuppressed: bool
+//	state:                      ATNState
+//	alt:                        int
+//	context:                    PredictionContext
+//	semanticContext:            SemanticContext
+//	reachesIntoOuterContext:    int
 //}
 //
 //impl BaseATNConfig {§//  pub fn new7(old *BaseATNConfig) *BaseATNConfig { // TODO: Dup
@@ -202,8 +202,8 @@
 //
 //pub struct LexerATNConfig {
 //	*BaseATNConfig
-//	lexerActionExecutor            *LexerActionExecutor
-//	passedThroughNonGreedyDecision bool
+//	lexerActionExecutor:            *LexerActionExecutor
+//	passedThroughNonGreedyDecision: bool
 //}
 //
 //impl LexerATNConfig {§//  pub fn new6(state ATNState, alt int, context PredictionContext) *LexerATNConfig {

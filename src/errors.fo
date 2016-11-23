@@ -13,12 +13,12 @@
 //}
 //
 //pub struct BaseRecognitionException {
-//	message        string
-//	recognizer     Recognizer
-//	offendingToken Token
-//	offendingState int
-//	ctx            RuleContext
-//	input          IntStream
+//	message:        string
+//	recognizer:     Recognizer
+//	offendingToken: Token
+//	offendingState: int
+//	ctx:            RuleContext
+//	input:          IntStream
 //}
 //
 //impl BaseRecognitionException {§//  pub fn new(message string, recognizer Recognizer, input IntStream, ctx RuleContext) -> *BaseRecognitionException {
@@ -95,8 +95,8 @@
 //pub struct LexerNoViableAltException {
 //	*BaseRecognitionException
 //
-//	startIndex     int
-//	deadEndConfigs ATNConfigSet
+//	startIndex:     int
+//	deadEndConfigs: ATNConfigSet
 //}
 //
 //impl LexerNoViableAltException {§//  pub fn new(lexer Lexer, input CharStream, startIndex int, deadEndConfigs ATNConfigSet) -> *LexerNoViableAltException {
@@ -122,10 +122,10 @@
 //pub struct NoViableAltException {
 //	*BaseRecognitionException
 //
-//	startToken     Token
-//	offendingToken Token
-//	ctx            ParserRuleContext
-//	deadEndConfigs ATNConfigSet
+//	startToken:     Token
+//	offendingToken: Token
+//	ctx:            ParserRuleContext
+//	deadEndConfigs: ATNConfigSet
 //}
 //
 //// Indicates that the parser could not decide which of two or more paths
@@ -193,9 +193,9 @@
 //pub struct FailedPredicateException {
 //	*BaseRecognitionException
 //
-//	ruleIndex      int
-//	predicateIndex int
-//	predicate      string
+//	ruleIndex:      int
+//	predicateIndex: int
+//	predicate:      string
 //}
 //
 //impl FailedPredicateException {§//  pub fn new(recognizer Parser, predicate string, message string) -> *FailedPredicateException {

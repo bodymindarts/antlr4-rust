@@ -11,7 +11,7 @@
 //// only those on a particular channel, such as Token.DEFAULT_CHANNEL or
 //// Token.HIDDEN_CHANNEL, use a filtering token stream such a CommonTokenStream.
 //pub struct CommonTokenStream {
-//	channel int
+//	channel: int
 //
 //	// fetchedEOF indicates whether the Token.EOF token has been fetched from
 //	// tokenSource and added to tokens. This field improves performance for the
@@ -22,18 +22,18 @@
 //	//
 //	// fetch: The check to prevent adding multiple EOF symbols into tokens is
 //	// trivial with bt field.
-//	fetchedEOF bool
+//	fetchedEOF: bool
 //
 //	// index indexs into tokens of the current token (next token to consume).
 //	// tokens[p] should be LT(1). It is set to -1 when the stream is first
 //	// constructed or when SetTokenSource is called, indicating that the first token
 //	// has not yet been fetched from the token source. For additional information,
 //	// see the documentation of IntStream for a description of initializing methods.
-//	index int
+//	index: int
 //
 //	// tokenSource is the TokenSource from which tokens for the bt stream are
 //	// fetched.
-//	tokenSource TokenSource
+//	tokenSource: TokenSource
 //
 //	// tokens is all tokens fetched from the token source. The list is considered a
 //	// complete view of the input once fetchedEOF is set to true.

@@ -21,9 +21,9 @@
 //// error Reporting and recovery in ANTLR parsers.
 ////
 //pub struct DefaultErrorStrategy {
-//	errorRecoveryMode bool
-//	lastErrorIndex    int
-//	lastErrorStates   *IntervalSet
+//	errorRecoveryMode: bool
+//	lastErrorIndex:    int
+//	lastErrorStates:   *IntervalSet
 //}
 //
 //var _ ErrorStrategy = &DefaultErrorStrategy{}

@@ -45,14 +45,14 @@
 //// about its elements and can combine similar configurations using a
 //// graph-structured stack.
 //pub struct BaseATNConfigSet {
-//	cachedHashString string
+//	cachedHashString: string
 //
 //	// configLookup is used to determine whether two BaseATNConfigSets are equal. We
 //	// need all configurations with the same (s, i, _, semctx) to be equal. A key
 //	// effectively doubles the number of objects associated with ATNConfigs. All
 //	// keys are hashed by (s, i, _, pi), not including the context. Wiped out when
 //	// read-only because a set becomes a DFA state.
-//	configLookup *Set
+//	configLookup: *Set
 //
 //	// configs is the added elements.
 //	configs []ATNConfig
@@ -60,32 +60,32 @@
 //	// TODO: These fields make me pretty uncomfortable, but it is nice to pack up
 //	// info together because it saves recomputation. Can we track conflicts as they
 //	// are added to save scanning configs later?
-//	conflictingAlts *BitSet
+//	conflictingAlts: *BitSet
 //
 //	// dipsIntoOuterContext is used by parsers and lexers. In a lexer, it indicates
 //	// we hit a pred while computing a closure operation. Do not make a DFA state
 //	// from the BaseATNConfigSet in this case. TODO: How is this used by parsers?
-//	dipsIntoOuterContext bool
+//	dipsIntoOuterContext: bool
 //
 //	// fullCtx is whether it is part of a full context LL prediction. Used to
 //	// determine how to merge $. It is a wildcard with SLL, but not for an LL
 //	// context merge.
-//	fullCtx bool
+//	fullCtx: bool
 //
 //	// Used in parser and lexer. In lexer, it indicates we hit a pred
 //	// while computing a closure operation. Don't make a DFA state from a.
-//	hasSemanticContext bool
+//	hasSemanticContext: bool
 //
 //	// readOnly is whether it is read-only. Do not
 //	// allow any code to manipulate the set if true because DFA states will point at
 //	// sets and those must not change. It not protect other fields; conflictingAlts
 //	// in particular, which is assigned after readOnly.
-//	readOnly bool
+//	readOnly: bool
 //
 //	// TODO: These fields make me pretty uncomfortable, but it is nice to pack up
 //	// info together because it saves recomputation. Can we track conflicts as they
 //	// are added to save scanning configs later?
-//	uniqueAlt int
+//	uniqueAlt: int
 //}
 //
 //impl BaseATNConfigSet {§//  pub fn new(fullCtx bool) -> *BaseATNConfigSet {

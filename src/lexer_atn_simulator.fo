@@ -29,15 +29,15 @@
 //pub struct LexerATNSimulator {
 //	*BaseATNSimulator
 //
-//	recog              Lexer
-//	predictionMode     int
-//	mergeCache         DoubleDict
-//	startIndex         int
-//	Line               int
-//	CharPositionInLine int
-//	mode               int
-//	prevAccept         *SimState
-//	MatchCalls         int
+//	recog:              Lexer
+//	predictionMode:     int
+//	mergeCache:         DoubleDict
+//	startIndex:         int
+//	Line:               int
+//	CharPositionInLine: int
+//	mode:               int
+//	prevAccept:         *SimState
+//	MatchCalls:         int
 //}
 //
 //impl LexerATNSimulator {§//  pub fn new(recog Lexer, atn *ATN, decisionToDFA []*DFA, sharedContextCache *PredictionContextCache) -> *LexerATNSimulator {
@@ -637,10 +637,10 @@
 //}
 //
 //pub struct SimState {
-//	index    int
-//	line     int
-//	column   int
-//	dfaState *DFAState
+//	index:    int
+//	line:     int
+//	column:   int
+//	dfaState: *DFAState
 //}
 //
 //impl SimState {§//  pub fn new() -> *SimState {

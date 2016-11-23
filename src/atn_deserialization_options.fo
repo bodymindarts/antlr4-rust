@@ -3,9 +3,9 @@
 //var ATNDeserializationOptionsdefaultOptions = &ATNDeserializationOptions{true, false, false}
 //
 //pub struct ATNDeserializationOptions {
-//	readOnly                      bool
-//	verifyATN                     bool
-//	generateRuleBypassTransitions bool
+//	readOnly:                      bool
+//	verifyATN:                     bool
+//	generateRuleBypassTransitions: bool
 //}
 //
 //impl ATNDeserializationOptions {§//  pub fn new(CopyFrom *ATNDeserializationOptions) -> *ATNDeserializationOptions {

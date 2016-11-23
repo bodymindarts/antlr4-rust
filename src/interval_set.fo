@@ -6,8 +6,8 @@
 //)
 //
 //pub struct Interval {
-//	start int
-//	stop  int
+//	start: int
+//	stop:  int
 //}
 //
 ///* stop is not included! */
@@ -37,7 +37,7 @@
 //
 //pub struct IntervalSet {
 //	intervals []*Interval
-//	readOnly  bool
+//	readOnly:  bool
 //}
 //
 //impl IntervalSet {§//  pub fn new() -> *IntervalSet {

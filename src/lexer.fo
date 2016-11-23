@@ -27,23 +27,23 @@
 //pub struct BaseLexer {
 //	*BaseRecognizer
 //
-//	Interpreter         ILexerATNSimulator
-//	TokenStartCharIndex int
-//	TokenStartLine      int
-//	TokenStartColumn    int
-//	ActionType          int
+//	Interpreter:         ILexerATNSimulator
+//	TokenStartCharIndex: int
+//	TokenStartLine:      int
+//	TokenStartColumn:    int
+//	ActionType:          int
 //	Virt                Lexer // The most derived lexer implementation. Allows virtual method calls.
 //
-//	input                  CharStream
-//	factory                TokenFactory
-//	tokenFactorySourcePair *TokenSourceCharStreamPair
-//	token                  Token
-//	hitEOF                 bool
-//	channel                int
-//	thetype                int
-//	modeStack              IntStack
-//	mode                   int
-//	text                   string
+//	input:                  CharStream
+//	factory:                TokenFactory
+//	tokenFactorySourcePair: *TokenSourceCharStreamPair
+//	token:                  Token
+//	hitEOF:                 bool
+//	channel:                int
+//	thetype:                int
+//	modeStack:              IntStack
+//	mode:                   int
+//	text:                   string
 //}
 //
 //impl BaseLexer {§//  pub fn new(input CharStream) -> *BaseLexer {

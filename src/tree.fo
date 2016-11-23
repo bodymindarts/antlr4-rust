@@ -103,9 +103,9 @@
 //pub fn ExitEveryRule(ctx ParserRuleContext) ->  {}
 //
 //pub struct TerminalNodeImpl {
-//	parentCtx RuleContext
+//	parentCtx: RuleContext
 //
-//	symbol Token
+//	symbol: Token
 //}
 //
 //var _ TerminalNode = &TerminalNodeImpl{}

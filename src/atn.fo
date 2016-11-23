@@ -8,13 +8,13 @@
 //	DecisionToState []DecisionState
 //
 //	// grammarType is the ATN type and is used for deserializing ATNs from strings.
-//	grammarType int
+//	grammarType: int
 //
 //	// lexerActions is referenced by action transitions in the ATN for lexer ATNs.
 //	lexerActions []LexerAction
 //
 //	// maxTokenType is the maximum value for any symbol recognized by a transition in the ATN.
-//	maxTokenType int
+//	maxTokenType: int
 //
 //	modeNameToStartState map[string]*TokensStartState
 //

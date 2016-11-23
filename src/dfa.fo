@@ -4,9 +4,9 @@
 //
 //pub struct DFA {
 //	// atnStartState is the ATN state in which this was created
-//	atnStartState DecisionState
+//	atnStartState: DecisionState
 //
-//	decision int
+//	decision: int
 //
 //	// states is all the DFA states. Use Map to get the old state back; Set can only
 //	// indicate whether it is there.
@@ -16,7 +16,7 @@
 //
 //	// precedenceDfa is the backing field for isPrecedenceDfa and setPrecedenceDfa.
 //	// True if the DFA is for a precedence decision and false otherwise.
-//	precedenceDfa bool
+//	precedenceDfa: bool
 //}
 //
 //impl DFA {§//  pub fn new(atnStartState DecisionState, decision int) -> *DFA {

@@ -31,15 +31,15 @@
 //pub struct BaseParser {
 //	*BaseRecognizer
 //
-//	Interpreter     *ParserATNSimulator
-//	BuildParseTrees bool
+//	Interpreter:     *ParserATNSimulator
+//	BuildParseTrees: bool
 //
-//	input           TokenStream
-//	errHandler      ErrorStrategy
-//	precedenceStack IntStack
-//	ctx             ParserRuleContext
+//	input:           TokenStream
+//	errHandler:      ErrorStrategy
+//	precedenceStack: IntStack
+//	ctx:             ParserRuleContext
 //
-//	tracer         *TraceListener
+//	tracer:         *TraceListener
 //	parseListeners []ParseTreeListener
 //	_SyntaxErrors  int
 //}

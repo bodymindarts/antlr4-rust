@@ -12,7 +12,7 @@
 //pub struct FileStream {
 //	*InputStream
 //
-//	filename string
+//	filename: string
 //}
 //
 //impl FileStream {§//  pub fn new(fileName string) -> *FileStream {

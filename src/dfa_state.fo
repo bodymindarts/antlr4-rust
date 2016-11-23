@@ -7,8 +7,8 @@
 //
 //// PredPrediction maps a predicate to a predicted alternative.
 //pub struct PredPrediction {
-//	alt  int
-//	pred SemanticContext
+//	alt:  int
+//	pred: SemanticContext
 //}
 //
 //impl PredPrediction {§//  pub fn new(pred SemanticContext, alt int) -> *PredPrediction {
@@ -41,27 +41,27 @@
 //// different ATN contexts (with same or different alts) meaning that state was
 //// reached via a different set of rule invocations.
 //pub struct DFAState {
-//	stateNumber int
-//	configs     ATNConfigSet
+//	stateNumber: int
+//	configs:     ATNConfigSet
 //
 //	// edges elements point to the target of the symbol. Shift up by 1 so (-1)
 //	// Token.EOF maps to the first element.
 //	edges []*DFAState
 //
-//	isAcceptState bool
+//	isAcceptState: bool
 //
 //	// prediction is the ttype we match or alt we predict if the state is accept.
 //	// Set to ATN.INVALID_ALT_NUMBER when predicates != nil or
 //	// requiresFullContext.
-//	prediction int
+//	prediction: int
 //
-//	lexerActionExecutor *LexerActionExecutor
+//	lexerActionExecutor: *LexerActionExecutor
 //
 //	// requiresFullContext indicates it was created during an SLL prediction that
 //	// discovered a conflict between the configurations in the state. Future
 //	// ParserATNSimulator.execATN invocations immediately jump doing
 //	// full context prediction if true.
-//	requiresFullContext bool
+//	requiresFullContext: bool
 //
 //	// predicates is the predicates associated with the ATN configurations of the
 //	// DFA state during SLL parsing. When we have predicates, requiresFullContext

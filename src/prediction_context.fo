@@ -34,7 +34,7 @@
 //}
 //
 //pub struct BasePredictionContext {
-//	cachedHashString string
+//	cachedHashString: string
 //}
 //
 //impl BasePredictionContext {§//  pub fn new(cachedHashString string) -> *BasePredictionContext {
@@ -130,8 +130,8 @@
 //pub struct BaseSingletonPredictionContext {
 //	*BasePredictionContext
 //
-//	parentCtx   PredictionContext
-//	returnState int
+//	parentCtx:   PredictionContext
+//	returnState: int
 //}
 //
 //impl BaseSingletonPredictionContext {§//  pub fn new(parent PredictionContext, returnState int) -> *BaseSingletonPredictionContext {

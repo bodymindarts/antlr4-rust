@@ -24,11 +24,11 @@
 //}
 //
 //pub struct BaseTransition {
-//	target            ATNState
-//	isEpsilon         bool
-//	label             int
-//	intervalSet       *IntervalSet
-//	serializationType int
+//	target:            ATNState
+//	isEpsilon:         bool
+//	label:             int
+//	intervalSet:       *IntervalSet
+//	serializationType: int
 //}
 //
 //impl BaseTransition {§//  pub fn new(target ATNState) -> *BaseTransition {
@@ -99,16 +99,16 @@
 //}
 //
 ////var TransitionserializationTypes struct {
-////	EpsilonTransition int
-////	RangeTransition int
-////	RuleTransition int
-////	PredicateTransition int
-////	AtomTransition int
-////	ActionTransition int
-////	SetTransition int
-////	NotSetTransition int
-////	WildcardTransition int
-////	PrecedencePredicateTransition int
+////	EpsilonTransition: int
+////	RangeTransition: int
+////	RuleTransition: int
+////	PredicateTransition: int
+////	AtomTransition: int
+////	ActionTransition: int
+////	SetTransition: int
+////	NotSetTransition: int
+////	WildcardTransition: int
+////	PrecedencePredicateTransition: int
 ////}{
 ////	TransitionEPSILON,
 ////	TransitionRANGE,
@@ -156,7 +156,7 @@
 //pub struct RuleTransition {
 //	*BaseTransition
 //
-//	followState           ATNState
+//	followState:           ATNState
 //	ruleIndex, precedence int
 //}
 //
@@ -181,7 +181,7 @@
 //pub struct EpsilonTransition {
 //	*BaseTransition
 //
-//	outermostPrecedenceReturn int
+//	outermostPrecedenceReturn: int
 //}
 //
 //impl EpsilonTransition {§//  pub fn new(target ATNState, outermostPrecedenceReturn int) -> *EpsilonTransition {
@@ -257,7 +257,7 @@
 //pub struct PredicateTransition {
 //	*BaseAbstractPredicateTransition
 //
-//	isCtxDependent       bool
+//	isCtxDependent:       bool
 //	ruleIndex, predIndex int
 //}
 //
@@ -289,7 +289,7 @@
 //pub struct ActionTransition {
 //	*BaseTransition
 //
-//	isCtxDependent                    bool
+//	isCtxDependent:                    bool
 //	ruleIndex, actionIndex, predIndex int
 //}
 //
@@ -389,7 +389,7 @@
 //pub struct PrecedencePredicateTransition {
 //	*BaseAbstractPredicateTransition
 //
-//	precedence int
+//	precedence: int
 //}
 //
 //impl PrecedencePredicateTransition {§//  pub fn new(target ATNState, precedence int) -> *PrecedencePredicateTransition {

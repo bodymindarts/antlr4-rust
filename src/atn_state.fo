@@ -49,19 +49,19 @@
 //
 //pub struct BaseATNState {
 //	// NextTokenWithinRule caches lookahead during parsing. Not used during construction.
-//	NextTokenWithinRule *IntervalSet
+//	NextTokenWithinRule: *IntervalSet
 //
 //	// atn is the current ATN.
-//	atn *ATN
+//	atn: *ATN
 //
-//	epsilonOnlyTransitions bool
+//	epsilonOnlyTransitions: bool
 //
 //	// ruleIndex tracks the Rule index because there are no Rule objects at runtime.
-//	ruleIndex int
+//	ruleIndex: int
 //
-//	stateNumber int
+//	stateNumber: int
 //
-//	stateType int
+//	stateType: int
 //
 //	// Track the transitions emanating from this ATN state.
 //	transitions []Transition
@@ -173,8 +173,8 @@
 //
 //pub struct BaseDecisionState {
 //	*BaseATNState
-//	decision  int
-//	nonGreedy bool
+//	decision:  int
+//	nonGreedy: bool
 //}
 //
 //impl BaseDecisionState {§//  pub fn new() -> *BaseDecisionState {
@@ -207,7 +207,7 @@
 //// BaseBlockStartState is the start of a regular (...) block.
 //pub struct BaseBlockStartState {
 //	*BaseDecisionState
-//	endState *BlockEndState
+//	endState: *BlockEndState
 //}
 //
 //impl BlockStartState {§//  pub fn new() -> *BaseBlockStartState {
@@ -237,7 +237,7 @@
 //// BlockEndState is a terminal node of a simple (a|b|c) block.
 //pub struct BlockEndState {
 //	*BaseATNState
-//	startState ATNState
+//	startState: ATNState
 //}
 //
 //impl BlockEndState {§//  pub fn new() -> *BlockEndState {
@@ -266,8 +266,8 @@
 //
 //pub struct RuleStartState {
 //	*BaseATNState
-//	stopState        ATNState
-//	isPrecedenceRule bool
+//	stopState:        ATNState
+//	isPrecedenceRule: bool
 //}
 //
 //impl RuleStartState {§//  pub fn new() -> *RuleStartState {
@@ -298,7 +298,7 @@
 //// decision-making node for A+.
 //pub struct PlusBlockStartState {
 //	*BaseBlockStartState
-//	loopBackState ATNState
+//	loopBackState: ATNState
 //}
 //
 //impl PlusBlockStartState {§//  pub fn new() -> *PlusBlockStartState {
@@ -336,8 +336,8 @@
 //
 //pub struct StarLoopEntryState {
 //	*BaseDecisionState
-//	loopBackState          ATNState
-//	precedenceRuleDecision bool
+//	loopBackState:          ATNState
+//	precedenceRuleDecision: bool
 //}
 //
 //impl StarLoopEntryState {§//  pub fn new() -> *StarLoopEntryState {
@@ -352,7 +352,7 @@
 //// LoopEndState marks the end of a * or + loop.
 //pub struct LoopEndState {
 //	*BaseATNState
-//	loopBackState ATNState
+//	loopBackState: ATNState
 //}
 //
 //impl LoopEndState {§//  pub fn new() -> *LoopEndState {

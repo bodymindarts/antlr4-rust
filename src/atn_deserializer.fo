@@ -32,10 +32,10 @@
 //}
 //
 //pub struct ATNDeserializer {
-//	deserializationOptions *ATNDeserializationOptions
+//	deserializationOptions: *ATNDeserializationOptions
 //	data                   []rune
-//	pos                    int
-//	uuid                   string
+//	pos:                    int
+//	uuid:                   string
 //}
 //
 //impl ATNDeserializer {§//  pub fn new(options *ATNDeserializationOptions) -> *ATNDeserializer {

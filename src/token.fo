@@ -6,8 +6,8 @@
 //)
 //
 //pub struct TokenSourceCharStreamPair {
-//	tokenSource TokenSource
-//	charStream  CharStream
+//	tokenSource: TokenSource
+//	charStream:  CharStream
 //}
 //
 //// A token has properties: text, type, line, character position in the line
@@ -34,7 +34,7 @@
 //}
 //
 //pub struct BaseToken {
-//	source     *TokenSourceCharStreamPair
+//	source:     *TokenSourceCharStreamPair
 //	tokenType  int    // token type of the token
 //	channel    int    // The parser ignores everything not on DEFAULT_CHANNEL
 //	start      int    // optional return -1 if not implemented.
@@ -43,7 +43,7 @@
 //	line       int    // line=1..n of the 1st character
 //	column     int    // beginning of the line at which it occurs, 0..n-1
 //	text       string // text of the token.
-//	readOnly   bool
+//	readOnly:   bool
 //}
 //
 //const (

@@ -22,8 +22,8 @@
 //}
 //
 //pub struct BaseLexerAction {
-//	actionType          int
-//	isPositionDependent bool
+//	actionType:          int
+//	isPositionDependent: bool
 //}
 //
 //impl BaseLexerAction {§//  pub fn new(action int) -> *BaseLexerAction {
@@ -86,7 +86,7 @@
 //pub struct LexerTypeAction {
 //	*BaseLexerAction
 //
-//	thetype int
+//	thetype: int
 //}
 //
 //impl LexerTypeAction {§//  pub fn new(thetype int) -> *LexerTypeAction {
@@ -123,7 +123,7 @@
 //pub struct LexerPushModeAction {
 //	*BaseLexerAction
 //
-//	mode int
+//	mode: int
 //}
 //
 //impl LexerPushModeAction {§//  pub fn new(mode int) -> *LexerPushModeAction {
@@ -219,7 +219,7 @@
 //pub struct LexerModeAction {
 //	*BaseLexerAction
 //
-//	mode int
+//	mode: int
 //}
 //
 //impl LexerModeAction {§//  pub fn new(mode int) -> *LexerModeAction {
@@ -311,7 +311,7 @@
 //pub struct LexerChannelAction {
 //	*BaseLexerAction
 //
-//	channel int
+//	channel: int
 //}
 //
 //impl LexerChannelAction {§//  pub fn new(channel int) -> *LexerChannelAction {
@@ -368,9 +368,9 @@
 //pub struct LexerIndexedCustomAction {
 //	*BaseLexerAction
 //
-//	offset              int
-//	lexerAction         LexerAction
-//	isPositionDependent bool
+//	offset:              int
+//	lexerAction:         LexerAction
+//	isPositionDependent: bool
 //}
 //
 //impl LexerIndexedCustomAction {§//  pub fn new(offset int, lexerAction LexerAction) -> *LexerIndexedCustomAction {

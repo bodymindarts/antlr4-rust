@@ -16,13 +16,13 @@
 //pub struct ParserATNSimulator {
 //	*BaseATNSimulator
 //
-//	parser         Parser
-//	predictionMode int
-//	input          TokenStream
-//	startIndex     int
-//	dfa            *DFA
-//	mergeCache     *DoubleDict
-//	outerContext   ParserRuleContext
+//	parser:         Parser
+//	predictionMode: int
+//	input:          TokenStream
+//	startIndex:     int
+//	dfa:            *DFA
+//	mergeCache:     *DoubleDict
+//	outerContext:   ParserRuleContext
 //}
 //
 //impl ParserATNSimulator {§//  pub fn new(parser Parser, atn *ATN, decisionToDFA []*DFA, sharedContextCache *PredictionContextCache) -> *ParserATNSimulator {

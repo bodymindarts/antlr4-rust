@@ -26,12 +26,12 @@
 //
 //pub struct BaseRecognizer {
 //	listeners []ErrorListener
-//	state     int
+//	state:     int
 //
 //	RuleNames       []string
 //	LiteralNames    []string
 //	SymbolicNames   []string
-//	GrammarFileName string
+//	GrammarFileName: string
 //}
 //
 //impl BaseRecognizer {§//  pub fn new() -> *BaseRecognizer {

@@ -30,7 +30,7 @@
 //	*BaseRuleContext
 //
 //	start, stop Token
-//	exception   RecognitionException
+//	exception:   RecognitionException
 //	children    []Tree
 //}
 //

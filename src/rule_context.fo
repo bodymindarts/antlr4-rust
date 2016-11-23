@@ -37,9 +37,9 @@
 //}
 //
 //pub struct BaseRuleContext {
-//	parentCtx     RuleContext
-//	invokingState int
-//	RuleIndex     int
+//	parentCtx:     RuleContext
+//	invokingState: int
+//	RuleIndex:     int
 //}
 //
 //impl BaseRuleContext {§//  pub fn new(parent RuleContext, invokingState int) -> *BaseRuleContext {

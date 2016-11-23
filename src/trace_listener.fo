@@ -3,7 +3,7 @@
 //import "fmt"
 //
 //pub struct TraceListener {
-//	parser *BaseParser
+//	parser: *BaseParser
 //}
 //
 //impl TraceListener {§//  pub fn new(parser *BaseParser) -> *TraceListener {

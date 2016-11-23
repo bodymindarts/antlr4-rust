@@ -9,8 +9,8 @@
 //}
 //
 //pub struct BaseATNSimulator {
-//	atn                *ATN
-//	sharedContextCache *PredictionContextCache
+//	atn:                *ATN
+//	sharedContextCache: *PredictionContextCache
 //	decisionToDFA  []*DFA
 //}
 //

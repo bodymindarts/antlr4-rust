@@ -55,9 +55,9 @@
 //}
 //
 //pub struct Predicate {
-//	ruleIndex      int
-//	predIndex      int
-//	isCtxDependent bool
+//	ruleIndex:      int
+//	predIndex:      int
+//	isCtxDependent: bool
 //}
 //
 //impl Predicate {§//  pub fn new(ruleIndex, predIndex int, isCtxDependent bool) -> *Predicate {
@@ -110,7 +110,7 @@
 //}
 //
 //pub struct PrecedencePredicate {
-//	precedence int
+//	precedence: int
 //}
 //
 //impl PrecedencePredicate {§//  pub fn new(precedence int) -> *PrecedencePredicate {

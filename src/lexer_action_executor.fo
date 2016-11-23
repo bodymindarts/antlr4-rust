@@ -9,7 +9,7 @@
 //
 //pub struct LexerActionExecutor {
 //	lexerActions     []LexerAction
-//	cachedHashString string
+//	cachedHashString: string
 //}
 //
 //impl LexerActionExecutor {§//  pub fn new(lexerActions []LexerAction) -> *LexerActionExecutor {
