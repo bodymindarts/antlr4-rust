@@ -21,7 +21,7 @@
 ////  @see ParserRuleContext
 ////
 //
-//type RuleContext interface {
+//pub trait RuleContext {
 //	RuleNode
 //
 //	GetInvokingState() int

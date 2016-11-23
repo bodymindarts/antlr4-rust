@@ -1,6 +1,6 @@
 //package antlr
 //
-//type TokenSource interface {
+//pub trait TokenSource {
 //	NextToken() Token
 //	Skip()
 //	More()

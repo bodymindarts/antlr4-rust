@@ -11,7 +11,7 @@
 ////  of speed.
 /////
 //
-//type Lexer interface {
+//pub trait Lexer {
 //	TokenSource
 //	Recognizer
 //

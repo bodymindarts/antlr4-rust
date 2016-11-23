@@ -23,7 +23,7 @@
 //
 //var ATNStateInitialNumTransitions = 4
 //
-//type ATNState interface {
+//pub trait ATNState {
 //	GetEpsilonOnlyTransitions() bool
 //
 //	GetRuleIndex() int
@@ -161,7 +161,7 @@
 //	return &BasicState{BaseATNState: b}
 //}
 //
-//type DecisionState interface {
+//pub trait DecisionState {
 //	ATNState
 //
 //	getDecision() int
@@ -197,7 +197,7 @@
 //	s.nonGreedy = b
 //}
 //
-//type BlockStartState interface {
+//pub trait BlockStartState {
 //	DecisionState
 //
 //	getEndState() *BlockEndState

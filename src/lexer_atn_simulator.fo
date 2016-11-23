@@ -15,7 +15,7 @@
 //	LexerATNSimulatorMatchCalls = 0
 //)
 //
-//type ILexerATNSimulator interface {
+//pub trait ILexerATNSimulator {
 //	IATNSimulator
 //
 //	reset()

@@ -5,7 +5,7 @@
 //	"strconv"
 //)
 //
-//type ParserRuleContext interface {
+//pub trait ParserRuleContext {
 //	RuleContext
 //
 //	SetException(RecognitionException)
@@ -338,7 +338,7 @@
 //
 //var RuleContextEmpty = NewBaseParserRuleContext(nil, -1)
 //
-//type InterpreterRuleContext interface {
+//pub trait InterpreterRuleContext {
 //	ParserRuleContext
 //}
 //

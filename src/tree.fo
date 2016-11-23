@@ -6,7 +6,7 @@
 //
 //var TreeInvalidInterval = NewInterval(-1, -2)
 //
-//type Tree interface {
+//pub trait Tree {
 //	GetParent() Tree
 //	SetParent(Tree)
 //	GetPayload() interface{}
@@ -15,13 +15,13 @@
 //	GetChildren() []Tree
 //}
 //
-//type SyntaxTree interface {
+//pub trait SyntaxTree {
 //	Tree
 //
 //	GetSourceInterval() *Interval
 //}
 //
-//type ParseTree interface {
+//pub trait ParseTree {
 //	SyntaxTree
 //
 //	Accept(Visitor ParseTreeVisitor) interface{}
@@ -30,26 +30,26 @@
 //	ToStringTree([]string, Recognizer) string
 //}
 //
-//type RuleNode interface {
+//pub trait RuleNode {
 //	ParseTree
 //
 //	GetRuleContext() RuleContext
 //	GetBaseRuleContext() *BaseRuleContext
 //}
 //
-//type TerminalNode interface {
+//pub trait TerminalNode {
 //	ParseTree
 //
 //	GetSymbol() Token
 //}
 //
-//type ErrorNode interface {
+//pub trait ErrorNode {
 //	TerminalNode
 //
 //	errorNode()
 //}
 //
-//type ParseTreeVisitor interface {
+//pub trait ParseTreeVisitor {
 //	Visit(tree ParseTree) interface{}
 //	VisitChildren(node RuleNode) interface{}
 //	VisitTerminal(node TerminalNode) interface{}
@@ -86,7 +86,7 @@
 ////	return Visitor[funcName](ctx)
 ////}
 //
-//type ParseTreeListener interface {
+//pub trait ParseTreeListener {
 //	VisitTerminal(node TerminalNode)
 //	VisitErrorNode(node ErrorNode)
 //	EnterEveryRule(ctx ParserRuleContext)

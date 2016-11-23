@@ -7,7 +7,7 @@
 //	"strings"
 //)
 //
-//type ErrorStrategy interface {
+//pub trait ErrorStrategy {
 //	reset(Parser)
 //	RecoverInline(Parser) Token
 //	Recover(Parser, RecognitionException)

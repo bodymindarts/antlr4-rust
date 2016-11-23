@@ -14,7 +14,7 @@
 //// (so we can ignore tabs), token channel, index, and source from which
 //// we obtained this token.
 //
-//type Token interface {
+//pub trait Token {
 //	GetSource() *TokenSourceCharStreamPair
 //	GetTokenType() int
 //	GetChannel() int

@@ -14,7 +14,7 @@
 ////  the states. We'll use the term Edge for the DFA to distinguish them from
 ////  ATN transitions.</p>
 //
-//type Transition interface {
+//pub trait Transition {
 //	getTarget() ATNState
 //	setTarget(ATNState)
 //	getIsEpsilon() bool
@@ -235,7 +235,7 @@
 //	return "'" + string(t.start) + "'..'" + string(t.stop) + "'"
 //}
 //
-//type AbstractPredicateTransition interface {
+//pub trait AbstractPredicateTransition {
 //	Transition
 //	IAbstractPredicateTransitionFoo()
 //}

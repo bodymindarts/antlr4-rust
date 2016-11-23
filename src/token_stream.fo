@@ -1,6 +1,6 @@
 //package antlr
 //
-//type TokenStream interface {
+//pub trait TokenStream {
 //	IntStream
 //
 //	LT(k int) Token

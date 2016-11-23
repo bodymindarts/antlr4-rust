@@ -13,7 +13,7 @@
 //	LexerActionTypeType     = 7 //The type of a {@link LexerTypeAction} action.
 //)
 //
-//type LexerAction interface {
+//pub trait LexerAction {
 //	getActionType() int
 //	getIsPositionDependent() bool
 //	execute(lexer Lexer)

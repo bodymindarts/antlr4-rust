@@ -13,7 +13,7 @@
 ////  {@link SemanticContext} within the scope of this outer class.</p>
 ////
 //
-//type SemanticContext interface {
+//pub trait SemanticContext {
 //	Comparable
 //
 //	evaluate(parser Recognizer, outerContext RuleContext) bool

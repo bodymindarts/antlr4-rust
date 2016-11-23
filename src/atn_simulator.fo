@@ -2,7 +2,7 @@
 //
 //var ATNSimulatorError = NewDFAState(0x7FFFFFFF, NewBaseATNConfigSet(false))
 //
-//type IATNSimulator interface {
+//pub trait IATNSimulator {
 //	SharedContextCache() *PredictionContextCache
 //	ATN() *ATN
 //	DecisionToDFA() []*DFA

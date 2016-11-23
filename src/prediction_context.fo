@@ -22,7 +22,7 @@
 //	BasePredictionContextid = BasePredictionContextglobalNodeCount
 //)
 //
-//type PredictionContext interface {
+//pub trait PredictionContext {
 //	Hash() string
 //	GetParent(int) PredictionContext
 //	getReturnState(int) int
@@ -123,7 +123,7 @@
 //	return len(p.cache)
 //}
 //
-//type SingletonPredictionContext interface {
+//pub trait SingletonPredictionContext {
 //	PredictionContext
 //}
 //

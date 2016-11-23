@@ -2,7 +2,7 @@
 //
 //import "fmt"
 //
-//type ATNConfigSet interface {
+//pub trait ATNConfigSet {
 //	Hasher
 //
 //	Add(ATNConfig, *DoubleDict) bool

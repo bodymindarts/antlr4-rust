@@ -103,7 +103,7 @@
 ////	return buf.Bytes(), nil
 ////}
 //
-//type Hasher interface {
+//pub trait Hasher {
 //	Hash() string
 //}
 //

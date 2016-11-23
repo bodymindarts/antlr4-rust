@@ -7,7 +7,7 @@
 //	"strconv"
 //)
 //
-//type Recognizer interface {
+//pub trait Recognizer {
 //	GetLiteralNames() []string
 //	GetSymbolicNames() []string
 //	GetRuleNames() []string

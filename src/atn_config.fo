@@ -5,7 +5,7 @@
 //	"strconv"
 //)
 //
-//type Comparable interface {
+//pub trait Comparable {
 //	equals(other interface{}) bool
 //}
 //
@@ -14,7 +14,7 @@
 //// path(s) to the root is the rule invocation(s) chain used to arrive at the
 //// state. The semantic context is the tree of semantic predicates encountered
 //// before reaching an ATN state.
-//type ATNConfig interface {
+//pub trait ATNConfig {
 //	Hasher
 //	Comparable
 //

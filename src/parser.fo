@@ -5,7 +5,7 @@
 //	"strconv"
 //)
 //
-//type Parser interface {
+//pub trait Parser {
 //	Recognizer
 //
 //	GetInterpreter() *ParserATNSimulator
