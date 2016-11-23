@@ -164,7 +164,7 @@
 //// the configurations to strip out all of the predicates so that a standard
 //// {@link ATNConfigSet} will merge everything ignoring predicates.</p>
 ////
-//pub fn PredictionModehasSLLConflictTerminatingPrediction(mode: int, configs: ATNConfigSet) -> bool { // non-member
+//pub fn PredictionModehasSLLConflictTerminatingPrediction(mode: i32, configs: ATNConfigSet) -> bool { // non-member
 //	// Configs in rule stop states indicate reaching the end of the decision
 //	// rule (local context) or end of start rule (full context). If all
 //	// configs meet this condition, then none of the configurations is able
@@ -243,7 +243,7 @@
 //// minimums. That means we need more look ahead to decide which of those
 //// alternatives we should predict.</p>
 ////
-//// <p>The basic idea is to split the set of configurations {@code C}, into
+//// <p>The basic idea is to split the set of configurations {@code C}, i32o
 //// conflicting subsets {@code (s, _, ctx, _)} and singleton subsets with
 //// non-conflicting configurations. Two configurations conflict if they have
 //// identical {@link ATNConfig//state} and {@link ATNConfig//context} values
@@ -372,7 +372,7 @@
 //// we need exact ambiguity detection when the sets look like
 //// {@code A={{1,2}}} or {@code {{1,2},{1,2}}}, etc...</p>
 ////
-//pub fn PredictionModeresolvesToJustOneViableAlt(altsets []*BitSet) -> int { // non-member
+//pub fn PredictionModeresolvesToJustOneViableAlt(altsets []*BitSet) -> i32 { // non-member
 //	return PredictionModegetSingleViableAlt(altsets)
 //}
 //
@@ -453,7 +453,7 @@
 ////
 //// @param altsets a collection of alternative subsets
 ////
-//pub fn PredictionModegetUniqueAlt(altsets []*BitSet) -> int { // non-member
+//pub fn PredictionModegetUniqueAlt(altsets []*BitSet) -> i32 { // non-member
 //	all := PredictionModeGetAlts(altsets)
 //	if all.length() == 1 {
 //		return all.minValue()
@@ -502,7 +502,7 @@
 //	values := make([]*BitSet, 0)
 //
 //	for k := range configToAlts {
-//		if strings.Index(k, "key_") != 0 {
+//		if &strs.Index(k, "key_") != 0 {
 //			continue
 //		}
 //		values = append(values, configToAlts[k])
@@ -542,7 +542,7 @@
 //	return false
 //}
 //
-//pub fn PredictionModegetSingleViableAlt(altsets []*BitSet) -> int { // non-member
+//pub fn PredictionModegetSingleViableAlt(altsets []*BitSet) -> i32 { // non-member
 //	result := ATNInvalidAltNumber
 //
 //	for i := 0; i < len(altsets); i++ {

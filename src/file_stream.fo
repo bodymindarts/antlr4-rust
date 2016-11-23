@@ -12,10 +12,10 @@
 //pub struct FileStream {
 //	*InputStream
 //
-//	filename: string
+//	filename: &str
 //}
 //
-//impl FileStream {§//  pub fn new(fileName: string) -> *FileStream {
+//impl FileStream {§//  pub fn new(fileName: &str) -> *FileStream {
 //
 //	buf := bytes.NewBuffer(nil)
 //
@@ -26,7 +26,7 @@
 //	fs := new(FileStream)
 //
 //	fs.filename = fileName
-//	s := string(buf.Bytes())
+//	s := &str(buf.Bytes())
 //
 //	fs.InputStream = NewInputStream(s)
 //
@@ -34,6 +34,6 @@
 //
 //}
 //
-//pub fn GetSourceName() -> string {
+//pub fn GetSourceName() -> &str {
 //	return f.filename
 //}

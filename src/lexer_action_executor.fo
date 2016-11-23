@@ -9,7 +9,7 @@
 //
 //pub struct LexerActionExecutor {
 //	lexerActions     []LexerAction
-//	cachedHashString: string
+//	cachedHashString: &str
 //}
 //
 //impl LexerActionExecutor {§//  pub fn new(lexerActions []LexerAction) -> *LexerActionExecutor {
@@ -25,7 +25,7 @@
 //	// Caches the result of {@link //hashCode} since the hash code is an element
 //	// of the performance-critical {@link LexerATNConfig//hashCode} operation.
 //
-//	var s string
+//	var s &str
 //	for _, a := range lexerActions {
 //		s += a.Hash()
 //	}
@@ -87,7 +87,7 @@
 //// @return A {@link LexerActionExecutor} which stores input stream offsets
 //// for all position-dependent lexer actions.
 //// /
-//pub fn fixOffsetBeforeMatch(offset: int) -> *LexerActionExecutor {
+//pub fn fixOffsetBeforeMatch(offset: i32) -> *LexerActionExecutor {
 //	var updatedLexerActions []LexerAction
 //	for i := 0; i < len(l.lexerActions); i++ {
 //		_, ok := l.lexerActions[i].(*LexerIndexedCustomAction)
@@ -128,7 +128,7 @@
 //// {@link IntStream//seek} to set the {@code input} position to the beginning
 //// of the token.
 //// /
-//pub fn execute(lexer Lexer, input: CharStream, startIndex: int) {
+//pub fn execute(lexer Lexer, input: CharStream, startIndex: i32) {
 //	requiresSeek := false
 //	stopIndex := input.Index()
 //
@@ -153,11 +153,11 @@
 //	}
 //}
 //
-//pub fn Hash() -> string {
+//pub fn Hash() -> &str {
 //	return l.cachedHashString
 //}
 //
-//pub fn equals(other interface{}) -> bool {
+//pub fn equals(other i32erface{}) -> bool {
 //	if l == other {
 //		return true
 //	} else if _, ok := other.(*LexerActionExecutor); !ok {

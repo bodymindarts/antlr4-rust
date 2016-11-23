@@ -7,15 +7,15 @@
 //
 //// PredPrediction maps a predicate to a predicted alternative.
 //pub struct PredPrediction {
-//	alt:  int
+//	alt:  i32
 //	pred: SemanticContext
 //}
 //
-//impl PredPrediction {§//  pub fn new(pred: SemanticContext, alt: int) -> *PredPrediction {
+//impl PredPrediction {§//  pub fn new(pred: SemanticContext, alt: i32) -> *PredPrediction {
 //	return &PredPrediction{alt: alt, pred: pred}
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	return "(" + fmt.Sprint(p.pred) + ", " + fmt.Sprint(p.alt) + ")"
 //}
 //
@@ -41,7 +41,7 @@
 //// different ATN contexts (with same or different alts) meaning that state was
 //// reached via a different set of rule invocations.
 //pub struct DFAState {
-//	stateNumber: int
+//	stateNumber: i32
 //	configs:     ATNConfigSet
 //
 //	// edges elements point to the target of the symbol. Shift up by 1 so (-1)
@@ -53,7 +53,7 @@
 //	// prediction is the ttype we match or alt we predict if the state is accept.
 //	// Set to ATN.INVALID_ALT_NUMBER when predicates != nil or
 //	// requiresFullContext.
-//	prediction: int
+//	prediction: i32
 //
 //	lexerActionExecutor: *LexerActionExecutor
 //
@@ -70,7 +70,7 @@
 //	// not nil, then prediction is ATN.INVALID_ALT_NUMBER.
 //	//
 //	// We only use these for non-requiresFullContext but conflicting states. That
-//	// means we know from the context (it's $ or we don't dip into outer context)
+//	// means we know from the context (it's $ or we don't dip i32o outer context)
 //	// that it's an ambiguity not a conflict.
 //	//
 //	// This list is computed by
@@ -78,7 +78,7 @@
 //	predicates []*PredPrediction
 //}
 //
-//impl DFAState {§//  pub fn new(stateNumber: int, configs: ATNConfigSet) -> *DFAState {
+//impl DFAState {§//  pub fn new(stateNumber: i32, configs: ATNConfigSet) -> *DFAState {
 //	if configs == nil {
 //		configs = NewBaseATNConfigSet(false)
 //	}
@@ -103,7 +103,7 @@
 //	return alts
 //}
 //
-//pub fn setPrediction(v: int) {
+//pub fn setPrediction(v: i32) {
 //	d.prediction = v
 //}
 //
@@ -118,7 +118,7 @@
 //// Cannot test the DFA state numbers here because in
 //// ParserATNSimulator.addDFAState we need to know if any other state exists that
 //// has d exact set of ATN configurations. The stateNumber is irrelevant.
-//pub fn equals(other interface{}) -> bool {
+//pub fn equals(other i32erface{}) -> bool {
 //	if d == other {
 //		return true
 //	} else if _, ok := other.(*DFAState); !ok {
@@ -128,12 +128,12 @@
 //	return d.configs.Equals(other.(*DFAState).configs)
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	return strconv.Itoa(d.stateNumber) + ":" + d.Hash()
 //}
 //
-//pub fn Hash() -> string {
-//	var s string
+//pub fn Hash() -> &str {
+//	var s &str
 //
 //	if d.isAcceptState {
 //		if d.predicates != nil {

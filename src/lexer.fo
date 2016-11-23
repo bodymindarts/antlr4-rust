@@ -7,7 +7,7 @@
 //
 //// A lexer is recognizer that draws input symbols from a character stream.
 ////  lexer grammars result in a subclass of this object. A Lexer object
-////  uses simplified Match() and error recovery mechanisms in the interest
+////  uses simplified Match() and error recovery mechanisms in the i32erest
 ////  of speed.
 /////
 //
@@ -19,7 +19,7 @@
 //
 //	setChannel(int)
 //	pushMode(int)
-//	popMode() int
+//	popMode() i32
 //	setType(int)
 //	setMode(int)
 //}
@@ -28,10 +28,10 @@
 //	*BaseRecognizer
 //
 //	Interpreter:         ILexerATNSimulator
-//	TokenStartCharIndex: int
-//	TokenStartLine:      int
-//	TokenStartColumn:    int
-//	ActionType:          int
+//	TokenStartCharIndex: i32
+//	TokenStartLine:      i32
+//	TokenStartColumn:    i32
+//	ActionType:          i32
 //	Virt                Lexer // The most derived lexer implementation. Allows virtual method calls.
 //
 //	input:                  CharStream
@@ -39,11 +39,11 @@
 //	tokenFactorySourcePair: *TokenSourceCharStreamPair
 //	token:                  Token
 //	hitEOF:                 bool
-//	channel:                int
-//	thetype:                int
+//	channel:                i32
+//	thetype:                i32
 //	modeStack:              IntStack
-//	mode:                   int
-//	text:                   string
+//	mode:                   i32
+//	text:                   &str
 //}
 //
 //impl BaseLexer {§//  pub fn new(input: CharStream) -> *BaseLexer {
@@ -142,11 +142,11 @@
 //	return b.input
 //}
 //
-//pub fn GetSourceName() -> string {
+//pub fn GetSourceName() -> &str {
 //	return b.GrammarFileName
 //}
 //
-//pub fn setChannel(v: int) {
+//pub fn setChannel(v: i32) {
 //	b.channel = v
 //}
 //
@@ -158,7 +158,7 @@
 //	b.factory = f
 //}
 //
-//pub fn (ret: int) {
+//pub fn (ret: i32) {
 //	defer func() {
 //		if e := recover(); e != nil {
 //			if re, ok := e.(RecognitionException); ok {
@@ -246,11 +246,11 @@
 //	b.thetype = LexerMore
 //}
 //
-//pub fn setMode(m: int) {
+//pub fn setMode(m: i32) {
 //	b.mode = m
 //}
 //
-//pub fn pushMode(m: int) {
+//pub fn pushMode(m: i32) {
 //	if LexerATNSimulatorDebug {
 //		fmt.Println("pushMode " + strconv.Itoa(m))
 //	}
@@ -258,7 +258,7 @@
 //	b.mode = m
 //}
 //
-//pub fn popMode() -> int {
+//pub fn popMode() -> i32 {
 //	if len(b.modeStack) == 0 {
 //		panic("Empty Stack")
 //	}
@@ -284,7 +284,7 @@
 //
 //// By default does not support multiple emits per NextToken invocation
 //// for efficiency reasons. Subclass and override l method, NextToken,
-//// and GetToken (to push tokens into a list and pull from that list
+//// and GetToken (to push tokens i32o a list and pull from that list
 //// rather than a single variable as l implementation does).
 //// /
 //pub fn EmitToken(token: Token) {
@@ -292,7 +292,7 @@
 //}
 //
 //// The standard method called to automatically emit a token at the
-//// outermost lexical rule. The token object should point into the
+//// outermost lexical rule. The token object should point i32o the
 //// char buffer start..stop. If there is a text override in 'text',
 //// use that to set the token's text. Override l method to emit
 //// custom Token objects or provide a Newfactory.
@@ -311,30 +311,30 @@
 //	return eof
 //}
 //
-//pub fn GetCharPositionInLine() -> int {
+//pub fn GetCharPositionInLine() -> i32 {
 //	return b.Interpreter.GetCharPositionInLine()
 //}
 //
-//pub fn GetLine() -> int {
+//pub fn GetLine() -> i32 {
 //	return b.Interpreter.GetLine()
 //}
 //
-//pub fn GetType() -> int {
+//pub fn GetType() -> i32 {
 //	return b.thetype
 //}
 //
-//pub fn setType(t: int) {
+//pub fn setType(t: i32) {
 //	b.thetype = t
 //}
 //
 //// What is the index of the current character of lookahead?///
-//pub fn GetCharIndex() -> int {
+//pub fn GetCharIndex() -> i32 {
 //	return b.input.Index()
 //}
 //
 //// Return the text Matched so far for the current token or any text override.
 ////Set the complete text of l token it wipes any previous changes to the text.
-//pub fn GetText() -> string {
+//pub fn GetText() -> &str {
 //	if b.text != "" {
 //		return b.text
 //	}
@@ -342,7 +342,7 @@
 //	return b.Interpreter.GetText(b.input)
 //}
 //
-//pub fn SetText(text: string) {
+//pub fn SetText(text: &str) {
 //	b.text = text
 //}
 //
@@ -373,7 +373,7 @@
 //	listener.SyntaxError(b, nil, b.TokenStartLine, b.TokenStartColumn, msg, e)
 //}
 //
-//pub fn getErrorDisplayForChar(c: rune) -> string {
+//pub fn getErrorDisplayForChar(c: rune) -> &str {
 //	if c == TokenEOF {
 //		return "<EOF>"
 //	} else if c == '\n' {
@@ -383,11 +383,11 @@
 //	} else if c == '\r' {
 //		return "\\r"
 //	} else {
-//		return string(c)
+//		return &str(c)
 //	}
 //}
 //
-//pub fn getCharErrorDisplay(c: rune) -> string {
+//pub fn getCharErrorDisplay(c: rune) -> &str {
 //	return "'" + b.getErrorDisplayForChar(c) + "'"
 //}
 //

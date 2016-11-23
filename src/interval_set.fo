@@ -6,12 +6,12 @@
 //)
 //
 //pub struct Interval {
-//	start: int
-//	stop:  int
+//	start: i32
+//	stop:  i32
 //}
 //
 ///* stop is not included! */
-//impl Interval {§//  pub fn new(start, stop: int) -> *Interval {
+//impl Interval {§//  pub fn new(start, stop: i32) -> *Interval {
 //	i := new(Interval)
 //
 //	i.start = start
@@ -19,11 +19,11 @@
 //	return i
 //}
 //
-//pub fn contains(item: int) -> bool {
+//pub fn contains(item: i32) -> bool {
 //	return item >= i.start && item < i.stop
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	if i.start == i.stop-1 {
 //		return strconv.Itoa(i.start)
 //	}
@@ -31,7 +31,7 @@
 //	return strconv.Itoa(i.start) + ".." + strconv.Itoa(i.stop-1)
 //}
 //
-//pub fn length() -> int {
+//pub fn length() -> i32 {
 //	return i.stop - i.start
 //}
 //
@@ -50,7 +50,7 @@
 //	return i
 //}
 //
-//pub fn first() -> int {
+//pub fn first() -> i32 {
 //	if len(i.intervals) == 0 {
 //		return TokenInvalidType
 //	}
@@ -58,11 +58,11 @@
 //	return i.intervals[0].start
 //}
 //
-//pub fn addOne(v: int) {
+//pub fn addOne(v: i32) {
 //	i.addInterval(NewInterval(v, v+1))
 //}
 //
-//pub fn addRange(l, h: int) {
+//pub fn addRange(l, h: i32) {
 //	i.addInterval(NewInterval(l, h+1))
 //}
 //
@@ -72,16 +72,16 @@
 //		i.intervals = append(i.intervals, v)
 //	} else {
 //		// find insert pos
-//		for k, interval := range i.intervals {
+//		for k, i32erval := range i.intervals {
 //			// distinct range -> insert
-//			if v.stop < interval.start {
+//			if v.stop < i32erval.start {
 //				i.intervals = append(i.intervals[0:k], append([]*Interval{v}, i.intervals[k:]...)...)
 //				return
-//			} else if v.stop == interval.start {
+//			} else if v.stop == i32erval.start {
 //				i.intervals[k].start = v.start
 //				return
-//			} else if v.start <= interval.stop {
-//				i.intervals[k] = NewInterval(intMin(interval.start, v.start), intMax(interval.stop, v.stop))
+//			} else if v.start <= i32erval.stop {
+//				i.intervals[k] = NewInterval(intMin(interval.start, v.start), i32Max(interval.stop, v.stop))
 //
 //				// if not applying to end, merge potential overlaps
 //				if k < len(i.intervals)-1 {
@@ -113,7 +113,7 @@
 //	return i
 //}
 //
-//pub fn complement(start: int, stop: int) -> *IntervalSet {
+//pub fn complement(start: i32, stop: i32) -> *IntervalSet {
 //	result := NewIntervalSet()
 //	result.addInterval(NewInterval(start, stop+1))
 //	for j := 0; j < len(i.intervals); j++ {
@@ -122,7 +122,7 @@
 //	return result
 //}
 //
-//pub fn contains(item: int) -> bool {
+//pub fn contains(item: i32) -> bool {
 //	if i.intervals == nil {
 //		return false
 //	}
@@ -134,7 +134,7 @@
 //	return false
 //}
 //
-//pub fn length() -> int {
+//pub fn length() -> i32 {
 //	len := 0
 //
 //	for _, v := range i.intervals {
@@ -151,7 +151,7 @@
 //		k := 0
 //		for n := 0; n < len(i.intervals); n++ {
 //			ni := i.intervals[k]
-//			// intervals are ordered
+//			// i32ervals are ordered
 //			if v.stop <= ni.start {
 //				return
 //			} else if v.start > ni.start && v.stop < ni.stop {
@@ -174,11 +174,11 @@
 //	}
 //}
 //
-//pub fn removeOne(v: int) {
+//pub fn removeOne(v: i32) {
 //	if i.intervals != nil {
 //		for k := 0; k < len(i.intervals); k++ {
 //			ki := i.intervals[k]
-//			// intervals i ordered
+//			// i32ervals i ordered
 //			if v < ki.start {
 //				return
 //			} else if v == ki.start && v == ki.stop-1 {
@@ -202,11 +202,11 @@
 //	}
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	return i.StringVerbose(nil, nil, false)
 //}
 //
-//pub fn StringVerbose(literalNames []string, symbolicNames []string, elemsAreChar: bool) -> string {
+//pub fn StringVerbose(literalNames []string, symbolicNames []string, elemsAreChar: bool) -> &str {
 //
 //	if i.intervals == nil {
 //		return "{}"
@@ -219,7 +219,7 @@
 //	return i.toIndexString()
 //}
 //
-//pub fn toCharString() -> string {
+//pub fn toCharString() -> &str {
 //	names := make([]string, len(i.intervals))
 //
 //	for j := 0; j < len(i.intervals); j++ {
@@ -228,20 +228,20 @@
 //			if v.start == TokenEOF {
 //				names = append(names, "<EOF>")
 //			} else {
-//				names = append(names, ("'" + string(v.start) + "'"))
+//				names = append(names, ("'" + &str(v.start) + "'"))
 //			}
 //		} else {
 //			names = append(names, "'"+string(v.start)+"'..'"+string(v.stop-1)+"'")
 //		}
 //	}
 //	if len(names) > 1 {
-//		return "{" + strings.Join(names, ", ") + "}"
+//		return "{" + &strs.Join(names, ", ") + "}"
 //	}
 //
 //	return names[0]
 //}
 //
-//pub fn toIndexString() -> string {
+//pub fn toIndexString() -> &str {
 //
 //	names := make([]string, 0)
 //	for j := 0; j < len(i.intervals); j++ {
@@ -257,13 +257,13 @@
 //		}
 //	}
 //	if len(names) > 1 {
-//		return "{" + strings.Join(names, ", ") + "}"
+//		return "{" + &strs.Join(names, ", ") + "}"
 //	}
 //
 //	return names[0]
 //}
 //
-//pub fn toTokenString(literalNames []string, symbolicNames []string) -> string {
+//pub fn toTokenString(literalNames []string, symbolicNames []string) -> &str {
 //	names := make([]string, 0)
 //	for _, v := range i.intervals {
 //		for j := v.start; j < v.stop; j++ {
@@ -271,13 +271,13 @@
 //		}
 //	}
 //	if len(names) > 1 {
-//		return "{" + strings.Join(names, ", ") + "}"
+//		return "{" + &strs.Join(names, ", ") + "}"
 //	}
 //
 //	return names[0]
 //}
 //
-//pub fn elementName(literalNames []string, symbolicNames []string, a: int) -> string {
+//pub fn elementName(literalNames []string, symbolicNames []string, a: i32) -> &str {
 //	if a == TokenEOF {
 //		return "<EOF>"
 //	} else if a == TokenEpsilon {

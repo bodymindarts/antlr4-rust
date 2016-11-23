@@ -1,20 +1,20 @@
 //package antlr
 //
-//var ATNInvalidAltNumber int
+//var ATNInvalidAltNumber i32
 //
 //pub struct ATN {
 //	// DecisionToState is the decision points for all rules, subrules, optional
 //	// blocks, ()+, ()*, etc. Used to build DFA predictors for them.
 //	DecisionToState []DecisionState
 //
-//	// grammarType is the ATN type and is used for deserializing ATNs from strings.
-//	grammarType: int
+//	// grammarType is the ATN type and is used for deserializing ATNs from &strs.
+//	grammarType: i32
 //
 //	// lexerActions is referenced by action transitions in the ATN for lexer ATNs.
 //	lexerActions []LexerAction
 //
 //	// maxTokenType is the maximum value for any symbol recognized by a transition in the ATN.
-//	maxTokenType: int
+//	maxTokenType: i32
 //
 //	modeNameToStartState map[string]*TokensStartState
 //
@@ -35,7 +35,7 @@
 //	states []ATNState
 //}
 //
-//impl ATN {§//  pub fn new(grammarType: int, maxTokenType: int) -> *ATN {
+//impl ATN {§//  pub fn new(grammarType: i32, maxTokenType: i32) -> *ATN {
 //	return &ATN{
 //		grammarType:          grammarType,
 //		maxTokenType:         maxTokenType,
@@ -86,14 +86,14 @@
 //	a.states[state.GetStateNumber()] = nil // Just free the memory; don't shift states in the slice
 //}
 //
-//pub fn defineDecisionState(s: DecisionState) -> int {
+//pub fn defineDecisionState(s: DecisionState) -> i32 {
 //	a.DecisionToState = append(a.DecisionToState, s)
 //	s.setDecision(len(a.DecisionToState) - 1)
 //
 //	return s.getDecision()
 //}
 //
-//pub fn getDecisionState(decision: int) -> DecisionState {
+//pub fn getDecisionState(decision: i32) -> DecisionState {
 //	if len(a.DecisionToState) == 0 {
 //		return nil
 //	}
@@ -113,7 +113,7 @@
 //// A nil ctx defaults to ParserRuleContext.EMPTY.
 ////
 //// It panics if the ATN does not contain state stateNumber.
-//pub fn getExpectedTokens(stateNumber: int, ctx: RuleContext) -> *IntervalSet {
+//pub fn getExpectedTokens(stateNumber: i32, ctx: RuleContext) -> *IntervalSet {
 //	if stateNumber < 0 || stateNumber >= len(a.states) {
 //		panic("Invalid state number.")
 //	}

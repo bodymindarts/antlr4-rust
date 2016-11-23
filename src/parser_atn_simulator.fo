@@ -17,9 +17,9 @@
 //	*BaseATNSimulator
 //
 //	parser:         Parser
-//	predictionMode: int
+//	predictionMode: i32
 //	input:          TokenStream
-//	startIndex:     int
+//	startIndex:     i32
 //	dfa:            *DFA
 //	mergeCache:     *DoubleDict
 //	outerContext:   ParserRuleContext
@@ -53,18 +53,18 @@
 //	return p
 //}
 //
-//pub fn GetPredictionMode() -> int {
+//pub fn GetPredictionMode() -> i32 {
 //	return p.predictionMode
 //}
 //
-//pub fn SetPredictionMode(v: int) {
+//pub fn SetPredictionMode(v: i32) {
 //	p.predictionMode = v
 //}
 //
 //pub fn reset() {
 //}
 //
-//pub fn AdaptivePredict(input TokenStream, decision: int, outerContext: ParserRuleContext) -> int {
+//pub fn AdaptivePredict(input TokenStream, decision: i32, outerContext: ParserRuleContext) -> i32 {
 //	if ParserATNSimulatorDebug || ParserATNSimulatorListATNDecisions {
 //		fmt.Println("AdaptivePredict decision " + strconv.Itoa(decision) +
 //			" exec LA(1)==" + p.getLookaheadName(input) +
@@ -177,7 +177,7 @@
 ////    conflict
 ////    conflict + preds
 ////
-//pub fn execATN(dfa *DFA, s0 *DFAState, input TokenStream, startIndex: int, outerContext: ParserRuleContext) -> int {
+//pub fn execATN(dfa *DFA, s0 *DFAState, input TokenStream, startIndex: i32, outerContext: ParserRuleContext) -> i32 {
 //
 //	if ParserATNSimulatorDebug || ParserATNSimulatorListATNDecisions {
 //		fmt.Println("execATN decision " + strconv.Itoa(dfa.decision) +
@@ -197,9 +197,9 @@
 //			D = p.computeTargetState(dfa, previousD, t)
 //		}
 //		if D == ATNSimulatorError {
-//			// if any configs in previous dipped into outer context, that
+//			// if any configs in previous dipped i32o outer context, that
 //			// means that input up to t actually finished entry rule
-//			// at least for SLL decision. Full LL doesn't dip into outer
+//			// at least for SLL decision. Full LL doesn't dip i32o outer
 //			// so don't need special case.
 //			// We will get an error no matter what so delay until after
 //			// decision better error message. Also, no reachable target
@@ -286,7 +286,7 @@
 //// {@code t}, or {@code nil} if the target state for p edge is not
 //// already cached
 //
-//pub fn getExistingTargetState(previousD *DFAState, t: int) -> *DFAState {
+//pub fn getExistingTargetState(previousD *DFAState, t: i32) -> *DFAState {
 //	edges := previousD.edges
 //	if edges == nil {
 //		return nil
@@ -306,7 +306,7 @@
 //// {@code t}. If {@code t} does not lead to a valid DFA state, p method
 //// returns {@link //ERROR}.
 //
-//pub fn computeTargetState(dfa *DFA, previousD *DFAState, t: int) -> *DFAState {
+//pub fn computeTargetState(dfa *DFA, previousD *DFAState, t: i32) -> *DFAState {
 //	reach := p.computeReachSet(previousD.configs, t, false)
 //
 //	if reach == nil {
@@ -372,7 +372,7 @@
 //}
 //
 //// comes back with reach.uniqueAlt set to a valid alt
-//pub fn execATNWithFullContext(dfa *DFA, D *DFAState, s0 ATNConfigSet, input TokenStream, startIndex: int, outerContext: ParserRuleContext) -> int {
+//pub fn execATNWithFullContext(dfa *DFA, D *DFAState, s0 ATNConfigSet, input TokenStream, startIndex: i32, outerContext: ParserRuleContext) -> i32 {
 //
 //	if ParserATNSimulatorDebug || ParserATNSimulatorListATNDecisions {
 //		fmt.Println("execATNWithFullContext " + s0.String())
@@ -389,9 +389,9 @@
 //	for { // for more work
 //		reach = p.computeReachSet(previous, t, fullCtx)
 //		if reach == nil {
-//			// if any configs in previous dipped into outer context, that
+//			// if any configs in previous dipped i32o outer context, that
 //			// means that input up to t actually finished entry rule
-//			// at least for LL decision. Full LL doesn't dip into outer
+//			// at least for LL decision. Full LL doesn't dip i32o outer
 //			// so don't need special case.
 //			// We will get an error no matter what so delay until after
 //			// decision better error message. Also, no reachable target
@@ -480,7 +480,7 @@
 //	return predictedAlt
 //}
 //
-//pub fn computeReachSet(closure ATNConfigSet, t: int, fullCtx: bool) -> ATNConfigSet {
+//pub fn computeReachSet(closure ATNConfigSet, t: i32, fullCtx: bool) -> ATNConfigSet {
 //	if ParserATNSimulatorDebug {
 //		fmt.Println("in computeReachSet, starting closure: " + closure.String())
 //	}
@@ -493,7 +493,7 @@
 //	// of the decision rule (local context) or end of the start rule (full
 //	// context). Once reached, these configurations are never updated by a
 //	// closure operation, so they are handled separately for the performance
-//	// advantage of having a smaller intermediate set when calling closure.
+//	// advantage of having a smaller i32ermediate set when calling closure.
 //	//
 //	// For full-context reach operations, separate handling is required to
 //	// ensure that the alternative Matching the longest overall sequence is
@@ -529,7 +529,7 @@
 //				cfg := NewBaseATNConfig4(c, target)
 //				intermediate.Add(cfg, p.mergeCache)
 //				if ParserATNSimulatorDebug {
-//					fmt.Println("added " + cfg.String() + " to intermediate")
+//					fmt.Println("added " + cfg.String() + " to i32ermediate")
 //				}
 //			}
 //		}
@@ -537,11 +537,11 @@
 //	// Now figure out where the reach operation can take us...
 //	var reach ATNConfigSet
 //
-//	// This block optimizes the reach operation for intermediate sets which
+//	// This block optimizes the reach operation for i32ermediate sets which
 //	// trivially indicate a termination state for the overall
 //	// AdaptivePredict operation.
 //	//
-//	// The conditions assume that intermediate
+//	// The conditions assume that i32ermediate
 //	// contains all configurations relevant to the reach set, but p
 //	// condition is not true when one or more configurations have been
 //	// withheld in SkippedStopStates, or when the current symbol is EOF.
@@ -552,15 +552,15 @@
 //			// It can only have one alternative just add to result
 //			// Also don't pursue the closure if there is unique alternative
 //			// among the configurations.
-//			reach = intermediate
+//			reach = i32ermediate
 //		} else if p.getUniqueAlt(intermediate) != ATNInvalidAltNumber {
 //			// Also don't pursue the closure if there is unique alternative
 //			// among the configurations.
-//			reach = intermediate
+//			reach = i32ermediate
 //		}
 //	}
 //	// If the reach set could not be trivially determined, perform a closure
-//	// operation on the intermediate set to compute its initial value.
+//	// operation on the i32ermediate set to compute its initial value.
 //	//
 //	if reach == nil {
 //		reach = NewBaseATNConfigSet(fullCtx)
@@ -572,7 +572,7 @@
 //	}
 //	if t == TokenEOF {
 //		// After consuming EOF no additional input is possible, so we are
-//		// only interested in configurations which reached the end of the
+//		// only i32erested in configurations which reached the end of the
 //		// decision rule (local context) or end of the start rule (full
 //		// context). Update reach to contain only these configurations. This
 //		// handles both explicit EOF transitions in the grammar and implicit
@@ -588,7 +588,7 @@
 //		// already guaranteed to meet p condition whether or not it's
 //		// required.
 //		//
-//		reach = p.removeAllConfigsNotInRuleStopState(reach, reach == intermediate)
+//		reach = p.removeAllConfigsNotInRuleStopState(reach, reach == i32ermediate)
 //	}
 //	// If SkippedStopStates!=nil, then it contains at least one
 //	// configuration. For full-context reach operations, these
@@ -766,7 +766,7 @@
 //	return configSet
 //}
 //
-//pub fn getReachableTarget(trans: Transition, ttype: int) -> ATNState {
+//pub fn getReachableTarget(trans: Transition, ttype: i32) -> ATNState {
 //	if trans.Matches(ttype, 0, p.atn.maxTokenType) {
 //		return trans.getTarget()
 //	}
@@ -774,7 +774,7 @@
 //	return nil
 //}
 //
-//pub fn getPredsForAmbigAlts(ambigAlts *BitSet, configs: ATNConfigSet, nalts: int) -> []SemanticContext {
+//pub fn getPredsForAmbigAlts(ambigAlts *BitSet, configs: ATNConfigSet, nalts: i32) -> []SemanticContext {
 //
 //	altToPred := make([]SemanticContext, nalts+1)
 //	for _, c := range configs.GetItems() {
@@ -866,7 +866,7 @@
 //// {@link ATN//INVALID_ALT_NUMBER} if a suitable alternative was not
 //// identified and {@link //AdaptivePredict} should Report an error instead.
 ////
-//pub fn getSynValidOrSemInvalidAltThatFinishedDecisionEntryRule(configs: ATNConfigSet, outerContext: ParserRuleContext) -> int {
+//pub fn getSynValidOrSemInvalidAltThatFinishedDecisionEntryRule(configs: ATNConfigSet, outerContext: ParserRuleContext) -> i32 {
 //	cfgs := p.splitAccordingToSemanticValidity(configs, outerContext)
 //	semValidConfigs := cfgs[0]
 //	semInvalidConfigs := cfgs[1]
@@ -884,7 +884,7 @@
 //	return ATNInvalidAltNumber
 //}
 //
-//pub fn GetAltThatFinishedDecisionEntryRule(configs: ATNConfigSet) -> int {
+//pub fn GetAltThatFinishedDecisionEntryRule(configs: ATNConfigSet) -> i32 {
 //	alts := NewIntervalSet()
 //
 //	for _, c := range configs.GetItems() {
@@ -974,7 +974,7 @@
 //		fullCtx, initialDepth, treatEOFAsEpsilon)
 //}
 //
-//pub fn closureCheckingStopState(config ATNConfig, configs ATNConfigSet, closureBusy *Set, collectPredicates, fullCtx bool, depth: int, treatEOFAsEpsilon: bool) {
+//pub fn closureCheckingStopState(config ATNConfig, configs ATNConfigSet, closureBusy *Set, collectPredicates, fullCtx bool, depth: i32, treatEOFAsEpsilon: bool) {
 //
 //	if ParserATNSimulatorDebug {
 //		fmt.Println("closure(" + config.String() + ")")
@@ -1029,7 +1029,7 @@
 //}
 //
 //// Do the actual work of walking epsilon edges//
-//pub fn closureWork(config ATNConfig, configs ATNConfigSet, closureBusy *Set, collectPredicates, fullCtx bool, depth: int, treatEOFAsEpsilon: bool) {
+//pub fn closureWork(config ATNConfig, configs ATNConfigSet, closureBusy *Set, collectPredicates, fullCtx bool, depth: i32, treatEOFAsEpsilon: bool) {
 //	state := config.GetState()
 //	// optimization
 //	if !state.GetEpsilonOnlyTransitions() {
@@ -1051,9 +1051,9 @@
 //
 //			if _, ok := config.GetState().(*RuleStopState); ok {
 //
-//				// target fell off end of rule mark resulting c as having dipped into outer context
+//				// target fell off end of rule mark resulting c as having dipped i32o outer context
 //				// We can't get here if incoming config was rule stop and we had context
-//				// track how far we dip into outer context.  Might
+//				// track how far we dip i32o outer context.  Might
 //				// come in handy and we avoid evaluating context dependent
 //				// preds if p is > 0.
 //
@@ -1072,7 +1072,7 @@
 //				configs.SetDipsIntoOuterContext(true) // TODO: can remove? only care when we add to set per middle of p method
 //				newDepth--
 //				if ParserATNSimulatorDebug {
-//					fmt.Println("dips into outer ctx: " + c.String())
+//					fmt.Println("dips i32o outer ctx: " + c.String())
 //				}
 //			} else if _, ok := t.(*RuleTransition); ok {
 //				// latch when newDepth goes negative - once we step out of the entry context we can't return
@@ -1085,7 +1085,7 @@
 //	}
 //}
 //
-//pub fn getRuleName(index: int) -> string {
+//pub fn getRuleName(index: i32) -> &str {
 //	if p.parser != nil && index >= 0 {
 //		return p.parser.GetRuleNames()[index]
 //	}
@@ -1247,7 +1247,7 @@
 //// among the configurations are all non-epsilon transitions. That means
 //// we don't consider any conflicts that include alternative 2. So, we
 //// ignore the conflict between alts 1 and 2. We ignore a set of
-//// conflicting alts when there is an intersection with an alternative
+//// conflicting alts when there is an i32ersection with an alternative
 //// associated with a single alt state in the state&rarrconfig-list map.
 ////
 //// It's also the case that we might have two conflicting configurations but
@@ -1279,14 +1279,14 @@
 //	return conflictingAlts
 //}
 //
-//pub fn GetTokenName(t: int) -> string {
+//pub fn GetTokenName(t: i32) -> &str {
 //	if t == TokenEOF {
 //		return "EOF"
 //	}
 //
 //	if p.parser != nil && p.parser.GetLiteralNames() != nil {
 //		if t >= len(p.parser.GetLiteralNames()) {
-//			fmt.Println(strconv.Itoa(t) + " ttype out of range: " + strings.Join(p.parser.GetLiteralNames(), ","))
+//			fmt.Println(strconv.Itoa(t) + " ttype out of range: " + &strs.Join(p.parser.GetLiteralNames(), ","))
 //			//			fmt.Println(p.parser.GetInputStream().(TokenStream).GetAllText()) // p seems incorrect
 //		} else {
 //			return p.parser.GetLiteralNames()[t] + "<" + strconv.Itoa(t) + ">"
@@ -1296,7 +1296,7 @@
 //	return strconv.Itoa(t)
 //}
 //
-//pub fn getLookaheadName(input: TokenStream) -> string {
+//pub fn getLookaheadName(input: TokenStream) -> &str {
 //	return p.GetTokenName(input.LA(1))
 //}
 //
@@ -1322,7 +1322,7 @@
 //	//            } else if t3, ok := t.(SetTransition); ok {
 //	//                _, ok := t.(*NotSetTransition)
 //	//
-//	//                var s string
+//	//                var s &str
 //	//                if (ok){
 //	//                    s = "~"
 //	//                }
@@ -1334,11 +1334,11 @@
 //	//    }
 //}
 //
-//pub fn noViableAlt(input TokenStream, outerContext ParserRuleContext, configs: ATNConfigSet, startIndex: int) -> *NoViableAltException {
+//pub fn noViableAlt(input TokenStream, outerContext ParserRuleContext, configs: ATNConfigSet, startIndex: i32) -> *NoViableAltException {
 //	return NewNoViableAltException(p.parser, input, input.Get(startIndex), input.LT(1), configs, outerContext)
 //}
 //
-//pub fn getUniqueAlt(configs: ATNConfigSet) -> int {
+//pub fn getUniqueAlt(configs: ATNConfigSet) -> i32 {
 //	alt := ATNInvalidAltNumber
 //	for _, c := range configs.GetItems() {
 //		if alt == ATNInvalidAltNumber {
@@ -1370,7 +1370,7 @@
 //// otherwise p method returns the result of calling {@link //addDFAState}
 //// on {@code to}
 ////
-//pub fn addDFAEdge(dfa *DFA, from *DFAState, t: int, to *DFAState) -> *DFAState {
+//pub fn addDFAEdge(dfa *DFA, from *DFAState, t: i32, to *DFAState) -> *DFAState {
 //	if ParserATNSimulatorDebug {
 //		fmt.Println("EDGE " + from.String() + " -> " + to.String() + " upon " + p.GetTokenName(t))
 //	}
@@ -1433,7 +1433,7 @@
 //	return D
 //}
 //
-//pub fn ReportAttemptingFullContext(dfa *DFA, conflictingAlts *BitSet, configs ATNConfigSet,: startIndex, stopIndex: int) {
+//pub fn ReportAttemptingFullContext(dfa *DFA, conflictingAlts *BitSet, configs ATNConfigSet,: startIndex, stopIndex: i32) {
 //	if ParserATNSimulatorDebug || ParserATNSimulatorRetryDebug {
 //		interval := NewInterval(startIndex, stopIndex+1)
 //		fmt.Println("ReportAttemptingFullContext decision=" + strconv.Itoa(dfa.decision) + ":" + configs.String() +
@@ -1444,7 +1444,7 @@
 //	}
 //}
 //
-//pub fn ReportContextSensitivity(dfa *DFA, prediction int, configs ATNConfigSet,: startIndex, stopIndex: int) {
+//pub fn ReportContextSensitivity(dfa *DFA, prediction i32, configs ATNConfigSet,: startIndex, stopIndex: i32) {
 //	if ParserATNSimulatorDebug || ParserATNSimulatorRetryDebug {
 //		interval := NewInterval(startIndex, stopIndex+1)
 //		fmt.Println("ReportContextSensitivity decision=" + strconv.Itoa(dfa.decision) + ":" + configs.String() +
@@ -1456,7 +1456,7 @@
 //}
 //
 //// If context sensitive parsing, we know it's ambiguity not conflict//
-//pub fn ReportAmbiguity(dfa *DFA, D *DFAState, startIndex, stopIndex: int,
+//pub fn ReportAmbiguity(dfa *DFA, D *DFAState, startIndex, stopIndex: i32,
 //	exact bool, ambigAlts *BitSet, configs ATNConfigSet) {
 //	if ParserATNSimulatorDebug || ParserATNSimulatorRetryDebug {
 //		interval := NewInterval(startIndex, stopIndex+1)

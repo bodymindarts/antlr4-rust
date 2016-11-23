@@ -24,7 +24,7 @@
 //	GetExpectedTokens() *IntervalSet
 //	NotifyErrorListeners(string, Token, RecognitionException)
 //	IsExpectedToken(int) bool
-//	GetPrecedence() int
+//	GetPrecedence() i32
 //	GetRuleInvocationStack(ParserRuleContext) []string
 //}
 //
@@ -41,7 +41,7 @@
 //
 //	tracer:         *TraceListener
 //	parseListeners []ParseTreeListener
-//	_SyntaxErrors  int
+//	_SyntaxErrors  i32
 //}
 //
 //// p.is all the parsing support code essentially most of it is error
@@ -82,7 +82,7 @@
 //	return p
 //}
 //
-//// p.field maps from the serialized ATN string to the deserialized {@link
+//// p.field maps from the serialized ATN &str to the deserialized {@link
 //// ATN} with
 //// bypass alternatives.
 ////
@@ -131,7 +131,7 @@
 //// {@code ttype} and the error strategy could not recover from the
 //// mismatched symbol
 //
-//pub fn Match(ttype: int) -> Token {
+//pub fn Match(ttype: i32) -> Token {
 //
 //	t := p.GetCurrentToken()
 //
@@ -397,13 +397,13 @@
 //}
 //
 //// Match needs to return the current input symbol, which gets put
-//// into the label for the associated token ref e.g., x=ID.
+//// i32o the label for the associated token ref e.g., x=ID.
 ////
 //pub fn GetCurrentToken() -> Token {
 //	return p.input.LT(1)
 //}
 //
-//pub fn NotifyErrorListeners(msg string, offendingToken: Token, err: RecognitionException) {
+//pub fn NotifyErrorListeners(msg &str, offendingToken: Token, err: RecognitionException) {
 //	if offendingToken == nil {
 //		offendingToken = p.GetCurrentToken()
 //	}
@@ -450,7 +450,7 @@
 //	}
 //}
 //
-//pub fn EnterRule(localctx ParserRuleContext,: state, ruleIndex: int) {
+//pub fn EnterRule(localctx ParserRuleContext,: state, ruleIndex: i32) {
 //	p.SetState(state)
 //	p.ctx = localctx
 //	p.ctx.SetStart(p.input.LT(1))
@@ -476,7 +476,7 @@
 //	}
 //}
 //
-//pub fn EnterOuterAlt(localctx: ParserRuleContext, altNum: int) {
+//pub fn EnterOuterAlt(localctx: ParserRuleContext, altNum: i32) {
 //	localctx.SetAltNumber(altNum)
 //	// if we have Newlocalctx, make sure we replace existing ctx
 //	// that is previous child of parse tree
@@ -494,7 +494,7 @@
 //// @return The precedence level for the top-most precedence rule, or -1 if
 //// the parser context is not nested within a precedence rule.
 //
-//pub fn GetPrecedence() -> int {
+//pub fn GetPrecedence() -> i32 {
 //	if len(p.precedenceStack) == 0 {
 //		return -1
 //	}
@@ -502,7 +502,7 @@
 //	return p.precedenceStack[len(p.precedenceStack)-1]
 //}
 //
-//pub fn EnterRecursionRule(localctx ParserRuleContext, state,: ruleIndex, precedence: int) {
+//pub fn EnterRecursionRule(localctx ParserRuleContext, state,: ruleIndex, precedence: i32) {
 //	p.SetState(state)
 //	p.precedenceStack.Push(precedence)
 //	p.ctx = localctx
@@ -516,7 +516,7 @@
 ////
 //// Like {@link //EnterRule} but for recursive rules.
 //
-//pub fn PushNewRecursionContext(localctx ParserRuleContext,: state, ruleIndex: int) {
+//pub fn PushNewRecursionContext(localctx ParserRuleContext,: state, ruleIndex: i32) {
 //	previous := p.ctx
 //	previous.SetParent(localctx)
 //	previous.SetInvokingState(state)
@@ -546,15 +546,15 @@
 //	} else {
 //		p.ctx = parentCtx
 //	}
-//	// hook into tree
+//	// hook i32o tree
 //	retCtx.SetParent(parentCtx)
 //	if p.BuildParseTrees && parentCtx != nil {
-//		// add return ctx into invoking rule's tree
+//		// add return ctx i32o invoking rule's tree
 //		parentCtx.AddChild(retCtx)
 //	}
 //}
 //
-//pub fn GetInvokingContext(ruleIndex: int) -> ParserRuleContext {
+//pub fn GetInvokingContext(ruleIndex: i32) -> ParserRuleContext {
 //	ctx := p.ctx
 //	for ctx != nil {
 //		if ctx.GetRuleIndex() == ruleIndex {
@@ -565,7 +565,7 @@
 //	return nil
 //}
 //
-//pub fn Precpred(localctx: RuleContext, precedence: int) -> bool {
+//pub fn Precpred(localctx: RuleContext, precedence: i32) -> bool {
 //	return precedence >= p.precedenceStack[len(p.precedenceStack)-1]
 //}
 //
@@ -588,7 +588,7 @@
 //// @return {@code true} if {@code symbol} can follow the current state in
 //// the ATN, otherwise {@code false}.
 //
-//pub fn IsExpectedToken(symbol: int) -> bool {
+//pub fn IsExpectedToken(symbol: i32) -> bool {
 //	atn := p.Interpreter.atn
 //	ctx := p.ctx
 //	s := atn.states[p.state]
@@ -632,7 +632,7 @@
 //}
 //
 //// Get a rule's index (i.e., {@code RULE_ruleName} field) or -1 if not found.//
-//pub fn GetRuleIndex(ruleName: string) -> int {
+//pub fn GetRuleIndex(ruleName: &str) -> i32 {
 //	var ruleIndex, ok = p.GetRuleIndexMap()[ruleName]
 //	if ok {
 //		return ruleIndex
@@ -674,7 +674,7 @@
 //}
 //
 //// For debugging and other purposes.//
-//pub fn GetDFAStrings() -> string {
+//pub fn GetDFAStrings() -> &str {
 //	return fmt.Sprint(p.Interpreter.decisionToDFA)
 //}
 //
@@ -693,7 +693,7 @@
 //	}
 //}
 //
-//pub fn GetSourceName() -> string {
+//pub fn GetSourceName() -> &str {
 //	return p.GrammarFileName
 //}
 //

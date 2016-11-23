@@ -14,14 +14,14 @@
 //
 //	OptimizeConfigs(interpreter *BaseATNSimulator)
 //
-//	Equals(other interface{}) bool
+//	Equals(other i32erface{}) bool
 //
-//	Length() int
+//	Length() i32
 //	IsEmpty() bool
 //	Contains(ATNConfig) bool
 //	ContainsFast(ATNConfig) bool
 //	Clear()
-//	String() string
+//	String() &str
 //
 //	HasSemanticContext() bool
 //	SetHasSemanticContext(v bool)
@@ -34,7 +34,7 @@
 //
 //	FullContext() bool
 //
-//	GetUniqueAlt() int
+//	GetUniqueAlt() i32
 //	SetUniqueAlt(int)
 //
 //	GetDipsIntoOuterContext() bool
@@ -45,7 +45,7 @@
 //// about its elements and can combine similar configurations using a
 //// graph-structured stack.
 //pub struct BaseATNConfigSet {
-//	cachedHashString: string
+//	cachedHashString: &str
 //
 //	// configLookup is used to determine whether two BaseATNConfigSets are equal. We
 //	// need all configurations with the same (s, i, _, semctx) to be equal. A key
@@ -85,7 +85,7 @@
 //	// TODO: These fields make me pretty uncomfortable, but it is nice to pack up
 //	// info together because it saves recomputation. Can we track conflicts as they
 //	// are added to save scanning configs later?
-//	uniqueAlt: int
+//	uniqueAlt: i32
 //}
 //
 //impl BaseATNConfigSet {§//  pub fn new(fullCtx: bool) -> *BaseATNConfigSet {
@@ -202,7 +202,7 @@
 //	return false
 //}
 //
-//pub fn Equals(other interface{}) -> bool {
+//pub fn Equals(other i32erface{}) -> bool {
 //	if b == other {
 //		return true
 //	} else if _, ok := other.(*BaseATNConfigSet); !ok {
@@ -220,7 +220,7 @@
 //		b.dipsIntoOuterContext == other2.dipsIntoOuterContext
 //}
 //
-//pub fn Hash() -> string {
+//pub fn Hash() -> &str {
 //	if b.readOnly {
 //		if b.cachedHashString == "-1" {
 //			b.cachedHashString = b.hashConfigs()
@@ -232,7 +232,7 @@
 //	return b.hashConfigs()
 //}
 //
-//pub fn hashConfigs() -> string {
+//pub fn hashConfigs() -> &str {
 //	s := ""
 //
 //	for _, c := range b.configs {
@@ -242,7 +242,7 @@
 //	return s
 //}
 //
-//pub fn Length() -> int {
+//pub fn Length() -> i32 {
 //	return len(b.configs)
 //}
 //
@@ -288,11 +288,11 @@
 //	b.dipsIntoOuterContext = v
 //}
 //
-//pub fn GetUniqueAlt() -> int {
+//pub fn GetUniqueAlt() -> i32 {
 //	return b.uniqueAlt
 //}
 //
-//pub fn SetUniqueAlt(v: int) {
+//pub fn SetUniqueAlt(v: i32) {
 //	b.uniqueAlt = v
 //}
 //
@@ -316,7 +316,7 @@
 //	}
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	s := "["
 //
 //	for i, c := range b.configs {
@@ -360,11 +360,11 @@
 //	return &OrderedATNConfigSet{BaseATNConfigSet: b}
 //}
 //
-//pub fn hashATNConfig(c interface{}) -> string { // non-member
+//pub fn hashATNConfig(c i32erface{}) -> &str { // non-member
 //	return c.(ATNConfig).shortHash()
 //}
 //
-//pub fn equalATNConfigs(a, b interface{}) -> bool { // non-member
+//pub fn equalATNConfigs(a, b i32erface{}) -> bool { // non-member
 //	if a == nil || b == nil {
 //		return false
 //	}

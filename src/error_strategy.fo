@@ -22,7 +22,7 @@
 ////
 //pub struct DefaultErrorStrategy {
 //	errorRecoveryMode: bool
-//	lastErrorIndex:    int
+//	lastErrorIndex:    i32
 //	lastErrorStates:   *IntervalSet
 //}
 //
@@ -40,7 +40,7 @@
 //	//
 //	d.errorRecoveryMode = false
 //
-//	// The index into the input stream where the last error occurred.
+//	// The index i32o the input stream where the last error occurred.
 //	// This is used to prevent infinite loops where an error is found
 //	// but no token is consumed during recovery...another error is found,
 //	// ad nauseum. This is a failsafe mechanism to guarantee that at least
@@ -249,7 +249,7 @@
 ////
 //pub fn ReportNoViableAlternative(recognizer: Parser, e *NoViableAltException) {
 //	tokens := recognizer.GetTokenStream()
-//	var input string
+//	var input &str
 //	if tokens != nil {
 //		if e.startToken.GetTokenType() == TokenEOF {
 //			input = "<EOF>"
@@ -324,7 +324,7 @@
 //}
 //
 //// This method is called to Report a syntax error which requires the
-//// insertion of a missing token into the input stream. At the time d
+//// insertion of a missing token i32o the input stream. At the time d
 //// method is called, the missing token has not yet been inserted. When d
 //// method returns, {@code recognizer} is in error recovery mode.
 ////
@@ -511,7 +511,7 @@
 //	currentSymbol := recognizer.GetCurrentToken()
 //	expecting := d.GetExpectedTokens(recognizer)
 //	expectedTokenType := expecting.first()
-//	var tokenText string
+//	var tokenText &str
 //
 //	if expectedTokenType == TokenEOF {
 //		tokenText = "<missing EOF>"
@@ -546,7 +546,7 @@
 //// your token objects because you don't have to go modify your lexer
 //// so that it creates a NewJava type.
 ////
-//pub fn GetTokenErrorDisplay(t: Token) -> string {
+//pub fn GetTokenErrorDisplay(t: Token) -> &str {
 //	if t == nil {
 //		return "<no token>"
 //	}
@@ -561,10 +561,10 @@
 //	return d.escapeWSAndQuote(s)
 //}
 //
-//pub fn escapeWSAndQuote(s: string) -> string {
-//	s = strings.Replace(s, "\t", "\\t", -1)
-//	s = strings.Replace(s, "\n", "\\n", -1)
-//	s = strings.Replace(s, "\r", "\\r", -1)
+//pub fn escapeWSAndQuote(s: &str) -> &str {
+//	s = &strs.Replace(s, "\t", "\\t", -1)
+//	s = &strs.Replace(s, "\n", "\\n", -1)
+//	s = &strs.Replace(s, "\r", "\\r", -1)
 //	return "'" + s + "'"
 //}
 //

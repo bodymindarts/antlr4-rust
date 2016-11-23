@@ -23,19 +23,19 @@
 //
 //pub struct LoopEndStateIntPair {
 //	item0 *LoopEndState
-//	item1 int
+//	item1 i32
 //}
 //
 //pub struct BlockStartStateIntPair {
 //	item0 BlockStartState
-//	item1 int
+//	item1 i32
 //}
 //
 //pub struct ATNDeserializer {
 //	deserializationOptions: *ATNDeserializationOptions
 //	data                   []rune
-//	pos:                    int
-//	uuid:                   string
+//	pos:                    i32
+//	uuid:                   &str
 //}
 //
 //impl ATNDeserializer {§//  pub fn new(options *ATNDeserializationOptions) -> *ATNDeserializer {
@@ -46,7 +46,7 @@
 //	return &ATNDeserializer{deserializationOptions: options}
 //}
 //
-//pub fn stringInSlice(a: string, list []string) -> int { // non-member
+//pub fn &strInSlice(a: &str, list []string) -> i32 { // non-member
 //	for i, b := range list {
 //		if b == a {
 //			return i
@@ -58,20 +58,20 @@
 //
 //// isFeatureSupported determines if a particular serialized representation of an
 //// ATN supports a particular feature, identified by the UUID used for
-//// serializing the ATN at the time the feature was first introduced. Feature is
+//// serializing the ATN at the time the feature was first i32roduced. Feature is
 //// the UUID marking the first time the feature was supported in the serialized
 //// ATN. ActualUuid is the UUID of the actual serialized ATN which is currently
 //// being deserialized. It returns true if actualUuid represents a serialized ATN
-//// at or after the feature identified by feature was introduced, and otherwise
+//// at or after the feature identified by feature was i32roduced, and otherwise
 //// false.
-//pub fn isFeatureSupported(feature, actualUUID: string) -> bool {
-//	idx1 := stringInSlice(feature, SupportedUUIDs)
+//pub fn isFeatureSupported(feature, actualUUID: &str) -> bool {
+//	idx1 := &strInSlice(feature, SupportedUUIDs)
 //
 //	if idx1 < 0 {
 //		return false
 //	}
 //
-//	idx2 := stringInSlice(actualUUID, SupportedUUIDs)
+//	idx2 := &strInSlice(actualUUID, SupportedUUIDs)
 //
 //	return idx2 >= idx1
 //}
@@ -132,7 +132,7 @@
 //pub fn checkUUID() {
 //	uuid := a.readUUID()
 //
-//	if stringInSlice(uuid, SupportedUUIDs) < 0 {
+//	if &strInSlice(uuid, SupportedUUIDs) < 0 {
 //		panic("Could not deserialize ATN with UUID: " + uuid + " (expected " + SerializedUUID + " or a legacy UUID).")
 //	}
 //
@@ -420,7 +420,7 @@
 //	}
 //}
 //
-//pub fn generateRuleBypassTransition(atn *ATN, idx: int) {
+//pub fn generateRuleBypassTransition(atn *ATN, idx: i32) {
 //	bypassStart := NewBasicBlockStartState()
 //
 //	bypassStart.ruleIndex = idx
@@ -500,7 +500,7 @@
 //	bypassStart.AddTransition(NewEpsilonTransition(MatchState, -1), -1)
 //}
 //
-//pub fn stateIsEndStateFor(state: ATNState, idx: int) -> ATNState {
+//pub fn stateIsEndStateFor(state: ATNState, idx: i32) -> ATNState {
 //	if state.GetRuleIndex() != idx {
 //		return nil
 //	}
@@ -620,7 +620,7 @@
 //	}
 //}
 //
-//pub fn checkCondition(condition: bool, message: string) {
+//pub fn checkCondition(condition: bool, message: &str) {
 //	if !condition {
 //		if message == "" {
 //			message = "IllegalState"
@@ -630,27 +630,27 @@
 //	}
 //}
 //
-//pub fn readInt() -> int {
+//pub fn readInt() -> i32 {
 //	v := a.data[a.pos]
 //
 //	a.pos++
 //
-//	return int(v)
+//	return i32(v)
 //}
 //
 ////TODO
-////pub fn readLong() -> int64 {
+////pub fn readLong() -> i3264 {
 ////    panic("Not implemented")
 ////    var low = a.readInt32()
 ////    var high = a.readInt32()
-////    return (low & 0x00000000FFFFFFFF) | (high << int32)
+////    return (low & 0x00000000FFFFFFFF) | (high << i3232)
 ////}
 //
 //pub fn createByteToHex() -> []string { // non-member
 //	bth := make([]string, 256)
 //
 //	for i := 0; i < 256; i++ {
-//		bth[i] = strings.ToUpper(hex.EncodeToString([]byte{byte(i)}))
+//		bth[i] = &strs.ToUpper(hex.EncodeToString([]byte{byte(i)}))
 //	}
 //
 //	return bth
@@ -658,13 +658,13 @@
 //
 //var byteToHex = createByteToHex()
 //
-//pub fn readUUID() -> string {
+//pub fn readUUID() -> &str {
 //	bb := make([]int, 16)
 //
 //	for i := 7; i >= 0; i-- {
 //		integer := a.readInt()
 //
-//		bb[(2*i)+1] = integer & 0xFF
+//		bb[(2*i)+1] = i32eger & 0xFF
 //		bb[2*i] = (integer >> 8) & 0xFF
 //	}
 //
@@ -678,7 +678,7 @@
 //		byteToHex[bb[14]] + byteToHex[bb[15]]
 //}
 //
-//pub fn edgeFactory(atn *ATN, typeIndex, src, trg, arg1, arg2, arg3: int, sets []*IntervalSet) -> Transition {
+//pub fn edgeFactory(atn *ATN, typeIndex, src, trg, arg1, arg2, arg3: i32, sets []*IntervalSet) -> Transition {
 //	target := atn.states[trg]
 //
 //	switch typeIndex {
@@ -724,7 +724,7 @@
 //	panic("The specified transition type is not valid.")
 //}
 //
-//pub fn stateFactory(typeIndex, ruleIndex: int) -> ATNState {
+//pub fn stateFactory(typeIndex, ruleIndex: i32) -> ATNState {
 //	var s ATNState
 //
 //	switch typeIndex {
@@ -776,7 +776,7 @@
 //	return s
 //}
 //
-//pub fn lexerActionFactory(typeIndex, data1, data2: int) -> LexerAction {
+//pub fn lexerActionFactory(typeIndex, data1, data2: i32) -> LexerAction {
 //	switch typeIndex {
 //	case LexerActionTypeChannel:
 //		return NewLexerChannelAction(data1)

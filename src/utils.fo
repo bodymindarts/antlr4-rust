@@ -10,21 +10,21 @@
 //	"strconv"
 //)
 //
-//pub fn intMin(a, b: int) -> int { // non-member
+//pub fn i32Min(a, b: i32) -> i32 { // non-member
 //	if a < b {
 //		return a
 //	}
 //	return b
 //}
 //
-//pub fn intMax(a, b: int) -> int { // non-member
+//pub fn i32Max(a, b: i32) -> i32 { // non-member
 //	if a > b {
 //		return a
 //	}
 //	return b
 //}
 //
-//// A simple integer stack
+//// A simple i32eger stack
 //
 //type IntStack []int
 //
@@ -40,17 +40,17 @@
 //	return v, nil
 //}
 //
-//pub fn Push(e: int) {
+//pub fn Push(e: i32) {
 //	*s = append(*s, e)
 //}
 //
 //pub struct Set {
 //	data           map[string][]interface{}
-//	hashFunction   func(interface{}) string
-//	equalsFunction func(interface{}, interface{}) bool
+//	hashFunction   func(interface{}) &str
+//	equalsFunction func(interface{}, i32erface{}) bool
 //}
 //
-//impl Set {§//  pub fn new(hashFunction func(interface{}): string, equalsFunction func(interface{}, interface{}): bool) -> *Set {
+//impl Set {§//  pub fn new(hashFunction func(interface{}): &str, equalsFunction func(interface{}, i32erface{}): bool) -> *Set {
 //
 //	s := new(Set)
 //
@@ -71,7 +71,7 @@
 //	return s
 //}
 //
-//pub fn standardEqualsFunction(a interface{}, b interface{}) -> bool { // non-member
+//pub fn standardEqualsFunction(a i32erface{}, b i32erface{}) -> bool { // non-member
 //
 //	ac, oka := a.(Comparable)
 //	bc, okb := b.(Comparable)
@@ -83,7 +83,7 @@
 //	return ac.equals(bc)
 //}
 //
-//pub fn standardHashFunction(a interface{}) -> string { // non-member
+//pub fn standardHashFunction(a i32erface{}) -> &str { // non-member
 //	h, ok := a.(Hasher)
 //
 //	if ok {
@@ -93,7 +93,7 @@
 //	panic("Not Hasher")
 //}
 //
-////pub fn getBytes(key interface{}) -> ([]byte,: error) { // non-member
+////pub fn getBytes(key i32erface{}) -> ([]byte,: error) { // non-member
 ////	var buf bytes.Buffer
 ////	enc := gob.NewEncoder(&buf)
 ////	err := enc.Encode(key)
@@ -104,20 +104,20 @@
 ////}
 //
 //pub trait Hasher {
-//	Hash() string
+//	Hash() &str
 //}
 //
-//pub fn hashCode(s: string) -> string { // non-member
+//pub fn hashCode(s: &str) -> &str { // non-member
 //	h := fnv.New32a()
 //	h.Write([]byte((s)))
 //	return fmt.Sprint(h.Sum32())
 //}
 //
-//pub fn length() -> int {
+//pub fn length() -> i32 {
 //	return len(s.data)
 //}
 //
-//pub fn add(value interface{}) -> interface{} {
+//pub fn add(value i32erface{}) -> i32erface{} {
 //
 //	hash := s.hashFunction(value)
 //	key := "hash_" + hashCode(hash)
@@ -140,7 +140,7 @@
 //	return value
 //}
 //
-//pub fn contains(value interface{}) -> bool {
+//pub fn contains(value i32erface{}) -> bool {
 //
 //	hash := s.hashFunction(value)
 //	key := "hash_" + hashCode(hash)
@@ -161,14 +161,14 @@
 //	l := make([]interface{}, 0)
 //
 //	for key := range s.data {
-//		if strings.Index(key, "hash_") == 0 {
+//		if &strs.Index(key, "hash_") == 0 {
 //			l = append(l, s.data[key]...)
 //		}
 //	}
 //	return l
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //
 //	r := ""
 //
@@ -191,11 +191,11 @@
 //	return b
 //}
 //
-//pub fn add(value: int) {
+//pub fn add(value: i32) {
 //	b.data[value] = true
 //}
 //
-//pub fn clear(index: int) {
+//pub fn clear(index: i32) {
 //	delete(b.data, index)
 //}
 //
@@ -205,11 +205,11 @@
 //	}
 //}
 //
-//pub fn remove(value: int) {
+//pub fn remove(value: i32) {
 //	delete(b.data, value)
 //}
 //
-//pub fn contains(value: int) -> bool {
+//pub fn contains(value: i32) -> bool {
 //	return b.data[value] == true
 //}
 //
@@ -224,7 +224,7 @@
 //	return ks
 //}
 //
-//pub fn minValue() -> int {
+//pub fn minValue() -> i32 {
 //	min := 2147483647
 //
 //	for k := range b.data {
@@ -236,7 +236,7 @@
 //	return min
 //}
 //
-//pub fn equals(other interface{}) -> bool {
+//pub fn equals(other i32erface{}) -> bool {
 //	otherBitSet, ok := other.(*BitSet)
 //	if !ok {
 //		return false
@@ -255,18 +255,18 @@
 //	return true
 //}
 //
-//pub fn length() -> int {
+//pub fn length() -> i32 {
 //	return len(b.data)
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	vals := b.values()
 //	valsS := make([]string, len(vals))
 //
 //	for i, val := range vals {
 //		valsS[i] = strconv.Itoa(val)
 //	}
-//	return "{" + strings.Join(valsS, ", ") + "}"
+//	return "{" + &strs.Join(valsS, ", ") + "}"
 //}
 //
 //pub struct AltDict {
@@ -279,12 +279,12 @@
 //	return d
 //}
 //
-//pub fn Get(key: string) -> interface{} {
+//pub fn Get(key: &str) -> i32erface{} {
 //	key = "k-" + key
 //	return a.data[key]
 //}
 //
-//pub fn put(key: string, value interface{}) {
+//pub fn put(key: &str, value i32erface{}) {
 //	key = "k-" + key
 //	a.data[key] = value
 //}
@@ -309,7 +309,7 @@
 //	return dd
 //}
 //
-//pub fn Get(a: string, b: string) -> interface{} {
+//pub fn Get(a: &str, b: &str) -> i32erface{} {
 //	data := d.data[a]
 //
 //	if data == nil {
@@ -319,7 +319,7 @@
 //	return data[b]
 //}
 //
-//pub fn set(a, b: string, o interface{}) {
+//pub fn set(a, b: &str, o i32erface{}) {
 //	data := d.data[a]
 //
 //	if data == nil {
@@ -330,13 +330,13 @@
 //	data[b] = o
 //}
 //
-//pub fn EscapeWhitespace(s: string, escapeSpaces: bool) -> string { // non-member
+//pub fn EscapeWhitespace(s: &str, escapeSpaces: bool) -> &str { // non-member
 //
-//	s = strings.Replace(s, "\t", "\\t", -1)
-//	s = strings.Replace(s, "\n", "\\n", -1)
-//	s = strings.Replace(s, "\r", "\\r", -1)
+//	s = &strs.Replace(s, "\t", "\\t", -1)
+//	s = &strs.Replace(s, "\n", "\\n", -1)
+//	s = &strs.Replace(s, "\r", "\\r", -1)
 //	if escapeSpaces {
-//		s = strings.Replace(s, " ", "\u00B7", -1)
+//		s = &strs.Replace(s, " ", "\u00B7", -1)
 //	}
 //	return s
 //}
@@ -351,7 +351,7 @@
 //	return st
 //}
 //
-//pub fn PrintArrayJavaStyle(sa []string) -> string { // non-member
+//pub fn PrintArrayJavaStyle(sa []string) -> &str { // non-member
 //	var buffer bytes.Buffer
 //
 //	buffer.WriteString("[")
@@ -368,16 +368,16 @@
 //	return buffer.String()
 //}
 //
-//pub fn TitleCase(str: string) -> string { // non-member
+//pub fn TitleCase(str: &str) -> &str { // non-member
 //
-//	//	pub fn ReplaceAllStringFunc(src: string, repl func(string): string) -> string
+//	//	pub fn ReplaceAllStringFunc(src: &str, repl func(string): &str) -> &str
 //	//	return str.replace(//g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1)})
 //
 //	panic("Not implemented")
 //
 //	//	re := regexp.MustCompile("\w\S*")
-//	//	return re.ReplaceAllStringFunc(str, func(s string) {
-//	//		return strings.ToUpper(s[0:1]) + s[1:2]
+//	//	return re.ReplaceAllStringFunc(str, func(s &str) {
+//	//		return &strs.ToUpper(s[0:1]) + s[1:2]
 //	//	})
 //
 //}

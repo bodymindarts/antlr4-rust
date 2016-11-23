@@ -1,7 +1,7 @@
 //package antlr
 //
 //// The basic notion of a tree has a parent, a payload, and a list of children.
-////  It is the most abstract interface for all the trees used by ANTLR.
+////  It is the most abstract i32erface for all the trees used by ANTLR.
 /////
 //
 //var TreeInvalidInterval = NewInterval(-1, -2)
@@ -9,9 +9,9 @@
 //pub trait Tree {
 //	GetParent() Tree
 //	SetParent(Tree)
-//	GetPayload() interface{}
-//	GetChild(i int) Tree
-//	GetChildCount() int
+//	GetPayload() i32erface{}
+//	GetChild(i i32) Tree
+//	GetChildCount() i32
 //	GetChildren() []Tree
 //}
 //
@@ -24,10 +24,10 @@
 //pub trait ParseTree {
 //	SyntaxTree
 //
-//	Accept(Visitor ParseTreeVisitor) interface{}
-//	GetText() string
+//	Accept(Visitor ParseTreeVisitor) i32erface{}
+//	GetText() &str
 //
-//	ToStringTree([]string, Recognizer) string
+//	ToStringTree([]string, Recognizer) &str
 //}
 //
 //pub trait RuleNode {
@@ -50,20 +50,20 @@
 //}
 //
 //pub trait ParseTreeVisitor {
-//	Visit(tree ParseTree) interface{}
-//	VisitChildren(node RuleNode) interface{}
-//	VisitTerminal(node TerminalNode) interface{}
-//	VisitErrorNode(node ErrorNode) interface{}
+//	Visit(tree ParseTree) i32erface{}
+//	VisitChildren(node RuleNode) i32erface{}
+//	VisitTerminal(node TerminalNode) i32erface{}
+//	VisitErrorNode(node ErrorNode) i32erface{}
 //}
 //
 //pub struct BaseParseTreeVisitor{}
 //
 //var _ ParseTreeVisitor = &BaseParseTreeVisitor{}
 //
-//pub fn Visit(tree: ParseTree) -> interface{}            { return nil }
-//pub fn VisitChildren(node: RuleNode) -> interface{}     { return nil }
-//pub fn VisitTerminal(node: TerminalNode) -> interface{} { return nil }
-//pub fn VisitErrorNode(node: ErrorNode) -> interface{}   { return nil }
+//pub fn Visit(tree: ParseTree) -> i32erface{}            { return nil }
+//pub fn VisitChildren(node: RuleNode) -> i32erface{}     { return nil }
+//pub fn VisitTerminal(node: TerminalNode) -> i32erface{} { return nil }
+//pub fn VisitErrorNode(node: ErrorNode) -> i32erface{}   { return nil }
 //
 //// TODO
 ////pub fn Visit(ctx) {
@@ -119,7 +119,7 @@
 //	return tn
 //}
 //
-//pub fn GetChild(i: int) -> Tree {
+//pub fn GetChild(i: i32) -> Tree {
 //	return nil
 //}
 //
@@ -143,7 +143,7 @@
 //	t.parentCtx = tree.(RuleContext)
 //}
 //
-//pub fn GetPayload() -> interface{} {
+//pub fn GetPayload() -> i32erface{} {
 //	return t.symbol
 //}
 //
@@ -155,19 +155,19 @@
 //	return NewInterval(tokenIndex, tokenIndex)
 //}
 //
-//pub fn GetChildCount() -> int {
+//pub fn GetChildCount() -> i32 {
 //	return 0
 //}
 //
-//pub fn Accept(v: ParseTreeVisitor) -> interface{} {
+//pub fn Accept(v: ParseTreeVisitor) -> i32erface{} {
 //	return v.VisitTerminal(t)
 //}
 //
-//pub fn GetText() -> string {
+//pub fn GetText() -> &str {
 //	return t.symbol.GetText()
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	if t.symbol.GetTokenType() == TokenEOF {
 //		return "<EOF>"
 //	}
@@ -175,7 +175,7 @@
 //	return t.symbol.GetText()
 //}
 //
-//pub fn ToStringTree(s []string, r: Recognizer) -> string {
+//pub fn ToStringTree(s []string, r: Recognizer) -> &str {
 //	return t.String()
 //}
 //
@@ -199,7 +199,7 @@
 //
 //pub fn errorNode() {}
 //
-//pub fn Accept(v: ParseTreeVisitor) -> interface{} {
+//pub fn Accept(v: ParseTreeVisitor) -> i32erface{} {
 //	return v.VisitErrorNode(e)
 //}
 //

@@ -23,21 +23,21 @@
 //)
 //
 //pub trait PredictionContext {
-//	Hash() string
+//	Hash() &str
 //	GetParent(int) PredictionContext
-//	getReturnState(int) int
+//	getReturnState(int) i32
 //	equals(PredictionContext) bool
-//	length() int
+//	length() i32
 //	isEmpty() bool
 //	hasEmptyPath() bool
-//	String() string
+//	String() &str
 //}
 //
 //pub struct BasePredictionContext {
-//	cachedHashString: string
+//	cachedHashString: &str
 //}
 //
-//impl BasePredictionContext {§//  pub fn new(cachedHashString: string) -> *BasePredictionContext {
+//impl BasePredictionContext {§//  pub fn new(cachedHashString: &str) -> *BasePredictionContext {
 //	pc := new(BasePredictionContext)
 //	pc.cachedHashString = cachedHashString
 //
@@ -48,8 +48,8 @@
 //// code is computed in parts to Match the following reference algorithm.
 ////
 //// <pre>
-//// private int referenceHashCode() {
-//// int hash = {@link MurmurHash//initialize MurmurHash.initialize}({@link
+//// private i32 referenceHashCode() {
+//// i32 hash = {@link MurmurHash//initialize MurmurHash.initialize}({@link
 //// //INITIAL_HASH})
 ////
 //// for (int i = 0 i &lt {@link //Size()} i++) {
@@ -73,15 +73,15 @@
 //	return false
 //}
 //
-//pub fn Hash() -> string {
+//pub fn Hash() -> &str {
 //	return b.cachedHashString
 //}
 //
-//pub fn calculateHashString(parent: PredictionContext, returnState: int) -> string { // non-member
+//pub fn calculateHashString(parent: PredictionContext, returnState: i32) -> &str { // non-member
 //	return parent.String() + strconv.Itoa(returnState)
 //}
 //
-//pub fn calculateEmptyHashString() -> string { // non-member
+//pub fn calculateEmptyHashString() -> &str { // non-member
 //	return ""
 //}
 //
@@ -119,7 +119,7 @@
 //	return p.cache[ctx]
 //}
 //
-//pub fn length() -> int {
+//pub fn length() -> i32 {
 //	return len(p.cache)
 //}
 //
@@ -131,10 +131,10 @@
 //	*BasePredictionContext
 //
 //	parentCtx:   PredictionContext
-//	returnState: int
+//	returnState: i32
 //}
 //
-//impl BaseSingletonPredictionContext {§//  pub fn new(parent: PredictionContext, returnState: int) -> *BaseSingletonPredictionContext {
+//impl BaseSingletonPredictionContext {§//  pub fn new(parent: PredictionContext, returnState: i32) -> *BaseSingletonPredictionContext {
 //
 //	s := new(BaseSingletonPredictionContext)
 //	s.BasePredictionContext = NewBasePredictionContext("")
@@ -151,7 +151,7 @@
 //	return s
 //}
 //
-//pub fn SingletonBasePredictionContextCreate(parent: PredictionContext, returnState: int) -> PredictionContext { // non-member
+//pub fn SingletonBasePredictionContextCreate(parent: PredictionContext, returnState: i32) -> PredictionContext { // non-member
 //	if returnState == BasePredictionContextEmptyReturnState && parent == nil {
 //		// someone can pass in the bits of an array ctx that mean $
 //		return BasePredictionContextEMPTY
@@ -160,15 +160,15 @@
 //	return NewBaseSingletonPredictionContext(parent, returnState)
 //}
 //
-//pub fn length() -> int {
+//pub fn length() -> i32 {
 //	return 1
 //}
 //
-//pub fn GetParent(index: int) -> PredictionContext {
+//pub fn GetParent(index: i32) -> PredictionContext {
 //	return b.parentCtx
 //}
 //
-//pub fn getReturnState(index: int) -> int {
+//pub fn getReturnState(index: i32) -> i32 {
 //	return b.returnState
 //}
 //
@@ -196,12 +196,12 @@
 //	return b.parentCtx.equals(otherP.parentCtx)
 //}
 //
-//pub fn Hash() -> string {
+//pub fn Hash() -> &str {
 //	return b.cachedHashString
 //}
 //
-//pub fn String() -> string {
-//	var up string
+//pub fn String() -> &str {
+//	var up &str
 //
 //	if b.parentCtx == nil {
 //		up = ""
@@ -239,11 +239,11 @@
 //	return true
 //}
 //
-//pub fn GetParent(index: int) -> PredictionContext {
+//pub fn GetParent(index: i32) -> PredictionContext {
 //	return nil
 //}
 //
-//pub fn getReturnState(index: int) -> int {
+//pub fn getReturnState(index: i32) -> i32 {
 //	return e.returnState
 //}
 //
@@ -251,7 +251,7 @@
 //	return e == other
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	return "$"
 //}
 //
@@ -295,15 +295,15 @@
 //	return a.returnStates[0] == BasePredictionContextEmptyReturnState
 //}
 //
-//pub fn length() -> int {
+//pub fn length() -> i32 {
 //	return len(a.returnStates)
 //}
 //
-//pub fn GetParent(index: int) -> PredictionContext {
+//pub fn GetParent(index: i32) -> PredictionContext {
 //	return a.parents[index]
 //}
 //
-//pub fn getReturnState(index: int) -> int {
+//pub fn getReturnState(index: i32) -> i32 {
 //	return a.returnStates[index]
 //}
 //
@@ -318,7 +318,7 @@
 //	}
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	if a.isEmpty() {
 //		return "[]"
 //	}
@@ -363,7 +363,7 @@
 //	return SingletonBasePredictionContextCreate(parent, transition.(*RuleTransition).followState.GetStateNumber())
 //}
 //
-//pub fn calculateListsHashString(parents []BasePredictionContext, returnStates []int) -> string { // non-member
+//pub fn calculateListsHashString(parents []BasePredictionContext, returnStates []int) -> &str { // non-member
 //	s := ""
 //
 //	for _, p := range parents {
@@ -502,7 +502,7 @@
 //		return apc
 //	}
 //	// parents differ and can't merge them. Just pack together
-//	// into array can't merge.
+//	// i32o array can't merge.
 //	// ax + by = [ax,by]
 //	payloads := []int{a.returnState, b.returnState}
 //	parents := []PredictionContext{a.parentCtx, b.parentCtx}

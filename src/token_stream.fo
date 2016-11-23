@@ -3,14 +3,14 @@
 //pub trait TokenStream {
 //	IntStream
 //
-//	LT(k int) Token
+//	LT(k i32) Token
 //
-//	Get(index int) Token
+//	Get(index i32) Token
 //	GetTokenSource() TokenSource
 //	SetTokenSource(TokenSource)
 //
-//	GetAllText() string
-//	GetTextFromInterval(*Interval) string
-//	GetTextFromRuleContext(RuleContext) string
-//	GetTextFromTokens(Token, Token) string
+//	GetAllText() &str
+//	GetTextFromInterval(*Interval) &str
+//	GetTextFromRuleContext(RuleContext) &str
+//	GetTextFromTokens(Token, Token) &str
 //}

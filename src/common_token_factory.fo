@@ -2,7 +2,7 @@
 //
 //// TokenFactory creates CommonToken objects.
 //pub trait TokenFactory {
-//	Create(source *TokenSourceCharStreamPair, ttype int, text string, channel, start, stop, line, column int) Token
+//	Create(source *TokenSourceCharStreamPair, ttype i32, text &str, channel, start, stop, line, column i32) Token
 //}
 //
 //// CommonTokenFactory is the default TokenFactory implementation.
@@ -29,7 +29,7 @@
 //// explicitly copy token text when constructing tokens.
 //var CommonTokenFactoryDEFAULT = NewCommonTokenFactory(false)
 //
-//pub fn Create(source *TokenSourceCharStreamPair, ttype int, text string, channel, start, stop,: line, column: int) -> Token {
+//pub fn Create(source *TokenSourceCharStreamPair, ttype i32, text &str, channel, start, stop,: line, column: i32) -> Token {
 //	t := NewCommonToken(source, ttype, channel, start, stop)
 //
 //	t.line = line
@@ -44,7 +44,7 @@
 //	return t
 //}
 //
-//pub fn createThin(ttype: int, text: string) -> Token {
+//pub fn createThin(ttype: i32, text: &str) -> Token {
 //	t := NewCommonToken(nil, ttype, TokenDefaultChannel, -1, -1)
 //	t.SetText(text)
 //

@@ -18,7 +18,7 @@
 //
 //	evaluate(parser Recognizer, outerContext RuleContext) bool
 //	evalPrecedence(parser Recognizer, outerContext RuleContext) SemanticContext
-//	String() string
+//	String() &str
 //}
 //
 //pub fn SemanticContextandContext(a, b: SemanticContext) -> SemanticContext { // non-member
@@ -55,12 +55,12 @@
 //}
 //
 //pub struct Predicate {
-//	ruleIndex:      int
-//	predIndex:      int
+//	ruleIndex:      i32
+//	predIndex:      i32
 //	isCtxDependent: bool
 //}
 //
-//impl Predicate {§//  pub fn new(ruleIndex, predIndex: int, isCtxDependent: bool) -> *Predicate {
+//impl Predicate {§//  pub fn new(ruleIndex, predIndex: i32, isCtxDependent: bool) -> *Predicate {
 //	p := new(Predicate)
 //
 //	p.ruleIndex = ruleIndex
@@ -89,11 +89,11 @@
 //	return parser.Sempred(localctx, p.ruleIndex, p.predIndex)
 //}
 //
-//pub fn Hash() -> string {
+//pub fn Hash() -> &str {
 //	return strconv.Itoa(p.ruleIndex) + "/" + strconv.Itoa(p.predIndex) + "/" + fmt.Sprint(p.isCtxDependent)
 //}
 //
-//pub fn equals(other interface{}) -> bool {
+//pub fn equals(other i32erface{}) -> bool {
 //	if p == other {
 //		return true
 //	} else if _, ok := other.(*Predicate); !ok {
@@ -105,15 +105,15 @@
 //	}
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	return "{" + strconv.Itoa(p.ruleIndex) + ":" + strconv.Itoa(p.predIndex) + "}?"
 //}
 //
 //pub struct PrecedencePredicate {
-//	precedence: int
+//	precedence: i32
 //}
 //
-//impl PrecedencePredicate {§//  pub fn new(precedence: int) -> *PrecedencePredicate {
+//impl PrecedencePredicate {§//  pub fn new(precedence: i32) -> *PrecedencePredicate {
 //
 //	p := new(PrecedencePredicate)
 //	p.precedence = precedence
@@ -133,15 +133,15 @@
 //	return nil
 //}
 //
-//pub fn compareTo(other *PrecedencePredicate) -> int {
+//pub fn compareTo(other *PrecedencePredicate) -> i32 {
 //	return p.precedence - other.precedence
 //}
 //
-//pub fn Hash() -> string {
+//pub fn Hash() -> &str {
 //	return "31"
 //}
 //
-//pub fn equals(other interface{}) -> bool {
+//pub fn equals(other i32erface{}) -> bool {
 //	if p == other {
 //		return true
 //	} else if _, ok := other.(*PrecedencePredicate); !ok {
@@ -151,7 +151,7 @@
 //	}
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	return "{" + strconv.Itoa(p.precedence) + ">=prec}?"
 //}
 //
@@ -194,7 +194,7 @@
 //	}
 //	precedencePredicates := PrecedencePredicatefilterPrecedencePredicates(operands)
 //	if len(precedencePredicates) > 0 {
-//		// interested in the transition with the lowest precedence
+//		// i32erested in the transition with the lowest precedence
 //		var reduced *PrecedencePredicate
 //
 //		for _, p := range precedencePredicates {
@@ -218,7 +218,7 @@
 //	return and
 //}
 //
-//pub fn equals(other interface{}) -> bool {
+//pub fn equals(other i32erface{}) -> bool {
 //	if a == other {
 //		return true
 //	} else if _, ok := other.(*AND); !ok {
@@ -233,7 +233,7 @@
 //	}
 //}
 //
-//pub fn Hash() -> string {
+//pub fn Hash() -> &str {
 //	return fmt.Sprint(a.opnds) + "/AND"
 //}
 //
@@ -291,7 +291,7 @@
 //	return result
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	s := ""
 //
 //	for _, o := range a.opnds {
@@ -334,7 +334,7 @@
 //	}
 //	precedencePredicates := PrecedencePredicatefilterPrecedencePredicates(operands)
 //	if len(precedencePredicates) > 0 {
-//		// interested in the transition with the lowest precedence
+//		// i32erested in the transition with the lowest precedence
 //		var reduced *PrecedencePredicate
 //
 //		for _, p := range precedencePredicates {
@@ -359,7 +359,7 @@
 //	return o
 //}
 //
-//pub fn equals(other interface{}) -> bool {
+//pub fn equals(other i32erface{}) -> bool {
 //	if o == other {
 //		return true
 //	} else if _, ok := other.(*OR); !ok {
@@ -374,7 +374,7 @@
 //	}
 //}
 //
-//pub fn Hash() -> string {
+//pub fn Hash() -> &str {
 //	return fmt.Sprint(o.opnds) + "/OR"
 //}
 //
@@ -426,7 +426,7 @@
 //	return result
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	s := ""
 //
 //	for _, o := range o.opnds {

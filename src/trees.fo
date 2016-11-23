@@ -7,7 +7,7 @@
 //// Print out a whole tree in LISP form. {@link //getNodeText} is used on the
 ////  node payloads to get the text for the nodes.  Detect
 ////  parse trees and extract data appropriately.
-//pub fn TreesStringTree(tree: Tree, ruleNames []string, recog: Recognizer) -> string { // non-member
+//pub fn TreesStringTree(tree: Tree, ruleNames []string, recog: Recognizer) -> &str { // non-member
 //
 //	if recog != nil {
 //		ruleNames = recog.GetRuleNames()
@@ -33,7 +33,7 @@
 //	return res
 //}
 //
-//pub fn TreesGetNodeText(t: Tree, ruleNames []string, recog: Parser) -> string { // non-member
+//pub fn TreesGetNodeText(t: Tree, ruleNames []string, recog: Parser) -> &str { // non-member
 //	if recog != nil {
 //		ruleNames = recog.GetRuleNames()
 //	}
@@ -89,21 +89,21 @@
 //	return ancestors
 //}
 //
-//pub fn TreesFindAllTokenNodes(t: ParseTree, ttype: int) -> []ParseTree { // non-member
+//pub fn TreesFindAllTokenNodes(t: ParseTree, ttype: i32) -> []ParseTree { // non-member
 //	return TreesfindAllNodes(t, ttype, true)
 //}
 //
-//pub fn TreesfindAllRuleNodes(t: ParseTree, ruleIndex: int) -> []ParseTree { // non-member
+//pub fn TreesfindAllRuleNodes(t: ParseTree, ruleIndex: i32) -> []ParseTree { // non-member
 //	return TreesfindAllNodes(t, ruleIndex, false)
 //}
 //
-//pub fn TreesfindAllNodes(t ParseTree, index: int, findTokens: bool) -> []ParseTree { // non-member
+//pub fn TreesfindAllNodes(t ParseTree, index: i32, findTokens: bool) -> []ParseTree { // non-member
 //	nodes := make([]ParseTree, 0)
 //	TreesFindAllNodes(t, index, findTokens, nodes)
 //	return nodes
 //}
 //
-//pub fn TreesFindAllNodes(t ParseTree, index int, findTokens: bool, nodes []ParseTree) { // non-member
+//pub fn TreesFindAllNodes(t ParseTree, index i32, findTokens: bool, nodes []ParseTree) { // non-member
 //	// check this node (the root) first
 //
 //	t2, ok := t.(TerminalNode)

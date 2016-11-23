@@ -6,7 +6,7 @@
 //	// atnStartState is the ATN state in which this was created
 //	atnStartState: DecisionState
 //
-//	decision: int
+//	decision: i32
 //
 //	// states is all the DFA states. Use Map to get the old state back; Set can only
 //	// indicate whether it is there.
@@ -19,7 +19,7 @@
 //	precedenceDfa: bool
 //}
 //
-//impl DFA {§//  pub fn new(atnStartState: DecisionState, decision: int) -> *DFA {
+//impl DFA {§//  pub fn new(atnStartState: DecisionState, decision: i32) -> *DFA {
 //	return &DFA{
 //		atnStartState: atnStartState,
 //		decision:      decision,
@@ -31,7 +31,7 @@
 //// returns the start state corresponding to the specified precedence if a start
 //// state exists for the specified precedence and nil otherwise. d must be a
 //// precedence DFA. See also isPrecedenceDfa.
-//pub fn getPrecedenceStartState(precedence: int) -> *DFAState {
+//pub fn getPrecedenceStartState(precedence: i32) -> *DFAState {
 //	if !d.precedenceDfa {
 //		panic("only precedence DFAs may contain a precedence start state")
 //	}
@@ -46,7 +46,7 @@
 //
 //// setPrecedenceStartState sets the start state for the current precedence. d
 //// must be a precedence DFA. See also isPrecedenceDfa.
-//pub fn setPrecedenceStartState(precedence: int, startState *DFAState) {
+//pub fn setPrecedenceStartState(precedence: i32, startState *DFAState) {
 //	if !d.precedenceDfa {
 //		panic("only precedence DFAs may contain a precedence start state")
 //	}
@@ -55,7 +55,7 @@
 //		return
 //	}
 //
-//	// Synchronization on s0 here is ok. When the DFA is turned into a
+//	// Synchronization on s0 here is ok. When the DFA is turned i32o a
 //	// precedence DFA, s0 will be initialized once and not updated again. s0.edges
 //	// is never nil for a precedence DFA.
 //	if precedence >= len(d.s0.edges) {
@@ -95,9 +95,9 @@
 //
 //type DFAStateList []*DFAState
 //
-//pub fn Len() int           { return len(d) -> }
-//pub fn Less(i, j: int) -> bool { return d[i].stateNumber < d[j].stateNumber }
-//pub fn Swap(i, j: int) ->      { d[i], d[j] = d[j], d[i] }
+//pub fn Len() i32           { return len(d) -> }
+//pub fn Less(i, j: i32) -> bool { return d[i].stateNumber < d[j].stateNumber }
+//pub fn Swap(i, j: i32) ->      { d[i], d[j] = d[j], d[i] }
 //
 //// sortedStates returns the states in d sorted by their state number.
 //pub fn sortedStates() -> []*DFAState {
@@ -112,7 +112,7 @@
 //	return vs
 //}
 //
-//pub fn String(literalNames []string, symbolicNames []string) -> string {
+//pub fn String(literalNames []string, symbolicNames []string) -> &str {
 //	if d.s0 == nil {
 //		return ""
 //	}
@@ -120,7 +120,7 @@
 //	return NewDFASerializer(d, literalNames, symbolicNames).String()
 //}
 //
-//pub fn ToLexerString() -> string {
+//pub fn ToLexerString() -> &str {
 //	if d.s0 == nil {
 //		return ""
 //	}

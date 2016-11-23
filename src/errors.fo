@@ -8,20 +8,20 @@
 //
 //pub trait RecognitionException {
 //	GetOffendingToken() Token
-//	GetMessage() string
+//	GetMessage() &str
 //	GetInputStream() IntStream
 //}
 //
 //pub struct BaseRecognitionException {
-//	message:        string
+//	message:        &str
 //	recognizer:     Recognizer
 //	offendingToken: Token
-//	offendingState: int
+//	offendingState: i32
 //	ctx:            RuleContext
 //	input:          IntStream
 //}
 //
-//impl BaseRecognitionException {§//  pub fn new(message string, recognizer Recognizer, input: IntStream, ctx: RuleContext) -> *BaseRecognitionException {
+//impl BaseRecognitionException {§//  pub fn new(message &str, recognizer Recognizer, input: IntStream, ctx: RuleContext) -> *BaseRecognitionException {
 //
 //	// todo
 //	//	Error.call(this)
@@ -31,7 +31,7 @@
 //	//	} else {
 //	//		stack := NewError().stack
 //	//	}
-//	// TODO may be able to use - "runtime" func Stack(buf []byte, all bool) int
+//	// TODO may be able to use - "runtime" func Stack(buf []byte, all bool) i32
 //
 //	t := new(BaseRecognitionException)
 //
@@ -56,7 +56,7 @@
 //	return t
 //}
 //
-//pub fn GetMessage() -> string {
+//pub fn GetMessage() -> &str {
 //	return b.message
 //}
 //
@@ -88,18 +88,18 @@
 //	return nil
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	return b.message
 //}
 //
 //pub struct LexerNoViableAltException {
 //	*BaseRecognitionException
 //
-//	startIndex:     int
+//	startIndex:     i32
 //	deadEndConfigs: ATNConfigSet
 //}
 //
-//impl LexerNoViableAltException {§//  pub fn new(lexer Lexer, input CharStream, startIndex: int, deadEndConfigs: ATNConfigSet) -> *LexerNoViableAltException {
+//impl LexerNoViableAltException {§//  pub fn new(lexer Lexer, input CharStream, startIndex: i32, deadEndConfigs: ATNConfigSet) -> *LexerNoViableAltException {
 //
 //	l := new(LexerNoViableAltException)
 //
@@ -111,7 +111,7 @@
 //	return l
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	symbol := ""
 //	if l.startIndex >= 0 && l.startIndex < l.input.Size() {
 //		symbol = l.input.(CharStream).GetTextFromInterval(NewInterval(l.startIndex, l.startIndex))
@@ -193,12 +193,12 @@
 //pub struct FailedPredicateException {
 //	*BaseRecognitionException
 //
-//	ruleIndex:      int
-//	predicateIndex: int
-//	predicate:      string
+//	ruleIndex:      i32
+//	predicateIndex: i32
+//	predicate:      &str
 //}
 //
-//impl FailedPredicateException {§//  pub fn new(recognizer Parser, predicate: string, message: string) -> *FailedPredicateException {
+//impl FailedPredicateException {§//  pub fn new(recognizer Parser, predicate: &str, message: &str) -> *FailedPredicateException {
 //
 //	f := new(FailedPredicateException)
 //
@@ -219,7 +219,7 @@
 //	return f
 //}
 //
-//pub fn formatMessage(predicate, message: string) -> string {
+//pub fn formatMessage(predicate, message: &str) -> &str {
 //	if message != "" {
 //		return message
 //	}

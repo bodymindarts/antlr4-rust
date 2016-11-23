@@ -26,7 +26,7 @@
 //pub trait ATNState {
 //	GetEpsilonOnlyTransitions() bool
 //
-//	GetRuleIndex() int
+//	GetRuleIndex() i32
 //	SetRuleIndex(int)
 //
 //	GetNextTokenWithinRule() *IntervalSet
@@ -35,16 +35,16 @@
 //	GetATN() *ATN
 //	SetATN(*ATN)
 //
-//	GetStateType() int
+//	GetStateType() i32
 //
-//	GetStateNumber() int
+//	GetStateNumber() i32
 //	SetStateNumber(int)
 //
 //	GetTransitions() []Transition
 //	SetTransitions([]Transition)
-//	AddTransition(Transition, int)
+//	AddTransition(Transition, i32)
 //
-//	String() string
+//	String() &str
 //}
 //
 //pub struct BaseATNState {
@@ -57,11 +57,11 @@
 //	epsilonOnlyTransitions: bool
 //
 //	// ruleIndex tracks the Rule index because there are no Rule objects at runtime.
-//	ruleIndex: int
+//	ruleIndex: i32
 //
-//	stateNumber: int
+//	stateNumber: i32
 //
-//	stateType: int
+//	stateType: i32
 //
 //	// Track the transitions emanating from this ATN state.
 //	transitions []Transition
@@ -71,11 +71,11 @@
 //	return &BaseATNState{stateNumber: ATNStateInvalidStateNumber, stateType: ATNStateInvalidType}
 //}
 //
-//pub fn GetRuleIndex() -> int {
+//pub fn GetRuleIndex() -> i32 {
 //	return as.ruleIndex
 //}
 //
-//pub fn SetRuleIndex(v: int) {
+//pub fn SetRuleIndex(v: i32) {
 //	as.ruleIndex = v
 //}
 //pub fn GetEpsilonOnlyTransitions() -> bool {
@@ -98,15 +98,15 @@
 //	as.transitions = t
 //}
 //
-//pub fn GetStateType() -> int {
+//pub fn GetStateType() -> i32 {
 //	return as.stateType
 //}
 //
-//pub fn GetStateNumber() -> int {
+//pub fn GetStateNumber() -> i32 {
 //	return as.stateNumber
 //}
 //
-//pub fn SetStateNumber(stateNumber: int) {
+//pub fn SetStateNumber(stateNumber: i32) {
 //	as.stateNumber = stateNumber
 //}
 //
@@ -118,11 +118,11 @@
 //	as.NextTokenWithinRule = v
 //}
 //
-//pub fn String() -> string {
+//pub fn String() -> &str {
 //	return strconv.Itoa(as.stateNumber)
 //}
 //
-//pub fn equals(other interface{}) -> bool {
+//pub fn equals(other i32erface{}) -> bool {
 //	if ot, ok := other.(ATNState); ok {
 //		return as.stateNumber == ot.GetStateNumber()
 //	}
@@ -134,7 +134,7 @@
 //	return false
 //}
 //
-//pub fn AddTransition(trans: Transition, index: int) {
+//pub fn AddTransition(trans: Transition, index: i32) {
 //	if len(as.transitions) == 0 {
 //		as.epsilonOnlyTransitions = trans.getIsEpsilon()
 //	} else if as.epsilonOnlyTransitions != trans.getIsEpsilon() {
@@ -164,7 +164,7 @@
 //pub trait DecisionState {
 //	ATNState
 //
-//	getDecision() int
+//	getDecision() i32
 //	setDecision(int)
 //
 //	getNonGreedy() bool
@@ -173,7 +173,7 @@
 //
 //pub struct BaseDecisionState {
 //	*BaseATNState
-//	decision:  int
+//	decision:  i32
 //	nonGreedy: bool
 //}
 //
@@ -181,11 +181,11 @@
 //	return &BaseDecisionState{BaseATNState: NewBaseATNState(), decision: -1}
 //}
 //
-//pub fn getDecision() -> int {
+//pub fn getDecision() -> i32 {
 //	return s.decision
 //}
 //
-//pub fn setDecision(b: int) {
+//pub fn setDecision(b: i32) {
 //	s.decision = b
 //}
 //

@@ -24,25 +24,25 @@
 //pub trait RuleContext {
 //	RuleNode
 //
-//	GetInvokingState() int
+//	GetInvokingState() i32
 //	SetInvokingState(int)
 //
-//	GetRuleIndex() int
+//	GetRuleIndex() i32
 //	IsEmpty() bool
 //
-//	GetAltNumber() int
-//	SetAltNumber(altNumber int)
+//	GetAltNumber() i32
+//	SetAltNumber(altNumber i32)
 //
-//	String([]string, RuleContext) string
+//	String([]string, RuleContext) &str
 //}
 //
 //pub struct BaseRuleContext {
 //	parentCtx:     RuleContext
-//	invokingState: int
-//	RuleIndex:     int
+//	invokingState: i32
+//	RuleIndex:     i32
 //}
 //
-//impl BaseRuleContext {§//  pub fn new(parent: RuleContext, invokingState: int) -> *BaseRuleContext {
+//impl BaseRuleContext {§//  pub fn new(parent: RuleContext, invokingState: i32) -> *BaseRuleContext {
 //
 //	rn := new(BaseRuleContext)
 //
@@ -73,23 +73,23 @@
 //	}
 //}
 //
-//pub fn GetInvokingState() -> int {
+//pub fn GetInvokingState() -> i32 {
 //	return b.invokingState
 //}
 //
-//pub fn SetInvokingState(t: int) {
+//pub fn SetInvokingState(t: i32) {
 //	b.invokingState = t
 //}
 //
-//pub fn GetRuleIndex() -> int {
+//pub fn GetRuleIndex() -> i32 {
 //	return b.RuleIndex
 //}
 //
-//pub fn GetAltNumber() -> int {
+//pub fn GetAltNumber() -> i32 {
 //	return ATNInvalidAltNumber
 //}
 //
-//pub fn SetAltNumber(altNumber: int) {}
+//pub fn SetAltNumber(altNumber: i32) {}
 //
 //// A context is empty if there is no invoking state meaning nobody call
 //// current context.

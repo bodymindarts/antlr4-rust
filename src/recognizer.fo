@@ -12,12 +12,12 @@
 //	GetSymbolicNames() []string
 //	GetRuleNames() []string
 //
-//	Sempred(RuleContext, int, int) bool
-//	Precpred(RuleContext, int) bool
+//	Sempred(RuleContext, i32, i32) bool
+//	Precpred(RuleContext, i32) bool
 //
-//	GetState() int
+//	GetState() i32
 //	SetState(int)
-//	Action(RuleContext, int, int)
+//	Action(RuleContext, i32, i32)
 //	AddErrorListener(ErrorListener)
 //	RemoveErrorListeners()
 //	GetATN() *ATN
@@ -26,12 +26,12 @@
 //
 //pub struct BaseRecognizer {
 //	listeners []ErrorListener
-//	state:     int
+//	state:     i32
 //
 //	RuleNames       []string
 //	LiteralNames    []string
 //	SymbolicNames   []string
-//	GrammarFileName: string
+//	GrammarFileName: &str
 //}
 //
 //impl BaseRecognizer {§//  pub fn new() -> *BaseRecognizer {
@@ -44,14 +44,14 @@
 //var tokenTypeMapCache = make(map[string]int)
 //var ruleIndexMapCache = make(map[string]int)
 //
-//pub fn checkVersion(toolVersion: string) {
+//pub fn checkVersion(toolVersion: &str) {
 //	runtimeVersion := "4.6"
 //	if runtimeVersion != toolVersion {
 //		fmt.Println("ANTLR runtime and generated code versions disagree: " + runtimeVersion + "!=" + toolVersion)
 //	}
 //}
 //
-//pub fn Action(context RuleContext,: ruleIndex, actionIndex: int) {
+//pub fn Action(context RuleContext,: ruleIndex, actionIndex: i32) {
 //	panic("action not implemented on Recognizer!")
 //}
 //
@@ -79,11 +79,11 @@
 //	return b.LiteralNames
 //}
 //
-//pub fn GetState() -> int {
+//pub fn GetState() -> i32 {
 //	return b.state
 //}
 //
-//pub fn SetState(v: int) {
+//pub fn SetState(v: i32) {
 //	b.state = v
 //}
 //
@@ -121,7 +121,7 @@
 //	//    return result
 //}
 //
-//pub fn GetTokenType(tokenName: string) -> int {
+//pub fn GetTokenType(tokenName: &str) -> i32 {
 //	panic("Method not defined!")
 //	//    var ttype = b.GetTokenTypeMap()[tokenName]
 //	//    if (ttype !=nil) {
@@ -160,7 +160,7 @@
 ////}
 //
 //// What is the error header, normally line/character position information?//
-//pub fn GetErrorHeader(e: RecognitionException) -> string {
+//pub fn GetErrorHeader(e: RecognitionException) -> &str {
 //	line := e.GetOffendingToken().GetLine()
 //	column := e.GetOffendingToken().GetColumn()
 //	return "line " + strconv.Itoa(line) + ":" + strconv.Itoa(column)
@@ -179,7 +179,7 @@
 //// feature when necessary. For example, see
 //// {@link DefaultErrorStrategy//GetTokenErrorDisplay}.
 ////
-//pub fn GetTokenErrorDisplay(t: Token) -> string {
+//pub fn GetTokenErrorDisplay(t: Token) -> &str {
 //	if t == nil {
 //		return "<no token>"
 //	}
@@ -191,9 +191,9 @@
 //			s = "<" + strconv.Itoa(t.GetTokenType()) + ">"
 //		}
 //	}
-//	s = strings.Replace(s, "\t", "\\t", -1)
-//	s = strings.Replace(s, "\n", "\\n", -1)
-//	s = strings.Replace(s, "\r", "\\r", -1)
+//	s = &strs.Replace(s, "\t", "\\t", -1)
+//	s = &strs.Replace(s, "\n", "\\n", -1)
+//	s = &strs.Replace(s, "\r", "\\r", -1)
 //
 //	return "'" + s + "'"
 //}
@@ -203,11 +203,11 @@
 //}
 //
 //// subclass needs to override these if there are sempreds or actions
-//// that the ATN interp needs to execute
-//pub fn Sempred(localctx RuleContext, ruleIndex: int, actionIndex: int) -> bool {
+//// that the ATN i32erp needs to execute
+//pub fn Sempred(localctx RuleContext, ruleIndex: i32, actionIndex: i32) -> bool {
 //	return true
 //}
 //
-//pub fn Precpred(localctx: RuleContext, precedence: int) -> bool {
+//pub fn Precpred(localctx: RuleContext, precedence: i32) -> bool {
 //	return true
 //}

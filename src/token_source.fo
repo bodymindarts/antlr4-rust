@@ -4,10 +4,10 @@
 //	NextToken() Token
 //	Skip()
 //	More()
-//	GetLine() int
-//	GetCharPositionInLine() int
+//	GetLine() i32
+//	GetCharPositionInLine() i32
 //	GetInputStream() CharStream
-//	GetSourceName() string
+//	GetSourceName() &str
 //	setTokenFactory(factory TokenFactory)
 //	GetTokenFactory() TokenFactory
 //}
