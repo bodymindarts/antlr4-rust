@@ -1145,7 +1145,7 @@
 //	return NewBaseATNConfig4(config, t.getTarget())
 //}
 //
-//func (p *ParserATNSimulator) precedenceTransition(config ATNConfig,
+//pub fn precedenceTransition(config: ATNConfig,
 //	pt *PrecedencePredicateTransition, collectPredicates, inContext, fullCtx bool) *BaseATNConfig {
 //
 //	if ParserATNSimulatorDebug {
@@ -1456,7 +1456,7 @@
 //}
 //
 //// If context sensitive parsing, we know it's ambiguity not conflict//
-//func (p *ParserATNSimulator) ReportAmbiguity(dfa *DFA, D *DFAState, startIndex, stopIndex int,
+//pub fn ReportAmbiguity(dfa *DFA, D *DFAState, startIndex, stopIndex: int,
 //	exact bool, ambigAlts *BitSet, configs ATNConfigSet) {
 //	if ParserATNSimulatorDebug || ParserATNSimulatorRetryDebug {
 //		interval := NewInterval(startIndex, stopIndex+1)

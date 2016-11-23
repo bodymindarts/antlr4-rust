@@ -333,7 +333,7 @@
 ////
 //// @return {@code true} if an accept state is reached, otherwise
 //// {@code false}.
-//func (l *LexerATNSimulator) closure(input CharStream, config *LexerATNConfig, configs ATNConfigSet,
+//pub fn closure(input CharStream, config *LexerATNConfig, configs: ATNConfigSet,
 //	currentAltReachedAcceptState, speculative, treatEOFAsEpsilon bool) bool {
 //
 //	if LexerATNSimulatorDebug {
@@ -390,7 +390,7 @@
 //}
 //
 //// side-effect: can alter configs.hasSemanticContext
-//func (l *LexerATNSimulator) getEpsilonTarget(input CharStream, config *LexerATNConfig, trans Transition,
+//pub fn getEpsilonTarget(input CharStream, config *LexerATNConfig, trans: Transition,
 //	configs ATNConfigSet, speculative, treatEOFAsEpsilon bool) *LexerATNConfig {
 //
 //	var cfg *LexerATNConfig
