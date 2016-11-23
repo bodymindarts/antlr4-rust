@@ -4,11 +4,11 @@ use super::char_stream::CharStream;
 use std::str;
 use std::cmp;
 
-pub struct InputStream<'a>{
+pub struct InputStream<'a> {
     name: &'a str,
     index: i32,
     size: i32,
-    data: &'a [u8]
+    data: &'a [u8],
 }
 
 impl<'a> InputStream<'a> {
@@ -50,14 +50,15 @@ impl<'a> IntStream for InputStream<'a> {
 
     fn la(&self, offset: i32) -> i32 {
         if offset == 0 {
-            return 0 // nil
+            return 0; // nil
         }
 
         let i = if offset < 0 { offset + 1 } else { offset };// e.g., translate LA(-1) to use offset=0
         let pos = self.index + i - 1;
 
-        if pos < 0 || pos >= self.size { // invalid
-            return super::int_stream::EOF
+        if pos < 0 || pos >= self.size {
+            // invalid
+            return super::int_stream::EOF;
         }
 
         self.data[pos as usize] as i32
@@ -68,7 +69,7 @@ impl<'a> IntStream for InputStream<'a> {
     }
 
     fn size(&self) -> i32 {
-        return self.size
+        return self.size;
     }
 
     // // mark/release do nothing we have entire buffer
@@ -76,20 +77,19 @@ impl<'a> IntStream for InputStream<'a> {
         -1
     }
 
-    fn release(&self, marker: i32) {
-    }
+    fn release(&self, marker: i32) {}
 
     fn seek(&mut self, index: i32) {
         if index <= self.index {
             self.index = index; // just jump don't update stream state (line,...)
-            return
+            return;
         }
         // seek forward
         self.index = cmp::min(index, self.size)
     }
 
     fn get_source_name(&self) -> &str {
-        return "Obtained from string"
+        return "Obtained from string";
     }
 }
 
@@ -97,18 +97,15 @@ impl<'a> CharStream for InputStream<'a> {
     fn get_text(&self, interval: Interval) -> &str {
         let start = interval.start;
         if start >= self.size {
-            return ""
+            return "";
         }
         let stop = if interval.stop >= self.size {
             self.size - 1
-        }
-        else {
+        } else {
             interval.stop
         };
 
-        let section = &self.data[start as usize .. (stop+1) as usize];
-        unsafe {
-            str::from_utf8_unchecked(section)
-        }
+        let section = &self.data[start as usize..(stop + 1) as usize];
+        unsafe { str::from_utf8_unchecked(section) }
     }
 }

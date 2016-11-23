@@ -29,5 +29,5 @@ fn consume_panic() {
 #[test]
 fn get_text() {
     let is = antlr::InputStream::new("1+2^3");
-    assert_eq!(is.get_text(antlr::Interval::new(1,3)), "+2^");
+    assert_eq!(is.get_text(antlr::Interval::new(1, 3)), "+2^");
 }
