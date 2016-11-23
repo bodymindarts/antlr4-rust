@@ -76,7 +76,7 @@
 //	return idx2 >= idx1
 //}
 //
-//func (a *ATNDeserializer) DeserializeFromUInt16(data []uint16) *ATN {
+//pub fn DeserializeFromUInt16(data []uint16) -> *ATN {
 //	a.reset(utf16.Decode(data))
 //	a.checkVersion()
 //	a.checkUUID()
