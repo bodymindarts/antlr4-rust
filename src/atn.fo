@@ -73,7 +73,7 @@
 //	return a.NextTokensInContext(s, ctx)
 //}
 //
-//pub fn addState(state ATNState) -> {
+//pub fn addState(state ATNState) {
 //	if state != nil {
 //		state.SetATN(a)
 //		state.SetStateNumber(len(a.states))
@@ -82,7 +82,7 @@
 //	a.states = append(a.states, state)
 //}
 //
-//pub fn removeState(state ATNState) -> {
+//pub fn removeState(state ATNState) {
 //	a.states[state.GetStateNumber()] = nil // Just free the memory; don't shift states in the slice
 //}
 //

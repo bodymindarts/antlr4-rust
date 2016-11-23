@@ -57,13 +57,13 @@
 //	return 0
 //}
 //
-//pub fn Release(marker int) -> {}
+//pub fn Release(marker int) {}
 //
-//pub fn reset() -> {
+//pub fn reset() {
 //	c.Seek(0)
 //}
 //
-//pub fn Seek(index int) -> {
+//pub fn Seek(index int) {
 //	c.lazyInit()
 //	c.index = c.adjustSeekIndex(index)
 //}
@@ -74,7 +74,7 @@
 //	return c.tokens[index]
 //}
 //
-//pub fn Consume() -> {
+//pub fn Consume() {
 //	SkipEOFCheck := false
 //
 //	if c.index >= 0 {
@@ -169,13 +169,13 @@
 //	return c.LT(i).GetTokenType()
 //}
 //
-//pub fn lazyInit() -> {
+//pub fn lazyInit() {
 //	if c.index == -1 {
 //		c.setup()
 //	}
 //}
 //
-//pub fn setup() -> {
+//pub fn setup() {
 //	c.Sync(0)
 //	c.index = c.adjustSeekIndex(0)
 //}
@@ -185,7 +185,7 @@
 //}
 //
 //// SetTokenSource resets the c token stream by setting its token source.
-//pub fn SetTokenSource(tokenSource TokenSource) -> {
+//pub fn SetTokenSource(tokenSource TokenSource) {
 //	c.tokenSource = tokenSource
 //	c.tokens = make([]Token, 0)
 //	c.index = -1
@@ -360,7 +360,7 @@
 //}
 //
 //// Fill gets all tokens from the lexer until EOF.
-//pub fn Fill() -> {
+//pub fn Fill() {
 //	c.lazyInit()
 //
 //	for c.fetch(1000) == 1000 {

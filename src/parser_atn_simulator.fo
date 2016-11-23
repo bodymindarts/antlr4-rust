@@ -57,11 +57,11 @@
 //	return p.predictionMode
 //}
 //
-//pub fn SetPredictionMode(v int) -> {
+//pub fn SetPredictionMode(v int) {
 //	p.predictionMode = v
 //}
 //
-//pub fn reset() -> {
+//pub fn reset() {
 //}
 //
 //pub fn AdaptivePredict(input TokenStream, decision int, outerContext ParserRuleContext) -> int {
@@ -352,7 +352,7 @@
 //	return D
 //}
 //
-//pub fn predicateDFAState(dfaState *DFAState, decisionState DecisionState) -> {
+//pub fn predicateDFAState(dfaState *DFAState, decisionState DecisionState) {
 //	// We need to test all predicates, even in DFA states that
 //	// uniquely predict alternative.
 //	nalts := len(decisionState.GetTransitions())
@@ -968,13 +968,13 @@
 //	return predictions
 //}
 //
-//pub fn closure(config ATNConfig, configs ATNConfigSet, closureBusy *Set, collectPredicates, fullCtx, treatEOFAsEpsilon bool) -> {
+//pub fn closure(config ATNConfig, configs ATNConfigSet, closureBusy *Set, collectPredicates, fullCtx, treatEOFAsEpsilon bool) {
 //	initialDepth := 0
 //	p.closureCheckingStopState(config, configs, closureBusy, collectPredicates,
 //		fullCtx, initialDepth, treatEOFAsEpsilon)
 //}
 //
-//pub fn closureCheckingStopState(config ATNConfig, configs ATNConfigSet, closureBusy *Set, collectPredicates, fullCtx bool, depth int, treatEOFAsEpsilon bool) -> {
+//pub fn closureCheckingStopState(config ATNConfig, configs ATNConfigSet, closureBusy *Set, collectPredicates, fullCtx bool, depth int, treatEOFAsEpsilon bool) {
 //
 //	if ParserATNSimulatorDebug {
 //		fmt.Println("closure(" + config.String() + ")")
@@ -1029,7 +1029,7 @@
 //}
 //
 //// Do the actual work of walking epsilon edges//
-//pub fn closureWork(config ATNConfig, configs ATNConfigSet, closureBusy *Set, collectPredicates, fullCtx bool, depth int, treatEOFAsEpsilon bool) -> {
+//pub fn closureWork(config ATNConfig, configs ATNConfigSet, closureBusy *Set, collectPredicates, fullCtx bool, depth int, treatEOFAsEpsilon bool) {
 //	state := config.GetState()
 //	// optimization
 //	if !state.GetEpsilonOnlyTransitions() {
@@ -1304,7 +1304,7 @@
 ////  it out for clarity now that alg. works well. We can leave p
 ////  "dead" code for a bit.
 ////
-//pub fn dumpDeadEndConfigs(nvae *NoViableAltException) -> {
+//pub fn dumpDeadEndConfigs(nvae *NoViableAltException) {
 //
 //	panic("Not implemented")
 //
@@ -1433,7 +1433,7 @@
 //	return D
 //}
 //
-//pub fn ReportAttemptingFullContext(dfa *DFA, conflictingAlts *BitSet, configs ATNConfigSet, startIndex, stopIndex int) -> {
+//pub fn ReportAttemptingFullContext(dfa *DFA, conflictingAlts *BitSet, configs ATNConfigSet, startIndex, stopIndex int) {
 //	if ParserATNSimulatorDebug || ParserATNSimulatorRetryDebug {
 //		interval := NewInterval(startIndex, stopIndex+1)
 //		fmt.Println("ReportAttemptingFullContext decision=" + strconv.Itoa(dfa.decision) + ":" + configs.String() +
@@ -1444,7 +1444,7 @@
 //	}
 //}
 //
-//pub fn ReportContextSensitivity(dfa *DFA, prediction int, configs ATNConfigSet, startIndex, stopIndex int) -> {
+//pub fn ReportContextSensitivity(dfa *DFA, prediction int, configs ATNConfigSet, startIndex, stopIndex int) {
 //	if ParserATNSimulatorDebug || ParserATNSimulatorRetryDebug {
 //		interval := NewInterval(startIndex, stopIndex+1)
 //		fmt.Println("ReportContextSensitivity decision=" + strconv.Itoa(dfa.decision) + ":" + configs.String() +

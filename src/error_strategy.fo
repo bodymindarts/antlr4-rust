@@ -53,7 +53,7 @@
 //
 //// <p>The default implementation simply calls {@link //endErrorCondition} to
 //// ensure that the handler is not in error recovery mode.</p>
-//pub fn reset(recognizer Parser) -> {
+//pub fn reset(recognizer Parser) {
 //	d.endErrorCondition(recognizer)
 //}
 //
@@ -63,7 +63,7 @@
 ////
 //// @param recognizer the parser instance
 ////
-//pub fn beginErrorCondition(recognizer Parser) -> {
+//pub fn beginErrorCondition(recognizer Parser) {
 //	d.errorRecoveryMode = true
 //}
 //
@@ -77,7 +77,7 @@
 ////
 //// @param recognizer
 ////
-//pub fn endErrorCondition(recognizer Parser) -> {
+//pub fn endErrorCondition(recognizer Parser) {
 //	d.errorRecoveryMode = false
 //	d.lastErrorStates = nil
 //	d.lastErrorIndex = -1
@@ -88,7 +88,7 @@
 ////
 //// <p>The default implementation simply calls {@link //endErrorCondition}.</p>
 ////
-//pub fn ReportMatch(recognizer Parser) -> {
+//pub fn ReportMatch(recognizer Parser) {
 //	d.endErrorCondition(recognizer)
 //}
 //
@@ -111,7 +111,7 @@
 //// the exception</li>
 //// </ul>
 ////
-//pub fn ReportError(recognizer Parser, e RecognitionException) -> {
+//pub fn ReportError(recognizer Parser, e RecognitionException) {
 //	// if we've already Reported an error and have not Matched a token
 //	// yet successfully, don't Report any errors.
 //	if d.inErrorRecoveryMode(recognizer) {
@@ -139,7 +139,7 @@
 //// until we find one in the reSynchronization set--loosely the set of tokens
 //// that can follow the current rule.</p>
 ////
-//pub fn Recover(recognizer Parser, e RecognitionException) -> {
+//pub fn Recover(recognizer Parser, e RecognitionException) {
 //
 //	if d.lastErrorIndex == recognizer.GetInputStream().Index() &&
 //		d.lastErrorStates != nil && d.lastErrorStates.contains(recognizer.GetState()) {
@@ -203,7 +203,7 @@
 //// some reason speed is suffering for you, you can turn off d
 //// functionality by simply overriding d method as a blank { }.</p>
 ////
-//pub fn Sync(recognizer Parser) -> {
+//pub fn Sync(recognizer Parser) {
 //	// If already recovering, don't try to Sync
 //	if d.inErrorRecoveryMode(recognizer) {
 //		return
@@ -247,7 +247,7 @@
 //// @param recognizer the parser instance
 //// @param e the recognition exception
 ////
-//pub fn ReportNoViableAlternative(recognizer Parser, e *NoViableAltException) -> {
+//pub fn ReportNoViableAlternative(recognizer Parser, e *NoViableAltException) {
 //	tokens := recognizer.GetTokenStream()
 //	var input string
 //	if tokens != nil {
@@ -272,7 +272,7 @@
 //// @param recognizer the parser instance
 //// @param e the recognition exception
 ////
-//pub fn ReportInputMisMatch(recognizer Parser, e *InputMisMatchException) -> {
+//pub fn ReportInputMisMatch(recognizer Parser, e *InputMisMatchException) {
 //	msg := "mismatched input " + this.GetTokenErrorDisplay(e.offendingToken) +
 //		" expecting " + e.getExpectedTokens().StringVerbose(recognizer.GetLiteralNames(), recognizer.GetSymbolicNames(), false)
 //	recognizer.NotifyErrorListeners(msg, e.offendingToken, e)
@@ -287,7 +287,7 @@
 //// @param recognizer the parser instance
 //// @param e the recognition exception
 ////
-//pub fn ReportFailedPredicate(recognizer Parser, e *FailedPredicateException) -> {
+//pub fn ReportFailedPredicate(recognizer Parser, e *FailedPredicateException) {
 //	ruleName := recognizer.GetRuleNames()[recognizer.GetParserRuleContext().GetRuleIndex()]
 //	msg := "rule " + ruleName + " " + e.message
 //	recognizer.NotifyErrorListeners(msg, e.offendingToken, e)
@@ -310,7 +310,7 @@
 ////
 //// @param recognizer the parser instance
 ////
-//pub fn ReportUnwantedToken(recognizer Parser) -> {
+//pub fn ReportUnwantedToken(recognizer Parser) {
 //	if d.inErrorRecoveryMode(recognizer) {
 //		return
 //	}
@@ -339,7 +339,7 @@
 ////
 //// @param recognizer the parser instance
 ////
-//pub fn ReportMissingToken(recognizer Parser) -> {
+//pub fn ReportMissingToken(recognizer Parser) {
 //	if d.inErrorRecoveryMode(recognizer) {
 //		return
 //	}
@@ -677,7 +677,7 @@
 //}
 //
 //// Consume tokens until one Matches the given token set.//
-//pub fn consumeUntil(recognizer Parser, set *IntervalSet) -> {
+//pub fn consumeUntil(recognizer Parser, set *IntervalSet) {
 //	ttype := recognizer.GetTokenStream().LA(1)
 //	for ttype != TokenEOF && !set.contains(ttype) {
 //		recognizer.Consume()
@@ -733,7 +733,7 @@
 //// rule func catches. Use {@link Exception//getCause()} to get the
 //// original {@link RecognitionException}.
 ////
-//pub fn Recover(recognizer Parser, e RecognitionException) -> {
+//pub fn Recover(recognizer Parser, e RecognitionException) {
 //	context := recognizer.GetParserRuleContext()
 //	for context != nil {
 //		context.SetException(e)
@@ -752,6 +752,6 @@
 //}
 //
 //// Make sure we don't attempt to recover from problems in subrules.//
-//pub fn Sync(recognizer Parser) -> {
+//pub fn Sync(recognizer Parser) {
 //	// pass
 //}

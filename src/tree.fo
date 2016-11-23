@@ -66,7 +66,7 @@
 //pub fn VisitErrorNode(node ErrorNode) -> interface{}   { return nil }
 //
 //// TODO
-////pub fn Visit(ctx) -> {
+////pub fn Visit(ctx) {
 ////	if (Utils.isArray(ctx)) {
 ////		self := this
 ////		return ctx.map(function(child) { return VisitAtom(self, child)})
@@ -99,7 +99,7 @@
 //
 //pub fn VisitTerminal(node TerminalNode) ->      {}
 //pub fn VisitErrorNode(node ErrorNode) ->        {}
-//pub fn EnterEveryRule(ctx ParserRuleContext) -> {}
+//pub fn EnterEveryRule(ctx ParserRuleContext) {}
 //pub fn ExitEveryRule(ctx ParserRuleContext) ->  {}
 //
 //pub struct TerminalNodeImpl {
@@ -127,7 +127,7 @@
 //	return nil
 //}
 //
-//pub fn SetChildren(tree []Tree) -> {
+//pub fn SetChildren(tree []Tree) {
 //	panic("Cannot set children on terminal node")
 //}
 //
@@ -139,7 +139,7 @@
 //	return t.parentCtx
 //}
 //
-//pub fn SetParent(tree Tree) -> {
+//pub fn SetParent(tree Tree) {
 //	t.parentCtx = tree.(RuleContext)
 //}
 //
@@ -197,7 +197,7 @@
 //	return en
 //}
 //
-//pub fn errorNode() -> {}
+//pub fn errorNode() {}
 //
 //pub fn Accept(v ParseTreeVisitor) -> interface{} {
 //	return v.VisitErrorNode(e)
@@ -210,7 +210,7 @@
 //	return new(ParseTreeWalker)
 //}
 //
-//pub fn Walk(listener ParseTreeListener, t Tree) -> {
+//pub fn Walk(listener ParseTreeListener, t Tree) {
 //	switch tt := t.(type) {
 //	case ErrorNode:
 //		listener.VisitErrorNode(tt)
@@ -232,13 +232,13 @@
 //// {@link RuleContext}-specific event. First we trigger the generic and then
 //// the rule specific. We to them in reverse order upon finishing the node.
 ////
-//pub fn EnterRule(listener ParseTreeListener, r RuleNode) -> {
+//pub fn EnterRule(listener ParseTreeListener, r RuleNode) {
 //	ctx := r.GetRuleContext().(ParserRuleContext)
 //	listener.EnterEveryRule(ctx)
 //	ctx.EnterRule(listener)
 //}
 //
-//pub fn ExitRule(listener ParseTreeListener, r RuleNode) -> {
+//pub fn ExitRule(listener ParseTreeListener, r RuleNode) {
 //	ctx := r.GetRuleContext().(ParserRuleContext)
 //	ctx.ExitRule(listener)
 //	listener.ExitEveryRule(ctx)

@@ -103,7 +103,7 @@
 //	return alts
 //}
 //
-//pub fn setPrediction(v int) -> {
+//pub fn setPrediction(v int) {
 //	d.prediction = v
 //}
 //

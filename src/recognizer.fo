@@ -44,22 +44,22 @@
 //var tokenTypeMapCache = make(map[string]int)
 //var ruleIndexMapCache = make(map[string]int)
 //
-//pub fn checkVersion(toolVersion string) -> {
+//pub fn checkVersion(toolVersion string) {
 //	runtimeVersion := "4.6"
 //	if runtimeVersion != toolVersion {
 //		fmt.Println("ANTLR runtime and generated code versions disagree: " + runtimeVersion + "!=" + toolVersion)
 //	}
 //}
 //
-//pub fn Action(context RuleContext, ruleIndex, actionIndex int) -> {
+//pub fn Action(context RuleContext, ruleIndex, actionIndex int) {
 //	panic("action not implemented on Recognizer!")
 //}
 //
-//pub fn AddErrorListener(listener ErrorListener) -> {
+//pub fn AddErrorListener(listener ErrorListener) {
 //	b.listeners = append(b.listeners, listener)
 //}
 //
-//pub fn RemoveErrorListeners() -> {
+//pub fn RemoveErrorListeners() {
 //	b.listeners = make([]ErrorListener, 0)
 //}
 //
@@ -83,11 +83,11 @@
 //	return b.state
 //}
 //
-//pub fn SetState(v int) -> {
+//pub fn SetState(v int) {
 //	b.state = v
 //}
 //
-////pub fn GetTokenTypeMap() -> {
+////pub fn GetTokenTypeMap() {
 ////    var tokenNames = b.GetTokenNames()
 ////    if (tokenNames==nil) {
 ////        panic("The current recognizer does not provide a list of token names.")

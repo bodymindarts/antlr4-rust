@@ -51,7 +51,7 @@
 //	return t.target
 //}
 //
-//pub fn setTarget(s ATNState) -> {
+//pub fn setTarget(s ATNState) {
 //	t.target = s
 //}
 //
@@ -252,7 +252,7 @@
 //	return t
 //}
 //
-//pub fn IAbstractPredicateTransitionFoo() -> {}
+//pub fn IAbstractPredicateTransitionFoo() {}
 //
 //pub struct PredicateTransition {
 //	*BaseAbstractPredicateTransition

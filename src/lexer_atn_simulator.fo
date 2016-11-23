@@ -65,7 +65,7 @@
 //	return l
 //}
 //
-//pub fn copyState(simulator *LexerATNSimulator) -> {
+//pub fn copyState(simulator *LexerATNSimulator) {
 //	l.CharPositionInLine = simulator.CharPositionInLine
 //	l.Line = simulator.Line
 //	l.mode = simulator.mode
@@ -93,7 +93,7 @@
 //	return l.execATN(input, dfa.s0)
 //}
 //
-//pub fn reset() -> {
+//pub fn reset() {
 //	l.prevAccept.reset()
 //	l.startIndex = -1
 //	l.Line = 1
@@ -257,7 +257,7 @@
 //// Given a starting configuration set, figure out all ATN configurations
 //// we can reach upon input {@code t}. Parameter {@code reach} is a return
 //// parameter.
-//pub fn getReachableConfigSet(input CharStream, closure ATNConfigSet, reach ATNConfigSet, t int) -> {
+//pub fn getReachableConfigSet(input CharStream, closure ATNConfigSet, reach ATNConfigSet, t int) {
 //	// l is used to Skip processing for configs which have a lower priority
 //	// than a config that already reached an accept state for the same rule
 //	SkipAlt := ATNInvalidAltNumber
@@ -293,7 +293,7 @@
 //	}
 //}
 //
-//pub fn accept(input CharStream, lexerActionExecutor *LexerActionExecutor, startIndex, index, line, charPos int) -> {
+//pub fn accept(input CharStream, lexerActionExecutor *LexerActionExecutor, startIndex, index, line, charPos int) {
 //	if LexerATNSimulatorDebug {
 //		fmt.Printf("ACTION %s\n", lexerActionExecutor)
 //	}
@@ -509,7 +509,7 @@
 //	return l.recog.Sempred(nil, ruleIndex, predIndex)
 //}
 //
-//pub fn captureSimState(settings *SimState, input CharStream, dfaState *DFAState) -> {
+//pub fn captureSimState(settings *SimState, input CharStream, dfaState *DFAState) {
 //	settings.index = input.Index()
 //	settings.line = l.Line
 //	settings.column = l.CharPositionInLine
@@ -602,7 +602,7 @@
 //	return input.GetTextFromInterval(NewInterval(l.startIndex, input.Index()-1))
 //}
 //
-//pub fn Consume(input CharStream) -> {
+//pub fn Consume(input CharStream) {
 //	curChar := input.LA(1)
 //	if curChar == int('\n') {
 //		l.Line++
@@ -649,6 +649,6 @@
 //	return s
 //}
 //
-//pub fn reset() -> {
+//pub fn reset() {
 //	resetSimState(s)
 //}

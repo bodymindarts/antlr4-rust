@@ -128,7 +128,7 @@
 //// {@link IntStream//seek} to set the {@code input} position to the beginning
 //// of the token.
 //// /
-//pub fn execute(lexer Lexer, input CharStream, startIndex int) -> {
+//pub fn execute(lexer Lexer, input CharStream, startIndex int) {
 //	requiresSeek := false
 //	stopIndex := input.Index()
 //

@@ -65,7 +65,7 @@
 //	return b
 //}
 //
-//pub fn SetParent(v Tree) -> {
+//pub fn SetParent(v Tree) {
 //	if v == nil {
 //		b.parentCtx = nil
 //	} else {
@@ -77,7 +77,7 @@
 //	return b.invokingState
 //}
 //
-//pub fn SetInvokingState(t int) -> {
+//pub fn SetInvokingState(t int) {
 //	b.invokingState = t
 //}
 //
@@ -89,7 +89,7 @@
 //	return ATNInvalidAltNumber
 //}
 //
-//pub fn SetAltNumber(altNumber int) -> {}
+//pub fn SetAltNumber(altNumber int) {}
 //
 //// A context is empty if there is no invoking state meaning nobody call
 //// current context.

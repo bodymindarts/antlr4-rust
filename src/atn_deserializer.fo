@@ -105,7 +105,7 @@
 //
 //}
 //
-//pub fn reset(data []rune) -> {
+//pub fn reset(data []rune) {
 //	temp := make([]rune, len(data))
 //
 //	for i, c := range data {
@@ -121,7 +121,7 @@
 //	a.pos = 0
 //}
 //
-//pub fn checkVersion() -> {
+//pub fn checkVersion() {
 //	version := a.readInt()
 //
 //	if version != SerializedVersion {
@@ -129,7 +129,7 @@
 //	}
 //}
 //
-//pub fn checkUUID() -> {
+//pub fn checkUUID() {
 //	uuid := a.readUUID()
 //
 //	if stringInSlice(uuid, SupportedUUIDs) < 0 {
@@ -146,7 +146,7 @@
 //	return NewATN(grammarType, maxTokenType)
 //}
 //
-//pub fn readStates(atn *ATN) -> {
+//pub fn readStates(atn *ATN) {
 //	loopBackStateNumbers := make([]LoopEndStateIntPair, 0)
 //	endStateNumbers := make([]BlockStartStateIntPair, 0)
 //
@@ -214,7 +214,7 @@
 //	}
 //}
 //
-//pub fn readRules(atn *ATN) -> {
+//pub fn readRules(atn *ATN) {
 //	nrules := a.readInt()
 //
 //	if atn.grammarType == ATNTypeLexer {
@@ -252,7 +252,7 @@
 //	}
 //}
 //
-//pub fn readModes(atn *ATN) -> {
+//pub fn readModes(atn *ATN) {
 //	nmodes := a.readInt()
 //
 //	for i := 0; i < nmodes; i++ {
@@ -289,7 +289,7 @@
 //	return sets
 //}
 //
-//pub fn readEdges(atn *ATN, sets []*IntervalSet) -> {
+//pub fn readEdges(atn *ATN, sets []*IntervalSet) {
 //	nedges := a.readInt()
 //
 //	for i := 0; i < nedges; i++ {
@@ -369,7 +369,7 @@
 //	}
 //}
 //
-//pub fn readDecisions(atn *ATN) -> {
+//pub fn readDecisions(atn *ATN) {
 //	ndecisions := a.readInt()
 //
 //	for i := 0; i < ndecisions; i++ {
@@ -381,7 +381,7 @@
 //	}
 //}
 //
-//pub fn readLexerActions(atn *ATN) -> {
+//pub fn readLexerActions(atn *ATN) {
 //	if atn.grammarType == ATNTypeLexer {
 //		count := a.readInt()
 //
@@ -408,7 +408,7 @@
 //	}
 //}
 //
-//pub fn generateRuleBypassTransitions(atn *ATN) -> {
+//pub fn generateRuleBypassTransitions(atn *ATN) {
 //	count := len(atn.ruleToStartState)
 //
 //	for i := 0; i < count; i++ {
@@ -420,7 +420,7 @@
 //	}
 //}
 //
-//pub fn generateRuleBypassTransition(atn *ATN, idx int) -> {
+//pub fn generateRuleBypassTransition(atn *ATN, idx int) {
 //	bypassStart := NewBasicBlockStartState()
 //
 //	bypassStart.ruleIndex = idx
@@ -527,7 +527,7 @@
 //// markPrecedenceDecisions analyzes the StarLoopEntryState states in the
 //// specified ATN to set the StarLoopEntryState.precedenceRuleDecision field to
 //// the correct value.
-//pub fn markPrecedenceDecisions(atn *ATN) -> {
+//pub fn markPrecedenceDecisions(atn *ATN) {
 //	for _, state := range atn.states {
 //		if _, ok := state.(*StarLoopEntryState); !ok {
 //			continue
@@ -550,7 +550,7 @@
 //	}
 //}
 //
-//pub fn verifyATN(atn *ATN) -> {
+//pub fn verifyATN(atn *ATN) {
 //	if !a.deserializationOptions.verifyATN {
 //		return
 //	}
@@ -620,7 +620,7 @@
 //	}
 //}
 //
-//pub fn checkCondition(condition bool, message string) -> {
+//pub fn checkCondition(condition bool, message string) {
 //	if !condition {
 //		if message == "" {
 //			message = "IllegalState"

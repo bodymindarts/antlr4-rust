@@ -58,15 +58,15 @@
 //	return i.intervals[0].start
 //}
 //
-//pub fn addOne(v int) -> {
+//pub fn addOne(v int) {
 //	i.addInterval(NewInterval(v, v+1))
 //}
 //
-//pub fn addRange(l, h int) -> {
+//pub fn addRange(l, h int) {
 //	i.addInterval(NewInterval(l, h+1))
 //}
 //
-//pub fn addInterval(v *Interval) -> {
+//pub fn addInterval(v *Interval) {
 //	if i.intervals == nil {
 //		i.intervals = make([]*Interval, 0)
 //		i.intervals = append(i.intervals, v)
@@ -144,7 +144,7 @@
 //	return len
 //}
 //
-//pub fn removeRange(v *Interval) -> {
+//pub fn removeRange(v *Interval) {
 //	if v.start == v.stop-1 {
 //		i.removeOne(v.start)
 //	} else if i.intervals != nil {
@@ -174,7 +174,7 @@
 //	}
 //}
 //
-//pub fn removeOne(v int) -> {
+//pub fn removeOne(v int) {
 //	if i.intervals != nil {
 //		for k := 0; k < len(i.intervals); k++ {
 //			ki := i.intervals[k]

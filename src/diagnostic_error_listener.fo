@@ -38,7 +38,7 @@
 //	return n
 //}
 //
-//pub fn ReportAmbiguity(recognizer Parser, dfa *DFA, startIndex, stopIndex int, exact bool, ambigAlts *BitSet, configs ATNConfigSet) -> {
+//pub fn ReportAmbiguity(recognizer Parser, dfa *DFA, startIndex, stopIndex int, exact bool, ambigAlts *BitSet, configs ATNConfigSet) {
 //	if d.exactOnly && !exact {
 //		return
 //	}
@@ -51,7 +51,7 @@
 //	recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
-//pub fn ReportAttemptingFullContext(recognizer Parser, dfa *DFA, startIndex, stopIndex int, conflictingAlts *BitSet, configs ATNConfigSet) -> {
+//pub fn ReportAttemptingFullContext(recognizer Parser, dfa *DFA, startIndex, stopIndex int, conflictingAlts *BitSet, configs ATNConfigSet) {
 //
 //	msg := "reportAttemptingFullContext d=" +
 //		d.getDecisionDescription(recognizer, dfa) +
@@ -60,7 +60,7 @@
 //	recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
-//pub fn ReportContextSensitivity(recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction int, configs ATNConfigSet) -> {
+//pub fn ReportContextSensitivity(recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction int, configs ATNConfigSet) {
 //	msg := "reportContextSensitivity d=" +
 //		d.getDecisionDescription(recognizer, dfa) +
 //		", input='" +

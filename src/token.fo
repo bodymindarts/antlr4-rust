@@ -101,7 +101,7 @@
 //	return b.tokenIndex
 //}
 //
-//pub fn SetTokenIndex(v int) -> {
+//pub fn SetTokenIndex(v int) {
 //	b.tokenIndex = v
 //}
 //
@@ -179,7 +179,7 @@
 //	return "<EOF>"
 //}
 //
-//pub fn SetText(text string) -> {
+//pub fn SetText(text string) {
 //	c.text = text
 //}
 //

@@ -35,7 +35,7 @@
 //	return la
 //}
 //
-//pub fn execute(lexer Lexer) -> {
+//pub fn execute(lexer Lexer) {
 //	panic("Not implemented")
 //}
 //
@@ -73,7 +73,7 @@
 //// Provides a singleton instance of l parameterless lexer action.
 //var LexerSkipActionINSTANCE = NewLexerSkipAction()
 //
-//pub fn execute(lexer Lexer) -> {
+//pub fn execute(lexer Lexer) {
 //	lexer.Skip()
 //}
 //
@@ -96,7 +96,7 @@
 //	return l
 //}
 //
-//pub fn execute(lexer Lexer) -> {
+//pub fn execute(lexer Lexer) {
 //	lexer.setType(l.thetype)
 //}
 //
@@ -137,7 +137,7 @@
 //
 //// <p>This action is implemented by calling {@link Lexer//pushMode} with the
 //// value provided by {@link //getMode}.</p>
-//pub fn execute(lexer Lexer) -> {
+//pub fn execute(lexer Lexer) {
 //	lexer.pushMode(l.mode)
 //}
 //
@@ -179,7 +179,7 @@
 //var LexerPopModeActionINSTANCE = NewLexerPopModeAction()
 //
 //// <p>This action is implemented by calling {@link Lexer//popMode}.</p>
-//pub fn execute(lexer Lexer) -> {
+//pub fn execute(lexer Lexer) {
 //	lexer.popMode()
 //}
 //
@@ -206,7 +206,7 @@
 //var LexerMoreActionINSTANCE = NewLexerMoreAction()
 //
 //// <p>This action is implemented by calling {@link Lexer//popMode}.</p>
-//pub fn execute(lexer Lexer) -> {
+//pub fn execute(lexer Lexer) {
 //	lexer.More()
 //}
 //
@@ -231,7 +231,7 @@
 //
 //// <p>This action is implemented by calling {@link Lexer//mode} with the
 //// value provided by {@link //getMode}.</p>
-//pub fn execute(lexer Lexer) -> {
+//pub fn execute(lexer Lexer) {
 //	lexer.setMode(l.mode)
 //}
 //
@@ -286,7 +286,7 @@
 //
 //// <p>Custom actions are implemented by calling {@link Lexer//action} with the
 //// appropriate rule and action indexes.</p>
-//pub fn execute(lexer Lexer) -> {
+//pub fn execute(lexer Lexer) {
 //	lexer.Action(nil, l.ruleIndex, l.actionIndex)
 //}
 //
@@ -323,7 +323,7 @@
 //
 //// <p>This action is implemented by calling {@link Lexer//setChannel} with the
 //// value provided by {@link //getChannel}.</p>
-//pub fn execute(lexer Lexer) -> {
+//pub fn execute(lexer Lexer) {
 //	lexer.setChannel(l.channel)
 //}
 //
@@ -387,7 +387,7 @@
 //
 //// <p>This method calls {@link //execute} on the result of {@link //getAction}
 //// using the provided {@code lexer}.</p>
-//pub fn execute(lexer Lexer) -> {
+//pub fn execute(lexer Lexer) {
 //	// assume the input stream position was properly set by the calling code
 //	l.lexerAction.execute(lexer)
 //}

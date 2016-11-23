@@ -56,7 +56,7 @@
 //	return prc
 //}
 //
-//pub fn SetException(e RecognitionException) -> {
+//pub fn SetException(e RecognitionException) {
 //	prc.exception = e
 //}
 //
@@ -64,7 +64,7 @@
 //	return prc.children
 //}
 //
-//pub fn CopyFrom(ctx *BaseParserRuleContext) -> {
+//pub fn CopyFrom(ctx *BaseParserRuleContext) {
 //	// from RuleContext
 //	prc.parentCtx = ctx.parentCtx
 //	prc.invokingState = ctx.invokingState
@@ -87,10 +87,10 @@
 //}
 //
 //// Double dispatch methods for listeners
-//pub fn EnterRule(listener ParseTreeListener) -> {
+//pub fn EnterRule(listener ParseTreeListener) {
 //}
 //
-//pub fn ExitRule(listener ParseTreeListener) -> {
+//pub fn ExitRule(listener ParseTreeListener) {
 //}
 //
 //// * Does not set parent link other add methods do that///
@@ -120,7 +120,7 @@
 //// we entered a rule. If we have // label, we will need to remove
 //// generic ruleContext object.
 //// /
-//pub fn RemoveLastChild() -> {
+//pub fn RemoveLastChild() {
 //	if prc.children != nil && len(prc.children) > 0 {
 //		prc.children = prc.children[0 : len(prc.children)-1]
 //	}
@@ -181,7 +181,7 @@
 //	return visitor.VisitChildren(prc)
 //}
 //
-//pub fn SetStart(t Token) -> {
+//pub fn SetStart(t Token) {
 //	prc.start = t
 //}
 //
@@ -189,7 +189,7 @@
 //	return prc.start
 //}
 //
-//pub fn SetStop(t Token) -> {
+//pub fn SetStop(t Token) {
 //	prc.stop = t
 //}
 //

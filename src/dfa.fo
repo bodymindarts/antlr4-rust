@@ -46,7 +46,7 @@
 //
 //// setPrecedenceStartState sets the start state for the current precedence. d
 //// must be a precedence DFA. See also isPrecedenceDfa.
-//pub fn setPrecedenceStartState(precedence int, startState *DFAState) -> {
+//pub fn setPrecedenceStartState(precedence int, startState *DFAState) {
 //	if !d.precedenceDfa {
 //		panic("only precedence DFAs may contain a precedence start state")
 //	}
@@ -70,7 +70,7 @@
 //// state s0 is set to a new DFAState with an empty outgoing DFAState.edges to
 //// store the start states for individual precedence values if precedenceDfa is
 //// true or nil otherwise, and d.precedenceDfa is updated.
-//pub fn setPrecedenceDfa(precedenceDfa bool) -> {
+//pub fn setPrecedenceDfa(precedenceDfa bool) {
 //	if d.precedenceDfa != precedenceDfa {
 //		d.states = make(map[string]*DFAState)
 //
