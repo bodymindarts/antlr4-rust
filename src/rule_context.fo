@@ -61,11 +61,11 @@
 //	return rn
 //}
 //
-//func (b *BaseRuleContext) GetBaseRuleContext() *BaseRuleContext {
+//pub fn GetBaseRuleContext() -> *BaseRuleContext {
 //	return b
 //}
 //
-//func (b *BaseRuleContext) SetParent(v Tree) {
+//pub fn SetParent(v Tree) -> {
 //	if v == nil {
 //		b.parentCtx = nil
 //	} else {
@@ -73,27 +73,27 @@
 //	}
 //}
 //
-//func (b *BaseRuleContext) GetInvokingState() int {
+//pub fn GetInvokingState() -> int {
 //	return b.invokingState
 //}
 //
-//func (b *BaseRuleContext) SetInvokingState(t int) {
+//pub fn SetInvokingState(t int) -> {
 //	b.invokingState = t
 //}
 //
-//func (b *BaseRuleContext) GetRuleIndex() int {
+//pub fn GetRuleIndex() -> int {
 //	return b.RuleIndex
 //}
 //
-//func (b *BaseRuleContext) GetAltNumber() int {
+//pub fn GetAltNumber() -> int {
 //	return ATNInvalidAltNumber
 //}
 //
-//func (b *BaseRuleContext) SetAltNumber(altNumber int) {}
+//pub fn SetAltNumber(altNumber int) -> {}
 //
 //// A context is empty if there is no invoking state meaning nobody call
 //// current context.
-//func (b *BaseRuleContext) IsEmpty() bool {
+//pub fn IsEmpty() -> bool {
 //	return b.invokingState == -1
 //}
 //
@@ -105,6 +105,6 @@
 //// method.
 ////
 //
-//func (b *BaseRuleContext) GetParent() Tree {
+//pub fn GetParent() -> Tree {
 //	return b.parentCtx
 //}

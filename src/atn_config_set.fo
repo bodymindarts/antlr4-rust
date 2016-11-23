@@ -100,7 +100,7 @@
 //// ATNConfig.state, i is the ATNConfig.alt, and pi is the
 //// ATNConfig.semanticContext. We use (s,i,pi) as the key. Updates
 //// dipsIntoOuterContext and hasSemanticContext when necessary.
-//func (b *BaseATNConfigSet) Add(config ATNConfig, mergeCache *DoubleDict) bool {
+//pub fn Add(config ATNConfig, mergeCache *DoubleDict) -> bool {
 //	if b.readOnly {
 //		panic("set is read-only")
 //	}
@@ -142,7 +142,7 @@
 //	return true
 //}
 //
-//func (b *BaseATNConfigSet) GetStates() *Set {
+//pub fn GetStates() -> *Set {
 //	states := NewSet(nil, nil)
 //
 //	for i := 0; i < len(b.configs); i++ {
@@ -152,15 +152,15 @@
 //	return states
 //}
 //
-//func (b *BaseATNConfigSet) HasSemanticContext() bool {
+//pub fn HasSemanticContext() -> bool {
 //	return b.hasSemanticContext
 //}
 //
-//func (b *BaseATNConfigSet) SetHasSemanticContext(v bool) {
+//pub fn SetHasSemanticContext(v bool) -> {
 //	b.hasSemanticContext = v
 //}
 //
-//func (b *BaseATNConfigSet) GetPredicates() []SemanticContext {
+//pub fn GetPredicates() -> []SemanticContext {
 //	preds := make([]SemanticContext, 0)
 //
 //	for i := 0; i < len(b.configs); i++ {
@@ -174,11 +174,11 @@
 //	return preds
 //}
 //
-//func (b *BaseATNConfigSet) GetItems() []ATNConfig {
+//pub fn GetItems() -> []ATNConfig {
 //	return b.configs
 //}
 //
-//func (b *BaseATNConfigSet) OptimizeConfigs(interpreter *BaseATNSimulator) {
+//pub fn OptimizeConfigs(interpreter *BaseATNSimulator) -> {
 //	if b.readOnly {
 //		panic("set is read-only")
 //	}
@@ -194,7 +194,7 @@
 //	}
 //}
 //
-//func (b *BaseATNConfigSet) AddAll(coll []ATNConfig) bool {
+//pub fn AddAll(coll []ATNConfig) -> bool {
 //	for i := 0; i < len(coll); i++ {
 //		b.Add(coll[i], nil)
 //	}
@@ -202,7 +202,7 @@
 //	return false
 //}
 //
-//func (b *BaseATNConfigSet) Equals(other interface{}) bool {
+//pub fn Equals(other interface{}) -> bool {
 //	if b == other {
 //		return true
 //	} else if _, ok := other.(*BaseATNConfigSet); !ok {
@@ -220,7 +220,7 @@
 //		b.dipsIntoOuterContext == other2.dipsIntoOuterContext
 //}
 //
-//func (b *BaseATNConfigSet) Hash() string {
+//pub fn Hash() -> string {
 //	if b.readOnly {
 //		if b.cachedHashString == "-1" {
 //			b.cachedHashString = b.hashConfigs()
@@ -232,7 +232,7 @@
 //	return b.hashConfigs()
 //}
 //
-//func (b *BaseATNConfigSet) hashConfigs() string {
+//pub fn hashConfigs() -> string {
 //	s := ""
 //
 //	for _, c := range b.configs {
@@ -242,15 +242,15 @@
 //	return s
 //}
 //
-//func (b *BaseATNConfigSet) Length() int {
+//pub fn Length() -> int {
 //	return len(b.configs)
 //}
 //
-//func (b *BaseATNConfigSet) IsEmpty() bool {
+//pub fn IsEmpty() -> bool {
 //	return len(b.configs) == 0
 //}
 //
-//func (b *BaseATNConfigSet) Contains(item ATNConfig) bool {
+//pub fn Contains(item ATNConfig) -> bool {
 //	if b.configLookup == nil {
 //		panic("not implemented for read-only sets")
 //	}
@@ -258,7 +258,7 @@
 //	return b.configLookup.contains(item)
 //}
 //
-//func (b *BaseATNConfigSet) ContainsFast(item ATNConfig) bool {
+//pub fn ContainsFast(item ATNConfig) -> bool {
 //	if b.configLookup == nil {
 //		panic("not implemented for read-only sets")
 //	}
@@ -266,7 +266,7 @@
 //	return b.configLookup.contains(item) // TODO: containsFast is not implemented for Set
 //}
 //
-//func (b *BaseATNConfigSet) Clear() {
+//pub fn Clear() -> {
 //	if b.readOnly {
 //		panic("set is read-only")
 //	}
@@ -276,39 +276,39 @@
 //	b.configLookup = NewSet(hashATNConfig, equalATNConfigs)
 //}
 //
-//func (b *BaseATNConfigSet) FullContext() bool {
+//pub fn FullContext() -> bool {
 //	return b.fullCtx
 //}
 //
-//func (b *BaseATNConfigSet) GetDipsIntoOuterContext() bool {
+//pub fn GetDipsIntoOuterContext() -> bool {
 //	return b.dipsIntoOuterContext
 //}
 //
-//func (b *BaseATNConfigSet) SetDipsIntoOuterContext(v bool) {
+//pub fn SetDipsIntoOuterContext(v bool) -> {
 //	b.dipsIntoOuterContext = v
 //}
 //
-//func (b *BaseATNConfigSet) GetUniqueAlt() int {
+//pub fn GetUniqueAlt() -> int {
 //	return b.uniqueAlt
 //}
 //
-//func (b *BaseATNConfigSet) SetUniqueAlt(v int) {
+//pub fn SetUniqueAlt(v int) -> {
 //	b.uniqueAlt = v
 //}
 //
-//func (b *BaseATNConfigSet) GetConflictingAlts() *BitSet {
+//pub fn GetConflictingAlts() -> *BitSet {
 //	return b.conflictingAlts
 //}
 //
-//func (b *BaseATNConfigSet) SetConflictingAlts(v *BitSet) {
+//pub fn SetConflictingAlts(v *BitSet) -> {
 //	b.conflictingAlts = v
 //}
 //
-//func (b *BaseATNConfigSet) ReadOnly() bool {
+//pub fn ReadOnly() -> bool {
 //	return b.readOnly
 //}
 //
-//func (b *BaseATNConfigSet) SetReadOnly(readOnly bool) {
+//pub fn SetReadOnly(readOnly bool) -> {
 //	b.readOnly = readOnly
 //
 //	if readOnly {
@@ -316,7 +316,7 @@
 //	}
 //}
 //
-//func (b *BaseATNConfigSet) String() string {
+//pub fn String() -> string {
 //	s := "["
 //
 //	for i, c := range b.configs {

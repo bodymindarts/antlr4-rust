@@ -87,7 +87,7 @@
 //// @return A {@link LexerActionExecutor} which stores input stream offsets
 //// for all position-dependent lexer actions.
 //// /
-//func (l *LexerActionExecutor) fixOffsetBeforeMatch(offset int) *LexerActionExecutor {
+//pub fn fixOffsetBeforeMatch(offset int) -> *LexerActionExecutor {
 //	var updatedLexerActions []LexerAction
 //	for i := 0; i < len(l.lexerActions); i++ {
 //		_, ok := l.lexerActions[i].(*LexerIndexedCustomAction)
@@ -128,7 +128,7 @@
 //// {@link IntStream//seek} to set the {@code input} position to the beginning
 //// of the token.
 //// /
-//func (l *LexerActionExecutor) execute(lexer Lexer, input CharStream, startIndex int) {
+//pub fn execute(lexer Lexer, input CharStream, startIndex int) -> {
 //	requiresSeek := false
 //	stopIndex := input.Index()
 //
@@ -153,11 +153,11 @@
 //	}
 //}
 //
-//func (l *LexerActionExecutor) Hash() string {
+//pub fn Hash() -> string {
 //	return l.cachedHashString
 //}
 //
-//func (l *LexerActionExecutor) equals(other interface{}) bool {
+//pub fn equals(other interface{}) -> bool {
 //	if l == other {
 //		return true
 //	} else if _, ok := other.(*LexerActionExecutor); !ok {

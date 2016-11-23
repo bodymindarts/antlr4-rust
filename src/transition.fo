@@ -47,27 +47,27 @@
 //	return t
 //}
 //
-//func (t *BaseTransition) getTarget() ATNState {
+//pub fn getTarget() -> ATNState {
 //	return t.target
 //}
 //
-//func (t *BaseTransition) setTarget(s ATNState) {
+//pub fn setTarget(s ATNState) -> {
 //	t.target = s
 //}
 //
-//func (t *BaseTransition) getIsEpsilon() bool {
+//pub fn getIsEpsilon() -> bool {
 //	return t.isEpsilon
 //}
 //
-//func (t *BaseTransition) getLabel() *IntervalSet {
+//pub fn getLabel() -> *IntervalSet {
 //	return t.intervalSet
 //}
 //
-//func (t *BaseTransition) getSerializationType() int {
+//pub fn getSerializationType() -> int {
 //	return t.serializationType
 //}
 //
-//func (t *BaseTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	panic("Not implemented")
 //}
 //
@@ -139,17 +139,17 @@
 //	return t
 //}
 //
-//func (t *AtomTransition) makeLabel() *IntervalSet {
+//pub fn makeLabel() -> *IntervalSet {
 //	s := NewIntervalSet()
 //	s.addOne(t.label)
 //	return s
 //}
 //
-//func (t *AtomTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	return t.label == symbol
 //}
 //
-//func (t *AtomTransition) String() string {
+//pub fn String() -> string {
 //	return strconv.Itoa(t.label)
 //}
 //
@@ -174,7 +174,7 @@
 //	return t
 //}
 //
-//func (t *RuleTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	return false
 //}
 //
@@ -195,11 +195,11 @@
 //	return t
 //}
 //
-//func (t *EpsilonTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	return false
 //}
 //
-//func (t *EpsilonTransition) String() string {
+//pub fn String() -> string {
 //	return "epsilon"
 //}
 //
@@ -221,17 +221,17 @@
 //	return t
 //}
 //
-//func (t *RangeTransition) makeLabel() *IntervalSet {
+//pub fn makeLabel() -> *IntervalSet {
 //	s := NewIntervalSet()
 //	s.addRange(t.start, t.stop)
 //	return s
 //}
 //
-//func (t *RangeTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	return symbol >= t.start && symbol <= t.stop
 //}
 //
-//func (t *RangeTransition) String() string {
+//pub fn String() -> string {
 //	return "'" + string(t.start) + "'..'" + string(t.stop) + "'"
 //}
 //
@@ -252,7 +252,7 @@
 //	return t
 //}
 //
-//func (a *BaseAbstractPredicateTransition) IAbstractPredicateTransitionFoo() {}
+//pub fn IAbstractPredicateTransitionFoo() -> {}
 //
 //pub struct PredicateTransition {
 //	*BaseAbstractPredicateTransition
@@ -274,15 +274,15 @@
 //	return t
 //}
 //
-//func (t *PredicateTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	return false
 //}
 //
-//func (t *PredicateTransition) getPredicate() *Predicate {
+//pub fn getPredicate() -> *Predicate {
 //	return NewPredicate(t.ruleIndex, t.predIndex, t.isCtxDependent)
 //}
 //
-//func (t *PredicateTransition) String() string {
+//pub fn String() -> string {
 //	return "pred_" + strconv.Itoa(t.ruleIndex) + ":" + strconv.Itoa(t.predIndex)
 //}
 //
@@ -306,11 +306,11 @@
 //	return t
 //}
 //
-//func (t *ActionTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	return false
 //}
 //
-//func (t *ActionTransition) String() string {
+//pub fn String() -> string {
 //	return "action_" + strconv.Itoa(t.ruleIndex) + ":" + strconv.Itoa(t.actionIndex)
 //}
 //
@@ -334,11 +334,11 @@
 //	return t
 //}
 //
-//func (t *SetTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	return t.intervalSet.contains(symbol)
 //}
 //
-//func (t *SetTransition) String() string {
+//pub fn String() -> string {
 //	return t.intervalSet.String()
 //}
 //
@@ -357,11 +357,11 @@
 //	return t
 //}
 //
-//func (t *NotSetTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	return symbol >= minVocabSymbol && symbol <= maxVocabSymbol && !t.intervalSet.contains(symbol)
 //}
 //
-//func (t *NotSetTransition) String() string {
+//pub fn String() -> string {
 //	return "~" + t.intervalSet.String()
 //}
 //
@@ -378,11 +378,11 @@
 //	return t
 //}
 //
-//func (t *WildcardTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	return symbol >= minVocabSymbol && symbol <= maxVocabSymbol
 //}
 //
-//func (t *WildcardTransition) String() string {
+//pub fn String() -> string {
 //	return "."
 //}
 //
@@ -404,14 +404,14 @@
 //	return t
 //}
 //
-//func (t *PrecedencePredicateTransition) Matches(symbol, minVocabSymbol, maxVocabSymbol int) bool {
+//pub fn Matches(symbol, minVocabSymbol, maxVocabSymbol int) -> bool {
 //	return false
 //}
 //
-//func (t *PrecedencePredicateTransition) getPredicate() *PrecedencePredicate {
+//pub fn getPredicate() -> *PrecedencePredicate {
 //	return NewPrecedencePredicate(t.precedence)
 //}
 //
-//func (t *PrecedencePredicateTransition) String() string {
+//pub fn String() -> string {
 //	return fmt.Sprint(t.precedence) + " >= _p"
 //}

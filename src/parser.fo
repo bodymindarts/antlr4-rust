@@ -91,7 +91,7 @@
 //var bypassAltsAtnCache = make(map[string]int)
 //
 //// reset the parser's state//
-//func (p *BaseParser) reset() {
+//pub fn reset() -> {
 //	if p.input != nil {
 //		p.input.Seek(0)
 //	}
@@ -106,11 +106,11 @@
 //	}
 //}
 //
-//func (p *BaseParser) GetErrorHandler() ErrorStrategy {
+//pub fn GetErrorHandler() -> ErrorStrategy {
 //	return p.errHandler
 //}
 //
-//func (p *BaseParser) SetErrorHandler(e ErrorStrategy) {
+//pub fn SetErrorHandler(e ErrorStrategy) -> {
 //	p.errHandler = e
 //}
 //
@@ -131,7 +131,7 @@
 //// {@code ttype} and the error strategy could not recover from the
 //// mismatched symbol
 //
-//func (p *BaseParser) Match(ttype int) Token {
+//pub fn Match(ttype int) -> Token {
 //
 //	t := p.GetCurrentToken()
 //
@@ -167,7 +167,7 @@
 //// a wildcard and the error strategy could not recover from the mismatched
 //// symbol
 //
-//func (p *BaseParser) MatchWildcard() Token {
+//pub fn MatchWildcard() -> Token {
 //	t := p.GetCurrentToken()
 //	if t.GetTokenType() > 0 {
 //		p.errHandler.ReportMatch(p)
@@ -184,15 +184,15 @@
 //	return t
 //}
 //
-//func (p *BaseParser) GetParserRuleContext() ParserRuleContext {
+//pub fn GetParserRuleContext() -> ParserRuleContext {
 //	return p.ctx
 //}
 //
-//func (p *BaseParser) SetParserRuleContext(v ParserRuleContext) {
+//pub fn SetParserRuleContext(v ParserRuleContext) -> {
 //	p.ctx = v
 //}
 //
-//func (p *BaseParser) GetParseListeners() []ParseTreeListener {
+//pub fn GetParseListeners() -> []ParseTreeListener {
 //	if p.parseListeners == nil {
 //		return make([]ParseTreeListener, 0)
 //	}
@@ -227,7 +227,7 @@
 ////
 //// @panics nilPointerException if {@code} listener is {@code nil}
 ////
-//func (p *BaseParser) AddParseListener(listener ParseTreeListener) {
+//pub fn AddParseListener(listener ParseTreeListener) -> {
 //	if listener == nil {
 //		panic("listener")
 //	}
@@ -244,7 +244,7 @@
 //// listener, p.method does nothing.</p>
 //// @param listener the listener to remove
 ////
-//func (p *BaseParser) RemoveParseListener(listener ParseTreeListener) {
+//pub fn RemoveParseListener(listener ParseTreeListener) -> {
 //
 //	if p.parseListeners != nil {
 //
@@ -270,12 +270,12 @@
 //}
 //
 //// Remove all parse listeners.
-//func (p *BaseParser) removeParseListeners() {
+//pub fn removeParseListeners() -> {
 //	p.parseListeners = nil
 //}
 //
 //// Notify any parse listeners of an enter rule event.
-//func (p *BaseParser) TriggerEnterRuleEvent() {
+//pub fn TriggerEnterRuleEvent() -> {
 //	if p.parseListeners != nil {
 //		ctx := p.ctx
 //		for _, listener := range p.parseListeners {
@@ -290,7 +290,7 @@
 ////
 //// @see //addParseListener
 ////
-//func (p *BaseParser) TriggerExitRuleEvent() {
+//pub fn TriggerExitRuleEvent() -> {
 //	if p.parseListeners != nil {
 //		// reverse order walk of listeners
 //		ctx := p.ctx
@@ -304,20 +304,20 @@
 //	}
 //}
 //
-//func (p *BaseParser) GetInterpreter() *ParserATNSimulator {
+//pub fn GetInterpreter() -> *ParserATNSimulator {
 //	return p.Interpreter
 //}
 //
-//func (p *BaseParser) GetATN() *ATN {
+//pub fn GetATN() -> *ATN {
 //	return p.Interpreter.atn
 //}
 //
-//func (p *BaseParser) GetTokenFactory() TokenFactory {
+//pub fn GetTokenFactory() -> TokenFactory {
 //	return p.input.GetTokenSource().GetTokenFactory()
 //}
 //
 //// Tell our token source and error strategy about a Newway to create tokens.//
-//func (p *BaseParser) setTokenFactory(factory TokenFactory) {
+//pub fn setTokenFactory(factory TokenFactory) -> {
 //	p.input.GetTokenSource().setTokenFactory(factory)
 //}
 //
@@ -327,7 +327,7 @@
 //// @panics UnsupportedOperationException if the current parser does not
 //// implement the {@link //getSerializedATN()} method.
 ////
-//func (p *BaseParser) GetATNWithBypassAlts() {
+//pub fn GetATNWithBypassAlts() -> {
 //
 //	// TODO
 //	panic("Not implemented!")
@@ -357,7 +357,7 @@
 //// String id = m.Get("ID")
 //// </pre>
 //
-//func (p *BaseParser) compileParseTreePattern(pattern, patternRuleIndex, lexer Lexer) {
+//pub fn compileParseTreePattern(pattern, patternRuleIndex, lexer Lexer) -> {
 //
 //	panic("NewParseTreePatternMatcher not implemented!")
 //	//
@@ -377,20 +377,20 @@
 //	//	return m.compile(pattern, patternRuleIndex)
 //}
 //
-//func (p *BaseParser) GetInputStream() IntStream {
+//pub fn GetInputStream() -> IntStream {
 //	return p.GetTokenStream()
 //}
 //
-//func (p *BaseParser) SetInputStream(input TokenStream) {
+//pub fn SetInputStream(input TokenStream) -> {
 //	p.SetTokenStream(input)
 //}
 //
-//func (p *BaseParser) GetTokenStream() TokenStream {
+//pub fn GetTokenStream() -> TokenStream {
 //	return p.input
 //}
 //
 //// Set the token stream and reset the parser.//
-//func (p *BaseParser) SetTokenStream(input TokenStream) {
+//pub fn SetTokenStream(input TokenStream) -> {
 //	p.input = nil
 //	p.reset()
 //	p.input = input
@@ -399,11 +399,11 @@
 //// Match needs to return the current input symbol, which gets put
 //// into the label for the associated token ref e.g., x=ID.
 ////
-//func (p *BaseParser) GetCurrentToken() Token {
+//pub fn GetCurrentToken() -> Token {
 //	return p.input.LT(1)
 //}
 //
-//func (p *BaseParser) NotifyErrorListeners(msg string, offendingToken Token, err RecognitionException) {
+//pub fn NotifyErrorListeners(msg string, offendingToken Token, err RecognitionException) -> {
 //	if offendingToken == nil {
 //		offendingToken = p.GetCurrentToken()
 //	}
@@ -414,7 +414,7 @@
 //	listener.SyntaxError(p, offendingToken, line, column, msg, err)
 //}
 //
-//func (p *BaseParser) Consume() Token {
+//pub fn Consume() -> Token {
 //	o := p.GetCurrentToken()
 //	if o.GetTokenType() != TokenEOF {
 //		p.GetInputStream().Consume()
@@ -443,14 +443,14 @@
 //	return o
 //}
 //
-//func (p *BaseParser) addContextToParseTree() {
+//pub fn addContextToParseTree() -> {
 //	// add current context to parent if we have a parent
 //	if p.ctx.GetParent() != nil {
 //		p.ctx.GetParent().(ParserRuleContext).AddChild(p.ctx)
 //	}
 //}
 //
-//func (p *BaseParser) EnterRule(localctx ParserRuleContext, state, ruleIndex int) {
+//pub fn EnterRule(localctx ParserRuleContext, state, ruleIndex int) -> {
 //	p.SetState(state)
 //	p.ctx = localctx
 //	p.ctx.SetStart(p.input.LT(1))
@@ -462,7 +462,7 @@
 //	}
 //}
 //
-//func (p *BaseParser) ExitRule() {
+//pub fn ExitRule() -> {
 //	p.ctx.SetStop(p.input.LT(-1))
 //	// trigger event on ctx, before it reverts to parent
 //	if p.parseListeners != nil {
@@ -476,7 +476,7 @@
 //	}
 //}
 //
-//func (p *BaseParser) EnterOuterAlt(localctx ParserRuleContext, altNum int) {
+//pub fn EnterOuterAlt(localctx ParserRuleContext, altNum int) -> {
 //	localctx.SetAltNumber(altNum)
 //	// if we have Newlocalctx, make sure we replace existing ctx
 //	// that is previous child of parse tree
@@ -494,7 +494,7 @@
 //// @return The precedence level for the top-most precedence rule, or -1 if
 //// the parser context is not nested within a precedence rule.
 //
-//func (p *BaseParser) GetPrecedence() int {
+//pub fn GetPrecedence() -> int {
 //	if len(p.precedenceStack) == 0 {
 //		return -1
 //	}
@@ -502,7 +502,7 @@
 //	return p.precedenceStack[len(p.precedenceStack)-1]
 //}
 //
-//func (p *BaseParser) EnterRecursionRule(localctx ParserRuleContext, state, ruleIndex, precedence int) {
+//pub fn EnterRecursionRule(localctx ParserRuleContext, state, ruleIndex, precedence int) -> {
 //	p.SetState(state)
 //	p.precedenceStack.Push(precedence)
 //	p.ctx = localctx
@@ -516,7 +516,7 @@
 ////
 //// Like {@link //EnterRule} but for recursive rules.
 //
-//func (p *BaseParser) PushNewRecursionContext(localctx ParserRuleContext, state, ruleIndex int) {
+//pub fn PushNewRecursionContext(localctx ParserRuleContext, state, ruleIndex int) -> {
 //	previous := p.ctx
 //	previous.SetParent(localctx)
 //	previous.SetInvokingState(state)
@@ -533,7 +533,7 @@
 //	}
 //}
 //
-//func (p *BaseParser) UnrollRecursionContexts(parentCtx ParserRuleContext) {
+//pub fn UnrollRecursionContexts(parentCtx ParserRuleContext) -> {
 //	p.precedenceStack.Pop()
 //	p.ctx.SetStop(p.input.LT(-1))
 //	retCtx := p.ctx // save current ctx (return value)
@@ -554,7 +554,7 @@
 //	}
 //}
 //
-//func (p *BaseParser) GetInvokingContext(ruleIndex int) ParserRuleContext {
+//pub fn GetInvokingContext(ruleIndex int) -> ParserRuleContext {
 //	ctx := p.ctx
 //	for ctx != nil {
 //		if ctx.GetRuleIndex() == ruleIndex {
@@ -565,11 +565,11 @@
 //	return nil
 //}
 //
-//func (p *BaseParser) Precpred(localctx RuleContext, precedence int) bool {
+//pub fn Precpred(localctx RuleContext, precedence int) -> bool {
 //	return precedence >= p.precedenceStack[len(p.precedenceStack)-1]
 //}
 //
-//func (p *BaseParser) inContext(context ParserRuleContext) bool {
+//pub fn inContext(context ParserRuleContext) -> bool {
 //	// TODO: useful in parser?
 //	return false
 //}
@@ -588,7 +588,7 @@
 //// @return {@code true} if {@code symbol} can follow the current state in
 //// the ATN, otherwise {@code false}.
 //
-//func (p *BaseParser) IsExpectedToken(symbol int) bool {
+//pub fn IsExpectedToken(symbol int) -> bool {
 //	atn := p.Interpreter.atn
 //	ctx := p.ctx
 //	s := atn.states[p.state]
@@ -621,18 +621,18 @@
 ////
 //// @see ATN//getExpectedTokens(int, RuleContext)
 ////
-//func (p *BaseParser) GetExpectedTokens() *IntervalSet {
+//pub fn GetExpectedTokens() -> *IntervalSet {
 //	return p.Interpreter.atn.getExpectedTokens(p.state, p.ctx)
 //}
 //
-//func (p *BaseParser) GetExpectedTokensWithinCurrentRule() *IntervalSet {
+//pub fn GetExpectedTokensWithinCurrentRule() -> *IntervalSet {
 //	atn := p.Interpreter.atn
 //	s := atn.states[p.state]
 //	return atn.NextTokens(s, nil)
 //}
 //
 //// Get a rule's index (i.e., {@code RULE_ruleName} field) or -1 if not found.//
-//func (p *BaseParser) GetRuleIndex(ruleName string) int {
+//pub fn GetRuleIndex(ruleName string) -> int {
 //	var ruleIndex, ok = p.GetRuleIndexMap()[ruleName]
 //	if ok {
 //		return ruleIndex
@@ -648,7 +648,7 @@
 ////
 //// this very useful for error messages.
 //
-//func (p *BaseParser) GetRuleInvocationStack(c ParserRuleContext) []string {
+//pub fn GetRuleInvocationStack(c ParserRuleContext) -> []string {
 //	if c == nil {
 //		c = p.ctx
 //	}
@@ -674,12 +674,12 @@
 //}
 //
 //// For debugging and other purposes.//
-//func (p *BaseParser) GetDFAStrings() string {
+//pub fn GetDFAStrings() -> string {
 //	return fmt.Sprint(p.Interpreter.decisionToDFA)
 //}
 //
 //// For debugging and other purposes.//
-//func (p *BaseParser) DumpDFA() {
+//pub fn DumpDFA() -> {
 //	seenOne := false
 //	for _, dfa := range p.Interpreter.decisionToDFA {
 //		if len(dfa.GetStates()) > 0 {
@@ -693,14 +693,14 @@
 //	}
 //}
 //
-//func (p *BaseParser) GetSourceName() string {
+//pub fn GetSourceName() -> string {
 //	return p.GrammarFileName
 //}
 //
 //// During a parse is sometimes useful to listen in on the rule entry and exit
 //// events as well as token Matches. p.is for quick and dirty debugging.
 ////
-//func (p *BaseParser) SetTrace(trace *TraceListener) {
+//pub fn SetTrace(trace *TraceListener) -> {
 //	if trace == nil {
 //		p.RemoveParseListener(p.tracer)
 //		p.tracer = nil

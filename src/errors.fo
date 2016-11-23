@@ -56,15 +56,15 @@
 //	return t
 //}
 //
-//func (b *BaseRecognitionException) GetMessage() string {
+//pub fn GetMessage() -> string {
 //	return b.message
 //}
 //
-//func (b *BaseRecognitionException) GetOffendingToken() Token {
+//pub fn GetOffendingToken() -> Token {
 //	return b.offendingToken
 //}
 //
-//func (b *BaseRecognitionException) GetInputStream() IntStream {
+//pub fn GetInputStream() -> IntStream {
 //	return b.input
 //}
 //
@@ -80,7 +80,7 @@
 //// @return The set of token types that could potentially follow the current
 //// state in the ATN, or {@code nil} if the information is not available.
 //// /
-//func (b *BaseRecognitionException) getExpectedTokens() *IntervalSet {
+//pub fn getExpectedTokens() -> *IntervalSet {
 //	if b.recognizer != nil {
 //		return b.recognizer.GetATN().getExpectedTokens(b.offendingState, b.ctx)
 //	}
@@ -88,7 +88,7 @@
 //	return nil
 //}
 //
-//func (b *BaseRecognitionException) String() string {
+//pub fn String() -> string {
 //	return b.message
 //}
 //
@@ -111,7 +111,7 @@
 //	return l
 //}
 //
-//func (l *LexerNoViableAltException) String() string {
+//pub fn String() -> string {
 //	symbol := ""
 //	if l.startIndex >= 0 && l.startIndex < l.input.Size() {
 //		symbol = l.input.(CharStream).GetTextFromInterval(NewInterval(l.startIndex, l.startIndex))
@@ -219,7 +219,7 @@
 //	return f
 //}
 //
-//func (f *FailedPredicateException) formatMessage(predicate, message string) string {
+//pub fn formatMessage(predicate, message string) -> string {
 //	if message != "" {
 //		return message
 //	}

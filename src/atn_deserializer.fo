@@ -64,7 +64,7 @@
 //// being deserialized. It returns true if actualUuid represents a serialized ATN
 //// at or after the feature identified by feature was introduced, and otherwise
 //// false.
-//func (a *ATNDeserializer) isFeatureSupported(feature, actualUUID string) bool {
+//pub fn isFeatureSupported(feature, actualUUID string) -> bool {
 //	idx1 := stringInSlice(feature, SupportedUUIDs)
 //
 //	if idx1 < 0 {
@@ -105,7 +105,7 @@
 //
 //}
 //
-//func (a *ATNDeserializer) reset(data []rune) {
+//pub fn reset(data []rune) -> {
 //	temp := make([]rune, len(data))
 //
 //	for i, c := range data {
@@ -121,7 +121,7 @@
 //	a.pos = 0
 //}
 //
-//func (a *ATNDeserializer) checkVersion() {
+//pub fn checkVersion() -> {
 //	version := a.readInt()
 //
 //	if version != SerializedVersion {
@@ -129,7 +129,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) checkUUID() {
+//pub fn checkUUID() -> {
 //	uuid := a.readUUID()
 //
 //	if stringInSlice(uuid, SupportedUUIDs) < 0 {
@@ -139,14 +139,14 @@
 //	a.uuid = uuid
 //}
 //
-//func (a *ATNDeserializer) readATN() *ATN {
+//pub fn readATN() -> *ATN {
 //	grammarType := a.readInt()
 //	maxTokenType := a.readInt()
 //
 //	return NewATN(grammarType, maxTokenType)
 //}
 //
-//func (a *ATNDeserializer) readStates(atn *ATN) {
+//pub fn readStates(atn *ATN) -> {
 //	loopBackStateNumbers := make([]LoopEndStateIntPair, 0)
 //	endStateNumbers := make([]BlockStartStateIntPair, 0)
 //
@@ -214,7 +214,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) readRules(atn *ATN) {
+//pub fn readRules(atn *ATN) -> {
 //	nrules := a.readInt()
 //
 //	if atn.grammarType == ATNTypeLexer {
@@ -252,7 +252,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) readModes(atn *ATN) {
+//pub fn readModes(atn *ATN) -> {
 //	nmodes := a.readInt()
 //
 //	for i := 0; i < nmodes; i++ {
@@ -262,7 +262,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) readSets(atn *ATN) []*IntervalSet {
+//pub fn readSets(atn *ATN) -> []*IntervalSet {
 //	sets := make([]*IntervalSet, 0)
 //	m := a.readInt()
 //
@@ -289,7 +289,7 @@
 //	return sets
 //}
 //
-//func (a *ATNDeserializer) readEdges(atn *ATN, sets []*IntervalSet) {
+//pub fn readEdges(atn *ATN, sets []*IntervalSet) -> {
 //	nedges := a.readInt()
 //
 //	for i := 0; i < nedges; i++ {
@@ -369,7 +369,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) readDecisions(atn *ATN) {
+//pub fn readDecisions(atn *ATN) -> {
 //	ndecisions := a.readInt()
 //
 //	for i := 0; i < ndecisions; i++ {
@@ -381,7 +381,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) readLexerActions(atn *ATN) {
+//pub fn readLexerActions(atn *ATN) -> {
 //	if atn.grammarType == ATNTypeLexer {
 //		count := a.readInt()
 //
@@ -408,7 +408,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) generateRuleBypassTransitions(atn *ATN) {
+//pub fn generateRuleBypassTransitions(atn *ATN) -> {
 //	count := len(atn.ruleToStartState)
 //
 //	for i := 0; i < count; i++ {
@@ -420,7 +420,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) generateRuleBypassTransition(atn *ATN, idx int) {
+//pub fn generateRuleBypassTransition(atn *ATN, idx int) -> {
 //	bypassStart := NewBasicBlockStartState()
 //
 //	bypassStart.ruleIndex = idx
@@ -500,7 +500,7 @@
 //	bypassStart.AddTransition(NewEpsilonTransition(MatchState, -1), -1)
 //}
 //
-//func (a *ATNDeserializer) stateIsEndStateFor(state ATNState, idx int) ATNState {
+//pub fn stateIsEndStateFor(state ATNState, idx int) -> ATNState {
 //	if state.GetRuleIndex() != idx {
 //		return nil
 //	}
@@ -527,7 +527,7 @@
 //// markPrecedenceDecisions analyzes the StarLoopEntryState states in the
 //// specified ATN to set the StarLoopEntryState.precedenceRuleDecision field to
 //// the correct value.
-//func (a *ATNDeserializer) markPrecedenceDecisions(atn *ATN) {
+//pub fn markPrecedenceDecisions(atn *ATN) -> {
 //	for _, state := range atn.states {
 //		if _, ok := state.(*StarLoopEntryState); !ok {
 //			continue
@@ -550,7 +550,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) verifyATN(atn *ATN) {
+//pub fn verifyATN(atn *ATN) -> {
 //	if !a.deserializationOptions.verifyATN {
 //		return
 //	}
@@ -620,7 +620,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) checkCondition(condition bool, message string) {
+//pub fn checkCondition(condition bool, message string) -> {
 //	if !condition {
 //		if message == "" {
 //			message = "IllegalState"
@@ -630,7 +630,7 @@
 //	}
 //}
 //
-//func (a *ATNDeserializer) readInt() int {
+//pub fn readInt() -> int {
 //	v := a.data[a.pos]
 //
 //	a.pos++
@@ -639,7 +639,7 @@
 //}
 //
 ////TODO
-////func (a *ATNDeserializer) readLong() int64 {
+////pub fn readLong() -> int64 {
 ////    panic("Not implemented")
 ////    var low = a.readInt32()
 ////    var high = a.readInt32()
@@ -658,7 +658,7 @@
 //
 //var byteToHex = createByteToHex()
 //
-//func (a *ATNDeserializer) readUUID() string {
+//pub fn readUUID() -> string {
 //	bb := make([]int, 16)
 //
 //	for i := 7; i >= 0; i-- {
@@ -678,7 +678,7 @@
 //		byteToHex[bb[14]] + byteToHex[bb[15]]
 //}
 //
-//func (a *ATNDeserializer) edgeFactory(atn *ATN, typeIndex, src, trg, arg1, arg2, arg3 int, sets []*IntervalSet) Transition {
+//pub fn edgeFactory(atn *ATN, typeIndex, src, trg, arg1, arg2, arg3 int, sets []*IntervalSet) -> Transition {
 //	target := atn.states[trg]
 //
 //	switch typeIndex {
@@ -724,7 +724,7 @@
 //	panic("The specified transition type is not valid.")
 //}
 //
-//func (a *ATNDeserializer) stateFactory(typeIndex, ruleIndex int) ATNState {
+//pub fn stateFactory(typeIndex, ruleIndex int) -> ATNState {
 //	var s ATNState
 //
 //	switch typeIndex {
@@ -776,7 +776,7 @@
 //	return s
 //}
 //
-//func (a *ATNDeserializer) lexerActionFactory(typeIndex, data1, data2 int) LexerAction {
+//pub fn lexerActionFactory(typeIndex, data1, data2 int) -> LexerAction {
 //	switch typeIndex {
 //	case LexerActionTypeChannel:
 //		return NewLexerChannelAction(data1)

@@ -60,13 +60,13 @@
 //
 //var _ ParseTreeVisitor = &BaseParseTreeVisitor{}
 //
-//func (v *BaseParseTreeVisitor) Visit(tree ParseTree) interface{}            { return nil }
-//func (v *BaseParseTreeVisitor) VisitChildren(node RuleNode) interface{}     { return nil }
-//func (v *BaseParseTreeVisitor) VisitTerminal(node TerminalNode) interface{} { return nil }
-//func (v *BaseParseTreeVisitor) VisitErrorNode(node ErrorNode) interface{}   { return nil }
+//pub fn Visit(tree ParseTree) -> interface{}            { return nil }
+//pub fn VisitChildren(node RuleNode) -> interface{}     { return nil }
+//pub fn VisitTerminal(node TerminalNode) -> interface{} { return nil }
+//pub fn VisitErrorNode(node ErrorNode) -> interface{}   { return nil }
 //
 //// TODO
-////func (this ParseTreeVisitor) Visit(ctx) {
+////pub fn Visit(ctx) -> {
 ////	if (Utils.isArray(ctx)) {
 ////		self := this
 ////		return ctx.map(function(child) { return VisitAtom(self, child)})
@@ -97,10 +97,10 @@
 //
 //var _ ParseTreeListener = &BaseParseTreeListener{}
 //
-//func (l *BaseParseTreeListener) VisitTerminal(node TerminalNode)      {}
-//func (l *BaseParseTreeListener) VisitErrorNode(node ErrorNode)        {}
-//func (l *BaseParseTreeListener) EnterEveryRule(ctx ParserRuleContext) {}
-//func (l *BaseParseTreeListener) ExitEveryRule(ctx ParserRuleContext)  {}
+//pub fn VisitTerminal(node TerminalNode) ->      {}
+//pub fn VisitErrorNode(node ErrorNode) ->        {}
+//pub fn EnterEveryRule(ctx ParserRuleContext) -> {}
+//pub fn ExitEveryRule(ctx ParserRuleContext) ->  {}
 //
 //pub struct TerminalNodeImpl {
 //	parentCtx RuleContext
@@ -119,35 +119,35 @@
 //	return tn
 //}
 //
-//func (t *TerminalNodeImpl) GetChild(i int) Tree {
+//pub fn GetChild(i int) -> Tree {
 //	return nil
 //}
 //
-//func (t *TerminalNodeImpl) GetChildren() []Tree {
+//pub fn GetChildren() -> []Tree {
 //	return nil
 //}
 //
-//func (t *TerminalNodeImpl) SetChildren(tree []Tree) {
+//pub fn SetChildren(tree []Tree) -> {
 //	panic("Cannot set children on terminal node")
 //}
 //
-//func (t *TerminalNodeImpl) GetSymbol() Token {
+//pub fn GetSymbol() -> Token {
 //	return t.symbol
 //}
 //
-//func (t *TerminalNodeImpl) GetParent() Tree {
+//pub fn GetParent() -> Tree {
 //	return t.parentCtx
 //}
 //
-//func (t *TerminalNodeImpl) SetParent(tree Tree) {
+//pub fn SetParent(tree Tree) -> {
 //	t.parentCtx = tree.(RuleContext)
 //}
 //
-//func (t *TerminalNodeImpl) GetPayload() interface{} {
+//pub fn GetPayload() -> interface{} {
 //	return t.symbol
 //}
 //
-//func (t *TerminalNodeImpl) GetSourceInterval() *Interval {
+//pub fn GetSourceInterval() -> *Interval {
 //	if t.symbol == nil {
 //		return TreeInvalidInterval
 //	}
@@ -155,19 +155,19 @@
 //	return NewInterval(tokenIndex, tokenIndex)
 //}
 //
-//func (t *TerminalNodeImpl) GetChildCount() int {
+//pub fn GetChildCount() -> int {
 //	return 0
 //}
 //
-//func (t *TerminalNodeImpl) Accept(v ParseTreeVisitor) interface{} {
+//pub fn Accept(v ParseTreeVisitor) -> interface{} {
 //	return v.VisitTerminal(t)
 //}
 //
-//func (t *TerminalNodeImpl) GetText() string {
+//pub fn GetText() -> string {
 //	return t.symbol.GetText()
 //}
 //
-//func (t *TerminalNodeImpl) String() string {
+//pub fn String() -> string {
 //	if t.symbol.GetTokenType() == TokenEOF {
 //		return "<EOF>"
 //	}
@@ -175,7 +175,7 @@
 //	return t.symbol.GetText()
 //}
 //
-//func (t *TerminalNodeImpl) ToStringTree(s []string, r Recognizer) string {
+//pub fn ToStringTree(s []string, r Recognizer) -> string {
 //	return t.String()
 //}
 //
@@ -197,9 +197,9 @@
 //	return en
 //}
 //
-//func (e *ErrorNodeImpl) errorNode() {}
+//pub fn errorNode() -> {}
 //
-//func (e *ErrorNodeImpl) Accept(v ParseTreeVisitor) interface{} {
+//pub fn Accept(v ParseTreeVisitor) -> interface{} {
 //	return v.VisitErrorNode(e)
 //}
 //
@@ -210,7 +210,7 @@
 //	return new(ParseTreeWalker)
 //}
 //
-//func (p *ParseTreeWalker) Walk(listener ParseTreeListener, t Tree) {
+//pub fn Walk(listener ParseTreeListener, t Tree) -> {
 //	switch tt := t.(type) {
 //	case ErrorNode:
 //		listener.VisitErrorNode(tt)
@@ -232,13 +232,13 @@
 //// {@link RuleContext}-specific event. First we trigger the generic and then
 //// the rule specific. We to them in reverse order upon finishing the node.
 ////
-//func (p *ParseTreeWalker) EnterRule(listener ParseTreeListener, r RuleNode) {
+//pub fn EnterRule(listener ParseTreeListener, r RuleNode) -> {
 //	ctx := r.GetRuleContext().(ParserRuleContext)
 //	listener.EnterEveryRule(ctx)
 //	ctx.EnterRule(listener)
 //}
 //
-//func (p *ParseTreeWalker) ExitRule(listener ParseTreeListener, r RuleNode) {
+//pub fn ExitRule(listener ParseTreeListener, r RuleNode) -> {
 //	ctx := r.GetRuleContext().(ParserRuleContext)
 //	ctx.ExitRule(listener)
 //	listener.ExitEveryRule(ctx)

@@ -31,7 +31,7 @@
 //// returns the start state corresponding to the specified precedence if a start
 //// state exists for the specified precedence and nil otherwise. d must be a
 //// precedence DFA. See also isPrecedenceDfa.
-//func (d *DFA) getPrecedenceStartState(precedence int) *DFAState {
+//pub fn getPrecedenceStartState(precedence int) -> *DFAState {
 //	if !d.precedenceDfa {
 //		panic("only precedence DFAs may contain a precedence start state")
 //	}
@@ -46,7 +46,7 @@
 //
 //// setPrecedenceStartState sets the start state for the current precedence. d
 //// must be a precedence DFA. See also isPrecedenceDfa.
-//func (d *DFA) setPrecedenceStartState(precedence int, startState *DFAState) {
+//pub fn setPrecedenceStartState(precedence int, startState *DFAState) -> {
 //	if !d.precedenceDfa {
 //		panic("only precedence DFAs may contain a precedence start state")
 //	}
@@ -70,7 +70,7 @@
 //// state s0 is set to a new DFAState with an empty outgoing DFAState.edges to
 //// store the start states for individual precedence values if precedenceDfa is
 //// true or nil otherwise, and d.precedenceDfa is updated.
-//func (d *DFA) setPrecedenceDfa(precedenceDfa bool) {
+//pub fn setPrecedenceDfa(precedenceDfa bool) -> {
 //	if d.precedenceDfa != precedenceDfa {
 //		d.states = make(map[string]*DFAState)
 //
@@ -89,18 +89,18 @@
 //	}
 //}
 //
-//func (d *DFA) GetStates() map[string]*DFAState {
+//pub fn GetStates() -> map[string]*DFAState {
 //	return d.states
 //}
 //
 //type DFAStateList []*DFAState
 //
-//func (d DFAStateList) Len() int           { return len(d) }
-//func (d DFAStateList) Less(i, j int) bool { return d[i].stateNumber < d[j].stateNumber }
-//func (d DFAStateList) Swap(i, j int)      { d[i], d[j] = d[j], d[i] }
+//pub fn Len() int           { return len(d) -> }
+//pub fn Less(i, j int) -> bool { return d[i].stateNumber < d[j].stateNumber }
+//pub fn Swap(i, j int) ->      { d[i], d[j] = d[j], d[i] }
 //
 //// sortedStates returns the states in d sorted by their state number.
-//func (d *DFA) sortedStates() []*DFAState {
+//pub fn sortedStates() -> []*DFAState {
 //	vs := make([]*DFAState, 0, len(d.states))
 //
 //	for _, v := range d.states {
@@ -112,7 +112,7 @@
 //	return vs
 //}
 //
-//func (d *DFA) String(literalNames []string, symbolicNames []string) string {
+//pub fn String(literalNames []string, symbolicNames []string) -> string {
 //	if d.s0 == nil {
 //		return ""
 //	}
@@ -120,7 +120,7 @@
 //	return NewDFASerializer(d, literalNames, symbolicNames).String()
 //}
 //
-//func (d *DFA) ToLexerString() string {
+//pub fn ToLexerString() -> string {
 //	if d.s0 == nil {
 //		return ""
 //	}

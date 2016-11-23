@@ -69,47 +69,47 @@
 //	TokenHiddenChannel = 1
 //)
 //
-//func (b *BaseToken) GetChannel() int {
+//pub fn GetChannel() -> int {
 //	return b.channel
 //}
 //
-//func (b *BaseToken) GetStart() int {
+//pub fn GetStart() -> int {
 //	return b.start
 //}
 //
-//func (b *BaseToken) GetStop() int {
+//pub fn GetStop() -> int {
 //	return b.stop
 //}
 //
-//func (b *BaseToken) GetLine() int {
+//pub fn GetLine() -> int {
 //	return b.line
 //}
 //
-//func (b *BaseToken) GetColumn() int {
+//pub fn GetColumn() -> int {
 //	return b.column
 //}
 //
-//func (b *BaseToken) GetTokenType() int {
+//pub fn GetTokenType() -> int {
 //	return b.tokenType
 //}
 //
-//func (b *BaseToken) GetSource() *TokenSourceCharStreamPair {
+//pub fn GetSource() -> *TokenSourceCharStreamPair {
 //	return b.source
 //}
 //
-//func (b *BaseToken) GetTokenIndex() int {
+//pub fn GetTokenIndex() -> int {
 //	return b.tokenIndex
 //}
 //
-//func (b *BaseToken) SetTokenIndex(v int) {
+//pub fn SetTokenIndex(v int) -> {
 //	b.tokenIndex = v
 //}
 //
-//func (b *BaseToken) GetTokenSource() TokenSource {
+//pub fn GetTokenSource() -> TokenSource {
 //	return b.source.tokenSource
 //}
 //
-//func (b *BaseToken) GetInputStream() CharStream {
+//pub fn GetInputStream() -> CharStream {
 //	return b.source.charStream
 //}
 //
@@ -155,7 +155,7 @@
 ////
 //// @param oldToken The token to copy.
 ////
-//func (c *CommonToken) clone() *CommonToken {
+//pub fn clone() -> *CommonToken {
 //	t := NewCommonToken(c.source, c.tokenType, c.channel, c.start, c.stop)
 //	t.tokenIndex = c.GetTokenIndex()
 //	t.line = c.GetLine()
@@ -164,7 +164,7 @@
 //	return t
 //}
 //
-//func (c *CommonToken) GetText() string {
+//pub fn GetText() -> string {
 //	if c.text != "" {
 //		return c.text
 //	}
@@ -179,11 +179,11 @@
 //	return "<EOF>"
 //}
 //
-//func (c *CommonToken) SetText(text string) {
+//pub fn SetText(text string) -> {
 //	c.text = text
 //}
 //
-//func (c *CommonToken) String() string {
+//pub fn String() -> string {
 //	txt := c.GetText()
 //	if txt != "" {
 //		txt = strings.Replace(txt, "\n", "\\n", -1)

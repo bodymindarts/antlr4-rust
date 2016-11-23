@@ -23,7 +23,7 @@
 //	return b
 //}
 //
-//func (b *BaseATNSimulator) getCachedContext(context PredictionContext) PredictionContext {
+//pub fn getCachedContext(context PredictionContext) -> PredictionContext {
 //	if b.sharedContextCache == nil {
 //		return context
 //	}
@@ -33,14 +33,14 @@
 //	return getCachedBasePredictionContext(context, b.sharedContextCache, visited)
 //}
 //
-//func (b *BaseATNSimulator) SharedContextCache() *PredictionContextCache {
+//pub fn SharedContextCache() -> *PredictionContextCache {
 //	return b.sharedContextCache
 //}
 //
-//func (b *BaseATNSimulator) ATN() *ATN {
+//pub fn ATN() -> *ATN {
 //	return b.atn
 //}
 //
-//func (b *BaseATNSimulator) DecisionToDFA() []*DFA {
+//pub fn DecisionToDFA() -> []*DFA {
 //	return b.decisionToDFA
 //}

@@ -71,58 +71,58 @@
 //	return &BaseATNState{stateNumber: ATNStateInvalidStateNumber, stateType: ATNStateInvalidType}
 //}
 //
-//func (as *BaseATNState) GetRuleIndex() int {
+//pub fn GetRuleIndex() -> int {
 //	return as.ruleIndex
 //}
 //
-//func (as *BaseATNState) SetRuleIndex(v int) {
+//pub fn SetRuleIndex(v int) -> {
 //	as.ruleIndex = v
 //}
-//func (as *BaseATNState) GetEpsilonOnlyTransitions() bool {
+//pub fn GetEpsilonOnlyTransitions() -> bool {
 //	return as.epsilonOnlyTransitions
 //}
 //
-//func (as *BaseATNState) GetATN() *ATN {
+//pub fn GetATN() -> *ATN {
 //	return as.atn
 //}
 //
-//func (as *BaseATNState) SetATN(atn *ATN) {
+//pub fn SetATN(atn *ATN) -> {
 //	as.atn = atn
 //}
 //
-//func (as *BaseATNState) GetTransitions() []Transition {
+//pub fn GetTransitions() -> []Transition {
 //	return as.transitions
 //}
 //
-//func (as *BaseATNState) SetTransitions(t []Transition) {
+//pub fn SetTransitions(t []Transition) -> {
 //	as.transitions = t
 //}
 //
-//func (as *BaseATNState) GetStateType() int {
+//pub fn GetStateType() -> int {
 //	return as.stateType
 //}
 //
-//func (as *BaseATNState) GetStateNumber() int {
+//pub fn GetStateNumber() -> int {
 //	return as.stateNumber
 //}
 //
-//func (as *BaseATNState) SetStateNumber(stateNumber int) {
+//pub fn SetStateNumber(stateNumber int) -> {
 //	as.stateNumber = stateNumber
 //}
 //
-//func (as *BaseATNState) GetNextTokenWithinRule() *IntervalSet {
+//pub fn GetNextTokenWithinRule() -> *IntervalSet {
 //	return as.NextTokenWithinRule
 //}
 //
-//func (as *BaseATNState) SetNextTokenWithinRule(v *IntervalSet) {
+//pub fn SetNextTokenWithinRule(v *IntervalSet) -> {
 //	as.NextTokenWithinRule = v
 //}
 //
-//func (as *BaseATNState) String() string {
+//pub fn String() -> string {
 //	return strconv.Itoa(as.stateNumber)
 //}
 //
-//func (as *BaseATNState) equals(other interface{}) bool {
+//pub fn equals(other interface{}) -> bool {
 //	if ot, ok := other.(ATNState); ok {
 //		return as.stateNumber == ot.GetStateNumber()
 //	}
@@ -130,11 +130,11 @@
 //	return false
 //}
 //
-//func (as *BaseATNState) isNonGreedyExitState() bool {
+//pub fn isNonGreedyExitState() -> bool {
 //	return false
 //}
 //
-//func (as *BaseATNState) AddTransition(trans Transition, index int) {
+//pub fn AddTransition(trans Transition, index int) -> {
 //	if len(as.transitions) == 0 {
 //		as.epsilonOnlyTransitions = trans.getIsEpsilon()
 //	} else if as.epsilonOnlyTransitions != trans.getIsEpsilon() {
@@ -181,19 +181,19 @@
 //	return &BaseDecisionState{BaseATNState: NewBaseATNState(), decision: -1}
 //}
 //
-//func (s *BaseDecisionState) getDecision() int {
+//pub fn getDecision() -> int {
 //	return s.decision
 //}
 //
-//func (s *BaseDecisionState) setDecision(b int) {
+//pub fn setDecision(b int) -> {
 //	s.decision = b
 //}
 //
-//func (s *BaseDecisionState) getNonGreedy() bool {
+//pub fn getNonGreedy() -> bool {
 //	return s.nonGreedy
 //}
 //
-//func (s *BaseDecisionState) setNonGreedy(b bool) {
+//pub fn setNonGreedy(b bool) -> {
 //	s.nonGreedy = b
 //}
 //
@@ -214,11 +214,11 @@
 //	return &BaseBlockStartState{BaseDecisionState: NewBaseDecisionState()}
 //}
 //
-//func (s *BaseBlockStartState) getEndState() *BlockEndState {
+//pub fn getEndState() -> *BlockEndState {
 //	return s.endState
 //}
 //
-//func (s *BaseBlockStartState) setEndState(b *BlockEndState) {
+//pub fn setEndState(b *BlockEndState) -> {
 //	s.endState = b
 //}
 //

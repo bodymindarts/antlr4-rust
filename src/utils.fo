@@ -30,7 +30,7 @@
 //
 //var ErrEmptyStack = errors.New("Stack is empty")
 //
-//func (s *IntStack) Pop() (int, error) {
+//pub fn (int, error) -> {
 //	l := len(*s) - 1
 //	if l < 0 {
 //		return 0, ErrEmptyStack
@@ -40,7 +40,7 @@
 //	return v, nil
 //}
 //
-//func (s *IntStack) Push(e int) {
+//pub fn Push(e int) -> {
 //	*s = append(*s, e)
 //}
 //
@@ -113,11 +113,11 @@
 //	return fmt.Sprint(h.Sum32())
 //}
 //
-//func (s *Set) length() int {
+//pub fn length() -> int {
 //	return len(s.data)
 //}
 //
-//func (s *Set) add(value interface{}) interface{} {
+//pub fn add(value interface{}) -> interface{} {
 //
 //	hash := s.hashFunction(value)
 //	key := "hash_" + hashCode(hash)
@@ -140,7 +140,7 @@
 //	return value
 //}
 //
-//func (s *Set) contains(value interface{}) bool {
+//pub fn contains(value interface{}) -> bool {
 //
 //	hash := s.hashFunction(value)
 //	key := "hash_" + hashCode(hash)
@@ -157,7 +157,7 @@
 //	return false
 //}
 //
-//func (s *Set) values() []interface{} {
+//pub fn values() -> []interface{} {
 //	l := make([]interface{}, 0)
 //
 //	for key := range s.data {
@@ -168,7 +168,7 @@
 //	return l
 //}
 //
-//func (s *Set) String() string {
+//pub fn String() -> string {
 //
 //	r := ""
 //
@@ -191,29 +191,29 @@
 //	return b
 //}
 //
-//func (b *BitSet) add(value int) {
+//pub fn add(value int) -> {
 //	b.data[value] = true
 //}
 //
-//func (b *BitSet) clear(index int) {
+//pub fn clear(index int) -> {
 //	delete(b.data, index)
 //}
 //
-//func (b *BitSet) or(set *BitSet) {
+//pub fn or(set *BitSet) -> {
 //	for k := range set.data {
 //		b.add(k)
 //	}
 //}
 //
-//func (b *BitSet) remove(value int) {
+//pub fn remove(value int) -> {
 //	delete(b.data, value)
 //}
 //
-//func (b *BitSet) contains(value int) bool {
+//pub fn contains(value int) -> bool {
 //	return b.data[value] == true
 //}
 //
-//func (b *BitSet) values() []int {
+//pub fn values() -> []int {
 //	ks := make([]int, len(b.data))
 //	i := 0
 //	for k := range b.data {
@@ -224,7 +224,7 @@
 //	return ks
 //}
 //
-//func (b *BitSet) minValue() int {
+//pub fn minValue() -> int {
 //	min := 2147483647
 //
 //	for k := range b.data {
@@ -236,7 +236,7 @@
 //	return min
 //}
 //
-//func (b *BitSet) equals(other interface{}) bool {
+//pub fn equals(other interface{}) -> bool {
 //	otherBitSet, ok := other.(*BitSet)
 //	if !ok {
 //		return false
@@ -255,11 +255,11 @@
 //	return true
 //}
 //
-//func (b *BitSet) length() int {
+//pub fn length() -> int {
 //	return len(b.data)
 //}
 //
-//func (b *BitSet) String() string {
+//pub fn String() -> string {
 //	vals := b.values()
 //	valsS := make([]string, len(vals))
 //
@@ -279,17 +279,17 @@
 //	return d
 //}
 //
-//func (a *AltDict) Get(key string) interface{} {
+//pub fn Get(key string) -> interface{} {
 //	key = "k-" + key
 //	return a.data[key]
 //}
 //
-//func (a *AltDict) put(key string, value interface{}) {
+//pub fn put(key string, value interface{}) -> {
 //	key = "k-" + key
 //	a.data[key] = value
 //}
 //
-//func (a *AltDict) values() []interface{} {
+//pub fn values() -> []interface{} {
 //	vs := make([]interface{}, len(a.data))
 //	i := 0
 //	for _, v := range a.data {
@@ -309,7 +309,7 @@
 //	return dd
 //}
 //
-//func (d *DoubleDict) Get(a string, b string) interface{} {
+//pub fn Get(a string, b string) -> interface{} {
 //	data := d.data[a]
 //
 //	if data == nil {
@@ -319,7 +319,7 @@
 //	return data[b]
 //}
 //
-//func (d *DoubleDict) set(a, b string, o interface{}) {
+//pub fn set(a, b string, o interface{}) -> {
 //	data := d.data[a]
 //
 //	if data == nil {
@@ -370,7 +370,7 @@
 //
 //func TitleCase(str string) string {
 //
-//	//	func (re *Regexp) ReplaceAllStringFunc(src string, repl func(string) string) string
+//	//	pub fn ReplaceAllStringFunc(src string, repl func(string) string) -> string
 //	//	return str.replace(//g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1)})
 //
 //	panic("Not implemented")

@@ -19,11 +19,11 @@
 //	return i
 //}
 //
-//func (i *Interval) contains(item int) bool {
+//pub fn contains(item int) -> bool {
 //	return item >= i.start && item < i.stop
 //}
 //
-//func (i *Interval) String() string {
+//pub fn String() -> string {
 //	if i.start == i.stop-1 {
 //		return strconv.Itoa(i.start)
 //	}
@@ -31,7 +31,7 @@
 //	return strconv.Itoa(i.start) + ".." + strconv.Itoa(i.stop-1)
 //}
 //
-//func (i *Interval) length() int {
+//pub fn length() -> int {
 //	return i.stop - i.start
 //}
 //
@@ -50,7 +50,7 @@
 //	return i
 //}
 //
-//func (i *IntervalSet) first() int {
+//pub fn first() -> int {
 //	if len(i.intervals) == 0 {
 //		return TokenInvalidType
 //	}
@@ -58,15 +58,15 @@
 //	return i.intervals[0].start
 //}
 //
-//func (i *IntervalSet) addOne(v int) {
+//pub fn addOne(v int) -> {
 //	i.addInterval(NewInterval(v, v+1))
 //}
 //
-//func (i *IntervalSet) addRange(l, h int) {
+//pub fn addRange(l, h int) -> {
 //	i.addInterval(NewInterval(l, h+1))
 //}
 //
-//func (i *IntervalSet) addInterval(v *Interval) {
+//pub fn addInterval(v *Interval) -> {
 //	if i.intervals == nil {
 //		i.intervals = make([]*Interval, 0)
 //		i.intervals = append(i.intervals, v)
@@ -103,7 +103,7 @@
 //	}
 //}
 //
-//func (i *IntervalSet) addSet(other *IntervalSet) *IntervalSet {
+//pub fn addSet(other *IntervalSet) -> *IntervalSet {
 //	if other.intervals != nil {
 //		for k := 0; k < len(other.intervals); k++ {
 //			i2 := other.intervals[k]
@@ -113,7 +113,7 @@
 //	return i
 //}
 //
-//func (i *IntervalSet) complement(start int, stop int) *IntervalSet {
+//pub fn complement(start int, stop int) -> *IntervalSet {
 //	result := NewIntervalSet()
 //	result.addInterval(NewInterval(start, stop+1))
 //	for j := 0; j < len(i.intervals); j++ {
@@ -122,7 +122,7 @@
 //	return result
 //}
 //
-//func (i *IntervalSet) contains(item int) bool {
+//pub fn contains(item int) -> bool {
 //	if i.intervals == nil {
 //		return false
 //	}
@@ -134,7 +134,7 @@
 //	return false
 //}
 //
-//func (i *IntervalSet) length() int {
+//pub fn length() -> int {
 //	len := 0
 //
 //	for _, v := range i.intervals {
@@ -144,7 +144,7 @@
 //	return len
 //}
 //
-//func (i *IntervalSet) removeRange(v *Interval) {
+//pub fn removeRange(v *Interval) -> {
 //	if v.start == v.stop-1 {
 //		i.removeOne(v.start)
 //	} else if i.intervals != nil {
@@ -174,7 +174,7 @@
 //	}
 //}
 //
-//func (i *IntervalSet) removeOne(v int) {
+//pub fn removeOne(v int) -> {
 //	if i.intervals != nil {
 //		for k := 0; k < len(i.intervals); k++ {
 //			ki := i.intervals[k]
@@ -202,11 +202,11 @@
 //	}
 //}
 //
-//func (i *IntervalSet) String() string {
+//pub fn String() -> string {
 //	return i.StringVerbose(nil, nil, false)
 //}
 //
-//func (i *IntervalSet) StringVerbose(literalNames []string, symbolicNames []string, elemsAreChar bool) string {
+//pub fn StringVerbose(literalNames []string, symbolicNames []string, elemsAreChar bool) -> string {
 //
 //	if i.intervals == nil {
 //		return "{}"
@@ -219,7 +219,7 @@
 //	return i.toIndexString()
 //}
 //
-//func (i *IntervalSet) toCharString() string {
+//pub fn toCharString() -> string {
 //	names := make([]string, len(i.intervals))
 //
 //	for j := 0; j < len(i.intervals); j++ {
@@ -241,7 +241,7 @@
 //	return names[0]
 //}
 //
-//func (i *IntervalSet) toIndexString() string {
+//pub fn toIndexString() -> string {
 //
 //	names := make([]string, 0)
 //	for j := 0; j < len(i.intervals); j++ {
@@ -263,7 +263,7 @@
 //	return names[0]
 //}
 //
-//func (i *IntervalSet) toTokenString(literalNames []string, symbolicNames []string) string {
+//pub fn toTokenString(literalNames []string, symbolicNames []string) -> string {
 //	names := make([]string, 0)
 //	for _, v := range i.intervals {
 //		for j := v.start; j < v.stop; j++ {
@@ -277,7 +277,7 @@
 //	return names[0]
 //}
 //
-//func (i *IntervalSet) elementName(literalNames []string, symbolicNames []string, a int) string {
+//pub fn elementName(literalNames []string, symbolicNames []string, a int) -> string {
 //	if a == TokenEOF {
 //		return "<EOF>"
 //	} else if a == TokenEpsilon {

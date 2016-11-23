@@ -15,7 +15,7 @@
 //	return &PredPrediction{alt: alt, pred: pred}
 //}
 //
-//func (p *PredPrediction) String() string {
+//pub fn String() -> string {
 //	return "(" + fmt.Sprint(p.pred) + ", " + fmt.Sprint(p.alt) + ")"
 //}
 //
@@ -87,7 +87,7 @@
 //}
 //
 //// GetAltSet gets the set of all alts mentioned by all ATN configurations in d.
-//func (d *DFAState) GetAltSet() *Set {
+//pub fn GetAltSet() -> *Set {
 //	alts := NewSet(nil, nil)
 //
 //	if d.configs != nil {
@@ -103,7 +103,7 @@
 //	return alts
 //}
 //
-//func (d *DFAState) setPrediction(v int) {
+//pub fn setPrediction(v int) -> {
 //	d.prediction = v
 //}
 //
@@ -118,7 +118,7 @@
 //// Cannot test the DFA state numbers here because in
 //// ParserATNSimulator.addDFAState we need to know if any other state exists that
 //// has d exact set of ATN configurations. The stateNumber is irrelevant.
-//func (d *DFAState) equals(other interface{}) bool {
+//pub fn equals(other interface{}) -> bool {
 //	if d == other {
 //		return true
 //	} else if _, ok := other.(*DFAState); !ok {
@@ -128,11 +128,11 @@
 //	return d.configs.Equals(other.(*DFAState).configs)
 //}
 //
-//func (d *DFAState) String() string {
+//pub fn String() -> string {
 //	return strconv.Itoa(d.stateNumber) + ":" + d.Hash()
 //}
 //
-//func (d *DFAState) Hash() string {
+//pub fn Hash() -> string {
 //	var s string
 //
 //	if d.isAcceptState {

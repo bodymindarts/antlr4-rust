@@ -49,32 +49,32 @@
 //	}
 //}
 //
-//func (c *CommonTokenStream) GetAllTokens() []Token {
+//pub fn GetAllTokens() -> []Token {
 //	return c.tokens
 //}
 //
-//func (c *CommonTokenStream) Mark() int {
+//pub fn Mark() -> int {
 //	return 0
 //}
 //
-//func (c *CommonTokenStream) Release(marker int) {}
+//pub fn Release(marker int) -> {}
 //
-//func (c *CommonTokenStream) reset() {
+//pub fn reset() -> {
 //	c.Seek(0)
 //}
 //
-//func (c *CommonTokenStream) Seek(index int) {
+//pub fn Seek(index int) -> {
 //	c.lazyInit()
 //	c.index = c.adjustSeekIndex(index)
 //}
 //
-//func (c *CommonTokenStream) Get(index int) Token {
+//pub fn Get(index int) -> Token {
 //	c.lazyInit()
 //
 //	return c.tokens[index]
 //}
 //
-//func (c *CommonTokenStream) Consume() {
+//pub fn Consume() -> {
 //	SkipEOFCheck := false
 //
 //	if c.index >= 0 {
@@ -102,7 +102,7 @@
 //
 //// Sync makes sure index i in tokens has a token and returns true if a token is
 //// located at index i and otherwise false.
-//func (c *CommonTokenStream) Sync(i int) bool {
+//pub fn Sync(i int) -> bool {
 //	n := i - len(c.tokens) + 1 // TODO: How many more elements do we need?
 //
 //	if n > 0 {
@@ -115,7 +115,7 @@
 //
 //// fetch adds n elements to buffer and returns the actual number of elements
 //// added to the buffer.
-//func (c *CommonTokenStream) fetch(n int) int {
+//pub fn fetch(n int) -> int {
 //	if c.fetchedEOF {
 //		return 0
 //	}
@@ -137,7 +137,7 @@
 //}
 //
 //// GetTokens gets all tokens from start to stop inclusive.
-//func (c *CommonTokenStream) GetTokens(start int, stop int, types *IntervalSet) []Token {
+//pub fn GetTokens(start int, stop int, types *IntervalSet) -> []Token {
 //	if start < 0 || stop < 0 {
 //		return nil
 //	}
@@ -165,27 +165,27 @@
 //	return subset
 //}
 //
-//func (c *CommonTokenStream) LA(i int) int {
+//pub fn LA(i int) -> int {
 //	return c.LT(i).GetTokenType()
 //}
 //
-//func (c *CommonTokenStream) lazyInit() {
+//pub fn lazyInit() -> {
 //	if c.index == -1 {
 //		c.setup()
 //	}
 //}
 //
-//func (c *CommonTokenStream) setup() {
+//pub fn setup() -> {
 //	c.Sync(0)
 //	c.index = c.adjustSeekIndex(0)
 //}
 //
-//func (c *CommonTokenStream) GetTokenSource() TokenSource {
+//pub fn GetTokenSource() -> TokenSource {
 //	return c.tokenSource
 //}
 //
 //// SetTokenSource resets the c token stream by setting its token source.
-//func (c *CommonTokenStream) SetTokenSource(tokenSource TokenSource) {
+//pub fn SetTokenSource(tokenSource TokenSource) -> {
 //	c.tokenSource = tokenSource
 //	c.tokens = make([]Token, 0)
 //	c.index = -1
@@ -194,7 +194,7 @@
 //// NextTokenOnChannel returns the index of the next token on channel given a
 //// starting index. Returns i if tokens[i] is on channel. Returns -1 if there are
 //// no tokens on channel between i and EOF.
-//func (c *CommonTokenStream) NextTokenOnChannel(i, channel int) int {
+//pub fn NextTokenOnChannel(i, channel int) -> int {
 //	c.Sync(i)
 //
 //	if i >= len(c.tokens) {
@@ -219,7 +219,7 @@
 //// previousTokenOnChannel returns the index of the previous token on channel
 //// given a starting index. Returns i if tokens[i] is on channel. Returns -1 if
 //// there are no tokens on channel between i and 0.
-//func (c *CommonTokenStream) previousTokenOnChannel(i, channel int) int {
+//pub fn previousTokenOnChannel(i, channel int) -> int {
 //	for i >= 0 && c.tokens[i].GetChannel() != channel {
 //		i--
 //	}
@@ -230,7 +230,7 @@
 //// getHiddenTokensToRight collects all tokens on a specified channel to the
 //// right of the current token up until we see a token on DEFAULT_TOKEN_CHANNEL
 //// or EOF. If channel is -1, it finds any non-default channel token.
-//func (c *CommonTokenStream) getHiddenTokensToRight(tokenIndex, channel int) []Token {
+//pub fn getHiddenTokensToRight(tokenIndex, channel int) -> []Token {
 //	c.lazyInit()
 //
 //	if tokenIndex < 0 || tokenIndex >= len(c.tokens) {
@@ -255,7 +255,7 @@
 //// getHiddenTokensToLeft collects all tokens on channel to the left of the
 //// current token until we see a token on DEFAULT_TOKEN_CHANNEL. If channel is
 //// -1, it finds any non default channel token.
-//func (c *CommonTokenStream) getHiddenTokensToLeft(tokenIndex, channel int) []Token {
+//pub fn getHiddenTokensToLeft(tokenIndex, channel int) -> []Token {
 //	c.lazyInit()
 //
 //	if tokenIndex < 0 || tokenIndex >= len(c.tokens) {
@@ -275,7 +275,7 @@
 //	return c.filterForChannel(from, to, channel)
 //}
 //
-//func (c *CommonTokenStream) filterForChannel(left, right, channel int) []Token {
+//pub fn filterForChannel(left, right, channel int) -> []Token {
 //	hidden := make([]Token, 0)
 //
 //	for i := left; i < right+1; i++ {
@@ -297,23 +297,23 @@
 //	return hidden
 //}
 //
-//func (c *CommonTokenStream) GetSourceName() string {
+//pub fn GetSourceName() -> string {
 //	return c.tokenSource.GetSourceName()
 //}
 //
-//func (c *CommonTokenStream) Size() int {
+//pub fn Size() -> int {
 //	return len(c.tokens)
 //}
 //
-//func (c *CommonTokenStream) Index() int {
+//pub fn Index() -> int {
 //	return c.index
 //}
 //
-//func (c *CommonTokenStream) GetAllText() string {
+//pub fn GetAllText() -> string {
 //	return c.GetTextFromInterval(nil)
 //}
 //
-//func (c *CommonTokenStream) GetTextFromTokens(start, end Token) string {
+//pub fn GetTextFromTokens(start, end Token) -> string {
 //	if start == nil || end == nil {
 //		return ""
 //	}
@@ -321,11 +321,11 @@
 //	return c.GetTextFromInterval(NewInterval(start.GetTokenIndex(), end.GetTokenIndex()))
 //}
 //
-//func (c *CommonTokenStream) GetTextFromRuleContext(interval RuleContext) string {
+//pub fn GetTextFromRuleContext(interval RuleContext) -> string {
 //	return c.GetTextFromInterval(interval.GetSourceInterval())
 //}
 //
-//func (c *CommonTokenStream) GetTextFromInterval(interval *Interval) string {
+//pub fn GetTextFromInterval(interval *Interval) -> string {
 //	c.lazyInit()
 //	c.Fill()
 //
@@ -360,7 +360,7 @@
 //}
 //
 //// Fill gets all tokens from the lexer until EOF.
-//func (c *CommonTokenStream) Fill() {
+//pub fn Fill() -> {
 //	c.lazyInit()
 //
 //	for c.fetch(1000) == 1000 {
@@ -368,11 +368,11 @@
 //	}
 //}
 //
-//func (c *CommonTokenStream) adjustSeekIndex(i int) int {
+//pub fn adjustSeekIndex(i int) -> int {
 //	return c.NextTokenOnChannel(i, c.channel)
 //}
 //
-//func (c *CommonTokenStream) LB(k int) Token {
+//pub fn LB(k int) -> Token {
 //	if k == 0 || c.index-k < 0 {
 //		return nil
 //	}
@@ -394,7 +394,7 @@
 //	return c.tokens[i]
 //}
 //
-//func (c *CommonTokenStream) LT(k int) Token {
+//pub fn LT(k int) -> Token {
 //	c.lazyInit()
 //
 //	if k == 0 {
@@ -422,7 +422,7 @@
 //}
 //
 //// getNumberOfOnChannelTokens counts EOF once.
-//func (c *CommonTokenStream) getNumberOfOnChannelTokens() int {
+//pub fn getNumberOfOnChannelTokens() -> int {
 //	var n int
 //
 //	c.Fill()
