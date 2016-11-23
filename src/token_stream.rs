@@ -1,4 +1,3 @@
-//package antlr
 //
 //type TokenStream interface {
 //	IntStream

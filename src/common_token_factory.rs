@@ -1,4 +1,3 @@
-//package antlr
 //
 //// TokenFactory creates CommonToken objects.
 //type TokenFactory interface {

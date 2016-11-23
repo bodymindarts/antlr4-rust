@@ -1,4 +1,3 @@
-//package antlr
 //
 //type TokenSource interface {
 //	NextToken() Token

@@ -1,4 +1,3 @@
-//package antlr
 //
 //var ATNSimulatorError = NewDFAState(0x7FFFFFFF, NewBaseATNConfigSet(false))
 //

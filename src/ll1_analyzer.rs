@@ -1,4 +1,3 @@
-//package antlr
 //
 //type LL1Analyzer struct {
 //	atn *ATN

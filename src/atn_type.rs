@@ -1,4 +1,3 @@
-//package antlr
 //
 //// Represent the type of recognizer an ATN applies to.
 //const (

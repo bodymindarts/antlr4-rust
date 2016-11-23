@@ -1,4 +1,3 @@
-//package antlr
 //
 //import "fmt"
 //

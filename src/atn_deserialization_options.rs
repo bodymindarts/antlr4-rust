@@ -1,4 +1,3 @@
-//package antlr
 //
 //var ATNDeserializationOptionsdefaultOptions = &ATNDeserializationOptions{true, false, false}
 //
