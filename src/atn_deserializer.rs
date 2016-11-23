@@ -1,26 +1,16 @@
-//package antlr
-//
-//import (
-//  "encoding/hex"
-//  "fmt"
-//  "strconv"
-//  "strings"
-//  "unicode/utf16"
-//)
-//
-//// This is the earliest supported serialized UUID.
-//// stick to serialized version for now, we don't need a UUID instance
-//var BaseSerializedUUID = "AADB8D7E-AEEF-4415-AD2B-8204D6CF042E"
-//
-//// This list contains all of the currently supported UUIDs, ordered by when
-//// the feature first appeared in this branch.
-//var SupportedUUIDs = []string{BaseSerializedUUID}
-//
-//var SerializedVersion = 3
-//
-//// This is the current serialized UUID.
-//var SerializedUUID = BaseSerializedUUID
-//
+// This is the earliest supported serialized UUID.
+// stick to serialized version for now, we don't need a UUID instance
+pub const BASE_SERIALIZED_UUID = "AADB8D7E-AEEF-4415-AD2B-8204D6CF042E"
+
+// This list contains all of the currently supported UUIDs, ordered by when
+// the feature first appeared in this branch.
+pub const SUPPORTED_UUIDS: &'static [&str] = &[BASE_SERIALIZED_UUID]
+
+pub const SERIALIZED_VERSION = 3
+
+// This is the current serialized UUID.
+pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
+
 //pub struct LoopEndStateIntPair {
 //  item0 *LoopEndState
 //  item1 i32
