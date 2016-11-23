@@ -46,7 +46,7 @@
 //	text                   string
 //}
 //
-//impl BaseLexer {§//  pub fn new(input CharStream) *BaseLexer {
+//impl BaseLexer {§//  pub fn new(input CharStream) -> *BaseLexer {
 //
 //	lexer := new(BaseLexer)
 //

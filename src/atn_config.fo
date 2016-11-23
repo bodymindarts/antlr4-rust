@@ -83,7 +83,7 @@
 //	return NewBaseATNConfig(c, state, context, c.GetSemanticContext())
 //}
 //
-//impl BaseATNConfig {§//  pub fn new(c ATNConfig, state ATNState, context PredictionContext, semanticContext SemanticContext) *BaseATNConfig {
+//impl BaseATNConfig {§//  pub fn new(c ATNConfig, state ATNState, context PredictionContext, semanticContext SemanticContext) -> *BaseATNConfig {
 //	if semanticContext == nil {
 //		panic("semanticContext cannot be nil")
 //	}

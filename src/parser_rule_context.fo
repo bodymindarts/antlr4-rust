@@ -34,7 +34,7 @@
 //	children    []Tree
 //}
 //
-//impl BaseParserRuleContext {§//  pub fn new(parent ParserRuleContext, invokingStateNumber int) *BaseParserRuleContext {
+//impl BaseParserRuleContext {§//  pub fn new(parent ParserRuleContext, invokingStateNumber int) -> *BaseParserRuleContext {
 //	prc := new(BaseParserRuleContext)
 //
 //	prc.BaseRuleContext = NewBaseRuleContext(parent, invokingStateNumber)
@@ -346,7 +346,7 @@
 //	*BaseParserRuleContext
 //}
 //
-//impl BaseInterpreterRuleContext {§//  pub fn new(parent BaseInterpreterRuleContext, invokingStateNumber, ruleIndex int) *BaseInterpreterRuleContext {
+//impl BaseInterpreterRuleContext {§//  pub fn new(parent BaseInterpreterRuleContext, invokingStateNumber, ruleIndex int) -> *BaseInterpreterRuleContext {
 //
 //	prc := new(BaseInterpreterRuleContext)
 //

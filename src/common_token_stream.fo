@@ -40,7 +40,7 @@
 //	tokens []Token
 //}
 //
-//impl CommonTokenStream {§//  pub fn new(lexer Lexer, channel int) *CommonTokenStream {
+//impl CommonTokenStream {§//  pub fn new(lexer Lexer, channel int) -> *CommonTokenStream {
 //	return &CommonTokenStream{
 //		channel:     channel,
 //		index:       -1,

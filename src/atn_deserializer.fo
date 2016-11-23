@@ -38,7 +38,7 @@
 //	uuid                   string
 //}
 //
-//impl ATNDeserializer {§//  pub fn new(options *ATNDeserializationOptions) *ATNDeserializer {
+//impl ATNDeserializer {§//  pub fn new(options *ATNDeserializationOptions) -> *ATNDeserializer {
 //	if options == nil {
 //		options = ATNDeserializationOptionsdefaultOptions
 //	}

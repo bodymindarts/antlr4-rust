@@ -19,7 +19,7 @@
 //	precedenceDfa bool
 //}
 //
-//impl DFA {§//  pub fn new(atnStartState DecisionState, decision int) *DFA {
+//impl DFA {§//  pub fn new(atnStartState DecisionState, decision int) -> *DFA {
 //	return &DFA{
 //		atnStartState: atnStartState,
 //		decision:      decision,

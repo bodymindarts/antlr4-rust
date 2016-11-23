@@ -35,7 +35,7 @@
 //	states []ATNState
 //}
 //
-//impl ATN {§//  pub fn new(grammarType int, maxTokenType int) *ATN {
+//impl ATN {§//  pub fn new(grammarType int, maxTokenType int) -> *ATN {
 //	return &ATN{
 //		grammarType:          grammarType,
 //		maxTokenType:         maxTokenType,

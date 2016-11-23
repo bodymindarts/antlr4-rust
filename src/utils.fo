@@ -50,7 +50,7 @@
 //	equalsFunction func(interface{}, interface{}) bool
 //}
 //
-//impl Set {§//  pub fn new(hashFunction func(interface{}) string, equalsFunction func(interface{}, interface{}) bool) *Set {
+//impl Set {§//  pub fn new(hashFunction func(interface{}) string, equalsFunction func(interface{}, interface{}) bool) -> *Set {
 //
 //	s := new(Set)
 //
@@ -185,7 +185,7 @@
 //	data map[int]bool
 //}
 //
-//impl BitSet {§//  pub fn new() *BitSet {
+//impl BitSet {§//  pub fn new() -> *BitSet {
 //	b := new(BitSet)
 //	b.data = make(map[int]bool)
 //	return b
@@ -273,7 +273,7 @@
 //	data map[string]interface{}
 //}
 //
-//impl AltDict {§//  pub fn new() *AltDict {
+//impl AltDict {§//  pub fn new() -> *AltDict {
 //	d := new(AltDict)
 //	d.data = make(map[string]interface{})
 //	return d
@@ -303,7 +303,7 @@
 //	data map[string]map[string]interface{}
 //}
 //
-//impl DoubleDict {§//  pub fn new() *DoubleDict {
+//impl DoubleDict {§//  pub fn new() -> *DoubleDict {
 //	dd := new(DoubleDict)
 //	dd.data = make(map[string]map[string]interface{})
 //	return dd

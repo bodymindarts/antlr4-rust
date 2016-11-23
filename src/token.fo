@@ -117,7 +117,7 @@
 //	*BaseToken
 //}
 //
-//impl CommonToken {§//  pub fn new(source *TokenSourceCharStreamPair, tokenType, channel, start, stop int) *CommonToken {
+//impl CommonToken {§//  pub fn new(source *TokenSourceCharStreamPair, tokenType, channel, start, stop int) -> *CommonToken {
 //
 //	t := new(CommonToken)
 //

@@ -13,7 +13,7 @@
 //	symbolicNames []string
 //}
 //
-//impl DFASerializer {§//  pub fn new(dfa *DFA, literalNames, symbolicNames []string) *DFASerializer {
+//impl DFASerializer {§//  pub fn new(dfa *DFA, literalNames, symbolicNames []string) -> *DFASerializer {
 //	if literalNames == nil {
 //		literalNames = make([]string, 0)
 //	}
@@ -103,7 +103,7 @@
 //	*DFASerializer
 //}
 //
-//impl LexerDFASerializer {§//  pub fn new(dfa *DFA) *LexerDFASerializer {
+//impl LexerDFASerializer {§//  pub fn new(dfa *DFA) -> *LexerDFASerializer {
 //	return &LexerDFASerializer{DFASerializer: NewDFASerializer(dfa, nil, nil)}
 //}
 //

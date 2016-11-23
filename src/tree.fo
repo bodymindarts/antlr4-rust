@@ -110,7 +110,7 @@
 //
 //var _ TerminalNode = &TerminalNodeImpl{}
 //
-//impl TerminalNodeImpl {§//  pub fn new(symbol Token) *TerminalNodeImpl {
+//impl TerminalNodeImpl {§//  pub fn new(symbol Token) -> *TerminalNodeImpl {
 //	tn := new(TerminalNodeImpl)
 //
 //	tn.parentCtx = nil
@@ -191,7 +191,7 @@
 //
 //var _ ErrorNode = &ErrorNodeImpl{}
 //
-//impl ErrorNodeImpl {§//  pub fn new(token Token) *ErrorNodeImpl {
+//impl ErrorNodeImpl {§//  pub fn new(token Token) -> *ErrorNodeImpl {
 //	en := new(ErrorNodeImpl)
 //	en.TerminalNodeImpl = NewTerminalNodeImpl(token)
 //	return en
@@ -206,7 +206,7 @@
 //pub struct ParseTreeWalker {
 //}
 //
-//impl ParseTreeWalker {§//  pub fn new() *ParseTreeWalker {
+//impl ParseTreeWalker {§//  pub fn new() -> *ParseTreeWalker {
 //	return new(ParseTreeWalker)
 //}
 //

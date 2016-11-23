@@ -8,7 +8,7 @@
 //	generateRuleBypassTransitions bool
 //}
 //
-//impl ATNDeserializationOptions {§//  pub fn new(CopyFrom *ATNDeserializationOptions) *ATNDeserializationOptions {
+//impl ATNDeserializationOptions {§//  pub fn new(CopyFrom *ATNDeserializationOptions) -> *ATNDeserializationOptions {
 //	o := new(ATNDeserializationOptions)
 //
 //	if CopyFrom != nil {

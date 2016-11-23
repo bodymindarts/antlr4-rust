@@ -28,7 +28,7 @@
 //
 //var _ ErrorStrategy = &DefaultErrorStrategy{}
 //
-//impl DefaultErrorStrategy {§//  pub fn new() *DefaultErrorStrategy {
+//impl DefaultErrorStrategy {§//  pub fn new() -> *DefaultErrorStrategy {
 //
 //	d := new(DefaultErrorStrategy)
 //
@@ -719,7 +719,7 @@
 //
 //var _ ErrorStrategy = &BailErrorStrategy{}
 //
-//impl BailErrorStrategy {§//  pub fn new() *BailErrorStrategy {
+//impl BailErrorStrategy {§//  pub fn new() -> *BailErrorStrategy {
 //
 //	b := new(BailErrorStrategy)
 //

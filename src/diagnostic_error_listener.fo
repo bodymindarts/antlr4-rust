@@ -29,7 +29,7 @@
 //	exactOnly bool
 //}
 //
-//impl DiagnosticErrorListener {§//  pub fn new(exactOnly bool) *DiagnosticErrorListener {
+//impl DiagnosticErrorListener {§//  pub fn new(exactOnly bool) -> *DiagnosticErrorListener {
 //
 //	n := new(DiagnosticErrorListener)
 //

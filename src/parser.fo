@@ -46,7 +46,7 @@
 //
 //// p.is all the parsing support code essentially most of it is error
 //// recovery stuff.//
-//impl BaseParser {§//  pub fn new(input TokenStream) *BaseParser {
+//impl BaseParser {§//  pub fn new(input TokenStream) -> *BaseParser {
 //
 //	p := new(BaseParser)
 //

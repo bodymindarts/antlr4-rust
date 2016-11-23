@@ -34,7 +34,7 @@
 //	GrammarFileName string
 //}
 //
-//impl BaseRecognizer {§//  pub fn new() *BaseRecognizer {
+//impl BaseRecognizer {§//  pub fn new() -> *BaseRecognizer {
 //	rec := new(BaseRecognizer)
 //	rec.listeners = []ErrorListener{ConsoleErrorListenerINSTANCE}
 //	rec.state = -1

@@ -42,7 +42,7 @@
 //	RuleIndex     int
 //}
 //
-//impl BaseRuleContext {§//  pub fn new(parent RuleContext, invokingState int) *BaseRuleContext {
+//impl BaseRuleContext {§//  pub fn new(parent RuleContext, invokingState int) -> *BaseRuleContext {
 //
 //	rn := new(BaseRuleContext)
 //
