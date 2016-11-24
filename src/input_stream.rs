@@ -1,6 +1,6 @@
-use super::interval_set::Interval;
-use super::int_stream::IntStream;
-use super::char_stream::CharStream;
+use interval_set::Interval;
+use int_stream::IntStream;
+use char_stream::CharStream;
 use std::str;
 use std::cmp;
 

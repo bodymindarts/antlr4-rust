@@ -13,6 +13,17 @@ pub use self::input_stream::*;
 mod interval_set;
 pub use self::interval_set::*;
 
+mod atn_deserialization_options;
+pub use self::atn_deserialization_options::*;
+
+mod atn_deserializer;
+pub use self::atn_deserializer::*;
+
+mod atn;
+pub use self::atn::*;
+
+pub mod example;
+
 #[cfg(test)]
 mod tests {
     #[test]

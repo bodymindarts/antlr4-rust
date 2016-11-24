@@ -1,8 +1,6 @@
-//package antlr
-//
-//var ATNInvalidAltNumber i32
-//
-//pub struct ATN {
+pub const ATN_INVALID_ALT_NUMBER: i32 = 0;
+
+pub struct ATN {
 //  // DecisionToState is the decision points for all rules, subrules, optional
 //  // blocks, ()+, ()*, etc. Used to build DFA predictors for them.
 //  DecisionToState []DecisionState
@@ -33,28 +31,27 @@
 //  ruleToTokenType []int
 //
 //  states []ATNState
-//}
-//
-//impl ATN {§//  pub fn new(grammarType: i32, maxTokenType: i32) -> *ATN {
+}
+// impl ATN {§//  pub fn new(grammarType: i32, maxTokenType: i32) -> *ATN {
 //  return &ATN{
 //    grammarType:          grammarType,
 //    maxTokenType:         maxTokenType,
 //    modeNameToStartState: make(map[string]*TokensStartState),
 //  }
-//}
 //
-//// NextTokensInContext computes the set of valid tokens that can occur starting
-//// in state s. If ctx is nil, the set of tokens will not include what can follow
-//// the rule surrounding s. In other words, the set will be restricted to tokens
-//// reachable staying within the rule of s.
-//pub fn NextTokensInContext(s: ATNState, ctx: RuleContext) -> *IntervalSet {
+//
+// / NextTokensInContext computes the set of valid tokens that can occur starting
+// / in state s. If ctx is nil, the set of tokens will not include what can follow
+// / the rule surrounding s. In other words, the set will be restricted to tokens
+// / reachable staying within the rule of s.
+// pub fn NextTokensInContext(s: ATNState, ctx: RuleContext) -> *IntervalSet {
 //  return NewLL1Analyzer(a).Look(s, nil, ctx)
-//}
 //
-//// NextTokensNoContext computes the set of valid tokens that can occur starting
-//// in s and staying in same rule. Token.EPSILON is in set if we reach end of
-//// rule.
-//pub fn NextTokensNoContext(s: ATNState) -> *IntervalSet {
+//
+// / NextTokensNoContext computes the set of valid tokens that can occur starting
+// / in s and staying in same rule. Token.EPSILON is in set if we reach end of
+// / rule.
+// pub fn NextTokensNoContext(s: ATNState) -> *IntervalSet {
 //  if s.GetNextTokenWithinRule() != nil {
 //    return s.GetNextTokenWithinRule()
 //  }
@@ -63,57 +60,57 @@
 //  s.GetNextTokenWithinRule().readOnly = true
 //
 //  return s.GetNextTokenWithinRule()
-//}
 //
-//pub fn NextTokens(s: ATNState, ctx: RuleContext) -> *IntervalSet {
+//
+// pub fn NextTokens(s: ATNState, ctx: RuleContext) -> *IntervalSet {
 //  if ctx == nil {
 //    return a.NextTokensNoContext(s)
 //  }
 //
 //  return a.NextTokensInContext(s, ctx)
-//}
 //
-//pub fn addState(state: ATNState) {
+//
+// pub fn addState(state: ATNState) {
 //  if state != nil {
 //    state.SetATN(a)
 //    state.SetStateNumber(len(a.states))
 //  }
 //
 //  a.states = append(a.states, state)
-//}
 //
-//pub fn removeState(state: ATNState) {
+//
+// pub fn removeState(state: ATNState) {
 //  a.states[state.GetStateNumber()] = nil // Just free the memory; don't shift states in the slice
-//}
 //
-//pub fn defineDecisionState(s: DecisionState) -> i32 {
+//
+// pub fn defineDecisionState(s: DecisionState) -> i32 {
 //  a.DecisionToState = append(a.DecisionToState, s)
 //  s.setDecision(len(a.DecisionToState) - 1)
 //
 //  return s.getDecision()
-//}
 //
-//pub fn getDecisionState(decision: i32) -> DecisionState {
+//
+// pub fn getDecisionState(decision: i32) -> DecisionState {
 //  if len(a.DecisionToState) == 0 {
 //    return nil
 //  }
 //
 //  return a.DecisionToState[decision]
-//}
 //
-//// getExpectedTokens computes the set of input symbols which could follow ATN
-//// state number stateNumber in the specified full parse context ctx and returns
-//// the set of potentially valid input symbols which could follow the specified
-//// state in the specified context. This method considers the complete parser
-//// context, but does not evaluate semantic predicates (i.e. all predicates
-//// encountered during the calculation are assumed true). If a path in the ATN
-//// exists from the starting state to the RuleStopState of the outermost context
-//// without Matching any symbols, Token.EOF is added to the returned set.
-////
-//// A nil ctx defaults to ParserRuleContext.EMPTY.
-////
-//// It panics if the ATN does not contain state stateNumber.
-//pub fn getExpectedTokens(stateNumber: i32, ctx: RuleContext) -> *IntervalSet {
+//
+// / getExpectedTokens computes the set of input symbols which could follow ATN
+// / state number stateNumber in the specified full parse context ctx and returns
+// / the set of potentially valid input symbols which could follow the specified
+// / state in the specified context. This method considers the complete parser
+// / context, but does not evaluate semantic predicates (i.e. all predicates
+// / encountered during the calculation are assumed true). If a path in the ATN
+// / exists from the starting state to the RuleStopState of the outermost context
+// / without Matching any symbols, Token.EOF is added to the returned set.
+// /
+// / A nil ctx defaults to ParserRuleContext.EMPTY.
+// /
+// / It panics if the ATN does not contain state stateNumber.
+// pub fn getExpectedTokens(stateNumber: i32, ctx: RuleContext) -> *IntervalSet {
 //  if stateNumber < 0 || stateNumber >= len(a.states) {
 //    panic("Invalid state number.")
 //  }
@@ -145,4 +142,4 @@
 //  }
 //
 //  return expected
-//}
+//

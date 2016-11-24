@@ -1,42 +1,172 @@
+use std::char::decode_utf16;
+use std::result::Result;
+use atn::ATN;
+use atn_deserialization_options::{ATNDeserializationOptions,
+                                  ATN_DESERIALIZATION_OPTIONS_DEFAULT_OPTIONS};
+
+type UUID = &'static str;
 // This is the earliest supported serialized UUID.
 // stick to serialized version for now, we don't need a UUID instance
-pub const BASE_SERIALIZED_UUID = "AADB8D7E-AEEF-4415-AD2B-8204D6CF042E"
+pub const BASE_SERIALIZED_UUID: UUID = "AADB8D7E-AEEF-4415-AD2B-8204D6CF042E";
 
 // This list contains all of the currently supported UUIDs, ordered by when
 // the feature first appeared in this branch.
-pub const SUPPORTED_UUIDS: &'static [&str] = &[BASE_SERIALIZED_UUID]
+pub const SUPPORTED_UUIDS: &'static [UUID] = &[BASE_SERIALIZED_UUID];
 
-pub const SERIALIZED_VERSION = 3
+pub const SERIALIZED_VERSION: i32 = 3;
 
 // This is the current serialized UUID.
-pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
+pub const SERIALIZED_UUID: UUID = BASE_SERIALIZED_UUID;
 
-//pub struct LoopEndStateIntPair {
+pub const DEFAULT_ATN_DESERIALIZER: &'static ATNDeserializer<'static> =
+    &ATNDeserializer { deserialization_options: ATN_DESERIALIZATION_OPTIONS_DEFAULT_OPTIONS };
+
+// pub struct LoopEndStateIntPair {
 //  item0 *LoopEndState
 //  item1 i32
-//}
 //
-//pub struct BlockStartStateIntPair {
+//
+// pub struct BlockStartStateIntPair {
 //  item0 BlockStartState
 //  item1 i32
-//}
 //
-//pub struct ATNDeserializer {
-//  deserializationOptions: *ATNDeserializationOptions
-//  data                   []rune
-//  pos:                    i32
-//  uuid:                   &str
-//}
 //
-//impl ATNDeserializer {§//  pub fn new(options *ATNDeserializationOptions) -> *ATNDeserializer {
-//  if options == nil {
-//    options = ATNDeserializationOptionsdefaultOptions
-//  }
-//
-//  return &ATNDeserializer{deserializationOptions: options}
-//}
-//
-//pub fn &strInSlice(a: &str, list []string) -> i32 { // non-member
+
+fn decode_u16(data: &[u16]) -> Vec<i32> {
+    let mut data_vec: Vec<i32> = Vec::with_capacity(data.len());
+    for code_point in decode_utf16(data.iter().cloned()) {
+        match code_point {
+            Ok(c) => data_vec.push(c as i32),
+            Err(_) => panic!("Could not decode atn!"),
+        }
+    }
+    data_vec
+}
+
+pub struct ATNDeserializer<'a> {
+    deserialization_options: &'a ATNDeserializationOptions,
+}
+
+impl<'a> ATNDeserializer<'a> {
+    pub fn new(options: &'a ATNDeserializationOptions) -> Self {
+        ATNDeserializer { deserialization_options: options }
+    }
+    pub fn deserialize(&self, data: &[u16]) -> ATN {
+        let mut deserialization = Deserialization {
+            data: decode_u16(data),
+            pos: 0,
+            uuid: "".to_string(),
+        };
+        deserialization.init();
+        deserialization.check_version();
+        deserialization.check_UUID();
+        //  atn := self.readATN()
+        //
+        //  self.readStates(atn)
+        //  self.readRules(atn)
+        //  self.readModes(atn)
+        //
+        //  sets := self.readSets(atn)
+        //
+        //  self.readEdges(atn, sets)
+        //  self.readDecisions(atn)
+        //  self.readLexerActions(atn)
+        //  self.markPrecedenceDecisions(atn)
+        //  self.verifyATN(atn)
+        //
+        //  if self.deserializationOptions.generateRuleBypassTransitions && atn.grammarType == ATNTypeParser {
+        //    self.generateRuleBypassTransitions(atn)
+        //    // Re-verify after modification
+        //    self.verifyATN(atn)
+        //  }
+        //
+        //  return atn
+        ATN {}
+    }
+}
+
+struct Deserialization {
+    data: Vec<i32>,
+    pos: usize,
+    uuid: String,
+}
+
+impl Deserialization {
+    fn init(&mut self) {
+        let version = self.data[0]; // first value is the version number
+        self.data = self.data.iter().map(|n| n - 2).collect();
+        self.data[0] = version;
+    }
+
+    fn check_version(&mut self) {
+        let version = self.read_int();
+
+        if version != SERIALIZED_VERSION {
+            panic!("Could not deserialize ATN with version {}  (expected {})",
+                   version,
+                   SERIALIZED_VERSION)
+        }
+    }
+
+    fn read_int(&mut self) -> i32 {
+        let v = self.data[self.pos];
+
+        self.pos += 1;
+
+        v as i32
+    }
+    pub fn check_UUID(&mut self) {
+        let uuid = self.read_UUID();
+
+        let mut found = false;
+        if SUPPORTED_UUIDS.iter().all(|id| id != &uuid) {
+            panic!("Could not deserialize ATN with UUID: {} (expected {} or a legacy UUID).",
+                   uuid,
+                   SERIALIZED_UUID);
+        }
+
+        self.uuid = uuid
+    }
+    pub fn read_UUID(&mut self) -> String {
+        let mut bb: [i32; 16] = [0; 16];
+
+        for i in (0..8).rev() {
+            let integer = self.read_int();
+
+            bb[(2 * i) + 1] = integer & 0xFF;
+            bb[2 * i] = (integer >> 8) & 0xFF;
+        }
+
+        format!("{:02X}{:02X}{:02X}{:02X}-{:02X}{:02X}-{:02X}{:02X}-{:02X}{:02X}-{:02X}{:02X}{:\
+                 02X}{:02X}{:02X}{:02X}",
+                bb[0],
+                bb[1],
+                bb[2],
+                bb[3],
+                bb[4],
+                bb[5],
+                bb[6],
+                bb[7],
+                bb[8],
+                bb[9],
+                bb[10],
+                bb[11],
+                bb[12],
+                bb[13],
+                bb[14],
+                bb[15])
+    }
+
+    fn readATN(&mut self) -> ATN {
+        let grammarType = self.read_int();
+        let maxTokenType = self.read_int();
+
+        // NewATN(grammarType, maxTokenType)
+        ATN {}
+    }
+}
+
+// pub fn &strInSlice(a: &str, list []string) -> i32 { // non-member
 //  for i, b := range list {
 //    if b == a {
 //      return i
@@ -44,17 +174,17 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //  }
 //
 //  return -1
-//}
 //
-//// isFeatureSupported determines if a particular serialized representation of an
-//// ATN supports a particular feature, identified by the UUID used for
-//// serializing the ATN at the time the feature was first i32roduced. Feature is
-//// the UUID marking the first time the feature was supported in the serialized
-//// ATN. ActualUuid is the UUID of the actual serialized ATN which is currently
-//// being deserialized. It returns true if actualUuid represents a serialized ATN
-//// at or after the feature identified by feature was i32roduced, and otherwise
-//// false.
-//pub fn isFeatureSupported(feature, actualUUID: &str) -> bool {
+//
+// / isFeatureSupported determines if a particular serialized representation of an
+// / ATN supports a particular feature, identified by the UUID used for
+// / serializing the ATN at the time the feature was first i32roduced. Feature is
+// / the UUID marking the first time the feature was supported in the serialized
+// / ATN. ActualUuid is the UUID of the actual serialized ATN which is currently
+// / being deserialized. It returns true if actualUuid represents a serialized ATN
+// / at or after the feature identified by feature was i32roduced, and otherwise
+// / false.
+// pub fn isFeatureSupported(feature, actualUUID: &str) -> bool {
 //  idx1 := &strInSlice(feature, SupportedUUIDs)
 //
 //  if idx1 < 0 {
@@ -64,86 +194,16 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //  idx2 := &strInSlice(actualUUID, SupportedUUIDs)
 //
 //  return idx2 >= idx1
-//}
 //
-//pub fn DeserializeFromUInt16(data []uint16) -> *ATN {
-//  a.reset(utf16.Decode(data))
-//  a.checkVersion()
-//  a.checkUUID()
 //
-//  atn := a.readATN()
-//
-//  a.readStates(atn)
-//  a.readRules(atn)
-//  a.readModes(atn)
-//
-//  sets := a.readSets(atn)
-//
-//  a.readEdges(atn, sets)
-//  a.readDecisions(atn)
-//  a.readLexerActions(atn)
-//  a.markPrecedenceDecisions(atn)
-//  a.verifyATN(atn)
-//
-//  if a.deserializationOptions.generateRuleBypassTransitions && atn.grammarType == ATNTypeParser {
-//    a.generateRuleBypassTransitions(atn)
-//    // Re-verify after modification
-//    a.verifyATN(atn)
-//  }
-//
-//  return atn
-//
-//}
-//
-//pub fn reset(data []rune) {
-//  temp := make([]rune, len(data))
-//
-//  for i, c := range data {
-//    // Don't adjust the first value since that's the version number
-//    if i == 0 {
-//      temp[i] = c
-//    } else {
-//      temp[i] = c - 2
-//    }
-//  }
-//
-//  a.data = temp
-//  a.pos = 0
-//}
-//
-//pub fn checkVersion() {
-//  version := a.readInt()
-//
-//  if version != SerializedVersion {
-//    panic("Could not deserialize ATN with version " + strconv.Itoa(version) + " (expected " + strconv.Itoa(SerializedVersion) + ").")
-//  }
-//}
-//
-//pub fn checkUUID() {
-//  uuid := a.readUUID()
-//
-//  if &strInSlice(uuid, SupportedUUIDs) < 0 {
-//    panic("Could not deserialize ATN with UUID: " + uuid + " (expected " + SerializedUUID + " or a legacy UUID).")
-//  }
-//
-//  a.uuid = uuid
-//}
-//
-//pub fn readATN() -> *ATN {
-//  grammarType := a.readInt()
-//  maxTokenType := a.readInt()
-//
-//  return NewATN(grammarType, maxTokenType)
-//}
-//
-//pub fn readStates(atn *ATN) {
+// pub fn readStates(atn *ATN) {
 //  loopBackStateNumbers := make([]LoopEndStateIntPair, 0)
 //  endStateNumbers := make([]BlockStartStateIntPair, 0)
 //
-//  nstates := a.readInt()
+//  nstates := self.read_int()
 //
 //  for i := 0; i < nstates; i++ {
-//    stype := a.readInt()
+//    stype := self.read_int()
 //
 //    // Ignore bad types of states
 //    if stype == ATNStateInvalidType {
@@ -152,20 +212,20 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //      continue
 //    }
 //
-//    ruleIndex := a.readInt()
+//    ruleIndex := self.read_int()
 //
 //    if ruleIndex == 0xFFFF {
 //      ruleIndex = -1
 //    }
 //
-//    s := a.stateFactory(stype, ruleIndex)
+//    s := self.stateFactory(stype, ruleIndex)
 //
 //    if stype == ATNStateLoopEnd {
-//      loopBackStateNumber := a.readInt()
+//      loopBackStateNumber := self.read_int()
 //
 //      loopBackStateNumbers = append(loopBackStateNumbers, LoopEndStateIntPair{s.(*LoopEndState), loopBackStateNumber})
 //    } else if s2, ok := s.(BlockStartState); ok {
-//      endStateNumber := a.readInt()
+//      endStateNumber := self.read_int()
 //
 //      endStateNumbers = append(endStateNumbers, BlockStartStateIntPair{s2, endStateNumber})
 //    }
@@ -187,25 +247,25 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //    pair.item0.setEndState(atn.states[pair.item1].(*BlockEndState))
 //  }
 //
-//  numNonGreedyStates := a.readInt()
+//  numNonGreedyStates := self.read_int()
 //
 //  for j := 0; j < numNonGreedyStates; j++ {
-//    stateNumber := a.readInt()
+//    stateNumber := self.read_int()
 //
 //    atn.states[stateNumber].(DecisionState).setNonGreedy(true)
 //  }
 //
-//  numPrecedenceStates := a.readInt()
+//  numPrecedenceStates := self.read_int()
 //
 //  for j := 0; j < numPrecedenceStates; j++ {
-//    stateNumber := a.readInt()
+//    stateNumber := self.read_int()
 //
 //    atn.states[stateNumber].(*RuleStartState).isPrecedenceRule = true
 //  }
-//}
 //
-//pub fn readRules(atn *ATN) {
-//  nrules := a.readInt()
+//
+// pub fn readRules(atn *ATN) {
+//  nrules := self.read_int()
 //
 //  if atn.grammarType == ATNTypeLexer {
 //    atn.ruleToTokenType = make([]int, nrules) // TODO: initIntArray(nrules, 0)
@@ -214,13 +274,13 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //  atn.ruleToStartState = make([]*RuleStartState, nrules) // TODO: initIntArray(nrules, 0)
 //
 //  for i := 0; i < nrules; i++ {
-//    s := a.readInt()
+//    s := self.read_int()
 //    startState := atn.states[s].(*RuleStartState)
 //
 //    atn.ruleToStartState[i] = startState
 //
 //    if atn.grammarType == ATNTypeLexer {
-//      tokenType := a.readInt()
+//      tokenType := self.read_int()
 //
 //      if tokenType == 0xFFFF {
 //        tokenType = TokenEOF
@@ -240,57 +300,57 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //      atn.ruleToStartState[s2.ruleIndex].stopState = s2
 //    }
 //  }
-//}
 //
-//pub fn readModes(atn *ATN) {
-//  nmodes := a.readInt()
+//
+// pub fn readModes(atn *ATN) {
+//  nmodes := self.read_int()
 //
 //  for i := 0; i < nmodes; i++ {
-//    s := a.readInt()
+//    s := self.read_int()
 //
 //    atn.modeToStartState = append(atn.modeToStartState, atn.states[s].(*TokensStartState))
 //  }
-//}
 //
-//pub fn readSets(atn *ATN) -> []*IntervalSet {
+//
+// pub fn readSets(atn *ATN) -> []*IntervalSet {
 //  sets := make([]*IntervalSet, 0)
-//  m := a.readInt()
+//  m := self.read_int()
 //
 //  for i := 0; i < m; i++ {
 //    iset := NewIntervalSet()
 //
 //    sets = append(sets, iset)
 //
-//    n := a.readInt()
-//    containsEOF := a.readInt()
+//    n := self.read_int()
+//    containsEOF := self.read_int()
 //
 //    if containsEOF != 0 {
 //      iset.addOne(-1)
 //    }
 //
 //    for j := 0; j < n; j++ {
-//      i1 := a.readInt()
-//      i2 := a.readInt()
+//      i1 := self.read_int()
+//      i2 := self.read_int()
 //
 //      iset.addRange(i1, i2)
 //    }
 //  }
 //
 //  return sets
-//}
 //
-//pub fn readEdges(atn *ATN, sets []*IntervalSet) {
-//  nedges := a.readInt()
+//
+// pub fn readEdges(atn *ATN, sets []*IntervalSet) {
+//  nedges := self.read_int()
 //
 //  for i := 0; i < nedges; i++ {
 //    var (
-//      src      = a.readInt()
-//      trg      = a.readInt()
-//      ttype    = a.readInt()
-//      arg1     = a.readInt()
-//      arg2     = a.readInt()
-//      arg3     = a.readInt()
-//      trans    = a.edgeFactory(atn, ttype, src, trg, arg1, arg2, arg3, sets)
+//      src      = self.read_int()
+//      trg      = self.read_int()
+//      ttype    = self.read_int()
+//      arg1     = self.read_int()
+//      arg2     = self.read_int()
+//      arg3     = self.read_int()
+//      trans    = self.edgeFactory(atn, ttype, src, trg, arg1, arg2, arg3, sets)
 //      srcState = atn.states[src]
 //    )
 //
@@ -357,48 +417,48 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //      }
 //    }
 //  }
-//}
 //
-//pub fn readDecisions(atn *ATN) {
-//  ndecisions := a.readInt()
+//
+// pub fn readDecisions(atn *ATN) {
+//  ndecisions := self.read_int()
 //
 //  for i := 0; i < ndecisions; i++ {
-//    s := a.readInt()
+//    s := self.read_int()
 //    decState := atn.states[s].(DecisionState)
 //
 //    atn.DecisionToState = append(atn.DecisionToState, decState)
 //    decState.setDecision(i)
 //  }
-//}
 //
-//pub fn readLexerActions(atn *ATN) {
+//
+// pub fn readLexerActions(atn *ATN) {
 //  if atn.grammarType == ATNTypeLexer {
-//    count := a.readInt()
+//    count := self.read_int()
 //
 //    atn.lexerActions = make([]LexerAction, count) // initIntArray(count, nil)
 //
 //    for i := 0; i < count; i++ {
-//      actionType := a.readInt()
-//      data1 := a.readInt()
+//      actionType := self.read_int()
+//      data1 := self.read_int()
 //
 //      if data1 == 0xFFFF {
 //        data1 = -1
 //      }
 //
-//      data2 := a.readInt()
+//      data2 := self.read_int()
 //
 //      if data2 == 0xFFFF {
 //        data2 = -1
 //      }
 //
-//      lexerAction := a.lexerActionFactory(actionType, data1, data2)
+//      lexerAction := self.lexerActionFactory(actionType, data1, data2)
 //
 //      atn.lexerActions[i] = lexerAction
 //    }
 //  }
-//}
 //
-//pub fn generateRuleBypassTransitions(atn *ATN) {
+//
+// pub fn generateRuleBypassTransitions(atn *ATN) {
 //  count := len(atn.ruleToStartState)
 //
 //  for i := 0; i < count; i++ {
@@ -406,11 +466,11 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //  }
 //
 //  for i := 0; i < count; i++ {
-//    a.generateRuleBypassTransition(atn, i)
+//    self.generateRuleBypassTransition(atn, i)
 //  }
-//}
 //
-//pub fn generateRuleBypassTransition(atn *ATN, idx: i32) {
+//
+// pub fn generateRuleBypassTransition(atn *ATN, idx: i32) {
 //  bypassStart := NewBasicBlockStartState()
 //
 //  bypassStart.ruleIndex = idx
@@ -437,7 +497,7 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //    for i := 0; i < len(atn.states); i++ {
 //      state := atn.states[i]
 //
-//      if a.stateIsEndStateFor(state, idx) != nil {
+//      if self.stateIsEndStateFor(state, idx) != nil {
 //        endState = state
 //        excludeTransition = state.(*StarLoopEntryState).loopBackState.GetTransitions()[0]
 //
@@ -488,9 +548,9 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //  atn.addState(MatchState)
 //  MatchState.AddTransition(NewAtomTransition(bypassStop, atn.ruleToTokenType[idx]), -1)
 //  bypassStart.AddTransition(NewEpsilonTransition(MatchState, -1), -1)
-//}
 //
-//pub fn stateIsEndStateFor(state: ATNState, idx: i32) -> ATNState {
+//
+// pub fn stateIsEndStateFor(state: ATNState, idx: i32) -> ATNState {
 //  if state.GetRuleIndex() != idx {
 //    return nil
 //  }
@@ -512,12 +572,12 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //  }
 //
 //  return nil
-//}
 //
-//// markPrecedenceDecisions analyzes the StarLoopEntryState states in the
-//// specified ATN to set the StarLoopEntryState.precedenceRuleDecision field to
-//// the correct value.
-//pub fn markPrecedenceDecisions(atn *ATN) {
+//
+// / markPrecedenceDecisions analyzes the StarLoopEntryState states in the
+// / specified ATN to set the StarLoopEntryState.precedenceRuleDecision field to
+// / the correct value.
+// pub fn markPrecedenceDecisions(atn *ATN) {
 //  for _, state := range atn.states {
 //    if _, ok := state.(*StarLoopEntryState); !ok {
 //      continue
@@ -538,9 +598,9 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //      }
 //    }
 //  }
-//}
 //
-//pub fn verifyATN(atn *ATN) {
+//
+// pub fn verifyATN(atn *ATN) {
 //  if !a.deserializationOptions.verifyATN {
 //    return
 //  }
@@ -553,64 +613,64 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //      continue
 //    }
 //
-//    a.checkCondition(state.GetEpsilonOnlyTransitions() || len(state.GetTransitions()) <= 1, "")
+//    self.checkCondition(state.GetEpsilonOnlyTransitions() || len(state.GetTransitions()) <= 1, "")
 //
 //    switch s2 := state.(type) {
 //    case *PlusBlockStartState:
-//      a.checkCondition(s2.loopBackState != nil, "")
+//      self.checkCondition(s2.loopBackState != nil, "")
 //
 //    case *StarLoopEntryState:
-//      a.checkCondition(s2.loopBackState != nil, "")
-//      a.checkCondition(len(s2.GetTransitions()) == 2, "")
+//      self.checkCondition(s2.loopBackState != nil, "")
+//      self.checkCondition(len(s2.GetTransitions()) == 2, "")
 //
 //      switch s2 := state.(type) {
 //      case *StarBlockStartState:
 //        var _, ok2 = s2.GetTransitions()[1].getTarget().(*LoopEndState)
 //
-//        a.checkCondition(ok2, "")
-//        a.checkCondition(!s2.nonGreedy, "")
+//        self.checkCondition(ok2, "")
+//        self.checkCondition(!s2.nonGreedy, "")
 //
 //      case *LoopEndState:
 //        var s3, ok2 = s2.GetTransitions()[1].getTarget().(*StarBlockStartState)
 //
-//        a.checkCondition(ok2, "")
-//        a.checkCondition(s3.nonGreedy, "")
+//        self.checkCondition(ok2, "")
+//        self.checkCondition(s3.nonGreedy, "")
 //
 //      default:
 //        panic("IllegalState")
 //      }
 //
 //    case *StarLoopbackState:
-//      a.checkCondition(len(state.GetTransitions()) == 1, "")
+//      self.checkCondition(len(state.GetTransitions()) == 1, "")
 //
 //      var _, ok2 = state.GetTransitions()[0].getTarget().(*StarLoopEntryState)
 //
-//      a.checkCondition(ok2, "")
+//      self.checkCondition(ok2, "")
 //
 //    case *LoopEndState:
-//      a.checkCondition(s2.loopBackState != nil, "")
+//      self.checkCondition(s2.loopBackState != nil, "")
 //
 //    case *RuleStartState:
-//      a.checkCondition(s2.stopState != nil, "")
+//      self.checkCondition(s2.stopState != nil, "")
 //
 //    case *BaseBlockStartState:
-//      a.checkCondition(s2.endState != nil, "")
+//      self.checkCondition(s2.endState != nil, "")
 //
 //    case *BlockEndState:
-//      a.checkCondition(s2.startState != nil, "")
+//      self.checkCondition(s2.startState != nil, "")
 //
 //    case DecisionState:
-//      a.checkCondition(len(s2.GetTransitions()) <= 1 || s2.getDecision() >= 0, "")
+//      self.checkCondition(len(s2.GetTransitions()) <= 1 || s2.getDecision() >= 0, "")
 //
 //    default:
 //      var _, ok = s2.(*RuleStopState)
 //
-//      a.checkCondition(len(s2.GetTransitions()) <= 1 || ok, "")
+//      self.checkCondition(len(s2.GetTransitions()) <= 1 || ok, "")
 //    }
 //  }
-//}
 //
-//pub fn checkCondition(condition: bool, message: &str) {
+//
+// pub fn checkCondition(condition: bool, message: &str) {
 //  if !condition {
 //    if message == "" {
 //      message = "IllegalState"
@@ -618,25 +678,17 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //
 //    panic(message)
 //  }
-//}
 //
-//pub fn readInt() -> i32 {
-//  v := a.data[a.pos]
 //
-//  a.pos++
+// /TODO
+// /pub fn readLong() -> i3264 {
+// /    panic("Not implemented")
+// /    var low = self.read_int32()
+// /    var high = self.read_int32()
+// /    return (low & 0x00000000FFFFFFFF) | (high << i3232)
+// /}
 //
-//  return i32(v)
-//}
-//
-////TODO
-////pub fn readLong() -> i3264 {
-////    panic("Not implemented")
-////    var low = a.readInt32()
-////    var high = a.readInt32()
-////    return (low & 0x00000000FFFFFFFF) | (high << i3232)
-////}
-//
-//pub fn createByteToHex() -> []string { // non-member
+// pub fn createByteToHex() -> []string { // non-member
 //  bth := make([]string, 256)
 //
 //  for i := 0; i < 256; i++ {
@@ -644,31 +696,12 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //  }
 //
 //  return bth
-//}
 //
-//var byteToHex = createByteToHex()
 //
-//pub fn readUUID() -> &str {
-//  bb := make([]int, 16)
+// var byteToHex = createByteToHex()
 //
-//  for i := 7; i >= 0; i-- {
-//    integer := a.readInt()
 //
-//    bb[(2*i)+1] = i32eger & 0xFF
-//    bb[2*i] = (integer >> 8) & 0xFF
-//  }
-//
-//  return byteToHex[bb[0]] + byteToHex[bb[1]] +
-//    byteToHex[bb[2]] + byteToHex[bb[3]] + "-" +
-//    byteToHex[bb[4]] + byteToHex[bb[5]] + "-" +
-//    byteToHex[bb[6]] + byteToHex[bb[7]] + "-" +
-//    byteToHex[bb[8]] + byteToHex[bb[9]] + "-" +
-//    byteToHex[bb[10]] + byteToHex[bb[11]] +
-//    byteToHex[bb[12]] + byteToHex[bb[13]] +
-//    byteToHex[bb[14]] + byteToHex[bb[15]]
-//}
-//
-//pub fn edgeFactory(atn *ATN, typeIndex, src, trg, arg1, arg2, arg3: i32, sets []*IntervalSet) -> Transition {
+// pub fn edgeFactory(atn *ATN, typeIndex, src, trg, arg1, arg2, arg3: i32, sets []*IntervalSet) -> Transition {
 //  target := atn.states[trg]
 //
 //  switch typeIndex {
@@ -712,9 +745,9 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //  }
 //
 //  panic("The specified transition type is not valid.")
-//}
 //
-//pub fn stateFactory(typeIndex, ruleIndex: i32) -> ATNState {
+//
+// pub fn stateFactory(typeIndex, ruleIndex: i32) -> ATNState {
 //  var s ATNState
 //
 //  switch typeIndex {
@@ -764,9 +797,9 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //  s.SetRuleIndex(ruleIndex)
 //
 //  return s
-//}
 //
-//pub fn lexerActionFactory(typeIndex, data1, data2: i32) -> LexerAction {
+//
+// pub fn lexerActionFactory(typeIndex, data1, data2: i32) -> LexerAction {
 //  switch typeIndex {
 //  case LexerActionTypeChannel:
 //    return NewLexerChannelAction(data1)
@@ -795,4 +828,4 @@ pub const SERIALIZED_UUID = BASE_SERIALIZED_UUID
 //  default:
 //    panic(fmt.Sprintf("lexer action %d is invalid", typeIndex))
 //  }
-//}
+//
