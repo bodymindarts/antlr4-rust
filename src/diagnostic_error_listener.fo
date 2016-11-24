@@ -29,7 +29,7 @@
 //  exactOnly: bool
 //}
 //
-//impl DiagnosticErrorListener {§//  pub fn new(exactOnly: bool) -> *DiagnosticErrorListener {
+//impl DiagnosticErrorListener {§//  pub fn new(&self, exactOnly: bool) -> *DiagnosticErrorListener {
 //
 //  n := new(DiagnosticErrorListener)
 //
@@ -38,7 +38,7 @@
 //  return n
 //}
 //
-//pub fn ReportAmbiguity(recognizer Parser, dfa *DFA, startIndex, stopIndex i32, exact: bool, ambigAlts *BitSet, configs: ATNConfigSet) {
+//pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex i32, exact: bool, ambigAlts *BitSet, configs: ATNConfigSet) {
 //  if d.exactOnly && !exact {
 //    return
 //  }
@@ -51,7 +51,7 @@
 //  recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
-//pub fn ReportAttemptingFullContext(recognizer Parser, dfa *DFA, startIndex, stopIndex: i32, conflictingAlts *BitSet, configs: ATNConfigSet) {
+//pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex: i32, conflictingAlts *BitSet, configs: ATNConfigSet) {
 //
 //  msg := "reportAttemptingFullContext d=" +
 //    d.getDecisionDescription(recognizer, dfa) +
@@ -60,7 +60,7 @@
 //  recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
-//pub fn ReportContextSensitivity(recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction: i32, configs: ATNConfigSet) {
+//pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction: i32, configs: ATNConfigSet) {
 //  msg := "reportContextSensitivity d=" +
 //    d.getDecisionDescription(recognizer, dfa) +
 //    ", input='" +
@@ -68,7 +68,7 @@
 //  recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
-//pub fn getDecisionDescription(recognizer: Parser, dfa *DFA) -> &str {
+//pub fn getDecisionDescription(&self, recognizer: Parser, dfa *DFA) -> &str {
 //  decision := dfa.decision
 //  ruleIndex := dfa.atnStartState.GetRuleIndex()
 //
@@ -94,7 +94,7 @@
 //// @return Returns {@code ReportedAlts} if it is not {@code nil}, otherwise
 //// returns the set of alternatives represented in {@code configs}.
 ////
-//pub fn getConflictingAlts(ReportedAlts *BitSet, set: ATNConfigSet) -> *BitSet {
+//pub fn getConflictingAlts(&self, ReportedAlts *BitSet, set: ATNConfigSet) -> *BitSet {
 //  if ReportedAlts != nil {
 //    return ReportedAlts
 //  }

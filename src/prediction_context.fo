@@ -37,7 +37,7 @@
 //  cachedHashString: &str
 //}
 //
-//impl BasePredictionContext {§//  pub fn new(cachedHashString: &str) -> *BasePredictionContext {
+//impl BasePredictionContext {§//  pub fn new(&self, cachedHashString: &str) -> *BasePredictionContext {
 //  pc := new(BasePredictionContext)
 //  pc.cachedHashString = cachedHashString
 //
@@ -69,11 +69,11 @@
 //// </pre>
 ////
 //
-//pub fn isEmpty() -> bool {
+//pub fn isEmpty(&self, ) -> bool {
 //  return false
 //}
 //
-//pub fn Hash() -> &str {
+//pub fn Hash(&self, ) -> &str {
 //  return b.cachedHashString
 //}
 //
@@ -93,7 +93,7 @@
 //  cache map[PredictionContext]PredictionContext
 //}
 //
-//impl PredictionContextCache {§//  pub fn new() -> *PredictionContextCache {
+//impl PredictionContextCache {§//  pub fn new(&self, ) -> *PredictionContextCache {
 //  t := new(PredictionContextCache)
 //  t.cache = make(map[PredictionContext]PredictionContext)
 //  return t
@@ -103,7 +103,7 @@
 //// return that one instead and do not add a Newcontext to the cache.
 //// Protect shared cache from unsafe thread access.
 ////
-//pub fn add(ctx: PredictionContext) -> PredictionContext {
+//pub fn add(&self, ctx: PredictionContext) -> PredictionContext {
 //  if ctx == BasePredictionContextEMPTY {
 //    return BasePredictionContextEMPTY
 //  }
@@ -115,11 +115,11 @@
 //  return ctx
 //}
 //
-//pub fn Get(ctx: PredictionContext) -> PredictionContext {
+//pub fn Get(&self, ctx: PredictionContext) -> PredictionContext {
 //  return p.cache[ctx]
 //}
 //
-//pub fn length() -> i32 {
+//pub fn length(&self, ) -> i32 {
 //  return len(p.cache)
 //}
 //
@@ -134,7 +134,7 @@
 //  returnState: i32
 //}
 //
-//impl BaseSingletonPredictionContext {§//  pub fn new(parent: PredictionContext, returnState: i32) -> *BaseSingletonPredictionContext {
+//impl BaseSingletonPredictionContext {§//  pub fn new(&self, parent: PredictionContext, returnState: i32) -> *BaseSingletonPredictionContext {
 //
 //  s := new(BaseSingletonPredictionContext)
 //  s.BasePredictionContext = NewBasePredictionContext("")
@@ -160,23 +160,23 @@
 //  return NewBaseSingletonPredictionContext(parent, returnState)
 //}
 //
-//pub fn length() -> i32 {
+//pub fn length(&self, ) -> i32 {
 //  return 1
 //}
 //
-//pub fn GetParent(index: i32) -> PredictionContext {
+//pub fn GetParent(&self, index: i32) -> PredictionContext {
 //  return b.parentCtx
 //}
 //
-//pub fn getReturnState(index: i32) -> i32 {
+//pub fn getReturnState(&self, index: i32) -> i32 {
 //  return b.returnState
 //}
 //
-//pub fn hasEmptyPath() -> bool {
+//pub fn hasEmptyPath(&self, ) -> bool {
 //  return b.returnState == BasePredictionContextEmptyReturnState
 //}
 //
-//pub fn equals(other: PredictionContext) -> bool {
+//pub fn equals(&self, other: PredictionContext) -> bool {
 //  if b == other {
 //    return true
 //  } else if _, ok := other.(*BaseSingletonPredictionContext); !ok {
@@ -196,11 +196,11 @@
 //  return b.parentCtx.equals(otherP.parentCtx)
 //}
 //
-//pub fn Hash() -> &str {
+//pub fn Hash(&self, ) -> &str {
 //  return b.cachedHashString
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  var up &str
 //
 //  if b.parentCtx == nil {
@@ -226,7 +226,7 @@
 //  *BaseSingletonPredictionContext
 //}
 //
-//impl EmptyPredictionContext {§//  pub fn new() -> *EmptyPredictionContext {
+//impl EmptyPredictionContext {§//  pub fn new(&self, ) -> *EmptyPredictionContext {
 //
 //  p := new(EmptyPredictionContext)
 //
@@ -235,23 +235,23 @@
 //  return p
 //}
 //
-//pub fn isEmpty() -> bool {
+//pub fn isEmpty(&self, ) -> bool {
 //  return true
 //}
 //
-//pub fn GetParent(index: i32) -> PredictionContext {
+//pub fn GetParent(&self, index: i32) -> PredictionContext {
 //  return nil
 //}
 //
-//pub fn getReturnState(index: i32) -> i32 {
+//pub fn getReturnState(&self, index: i32) -> i32 {
 //  return e.returnState
 //}
 //
-//pub fn equals(other: PredictionContext) -> bool {
+//pub fn equals(&self, other: PredictionContext) -> bool {
 //  return e == other
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  return "$"
 //}
 //
@@ -262,7 +262,7 @@
 //  returnStates []int
 //}
 //
-//impl ArrayPredictionContext {§//  pub fn new(parents []PredictionContext, returnStates []int) -> *ArrayPredictionContext {
+//impl ArrayPredictionContext {§//  pub fn new(&self, parents []PredictionContext, returnStates []int) -> *ArrayPredictionContext {
 //  // Parent can be nil only if full ctx mode and we make an array
 //  // from {@link //EMPTY} and non-empty. We merge {@link //EMPTY} by using
 //  // nil parent and
@@ -281,33 +281,33 @@
 //  return c
 //}
 //
-//pub fn GetReturnStates() -> []int {
+//pub fn GetReturnStates(&self, ) -> []int {
 //  return a.returnStates
 //}
 //
-//pub fn hasEmptyPath() -> bool {
+//pub fn hasEmptyPath(&self, ) -> bool {
 //  return a.getReturnState(a.length()-1) == BasePredictionContextEmptyReturnState
 //}
 //
-//pub fn isEmpty() -> bool {
+//pub fn isEmpty(&self, ) -> bool {
 //  // since EmptyReturnState can only appear in the last position, we
 //  // don't need to verify that size==1
 //  return a.returnStates[0] == BasePredictionContextEmptyReturnState
 //}
 //
-//pub fn length() -> i32 {
+//pub fn length(&self, ) -> i32 {
 //  return len(a.returnStates)
 //}
 //
-//pub fn GetParent(index: i32) -> PredictionContext {
+//pub fn GetParent(&self, index: i32) -> PredictionContext {
 //  return a.parents[index]
 //}
 //
-//pub fn getReturnState(index: i32) -> i32 {
+//pub fn getReturnState(&self, index: i32) -> i32 {
 //  return a.returnStates[index]
 //}
 //
-//pub fn equals(other: PredictionContext) -> bool {
+//pub fn equals(&self, other: PredictionContext) -> bool {
 //  if _, ok := other.(*ArrayPredictionContext); !ok {
 //    return false
 //  } else if a.cachedHashString != other.Hash() {
@@ -318,7 +318,7 @@
 //  }
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  if a.isEmpty() {
 //    return "[]"
 //  }

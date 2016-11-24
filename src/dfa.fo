@@ -19,7 +19,7 @@
 //  precedenceDfa: bool
 //}
 //
-//impl DFA {§//  pub fn new(atnStartState: DecisionState, decision: i32) -> *DFA {
+//impl DFA {§//  pub fn new(&self, atnStartState: DecisionState, decision: i32) -> *DFA {
 //  return &DFA{
 //    atnStartState: atnStartState,
 //    decision:      decision,
@@ -31,7 +31,7 @@
 //// returns the start state corresponding to the specified precedence if a start
 //// state exists for the specified precedence and nil otherwise. d must be a
 //// precedence DFA. See also isPrecedenceDfa.
-//pub fn getPrecedenceStartState(precedence: i32) -> *DFAState {
+//pub fn getPrecedenceStartState(&self, precedence: i32) -> *DFAState {
 //  if !d.precedenceDfa {
 //    panic("only precedence DFAs may contain a precedence start state")
 //  }
@@ -46,7 +46,7 @@
 //
 //// setPrecedenceStartState sets the start state for the current precedence. d
 //// must be a precedence DFA. See also isPrecedenceDfa.
-//pub fn setPrecedenceStartState(precedence: i32, startState *DFAState) {
+//pub fn setPrecedenceStartState(&self, precedence: i32, startState *DFAState) {
 //  if !d.precedenceDfa {
 //    panic("only precedence DFAs may contain a precedence start state")
 //  }
@@ -70,7 +70,7 @@
 //// state s0 is set to a new DFAState with an empty outgoing DFAState.edges to
 //// store the start states for individual precedence values if precedenceDfa is
 //// true or nil otherwise, and d.precedenceDfa is updated.
-//pub fn setPrecedenceDfa(precedenceDfa: bool) {
+//pub fn setPrecedenceDfa(&self, precedenceDfa: bool) {
 //  if d.precedenceDfa != precedenceDfa {
 //    d.states = make(map[string]*DFAState)
 //
@@ -89,7 +89,7 @@
 //  }
 //}
 //
-//pub fn GetStates() -> map[string]*DFAState {
+//pub fn GetStates(&self, ) -> map[string]*DFAState {
 //  return d.states
 //}
 //
@@ -100,7 +100,7 @@
 //pub fn Swap(i, j: i32) ->      { d[i], d[j] = d[j], d[i] }
 //
 //// sortedStates returns the states in d sorted by their state number.
-//pub fn sortedStates() -> []*DFAState {
+//pub fn sortedStates(&self, ) -> []*DFAState {
 //  vs := make([]*DFAState, 0, len(d.states))
 //
 //  for _, v := range d.states {
@@ -112,7 +112,7 @@
 //  return vs
 //}
 //
-//pub fn String(literalNames []string, symbolicNames []string) -> &str {
+//pub fn String(&self, literalNames []string, symbolicNames []string) -> &str {
 //  if d.s0 == nil {
 //    return ""
 //  }
@@ -120,7 +120,7 @@
 //  return NewDFASerializer(d, literalNames, symbolicNames).String()
 //}
 //
-//pub fn ToLexerString() -> &str {
+//pub fn ToLexerString(&self, ) -> &str {
 //  if d.s0 == nil {
 //    return ""
 //  }

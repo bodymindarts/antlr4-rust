@@ -5,18 +5,18 @@ pub struct Interval {
 
 /* stop is not included! */
 impl Interval {
-  pub fn new(start: i32, stop: i32) -> Interval {
+  pub fn new(&self, start: i32, stop: i32) -> Interval {
     Interval {
       start: start,
       stop: stop,
   }
 }
 
-//pub fn contains(item: i32) -> bool {
+//pub fn contains(&self, item: i32) -> bool {
 //  return item >= i.start && item < i.stop
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  if i.start == i.stop-1 {
 //    return strconv.Itoa(i.start)
 //  }
@@ -24,7 +24,7 @@ impl Interval {
 //  return strconv.Itoa(i.start) + ".." + strconv.Itoa(i.stop-1)
 //}
 //
-//pub fn length() -> i32 {
+//pub fn length(&self, ) -> i32 {
 //  return i.stop - i.start
 //}
 //
@@ -34,7 +34,7 @@ impl Interval {
 //  readOnly:  bool
 //}
 //
-//impl IntervalSet {§//  pub fn new() -> *IntervalSet {
+//impl IntervalSet {§//  pub fn new(&self, ) -> *IntervalSet {
 //
 //  i := new(IntervalSet)
 //
@@ -44,7 +44,7 @@ impl Interval {
 //  return i
 //}
 //
-//pub fn first() -> i32 {
+//pub fn first(&self, ) -> i32 {
 //  if len(i.intervals) == 0 {
 //    return TokenInvalidType
 //  }
@@ -52,15 +52,15 @@ impl Interval {
 //  return i.intervals[0].start
 //}
 //
-//pub fn addOne(v: i32) {
+//pub fn addOne(&self, v: i32) {
 //  i.addInterval(NewInterval(v, v+1))
 //}
 //
-//pub fn addRange(l, h: i32) {
+//pub fn addRange(&self, l, h: i32) {
 //  i.addInterval(NewInterval(l, h+1))
 //}
 //
-//pub fn addInterval(v *Interval) {
+//pub fn addInterval(&self, v *Interval) {
 //  if i.intervals == nil {
 //    i.intervals = make([]*Interval, 0)
 //    i.intervals = append(i.intervals, v)
@@ -97,7 +97,7 @@ impl Interval {
 //  }
 //}
 //
-//pub fn addSet(other *IntervalSet) -> *IntervalSet {
+//pub fn addSet(&self, other *IntervalSet) -> *IntervalSet {
 //  if other.intervals != nil {
 //    for k := 0; k < len(other.intervals); k++ {
 //      i2 := other.intervals[k]
@@ -107,7 +107,7 @@ impl Interval {
 //  return i
 //}
 //
-//pub fn complement(start: i32, stop: i32) -> *IntervalSet {
+//pub fn complement(&self, start: i32, stop: i32) -> *IntervalSet {
 //  result := NewIntervalSet()
 //  result.addInterval(NewInterval(start, stop+1))
 //  for j := 0; j < len(i.intervals); j++ {
@@ -116,7 +116,7 @@ impl Interval {
 //  return result
 //}
 //
-//pub fn contains(item: i32) -> bool {
+//pub fn contains(&self, item: i32) -> bool {
 //  if i.intervals == nil {
 //    return false
 //  }
@@ -128,7 +128,7 @@ impl Interval {
 //  return false
 //}
 //
-//pub fn length() -> i32 {
+//pub fn length(&self, ) -> i32 {
 //  len := 0
 //
 //  for _, v := range i.intervals {
@@ -138,7 +138,7 @@ impl Interval {
 //  return len
 //}
 //
-//pub fn removeRange(v *Interval) {
+//pub fn removeRange(&self, v *Interval) {
 //  if v.start == v.stop-1 {
 //    i.removeOne(v.start)
 //  } else if i.intervals != nil {
@@ -168,7 +168,7 @@ impl Interval {
 //  }
 //}
 //
-//pub fn removeOne(v: i32) {
+//pub fn removeOne(&self, v: i32) {
 //  if i.intervals != nil {
 //    for k := 0; k < len(i.intervals); k++ {
 //      ki := i.intervals[k]
@@ -196,11 +196,11 @@ impl Interval {
 //  }
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  return i.StringVerbose(nil, nil, false)
 //}
 //
-//pub fn StringVerbose(literalNames []string, symbolicNames []string, elemsAreChar: bool) -> &str {
+//pub fn StringVerbose(&self, literalNames []string, symbolicNames []string, elemsAreChar: bool) -> &str {
 //
 //  if i.intervals == nil {
 //    return "{}"
@@ -213,7 +213,7 @@ impl Interval {
 //  return i.toIndexString()
 //}
 //
-//pub fn toCharString() -> &str {
+//pub fn toCharString(&self, ) -> &str {
 //  names := make([]string, len(i.intervals))
 //
 //  for j := 0; j < len(i.intervals); j++ {
@@ -235,7 +235,7 @@ impl Interval {
 //  return names[0]
 //}
 //
-//pub fn toIndexString() -> &str {
+//pub fn toIndexString(&self, ) -> &str {
 //
 //  names := make([]string, 0)
 //  for j := 0; j < len(i.intervals); j++ {
@@ -257,7 +257,7 @@ impl Interval {
 //  return names[0]
 //}
 //
-//pub fn toTokenString(literalNames []string, symbolicNames []string) -> &str {
+//pub fn toTokenString(&self, literalNames []string, symbolicNames []string) -> &str {
 //  names := make([]string, 0)
 //  for _, v := range i.intervals {
 //    for j := v.start; j < v.stop; j++ {
@@ -271,7 +271,7 @@ impl Interval {
 //  return names[0]
 //}
 //
-//pub fn elementName(literalNames []string, symbolicNames []string, a: i32) -> &str {
+//pub fn elementName(&self, literalNames []string, symbolicNames []string, a: i32) -> &str {
 //  if a == TokenEOF {
 //    return "<EOF>"
 //  } else if a == TokenEpsilon {

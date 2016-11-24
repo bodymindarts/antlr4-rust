@@ -6,23 +6,23 @@
 //  parser: *BaseParser
 //}
 //
-//impl TraceListener {§//  pub fn new(parser *BaseParser) -> *TraceListener {
+//impl TraceListener {§//  pub fn new(&self, parser *BaseParser) -> *TraceListener {
 //  tl := new(TraceListener)
 //  tl.parser = parser
 //  return tl
 //}
 //
-//pub fn VisitErrorNode(_: ErrorNode) {
+//pub fn VisitErrorNode(&self, _: ErrorNode) {
 //}
 //
-//pub fn EnterEveryRule(ctx: ParserRuleContext) {
+//pub fn EnterEveryRule(&self, ctx: ParserRuleContext) {
 //  fmt.Println("enter   " + t.parser.GetRuleNames()[ctx.GetRuleIndex()] + ", LT(1)=" + t.parser.input.LT(1).GetText())
 //}
 //
-//pub fn VisitTerminal(node: TerminalNode) {
+//pub fn VisitTerminal(&self, node: TerminalNode) {
 //  fmt.Println("consume " + fmt.Sprint(node.GetSymbol()) + " rule " + t.parser.GetRuleNames()[t.parser.ctx.GetRuleIndex()])
 //}
 //
-//pub fn ExitEveryRule(ctx: ParserRuleContext) {
+//pub fn ExitEveryRule(&self, ctx: ParserRuleContext) {
 //  fmt.Println("exit    " + t.parser.GetRuleNames()[ctx.GetRuleIndex()] + ", LT(1)=" + t.parser.input.LT(1).GetText())
 //}

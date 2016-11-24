@@ -40,7 +40,7 @@
 //  MatchCalls:         i32
 //}
 //
-//impl LexerATNSimulator {§//  pub fn new(recog: Lexer, atn *ATN, decisionToDFA []*DFA, sharedContextCache *PredictionContextCache) -> *LexerATNSimulator {
+//impl LexerATNSimulator {§//  pub fn new(&self, recog: Lexer, atn *ATN, decisionToDFA []*DFA, sharedContextCache *PredictionContextCache) -> *LexerATNSimulator {
 //  l := new(LexerATNSimulator)
 //
 //  l.BaseATNSimulator = NewBaseATNSimulator(atn, sharedContextCache)
@@ -65,14 +65,14 @@
 //  return l
 //}
 //
-//pub fn copyState(simulator *LexerATNSimulator) {
+//pub fn copyState(&self, simulator *LexerATNSimulator) {
 //  l.CharPositionInLine = simulator.CharPositionInLine
 //  l.Line = simulator.Line
 //  l.mode = simulator.mode
 //  l.startIndex = simulator.startIndex
 //}
 //
-//pub fn Match(input: CharStream, mode: i32) -> i32 {
+//pub fn Match(&self, input: CharStream, mode: i32) -> i32 {
 //  l.MatchCalls++
 //  l.mode = mode
 //  mark := input.Mark()
@@ -93,7 +93,7 @@
 //  return l.execATN(input, dfa.s0)
 //}
 //
-//pub fn reset() {
+//pub fn reset(&self, ) {
 //  l.prevAccept.reset()
 //  l.startIndex = -1
 //  l.Line = 1
@@ -101,7 +101,7 @@
 //  l.mode = LexerDefaultMode
 //}
 //
-//pub fn MatchATN(input: CharStream) -> i32 {
+//pub fn MatchATN(&self, input: CharStream) -> i32 {
 //  startState := l.atn.modeToStartState[l.mode]
 //
 //  if LexerATNSimulatorDebug {
@@ -126,7 +126,7 @@
 //  return predict
 //}
 //
-//pub fn execATN(input: CharStream, ds0 *DFAState) -> i32 {
+//pub fn execATN(&self, input: CharStream, ds0 *DFAState) -> i32 {
 //
 //  if LexerATNSimulatorDebug {
 //    fmt.Println("start state closure=" + ds0.configs.String())
@@ -197,7 +197,7 @@
 //// @return The existing target DFA state for the given input symbol
 //// {@code t}, or {@code nil} if the target state for l edge is not
 //// already cached
-//pub fn getExistingTargetState(s *DFAState, t: i32) -> *DFAState {
+//pub fn getExistingTargetState(&self, s *DFAState, t: i32) -> *DFAState {
 //  if s.edges == nil || t < LexerATNSimulatorMinDFAEdge || t > LexerATNSimulatorMaxDFAEdge {
 //    return nil
 //  }
@@ -219,7 +219,7 @@
 //// @return The computed target DFA state for the given input symbol
 //// {@code t}. If {@code t} does not lead to a valid DFA state, l method
 //// returns {@link //ERROR}.
-//pub fn computeTargetState(input: CharStream, s *DFAState, t: i32) -> *DFAState {
+//pub fn computeTargetState(&self, input: CharStream, s *DFAState, t: i32) -> *DFAState {
 //  reach := NewOrderedATNConfigSet()
 //
 //  // if we don't find an existing DFA state
@@ -239,7 +239,7 @@
 //  return l.addDFAEdge(s, t, nil, reach.BaseATNConfigSet)
 //}
 //
-//pub fn failOrAccept(prevAccept *SimState, input CharStream, reach: ATNConfigSet, t: i32) -> i32 {
+//pub fn failOrAccept(&self, prevAccept *SimState, input CharStream, reach: ATNConfigSet, t: i32) -> i32 {
 //  if l.prevAccept.dfaState != nil {
 //    lexerActionExecutor := prevAccept.dfaState.lexerActionExecutor
 //    l.accept(input, lexerActionExecutor, l.startIndex, prevAccept.index, prevAccept.line, prevAccept.column)
@@ -257,7 +257,7 @@
 //// Given a starting configuration set, figure out all ATN configurations
 //// we can reach upon input {@code t}. Parameter {@code reach} is a return
 //// parameter.
-//pub fn getReachableConfigSet(input CharStream, closure ATNConfigSet, reach: ATNConfigSet, t: i32) {
+//pub fn getReachableConfigSet(&self, input CharStream, closure ATNConfigSet, reach: ATNConfigSet, t: i32) {
 //  // l is used to Skip processing for configs which have a lower priority
 //  // than a config that already reached an accept state for the same rule
 //  SkipAlt := ATNInvalidAltNumber
@@ -293,7 +293,7 @@
 //  }
 //}
 //
-//pub fn accept(input CharStream, lexerActionExecutor *LexerActionExecutor, startIndex, index,: line, charPos: i32) {
+//pub fn accept(&self, input CharStream, lexerActionExecutor *LexerActionExecutor, startIndex, index,: line, charPos: i32) {
 //  if LexerATNSimulatorDebug {
 //    fmt.Printf("ACTION %s\n", lexerActionExecutor)
 //  }
@@ -306,7 +306,7 @@
 //  }
 //}
 //
-//pub fn getReachableTarget(trans: Transition, t: i32) -> ATNState {
+//pub fn getReachableTarget(&self, trans: Transition, t: i32) -> ATNState {
 //  if trans.Matches(t, 0, 0xFFFE) {
 //    return trans.getTarget()
 //  }
@@ -314,7 +314,7 @@
 //  return nil
 //}
 //
-//pub fn computeStartState(input: CharStream, p: ATNState) -> *OrderedATNConfigSet {
+//pub fn computeStartState(&self, input: CharStream, p: ATNState) -> *OrderedATNConfigSet {
 //  configs := NewOrderedATNConfigSet()
 //  for i := 0; i < len(p.GetTransitions()); i++ {
 //    target := p.GetTransitions()[i].getTarget()
@@ -485,7 +485,7 @@
 //// @return {@code true} if the specified predicate evaluates to
 //// {@code true}.
 //// /
-//pub fn evaluatePredicate(input CharStream, ruleIndex, predIndex: i32, speculative: bool) -> bool {
+//pub fn evaluatePredicate(&self, input CharStream, ruleIndex, predIndex: i32, speculative: bool) -> bool {
 //  // assume true if no recognizer was provided
 //  if l.recog == nil {
 //    return true
@@ -509,14 +509,14 @@
 //  return l.recog.Sempred(nil, ruleIndex, predIndex)
 //}
 //
-//pub fn captureSimState(settings *SimState, input: CharStream, dfaState *DFAState) {
+//pub fn captureSimState(&self, settings *SimState, input: CharStream, dfaState *DFAState) {
 //  settings.index = input.Index()
 //  settings.line = l.Line
 //  settings.column = l.CharPositionInLine
 //  settings.dfaState = dfaState
 //}
 //
-//pub fn addDFAEdge(from *DFAState, tk: i32, to *DFAState, cfgs: ATNConfigSet) -> *DFAState {
+//pub fn addDFAEdge(&self, from *DFAState, tk: i32, to *DFAState, cfgs: ATNConfigSet) -> *DFAState {
 //  if to == nil && cfgs != nil {
 //    // leading to l call, ATNConfigSet.hasSemanticContext is used as a
 //    // marker indicating dynamic predicate evaluation makes l edge
@@ -559,7 +559,7 @@
 //// configurations already. This method also detects the first
 //// configuration containing an ATN rule stop state. Later, when
 //// traversing the DFA, we will know which rule to accept.
-//pub fn addDFAState(configs: ATNConfigSet) -> *DFAState {
+//pub fn addDFAState(&self, configs: ATNConfigSet) -> *DFAState {
 //
 //  proposed := NewDFAState(-1, configs)
 //  var firstConfigWithRuleStopState ATNConfig
@@ -592,17 +592,17 @@
 //  return newState
 //}
 //
-//pub fn getDFA(mode: i32) -> *DFA {
+//pub fn getDFA(&self, mode: i32) -> *DFA {
 //  return l.decisionToDFA[mode]
 //}
 //
 //// Get the text Matched so far for the current token.
-//pub fn GetText(input: CharStream) -> &str {
+//pub fn GetText(&self, input: CharStream) -> &str {
 //  // index is first lookahead char, don't include.
 //  return input.GetTextFromInterval(NewInterval(l.startIndex, input.Index()-1))
 //}
 //
-//pub fn Consume(input: CharStream) {
+//pub fn Consume(&self, input: CharStream) {
 //  curChar := input.LA(1)
 //  if curChar == i32('\n') {
 //    l.Line++
@@ -613,15 +613,15 @@
 //  input.Consume()
 //}
 //
-//pub fn GetCharPositionInLine() -> i32 {
+//pub fn GetCharPositionInLine(&self, ) -> i32 {
 //  return l.CharPositionInLine
 //}
 //
-//pub fn GetLine() -> i32 {
+//pub fn GetLine(&self, ) -> i32 {
 //  return l.Line
 //}
 //
-//pub fn GetTokenName(tt: i32) -> &str {
+//pub fn GetTokenName(&self, tt: i32) -> &str {
 //  if tt == -1 {
 //    return "EOF"
 //  }
@@ -643,12 +643,12 @@
 //  dfaState: *DFAState
 //}
 //
-//impl SimState {§//  pub fn new() -> *SimState {
+//impl SimState {§//  pub fn new(&self, ) -> *SimState {
 //  s := new(SimState)
 //  resetSimState(s)
 //  return s
 //}
 //
-//pub fn reset() {
+//pub fn reset(&self, ) {
 //  resetSimState(s)
 //}

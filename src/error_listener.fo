@@ -20,27 +20,27 @@
 //pub struct DefaultErrorListener {
 //}
 //
-//impl DefaultErrorListener {§//  pub fn new() -> *DefaultErrorListener {
+//impl DefaultErrorListener {§//  pub fn new(&self, ) -> *DefaultErrorListener {
 //  return new(DefaultErrorListener)
 //}
 //
-//pub fn SyntaxError(recognizer Recognizer, offendingSymbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
+//pub fn SyntaxError(&self, recognizer Recognizer, offendingSymbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
 //}
 //
-//pub fn ReportAmbiguity(recognizer Parser, dfa *DFA, startIndex, stopIndex i32, exact: bool, ambigAlts *BitSet, configs: ATNConfigSet) {
+//pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex i32, exact: bool, ambigAlts *BitSet, configs: ATNConfigSet) {
 //}
 //
-//pub fn ReportAttemptingFullContext(recognizer Parser, dfa *DFA, startIndex, stopIndex: i32, conflictingAlts *BitSet, configs: ATNConfigSet) {
+//pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex: i32, conflictingAlts *BitSet, configs: ATNConfigSet) {
 //}
 //
-//pub fn ReportContextSensitivity(recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction: i32, configs: ATNConfigSet) {
+//pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction: i32, configs: ATNConfigSet) {
 //}
 //
 //pub struct ConsoleErrorListener {
 //  *DefaultErrorListener
 //}
 //
-//impl ConsoleErrorListener {§//  pub fn new() -> *ConsoleErrorListener {
+//impl ConsoleErrorListener {§//  pub fn new(&self, ) -> *ConsoleErrorListener {
 //  return new(ConsoleErrorListener)
 //}
 //
@@ -61,7 +61,7 @@
 //// line <em>line</em>:<em>charPositionInLine</em> <em>msg</em>
 //// </pre>
 ////
-//pub fn SyntaxError(recognizer Recognizer, offendingSymbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
+//pub fn SyntaxError(&self, recognizer Recognizer, offendingSymbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
 //  fmt.Fprintln(os.Stderr, "line "+strconv.Itoa(line)+":"+strconv.Itoa(column)+" "+msg)
 //}
 //
@@ -70,7 +70,7 @@
 //  delegates []ErrorListener
 //}
 //
-//impl ProxyErrorListener {§//  pub fn new(delegates []ErrorListener) -> *ProxyErrorListener {
+//impl ProxyErrorListener {§//  pub fn new(&self, delegates []ErrorListener) -> *ProxyErrorListener {
 //  if delegates == nil {
 //    panic("delegates is not provided")
 //  }
@@ -79,25 +79,25 @@
 //  return l
 //}
 //
-//pub fn SyntaxError(recognizer Recognizer, offendingSymbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
+//pub fn SyntaxError(&self, recognizer Recognizer, offendingSymbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
 //  for _, d := range p.delegates {
 //    d.SyntaxError(recognizer, offendingSymbol, line, column, msg, e)
 //  }
 //}
 //
-//pub fn ReportAmbiguity(recognizer Parser, dfa *DFA, startIndex, stopIndex i32, exact: bool, ambigAlts *BitSet, configs: ATNConfigSet) {
+//pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex i32, exact: bool, ambigAlts *BitSet, configs: ATNConfigSet) {
 //  for _, d := range p.delegates {
 //    d.ReportAmbiguity(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs)
 //  }
 //}
 //
-//pub fn ReportAttemptingFullContext(recognizer Parser, dfa *DFA, startIndex, stopIndex: i32, conflictingAlts *BitSet, configs: ATNConfigSet) {
+//pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex: i32, conflictingAlts *BitSet, configs: ATNConfigSet) {
 //  for _, d := range p.delegates {
 //    d.ReportAttemptingFullContext(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs)
 //  }
 //}
 //
-//pub fn ReportContextSensitivity(recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction: i32, configs: ATNConfigSet) {
+//pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction: i32, configs: ATNConfigSet) {
 //  for _, d := range p.delegates {
 //    d.ReportContextSensitivity(recognizer, dfa, startIndex, stopIndex, prediction, configs)
 //  }

@@ -69,47 +69,47 @@
 //  TokenHiddenChannel = 1
 //)
 //
-//pub fn GetChannel() -> i32 {
+//pub fn GetChannel(&self, ) -> i32 {
 //  return b.channel
 //}
 //
-//pub fn GetStart() -> i32 {
+//pub fn GetStart(&self, ) -> i32 {
 //  return b.start
 //}
 //
-//pub fn GetStop() -> i32 {
+//pub fn GetStop(&self, ) -> i32 {
 //  return b.stop
 //}
 //
-//pub fn GetLine() -> i32 {
+//pub fn GetLine(&self, ) -> i32 {
 //  return b.line
 //}
 //
-//pub fn GetColumn() -> i32 {
+//pub fn GetColumn(&self, ) -> i32 {
 //  return b.column
 //}
 //
-//pub fn GetTokenType() -> i32 {
+//pub fn GetTokenType(&self, ) -> i32 {
 //  return b.tokenType
 //}
 //
-//pub fn GetSource() -> *TokenSourceCharStreamPair {
+//pub fn GetSource(&self, ) -> *TokenSourceCharStreamPair {
 //  return b.source
 //}
 //
-//pub fn GetTokenIndex() -> i32 {
+//pub fn GetTokenIndex(&self, ) -> i32 {
 //  return b.tokenIndex
 //}
 //
-//pub fn SetTokenIndex(v: i32) {
+//pub fn SetTokenIndex(&self, v: i32) {
 //  b.tokenIndex = v
 //}
 //
-//pub fn GetTokenSource() -> TokenSource {
+//pub fn GetTokenSource(&self, ) -> TokenSource {
 //  return b.source.tokenSource
 //}
 //
-//pub fn GetInputStream() -> CharStream {
+//pub fn GetInputStream(&self, ) -> CharStream {
 //  return b.source.charStream
 //}
 //
@@ -117,7 +117,7 @@
 //  *BaseToken
 //}
 //
-//impl CommonToken {§//  pub fn new(source *TokenSourceCharStreamPair, tokenType, channel,: start, stop: i32) -> *CommonToken {
+//impl CommonToken {§//  pub fn new(&self, source *TokenSourceCharStreamPair, tokenType, channel,: start, stop: i32) -> *CommonToken {
 //
 //  t := new(CommonToken)
 //
@@ -155,7 +155,7 @@
 ////
 //// @param oldToken The token to copy.
 ////
-//pub fn clone() -> *CommonToken {
+//pub fn clone(&self, ) -> *CommonToken {
 //  t := NewCommonToken(c.source, c.tokenType, c.channel, c.start, c.stop)
 //  t.tokenIndex = c.GetTokenIndex()
 //  t.line = c.GetLine()
@@ -164,7 +164,7 @@
 //  return t
 //}
 //
-//pub fn GetText() -> &str {
+//pub fn GetText(&self, ) -> &str {
 //  if c.text != "" {
 //    return c.text
 //  }
@@ -179,11 +179,11 @@
 //  return "<EOF>"
 //}
 //
-//pub fn SetText(text: &str) {
+//pub fn SetText(&self, text: &str) {
 //  c.text = text
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  txt := c.GetText()
 //  if txt != "" {
 //    txt = &strs.Replace(txt, "\n", "\\n", -1)

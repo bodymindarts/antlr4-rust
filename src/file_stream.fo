@@ -15,7 +15,7 @@
 //  filename: &str
 //}
 //
-//impl FileStream {§//  pub fn new(fileName: &str) -> *FileStream {
+//impl FileStream {§//  pub fn new(&self, fileName: &str) -> *FileStream {
 //
 //  buf := bytes.NewBuffer(nil)
 //
@@ -34,6 +34,6 @@
 //
 //}
 //
-//pub fn GetSourceName() -> &str {
+//pub fn GetSourceName(&self, ) -> &str {
 //  return f.filename
 //}

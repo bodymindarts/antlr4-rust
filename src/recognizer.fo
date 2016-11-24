@@ -34,7 +34,7 @@
 //  GrammarFileName: &str
 //}
 //
-//impl BaseRecognizer {§//  pub fn new() -> *BaseRecognizer {
+//impl BaseRecognizer {§//  pub fn new(&self, ) -> *BaseRecognizer {
 //  rec := new(BaseRecognizer)
 //  rec.listeners = []ErrorListener{ConsoleErrorListenerINSTANCE}
 //  rec.state = -1
@@ -44,50 +44,50 @@
 //var tokenTypeMapCache = make(map[string]int)
 //var ruleIndexMapCache = make(map[string]int)
 //
-//pub fn checkVersion(toolVersion: &str) {
+//pub fn checkVersion(&self, toolVersion: &str) {
 //  runtimeVersion := "4.6"
 //  if runtimeVersion != toolVersion {
 //    fmt.Println("ANTLR runtime and generated code versions disagree: " + runtimeVersion + "!=" + toolVersion)
 //  }
 //}
 //
-//pub fn Action(context RuleContext,: ruleIndex, actionIndex: i32) {
+//pub fn Action(&self, context RuleContext,: ruleIndex, actionIndex: i32) {
 //  panic("action not implemented on Recognizer!")
 //}
 //
-//pub fn AddErrorListener(listener: ErrorListener) {
+//pub fn AddErrorListener(&self, listener: ErrorListener) {
 //  b.listeners = append(b.listeners, listener)
 //}
 //
-//pub fn RemoveErrorListeners() {
+//pub fn RemoveErrorListeners(&self, ) {
 //  b.listeners = make([]ErrorListener, 0)
 //}
 //
-//pub fn GetRuleNames() -> []string {
+//pub fn GetRuleNames(&self, ) -> []string {
 //  return b.RuleNames
 //}
 //
-//pub fn GetTokenNames() -> []string {
+//pub fn GetTokenNames(&self, ) -> []string {
 //  return b.LiteralNames
 //}
 //
-//pub fn GetSymbolicNames() -> []string {
+//pub fn GetSymbolicNames(&self, ) -> []string {
 //  return b.SymbolicNames
 //}
 //
-//pub fn GetLiteralNames() -> []string {
+//pub fn GetLiteralNames(&self, ) -> []string {
 //  return b.LiteralNames
 //}
 //
-//pub fn GetState() -> i32 {
+//pub fn GetState(&self, ) -> i32 {
 //  return b.state
 //}
 //
-//pub fn SetState(v: i32) {
+//pub fn SetState(&self, v: i32) {
 //  b.state = v
 //}
 //
-////pub fn GetTokenTypeMap() {
+////pub fn GetTokenTypeMap(&self, ) {
 ////    var tokenNames = b.GetTokenNames()
 ////    if (tokenNames==nil) {
 ////        panic("The current recognizer does not provide a list of token names.")
@@ -105,7 +105,7 @@
 ////
 //// <p>Used for XPath and tree pattern compilation.</p>
 ////
-//pub fn GetRuleIndexMap() -> map[string]int {
+//pub fn GetRuleIndexMap(&self, ) -> map[string]int {
 //
 //  panic("Method not defined!")
 //  //    var ruleNames = b.GetRuleNames()
@@ -121,7 +121,7 @@
 //  //    return result
 //}
 //
-//pub fn GetTokenType(tokenName: &str) -> i32 {
+//pub fn GetTokenType(&self, tokenName: &str) -> i32 {
 //  panic("Method not defined!")
 //  //    var ttype = b.GetTokenTypeMap()[tokenName]
 //  //    if (ttype !=nil) {
@@ -131,7 +131,7 @@
 //  //    }
 //}
 //
-////pub fn GetTokenTypeMap() -> map[string]int {
+////pub fn GetTokenTypeMap(&self, ) -> map[string]int {
 ////    Vocabulary vocabulary = getVocabulary()
 ////
 ////    Synchronized (tokenTypeMapCache) {
@@ -160,7 +160,7 @@
 ////}
 //
 //// What is the error header, normally line/character position information?//
-//pub fn GetErrorHeader(e: RecognitionException) -> &str {
+//pub fn GetErrorHeader(&self, e: RecognitionException) -> &str {
 //  line := e.GetOffendingToken().GetLine()
 //  column := e.GetOffendingToken().GetColumn()
 //  return "line " + strconv.Itoa(line) + ":" + strconv.Itoa(column)
@@ -179,7 +179,7 @@
 //// feature when necessary. For example, see
 //// {@link DefaultErrorStrategy//GetTokenErrorDisplay}.
 ////
-//pub fn GetTokenErrorDisplay(t: Token) -> &str {
+//pub fn GetTokenErrorDisplay(&self, t: Token) -> &str {
 //  if t == nil {
 //    return "<no token>"
 //  }
@@ -198,16 +198,16 @@
 //  return "'" + s + "'"
 //}
 //
-//pub fn GetErrorListenerDispatch() -> ErrorListener {
+//pub fn GetErrorListenerDispatch(&self, ) -> ErrorListener {
 //  return NewProxyErrorListener(b.listeners)
 //}
 //
 //// subclass needs to override these if there are sempreds or actions
 //// that the ATN i32erp needs to execute
-//pub fn Sempred(localctx RuleContext, ruleIndex: i32, actionIndex: i32) -> bool {
+//pub fn Sempred(&self, localctx RuleContext, ruleIndex: i32, actionIndex: i32) -> bool {
 //  return true
 //}
 //
-//pub fn Precpred(localctx: RuleContext, precedence: i32) -> bool {
+//pub fn Precpred(&self, localctx: RuleContext, precedence: i32) -> bool {
 //  return true
 //}

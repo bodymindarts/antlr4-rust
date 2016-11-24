@@ -21,7 +21,7 @@
 //  input:          IntStream
 //}
 //
-//impl BaseRecognitionException {§//  pub fn new(message &str, recognizer Recognizer, input: IntStream, ctx: RuleContext) -> *BaseRecognitionException {
+//impl BaseRecognitionException {§//  pub fn new(&self, message &str, recognizer Recognizer, input: IntStream, ctx: RuleContext) -> *BaseRecognitionException {
 //
 //  // todo
 //  //  Error.call(this)
@@ -56,15 +56,15 @@
 //  return t
 //}
 //
-//pub fn GetMessage() -> &str {
+//pub fn GetMessage(&self, ) -> &str {
 //  return b.message
 //}
 //
-//pub fn GetOffendingToken() -> Token {
+//pub fn GetOffendingToken(&self, ) -> Token {
 //  return b.offendingToken
 //}
 //
-//pub fn GetInputStream() -> IntStream {
+//pub fn GetInputStream(&self, ) -> IntStream {
 //  return b.input
 //}
 //
@@ -80,7 +80,7 @@
 //// @return The set of token types that could potentially follow the current
 //// state in the ATN, or {@code nil} if the information is not available.
 //// /
-//pub fn getExpectedTokens() -> *IntervalSet {
+//pub fn getExpectedTokens(&self, ) -> *IntervalSet {
 //  if b.recognizer != nil {
 //    return b.recognizer.GetATN().getExpectedTokens(b.offendingState, b.ctx)
 //  }
@@ -88,7 +88,7 @@
 //  return nil
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  return b.message
 //}
 //
@@ -99,7 +99,7 @@
 //  deadEndConfigs: ATNConfigSet
 //}
 //
-//impl LexerNoViableAltException {§//  pub fn new(lexer Lexer, input CharStream, startIndex: i32, deadEndConfigs: ATNConfigSet) -> *LexerNoViableAltException {
+//impl LexerNoViableAltException {§//  pub fn new(&self, lexer Lexer, input CharStream, startIndex: i32, deadEndConfigs: ATNConfigSet) -> *LexerNoViableAltException {
 //
 //  l := new(LexerNoViableAltException)
 //
@@ -111,7 +111,7 @@
 //  return l
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  symbol := ""
 //  if l.startIndex >= 0 && l.startIndex < l.input.Size() {
 //    symbol = l.input.(CharStream).GetTextFromInterval(NewInterval(l.startIndex, l.startIndex))
@@ -133,7 +133,7 @@
 //// of the offending input and also knows where the parser was
 //// in the various paths when the error. Reported by ReportNoViableAlternative()
 ////
-//impl NoViableAltException {§//  pub fn new(recognizer Parser, input TokenStream, startToken Token, offendingToken Token, deadEndConfigs: ATNConfigSet, ctx: ParserRuleContext) -> *NoViableAltException {
+//impl NoViableAltException {§//  pub fn new(&self, recognizer Parser, input TokenStream, startToken Token, offendingToken Token, deadEndConfigs: ATNConfigSet, ctx: ParserRuleContext) -> *NoViableAltException {
 //
 //  if ctx == nil {
 //    ctx = recognizer.GetParserRuleContext()
@@ -174,7 +174,7 @@
 //// This signifies any kind of mismatched input exceptions such as
 //// when the current input does not Match the expected token.
 ////
-//impl InputMisMatchException {§//  pub fn new(recognizer: Parser) -> *InputMisMatchException {
+//impl InputMisMatchException {§//  pub fn new(&self, recognizer: Parser) -> *InputMisMatchException {
 //
 //  i := new(InputMisMatchException)
 //  i.BaseRecognitionException = NewBaseRecognitionException("", recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
@@ -198,7 +198,7 @@
 //  predicate:      &str
 //}
 //
-//impl FailedPredicateException {§//  pub fn new(recognizer Parser, predicate: &str, message: &str) -> *FailedPredicateException {
+//impl FailedPredicateException {§//  pub fn new(&self, recognizer Parser, predicate: &str, message: &str) -> *FailedPredicateException {
 //
 //  f := new(FailedPredicateException)
 //
@@ -219,7 +219,7 @@
 //  return f
 //}
 //
-//pub fn formatMessage(predicate, message: &str) -> &str {
+//pub fn formatMessage(&self, predicate, message: &str) -> &str {
 //  if message != "" {
 //    return message
 //  }
@@ -230,7 +230,7 @@
 //pub struct ParseCancellationException {
 //}
 //
-//impl ParseCancellationException {§//  pub fn new() -> *ParseCancellationException {
+//impl ParseCancellationException {§//  pub fn new(&self, ) -> *ParseCancellationException {
 //  //  Error.call(this)
 //  //  Error.captureStackTrace(this, ParseCancellationException)
 //  return new(ParseCancellationException)

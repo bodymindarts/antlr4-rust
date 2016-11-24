@@ -67,62 +67,62 @@
 //  transitions []Transition
 //}
 //
-//impl BaseATNState {§//  pub fn new() -> *BaseATNState {
+//impl BaseATNState {§//  pub fn new(&self, ) -> *BaseATNState {
 //  return &BaseATNState{stateNumber: ATNStateInvalidStateNumber, stateType: ATNStateInvalidType}
 //}
 //
-//pub fn GetRuleIndex() -> i32 {
+//pub fn GetRuleIndex(&self, ) -> i32 {
 //  return as.ruleIndex
 //}
 //
-//pub fn SetRuleIndex(v: i32) {
+//pub fn SetRuleIndex(&self, v: i32) {
 //  as.ruleIndex = v
 //}
-//pub fn GetEpsilonOnlyTransitions() -> bool {
+//pub fn GetEpsilonOnlyTransitions(&self, ) -> bool {
 //  return as.epsilonOnlyTransitions
 //}
 //
-//pub fn GetATN() -> *ATN {
+//pub fn GetATN(&self, ) -> *ATN {
 //  return as.atn
 //}
 //
-//pub fn SetATN(atn *ATN) {
+//pub fn SetATN(&self, atn *ATN) {
 //  as.atn = atn
 //}
 //
-//pub fn GetTransitions() -> []Transition {
+//pub fn GetTransitions(&self, ) -> []Transition {
 //  return as.transitions
 //}
 //
-//pub fn SetTransitions(t []Transition) {
+//pub fn SetTransitions(&self, t []Transition) {
 //  as.transitions = t
 //}
 //
-//pub fn GetStateType() -> i32 {
+//pub fn GetStateType(&self, ) -> i32 {
 //  return as.stateType
 //}
 //
-//pub fn GetStateNumber() -> i32 {
+//pub fn GetStateNumber(&self, ) -> i32 {
 //  return as.stateNumber
 //}
 //
-//pub fn SetStateNumber(stateNumber: i32) {
+//pub fn SetStateNumber(&self, stateNumber: i32) {
 //  as.stateNumber = stateNumber
 //}
 //
-//pub fn GetNextTokenWithinRule() -> *IntervalSet {
+//pub fn GetNextTokenWithinRule(&self, ) -> *IntervalSet {
 //  return as.NextTokenWithinRule
 //}
 //
-//pub fn SetNextTokenWithinRule(v *IntervalSet) {
+//pub fn SetNextTokenWithinRule(&self, v *IntervalSet) {
 //  as.NextTokenWithinRule = v
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  return strconv.Itoa(as.stateNumber)
 //}
 //
-//pub fn equals(other i32erface{}) -> bool {
+//pub fn equals(&self, other i32erface{}) -> bool {
 //  if ot, ok := other.(ATNState); ok {
 //    return as.stateNumber == ot.GetStateNumber()
 //  }
@@ -130,11 +130,11 @@
 //  return false
 //}
 //
-//pub fn isNonGreedyExitState() -> bool {
+//pub fn isNonGreedyExitState(&self, ) -> bool {
 //  return false
 //}
 //
-//pub fn AddTransition(trans: Transition, index: i32) {
+//pub fn AddTransition(&self, trans: Transition, index: i32) {
 //  if len(as.transitions) == 0 {
 //    as.epsilonOnlyTransitions = trans.getIsEpsilon()
 //  } else if as.epsilonOnlyTransitions != trans.getIsEpsilon() {
@@ -153,7 +153,7 @@
 //  *BaseATNState
 //}
 //
-//impl BasicState {§//  pub fn new() -> *BasicState {
+//impl BasicState {§//  pub fn new(&self, ) -> *BasicState {
 //  b := NewBaseATNState()
 //
 //  b.stateType = ATNStateBasic
@@ -177,23 +177,23 @@
 //  nonGreedy: bool
 //}
 //
-//impl BaseDecisionState {§//  pub fn new() -> *BaseDecisionState {
+//impl BaseDecisionState {§//  pub fn new(&self, ) -> *BaseDecisionState {
 //  return &BaseDecisionState{BaseATNState: NewBaseATNState(), decision: -1}
 //}
 //
-//pub fn getDecision() -> i32 {
+//pub fn getDecision(&self, ) -> i32 {
 //  return s.decision
 //}
 //
-//pub fn setDecision(b: i32) {
+//pub fn setDecision(&self, b: i32) {
 //  s.decision = b
 //}
 //
-//pub fn getNonGreedy() -> bool {
+//pub fn getNonGreedy(&self, ) -> bool {
 //  return s.nonGreedy
 //}
 //
-//pub fn setNonGreedy(b: bool) {
+//pub fn setNonGreedy(&self, b: bool) {
 //  s.nonGreedy = b
 //}
 //
@@ -210,15 +210,15 @@
 //  endState: *BlockEndState
 //}
 //
-//impl BlockStartState {§//  pub fn new() -> *BaseBlockStartState {
+//impl BlockStartState {§//  pub fn new(&self, ) -> *BaseBlockStartState {
 //  return &BaseBlockStartState{BaseDecisionState: NewBaseDecisionState()}
 //}
 //
-//pub fn getEndState() -> *BlockEndState {
+//pub fn getEndState(&self, ) -> *BlockEndState {
 //  return s.endState
 //}
 //
-//pub fn setEndState(b *BlockEndState) {
+//pub fn setEndState(&self, b *BlockEndState) {
 //  s.endState = b
 //}
 //
@@ -226,7 +226,7 @@
 //  *BaseBlockStartState
 //}
 //
-//impl BasicBlockStartState {§//  pub fn new() -> *BasicBlockStartState {
+//impl BasicBlockStartState {§//  pub fn new(&self, ) -> *BasicBlockStartState {
 //  b := NewBlockStartState()
 //
 //  b.stateType = ATNStateBlockStart
@@ -240,7 +240,7 @@
 //  startState: ATNState
 //}
 //
-//impl BlockEndState {§//  pub fn new() -> *BlockEndState {
+//impl BlockEndState {§//  pub fn new(&self, ) -> *BlockEndState {
 //  b := NewBaseATNState()
 //
 //  b.stateType = ATNStateBlockEnd
@@ -256,7 +256,7 @@
 //  *BaseATNState
 //}
 //
-//impl RuleStopState {§//  pub fn new() -> *RuleStopState {
+//impl RuleStopState {§//  pub fn new(&self, ) -> *RuleStopState {
 //  b := NewBaseATNState()
 //
 //  b.stateType = ATNStateRuleStop
@@ -270,7 +270,7 @@
 //  isPrecedenceRule: bool
 //}
 //
-//impl RuleStartState {§//  pub fn new() -> *RuleStartState {
+//impl RuleStartState {§//  pub fn new(&self, ) -> *RuleStartState {
 //  b := NewBaseATNState()
 //
 //  b.stateType = ATNStateRuleStart
@@ -284,7 +284,7 @@
 //  *BaseDecisionState
 //}
 //
-//impl PlusLoopbackState {§//  pub fn new() -> *PlusLoopbackState {
+//impl PlusLoopbackState {§//  pub fn new(&self, ) -> *PlusLoopbackState {
 //  b := NewBaseDecisionState()
 //
 //  b.stateType = ATNStatePlusLoopBack
@@ -301,7 +301,7 @@
 //  loopBackState: ATNState
 //}
 //
-//impl PlusBlockStartState {§//  pub fn new() -> *PlusBlockStartState {
+//impl PlusBlockStartState {§//  pub fn new(&self, ) -> *PlusBlockStartState {
 //  b := NewBlockStartState()
 //
 //  b.stateType = ATNStatePlusBlockStart
@@ -314,7 +314,7 @@
 //  *BaseBlockStartState
 //}
 //
-//impl StarBlockStartState {§//  pub fn new() -> *StarBlockStartState {
+//impl StarBlockStartState {§//  pub fn new(&self, ) -> *StarBlockStartState {
 //  b := NewBlockStartState()
 //
 //  b.stateType = ATNStateStarBlockStart
@@ -326,7 +326,7 @@
 //  *BaseATNState
 //}
 //
-//impl StarLoopbackState {§//  pub fn new() -> *StarLoopbackState {
+//impl StarLoopbackState {§//  pub fn new(&self, ) -> *StarLoopbackState {
 //  b := NewBaseATNState()
 //
 //  b.stateType = ATNStateStarLoopBack
@@ -340,7 +340,7 @@
 //  precedenceRuleDecision: bool
 //}
 //
-//impl StarLoopEntryState {§//  pub fn new() -> *StarLoopEntryState {
+//impl StarLoopEntryState {§//  pub fn new(&self, ) -> *StarLoopEntryState {
 //  b := NewBaseDecisionState()
 //
 //  b.stateType = ATNStateStarLoopEntry
@@ -355,7 +355,7 @@
 //  loopBackState: ATNState
 //}
 //
-//impl LoopEndState {§//  pub fn new() -> *LoopEndState {
+//impl LoopEndState {§//  pub fn new(&self, ) -> *LoopEndState {
 //  b := NewBaseATNState()
 //
 //  b.stateType = ATNStateLoopEnd
@@ -368,7 +368,7 @@
 //  *BaseDecisionState
 //}
 //
-//impl TokensStartState {§//  pub fn new() -> *TokensStartState {
+//impl TokensStartState {§//  pub fn new(&self, ) -> *TokensStartState {
 //  b := NewBaseDecisionState()
 //
 //  b.stateType = ATNStateTokenStart

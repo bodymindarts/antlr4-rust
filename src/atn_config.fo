@@ -55,11 +55,11 @@
 //  }
 //}
 //
-//impl BaseATNConfig {§//  pub fn new6(state ATNState, alt: i32, context: PredictionContext) -> *BaseATNConfig {
+//impl BaseATNConfig {§//  pub fn new6(&self, state ATNState, alt: i32, context: PredictionContext) -> *BaseATNConfig {
 //  return NewBaseATNConfig5(state, alt, context, SemanticContextNone)
 //}
 //
-//impl BaseATNConfig {§//  pub fn new5(state ATNState, alt i32, context: PredictionContext, semanticContext: SemanticContext) -> *BaseATNConfig {
+//impl BaseATNConfig {§//  pub fn new5(&self, state ATNState, alt i32, context: PredictionContext, semanticContext: SemanticContext) -> *BaseATNConfig {
 //  if semanticContext == nil {
 //    panic("semanticContext cannot be nil") // TODO: Necessary?
 //  }
@@ -67,23 +67,23 @@
 //  return &BaseATNConfig{state: state, alt: alt, context: context, semanticContext: semanticContext}
 //}
 //
-//impl BaseATNConfig {§//  pub fn new4(c: ATNConfig, state: ATNState) -> *BaseATNConfig {
+//impl BaseATNConfig {§//  pub fn new4(&self, c: ATNConfig, state: ATNState) -> *BaseATNConfig {
 //  return NewBaseATNConfig(c, state, c.GetContext(), c.GetSemanticContext())
 //}
 //
-//impl BaseATNConfig {§//  pub fn new3(c ATNConfig, state: ATNState, semanticContext: SemanticContext) -> *BaseATNConfig {
+//impl BaseATNConfig {§//  pub fn new3(&self, c ATNConfig, state: ATNState, semanticContext: SemanticContext) -> *BaseATNConfig {
 //  return NewBaseATNConfig(c, state, c.GetContext(), semanticContext)
 //}
 //
-//impl BaseATNConfig {§//  pub fn new2(c: ATNConfig, semanticContext: SemanticContext) -> *BaseATNConfig {
+//impl BaseATNConfig {§//  pub fn new2(&self, c: ATNConfig, semanticContext: SemanticContext) -> *BaseATNConfig {
 //  return NewBaseATNConfig(c, c.GetState(), c.GetContext(), semanticContext)
 //}
 //
-//impl BaseATNConfig {§//  pub fn new1(c ATNConfig, state: ATNState, context: PredictionContext) -> *BaseATNConfig {
+//impl BaseATNConfig {§//  pub fn new1(&self, c ATNConfig, state: ATNState, context: PredictionContext) -> *BaseATNConfig {
 //  return NewBaseATNConfig(c, state, context, c.GetSemanticContext())
 //}
 //
-//impl BaseATNConfig {§//  pub fn new(c ATNConfig, state ATNState, context: PredictionContext, semanticContext: SemanticContext) -> *BaseATNConfig {
+//impl BaseATNConfig {§//  pub fn new(&self, c ATNConfig, state ATNState, context: PredictionContext, semanticContext: SemanticContext) -> *BaseATNConfig {
 //  if semanticContext == nil {
 //    panic("semanticContext cannot be nil")
 //  }
@@ -98,44 +98,44 @@
 //  }
 //}
 //
-//pub fn getPrecedenceFilterSuppressed() -> bool {
+//pub fn getPrecedenceFilterSuppressed(&self, ) -> bool {
 //  return b.precedenceFilterSuppressed
 //}
 //
-//pub fn setPrecedenceFilterSuppressed(v: bool) {
+//pub fn setPrecedenceFilterSuppressed(&self, v: bool) {
 //  b.precedenceFilterSuppressed = v
 //}
 //
-//pub fn GetState() -> ATNState {
+//pub fn GetState(&self, ) -> ATNState {
 //  return b.state
 //}
 //
-//pub fn GetAlt() -> i32 {
+//pub fn GetAlt(&self, ) -> i32 {
 //  return b.alt
 //}
 //
-//pub fn SetContext(v: PredictionContext) {
+//pub fn SetContext(&self, v: PredictionContext) {
 //  b.context = v
 //}
-//pub fn GetContext() -> PredictionContext {
+//pub fn GetContext(&self, ) -> PredictionContext {
 //  return b.context
 //}
 //
-//pub fn GetSemanticContext() -> SemanticContext {
+//pub fn GetSemanticContext(&self, ) -> SemanticContext {
 //  return b.semanticContext
 //}
 //
-//pub fn GetReachesIntoOuterContext() -> i32 {
+//pub fn GetReachesIntoOuterContext(&self, ) -> i32 {
 //  return b.reachesIntoOuterContext
 //}
 //
-//pub fn SetReachesIntoOuterContext(v: i32) {
+//pub fn SetReachesIntoOuterContext(&self, v: i32) {
 //  b.reachesIntoOuterContext = v
 //}
 //
 //// An ATN configuration is equal to another if both have the same state, they
 //// predict the same alternative, and syntactic/semantic contexts are the same.
-//pub fn equals(o i32erface{}) -> bool {
+//pub fn equals(&self, o i32erface{}) -> bool {
 //  if b == o {
 //    return true
 //  }
@@ -164,11 +164,11 @@
 //  return nums && alts && cons && sups && equal
 //}
 //
-//pub fn shortHash() -> &str {
+//pub fn shortHash(&self, ) -> &str {
 //  return strconv.Itoa(b.state.GetStateNumber()) + "/" + strconv.Itoa(b.alt) + "/" + b.semanticContext.String()
 //}
 //
-//pub fn Hash() -> &str {
+//pub fn Hash(&self, ) -> &str {
 //  var c &str
 //
 //  if b.context == nil {
@@ -180,7 +180,7 @@
 //  return strconv.Itoa(b.state.GetStateNumber()) + "/" + strconv.Itoa(b.alt) + "/" + c + "/" + b.semanticContext.String()
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  var s1, s2, s3 &str
 //
 //  if b.context != nil {
@@ -206,18 +206,18 @@
 //  passedThroughNonGreedyDecision: bool
 //}
 //
-//impl LexerATNConfig {§//  pub fn new6(state ATNState, alt: i32, context: PredictionContext) -> *LexerATNConfig {
+//impl LexerATNConfig {§//  pub fn new6(&self, state ATNState, alt: i32, context: PredictionContext) -> *LexerATNConfig {
 //  return &LexerATNConfig{BaseATNConfig: NewBaseATNConfig5(state, alt, context, SemanticContextNone)}
 //}
 //
-//impl LexerATNConfig {§//  pub fn new5(state ATNState, alt i32, context: PredictionContext, lexerActionExecutor *LexerActionExecutor) -> *LexerATNConfig {
+//impl LexerATNConfig {§//  pub fn new5(&self, state ATNState, alt i32, context: PredictionContext, lexerActionExecutor *LexerActionExecutor) -> *LexerATNConfig {
 //  return &LexerATNConfig{
 //    BaseATNConfig:       NewBaseATNConfig5(state, alt, context, SemanticContextNone),
 //    lexerActionExecutor: lexerActionExecutor,
 //  }
 //}
 //
-//impl LexerATNConfig {§//  pub fn new4(c *LexerATNConfig, state: ATNState) -> *LexerATNConfig {
+//impl LexerATNConfig {§//  pub fn new4(&self, c *LexerATNConfig, state: ATNState) -> *LexerATNConfig {
 //  return &LexerATNConfig{
 //    BaseATNConfig:                  NewBaseATNConfig(c, state, c.GetContext(), c.GetSemanticContext()),
 //    lexerActionExecutor:            c.lexerActionExecutor,
@@ -225,7 +225,7 @@
 //  }
 //}
 //
-//impl LexerATNConfig {§//  pub fn new3(c *LexerATNConfig, state: ATNState, lexerActionExecutor *LexerActionExecutor) -> *LexerATNConfig {
+//impl LexerATNConfig {§//  pub fn new3(&self, c *LexerATNConfig, state: ATNState, lexerActionExecutor *LexerActionExecutor) -> *LexerATNConfig {
 //  return &LexerATNConfig{
 //    BaseATNConfig:                  NewBaseATNConfig(c, state, c.GetContext(), c.GetSemanticContext()),
 //    lexerActionExecutor:            lexerActionExecutor,
@@ -233,7 +233,7 @@
 //  }
 //}
 //
-//impl LexerATNConfig {§//  pub fn new2(c *LexerATNConfig, state: ATNState, context: PredictionContext) -> *LexerATNConfig {
+//impl LexerATNConfig {§//  pub fn new2(&self, c *LexerATNConfig, state: ATNState, context: PredictionContext) -> *LexerATNConfig {
 //  return &LexerATNConfig{
 //    BaseATNConfig:                  NewBaseATNConfig(c, state, context, c.GetSemanticContext()),
 //    lexerActionExecutor:            c.lexerActionExecutor,
@@ -241,11 +241,11 @@
 //  }
 //}
 //
-//impl LexerATNConfig {§//  pub fn new1(state ATNState, alt: i32, context: PredictionContext) -> *LexerATNConfig {
+//impl LexerATNConfig {§//  pub fn new1(&self, state ATNState, alt: i32, context: PredictionContext) -> *LexerATNConfig {
 //  return &LexerATNConfig{BaseATNConfig: NewBaseATNConfig5(state, alt, context, SemanticContextNone)}
 //}
 //
-//pub fn Hash() -> &str {
+//pub fn Hash(&self, ) -> &str {
 //  var f &str
 //
 //  if l.passedThroughNonGreedyDecision {
@@ -257,7 +257,7 @@
 //  return fmt.Sprintf("%v%v%v%v%v%v", l.state.GetStateNumber(), l.alt, l.context, l.semanticContext, f, l.lexerActionExecutor)
 //}
 //
-//pub fn equals(other i32erface{}) -> bool {
+//pub fn equals(&self, other i32erface{}) -> bool {
 //  var othert, ok = other.(*LexerATNConfig)
 //
 //  if l == other {

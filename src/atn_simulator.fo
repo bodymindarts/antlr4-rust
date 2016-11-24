@@ -14,7 +14,7 @@
 //  decisionToDFA  []*DFA
 //}
 //
-//impl BaseATNSimulator {§//  pub fn new(atn *ATN, sharedContextCache *PredictionContextCache) -> *BaseATNSimulator {
+//impl BaseATNSimulator {§//  pub fn new(&self, atn *ATN, sharedContextCache *PredictionContextCache) -> *BaseATNSimulator {
 //  b := new(BaseATNSimulator)
 //
 //  b.atn = atn
@@ -23,7 +23,7 @@
 //  return b
 //}
 //
-//pub fn getCachedContext(context: PredictionContext) -> PredictionContext {
+//pub fn getCachedContext(&self, context: PredictionContext) -> PredictionContext {
 //  if b.sharedContextCache == nil {
 //    return context
 //  }
@@ -33,14 +33,14 @@
 //  return getCachedBasePredictionContext(context, b.sharedContextCache, visited)
 //}
 //
-//pub fn SharedContextCache() -> *PredictionContextCache {
+//pub fn SharedContextCache(&self, ) -> *PredictionContextCache {
 //  return b.sharedContextCache
 //}
 //
-//pub fn ATN() -> *ATN {
+//pub fn ATN(&self, ) -> *ATN {
 //  return b.atn
 //}
 //
-//pub fn DecisionToDFA() -> []*DFA {
+//pub fn DecisionToDFA(&self, ) -> []*DFA {
 //  return b.decisionToDFA
 //}

@@ -30,7 +30,7 @@
 //
 //var ErrEmptyStack = errors.New("Stack is empty")
 //
-//pub fn (int,: error) {
+//pub fn (&self, int,: error) {
 //  l := len(*s) - 1
 //  if l < 0 {
 //    return 0, ErrEmptyStack
@@ -40,7 +40,7 @@
 //  return v, nil
 //}
 //
-//pub fn Push(e: i32) {
+//pub fn Push(&self, e: i32) {
 //  *s = append(*s, e)
 //}
 //
@@ -50,7 +50,7 @@
 //  equalsFunction func(interface{}, i32erface{}) bool
 //}
 //
-//impl Set {§//  pub fn new(hashFunction func(interface{}): &str, equalsFunction func(interface{}, i32erface{}): bool) -> *Set {
+//impl Set {§//  pub fn new(hashFunction func(interface{}): &str, equalsFunction func(&self, interface{}, i32erface{}): bool) -> *Set {
 //
 //  s := new(Set)
 //
@@ -113,11 +113,11 @@
 //  return fmt.Sprint(h.Sum32())
 //}
 //
-//pub fn length() -> i32 {
+//pub fn length(&self, ) -> i32 {
 //  return len(s.data)
 //}
 //
-//pub fn add(value i32erface{}) -> i32erface{} {
+//pub fn add(&self, value i32erface{}) -> i32erface{} {
 //
 //  hash := s.hashFunction(value)
 //  key := "hash_" + hashCode(hash)
@@ -140,7 +140,7 @@
 //  return value
 //}
 //
-//pub fn contains(value i32erface{}) -> bool {
+//pub fn contains(&self, value i32erface{}) -> bool {
 //
 //  hash := s.hashFunction(value)
 //  key := "hash_" + hashCode(hash)
@@ -157,7 +157,7 @@
 //  return false
 //}
 //
-//pub fn values() -> []interface{} {
+//pub fn values(&self, ) -> []interface{} {
 //  l := make([]interface{}, 0)
 //
 //  for key := range s.data {
@@ -168,7 +168,7 @@
 //  return l
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //
 //  r := ""
 //
@@ -185,35 +185,35 @@
 //  data map[int]bool
 //}
 //
-//impl BitSet {§//  pub fn new() -> *BitSet {
+//impl BitSet {§//  pub fn new(&self, ) -> *BitSet {
 //  b := new(BitSet)
 //  b.data = make(map[int]bool)
 //  return b
 //}
 //
-//pub fn add(value: i32) {
+//pub fn add(&self, value: i32) {
 //  b.data[value] = true
 //}
 //
-//pub fn clear(index: i32) {
+//pub fn clear(&self, index: i32) {
 //  delete(b.data, index)
 //}
 //
-//pub fn or(set *BitSet) {
+//pub fn or(&self, set *BitSet) {
 //  for k := range set.data {
 //    b.add(k)
 //  }
 //}
 //
-//pub fn remove(value: i32) {
+//pub fn remove(&self, value: i32) {
 //  delete(b.data, value)
 //}
 //
-//pub fn contains(value: i32) -> bool {
+//pub fn contains(&self, value: i32) -> bool {
 //  return b.data[value] == true
 //}
 //
-//pub fn values() -> []int {
+//pub fn values(&self, ) -> []int {
 //  ks := make([]int, len(b.data))
 //  i := 0
 //  for k := range b.data {
@@ -224,7 +224,7 @@
 //  return ks
 //}
 //
-//pub fn minValue() -> i32 {
+//pub fn minValue(&self, ) -> i32 {
 //  min := 2147483647
 //
 //  for k := range b.data {
@@ -236,7 +236,7 @@
 //  return min
 //}
 //
-//pub fn equals(other i32erface{}) -> bool {
+//pub fn equals(&self, other i32erface{}) -> bool {
 //  otherBitSet, ok := other.(*BitSet)
 //  if !ok {
 //    return false
@@ -255,11 +255,11 @@
 //  return true
 //}
 //
-//pub fn length() -> i32 {
+//pub fn length(&self, ) -> i32 {
 //  return len(b.data)
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  vals := b.values()
 //  valsS := make([]string, len(vals))
 //
@@ -273,23 +273,23 @@
 //  data map[string]interface{}
 //}
 //
-//impl AltDict {§//  pub fn new() -> *AltDict {
+//impl AltDict {§//  pub fn new(&self, ) -> *AltDict {
 //  d := new(AltDict)
 //  d.data = make(map[string]interface{})
 //  return d
 //}
 //
-//pub fn Get(key: &str) -> i32erface{} {
+//pub fn Get(&self, key: &str) -> i32erface{} {
 //  key = "k-" + key
 //  return a.data[key]
 //}
 //
-//pub fn put(key: &str, value i32erface{}) {
+//pub fn put(&self, key: &str, value i32erface{}) {
 //  key = "k-" + key
 //  a.data[key] = value
 //}
 //
-//pub fn values() -> []interface{} {
+//pub fn values(&self, ) -> []interface{} {
 //  vs := make([]interface{}, len(a.data))
 //  i := 0
 //  for _, v := range a.data {
@@ -303,13 +303,13 @@
 //  data map[string]map[string]interface{}
 //}
 //
-//impl DoubleDict {§//  pub fn new() -> *DoubleDict {
+//impl DoubleDict {§//  pub fn new(&self, ) -> *DoubleDict {
 //  dd := new(DoubleDict)
 //  dd.data = make(map[string]map[string]interface{})
 //  return dd
 //}
 //
-//pub fn Get(a: &str, b: &str) -> i32erface{} {
+//pub fn Get(&self, a: &str, b: &str) -> i32erface{} {
 //  data := d.data[a]
 //
 //  if data == nil {
@@ -319,7 +319,7 @@
 //  return data[b]
 //}
 //
-//pub fn set(a, b: &str, o i32erface{}) {
+//pub fn set(&self, a, b: &str, o i32erface{}) {
 //  data := d.data[a]
 //
 //  if data == nil {

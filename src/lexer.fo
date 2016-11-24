@@ -46,7 +46,7 @@
 //  text:                   &str
 //}
 //
-//impl BaseLexer {§//  pub fn new(input: CharStream) -> *BaseLexer {
+//impl BaseLexer {§//  pub fn new(&self, input: CharStream) -> *BaseLexer {
 //
 //  lexer := new(BaseLexer)
 //
@@ -114,7 +114,7 @@
 //  LexerMaxCharValue        = '\uFFFE'
 //)
 //
-//pub fn reset() {
+//pub fn reset(&self, ) {
 //  // wack Lexer state variables
 //  if b.input != nil {
 //    b.input.Seek(0) // rewind the input
@@ -134,31 +134,31 @@
 //  b.Interpreter.reset()
 //}
 //
-//pub fn GetInterpreter() -> ILexerATNSimulator {
+//pub fn GetInterpreter(&self, ) -> ILexerATNSimulator {
 //  return b.Interpreter
 //}
 //
-//pub fn GetInputStream() -> CharStream {
+//pub fn GetInputStream(&self, ) -> CharStream {
 //  return b.input
 //}
 //
-//pub fn GetSourceName() -> &str {
+//pub fn GetSourceName(&self, ) -> &str {
 //  return b.GrammarFileName
 //}
 //
-//pub fn setChannel(v: i32) {
+//pub fn setChannel(&self, v: i32) {
 //  b.channel = v
 //}
 //
-//pub fn GetTokenFactory() -> TokenFactory {
+//pub fn GetTokenFactory(&self, ) -> TokenFactory {
 //  return b.factory
 //}
 //
-//pub fn setTokenFactory(f: TokenFactory) {
+//pub fn setTokenFactory(&self, f: TokenFactory) {
 //  b.factory = f
 //}
 //
-//pub fn (ret: i32) {
+//pub fn (&self, ret: i32) {
 //  defer func() {
 //    if e := recover(); e != nil {
 //      if re, ok := e.(RecognitionException); ok {
@@ -173,7 +173,7 @@
 //}
 //
 //// Return a token from l source i.e., Match a token on the char stream.
-//pub fn NextToken() -> Token {
+//pub fn NextToken(&self, ) -> Token {
 //  if b.input == nil {
 //    panic("NextToken requires a non-nil input stream.")
 //  }
@@ -238,19 +238,19 @@
 //// if token==nil at end of any token rule, it creates one for you
 //// and emits it.
 //// /
-//pub fn Skip() {
+//pub fn Skip(&self, ) {
 //  b.thetype = LexerSkip
 //}
 //
-//pub fn More() {
+//pub fn More(&self, ) {
 //  b.thetype = LexerMore
 //}
 //
-//pub fn setMode(m: i32) {
+//pub fn setMode(&self, m: i32) {
 //  b.mode = m
 //}
 //
-//pub fn pushMode(m: i32) {
+//pub fn pushMode(&self, m: i32) {
 //  if LexerATNSimulatorDebug {
 //    fmt.Println("pushMode " + strconv.Itoa(m))
 //  }
@@ -258,7 +258,7 @@
 //  b.mode = m
 //}
 //
-//pub fn popMode() -> i32 {
+//pub fn popMode(&self, ) -> i32 {
 //  if len(b.modeStack) == 0 {
 //    panic("Empty Stack")
 //  }
@@ -270,11 +270,11 @@
 //  return b.mode
 //}
 //
-//pub fn inputStream() -> CharStream {
+//pub fn inputStream(&self, ) -> CharStream {
 //  return b.input
 //}
 //
-//pub fn setInputStream(input: CharStream) {
+//pub fn setInputStream(&self, input: CharStream) {
 //  b.input = nil
 //  b.tokenFactorySourcePair = &TokenSourceCharStreamPair{b, b.input}
 //  b.reset()
@@ -287,7 +287,7 @@
 //// and GetToken (to push tokens i32o a list and pull from that list
 //// rather than a single variable as l implementation does).
 //// /
-//pub fn EmitToken(token: Token) {
+//pub fn EmitToken(&self, token: Token) {
 //  b.token = token
 //}
 //
@@ -297,13 +297,13 @@
 //// use that to set the token's text. Override l method to emit
 //// custom Token objects or provide a Newfactory.
 //// /
-//pub fn Emit() -> Token {
+//pub fn Emit(&self, ) -> Token {
 //  t := b.factory.Create(b.tokenFactorySourcePair, b.thetype, b.text, b.channel, b.TokenStartCharIndex, b.GetCharIndex()-1, b.TokenStartLine, b.TokenStartColumn)
 //  b.EmitToken(t)
 //  return t
 //}
 //
-//pub fn EmitEOF() -> Token {
+//pub fn EmitEOF(&self, ) -> Token {
 //  cpos := b.GetCharPositionInLine()
 //  lpos := b.GetLine()
 //  eof := b.factory.Create(b.tokenFactorySourcePair, TokenEOF, "", TokenDefaultChannel, b.input.Index(), b.input.Index()-1, lpos, cpos)
@@ -311,30 +311,30 @@
 //  return eof
 //}
 //
-//pub fn GetCharPositionInLine() -> i32 {
+//pub fn GetCharPositionInLine(&self, ) -> i32 {
 //  return b.Interpreter.GetCharPositionInLine()
 //}
 //
-//pub fn GetLine() -> i32 {
+//pub fn GetLine(&self, ) -> i32 {
 //  return b.Interpreter.GetLine()
 //}
 //
-//pub fn GetType() -> i32 {
+//pub fn GetType(&self, ) -> i32 {
 //  return b.thetype
 //}
 //
-//pub fn setType(t: i32) {
+//pub fn setType(&self, t: i32) {
 //  b.thetype = t
 //}
 //
 //// What is the index of the current character of lookahead?///
-//pub fn GetCharIndex() -> i32 {
+//pub fn GetCharIndex(&self, ) -> i32 {
 //  return b.input.Index()
 //}
 //
 //// Return the text Matched so far for the current token or any text override.
 ////Set the complete text of l token it wipes any previous changes to the text.
-//pub fn GetText() -> &str {
+//pub fn GetText(&self, ) -> &str {
 //  if b.text != "" {
 //    return b.text
 //  }
@@ -342,18 +342,18 @@
 //  return b.Interpreter.GetText(b.input)
 //}
 //
-//pub fn SetText(text: &str) {
+//pub fn SetText(&self, text: &str) {
 //  b.text = text
 //}
 //
-//pub fn GetATN() -> *ATN {
+//pub fn GetATN(&self, ) -> *ATN {
 //  return b.Interpreter.ATN()
 //}
 //
 //// Return a list of all Token objects in input char stream.
 //// Forces load of all tokens. Does not include EOF token.
 //// /
-//pub fn getAllTokens() -> []Token {
+//pub fn getAllTokens(&self, ) -> []Token {
 //  vl := b.Virt
 //  tokens := make([]Token, 0)
 //  t := vl.NextToken()
@@ -364,7 +364,7 @@
 //  return tokens
 //}
 //
-//pub fn notifyListeners(e: RecognitionException) {
+//pub fn notifyListeners(&self, e: RecognitionException) {
 //  start := b.TokenStartCharIndex
 //  stop := b.input.Index()
 //  text := b.input.GetTextFromInterval(NewInterval(start, stop))
@@ -373,7 +373,7 @@
 //  listener.SyntaxError(b, nil, b.TokenStartLine, b.TokenStartColumn, msg, e)
 //}
 //
-//pub fn getErrorDisplayForChar(c: rune) -> &str {
+//pub fn getErrorDisplayForChar(&self, c: rune) -> &str {
 //  if c == TokenEOF {
 //    return "<EOF>"
 //  } else if c == '\n' {
@@ -387,7 +387,7 @@
 //  }
 //}
 //
-//pub fn getCharErrorDisplay(c: rune) -> &str {
+//pub fn getCharErrorDisplay(&self, c: rune) -> &str {
 //  return "'" + b.getErrorDisplayForChar(c) + "'"
 //}
 //
@@ -396,7 +396,7 @@
 //// it all works out. You can instead use the rule invocation stack
 //// to do sophisticated error recovery if you are in a fragment rule.
 //// /
-//pub fn Recover(re: RecognitionException) {
+//pub fn Recover(&self, re: RecognitionException) {
 //  if b.input.LA(1) != TokenEOF {
 //    if _, ok := re.(*LexerNoViableAltException); ok {
 //      // Skip a char and try again

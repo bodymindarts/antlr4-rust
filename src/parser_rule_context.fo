@@ -34,7 +34,7 @@
 //  children    []Tree
 //}
 //
-//impl BaseParserRuleContext {§//  pub fn new(parent: ParserRuleContext, invokingStateNumber: i32) -> *BaseParserRuleContext {
+//impl BaseParserRuleContext {§//  pub fn new(&self, parent: ParserRuleContext, invokingStateNumber: i32) -> *BaseParserRuleContext {
 //  prc := new(BaseParserRuleContext)
 //
 //  prc.BaseRuleContext = NewBaseRuleContext(parent, invokingStateNumber)
@@ -56,15 +56,15 @@
 //  return prc
 //}
 //
-//pub fn SetException(e: RecognitionException) {
+//pub fn SetException(&self, e: RecognitionException) {
 //  prc.exception = e
 //}
 //
-//pub fn GetChildren() -> []Tree {
+//pub fn GetChildren(&self, ) -> []Tree {
 //  return prc.children
 //}
 //
-//pub fn CopyFrom(ctx *BaseParserRuleContext) {
+//pub fn CopyFrom(&self, ctx *BaseParserRuleContext) {
 //  // from RuleContext
 //  prc.parentCtx = ctx.parentCtx
 //  prc.invokingState = ctx.invokingState
@@ -73,7 +73,7 @@
 //  prc.stop = ctx.stop
 //}
 //
-//pub fn GetText() -> &str {
+//pub fn GetText(&self, ) -> &str {
 //  if prc.GetChildCount() == 0 {
 //    return ""
 //  }
@@ -87,14 +87,14 @@
 //}
 //
 //// Double dispatch methods for listeners
-//pub fn EnterRule(listener: ParseTreeListener) {
+//pub fn EnterRule(&self, listener: ParseTreeListener) {
 //}
 //
-//pub fn ExitRule(listener: ParseTreeListener) {
+//pub fn ExitRule(&self, listener: ParseTreeListener) {
 //}
 //
 //// * Does not set parent link other add methods do that///
-//pub fn addTerminalNodeChild(child: TerminalNode) -> TerminalNode {
+//pub fn addTerminalNodeChild(&self, child: TerminalNode) -> TerminalNode {
 //  if prc.children == nil {
 //    prc.children = make([]Tree, 0)
 //  }
@@ -105,7 +105,7 @@
 //  return child
 //}
 //
-//pub fn AddChild(child: RuleContext) -> RuleContext {
+//pub fn AddChild(&self, child: RuleContext) -> RuleContext {
 //  if prc.children == nil {
 //    prc.children = make([]Tree, 0)
 //  }
@@ -120,13 +120,13 @@
 //// we entered a rule. If we have // label, we will need to remove
 //// generic ruleContext object.
 //// /
-//pub fn RemoveLastChild() {
+//pub fn RemoveLastChild(&self, ) {
 //  if prc.children != nil && len(prc.children) > 0 {
 //    prc.children = prc.children[0 : len(prc.children)-1]
 //  }
 //}
 //
-//pub fn AddTokenNode(token: Token) -> *TerminalNodeImpl {
+//pub fn AddTokenNode(&self, token: Token) -> *TerminalNodeImpl {
 //
 //  node := NewTerminalNodeImpl(token)
 //  prc.addTerminalNodeChild(node)
@@ -135,14 +135,14 @@
 //
 //}
 //
-//pub fn AddErrorNode(badToken: Token) -> *ErrorNodeImpl {
+//pub fn AddErrorNode(&self, badToken: Token) -> *ErrorNodeImpl {
 //  node := NewErrorNodeImpl(badToken)
 //  prc.addTerminalNodeChild(node)
 //  node.parentCtx = prc
 //  return node
 //}
 //
-//pub fn GetChild(i: i32) -> Tree {
+//pub fn GetChild(&self, i: i32) -> Tree {
 //  if prc.children != nil && len(prc.children) >= i {
 //    return prc.children[i]
 //  }
@@ -150,7 +150,7 @@
 //  return nil
 //}
 //
-//pub fn GetChildOfType(i: i32, childType reflect.Type) -> RuleContext {
+//pub fn GetChildOfType(&self, i: i32, childType reflect.Type) -> RuleContext {
 //  if childType == nil {
 //    return prc.GetChild(i).(RuleContext)
 //  }
@@ -169,35 +169,35 @@
 //  return nil
 //}
 //
-//pub fn ToStringTree(ruleNames []string, recog: Recognizer) -> &str {
+//pub fn ToStringTree(&self, ruleNames []string, recog: Recognizer) -> &str {
 //  return TreesStringTree(prc, ruleNames, recog)
 //}
 //
-//pub fn GetRuleContext() -> RuleContext {
+//pub fn GetRuleContext(&self, ) -> RuleContext {
 //  return prc
 //}
 //
-//pub fn Accept(visitor: ParseTreeVisitor) -> i32erface{} {
+//pub fn Accept(&self, visitor: ParseTreeVisitor) -> i32erface{} {
 //  return visitor.VisitChildren(prc)
 //}
 //
-//pub fn SetStart(t: Token) {
+//pub fn SetStart(&self, t: Token) {
 //  prc.start = t
 //}
 //
-//pub fn GetStart() -> Token {
+//pub fn GetStart(&self, ) -> Token {
 //  return prc.start
 //}
 //
-//pub fn SetStop(t: Token) {
+//pub fn SetStop(&self, t: Token) {
 //  prc.stop = t
 //}
 //
-//pub fn GetStop() -> Token {
+//pub fn GetStop(&self, ) -> Token {
 //  return prc.stop
 //}
 //
-//pub fn GetToken(ttype: i32, i: i32) -> TerminalNode {
+//pub fn GetToken(&self, ttype: i32, i: i32) -> TerminalNode {
 //
 //  for j := 0; j < len(prc.children); j++ {
 //    child := prc.children[j]
@@ -214,7 +214,7 @@
 //  return nil
 //}
 //
-//pub fn GetTokens(ttype: i32) -> []TerminalNode {
+//pub fn GetTokens(&self, ttype: i32) -> []TerminalNode {
 //  if prc.children == nil {
 //    return make([]TerminalNode, 0)
 //  }
@@ -233,11 +233,11 @@
 //  return tokens
 //}
 //
-//pub fn GetPayload() -> i32erface{} {
+//pub fn GetPayload(&self, ) -> i32erface{} {
 //  return prc
 //}
 //
-//pub fn getChild(ctxType reflect.Type, i: i32) -> RuleContext {
+//pub fn getChild(&self, ctxType reflect.Type, i: i32) -> RuleContext {
 //  if prc.children == nil || i < 0 || i >= len(prc.children) {
 //    return nil
 //  }
@@ -260,11 +260,11 @@
 //// Go lacks generics, so it's not possible for us to return the child with the correct type, but we do
 //// check for convertibility
 //
-//pub fn GetTypedRuleContext(ctxType reflect.Type, i: i32) -> RuleContext {
+//pub fn GetTypedRuleContext(&self, ctxType reflect.Type, i: i32) -> RuleContext {
 //  return prc.getChild(ctxType, i)
 //}
 //
-//pub fn GetTypedRuleContexts(ctxType reflect.Type) -> []RuleContext {
+//pub fn GetTypedRuleContexts(&self, ctxType reflect.Type) -> []RuleContext {
 //  if prc.children == nil {
 //    return make([]RuleContext, 0)
 //  }
@@ -281,7 +281,7 @@
 //  return contexts
 //}
 //
-//pub fn GetChildCount() -> i32 {
+//pub fn GetChildCount(&self, ) -> i32 {
 //  if prc.children == nil {
 //    return 0
 //  }
@@ -289,7 +289,7 @@
 //  return len(prc.children)
 //}
 //
-//pub fn GetSourceInterval() -> *Interval {
+//pub fn GetSourceInterval(&self, ) -> *Interval {
 //  if prc.start == nil || prc.stop == nil {
 //    return TreeInvalidInterval
 //  }
@@ -303,7 +303,7 @@
 //// (root child1 .. childN). Print just a node if b is a leaf.
 ////
 //
-//pub fn String(ruleNames []string, stop: RuleContext) -> &str {
+//pub fn String(&self, ruleNames []string, stop: RuleContext) -> &str {
 //
 //  var p ParserRuleContext = prc
 //  s := "["
@@ -346,7 +346,7 @@
 //  *BaseParserRuleContext
 //}
 //
-//impl BaseInterpreterRuleContext {§//  pub fn new(parent BaseInterpreterRuleContext,: invokingStateNumber, ruleIndex: i32) -> *BaseInterpreterRuleContext {
+//impl BaseInterpreterRuleContext {§//  pub fn new(&self, parent BaseInterpreterRuleContext,: invokingStateNumber, ruleIndex: i32) -> *BaseInterpreterRuleContext {
 //
 //  prc := new(BaseInterpreterRuleContext)
 //

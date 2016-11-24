@@ -13,7 +13,7 @@
 //  symbolicNames []string
 //}
 //
-//impl DFASerializer {§//  pub fn new(dfa *DFA,: literalNames, symbolicNames []string) -> *DFASerializer {
+//impl DFASerializer {§//  pub fn new(&self, dfa *DFA,: literalNames, symbolicNames []string) -> *DFASerializer {
 //  if literalNames == nil {
 //    literalNames = make([]string, 0)
 //  }
@@ -29,7 +29,7 @@
 //  }
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  if d.dfa.s0 == nil {
 //    return ""
 //  }
@@ -63,7 +63,7 @@
 //  return buf
 //}
 //
-//pub fn getEdgeLabel(i: i32) -> &str {
+//pub fn getEdgeLabel(&self, i: i32) -> &str {
 //  if i == 0 {
 //    return "EOF"
 //  } else if d.literalNames != nil && i-1 < len(d.literalNames) {
@@ -75,7 +75,7 @@
 //  return strconv.Itoa(i - 1)
 //}
 //
-//pub fn GetStateString(s *DFAState) -> &str {
+//pub fn GetStateString(&self, s *DFAState) -> &str {
 //  var a, b &str
 //
 //  if s.isAcceptState {
@@ -103,15 +103,15 @@
 //  *DFASerializer
 //}
 //
-//impl LexerDFASerializer {§//  pub fn new(dfa *DFA) -> *LexerDFASerializer {
+//impl LexerDFASerializer {§//  pub fn new(&self, dfa *DFA) -> *LexerDFASerializer {
 //  return &LexerDFASerializer{DFASerializer: NewDFASerializer(dfa, nil, nil)}
 //}
 //
-//pub fn getEdgeLabel(i: i32) -> &str {
+//pub fn getEdgeLabel(&self, i: i32) -> &str {
 //  return "'" + &str(i) + "'"
 //}
 //
-//pub fn String() -> &str {
+//pub fn String(&self, ) -> &str {
 //  if l.dfa.s0 == nil {
 //    return ""
 //  }
