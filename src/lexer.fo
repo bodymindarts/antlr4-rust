@@ -48,7 +48,7 @@
 //
 //impl BaseLexer {§//  pub fn new(&self, input: CharStream) -> *BaseLexer {
 //
-//  lexer := new(BaseLexer)
+//  let lexer = new(BaseLexer);
 //
 //  lexer.BaseRecognizer = NewBaseRecognizer()
 //
@@ -160,8 +160,8 @@
 //
 //pub fn (&self, ret: i32) {
 //  defer func() {
-//    if e := recover(); e != nil {
-//      if re, ok := e.(RecognitionException); ok {
+//    if let e = recover(); e != nil {;
+//      if re, let ok = e.(RecognitionException); ok {;
 //        b.notifyListeners(re) // Report error
 //        b.Recover(re)
 //        ret = LexerSkip // default
@@ -178,7 +178,7 @@
 //    panic("NextToken requires a non-nil input stream.")
 //  }
 //
-//  tokenStartMarker := b.input.Mark()
+//  let tokenStartMarker = b.input.Mark();
 //
 //  // previously in finally block
 //  defer func() {
@@ -198,10 +198,10 @@
 //    b.TokenStartColumn = b.Interpreter.GetCharPositionInLine()
 //    b.TokenStartLine = b.Interpreter.GetLine()
 //    b.text = ""
-//    continueOuter := false
+//    let continueOuter = false;
 //    for {
 //      b.thetype = TokenInvalidType
-//      ttype := LexerSkip
+//      let ttype = LexerSkip;
 //
 //      ttype = b.safeMatch()
 //
@@ -265,7 +265,7 @@
 //  if LexerATNSimulatorDebug {
 //    fmt.Println("popMode back to " + fmt.Sprint(b.modeStack[0:len(b.modeStack)-1]))
 //  }
-//  i, _ := b.modeStack.Pop()
+//  i, _let  = b.modeStack.Pop();
 //  b.mode = i
 //  return b.mode
 //}
@@ -298,15 +298,15 @@
 //// custom Token objects or provide a Newfactory.
 //// /
 //pub fn Emit(&self, ) -> Token {
-//  t := b.factory.Create(b.tokenFactorySourcePair, b.thetype, b.text, b.channel, b.TokenStartCharIndex, b.GetCharIndex()-1, b.TokenStartLine, b.TokenStartColumn)
+//  let t = b.factory.Create(b.tokenFactorySourcePair, b.thetype, b.text, b.channel, b.TokenStartCharIndex, b.GetCharIndex()-1, b.TokenStartLine, b.TokenStartColumn);
 //  b.EmitToken(t)
 //  return t
 //}
 //
 //pub fn EmitEOF(&self, ) -> Token {
-//  cpos := b.GetCharPositionInLine()
-//  lpos := b.GetLine()
-//  eof := b.factory.Create(b.tokenFactorySourcePair, TokenEOF, "", TokenDefaultChannel, b.input.Index(), b.input.Index()-1, lpos, cpos)
+//  let cpos = b.GetCharPositionInLine();
+//  let lpos = b.GetLine();
+//  let eof = b.factory.Create(b.tokenFactorySourcePair, TokenEOF, "", TokenDefaultChannel, b.input.Index(), b.input.Index()-1, lpos, cpos);
 //  b.EmitToken(eof)
 //  return eof
 //}
@@ -354,9 +354,9 @@
 //// Forces load of all tokens. Does not include EOF token.
 //// /
 //pub fn getAllTokens(&self, ) -> []Token {
-//  vl := b.Virt
-//  tokens := make([]Token, 0)
-//  t := vl.NextToken()
+//  let vl = b.Virt;
+//  let tokens = make([]Token, 0);
+//  let t = vl.NextToken();
 //  for t.GetTokenType() != TokenEOF {
 //    tokens = append(tokens, t)
 //    t = vl.NextToken()
@@ -365,11 +365,11 @@
 //}
 //
 //pub fn notifyListeners(&self, e: RecognitionException) {
-//  start := b.TokenStartCharIndex
-//  stop := b.input.Index()
-//  text := b.input.GetTextFromInterval(NewInterval(start, stop))
-//  msg := "token recognition error at: '" + text + "'"
-//  listener := b.GetErrorListenerDispatch()
+//  let start = b.TokenStartCharIndex;
+//  let stop = b.input.Index();
+//  let text = b.input.GetTextFromInterval(NewInterval(start, stop));
+//  let msg = "token recognition error at: '" + text + "'";
+//  let listener = b.GetErrorListenerDispatch();
 //  listener.SyntaxError(b, nil, b.TokenStartLine, b.TokenStartColumn, msg, e)
 //}
 //
@@ -398,7 +398,7 @@
 //// /
 //pub fn Recover(&self, re: RecognitionException) {
 //  if b.input.LA(1) != TokenEOF {
-//    if _, ok := re.(*LexerNoViableAltException); ok {
+//    if _, let ok = re.(*LexerNoViableAltException); ok {;
 //      // Skip a char and try again
 //      b.Interpreter.Consume(b.input)
 //    } else {

@@ -36,7 +36,7 @@ impl Interval {
 //
 //impl IntervalSet {§//  pub fn new(&self, ) -> *IntervalSet {
 //
-//  i := new(IntervalSet)
+//  let i = new(IntervalSet);
 //
 //  i.intervals = nil
 //  i.readOnly = false
@@ -66,7 +66,7 @@ impl Interval {
 //    i.intervals = append(i.intervals, v)
 //  } else {
 //    // find insert pos
-//    for k, i32erval := range i.intervals {
+//    for k, let i32erval = range i.intervals {;
 //      // distinct range -> insert
 //      if v.stop < i32erval.start {
 //        i.intervals = append(i.intervals[0:k], append([]*Interval{v}, i.intervals[k:]...)...)
@@ -79,8 +79,8 @@ impl Interval {
 //
 //        // if not applying to end, merge potential overlaps
 //        if k < len(i.intervals)-1 {
-//          l := i.intervals[k]
-//          r := i.intervals[k+1]
+//          let l = i.intervals[k];
+//          let r = i.intervals[k+1];
 //          // if r contained in l
 //          if l.stop >= r.stop {
 //            i.intervals = append(i.intervals[0:k+1], i.intervals[k+2:]...)
@@ -99,8 +99,8 @@ impl Interval {
 //
 //pub fn addSet(&self, other *IntervalSet) -> *IntervalSet {
 //  if other.intervals != nil {
-//    for k := 0; k < len(other.intervals); k++ {
-//      i2 := other.intervals[k]
+//    for let k = 0; k < len(other.intervals); k++ {;
+//      let i2 = other.intervals[k];
 //      i.addInterval(NewInterval(i2.start, i2.stop))
 //    }
 //  }
@@ -108,9 +108,9 @@ impl Interval {
 //}
 //
 //pub fn complement(&self, start: i32, stop: i32) -> *IntervalSet {
-//  result := NewIntervalSet()
+//  let result = NewIntervalSet();
 //  result.addInterval(NewInterval(start, stop+1))
-//  for j := 0; j < len(i.intervals); j++ {
+//  for let j = 0; j < len(i.intervals); j++ {;
 //    result.removeRange(i.intervals[j])
 //  }
 //  return result
@@ -120,7 +120,7 @@ impl Interval {
 //  if i.intervals == nil {
 //    return false
 //  }
-//  for k := 0; k < len(i.intervals); k++ {
+//  for let k = 0; k < len(i.intervals); k++ {;
 //    if i.intervals[k].contains(item) {
 //      return true
 //    }
@@ -129,9 +129,9 @@ impl Interval {
 //}
 //
 //pub fn length(&self, ) -> i32 {
-//  len := 0
+//  let len = 0;
 //
-//  for _, v := range i.intervals {
+//  for _, let v = range i.intervals {;
 //    len += v.length()
 //  }
 //
@@ -142,15 +142,15 @@ impl Interval {
 //  if v.start == v.stop-1 {
 //    i.removeOne(v.start)
 //  } else if i.intervals != nil {
-//    k := 0
-//    for n := 0; n < len(i.intervals); n++ {
-//      ni := i.intervals[k]
+//    let k = 0;
+//    for let n = 0; n < len(i.intervals); n++ {;
+//      let ni = i.intervals[k];
 //      // i32ervals are ordered
 //      if v.stop <= ni.start {
 //        return
 //      } else if v.start > ni.start && v.stop < ni.stop {
 //        i.intervals[k] = NewInterval(ni.start, v.start)
-//        x := NewInterval(v.stop, ni.stop)
+//        let x = NewInterval(v.stop, ni.stop);
 //        // i.intervals.splice(k, 0, x)
 //        i.intervals = append(i.intervals[0:k], append([]*Interval{x}, i.intervals[k:]...)...)
 //        return
@@ -170,8 +170,8 @@ impl Interval {
 //
 //pub fn removeOne(&self, v: i32) {
 //  if i.intervals != nil {
-//    for k := 0; k < len(i.intervals); k++ {
-//      ki := i.intervals[k]
+//    for let k = 0; k < len(i.intervals); k++ {;
+//      let ki = i.intervals[k];
 //      // i32ervals i ordered
 //      if v < ki.start {
 //        return
@@ -186,7 +186,7 @@ impl Interval {
 //        i.intervals[k] = NewInterval(ki.start, ki.stop-1)
 //        return
 //      } else if v < ki.stop-1 {
-//        x := NewInterval(ki.start, v)
+//        let x = NewInterval(ki.start, v);
 //        ki.start = v + 1
 //        //        i.intervals.splice(k, 0, x)
 //        i.intervals = append(i.intervals[0:k], append([]*Interval{x}, i.intervals[k:]...)...)
@@ -214,10 +214,10 @@ impl Interval {
 //}
 //
 //pub fn toCharString(&self, ) -> &str {
-//  names := make([]string, len(i.intervals))
+//  let names = make([]string, len(i.intervals));
 //
-//  for j := 0; j < len(i.intervals); j++ {
-//    v := i.intervals[j]
+//  for let j = 0; j < len(i.intervals); j++ {;
+//    let v = i.intervals[j];
 //    if v.stop == v.start+1 {
 //      if v.start == TokenEOF {
 //        names = append(names, "<EOF>")
@@ -237,9 +237,9 @@ impl Interval {
 //
 //pub fn toIndexString(&self, ) -> &str {
 //
-//  names := make([]string, 0)
-//  for j := 0; j < len(i.intervals); j++ {
-//    v := i.intervals[j]
+//  let names = make([]string, 0);
+//  for let j = 0; j < len(i.intervals); j++ {;
+//    let v = i.intervals[j];
 //    if v.stop == v.start+1 {
 //      if v.start == TokenEOF {
 //        names = append(names, "<EOF>")
@@ -258,9 +258,9 @@ impl Interval {
 //}
 //
 //pub fn toTokenString(&self, literalNames []string, symbolicNames []string) -> &str {
-//  names := make([]string, 0)
-//  for _, v := range i.intervals {
-//    for j := v.start; j < v.stop; j++ {
+//  let names = make([]string, 0);
+//  for _, let v = range i.intervals {;
+//    for let j = v.start; j < v.stop; j++ {;
 //      names = append(names, i.elementName(literalNames, symbolicNames, j))
 //    }
 //  }

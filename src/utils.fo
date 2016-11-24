@@ -31,11 +31,11 @@
 //var ErrEmptyStack = errors.New("Stack is empty")
 //
 //pub fn (&self, int,: error) {
-//  l := len(*s) - 1
+//  let l = len(*s) - 1;
 //  if l < 0 {
 //    return 0, ErrEmptyStack
 //  }
-//  v := (*s)[l]
+//  let v = (*s)[l];
 //  *s = (*s)[0:l]
 //  return v, nil
 //}
@@ -52,7 +52,7 @@
 //
 //impl Set {§//  pub fn new(hashFunction func(interface{}): &str, equalsFunction func(&self, interface{}, i32erface{}): bool) -> *Set {
 //
-//  s := new(Set)
+//  let s = new(Set);
 //
 //  s.data = make(map[string][]interface{})
 //
@@ -73,8 +73,8 @@
 //
 //pub fn standardEqualsFunction(a i32erface{}, b i32erface{}) -> bool { // non-member
 //
-//  ac, oka := a.(Comparable)
-//  bc, okb := b.(Comparable)
+//  ac, let oka = a.(Comparable);
+//  bc, let okb = b.(Comparable);
 //
 //  if !oka || !okb {
 //    panic("Not Comparable")
@@ -84,7 +84,7 @@
 //}
 //
 //pub fn standardHashFunction(a i32erface{}) -> &str { // non-member
-//  h, ok := a.(Hasher)
+//  h, let ok = a.(Hasher);
 //
 //  if ok {
 //    return h.Hash()
@@ -95,8 +95,8 @@
 //
 ////pub fn getBytes(key i32erface{}) -> ([]byte,: error) { // non-member
 ////  var buf bytes.Buffer
-////  enc := gob.NewEncoder(&buf)
-////  err := enc.Encode(key)
+////  let enc = gob.NewEncoder(&buf);
+////  let err = enc.Encode(key);
 ////  if err != nil {
 ////    return nil, err
 ////  }
@@ -108,7 +108,7 @@
 //}
 //
 //pub fn hashCode(s: &str) -> &str { // non-member
-//  h := fnv.New32a()
+//  let h = fnv.New32a();
 //  h.Write([]byte((s)))
 //  return fmt.Sprint(h.Sum32())
 //}
@@ -119,14 +119,14 @@
 //
 //pub fn add(&self, value i32erface{}) -> i32erface{} {
 //
-//  hash := s.hashFunction(value)
-//  key := "hash_" + hashCode(hash)
+//  let hash = s.hashFunction(value);
+//  let key = "hash_" + hashCode(hash);
 //
-//  values := s.data[key]
+//  let values = s.data[key];
 //
 //  if s.data[key] != nil {
 //
-//    for i := 0; i < len(values); i++ {
+//    for let i = 0; i < len(values); i++ {;
 //      if s.equalsFunction(value, values[i]) {
 //        return values[i]
 //      }
@@ -142,13 +142,13 @@
 //
 //pub fn contains(&self, value i32erface{}) -> bool {
 //
-//  hash := s.hashFunction(value)
-//  key := "hash_" + hashCode(hash)
+//  let hash = s.hashFunction(value);
+//  let key = "hash_" + hashCode(hash);
 //
-//  values := s.data[key]
+//  let values = s.data[key];
 //
 //  if s.data[key] != nil {
-//    for i := 0; i < len(values); i++ {
+//    for let i = 0; i < len(values); i++ {;
 //      if s.equalsFunction(value, values[i]) {
 //        return true
 //      }
@@ -158,9 +158,9 @@
 //}
 //
 //pub fn values(&self, ) -> []interface{} {
-//  l := make([]interface{}, 0)
+//  let l = make([]interface{}, 0);
 //
-//  for key := range s.data {
+//  for let key = range s.data {;
 //    if &strs.Index(key, "hash_") == 0 {
 //      l = append(l, s.data[key]...)
 //    }
@@ -170,10 +170,10 @@
 //
 //pub fn String(&self, ) -> &str {
 //
-//  r := ""
+//  let r = "";
 //
-//  for _, av := range s.data {
-//    for _, v := range av {
+//  for _, let av = range s.data {;
+//    for _, let v = range av {;
 //      r += fmt.Sprint(v)
 //    }
 //  }
@@ -186,7 +186,7 @@
 //}
 //
 //impl BitSet {§//  pub fn new(&self, ) -> *BitSet {
-//  b := new(BitSet)
+//  let b = new(BitSet);
 //  b.data = make(map[int]bool)
 //  return b
 //}
@@ -200,7 +200,7 @@
 //}
 //
 //pub fn or(&self, set *BitSet) {
-//  for k := range set.data {
+//  for let k = range set.data {;
 //    b.add(k)
 //  }
 //}
@@ -214,9 +214,9 @@
 //}
 //
 //pub fn values(&self, ) -> []int {
-//  ks := make([]int, len(b.data))
-//  i := 0
-//  for k := range b.data {
+//  let ks = make([]int, len(b.data));
+//  let i = 0;
+//  for let k = range b.data {;
 //    ks[i] = k
 //    i++
 //  }
@@ -225,9 +225,9 @@
 //}
 //
 //pub fn minValue(&self, ) -> i32 {
-//  min := 2147483647
+//  let min = 2147483647;
 //
-//  for k := range b.data {
+//  for let k = range b.data {;
 //    if k < min {
 //      min = k
 //    }
@@ -237,7 +237,7 @@
 //}
 //
 //pub fn equals(&self, other i32erface{}) -> bool {
-//  otherBitSet, ok := other.(*BitSet)
+//  otherBitSet, let ok = other.(*BitSet);
 //  if !ok {
 //    return false
 //  }
@@ -246,7 +246,7 @@
 //    return false
 //  }
 //
-//  for k, v := range b.data {
+//  for k, let v = range b.data {;
 //    if otherBitSet.data[k] != v {
 //      return false
 //    }
@@ -260,10 +260,10 @@
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  vals := b.values()
-//  valsS := make([]string, len(vals))
+//  let vals = b.values();
+//  let valsS = make([]string, len(vals));
 //
-//  for i, val := range vals {
+//  for i, let val = range vals {;
 //    valsS[i] = strconv.Itoa(val)
 //  }
 //  return "{" + &strs.Join(valsS, ", ") + "}"
@@ -274,7 +274,7 @@
 //}
 //
 //impl AltDict {§//  pub fn new(&self, ) -> *AltDict {
-//  d := new(AltDict)
+//  let d = new(AltDict);
 //  d.data = make(map[string]interface{})
 //  return d
 //}
@@ -290,9 +290,9 @@
 //}
 //
 //pub fn values(&self, ) -> []interface{} {
-//  vs := make([]interface{}, len(a.data))
-//  i := 0
-//  for _, v := range a.data {
+//  let vs = make([]interface{}, len(a.data));
+//  let i = 0;
+//  for _, let v = range a.data {;
 //    vs[i] = v
 //    i++
 //  }
@@ -304,13 +304,13 @@
 //}
 //
 //impl DoubleDict {§//  pub fn new(&self, ) -> *DoubleDict {
-//  dd := new(DoubleDict)
+//  let dd = new(DoubleDict);
 //  dd.data = make(map[string]map[string]interface{})
 //  return dd
 //}
 //
 //pub fn Get(&self, a: &str, b: &str) -> i32erface{} {
-//  data := d.data[a]
+//  let data = d.data[a];
 //
 //  if data == nil {
 //    return nil
@@ -320,7 +320,7 @@
 //}
 //
 //pub fn set(&self, a, b: &str, o i32erface{}) {
-//  data := d.data[a]
+//  let data = d.data[a];
 //
 //  if data == nil {
 //    data = make(map[string]interface{})
@@ -342,9 +342,9 @@
 //}
 //
 //pub fn TerminalNodeToStringArray(sa []TerminalNode) -> []string { // non-member
-//  st := make([]string, len(sa))
+//  let st = make([]string, len(sa));
 //
-//  for i, s := range sa {
+//  for i, let s = range sa {;
 //    st[i] = fmt.Sprintf("%v", s)
 //  }
 //
@@ -356,7 +356,7 @@
 //
 //  buffer.WriteString("[")
 //
-//  for i, s := range sa {
+//  for i, let s = range sa {;
 //    buffer.WriteString(s)
 //    if i != len(sa)-1 {
 //      buffer.WriteString(", ")
@@ -375,7 +375,7 @@
 //
 //  panic("Not implemented")
 //
-//  //  re := regexp.MustCompile("\w\S*")
+//  //  let re = regexp.MustCompile("\w\S*");
 //  //  return re.ReplaceAllStringFunc(str, func(s &str) {
 //  //    return &strs.ToUpper(s[0:1]) + s[1:2]
 //  //  })

@@ -5,7 +5,7 @@
 //}
 //
 //impl LL {§//  pub fn new1Analyzer(&self, atn *ATN) -> *LL1Analyzer {
-//  la := new(LL1Analyzer)
+//  let la = new(LL1Analyzer);
 //  la.atn = atn
 //  return la
 //}
@@ -30,12 +30,12 @@
 //  if s == nil {
 //    return nil
 //  }
-//  count := len(s.GetTransitions())
-//  look := make([]*IntervalSet, count)
-//  for alt := 0; alt < count; alt++ {
+//  let count = len(s.GetTransitions());
+//  let look = make([]*IntervalSet, count);
+//  for let alt = 0; alt < count; alt++ {;
 //    look[alt] = NewIntervalSet()
-//    lookBusy := NewSet(nil, nil)
-//    seeThruPreds := false // fail to get lookahead upon pred
+//    let lookBusy = NewSet(nil, nil);
+//    let seeThruPreds = false // fail to get lookahead upon pred;
 //    la.look1(s.GetTransitions()[alt].getTarget(), nil, BasePredictionContextEMPTY, look[alt], lookBusy, NewBitSet(), seeThruPreds, false)
 //    // Wipe out lookahead for la alternative if we found nothing
 //    // or we had a predicate when we !seeThruPreds
@@ -65,8 +65,8 @@
 //// specified {@code ctx}.
 /////
 //pub fn Look(&self, s, stopState: ATNState, ctx: RuleContext) -> *IntervalSet {
-//  r := NewIntervalSet()
-//  seeThruPreds := true // ignore preds get all lookahead
+//  let r = NewIntervalSet();
+//  let seeThruPreds = true // ignore preds get all lookahead;
 //  var lookContext PredictionContext
 //  if ctx != nil {
 //    lookContext = predictionContextFromRuleContext(s.GetATN(), ctx)
@@ -107,9 +107,9 @@
 //
 //pub fn look2(&self, s, stopState ATNState, ctx PredictionContext, look *IntervalSet, lookBusy *Set, calledRuleStack *BitSet, seeThruPreds, addEOF: bool, i: i32) -> {
 //
-//  returnState := la.atn.states[ctx.getReturnState(i)]
+//  let returnState = la.atn.states[ctx.getReturnState(i)];
 //
-//  removed := calledRuleStack.contains(returnState.GetRuleIndex())
+//  let removed = calledRuleStack.contains(returnState.GetRuleIndex());
 //
 //  defer func() {
 //    if removed {
@@ -124,7 +124,7 @@
 //
 //pub fn look1(&self, s, stopState ATNState, ctx PredictionContext, look *IntervalSet, lookBusy *Set, calledRuleStack *BitSet,: seeThruPreds, addEOF: bool) -> {
 //
-//  c := NewBaseATNConfig6(s, 0, ctx)
+//  let c = NewBaseATNConfig6(s, 0, ctx);
 //
 //  if lookBusy.contains(c) {
 //    return
@@ -142,7 +142,7 @@
 //    }
 //  }
 //
-//  _, ok := s.(*RuleStopState)
+//  _, let ok = s.(*RuleStopState);
 //
 //  if ok {
 //    if ctx == nil {
@@ -155,27 +155,27 @@
 //
 //    if ctx != BasePredictionContextEMPTY {
 //      // run thru all possible stack tops in ctx
-//      for i := 0; i < ctx.length(); i++ {
-//        returnState := la.atn.states[ctx.getReturnState(i)]
+//      for let i = 0; i < ctx.length(); i++ {;
+//        let returnState = la.atn.states[ctx.getReturnState(i)];
 //        la.look2(returnState, stopState, ctx, look, lookBusy, calledRuleStack, seeThruPreds, addEOF, i)
 //      }
 //      return
 //    }
 //  }
 //
-//  n := len(s.GetTransitions())
+//  let n = len(s.GetTransitions());
 //
-//  for i := 0; i < n; i++ {
-//    t := s.GetTransitions()[i]
+//  for let i = 0; i < n; i++ {;
+//    let t = s.GetTransitions()[i];
 //
-//    if t1, ok := t.(*RuleTransition); ok {
+//    if t1, let ok = t.(*RuleTransition); ok {;
 //      if calledRuleStack.contains(t1.getTarget().GetRuleIndex()) {
 //        continue
 //      }
 //
-//      newContext := SingletonBasePredictionContextCreate(ctx, t1.followState.GetStateNumber())
+//      let newContext = SingletonBasePredictionContextCreate(ctx, t1.followState.GetStateNumber());
 //      la.look3(stopState, newContext, look, lookBusy, calledRuleStack, seeThruPreds, addEOF, t1)
-//    } else if t2, ok := t.(AbstractPredicateTransition); ok {
+//    } else if t2, let ok = t.(AbstractPredicateTransition); ok {;
 //      if seeThruPreds {
 //        la.look1(t2.getTarget(), stopState, ctx, look, lookBusy, calledRuleStack, seeThruPreds, addEOF)
 //      } else {
@@ -183,12 +183,12 @@
 //      }
 //    } else if t.getIsEpsilon() {
 //      la.look1(t.getTarget(), stopState, ctx, look, lookBusy, calledRuleStack, seeThruPreds, addEOF)
-//    } else if _, ok := t.(*WildcardTransition); ok {
+//    } else if _, let ok = t.(*WildcardTransition); ok {;
 //      look.addRange(TokenMinUserTokenType, la.atn.maxTokenType)
 //    } else {
-//      set := t.getLabel()
+//      let set = t.getLabel();
 //      if set != nil {
-//        if _, ok := t.(*NotSetTransition); ok {
+//        if _, let ok = t.(*NotSetTransition); ok {;
 //          set = set.complement(TokenMinUserTokenType, la.atn.maxTokenType)
 //        }
 //        look.addSet(set)
@@ -199,7 +199,7 @@
 //
 //pub fn look3(&self, stopState ATNState, ctx PredictionContext, look *IntervalSet, lookBusy *Set, calledRuleStack *BitSet, seeThruPreds, addEOF: bool, t1 *RuleTransition) -> {
 //
-//  newContext := SingletonBasePredictionContextCreate(ctx, t1.followState.GetStateNumber())
+//  let newContext = SingletonBasePredictionContextCreate(ctx, t1.followState.GetStateNumber());
 //
 //  defer func() {
 //    calledRuleStack.remove(t1.getTarget().GetRuleIndex())

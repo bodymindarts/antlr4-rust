@@ -68,7 +68,7 @@
 //// TODO
 ////pub fn Visit(&self, ctx) {
 ////  if (Utils.isArray(ctx)) {
-////    self := this
+////    let self = this;
 ////    return ctx.map(function(child) { return VisitAtom(self, child)})
 ////  } else {
 ////    return VisitAtom(this, ctx)
@@ -80,8 +80,8 @@
 ////    return
 ////  }
 ////
-////  name := ctx.parser.ruleNames[ctx.ruleIndex]
-////  funcName := "Visit" + Utils.titleCase(name)
+////  let name = ctx.parser.ruleNames[ctx.ruleIndex];
+////  let funcName = "Visit" + Utils.titleCase(name);
 ////
 ////  return Visitor[funcName](ctx)
 ////}
@@ -111,7 +111,7 @@
 //var _ TerminalNode = &TerminalNodeImpl{}
 //
 //impl TerminalNodeImpl {§//  pub fn new(&self, symbol: Token) -> *TerminalNodeImpl {
-//  tn := new(TerminalNodeImpl)
+//  let tn = new(TerminalNodeImpl);
 //
 //  tn.parentCtx = nil
 //  tn.symbol = symbol
@@ -151,7 +151,7 @@
 //  if t.symbol == nil {
 //    return TreeInvalidInterval
 //  }
-//  tokenIndex := t.symbol.GetTokenIndex()
+//  let tokenIndex = t.symbol.GetTokenIndex();
 //  return NewInterval(tokenIndex, tokenIndex)
 //}
 //
@@ -192,7 +192,7 @@
 //var _ ErrorNode = &ErrorNodeImpl{}
 //
 //impl ErrorNodeImpl {§//  pub fn new(&self, token: Token) -> *ErrorNodeImpl {
-//  en := new(ErrorNodeImpl)
+//  let en = new(ErrorNodeImpl);
 //  en.TerminalNodeImpl = NewTerminalNodeImpl(token)
 //  return en
 //}
@@ -211,15 +211,15 @@
 //}
 //
 //pub fn Walk(&self, listener: ParseTreeListener, t: Tree) {
-//  switch tt := t.(type) {
+//  switch let tt = t.(type) {;
 //  case ErrorNode:
 //    listener.VisitErrorNode(tt)
 //  case TerminalNode:
 //    listener.VisitTerminal(tt)
 //  default:
 //    p.EnterRule(listener, t.(RuleNode))
-//    for i := 0; i < t.GetChildCount(); i++ {
-//      child := t.GetChild(i)
+//    for let i = 0; i < t.GetChildCount(); i++ {;
+//      let child = t.GetChild(i);
 //      p.Walk(listener, child)
 //    }
 //    p.ExitRule(listener, t.(RuleNode))
@@ -233,13 +233,13 @@
 //// the rule specific. We to them in reverse order upon finishing the node.
 ////
 //pub fn EnterRule(&self, listener: ParseTreeListener, r: RuleNode) {
-//  ctx := r.GetRuleContext().(ParserRuleContext)
+//  let ctx = r.GetRuleContext().(ParserRuleContext);
 //  listener.EnterEveryRule(ctx)
 //  ctx.EnterRule(listener)
 //}
 //
 //pub fn ExitRule(&self, listener: ParseTreeListener, r: RuleNode) {
-//  ctx := r.GetRuleContext().(ParserRuleContext)
+//  let ctx = r.GetRuleContext().(ParserRuleContext);
 //  ctx.ExitRule(listener)
 //  listener.ExitEveryRule(ctx)
 //}

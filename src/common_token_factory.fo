@@ -30,7 +30,7 @@
 //var CommonTokenFactoryDEFAULT = NewCommonTokenFactory(false)
 //
 //pub fn Create(&self, source *TokenSourceCharStreamPair, ttype i32, text &str, channel, start, stop,: line, column: i32) -> Token {
-//  t := NewCommonToken(source, ttype, channel, start, stop)
+//  let t = NewCommonToken(source, ttype, channel, start, stop);
 //
 //  t.line = line
 //  t.column = column
@@ -45,7 +45,7 @@
 //}
 //
 //pub fn createThin(&self, ttype: i32, text: &str) -> Token {
-//  t := NewCommonToken(nil, ttype, TokenDefaultChannel, -1, -1)
+//  let t = NewCommonToken(nil, ttype, TokenDefaultChannel, -1, -1);
 //  t.SetText(text)
 //
 //  return t

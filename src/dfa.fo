@@ -75,7 +75,7 @@
 //    d.states = make(map[string]*DFAState)
 //
 //    if precedenceDfa {
-//      precedenceState := NewDFAState(-1, NewBaseATNConfigSet(false))
+//      let precedenceState = NewDFAState(-1, NewBaseATNConfigSet(false));
 //
 //      precedenceState.edges = make([]*DFAState, 0)
 //      precedenceState.isAcceptState = false
@@ -101,9 +101,9 @@
 //
 //// sortedStates returns the states in d sorted by their state number.
 //pub fn sortedStates(&self, ) -> []*DFAState {
-//  vs := make([]*DFAState, 0, len(d.states))
+//  let vs = make([]*DFAState, 0, len(d.states));
 //
-//  for _, v := range d.states {
+//  for _, let v = range d.states {;
 //    vs = append(vs, v)
 //  }
 //

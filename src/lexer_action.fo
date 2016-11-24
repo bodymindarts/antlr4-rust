@@ -27,7 +27,7 @@
 //}
 //
 //impl BaseLexerAction {§//  pub fn new(&self, action: i32) -> *BaseLexerAction {
-//  la := new(BaseLexerAction)
+//  let la = new(BaseLexerAction);
 //
 //  la.actionType = action
 //  la.isPositionDependent = false
@@ -65,7 +65,7 @@
 //}
 //
 //impl LexerSkipAction {§//  pub fn new(&self, ) -> *LexerSkipAction {
-//  la := new(LexerSkipAction)
+//  let la = new(LexerSkipAction);
 //  la.BaseLexerAction = NewBaseLexerAction(LexerActionTypeSkip)
 //  return la
 //}
@@ -90,7 +90,7 @@
 //}
 //
 //impl LexerTypeAction {§//  pub fn new(&self, thetype: i32) -> *LexerTypeAction {
-//  l := new(LexerTypeAction)
+//  let l = new(LexerTypeAction);
 //  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeType)
 //  l.thetype = thetype
 //  return l
@@ -107,7 +107,7 @@
 //pub fn equals(&self, other: LexerAction) -> bool {
 //  if l == other {
 //    return true
-//  } else if _, ok := other.(*LexerTypeAction); !ok {
+//  } else if _, let ok = other.(*LexerTypeAction); !ok {;
 //    return false
 //  } else {
 //    return l.thetype == other.(*LexerTypeAction).thetype
@@ -128,7 +128,7 @@
 //
 //impl LexerPushModeAction {§//  pub fn new(&self, mode: i32) -> *LexerPushModeAction {
 //
-//  l := new(LexerPushModeAction)
+//  let l = new(LexerPushModeAction);
 //  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypePushMode)
 //
 //  l.mode = mode
@@ -148,7 +148,7 @@
 //pub fn equals(&self, other: LexerAction) -> bool {
 //  if l == other {
 //    return true
-//  } else if _, ok := other.(*LexerPushModeAction); !ok {
+//  } else if _, let ok = other.(*LexerPushModeAction); !ok {;
 //    return false
 //  } else {
 //    return l.mode == other.(*LexerPushModeAction).mode
@@ -169,7 +169,7 @@
 //
 //impl LexerPopModeAction {§//  pub fn new(&self, ) -> *LexerPopModeAction {
 //
-//  l := new(LexerPopModeAction)
+//  let l = new(LexerPopModeAction);
 //
 //  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypePopMode)
 //
@@ -197,7 +197,7 @@
 //}
 //
 //impl LexerMoreAction {§//  pub fn new(&self, ) -> *LexerMoreAction {
-//  l := new(LexerMoreAction)
+//  let l = new(LexerMoreAction);
 //  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeMore)
 //
 //  return l
@@ -223,7 +223,7 @@
 //}
 //
 //impl LexerModeAction {§//  pub fn new(&self, mode: i32) -> *LexerModeAction {
-//  l := new(LexerModeAction)
+//  let l = new(LexerModeAction);
 //  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeMode)
 //  l.mode = mode
 //  return l
@@ -242,7 +242,7 @@
 //pub fn equals(&self, other: LexerAction) -> bool {
 //  if l == other {
 //    return true
-//  } else if _, ok := other.(*LexerModeAction); !ok {
+//  } else if _, let ok = other.(*LexerModeAction); !ok {;
 //    return false
 //  } else {
 //    return l.mode == other.(*LexerModeAction).mode
@@ -276,7 +276,7 @@
 //}
 //
 //impl LexerCustomAction {§//  pub fn new(&self, ruleIndex, actionIndex: i32) -> *LexerCustomAction {
-//  l := new(LexerCustomAction)
+//  let l = new(LexerCustomAction);
 //  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeCustom)
 //  l.ruleIndex = ruleIndex
 //  l.actionIndex = actionIndex
@@ -297,7 +297,7 @@
 //pub fn equals(&self, other: LexerAction) -> bool {
 //  if l == other {
 //    return true
-//  } else if _, ok := other.(*LexerCustomAction); !ok {
+//  } else if _, let ok = other.(*LexerCustomAction); !ok {;
 //    return false
 //  } else {
 //    return l.ruleIndex == other.(*LexerCustomAction).ruleIndex && l.actionIndex == other.(*LexerCustomAction).actionIndex
@@ -315,7 +315,7 @@
 //}
 //
 //impl LexerChannelAction {§//  pub fn new(&self, channel: i32) -> *LexerChannelAction {
-//  l := new(LexerChannelAction)
+//  let l = new(LexerChannelAction);
 //  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeChannel)
 //  l.channel = channel
 //  return l
@@ -334,7 +334,7 @@
 //pub fn equals(&self, other: LexerAction) -> bool {
 //  if l == other {
 //    return true
-//  } else if _, ok := other.(*LexerChannelAction); !ok {
+//  } else if _, let ok = other.(*LexerChannelAction); !ok {;
 //    return false
 //  } else {
 //    return l.channel == other.(*LexerChannelAction).channel
@@ -375,7 +375,7 @@
 //
 //impl LexerIndexedCustomAction {§//  pub fn new(&self, offset: i32, lexerAction: LexerAction) -> *LexerIndexedCustomAction {
 //
-//  l := new(LexerIndexedCustomAction)
+//  let l = new(LexerIndexedCustomAction);
 //  l.BaseLexerAction = NewBaseLexerAction(lexerAction.getActionType())
 //
 //  l.offset = offset
@@ -399,7 +399,7 @@
 //pub fn equals(&self, other: LexerAction) -> bool {
 //  if l == other {
 //    return true
-//  } else if _, ok := other.(*LexerIndexedCustomAction); !ok {
+//  } else if _, let ok = other.(*LexerIndexedCustomAction); !ok {;
 //    return false
 //  } else {
 //    return l.offset == other.(*LexerIndexedCustomAction).offset && l.lexerAction == other.(*LexerIndexedCustomAction).lexerAction

@@ -35,7 +35,7 @@
 //}
 //
 //impl BaseParserRuleContext {§//  pub fn new(&self, parent: ParserRuleContext, invokingStateNumber: i32) -> *BaseParserRuleContext {
-//  prc := new(BaseParserRuleContext)
+//  let prc = new(BaseParserRuleContext);
 //
 //  prc.BaseRuleContext = NewBaseRuleContext(parent, invokingStateNumber)
 //
@@ -79,7 +79,7 @@
 //  }
 //
 //  var s &str
-//  for _, child := range prc.children {
+//  for _, let child = range prc.children {;
 //    s += child.(ParseTree).GetText()
 //  }
 //
@@ -128,7 +128,7 @@
 //
 //pub fn AddTokenNode(&self, token: Token) -> *TerminalNodeImpl {
 //
-//  node := NewTerminalNodeImpl(token)
+//  let node = NewTerminalNodeImpl(token);
 //  prc.addTerminalNodeChild(node)
 //  node.parentCtx = prc
 //  return node
@@ -136,7 +136,7 @@
 //}
 //
 //pub fn AddErrorNode(&self, badToken: Token) -> *ErrorNodeImpl {
-//  node := NewErrorNodeImpl(badToken)
+//  let node = NewErrorNodeImpl(badToken);
 //  prc.addTerminalNodeChild(node)
 //  node.parentCtx = prc
 //  return node
@@ -155,8 +155,8 @@
 //    return prc.GetChild(i).(RuleContext)
 //  }
 //
-//  for j := 0; j < len(prc.children); j++ {
-//    child := prc.children[j]
+//  for let j = 0; j < len(prc.children); j++ {;
+//    let child = prc.children[j];
 //    if reflect.TypeOf(child) == childType {
 //      if i == 0 {
 //        return child.(RuleContext)
@@ -199,9 +199,9 @@
 //
 //pub fn GetToken(&self, ttype: i32, i: i32) -> TerminalNode {
 //
-//  for j := 0; j < len(prc.children); j++ {
-//    child := prc.children[j]
-//    if c2, ok := child.(TerminalNode); ok {
+//  for let j = 0; j < len(prc.children); j++ {;
+//    let child = prc.children[j];
+//    if c2, let ok = child.(TerminalNode); ok {;
 //      if c2.GetSymbol().GetTokenType() == ttype {
 //        if i == 0 {
 //          return c2
@@ -219,11 +219,11 @@
 //    return make([]TerminalNode, 0)
 //  }
 //
-//  tokens := make([]TerminalNode, 0)
+//  let tokens = make([]TerminalNode, 0);
 //
-//  for j := 0; j < len(prc.children); j++ {
-//    child := prc.children[j]
-//    if tchild, ok := child.(TerminalNode); ok {
+//  for let j = 0; j < len(prc.children); j++ {;
+//    let child = prc.children[j];
+//    if tchild, let ok = child.(TerminalNode); ok {;
 //      if tchild.GetSymbol().GetTokenType() == ttype {
 //        tokens = append(tokens, tchild)
 //      }
@@ -242,10 +242,10 @@
 //    return nil
 //  }
 //
-//  j := -1 // what element have we found with ctxType?
-//  for _, o := range prc.children {
+//  let j = -1 // what element have we found with ctxType?;
+//  for _, let o = range prc.children {;
 //
-//    childType := reflect.TypeOf(o)
+//    let childType = reflect.TypeOf(o);
 //
 //    if childType.Implements(ctxType) {
 //      j++
@@ -269,10 +269,10 @@
 //    return make([]RuleContext, 0)
 //  }
 //
-//  contexts := make([]RuleContext, 0)
+//  let contexts = make([]RuleContext, 0);
 //
-//  for _, child := range prc.children {
-//    childType := reflect.TypeOf(child)
+//  for _, let child = range prc.children {;
+//    let childType = reflect.TypeOf(child);
 //
 //    if childType.ConvertibleTo(ctxType) {
 //      contexts = append(contexts, child.(RuleContext))
@@ -306,14 +306,14 @@
 //pub fn String(&self, ruleNames []string, stop: RuleContext) -> &str {
 //
 //  var p ParserRuleContext = prc
-//  s := "["
+//  let s = "[";
 //  for p != nil && p != stop {
 //    if ruleNames == nil {
 //      if !p.IsEmpty() {
 //        s += strconv.Itoa(p.GetInvokingState())
 //      }
 //    } else {
-//      ri := p.GetRuleIndex()
+//      let ri = p.GetRuleIndex();
 //      var ruleName &str
 //      if ri >= 0 && ri < len(ruleNames) {
 //        ruleName = ruleNames[ri]
@@ -325,7 +325,7 @@
 //    if p.GetParent() != nil && (ruleNames != nil || !p.GetParent().(ParserRuleContext).IsEmpty()) {
 //      s += " "
 //    }
-//    pi := p.GetParent()
+//    let pi = p.GetParent();
 //    if pi != nil {
 //      p = pi.(ParserRuleContext)
 //    } else {
@@ -348,7 +348,7 @@
 //
 //impl BaseInterpreterRuleContext {§//  pub fn new(&self, parent BaseInterpreterRuleContext,: invokingStateNumber, ruleIndex: i32) -> *BaseInterpreterRuleContext {
 //
-//  prc := new(BaseInterpreterRuleContext)
+//  let prc = new(BaseInterpreterRuleContext);
 //
 //  prc.BaseParserRuleContext = NewBaseParserRuleContext(parent, invokingStateNumber)
 //

@@ -18,7 +18,7 @@
 //    lexerActions = make([]LexerAction, 0)
 //  }
 //
-//  l := new(LexerActionExecutor)
+//  let l = new(LexerActionExecutor);
 //
 //  l.lexerActions = lexerActions
 //
@@ -26,7 +26,7 @@
 //  // of the performance-critical {@link LexerATNConfig//hashCode} operation.
 //
 //  var s &str
-//  for _, a := range lexerActions {
+//  for _, let a = range lexerActions {;
 //    s += a.Hash()
 //  }
 //
@@ -53,9 +53,9 @@
 //    return NewLexerActionExecutor([]LexerAction{lexerAction})
 //  }
 //
-//  lexerActions := append(lexerActionExecutor.lexerActions, lexerAction)
+//  let lexerActions = append(lexerActionExecutor.lexerActions, lexerAction);
 //
-//  //  lexerActions := lexerActionExecutor.lexerActions.concat([ lexerAction ])
+//  //  let lexerActions = lexerActionExecutor.lexerActions.concat([ lexerAction ]);
 //  return NewLexerActionExecutor(lexerActions)
 //}
 //
@@ -89,13 +89,13 @@
 //// /
 //pub fn fixOffsetBeforeMatch(&self, offset: i32) -> *LexerActionExecutor {
 //  var updatedLexerActions []LexerAction
-//  for i := 0; i < len(l.lexerActions); i++ {
-//    _, ok := l.lexerActions[i].(*LexerIndexedCustomAction)
+//  for let i = 0; i < len(l.lexerActions); i++ {;
+//    _, let ok = l.lexerActions[i].(*LexerIndexedCustomAction);
 //    if l.lexerActions[i].getIsPositionDependent() && !ok {
 //      if updatedLexerActions == nil {
 //        updatedLexerActions = make([]LexerAction, 0)
 //
-//        for _, a := range l.lexerActions {
+//        for _, let a = range l.lexerActions {;
 //          updatedLexerActions = append(updatedLexerActions, a)
 //        }
 //      }
@@ -129,8 +129,8 @@
 //// of the token.
 //// /
 //pub fn execute(&self, lexer Lexer, input: CharStream, startIndex: i32) {
-//  requiresSeek := false
-//  stopIndex := input.Index()
+//  let requiresSeek = false;
+//  let stopIndex = input.Index();
 //
 //  defer func() {
 //    if requiresSeek {
@@ -138,10 +138,10 @@
 //    }
 //  }()
 //
-//  for i := 0; i < len(l.lexerActions); i++ {
-//    lexerAction := l.lexerActions[i]
-//    if la, ok := lexerAction.(*LexerIndexedCustomAction); ok {
-//      offset := la.offset
+//  for let i = 0; i < len(l.lexerActions); i++ {;
+//    let lexerAction = l.lexerActions[i];
+//    if la, let ok = lexerAction.(*LexerIndexedCustomAction); ok {;
+//      let offset = la.offset;
 //      input.Seek(startIndex + offset)
 //      lexerAction = la.lexerAction
 //      requiresSeek = (startIndex + offset) != stopIndex
@@ -160,7 +160,7 @@
 //pub fn equals(&self, other i32erface{}) -> bool {
 //  if l == other {
 //    return true
-//  } else if _, ok := other.(*LexerActionExecutor); !ok {
+//  } else if _, let ok = other.(*LexerActionExecutor); !ok {;
 //    return false
 //  } else {
 //    return l.cachedHashString == other.(*LexerActionExecutor).cachedHashString &&

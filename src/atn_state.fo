@@ -123,7 +123,7 @@
 //}
 //
 //pub fn equals(&self, other i32erface{}) -> bool {
-//  if ot, ok := other.(ATNState); ok {
+//  if ot, let ok = other.(ATNState); ok {;
 //    return as.stateNumber == ot.GetStateNumber()
 //  }
 //
@@ -154,7 +154,7 @@
 //}
 //
 //impl BasicState {§//  pub fn new(&self, ) -> *BasicState {
-//  b := NewBaseATNState()
+//  let b = NewBaseATNState();
 //
 //  b.stateType = ATNStateBasic
 //
@@ -227,7 +227,7 @@
 //}
 //
 //impl BasicBlockStartState {§//  pub fn new(&self, ) -> *BasicBlockStartState {
-//  b := NewBlockStartState()
+//  let b = NewBlockStartState();
 //
 //  b.stateType = ATNStateBlockStart
 //
@@ -241,7 +241,7 @@
 //}
 //
 //impl BlockEndState {§//  pub fn new(&self, ) -> *BlockEndState {
-//  b := NewBaseATNState()
+//  let b = NewBaseATNState();
 //
 //  b.stateType = ATNStateBlockEnd
 //
@@ -257,7 +257,7 @@
 //}
 //
 //impl RuleStopState {§//  pub fn new(&self, ) -> *RuleStopState {
-//  b := NewBaseATNState()
+//  let b = NewBaseATNState();
 //
 //  b.stateType = ATNStateRuleStop
 //
@@ -271,7 +271,7 @@
 //}
 //
 //impl RuleStartState {§//  pub fn new(&self, ) -> *RuleStartState {
-//  b := NewBaseATNState()
+//  let b = NewBaseATNState();
 //
 //  b.stateType = ATNStateRuleStart
 //
@@ -285,7 +285,7 @@
 //}
 //
 //impl PlusLoopbackState {§//  pub fn new(&self, ) -> *PlusLoopbackState {
-//  b := NewBaseDecisionState()
+//  let b = NewBaseDecisionState();
 //
 //  b.stateType = ATNStatePlusLoopBack
 //
@@ -302,7 +302,7 @@
 //}
 //
 //impl PlusBlockStartState {§//  pub fn new(&self, ) -> *PlusBlockStartState {
-//  b := NewBlockStartState()
+//  let b = NewBlockStartState();
 //
 //  b.stateType = ATNStatePlusBlockStart
 //
@@ -315,7 +315,7 @@
 //}
 //
 //impl StarBlockStartState {§//  pub fn new(&self, ) -> *StarBlockStartState {
-//  b := NewBlockStartState()
+//  let b = NewBlockStartState();
 //
 //  b.stateType = ATNStateStarBlockStart
 //
@@ -327,7 +327,7 @@
 //}
 //
 //impl StarLoopbackState {§//  pub fn new(&self, ) -> *StarLoopbackState {
-//  b := NewBaseATNState()
+//  let b = NewBaseATNState();
 //
 //  b.stateType = ATNStateStarLoopBack
 //
@@ -341,7 +341,7 @@
 //}
 //
 //impl StarLoopEntryState {§//  pub fn new(&self, ) -> *StarLoopEntryState {
-//  b := NewBaseDecisionState()
+//  let b = NewBaseDecisionState();
 //
 //  b.stateType = ATNStateStarLoopEntry
 //
@@ -356,7 +356,7 @@
 //}
 //
 //impl LoopEndState {§//  pub fn new(&self, ) -> *LoopEndState {
-//  b := NewBaseATNState()
+//  let b = NewBaseATNState();
 //
 //  b.stateType = ATNStateLoopEnd
 //
@@ -369,7 +369,7 @@
 //}
 //
 //impl TokensStartState {§//  pub fn new(&self, ) -> *TokensStartState {
-//  b := NewBaseDecisionState()
+//  let b = NewBaseDecisionState();
 //
 //  b.stateType = ATNStateTokenStart
 //

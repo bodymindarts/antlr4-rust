@@ -31,7 +31,7 @@
 //
 //impl DiagnosticErrorListener {§//  pub fn new(&self, exactOnly: bool) -> *DiagnosticErrorListener {
 //
-//  n := new(DiagnosticErrorListener)
+//  let n = new(DiagnosticErrorListener);
 //
 //  // whether all ambiguities or only exact ambiguities are Reported.
 //  n.exactOnly = exactOnly
@@ -42,7 +42,7 @@
 //  if d.exactOnly && !exact {
 //    return
 //  }
-//  msg := "reportAmbiguity d=" +
+//  let msg = "reportAmbiguity d=" +;
 //    d.getDecisionDescription(recognizer, dfa) +
 //    ": ambigAlts=" +
 //    d.getConflictingAlts(ambigAlts, configs).String() +
@@ -53,7 +53,7 @@
 //
 //pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex: i32, conflictingAlts *BitSet, configs: ATNConfigSet) {
 //
-//  msg := "reportAttemptingFullContext d=" +
+//  let msg = "reportAttemptingFullContext d=" +;
 //    d.getDecisionDescription(recognizer, dfa) +
 //    ", input='" +
 //    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
@@ -61,7 +61,7 @@
 //}
 //
 //pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction: i32, configs: ATNConfigSet) {
-//  msg := "reportContextSensitivity d=" +
+//  let msg = "reportContextSensitivity d=" +;
 //    d.getDecisionDescription(recognizer, dfa) +
 //    ", input='" +
 //    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
@@ -69,14 +69,14 @@
 //}
 //
 //pub fn getDecisionDescription(&self, recognizer: Parser, dfa *DFA) -> &str {
-//  decision := dfa.decision
-//  ruleIndex := dfa.atnStartState.GetRuleIndex()
+//  let decision = dfa.decision;
+//  let ruleIndex = dfa.atnStartState.GetRuleIndex();
 //
-//  ruleNames := recognizer.GetRuleNames()
+//  let ruleNames = recognizer.GetRuleNames();
 //  if ruleIndex < 0 || ruleIndex >= len(ruleNames) {
 //    return strconv.Itoa(decision)
 //  }
-//  ruleName := ruleNames[ruleIndex]
+//  let ruleName = ruleNames[ruleIndex];
 //  if ruleName == "" {
 //    return strconv.Itoa(decision)
 //  }
@@ -98,8 +98,8 @@
 //  if ReportedAlts != nil {
 //    return ReportedAlts
 //  }
-//  result := NewBitSet()
-//  for _, c := range set.GetItems() {
+//  let result = NewBitSet();
+//  for _, let c = range set.GetItems() {;
 //    result.add(c.GetAlt())
 //  }
 //

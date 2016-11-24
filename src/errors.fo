@@ -29,11 +29,11 @@
 //  //  if (!!Error.captureStackTrace) {
 //  //        Error.captureStackTrace(this, RecognitionException)
 //  //  } else {
-//  //    stack := NewError().stack
+//  //    let stack = NewError().stack;
 //  //  }
 //  // TODO may be able to use - "runtime" func Stack(buf []byte, all bool) i32
 //
-//  t := new(BaseRecognitionException)
+//  let t = new(BaseRecognitionException);
 //
 //  t.message = message
 //  t.recognizer = recognizer
@@ -101,7 +101,7 @@
 //
 //impl LexerNoViableAltException {§//  pub fn new(&self, lexer Lexer, input CharStream, startIndex: i32, deadEndConfigs: ATNConfigSet) -> *LexerNoViableAltException {
 //
-//  l := new(LexerNoViableAltException)
+//  let l = new(LexerNoViableAltException);
 //
 //  l.BaseRecognitionException = NewBaseRecognitionException("", lexer, input, nil)
 //
@@ -112,7 +112,7 @@
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  symbol := ""
+//  let symbol = "";
 //  if l.startIndex >= 0 && l.startIndex < l.input.Size() {
 //    symbol = l.input.(CharStream).GetTextFromInterval(NewInterval(l.startIndex, l.startIndex))
 //  }
@@ -151,7 +151,7 @@
 //    input = recognizer.GetInputStream().(TokenStream)
 //  }
 //
-//  n := new(NoViableAltException)
+//  let n = new(NoViableAltException);
 //  n.BaseRecognitionException = NewBaseRecognitionException("", recognizer, input, ctx)
 //
 //  // Which configurations did we try at input.Index() that couldn't Match
@@ -176,7 +176,7 @@
 ////
 //impl InputMisMatchException {§//  pub fn new(&self, recognizer: Parser) -> *InputMisMatchException {
 //
-//  i := new(InputMisMatchException)
+//  let i = new(InputMisMatchException);
 //  i.BaseRecognitionException = NewBaseRecognitionException("", recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
 //
 //  i.offendingToken = recognizer.GetCurrentToken()
@@ -200,13 +200,13 @@
 //
 //impl FailedPredicateException {§//  pub fn new(&self, recognizer Parser, predicate: &str, message: &str) -> *FailedPredicateException {
 //
-//  f := new(FailedPredicateException)
+//  let f = new(FailedPredicateException);
 //
 //  f.BaseRecognitionException = NewBaseRecognitionException(f.formatMessage(predicate, message), recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
 //
-//  s := recognizer.GetInterpreter().atn.states[recognizer.GetState()]
-//  trans := s.GetTransitions()[0]
-//  if trans2, ok := trans.(*PredicateTransition); ok {
+//  let s = recognizer.GetInterpreter().atn.states[recognizer.GetState()];
+//  let trans = s.GetTransitions()[0];
+//  if trans2, let ok = trans.(*PredicateTransition); ok {;
 //    f.ruleIndex = trans2.ruleIndex
 //    f.predicateIndex = trans2.predIndex
 //  } else {

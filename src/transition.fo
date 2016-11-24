@@ -37,7 +37,7 @@
 //    panic("target cannot be nil.")
 //  }
 //
-//  t := new(BaseTransition)
+//  let t = new(BaseTransition);
 //
 //  t.target = target
 //  // Are we epsilon, action, sempred?
@@ -129,7 +129,7 @@
 //
 //impl AtomTransition {§//  pub fn new(&self, target: ATNState, i32ervalSet: i32) -> *AtomTransition {
 //
-//  t := new(AtomTransition)
+//  let t = new(AtomTransition);
 //  t.BaseTransition = NewBaseTransition(target)
 //
 //  t.label = i32ervalSet // The token type or character value or, signifies special i32ervalSet.
@@ -140,7 +140,7 @@
 //}
 //
 //pub fn makeLabel(&self, ) -> *IntervalSet {
-//  s := NewIntervalSet()
+//  let s = NewIntervalSet();
 //  s.addOne(t.label)
 //  return s
 //}
@@ -162,7 +162,7 @@
 //
 //impl RuleTransition {§//  pub fn new(&self, ruleStart ATNState, ruleIndex, precedence: i32, followState: ATNState) -> *RuleTransition {
 //
-//  t := new(RuleTransition)
+//  let t = new(RuleTransition);
 //  t.BaseTransition = NewBaseTransition(ruleStart)
 //
 //  t.ruleIndex = ruleIndex
@@ -186,7 +186,7 @@
 //
 //impl EpsilonTransition {§//  pub fn new(&self, target: ATNState, outermostPrecedenceReturn: i32) -> *EpsilonTransition {
 //
-//  t := new(EpsilonTransition)
+//  let t = new(EpsilonTransition);
 //  t.BaseTransition = NewBaseTransition(target)
 //
 //  t.serializationType = TransitionEPSILON
@@ -211,7 +211,7 @@
 //
 //impl RangeTransition {§//  pub fn new(&self, target ATNState,: start, stop: i32) -> *RangeTransition {
 //
-//  t := new(RangeTransition)
+//  let t = new(RangeTransition);
 //  t.BaseTransition = NewBaseTransition(target)
 //
 //  t.serializationType = TransitionRANGE
@@ -222,7 +222,7 @@
 //}
 //
 //pub fn makeLabel(&self, ) -> *IntervalSet {
-//  s := NewIntervalSet()
+//  let s = NewIntervalSet();
 //  s.addRange(t.start, t.stop)
 //  return s
 //}
@@ -246,7 +246,7 @@
 //
 //impl BasePredicateTransition {§//  pub fn new(&self, target: ATNState) -> *BaseAbstractPredicateTransition {
 //
-//  t := new(BaseAbstractPredicateTransition)
+//  let t = new(BaseAbstractPredicateTransition);
 //  t.BaseTransition = NewBaseTransition(target)
 //
 //  return t
@@ -263,7 +263,7 @@
 //
 //impl PredicateTransition {§//  pub fn new(&self, target ATNState, ruleIndex, predIndex: i32, isCtxDependent: bool) -> *PredicateTransition {
 //
-//  t := new(PredicateTransition)
+//  let t = new(PredicateTransition);
 //  t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
 //
 //  t.serializationType = TransitionPREDICATE
@@ -295,7 +295,7 @@
 //
 //impl ActionTransition {§//  pub fn new(&self, target ATNState, ruleIndex, actionIndex: i32, isCtxDependent: bool) -> *ActionTransition {
 //
-//  t := new(ActionTransition)
+//  let t = new(ActionTransition);
 //  t.BaseTransition = NewBaseTransition(target)
 //
 //  t.serializationType = TransitionACTION
@@ -320,7 +320,7 @@
 //
 //impl SetTransition {§//  pub fn new(&self, target: ATNState, set *IntervalSet) -> *SetTransition {
 //
-//  t := new(SetTransition)
+//  let t = new(SetTransition);
 //  t.BaseTransition = NewBaseTransition(target)
 //
 //  t.serializationType = TransitionSET
@@ -348,7 +348,7 @@
 //
 //impl NotSetTransition {§//  pub fn new(&self, target: ATNState, set *IntervalSet) -> *NotSetTransition {
 //
-//  t := new(NotSetTransition)
+//  let t = new(NotSetTransition);
 //
 //  t.SetTransition = NewSetTransition(target, set)
 //
@@ -371,7 +371,7 @@
 //
 //impl WildcardTransition {§//  pub fn new(&self, target: ATNState) -> *WildcardTransition {
 //
-//  t := new(WildcardTransition)
+//  let t = new(WildcardTransition);
 //  t.BaseTransition = NewBaseTransition(target)
 //
 //  t.serializationType = TransitionWILDCARD
@@ -394,7 +394,7 @@
 //
 //impl PrecedencePredicateTransition {§//  pub fn new(&self, target: ATNState, precedence: i32) -> *PrecedencePredicateTransition {
 //
-//  t := new(PrecedencePredicateTransition)
+//  let t = new(PrecedencePredicateTransition);
 //  t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
 //
 //  t.serializationType = TransitionPRECEDENCE

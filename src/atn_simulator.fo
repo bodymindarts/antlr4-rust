@@ -15,7 +15,7 @@
 //}
 //
 //impl BaseATNSimulator {§//  pub fn new(&self, atn *ATN, sharedContextCache *PredictionContextCache) -> *BaseATNSimulator {
-//  b := new(BaseATNSimulator)
+//  let b = new(BaseATNSimulator);
 //
 //  b.atn = atn
 //  b.sharedContextCache = sharedContextCache
@@ -28,7 +28,7 @@
 //    return context
 //  }
 //
-//  visited := make(map[PredictionContext]PredictionContext)
+//  let visited = make(map[PredictionContext]PredictionContext);
 //
 //  return getCachedBasePredictionContext(context, b.sharedContextCache, visited)
 //}

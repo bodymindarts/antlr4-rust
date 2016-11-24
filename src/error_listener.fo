@@ -74,31 +74,31 @@
 //  if delegates == nil {
 //    panic("delegates is not provided")
 //  }
-//  l := new(ProxyErrorListener)
+//  let l = new(ProxyErrorListener);
 //  l.delegates = delegates
 //  return l
 //}
 //
 //pub fn SyntaxError(&self, recognizer Recognizer, offendingSymbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
-//  for _, d := range p.delegates {
+//  for _, let d = range p.delegates {;
 //    d.SyntaxError(recognizer, offendingSymbol, line, column, msg, e)
 //  }
 //}
 //
 //pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex i32, exact: bool, ambigAlts *BitSet, configs: ATNConfigSet) {
-//  for _, d := range p.delegates {
+//  for _, let d = range p.delegates {;
 //    d.ReportAmbiguity(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs)
 //  }
 //}
 //
 //pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex: i32, conflictingAlts *BitSet, configs: ATNConfigSet) {
-//  for _, d := range p.delegates {
+//  for _, let d = range p.delegates {;
 //    d.ReportAttemptingFullContext(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs)
 //  }
 //}
 //
 //pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction: i32, configs: ATNConfigSet) {
-//  for _, d := range p.delegates {
+//  for _, let d = range p.delegates {;
 //    d.ReportContextSensitivity(recognizer, dfa, startIndex, stopIndex, prediction, configs)
 //  }
 //}

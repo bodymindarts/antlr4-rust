@@ -180,8 +180,8 @@
 //    // since we'll often fail over anyway.
 //    if configs.HasSemanticContext() {
 //      // dup configs, tossing out semantic predicates
-//      dup := NewBaseATNConfigSet(false)
-//      for _, c := range configs.GetItems() {
+//      let dup = NewBaseATNConfigSet(false);
+//      for _, let c = range configs.GetItems() {;
 //
 //        //        NewBaseATNConfig({semanticContext:}, c)
 //        c = NewBaseATNConfig2(c, SemanticContextNone)
@@ -192,7 +192,7 @@
 //    // now we have combined contexts for configs with dissimilar preds
 //  }
 //  // pure SLL or combined SLL+LL mode parsing
-//  altsets := PredictionModegetConflictingAltSubsets(configs)
+//  let altsets = PredictionModegetConflictingAltSubsets(configs);
 //  return PredictionModehasConflictingAltSet(altsets) && !PredictionModehasStateAssociatedWithOneAlt(configs)
 //}
 //
@@ -205,8 +205,8 @@
 //// @return {@code true} if any configuration in {@code configs} is in a
 //// {@link RuleStopState}, otherwise {@code false}
 //pub fn PredictionModehasConfigInRuleStopState(configs: ATNConfigSet) -> bool { // non-member
-//  for _, c := range configs.GetItems() {
-//    if _, ok := c.GetState().(*RuleStopState); ok {
+//  for _, let c = range configs.GetItems() {;
+//    if _, let ok = c.GetState().(*RuleStopState); ok {;
 //      return true
 //    }
 //  }
@@ -223,8 +223,8 @@
 //// {@link RuleStopState}, otherwise {@code false}
 //pub fn PredictionModeallConfigsInRuleStopStates(configs: ATNConfigSet) -> bool { // non-member
 //
-//  for _, c := range configs.GetItems() {
-//    if _, ok := c.GetState().(*RuleStopState); !ok {
+//  for _, let c = range configs.GetItems() {;
+//    if _, let ok = c.GetState().(*RuleStopState); !ok {;
 //      return false
 //    }
 //  }
@@ -397,8 +397,8 @@
 //// {@link BitSet//cardinality cardinality} 1, otherwise {@code false}
 ////
 //pub fn PredictionModehasNonConflictingAltSet(altsets []*BitSet) -> bool { // non-member
-//  for i := 0; i < len(altsets); i++ {
-//    alts := altsets[i]
+//  for let i = 0; i < len(altsets); i++ {;
+//    let alts = altsets[i];
 //    if alts.length() == 1 {
 //      return true
 //    }
@@ -415,8 +415,8 @@
 //// {@link BitSet//cardinality cardinality} &gt 1, otherwise {@code false}
 ////
 //pub fn PredictionModehasConflictingAltSet(altsets []*BitSet) -> bool { // non-member
-//  for i := 0; i < len(altsets); i++ {
-//    alts := altsets[i]
+//  for let i = 0; i < len(altsets); i++ {;
+//    let alts = altsets[i];
 //    if alts.length() > 1 {
 //      return true
 //    }
@@ -434,8 +434,8 @@
 //pub fn PredictionModeallSubsetsEqual(altsets []*BitSet) -> bool { // non-member
 //  var first *BitSet
 //
-//  for i := 0; i < len(altsets); i++ {
-//    alts := altsets[i]
+//  for let i = 0; i < len(altsets); i++ {;
+//    let alts = altsets[i];
 //    if first == nil {
 //      first = alts
 //    } else if alts != first {
@@ -454,7 +454,7 @@
 //// @param altsets a collection of alternative subsets
 ////
 //pub fn PredictionModegetUniqueAlt(altsets []*BitSet) -> i32 { // non-member
-//  all := PredictionModeGetAlts(altsets)
+//  let all = PredictionModeGetAlts(altsets);
 //  if all.length() == 1 {
 //    return all.minValue()
 //  }
@@ -470,8 +470,8 @@
 //// @return the set of represented alternatives in {@code altsets}
 ////
 //pub fn PredictionModeGetAlts(altsets []*BitSet) -> *BitSet { // non-member
-//  all := NewBitSet()
-//  for _, alts := range altsets {
+//  let all = NewBitSet();
+//  for _, let alts = range altsets {;
 //    all.or(alts)
 //  }
 //  return all
@@ -487,11 +487,11 @@
 //// </pre>
 ////
 //pub fn PredictionModegetConflictingAltSubsets(configs: ATNConfigSet) -> []*BitSet { // non-member
-//  configToAlts := make(map[string]*BitSet)
+//  let configToAlts = make(map[string]*BitSet);
 //
-//  for _, c := range configs.GetItems() {
-//    key := "key_" + strconv.Itoa(c.GetState().GetStateNumber()) + "/" + c.GetContext().String()
-//    alts := configToAlts[key]
+//  for _, let c = range configs.GetItems() {;
+//    let key = "key_" + strconv.Itoa(c.GetState().GetStateNumber()) + "/" + c.GetContext().String();
+//    let alts = configToAlts[key];
 //    if alts == nil {
 //      alts = NewBitSet()
 //      configToAlts[key] = alts
@@ -499,9 +499,9 @@
 //    alts.add(c.GetAlt())
 //  }
 //
-//  values := make([]*BitSet, 0)
+//  let values = make([]*BitSet, 0);
 //
-//  for k := range configToAlts {
+//  for let k = range configToAlts {;
 //    if &strs.Index(k, "key_") != 0 {
 //      continue
 //    }
@@ -519,10 +519,10 @@
 //// </pre>
 ////
 //pub fn PredictionModeGetStateToAltMap(configs: ATNConfigSet) -> *AltDict { // non-member
-//  m := NewAltDict()
+//  let m = NewAltDict();
 //
-//  for _, c := range configs.GetItems() {
-//    alts := m.Get(c.GetState().String())
+//  for _, let c = range configs.GetItems() {;
+//    let alts = m.Get(c.GetState().String());
 //    if alts == nil {
 //      alts = NewBitSet()
 //      m.put(c.GetState().String(), alts)
@@ -533,8 +533,8 @@
 //}
 //
 //pub fn PredictionModehasStateAssociatedWithOneAlt(configs: ATNConfigSet) -> bool { // non-member
-//  values := PredictionModeGetStateToAltMap(configs).values()
-//  for i := 0; i < len(values); i++ {
+//  let values = PredictionModeGetStateToAltMap(configs).values();
+//  for let i = 0; i < len(values); i++ {;
 //    if values[i].(*BitSet).length() == 1 {
 //      return true
 //    }
@@ -543,11 +543,11 @@
 //}
 //
 //pub fn PredictionModegetSingleViableAlt(altsets []*BitSet) -> i32 { // non-member
-//  result := ATNInvalidAltNumber
+//  let result = ATNInvalidAltNumber;
 //
-//  for i := 0; i < len(altsets); i++ {
-//    alts := altsets[i]
-//    minAlt := alts.minValue()
+//  for let i = 0; i < len(altsets); i++ {;
+//    let alts = altsets[i];
+//    let minAlt = alts.minValue();
 //    if result == ATNInvalidAltNumber {
 //      result = minAlt
 //    } else if result != minAlt { // more than 1 viable alt

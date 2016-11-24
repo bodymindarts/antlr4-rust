@@ -119,7 +119,7 @@
 //
 //impl CommonToken {§//  pub fn new(&self, source *TokenSourceCharStreamPair, tokenType, channel,: start, stop: i32) -> *CommonToken {
 //
-//  t := new(CommonToken)
+//  let t = new(CommonToken);
 //
 //  t.BaseToken = new(BaseToken)
 //
@@ -156,7 +156,7 @@
 //// @param oldToken The token to copy.
 ////
 //pub fn clone(&self, ) -> *CommonToken {
-//  t := NewCommonToken(c.source, c.tokenType, c.channel, c.start, c.stop)
+//  let t = NewCommonToken(c.source, c.tokenType, c.channel, c.start, c.stop);
 //  t.tokenIndex = c.GetTokenIndex()
 //  t.line = c.GetLine()
 //  t.column = c.GetColumn()
@@ -168,11 +168,11 @@
 //  if c.text != "" {
 //    return c.text
 //  }
-//  input := c.GetInputStream()
+//  let input = c.GetInputStream();
 //  if input == nil {
 //    return ""
 //  }
-//  n := input.Size()
+//  let n = input.Size();
 //  if c.start < n && c.stop < n {
 //    return input.GetTextFromInterval(NewInterval(c.start, c.stop))
 //  }
@@ -184,7 +184,7 @@
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  txt := c.GetText()
+//  let txt = c.GetText();
 //  if txt != "" {
 //    txt = &strs.Replace(txt, "\n", "\\n", -1)
 //    txt = &strs.Replace(txt, "\r", "\\r", -1)

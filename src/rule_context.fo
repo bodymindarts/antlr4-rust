@@ -44,7 +44,7 @@
 //
 //impl BaseRuleContext {§//  pub fn new(&self, parent: RuleContext, invokingState: i32) -> *BaseRuleContext {
 //
-//  rn := new(BaseRuleContext)
+//  let rn = new(BaseRuleContext);
 //
 //  // What context invoked b rule?
 //  rn.parentCtx = parent

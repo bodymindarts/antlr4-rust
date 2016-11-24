@@ -35,7 +35,7 @@
 //}
 //
 //impl BaseRecognizer {§//  pub fn new(&self, ) -> *BaseRecognizer {
-//  rec := new(BaseRecognizer)
+//  let rec = new(BaseRecognizer);
 //  rec.listeners = []ErrorListener{ConsoleErrorListenerINSTANCE}
 //  rec.state = -1
 //  return rec
@@ -45,7 +45,7 @@
 //var ruleIndexMapCache = make(map[string]int)
 //
 //pub fn checkVersion(&self, toolVersion: &str) {
-//  runtimeVersion := "4.6"
+//  let runtimeVersion = "4.6";
 //  if runtimeVersion != toolVersion {
 //    fmt.Println("ANTLR runtime and generated code versions disagree: " + runtimeVersion + "!=" + toolVersion)
 //  }
@@ -161,8 +161,8 @@
 //
 //// What is the error header, normally line/character position information?//
 //pub fn GetErrorHeader(&self, e: RecognitionException) -> &str {
-//  line := e.GetOffendingToken().GetLine()
-//  column := e.GetOffendingToken().GetColumn()
+//  let line = e.GetOffendingToken().GetLine();
+//  let column = e.GetOffendingToken().GetColumn();
 //  return "line " + strconv.Itoa(line) + ":" + strconv.Itoa(column)
 //}
 //
@@ -183,7 +183,7 @@
 //  if t == nil {
 //    return "<no token>"
 //  }
-//  s := t.GetText()
+//  let s = t.GetText();
 //  if s == "" {
 //    if t.GetTokenType() == TokenEOF {
 //      s = "<EOF>"
