@@ -60,13 +60,13 @@ impl<'a> ATNDeserializer<'a> {
         deserialization.init();
         deserialization.check_version();
         deserialization.check_UUID();
-        //  atn := self.readATN()
+        //  let atn = self.readATN();
         //
         //  self.readStates(atn)
         //  self.readRules(atn)
         //  self.readModes(atn)
         //
-        //  sets := self.readSets(atn)
+        //  let sets = self.readSets(atn);
         //
         //  self.readEdges(atn, sets)
         //  self.readDecisions(atn)
@@ -167,7 +167,7 @@ impl Deserialization {
 }
 
 // pub fn &strInSlice(a: &str, list []string) -> i32 { // non-member
-//  for i, b := range list {
+//  for i, let b = range list {;
 //    if b == a {
 //      return i
 //    }
@@ -185,25 +185,25 @@ impl Deserialization {
 // / at or after the feature identified by feature was i32roduced, and otherwise
 // / false.
 // pub fn isFeatureSupported(feature, actualUUID: &str) -> bool {
-//  idx1 := &strInSlice(feature, SupportedUUIDs)
+//  let idx1 = &strInSlice(feature, SupportedUUIDs);
 //
 //  if idx1 < 0 {
 //    return false
 //  }
 //
-//  idx2 := &strInSlice(actualUUID, SupportedUUIDs)
+//  let idx2 = &strInSlice(actualUUID, SupportedUUIDs);
 //
 //  return idx2 >= idx1
 //
 //
 // pub fn readStates(atn *ATN) {
-//  loopBackStateNumbers := make([]LoopEndStateIntPair, 0)
-//  endStateNumbers := make([]BlockStartStateIntPair, 0)
+//  let loopBackStateNumbers = make([]LoopEndStateIntPair, 0);
+//  let endStateNumbers = make([]BlockStartStateIntPair, 0);
 //
-//  nstates := self.read_int()
+//  let nstates = self.read_int();
 //
-//  for i := 0; i < nstates; i++ {
-//    stype := self.read_int()
+//  for let i = 0; i < nstates; i++ {;
+//    let stype = self.read_int();
 //
 //    // Ignore bad types of states
 //    if stype == ATNStateInvalidType {
@@ -212,20 +212,20 @@ impl Deserialization {
 //      continue
 //    }
 //
-//    ruleIndex := self.read_int()
+//    let ruleIndex = self.read_int();
 //
 //    if ruleIndex == 0xFFFF {
 //      ruleIndex = -1
 //    }
 //
-//    s := self.stateFactory(stype, ruleIndex)
+//    let s = self.stateFactory(stype, ruleIndex);
 //
 //    if stype == ATNStateLoopEnd {
-//      loopBackStateNumber := self.read_int()
+//      let loopBackStateNumber = self.read_int();
 //
 //      loopBackStateNumbers = append(loopBackStateNumbers, LoopEndStateIntPair{s.(*LoopEndState), loopBackStateNumber})
-//    } else if s2, ok := s.(BlockStartState); ok {
-//      endStateNumber := self.read_int()
+//    } else if s2, let ok = s.(BlockStartState); ok {;
+//      let endStateNumber = self.read_int();
 //
 //      endStateNumbers = append(endStateNumbers, BlockStartStateIntPair{s2, endStateNumber})
 //    }
@@ -235,37 +235,37 @@ impl Deserialization {
 //
 //  // Delay the assignment of loop back and end states until we know all the state
 //  // instances have been initialized
-//  for j := 0; j < len(loopBackStateNumbers); j++ {
-//    pair := loopBackStateNumbers[j]
+//  for let j = 0; j < len(loopBackStateNumbers); j++ {;
+//    let pair = loopBackStateNumbers[j];
 //
 //    pair.item0.loopBackState = atn.states[pair.item1]
 //  }
 //
-//  for j := 0; j < len(endStateNumbers); j++ {
-//    pair := endStateNumbers[j]
+//  for let j = 0; j < len(endStateNumbers); j++ {;
+//    let pair = endStateNumbers[j];
 //
 //    pair.item0.setEndState(atn.states[pair.item1].(*BlockEndState))
 //  }
 //
-//  numNonGreedyStates := self.read_int()
+//  let numNonGreedyStates = self.read_int();
 //
-//  for j := 0; j < numNonGreedyStates; j++ {
-//    stateNumber := self.read_int()
+//  for let j = 0; j < numNonGreedyStates; j++ {;
+//    let stateNumber = self.read_int();
 //
 //    atn.states[stateNumber].(DecisionState).setNonGreedy(true)
 //  }
 //
-//  numPrecedenceStates := self.read_int()
+//  let numPrecedenceStates = self.read_int();
 //
-//  for j := 0; j < numPrecedenceStates; j++ {
-//    stateNumber := self.read_int()
+//  for let j = 0; j < numPrecedenceStates; j++ {;
+//    let stateNumber = self.read_int();
 //
 //    atn.states[stateNumber].(*RuleStartState).isPrecedenceRule = true
 //  }
 //
 //
 // pub fn readRules(atn *ATN) {
-//  nrules := self.read_int()
+//  let nrules = self.read_int();
 //
 //  if atn.grammarType == ATNTypeLexer {
 //    atn.ruleToTokenType = make([]int, nrules) // TODO: initIntArray(nrules, 0)
@@ -273,14 +273,14 @@ impl Deserialization {
 //
 //  atn.ruleToStartState = make([]*RuleStartState, nrules) // TODO: initIntArray(nrules, 0)
 //
-//  for i := 0; i < nrules; i++ {
-//    s := self.read_int()
-//    startState := atn.states[s].(*RuleStartState)
+//  for let i = 0; i < nrules; i++ {;
+//    let s = self.read_int();
+//    let startState = atn.states[s].(*RuleStartState);
 //
 //    atn.ruleToStartState[i] = startState
 //
 //    if atn.grammarType == ATNTypeLexer {
-//      tokenType := self.read_int()
+//      let tokenType = self.read_int();
 //
 //      if tokenType == 0xFFFF {
 //        tokenType = TokenEOF
@@ -292,10 +292,10 @@ impl Deserialization {
 //
 //  atn.ruleToStopState = make([]*RuleStopState, nrules) //initIntArray(nrules, 0)
 //
-//  for i := 0; i < len(atn.states); i++ {
-//    state := atn.states[i]
+//  for let i = 0; i < len(atn.states); i++ {;
+//    let state = atn.states[i];
 //
-//    if s2, ok := state.(*RuleStopState); ok {
+//    if s2, let ok = state.(*RuleStopState); ok {;
 //      atn.ruleToStopState[s2.ruleIndex] = s2
 //      atn.ruleToStartState[s2.ruleIndex].stopState = s2
 //    }
@@ -303,34 +303,34 @@ impl Deserialization {
 //
 //
 // pub fn readModes(atn *ATN) {
-//  nmodes := self.read_int()
+//  let nmodes = self.read_int();
 //
-//  for i := 0; i < nmodes; i++ {
-//    s := self.read_int()
+//  for let i = 0; i < nmodes; i++ {;
+//    let s = self.read_int();
 //
 //    atn.modeToStartState = append(atn.modeToStartState, atn.states[s].(*TokensStartState))
 //  }
 //
 //
 // pub fn readSets(atn *ATN) -> []*IntervalSet {
-//  sets := make([]*IntervalSet, 0)
-//  m := self.read_int()
+//  let sets = make([]*IntervalSet, 0);
+//  let m = self.read_int();
 //
-//  for i := 0; i < m; i++ {
-//    iset := NewIntervalSet()
+//  for let i = 0; i < m; i++ {;
+//    let iset = NewIntervalSet();
 //
 //    sets = append(sets, iset)
 //
-//    n := self.read_int()
-//    containsEOF := self.read_int()
+//    let n = self.read_int();
+//    let containsEOF = self.read_int();
 //
 //    if containsEOF != 0 {
 //      iset.addOne(-1)
 //    }
 //
-//    for j := 0; j < n; j++ {
-//      i1 := self.read_int()
-//      i2 := self.read_int()
+//    for let j = 0; j < n; j++ {;
+//      let i1 = self.read_int();
+//      let i2 = self.read_int();
 //
 //      iset.addRange(i1, i2)
 //    }
@@ -340,9 +340,9 @@ impl Deserialization {
 //
 //
 // pub fn readEdges(atn *ATN, sets []*IntervalSet) {
-//  nedges := self.read_int()
+//  let nedges = self.read_int();
 //
-//  for i := 0; i < nedges; i++ {
+//  for let i = 0; i < nedges; i++ {;
 //    var (
 //      src      = self.read_int()
 //      trg      = self.read_int()
@@ -358,17 +358,17 @@ impl Deserialization {
 //  }
 //
 //  // Edges for rule stop states can be derived, so they are not serialized
-//  for i := 0; i < len(atn.states); i++ {
-//    state := atn.states[i]
+//  for let i = 0; i < len(atn.states); i++ {;
+//    let state = atn.states[i];
 //
-//    for j := 0; j < len(state.GetTransitions()); j++ {
+//    for let j = 0; j < len(state.GetTransitions()); j++ {;
 //      var t, ok = state.GetTransitions()[j].(*RuleTransition)
 //
 //      if !ok {
 //        continue
 //      }
 //
-//      outermostPrecedenceReturn := -1
+//      let outermostPrecedenceReturn = -1;
 //
 //      if atn.ruleToStartState[t.getTarget().GetRuleIndex()].isPrecedenceRule {
 //        if t.precedence == 0 {
@@ -376,16 +376,16 @@ impl Deserialization {
 //        }
 //      }
 //
-//      trans := NewEpsilonTransition(t.followState, outermostPrecedenceReturn)
+//      let trans = NewEpsilonTransition(t.followState, outermostPrecedenceReturn);
 //
 //      atn.ruleToStopState[t.getTarget().GetRuleIndex()].AddTransition(trans, -1)
 //    }
 //  }
 //
-//  for i := 0; i < len(atn.states); i++ {
-//    state := atn.states[i]
+//  for let i = 0; i < len(atn.states); i++ {;
+//    let state = atn.states[i];
 //
-//    if s2, ok := state.(*BaseBlockStartState); ok {
+//    if s2, let ok = state.(*BaseBlockStartState); ok {;
 //      // We need to know the end state to set its start state
 //      if s2.endState == nil {
 //        panic("IllegalState")
@@ -399,19 +399,19 @@ impl Deserialization {
 //      s2.endState.startState = state
 //    }
 //
-//    if s2, ok := state.(*PlusLoopbackState); ok {
-//      for j := 0; j < len(s2.GetTransitions()); j++ {
-//        target := s2.GetTransitions()[j].getTarget()
+//    if s2, let ok = state.(*PlusLoopbackState); ok {;
+//      for let j = 0; j < len(s2.GetTransitions()); j++ {;
+//        let target = s2.GetTransitions()[j].getTarget();
 //
-//        if t2, ok := target.(*PlusBlockStartState); ok {
+//        if t2, let ok = target.(*PlusBlockStartState); ok {;
 //          t2.loopBackState = state
 //        }
 //      }
-//    } else if s2, ok := state.(*StarLoopbackState); ok {
-//      for j := 0; j < len(s2.GetTransitions()); j++ {
-//        target := s2.GetTransitions()[j].getTarget()
+//    } else if s2, let ok = state.(*StarLoopbackState); ok {;
+//      for let j = 0; j < len(s2.GetTransitions()); j++ {;
+//        let target = s2.GetTransitions()[j].getTarget();
 //
-//        if t2, ok := target.(*StarLoopEntryState); ok {
+//        if t2, let ok = target.(*StarLoopEntryState); ok {;
 //          t2.loopBackState = state
 //        }
 //      }
@@ -420,11 +420,11 @@ impl Deserialization {
 //
 //
 // pub fn readDecisions(atn *ATN) {
-//  ndecisions := self.read_int()
+//  let ndecisions = self.read_int();
 //
-//  for i := 0; i < ndecisions; i++ {
-//    s := self.read_int()
-//    decState := atn.states[s].(DecisionState)
+//  for let i = 0; i < ndecisions; i++ {;
+//    let s = self.read_int();
+//    let decState = atn.states[s].(DecisionState);
 //
 //    atn.DecisionToState = append(atn.DecisionToState, decState)
 //    decState.setDecision(i)
@@ -433,25 +433,25 @@ impl Deserialization {
 //
 // pub fn readLexerActions(atn *ATN) {
 //  if atn.grammarType == ATNTypeLexer {
-//    count := self.read_int()
+//    let count = self.read_int();
 //
 //    atn.lexerActions = make([]LexerAction, count) // initIntArray(count, nil)
 //
-//    for i := 0; i < count; i++ {
-//      actionType := self.read_int()
-//      data1 := self.read_int()
+//    for let i = 0; i < count; i++ {;
+//      let actionType = self.read_int();
+//      let data1 = self.read_int();
 //
 //      if data1 == 0xFFFF {
 //        data1 = -1
 //      }
 //
-//      data2 := self.read_int()
+//      let data2 = self.read_int();
 //
 //      if data2 == 0xFFFF {
 //        data2 = -1
 //      }
 //
-//      lexerAction := self.lexerActionFactory(actionType, data1, data2)
+//      let lexerAction = self.lexerActionFactory(actionType, data1, data2);
 //
 //      atn.lexerActions[i] = lexerAction
 //    }
@@ -459,24 +459,24 @@ impl Deserialization {
 //
 //
 // pub fn generateRuleBypassTransitions(atn *ATN) {
-//  count := len(atn.ruleToStartState)
+//  let count = len(atn.ruleToStartState);
 //
-//  for i := 0; i < count; i++ {
+//  for let i = 0; i < count; i++ {;
 //    atn.ruleToTokenType[i] = atn.maxTokenType + i + 1
 //  }
 //
-//  for i := 0; i < count; i++ {
+//  for let i = 0; i < count; i++ {;
 //    self.generateRuleBypassTransition(atn, i)
 //  }
 //
 //
 // pub fn generateRuleBypassTransition(atn *ATN, idx: i32) {
-//  bypassStart := NewBasicBlockStartState()
+//  let bypassStart = NewBasicBlockStartState();
 //
 //  bypassStart.ruleIndex = idx
 //  atn.addState(bypassStart)
 //
-//  bypassStop := NewBlockEndState()
+//  let bypassStop = NewBlockEndState();
 //
 //  bypassStop.ruleIndex = idx
 //  atn.addState(bypassStop)
@@ -494,8 +494,8 @@ impl Deserialization {
 //    // Wrap from the beginning of the rule to the StarLoopEntryState
 //    endState = nil
 //
-//    for i := 0; i < len(atn.states); i++ {
-//      state := atn.states[i]
+//    for let i = 0; i < len(atn.states); i++ {;
+//      let state = atn.states[i];
 //
 //      if self.stateIsEndStateFor(state, idx) != nil {
 //        endState = state
@@ -514,11 +514,11 @@ impl Deserialization {
 //
 //  // All non-excluded transitions that currently target end state need to target
 //  // blockEnd instead
-//  for i := 0; i < len(atn.states); i++ {
-//    state := atn.states[i]
+//  for let i = 0; i < len(atn.states); i++ {;
+//    let state = atn.states[i];
 //
-//    for j := 0; j < len(state.GetTransitions()); j++ {
-//      transition := state.GetTransitions()[j]
+//    for let j = 0; j < len(state.GetTransitions()); j++ {;
+//      let transition = state.GetTransitions()[j];
 //
 //      if transition == excludeTransition {
 //        continue
@@ -531,8 +531,8 @@ impl Deserialization {
 //  }
 //
 //  // All transitions leaving the rule start state need to leave blockStart instead
-//  ruleToStartState := atn.ruleToStartState[idx]
-//  count := len(ruleToStartState.GetTransitions())
+//  let ruleToStartState = atn.ruleToStartState[idx];
+//  let count = len(ruleToStartState.GetTransitions());
 //
 //  for count > 0 {
 //    bypassStart.AddTransition(ruleToStartState.GetTransitions()[count-1], -1)
@@ -543,7 +543,7 @@ impl Deserialization {
 //  atn.ruleToStartState[idx].AddTransition(NewEpsilonTransition(bypassStart, -1), -1)
 //  bypassStop.AddTransition(NewEpsilonTransition(endState, -1), -1)
 //
-//  MatchState := NewBasicState()
+//  let MatchState = NewBasicState();
 //
 //  atn.addState(MatchState)
 //  MatchState.AddTransition(NewAtomTransition(bypassStop, atn.ruleToTokenType[idx]), -1)
@@ -555,13 +555,13 @@ impl Deserialization {
 //    return nil
 //  }
 //
-//  if _, ok := state.(*StarLoopEntryState); !ok {
+//  if _, let ok = state.(*StarLoopEntryState); !ok {;
 //    return nil
 //  }
 //
-//  maybeLoopEndState := state.GetTransitions()[len(state.GetTransitions())-1].getTarget()
+//  let maybeLoopEndState = state.GetTransitions()[len(state.GetTransitions())-1].getTarget();
 //
-//  if _, ok := maybeLoopEndState.(*LoopEndState); !ok {
+//  if _, let ok = maybeLoopEndState.(*LoopEndState); !ok {;
 //    return nil
 //  }
 //
@@ -578,8 +578,8 @@ impl Deserialization {
 // / specified ATN to set the StarLoopEntryState.precedenceRuleDecision field to
 // / the correct value.
 // pub fn markPrecedenceDecisions(atn *ATN) {
-//  for _, state := range atn.states {
-//    if _, ok := state.(*StarLoopEntryState); !ok {
+//  for _, let state = range atn.states {;
+//    if _, let ok = state.(*StarLoopEntryState); !ok {;
 //      continue
 //    }
 //
@@ -587,9 +587,9 @@ impl Deserialization {
 //    // decision for the closure block that determines whether a
 //    // precedence rule should continue or complete.
 //    if atn.ruleToStartState[state.GetRuleIndex()].isPrecedenceRule {
-//      maybeLoopEndState := state.GetTransitions()[len(state.GetTransitions())-1].getTarget()
+//      let maybeLoopEndState = state.GetTransitions()[len(state.GetTransitions())-1].getTarget();
 //
-//      if s3, ok := maybeLoopEndState.(*LoopEndState); ok {
+//      if s3, let ok = maybeLoopEndState.(*LoopEndState); ok {;
 //        var _, ok2 = maybeLoopEndState.GetTransitions()[0].getTarget().(*RuleStopState)
 //
 //        if s3.epsilonOnlyTransitions && ok2 {
@@ -606,8 +606,8 @@ impl Deserialization {
 //  }
 //
 //  // Verify assumptions
-//  for i := 0; i < len(atn.states); i++ {
-//    state := atn.states[i]
+//  for let i = 0; i < len(atn.states); i++ {;
+//    let state = atn.states[i];
 //
 //    if state == nil {
 //      continue
@@ -615,7 +615,7 @@ impl Deserialization {
 //
 //    self.checkCondition(state.GetEpsilonOnlyTransitions() || len(state.GetTransitions()) <= 1, "")
 //
-//    switch s2 := state.(type) {
+//    switch let s2 = state.(type) {;
 //    case *PlusBlockStartState:
 //      self.checkCondition(s2.loopBackState != nil, "")
 //
@@ -623,7 +623,7 @@ impl Deserialization {
 //      self.checkCondition(s2.loopBackState != nil, "")
 //      self.checkCondition(len(s2.GetTransitions()) == 2, "")
 //
-//      switch s2 := state.(type) {
+//      switch let s2 = state.(type) {;
 //      case *StarBlockStartState:
 //        var _, ok2 = s2.GetTransitions()[1].getTarget().(*LoopEndState)
 //
@@ -689,9 +689,9 @@ impl Deserialization {
 // /}
 //
 // pub fn createByteToHex() -> []string { // non-member
-//  bth := make([]string, 256)
+//  let bth = make([]string, 256);
 //
-//  for i := 0; i < 256; i++ {
+//  for let i = 0; i < 256; i++ {;
 //    bth[i] = &strs.ToUpper(hex.EncodeToString([]byte{byte(i)}))
 //  }
 //
@@ -702,7 +702,7 @@ impl Deserialization {
 //
 //
 // pub fn edgeFactory(atn *ATN, typeIndex, src, trg, arg1, arg2, arg3: i32, sets []*IntervalSet) -> Transition {
-//  target := atn.states[trg]
+//  let target = atn.states[trg];
 //
 //  switch typeIndex {
 //  case TransitionEPSILON:

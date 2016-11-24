@@ -115,21 +115,21 @@ pub struct ATN {
 //    panic("Invalid state number.")
 //  }
 //
-//  s := a.states[stateNumber]
-//  following := a.NextTokens(s, nil)
+//  let s = a.states[stateNumber];
+//  let following = a.NextTokens(s, nil);
 //
 //  if !following.contains(TokenEpsilon) {
 //    return following
 //  }
 //
-//  expected := NewIntervalSet()
+//  let expected = NewIntervalSet();
 //
 //  expected.addSet(following)
 //  expected.removeOne(TokenEpsilon)
 //
 //  for ctx != nil && ctx.GetInvokingState() >= 0 && following.contains(TokenEpsilon) {
-//    invokingState := a.states[ctx.GetInvokingState()]
-//    rt := invokingState.GetTransitions()[0]
+//    let invokingState = a.states[ctx.GetInvokingState()];
+//    let rt = invokingState.GetTransitions()[0];
 //
 //    following = a.NextTokens(rt.(*RuleTransition).followState, nil)
 //    expected.addSet(following)

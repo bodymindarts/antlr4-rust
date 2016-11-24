@@ -13,7 +13,7 @@ pub struct ATNDeserializationOptions {
 
 // impl ATNDeserializationOptions {
 //     pub fn new(copyFrom: ATNDeserializationOptions) -> *ATNDeserializationOptions {
-//  o := new(ATNDeserializationOptions)
+//  let o = new(ATNDeserializationOptions);
 
 //  if CopyFrom != nil {
 //    o.readOnly = CopyFrom.readOnly
