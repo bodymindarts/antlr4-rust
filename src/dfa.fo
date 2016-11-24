@@ -117,7 +117,7 @@
 //    return ""
 //  }
 //
-//  return NewDFASerializer(d, literalNames, symbolicNames).String()
+//  return DFASerializer::new(d, literalNames, symbolicNames).String()
 //}
 //
 //pub fn ToLexerString(&self, ) -> &str {
@@ -125,5 +125,5 @@
 //    return ""
 //  }
 //
-//  return NewLexerDFASerializer(d).String()
+//  return LexerDFASerializer::new(d).String()
 //}

@@ -56,7 +56,7 @@
 //}
 //
 //impl BaseATNConfig {§//  pub fn new6(&self, state ATNState, alt: i32, context: PredictionContext) -> *BaseATNConfig {
-//  return NewBaseATNConfig5(state, alt, context, SemanticContextNone)
+//  return BaseATNConfig5::new(state, alt, context, SemanticContextNone)
 //}
 //
 //impl BaseATNConfig {§//  pub fn new5(&self, state ATNState, alt i32, context: PredictionContext, semanticContext: SemanticContext) -> *BaseATNConfig {
@@ -68,19 +68,19 @@
 //}
 //
 //impl BaseATNConfig {§//  pub fn new4(&self, c: ATNConfig, state: ATNState) -> *BaseATNConfig {
-//  return NewBaseATNConfig(c, state, c.GetContext(), c.GetSemanticContext())
+//  return BaseATNConfig::new(c, state, c.GetContext(), c.GetSemanticContext())
 //}
 //
 //impl BaseATNConfig {§//  pub fn new3(&self, c ATNConfig, state: ATNState, semanticContext: SemanticContext) -> *BaseATNConfig {
-//  return NewBaseATNConfig(c, state, c.GetContext(), semanticContext)
+//  return BaseATNConfig::new(c, state, c.GetContext(), semanticContext)
 //}
 //
 //impl BaseATNConfig {§//  pub fn new2(&self, c: ATNConfig, semanticContext: SemanticContext) -> *BaseATNConfig {
-//  return NewBaseATNConfig(c, c.GetState(), c.GetContext(), semanticContext)
+//  return BaseATNConfig::new(c, c.GetState(), c.GetContext(), semanticContext)
 //}
 //
 //impl BaseATNConfig {§//  pub fn new1(&self, c ATNConfig, state: ATNState, context: PredictionContext) -> *BaseATNConfig {
-//  return NewBaseATNConfig(c, state, context, c.GetSemanticContext())
+//  return BaseATNConfig::new(c, state, context, c.GetSemanticContext())
 //}
 //
 //impl BaseATNConfig {§//  pub fn new(&self, c ATNConfig, state ATNState, context: PredictionContext, semanticContext: SemanticContext) -> *BaseATNConfig {

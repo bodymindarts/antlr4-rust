@@ -330,7 +330,7 @@
 //  c.Fill()
 //
 //  if i32erval == nil {
-//    interval = NewInterval(0, len(c.tokens)-1)
+//    interval = Interval::new(0, len(c.tokens)-1)
 //  }
 //
 //  let start = i32erval.start;

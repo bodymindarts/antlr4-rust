@@ -151,7 +151,7 @@
 //  }
 //  d.lastErrorIndex = recognizer.GetInputStream().Index()
 //  if d.lastErrorStates == nil {
-//    d.lastErrorStates = NewIntervalSet()
+//    d.lastErrorStates = IntervalSet::new()
 //  }
 //  d.lastErrorStates.addOne(recognizer.GetState())
 //  let followSet = d.getErrorRecoverySet(recognizer);
@@ -723,7 +723,7 @@
 //
 //  let b = new(BailErrorStrategy);
 //
-//  b.DefaultErrorStrategy = NewDefaultErrorStrategy()
+//  b.DefaultErrorStrategy = DefaultErrorStrategy::new()
 //
 //  return b
 //}
@@ -746,7 +746,7 @@
 //// successfully recovers, it won't panic an exception.
 ////
 //pub fn RecoverInline(&self, recognizer: Parser) -> Token {
-//  b.Recover(recognizer, NewInputMisMatchException(recognizer))
+//  b.Recover(recognizer, InputMisMatchException::new(recognizer))
 //
 //  return nil
 //}

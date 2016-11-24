@@ -45,7 +45,7 @@ pub struct ATN {
 // / the rule surrounding s. In other words, the set will be restricted to tokens
 // / reachable staying within the rule of s.
 // pub fn NextTokensInContext(s: ATNState, ctx: RuleContext) -> *IntervalSet {
-//  return NewLL1Analyzer(a).Look(s, nil, ctx)
+//  return LL1Analyzer::new(a).Look(s, nil, ctx)
 //
 //
 // / NextTokensNoContext computes the set of valid tokens that can occur starting

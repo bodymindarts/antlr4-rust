@@ -47,7 +47,7 @@
 ////
 //// Provides a default instance of {@link ConsoleErrorListener}.
 ////
-//var ConsoleErrorListenerINSTANCE = NewConsoleErrorListener()
+//var ConsoleErrorListenerINSTANCE = ConsoleErrorListener::new()
 //
 ////
 //// {@inheritDoc}

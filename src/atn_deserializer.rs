@@ -161,7 +161,7 @@ impl Deserialization {
         let grammarType = self.read_int();
         let maxTokenType = self.read_int();
 
-        // NewATN(grammarType, maxTokenType)
+        // ATN::new(grammarType, maxTokenType)
         ATN {}
     }
 }
@@ -706,42 +706,42 @@ impl Deserialization {
 //
 //  switch typeIndex {
 //  case TransitionEPSILON:
-//    return NewEpsilonTransition(target, -1)
+//    return EpsilonTransition::new(target, -1)
 //
 //  case TransitionRANGE:
 //    if arg3 != 0 {
-//      return NewRangeTransition(target, TokenEOF, arg2)
+//      return RangeTransition::new(target, TokenEOF, arg2)
 //    }
 //
-//    return NewRangeTransition(target, arg1, arg2)
+//    return RangeTransition::new(target, arg1, arg2)
 //
 //  case TransitionRULE:
-//    return NewRuleTransition(atn.states[arg1], arg2, arg3, target)
+//    return RuleTransition::new(atn.states[arg1], arg2, arg3, target)
 //
 //  case TransitionPREDICATE:
-//    return NewPredicateTransition(target, arg1, arg2, arg3 != 0)
+//    return PredicateTransition::new(target, arg1, arg2, arg3 != 0)
 //
 //  case TransitionPRECEDENCE:
-//    return NewPrecedencePredicateTransition(target, arg1)
+//    return PrecedencePredicateTransition::new(target, arg1)
 //
 //  case TransitionATOM:
 //    if arg3 != 0 {
-//      return NewAtomTransition(target, TokenEOF)
+//      return AtomTransition::new(target, TokenEOF)
 //    }
 //
-//    return NewAtomTransition(target, arg1)
+//    return AtomTransition::new(target, arg1)
 //
 //  case TransitionACTION:
-//    return NewActionTransition(target, arg1, arg2, arg3 != 0)
+//    return ActionTransition::new(target, arg1, arg2, arg3 != 0)
 //
 //  case TransitionSET:
-//    return NewSetTransition(target, sets[arg1])
+//    return SetTransition::new(target, sets[arg1])
 //
 //  case TransitionNOTSET:
-//    return NewNotSetTransition(target, sets[arg1])
+//    return NotSetTransition::new(target, sets[arg1])
 //
 //  case TransitionWILDCARD:
-//    return NewWildcardTransition(target)
+//    return WildcardTransition::new(target)
 //  }
 //
 //  panic("The specified transition type is not valid.")
@@ -755,40 +755,40 @@ impl Deserialization {
 //    return nil
 //
 //  case ATNStateBasic:
-//    s = NewBasicState()
+//    s = BasicState::new()
 //
 //  case ATNStateRuleStart:
-//    s = NewRuleStartState()
+//    s = RuleStartState::new()
 //
 //  case ATNStateBlockStart:
-//    s = NewBasicBlockStartState()
+//    s = BasicBlockStartState::new()
 //
 //  case ATNStatePlusBlockStart:
-//    s = NewPlusBlockStartState()
+//    s = PlusBlockStartState::new()
 //
 //  case ATNStateStarBlockStart:
-//    s = NewStarBlockStartState()
+//    s = StarBlockStartState::new()
 //
 //  case ATNStateTokenStart:
-//    s = NewTokensStartState()
+//    s = TokensStartState::new()
 //
 //  case ATNStateRuleStop:
-//    s = NewRuleStopState()
+//    s = RuleStopState::new()
 //
 //  case ATNStateBlockEnd:
-//    s = NewBlockEndState()
+//    s = BlockEndState::new()
 //
 //  case ATNStateStarLoopBack:
-//    s = NewStarLoopbackState()
+//    s = StarLoopbackState::new()
 //
 //  case ATNStateStarLoopEntry:
-//    s = NewStarLoopEntryState()
+//    s = StarLoopEntryState::new()
 //
 //  case ATNStatePlusLoopBack:
-//    s = NewPlusLoopbackState()
+//    s = PlusLoopbackState::new()
 //
 //  case ATNStateLoopEnd:
-//    s = NewLoopEndState()
+//    s = LoopEndState::new()
 //
 //  default:
 //    panic(fmt.Sprintf("state type %d is invalid", typeIndex))
@@ -802,13 +802,13 @@ impl Deserialization {
 // pub fn lexerActionFactory(typeIndex, data1, data2: i32) -> LexerAction {
 //  switch typeIndex {
 //  case LexerActionTypeChannel:
-//    return NewLexerChannelAction(data1)
+//    return LexerChannelAction::new(data1)
 //
 //  case LexerActionTypeCustom:
-//    return NewLexerCustomAction(data1, data2)
+//    return LexerCustomAction::new(data1, data2)
 //
 //  case LexerActionTypeMode:
-//    return NewLexerModeAction(data1)
+//    return LexerModeAction::new(data1)
 //
 //  case LexerActionTypeMore:
 //    return LexerMoreActionINSTANCE
@@ -817,13 +817,13 @@ impl Deserialization {
 //    return LexerPopModeActionINSTANCE
 //
 //  case LexerActionTypePushMode:
-//    return NewLexerPushModeAction(data1)
+//    return LexerPushModeAction::new(data1)
 //
 //  case LexerActionTypeSkip:
 //    return LexerSkipActionINSTANCE
 //
 //  case LexerActionTypeType:
-//    return NewLexerTypeAction(data1)
+//    return LexerTypeAction::new(data1)
 //
 //  default:
 //    panic(fmt.Sprintf("lexer action %d is invalid", typeIndex))

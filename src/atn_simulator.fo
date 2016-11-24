@@ -1,6 +1,6 @@
 //package antlr
 //
-//var ATNSimulatorError = NewDFAState(0x7FFFFFFF, NewBaseATNConfigSet(false))
+//var ATNSimulatorError = DFAState::new(0x7FFFFFFF, NewBaseATNConfigSet(false))
 //
 //pub trait IATNSimulator {
 //  SharedContextCache() *PredictionContextCache

@@ -80,7 +80,7 @@
 //
 //impl DFAState {§//  pub fn new(&self, stateNumber: i32, configs: ATNConfigSet) -> *DFAState {
 //  if configs == nil {
-//    configs = NewBaseATNConfigSet(false)
+//    configs = BaseATNConfigSet::new(false)
 //  }
 //
 //  return &DFAState{configs: configs, stateNumber: stateNumber}

@@ -103,7 +103,7 @@
 //
 //  let l = new(LexerNoViableAltException);
 //
-//  l.BaseRecognitionException = NewBaseRecognitionException("", lexer, input, nil)
+//  l.BaseRecognitionException = BaseRecognitionException::new("", lexer, input, nil)
 //
 //  l.startIndex = startIndex
 //  l.deadEndConfigs = deadEndConfigs
@@ -152,7 +152,7 @@
 //  }
 //
 //  let n = new(NoViableAltException);
-//  n.BaseRecognitionException = NewBaseRecognitionException("", recognizer, input, ctx)
+//  n.BaseRecognitionException = BaseRecognitionException::new("", recognizer, input, ctx)
 //
 //  // Which configurations did we try at input.Index() that couldn't Match
 //  // input.LT(1)?//
@@ -177,7 +177,7 @@
 //impl InputMisMatchException {§//  pub fn new(&self, recognizer: Parser) -> *InputMisMatchException {
 //
 //  let i = new(InputMisMatchException);
-//  i.BaseRecognitionException = NewBaseRecognitionException("", recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
+//  i.BaseRecognitionException = BaseRecognitionException::new("", recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
 //
 //  i.offendingToken = recognizer.GetCurrentToken()
 //
@@ -202,7 +202,7 @@
 //
 //  let f = new(FailedPredicateException);
 //
-//  f.BaseRecognitionException = NewBaseRecognitionException(f.formatMessage(predicate, message), recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
+//  f.BaseRecognitionException = BaseRecognitionException::new(f.formatMessage(predicate, message), recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
 //
 //  let s = recognizer.GetInterpreter().atn.states[recognizer.GetState()];
 //  let trans = s.GetTransitions()[0];

@@ -27,7 +27,7 @@
 //
 //// CommonTokenFactoryDEFAULT is the default CommonTokenFactory. It does not
 //// explicitly copy token text when constructing tokens.
-//var CommonTokenFactoryDEFAULT = NewCommonTokenFactory(false)
+//var CommonTokenFactoryDEFAULT = CommonTokenFactory::new(false)
 //
 //pub fn Create(&self, source *TokenSourceCharStreamPair, ttype i32, text &str, channel, start, stop,: line, column: i32) -> Token {
 //  let t = NewCommonToken(source, ttype, channel, start, stop);

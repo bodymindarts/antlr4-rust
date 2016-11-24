@@ -273,7 +273,7 @@
 //
 //  b.configs = make([]ATNConfig, 0)
 //  b.cachedHashString = "-1"
-//  b.configLookup = NewSet(hashATNConfig, equalATNConfigs)
+//  b.configLookup = Set::new(hashATNConfig, equalATNConfigs)
 //}
 //
 //pub fn FullContext(&self, ) -> bool {
@@ -355,7 +355,7 @@
 //impl OrderedATNConfigSet {§//  pub fn new(&self, ) -> *OrderedATNConfigSet {
 //  let b = NewBaseATNConfigSet(false);
 //
-//  b.configLookup = NewSet(nil, nil)
+//  b.configLookup = Set::new(nil, nil)
 //
 //  return &OrderedATNConfigSet{BaseATNConfigSet: b}
 //}
