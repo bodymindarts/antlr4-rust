@@ -12,17 +12,17 @@
 //  return tl
 //}
 //
-//pub fn VisitErrorNode(&self, _: ErrorNode) {
+//pub fn visit_error_node(&self, _: ErrorNode) {
 //}
 //
-//pub fn EnterEveryRule(&self, ctx: ParserRuleContext) {
-//  fmt.Println("enter   " + self.parser.GetRuleNames()[ctx.GetRuleIndex()] + ", LT(1)=" + self.parser.input.LT(1).GetText())
+//pub fn enter_every_rule(&self, ctx: ParserRuleContext) {
+//  fmt.Println("enter   " + self.parser.get_rule_names()[ctx.get_rule_index()] + ", LT(1)=" + self.parser.input.l_t(1).get_text())
 //}
 //
-//pub fn VisitTerminal(&self, node: TerminalNode) {
-//  fmt.Println("consume " + fmt.Sprint(node.GetSymbol()) + " rule " + self.parser.GetRuleNames()[self.parser.ctx.GetRuleIndex()])
+//pub fn visit_terminal(&self, node: TerminalNode) {
+//  fmt.Println("consume " + fmt.Sprint(node.get_symbol()) + " rule " + self.parser.get_rule_names()[self.parser.ctx.get_rule_index()])
 //}
 //
-//pub fn ExitEveryRule(&self, ctx: ParserRuleContext) {
-//  fmt.Println("exit    " + self.parser.GetRuleNames()[ctx.GetRuleIndex()] + ", LT(1)=" + self.parser.input.LT(1).GetText())
+//pub fn exit_every_rule(&self, ctx: ParserRuleContext) {
+//  fmt.Println("exit    " + self.parser.get_rule_names()[ctx.get_rule_index()] + ", LT(1)=" + self.parser.input.l_t(1).get_text())
 //}

@@ -68,19 +68,19 @@
 //}
 //
 //impl BaseATNConfig {§//  fn new4(&self, c: ATNConfig, state: ATNState) -> *BaseATNConfig {
-//  return BaseATNConfig::new(c, state, self.GetContext(), self.GetSemanticContext())
+//  return BaseATNConfig::new(c, state, self.get_context(), self.get_semantic_context())
 //}
 //
 //impl BaseATNConfig {§//  fn new3(&self, c ATNConfig, state: ATNState, semantic_context: SemanticContext) -> *BaseATNConfig {
-//  return BaseATNConfig::new(c, state, self.GetContext(), semantic_context)
+//  return BaseATNConfig::new(c, state, self.get_context(), semantic_context)
 //}
 //
 //impl BaseATNConfig {§//  fn new2(&self, c: ATNConfig, semantic_context: SemanticContext) -> *BaseATNConfig {
-//  return BaseATNConfig::new(c, self.GetState(), self.GetContext(), semantic_context)
+//  return BaseATNConfig::new(c, self.get_state(), self.get_context(), semantic_context)
 //}
 //
 //impl BaseATNConfig {§//  fn new1(&self, c ATNConfig, state: ATNState, context: PredictionContext) -> *BaseATNConfig {
-//  return BaseATNConfig::new(c, state, context, self.GetSemanticContext())
+//  return BaseATNConfig::new(c, state, context, self.get_semantic_context())
 //}
 //
 //impl BaseATNConfig {§//  fn new(&self, c ATNConfig, state ATNState, context: PredictionContext, semantic_context: SemanticContext) -> *BaseATNConfig {
@@ -90,10 +90,10 @@
 //
 //  return &BaseATNConfig{
 //    state:                   state,
-//    alt:                     self.GetAlt(),
+//    alt:                     self.get_alt(),
 //    context:                 context,
 //    semantic_context:         semantic_context,
-//    reaches_into_outer_context: self.GetReachesIntoOuterContext(),
+//    reaches_into_outer_context: self.get_reaches_into_outer_context(),
 //    precedence_filter_suppressed: self.get_precedence_filter_suppressed(),
 //  }
 //}
@@ -106,30 +106,30 @@
 //  self.precedence_filter_suppressed = v
 //}
 //
-//pub fn GetState(&self, ) -> ATNState {
+//pub fn get_state(&self, ) -> ATNState {
 //  return self.state
 //}
 //
-//pub fn GetAlt(&self, ) -> i32 {
+//pub fn get_alt(&self, ) -> i32 {
 //  return self.alt
 //}
 //
-//pub fn SetContext(&self, v: PredictionContext) {
+//pub fn set_context(&self, v: PredictionContext) {
 //  self.context = v
 //}
-//pub fn GetContext(&self, ) -> PredictionContext {
+//pub fn get_context(&self, ) -> PredictionContext {
 //  return self.context
 //}
 //
-//pub fn GetSemanticContext(&self, ) -> SemanticContext {
+//pub fn get_semantic_context(&self, ) -> SemanticContext {
 //  return self.semantic_context
 //}
 //
-//pub fn GetReachesIntoOuterContext(&self, ) -> i32 {
+//pub fn get_reaches_into_outer_context(&self, ) -> i32 {
 //  return self.reaches_into_outer_context
 //}
 //
-//pub fn SetReachesIntoOuterContext(&self, v: i32) {
+//pub fn set_reaches_into_outer_context(&self, v: i32) {
 //  self.reaches_into_outer_context = v
 //}
 //
@@ -155,7 +155,7 @@
 //  }
 //
 //  var (
-//    nums = self.state.GetStateNumber() == other.state.GetStateNumber()
+//    nums = self.state.get_state_number() == other.state.get_state_number()
 //    alts = self.alt == other.alt
 //    cons = self.semantic_context.equals(other.semantic_context)
 //    sups = self.precedence_filter_suppressed == other.precedence_filter_suppressed
@@ -165,7 +165,7 @@
 //}
 //
 //fn short_hash(&self, ) -> &str {
-//  return strconv.Itoa(self.state.GetStateNumber()) + "/" + strconv.Itoa(self.alt) + "/" + self.semantic_context.String()
+//  return strconv.Itoa(self.state.get_state_number()) + "/" + strconv.Itoa(self.alt) + "/" + self.semantic_context.String()
 //}
 //
 //pub fn Hash(&self, ) -> &str {
@@ -177,7 +177,7 @@
 //    c = self.context.Hash()
 //  }
 //
-//  return strconv.Itoa(self.state.GetStateNumber()) + "/" + strconv.Itoa(self.alt) + "/" + c + "/" + self.semantic_context.String()
+//  return strconv.Itoa(self.state.get_state_number()) + "/" + strconv.Itoa(self.alt) + "/" + c + "/" + self.semantic_context.String()
 //}
 //
 //pub fn String(&self, ) -> &str {
@@ -219,7 +219,7 @@
 //
 //impl LexerATNConfig {§//  fn new4(&self, c *LexerATNConfig, state: ATNState) -> *LexerATNConfig {
 //  return &LexerATNConfig{
-//    BaseATNConfig:                  NewBaseATNConfig(c, state, self.GetContext(), self.GetSemanticContext()),
+//    BaseATNConfig:                  NewBaseATNConfig(c, state, self.get_context(), self.get_semantic_context()),
 //    lexer_action_executor:            self.lexer_action_executor,
 //    passed_through_non_greedy_decision: check_non_greedy_decision(c, state),
 //  }
@@ -227,7 +227,7 @@
 //
 //impl LexerATNConfig {§//  fn new3(&self, c *LexerATNConfig, state: ATNState, lexer_action_executor *LexerActionExecutor) -> *LexerATNConfig {
 //  return &LexerATNConfig{
-//    BaseATNConfig:                  NewBaseATNConfig(c, state, self.GetContext(), self.GetSemanticContext()),
+//    BaseATNConfig:                  NewBaseATNConfig(c, state, self.get_context(), self.get_semantic_context()),
 //    lexer_action_executor:            lexer_action_executor,
 //    passed_through_non_greedy_decision: check_non_greedy_decision(c, state),
 //  }
@@ -235,7 +235,7 @@
 //
 //impl LexerATNConfig {§//  fn new2(&self, c *LexerATNConfig, state: ATNState, context: PredictionContext) -> *LexerATNConfig {
 //  return &LexerATNConfig{
-//    BaseATNConfig:                  NewBaseATNConfig(c, state, context, self.GetSemanticContext()),
+//    BaseATNConfig:                  NewBaseATNConfig(c, state, context, self.get_semantic_context()),
 //    lexer_action_executor:            self.lexer_action_executor,
 //    passed_through_non_greedy_decision: check_non_greedy_decision(c, state),
 //  }
@@ -254,7 +254,7 @@
 //    f = "0"
 //  }
 //
-//  return fmt.Sprintf("%v%v%v%v%v%v", self.state.GetStateNumber(), self.alt, self.context, self.semantic_context, f, self.lexer_action_executor)
+//  return fmt.Sprintf("%v%v%v%v%v%v", self.state.get_state_number(), self.alt, self.context, self.semantic_context, f, self.lexer_action_executor)
 //}
 //
 //fn equals(&self, other i32erface{}) -> bool {
@@ -280,7 +280,7 @@
 //    return false
 //  }
 //
-//  return self.BaseATNConfig.equals(othert.BaseATNConfig)
+//  return self.base_a_t_n_config.equals(othert.base_a_t_n_config)
 //}
 //
 //fn check_non_greedy_decision(source *LexerATNConfig, target: ATNState) -> bool { // non-member

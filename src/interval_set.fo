@@ -197,10 +197,10 @@ impl Interval {
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return self.StringVerbose(nil, nil, false)
+//  return self.string_verbose(nil, nil, false)
 //}
 //
-//pub fn StringVerbose(&self, literal_names []string, symbolic_names []string, elems_are_char: bool) -> &str {
+//pub fn string_verbose(&self, literal_names []string, symbolic_names []string, elems_are_char: bool) -> &str {
 //
 //  if self.intervals == nil {
 //    return "{}"

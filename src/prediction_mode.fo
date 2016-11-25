@@ -164,7 +164,7 @@
 //// the configurations to strip out all of the predicates so that a standard
 //// {@link ATNConfigSet} will merge everything ignoring predicates.</p>
 ////
-//pub fn PredictionModehasSLLConflictTerminatingPrediction(mode: i32, configs: ATNConfigSet) -> bool { // non-member
+//pub fn prediction_modehas_s_l_l_conflictTerminatingPrediction(mode: i32, configs: ATNConfigSet) -> bool { // non-member
 //  // Configs in rule stop states indicate reaching the end of the decision
 //  // rule (local context) or end of start rule (full context). If all
 //  // configs meet this condition, then none of the configurations is able
@@ -178,10 +178,10 @@
 //    // Don't bother with combining configs from different semantic
 //    // contexts if we can fail over to full LL costs more time
 //    // since we'll often fail over anyway.
-//    if configs.HasSemanticContext() {
+//    if configs.has_semantic_context() {
 //      // dup configs, tossing out semantic predicates
 //      let dup = NewBaseATNConfigSet(false);
-//      for _, let c = range configs.GetItems() {;
+//      for _, let c = range configs.get_items() {;
 //
 //        //        NewBaseATNConfig({semanticContext:}, c)
 //        c = NewBaseATNConfig2(c, SemanticContextNone)
@@ -204,9 +204,9 @@
 //// @param configs the configuration set to test
 //// @return {@code true} if any configuration in {@code configs} is in a
 //// {@link RuleStopState}, otherwise {@code false}
-//pub fn PredictionModehasConfigInRuleStopState(configs: ATNConfigSet) -> bool { // non-member
-//  for _, let c = range configs.GetItems() {;
-//    if _, let ok = self.GetState().(*RuleStopState); ok {;
+//pub fn prediction_modehas_config_in_rule_stopState(configs: ATNConfigSet) -> bool { // non-member
+//  for _, let c = range configs.get_items() {;
+//    if _, let ok = self.get_state().(*RuleStopState); ok {;
 //      return true
 //    }
 //  }
@@ -221,10 +221,10 @@
 //// @param configs the configuration set to test
 //// @return {@code true} if all configurations in {@code configs} are in a
 //// {@link RuleStopState}, otherwise {@code false}
-//pub fn PredictionModeallConfigsInRuleStopStates(configs: ATNConfigSet) -> bool { // non-member
+//pub fn prediction_modeall_configs_in_rule_stopStates(configs: ATNConfigSet) -> bool { // non-member
 //
-//  for _, let c = range configs.GetItems() {;
-//    if _, let ok = self.GetState().(*RuleStopState); !ok {;
+//  for _, let c = range configs.get_items() {;
+//    if _, let ok = self.get_state().(*RuleStopState); !ok {;
 //      return false
 //    }
 //  }
@@ -372,7 +372,7 @@
 //// we need exact ambiguity detection when the sets look like
 //// {@code A={{1,2}}} or {@code {{1,2},{1,2}}}, etc...</p>
 ////
-//pub fn PredictionModeresolvesToJustOneViableAlt(altsets []*BitSet) -> i32 { // non-member
+//pub fn prediction_moderesolves_to_just_one_viableAlt(altsets []*BitSet) -> i32 { // non-member
 //  return PredictionModegetSingleViableAlt(altsets)
 //}
 //
@@ -384,7 +384,7 @@
 //// @return {@code true} if every {@link BitSet} in {@code altsets} has
 //// {@link BitSet//cardinality cardinality} &gt 1, otherwise {@code false}
 ////
-//pub fn PredictionModeallSubsetsConflict(altsets []*BitSet) -> bool { // non-member
+//pub fn prediction_modeall_subsets_conflict(altsets []*BitSet) -> bool { // non-member
 //  return !PredictionModehasNonConflictingAltSet(altsets)
 //}
 //
@@ -396,7 +396,7 @@
 //// @return {@code true} if {@code altsets} contains a {@link BitSet} with
 //// {@link BitSet//cardinality cardinality} 1, otherwise {@code false}
 ////
-//pub fn PredictionModehasNonConflictingAltSet(altsets []*BitSet) -> bool { // non-member
+//pub fn prediction_modehas_non_conflicting_alt_set(altsets []*BitSet) -> bool { // non-member
 //  for let i = 0; i < len(altsets); i++ {;
 //    let alts = altsets[i];
 //    if alts.length() == 1 {
@@ -414,7 +414,7 @@
 //// @return {@code true} if {@code altsets} contains a {@link BitSet} with
 //// {@link BitSet//cardinality cardinality} &gt 1, otherwise {@code false}
 ////
-//pub fn PredictionModehasConflictingAltSet(altsets []*BitSet) -> bool { // non-member
+//pub fn prediction_modehas_conflicting_alt_set(altsets []*BitSet) -> bool { // non-member
 //  for let i = 0; i < len(altsets); i++ {;
 //    let alts = altsets[i];
 //    if alts.length() > 1 {
@@ -431,7 +431,7 @@
 //// @return {@code true} if every member of {@code altsets} is equal to the
 //// others, otherwise {@code false}
 ////
-//pub fn PredictionModeallSubsetsEqual(altsets []*BitSet) -> bool { // non-member
+//pub fn prediction_modeall_subsets_equal(altsets []*BitSet) -> bool { // non-member
 //  var first *BitSet
 //
 //  for let i = 0; i < len(altsets); i++ {;
@@ -449,11 +449,11 @@
 ////
 //// Returns the unique alternative predicted by all alternative subsets in
 //// {@code altsets}. If no such alternative exists, this method returns
-//// {@link ATN//INVALID_ALT_NUMBER}.
+//// {@link ATN//INVALID__a_l_t__n_u_m_bER}.
 ////
 //// @param altsets a collection of alternative subsets
 ////
-//pub fn PredictionModegetUniqueAlt(altsets []*BitSet) -> i32 { // non-member
+//pub fn prediction_modeget_unique_alt(altsets []*BitSet) -> i32 { // non-member
 //  let all = PredictionModeGetAlts(altsets);
 //  if all.length() == 1 {
 //    return all.min_value()
@@ -469,7 +469,7 @@
 //// @param altsets a collection of alternative subsets
 //// @return the set of represented alternatives in {@code altsets}
 ////
-//pub fn PredictionModeGetAlts(altsets []*BitSet) -> *BitSet { // non-member
+//pub fn prediction_mode_get_alts(altsets []*BitSet) -> *BitSet { // non-member
 //  let all = NewBitSet();
 //  for _, let alts = range altsets {;
 //    all.or(alts)
@@ -486,17 +486,17 @@
 //// alt and not pred
 //// </pre>
 ////
-//pub fn PredictionModegetConflictingAltSubsets(configs: ATNConfigSet) -> []*BitSet { // non-member
+//pub fn prediction_modeget_conflicting_alt_subsets(configs: ATNConfigSet) -> []*BitSet { // non-member
 //  let config_to_alts = make(map[string]*BitSet);
 //
-//  for _, let c = range configs.GetItems() {;
-//    let key = "key_" + strconv.Itoa(self.GetState().GetStateNumber()) + "/" + self.GetContext().String();
+//  for _, let c = range configs.get_items() {;
+//    let key = "key_" + strconv.Itoa(self.get_state().get_state_number()) + "/" + self.get_context().String();
 //    let alts = config_to_alts[key];
 //    if alts == nil {
 //      alts = NewBitSet()
 //      config_to_alts[key] = alts
 //    }
-//    alts.add(self.GetAlt())
+//    alts.add(self.get_alt())
 //  }
 //
 //  let values = make([]*BitSet, 0);
@@ -518,21 +518,21 @@
 //// map[c.{@link ATNConfig//state state}] U= c.{@link ATNConfig//alt alt}
 //// </pre>
 ////
-//pub fn PredictionModeGetStateToAltMap(configs: ATNConfigSet) -> *AltDict { // non-member
+//pub fn prediction_mode_get_state_to_altMap(configs: ATNConfigSet) -> *AltDict { // non-member
 //  let m = NewAltDict();
 //
-//  for _, let c = range configs.GetItems() {;
-//    let alts = self.Get(self.GetState().String());
+//  for _, let c = range configs.get_items() {;
+//    let alts = self.Get(self.get_state().String());
 //    if alts == nil {
 //      alts = NewBitSet()
-//      self.put(self.GetState().String(), alts)
+//      self.put(self.get_state().String(), alts)
 //    }
-//    alts.(*BitSet).add(self.GetAlt())
+//    alts.(*BitSet).add(self.get_alt())
 //  }
 //  return m
 //}
 //
-//pub fn PredictionModehasStateAssociatedWithOneAlt(configs: ATNConfigSet) -> bool { // non-member
+//pub fn prediction_modehas_state_associated_with_oneAlt(configs: ATNConfigSet) -> bool { // non-member
 //  let values = PredictionModeGetStateToAltMap(configs).values();
 //  for let i = 0; i < len(values); i++ {;
 //    if values[i].(*BitSet).length() == 1 {
@@ -542,7 +542,7 @@
 //  return false
 //}
 //
-//pub fn PredictionModegetSingleViableAlt(altsets []*BitSet) -> i32 { // non-member
+//pub fn prediction_modeget_single_viable_alt(altsets []*BitSet) -> i32 { // non-member
 //  let result = ATNInvalidAltNumber;
 //
 //  for let i = 0; i < len(altsets); i++ {;

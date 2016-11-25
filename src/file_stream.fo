@@ -17,7 +17,7 @@
 //
 //impl FileStream {§//  fn new(&self, file_name: &str) -> *FileStream {
 //
-//  let buf = bytes.NewBuffer(nil);
+//  let buf = bytes.new_buffer(nil);
 //
 //  f, _let  = os.Open(fileName) // Error handling elided for brevity.;
 //  io.Copy(buf, f)           // Error handling elided for brevity.
@@ -28,12 +28,12 @@
 //  fs.filename = file_name
 //  let s = &str(buf.Bytes());
 //
-//  fs.InputStream = NewInputStream(s)
+//  fs.input_stream = NewInputStream(s)
 //
 //  return fs
 //
 //}
 //
-//pub fn GetSourceName(&self, ) -> &str {
+//pub fn get_source_name(&self, ) -> &str {
 //  return self.filename
 //}

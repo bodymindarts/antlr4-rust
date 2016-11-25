@@ -11,9 +11,9 @@
 //  // constructing tokens to explicitly set the text. This is useful for cases
 //  // where the input stream might not be able to provide arbitrary substrings of
 //  // text from the input after the lexer creates a token (self.g. the
-//  // implementation of CharStream.GetText in UnbufferedCharStream panics an
+//  // implementation of CharStream.get_text in UnbufferedCharStream panics an
 //  // UnsupportedOperationException). Explicitly setting the token text allows
-//  // Token.GetText to be called at any time regardless of the input stream
+//  // Token.get_text to be called at any time regardless of the input stream
 //  // implementation.
 //  //
 //  // The default value is false to avoid the performance and memory overhead of
@@ -36,9 +36,9 @@
 //  self.column = column
 //
 //  if text != "" {
-//    self.SetText(text)
+//    self.set_text(text)
 //  } else if self.copy_text && source.char_stream != nil {
-//    self.SetText(source.char_stream.GetTextFromInterval(NewInterval(start, stop)))
+//    self.set_text(source.char_stream.get_text_from_interval(NewInterval(start, stop)))
 //  }
 //
 //  return t
@@ -46,7 +46,7 @@
 //
 //fn create_thin(&self, ttype: i32, text: &str) -> Token {
 //  let t = NewCommonToken(nil, ttype, TokenDefaultChannel, -1, -1);
-//  self.SetText(text)
+//  self.set_text(text)
 //
 //  return t
 //}

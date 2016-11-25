@@ -24,16 +24,16 @@
 //  return new(DefaultErrorListener)
 //}
 //
-//pub fn SyntaxError(&self, recognizer Recognizer, offending_symbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
+//pub fn syntax_error(&self, recognizer Recognizer, offending_symbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
 //}
 //
-//pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, start_index, stop_index i32, exact: bool, ambig_alts *BitSet, configs: ATNConfigSet) {
+//pub fn report_ambiguity(&self, recognizer Parser, dfa *DFA, start_index, stop_index i32, exact: bool, ambig_alts *BitSet, configs: ATNConfigSet) {
 //}
 //
-//pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, start_index, stop_index: i32, conflicting_alts *BitSet, configs: ATNConfigSet) {
+//pub fn report_attempting_full_context(&self, recognizer Parser, dfa *DFA, start_index, stop_index: i32, conflicting_alts *BitSet, configs: ATNConfigSet) {
 //}
 //
-//pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, start_index, stop_index, prediction: i32, configs: ATNConfigSet) {
+//pub fn report_context_sensitivity(&self, recognizer Parser, dfa *DFA, start_index, stop_index, prediction: i32, configs: ATNConfigSet) {
 //}
 //
 //pub struct ConsoleErrorListener {
@@ -61,7 +61,7 @@
 //// line <em>line</em>:<em>charPositionInLine</em> <em>msg</em>
 //// </pre>
 ////
-//pub fn SyntaxError(&self, recognizer Recognizer, offending_symbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
+//pub fn syntax_error(&self, recognizer Recognizer, offending_symbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
 //  fmt.Fprintln(os.Stderr, "line "+strconv.Itoa(line)+":"+strconv.Itoa(column)+" "+msg)
 //}
 //
@@ -79,26 +79,26 @@
 //  return l
 //}
 //
-//pub fn SyntaxError(&self, recognizer Recognizer, offending_symbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
+//pub fn syntax_error(&self, recognizer Recognizer, offending_symbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
 //  for _, let d = range self.delegates {;
-//    self.SyntaxError(recognizer, offending_symbol, line, column, msg, e)
+//    self.syntax_error(recognizer, offending_symbol, line, column, msg, e)
 //  }
 //}
 //
-//pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, start_index, stop_index i32, exact: bool, ambig_alts *BitSet, configs: ATNConfigSet) {
+//pub fn report_ambiguity(&self, recognizer Parser, dfa *DFA, start_index, stop_index i32, exact: bool, ambig_alts *BitSet, configs: ATNConfigSet) {
 //  for _, let d = range self.delegates {;
-//    self.ReportAmbiguity(recognizer, dfa, start_index, stop_index, exact, ambig_alts, configs)
+//    self.report_ambiguity(recognizer, dfa, start_index, stop_index, exact, ambig_alts, configs)
 //  }
 //}
 //
-//pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, start_index, stop_index: i32, conflicting_alts *BitSet, configs: ATNConfigSet) {
+//pub fn report_attempting_full_context(&self, recognizer Parser, dfa *DFA, start_index, stop_index: i32, conflicting_alts *BitSet, configs: ATNConfigSet) {
 //  for _, let d = range self.delegates {;
-//    self.ReportAttemptingFullContext(recognizer, dfa, start_index, stop_index, conflicting_alts, configs)
+//    self.report_attempting_full_context(recognizer, dfa, start_index, stop_index, conflicting_alts, configs)
 //  }
 //}
 //
-//pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, start_index, stop_index, prediction: i32, configs: ATNConfigSet) {
+//pub fn report_context_sensitivity(&self, recognizer Parser, dfa *DFA, start_index, stop_index, prediction: i32, configs: ATNConfigSet) {
 //  for _, let d = range self.delegates {;
-//    self.ReportContextSensitivity(recognizer, dfa, start_index, stop_index, prediction, configs)
+//    self.report_context_sensitivity(recognizer, dfa, start_index, stop_index, prediction, configs)
 //  }
 //}

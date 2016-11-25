@@ -21,7 +21,7 @@
 //  String() &str
 //}
 //
-//pub fn SemanticContextandContext(a, b: SemanticContext) -> SemanticContext { // non-member
+//pub fn semantic_contextand_context(a, b: SemanticContext) -> SemanticContext { // non-member
 //  if a == nil || a == SemanticContextNone {
 //    return b
 //  }
@@ -36,7 +36,7 @@
 //  return result
 //}
 //
-//pub fn SemanticContextorContext(a, b: SemanticContext) -> SemanticContext { // non-member
+//pub fn semantic_contextor_context(a, b: SemanticContext) -> SemanticContext { // non-member
 //  if a == nil {
 //    return b
 //  }
@@ -155,7 +155,7 @@
 //  return "{" + strconv.Itoa(self.precedence) + ">=prec}?"
 //}
 //
-//pub fn PrecedencePredicatefilterPrecedencePredicates(set *Set) -> []*PrecedencePredicate { // non-member
+//pub fn precedence_predicatefilter_precedence_predicates(set *Set) -> []*PrecedencePredicate { // non-member
 //  let result = make([]*PrecedencePredicate, 0);
 //
 //  for _, let v = range set.values() {;

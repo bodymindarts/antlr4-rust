@@ -66,7 +66,7 @@
 //
 //impl LexerSkipAction {§//  fn new(&self, ) -> *LexerSkipAction {
 //  let la = new(LexerSkipAction);
-//  la.BaseLexerAction = NewBaseLexerAction(LexerActionTypeSkip)
+//  la.base_lexer_action = NewBaseLexerAction(LexerActionTypeSkip)
 //  return la
 //}
 //
@@ -91,7 +91,7 @@
 //
 //impl LexerTypeAction {§//  fn new(&self, thetype: i32) -> *LexerTypeAction {
 //  let l = new(LexerTypeAction);
-//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypeType)
+//  self.base_lexer_action = NewBaseLexerAction(LexerActionTypeType)
 //  self.thetype = thetype
 //  return l
 //}
@@ -129,7 +129,7 @@
 //impl LexerPushModeAction {§//  fn new(&self, mode: i32) -> *LexerPushModeAction {
 //
 //  let l = new(LexerPushModeAction);
-//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypePushMode)
+//  self.base_lexer_action = NewBaseLexerAction(LexerActionTypePushMode)
 //
 //  self.mode = mode
 //  return l
@@ -171,7 +171,7 @@
 //
 //  let l = new(LexerPopModeAction);
 //
-//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypePopMode)
+//  self.base_lexer_action = NewBaseLexerAction(LexerActionTypePopMode)
 //
 //  return l
 //}
@@ -198,7 +198,7 @@
 //
 //impl LexerMoreAction {§//  fn new(&self, ) -> *LexerMoreAction {
 //  let l = new(LexerMoreAction);
-//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypeMore)
+//  self.base_lexer_action = NewBaseLexerAction(LexerActionTypeMore)
 //
 //  return l
 //}
@@ -224,7 +224,7 @@
 //
 //impl LexerModeAction {§//  fn new(&self, mode: i32) -> *LexerModeAction {
 //  let l = new(LexerModeAction);
-//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypeMode)
+//  self.base_lexer_action = NewBaseLexerAction(LexerActionTypeMode)
 //  self.mode = mode
 //  return l
 //}
@@ -277,7 +277,7 @@
 //
 //impl LexerCustomAction {§//  fn new(&self, rule_index, action_index: i32) -> *LexerCustomAction {
 //  let l = new(LexerCustomAction);
-//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypeCustom)
+//  self.base_lexer_action = NewBaseLexerAction(LexerActionTypeCustom)
 //  self.rule_index = rule_index
 //  self.action_index = action_index
 //  self.is_position_dependent = true
@@ -316,7 +316,7 @@
 //
 //impl LexerChannelAction {§//  fn new(&self, channel: i32) -> *LexerChannelAction {
 //  let l = new(LexerChannelAction);
-//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypeChannel)
+//  self.base_lexer_action = NewBaseLexerAction(LexerActionTypeChannel)
 //  self.channel = channel
 //  return l
 //}
@@ -376,7 +376,7 @@
 //impl LexerIndexedCustomAction {§//  fn new(&self, offset: i32, lexer_action: LexerAction) -> *LexerIndexedCustomAction {
 //
 //  let l = new(LexerIndexedCustomAction);
-//  self.BaseLexerAction = NewBaseLexerAction(lexerAction.get_action_type())
+//  self.base_lexer_action = NewBaseLexerAction(lexerAction.get_action_type())
 //
 //  self.offset = offset
 //  self.lexer_action = lexer_action

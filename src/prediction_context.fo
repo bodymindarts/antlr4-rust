@@ -50,7 +50,7 @@
 //// <pre>
 //// private i32 reference_hash_code() {
 //// i32 hash = {@link MurmurHash//initialize MurmurHash.initialize}({@link
-//// //INITIAL_HASH})
+//// //INITIAL__h_a_s_h})
 ////
 //// for (int i = 0 i &lt {@link //Size()} i++) {
 //// hash = {@link MurmurHash//update MurmurHash.update}(hash, {@link //GetParent
@@ -137,7 +137,7 @@
 //impl BaseSingletonPredictionContext {§//  fn new(&self, parent: PredictionContext, return_state: i32) -> *BaseSingletonPredictionContext {
 //
 //  let s = new(BaseSingletonPredictionContext);
-//  self.BasePredictionContext = NewBasePredictionContext("")
+//  self.base_prediction_context = NewBasePredictionContext("")
 //
 //  if parent != nil {
 //    self.cached_hash_string = calculate_hash_string(parent, return_state)
@@ -151,7 +151,7 @@
 //  return s
 //}
 //
-//pub fn SingletonBasePredictionContextCreate(parent: PredictionContext, return_state: i32) -> PredictionContext { // non-member
+//pub fn singleton_base_prediction_context_create(parent: PredictionContext, return_state: i32) -> PredictionContext { // non-member
 //  if return_state == BasePredictionContextEmptyReturnState && parent == nil {
 //    // someone can pass in the bits of an array ctx that mean $
 //    return BasePredictionContextEMPTY
@@ -164,7 +164,7 @@
 //  return 1
 //}
 //
-//pub fn GetParent(&self, index: i32) -> PredictionContext {
+//pub fn get_parent(&self, index: i32) -> PredictionContext {
 //  return self.parent_ctx
 //}
 //
@@ -230,7 +230,7 @@
 //
 //  let p = new(EmptyPredictionContext);
 //
-//  self.BaseSingletonPredictionContext = NewBaseSingletonPredictionContext(nil, BasePredictionContextEmptyReturnState)
+//  self.base_singleton_prediction_context = NewBaseSingletonPredictionContext(nil, BasePredictionContextEmptyReturnState)
 //
 //  return p
 //}
@@ -239,7 +239,7 @@
 //  return true
 //}
 //
-//pub fn GetParent(&self, index: i32) -> PredictionContext {
+//pub fn get_parent(&self, index: i32) -> PredictionContext {
 //  return nil
 //}
 //
@@ -269,7 +269,7 @@
 //  // return_state == {@link //EmptyReturnState}.
 //
 //  let c = new(ArrayPredictionContext);
-//  self.BasePredictionContext = NewBasePredictionContext("")
+//  self.base_prediction_context = NewBasePredictionContext("")
 //
 //  for let i = range parents {;
 //    self.cached_hash_string += calculate_hash_string(parents[i], return_states[i])
@@ -281,7 +281,7 @@
 //  return c
 //}
 //
-//pub fn GetReturnStates(&self, ) -> []int {
+//pub fn get_return_states(&self, ) -> []int {
 //  return self.return_states
 //}
 //
@@ -299,7 +299,7 @@
 //  return len(self.return_states)
 //}
 //
-//pub fn GetParent(&self, index: i32) -> PredictionContext {
+//pub fn get_parent(&self, index: i32) -> PredictionContext {
 //  return self.parents[index]
 //}
 //
@@ -352,15 +352,15 @@
 //  }
 //  // if we are in RuleContext of start rule, s, then BasePredictionContext
 //  // is EMPTY. Nobody called us. (if we are empty, return empty)
-//  if outer_context.GetParent() == nil || outer_context == RuleContextEmpty {
+//  if outer_context.get_parent() == nil || outer_context == RuleContextEmpty {
 //    return BasePredictionContextEMPTY
 //  }
 //  // If we have a parent, convert it to a BasePredictionContext graph
-//  let parent = prediction_context_from_rule_context(a, outer_context.GetParent().(RuleContext));
-//  let state = self.states[outerContext.GetInvokingState()];
-//  let transition = state.GetTransitions()[0];
+//  let parent = prediction_context_from_rule_context(a, outer_context.get_parent().(RuleContext));
+//  let state = self.states[outerContext.get_invoking_state()];
+//  let transition = state.get_transitions()[0];
 //
-//  return SingletonBasePredictionContextCreate(parent, transition.(*RuleTransition).follow_state.GetStateNumber())
+//  return SingletonBasePredictionContextCreate(parent, transition.(*RuleTransition).follow_state.get_state_number())
 //}
 //
 //fn calculate_lists_hash_string(parents []BasePredictionContext, return_states []int) -> &str { // non-member
@@ -401,10 +401,10 @@
 //  }
 //  // convert singleton so both are arrays to normalize
 //  if _, let ok = a.(*BaseSingletonPredictionContext); ok {;
-//    a = NewArrayPredictionContext([]PredictionContext{self.GetParent(0)}, []int{self.get_return_state(0)})
+//    a = NewArrayPredictionContext([]PredictionContext{self.get_parent(0)}, []int{self.get_return_state(0)})
 //  }
 //  if _, let ok = b.(*BaseSingletonPredictionContext); ok {;
-//    b = NewArrayPredictionContext([]PredictionContext{self.GetParent(0)}, []int{self.get_return_state(0)})
+//    b = NewArrayPredictionContext([]PredictionContext{self.get_parent(0)}, []int{self.get_return_state(0)})
 //  }
 //  return merge_arrays(a.(*ArrayPredictionContext), b.(*ArrayPredictionContext), root_is_wildcard, merge_cache)
 //}
@@ -413,25 +413,25 @@
 //// Merge two {@link SingletonBasePredictionContext} instances.
 ////
 //// <p>Stack tops equal, parents merge is same return left graph.<br>
-//// <embed src="images/SingletonMerge_SameRootSamePar.svg"
+//// <embed src="images/SingletonMerge__same_root_same_par.svg"
 //// type="image/svg+xml"/></p>
 ////
 //// <p>Same stack top, parents differ merge parents giving array node, then
 //// remainders of those graphs. A Newroot node is created to point to the
 //// merged parents.<br>
-//// <embed src="images/SingletonMerge_SameRootDiffPar.svg"
+//// <embed src="images/SingletonMerge__same_root_diff_par.svg"
 //// type="image/svg+xml"/></p>
 ////
 //// <p>Different stack tops pointing to same parent. Make array node for the
 //// root where both element in the root point to the same (original)
 //// parent.<br>
-//// <embed src="images/SingletonMerge_DiffRootSamePar.svg"
+//// <embed src="images/SingletonMerge__diff_root_same_par.svg"
 //// type="image/svg+xml"/></p>
 ////
 //// <p>Different stack tops pointing to different parents. Make array node for
 //// the root where each element points to the corresponding original
 //// parent.<br>
-//// <embed src="images/SingletonMerge_DiffRootDiffPar.svg"
+//// <embed src="images/SingletonMerge__diff_root_diff_par.svg"
 //// type="image/svg+xml"/></p>
 ////
 //// @param a the first {@link SingletonBasePredictionContext}
@@ -529,27 +529,27 @@
 //// is true.</p>
 ////
 //// <p>{@link //EMPTY} is superset of any graph return {@link //EMPTY}.<br>
-//// <embed src="images/LocalMerge_EmptyRoot.svg" type="image/svg+xml"/></p>
+//// <embed src="images/LocalMerge__empty_root.svg" type="image/svg+xml"/></p>
 ////
 //// <p>{@link //EMPTY} and anything is {@code //EMPTY}, so merged parent is
 //// {@code //EMPTY} return left graph.<br>
-//// <embed src="images/LocalMerge_EmptyParent.svg" type="image/svg+xml"/></p>
+//// <embed src="images/LocalMerge__empty_parent.svg" type="image/svg+xml"/></p>
 ////
 //// <p>Special case of last merge if local context.<br>
-//// <embed src="images/LocalMerge_DiffRoots.svg" type="image/svg+xml"/></p>
+//// <embed src="images/LocalMerge__diff_roots.svg" type="image/svg+xml"/></p>
 ////
 //// <h2>Full-Context Merges</h2>
 ////
 //// <p>These full-context merge operations are used when {@code root_is_wildcard}
 //// is false.</p>
 ////
-//// <p><embed src="images/FullMerge_EmptyRoots.svg" type="image/svg+xml"/></p>
+//// <p><embed src="images/FullMerge__empty_roots.svg" type="image/svg+xml"/></p>
 ////
 //// <p>Must keep all contexts {@link //EMPTY} in array is a special value (and
 //// nil parent).<br>
-//// <embed src="images/FullMerge_EmptyRoot.svg" type="image/svg+xml"/></p>
+//// <embed src="images/FullMerge__empty_root.svg" type="image/svg+xml"/></p>
 ////
-//// <p><embed src="images/FullMerge_SameRoot.svg" type="image/svg+xml"/></p>
+//// <p><embed src="images/FullMerge__same_root.svg" type="image/svg+xml"/></p>
 ////
 //// @param a the first {@link SingletonBasePredictionContext}
 //// @param b the second {@link SingletonBasePredictionContext}
@@ -569,11 +569,11 @@
 //      return BasePredictionContextEMPTY // $ + $ = $
 //    } else if a == BasePredictionContextEMPTY { // $ + x = [$,x]
 //      let payloads = []int{self.get_return_state(-1), BasePredictionContextEmptyReturnState};
-//      let parents = []PredictionContext{self.GetParent(-1), nil};
+//      let parents = []PredictionContext{self.get_parent(-1), nil};
 //      return NewArrayPredictionContext(parents, payloads)
 //    } else if b == BasePredictionContextEMPTY { // x + $ = [$,x] ($ is always first if present)
 //      let payloads = []int{self.get_return_state(-1), BasePredictionContextEmptyReturnState};
-//      let parents = []PredictionContext{self.GetParent(-1), nil};
+//      let parents = []PredictionContext{self.get_parent(-1), nil};
 //      return NewArrayPredictionContext(parents, payloads)
 //    }
 //  }
@@ -584,21 +584,21 @@
 //// Merge two {@link ArrayBasePredictionContext} instances.
 ////
 //// <p>Different tops, different parents.<br>
-//// <embed src="images/ArrayMerge_DiffTopDiffPar.svg" type="image/svg+xml"/></p>
+//// <embed src="images/ArrayMerge__diff_top_diff_par.svg" type="image/svg+xml"/></p>
 ////
 //// <p>Shared top, same parents.<br>
-//// <embed src="images/ArrayMerge_ShareTopSamePar.svg" type="image/svg+xml"/></p>
+//// <embed src="images/ArrayMerge__share_top_same_par.svg" type="image/svg+xml"/></p>
 ////
 //// <p>Shared top, different parents.<br>
-//// <embed src="images/ArrayMerge_ShareTopDiffPar.svg" type="image/svg+xml"/></p>
+//// <embed src="images/ArrayMerge__share_top_diff_par.svg" type="image/svg+xml"/></p>
 ////
 //// <p>Shared top, all shared parents.<br>
-//// <embed src="images/ArrayMerge_ShareTopSharePar.svg"
+//// <embed src="images/ArrayMerge__share_top_share_par.svg"
 //// type="image/svg+xml"/></p>
 ////
 //// <p>Equal tops, merge parents and reduce top to
 //// {@link SingletonBasePredictionContext}.<br>
-//// <embed src="images/ArrayMerge_EqualTop.svg" type="image/svg+xml"/></p>
+//// <embed src="images/ArrayMerge__equal_top.svg" type="image/svg+xml"/></p>
 //// /
 //fn merge_arrays(a, b *ArrayPredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
 //  if merge_cache != nil {
@@ -737,12 +737,12 @@
 //  let changed = false;
 //  let parents = make([]PredictionContext, context.length());
 //  for let i = 0; i < len(parents); i++ {;
-//    let parent = get_cached_base_prediction_context(context.GetParent(i), context_cache, visited);
-//    if changed || parent != context.GetParent(i) {
+//    let parent = get_cached_base_prediction_context(context.get_parent(i), context_cache, visited);
+//    if changed || parent != context.get_parent(i) {
 //      if !changed {
 //        parents = make([]PredictionContext, context.length())
 //        for let j = 0; j < context.length(); j++ {;
-//          parents[j] = context.GetParent(j)
+//          parents[j] = context.get_parent(j)
 //        }
 //        changed = true
 //      }
@@ -760,7 +760,7 @@
 //  } else if len(parents) == 1 {
 //    updated = SingletonBasePredictionContextCreate(parents[0], context.get_return_state(0))
 //  } else {
-//    updated = NewArrayPredictionContext(parents, context.(*ArrayPredictionContext).GetReturnStates())
+//    updated = NewArrayPredictionContext(parents, context.(*ArrayPredictionContext).get_return_states())
 //  }
 //  context_cache.add(updated)
 //  visited[updated] = updated

@@ -37,9 +37,9 @@
 //impl BaseParserRuleContext {§//  fn new(&self, parent: ParserRuleContext, invoking_state_number: i32) -> *BaseParserRuleContext {
 //  let prc = new(BaseParserRuleContext);
 //
-//  prc.BaseRuleContext = NewBaseRuleContext(parent, invoking_state_number)
+//  prc.base_rule_context = NewBaseRuleContext(parent, invoking_state_number)
 //
-//  prc.RuleIndex = -1
+//  prc.rule_index = -1
 //  // * If we are debugging or building a parse tree for a Visitor,
 //  // we need to track all of the tokens and rule invocations associated
 //  // with prc rule's context. This is empty for parsing w/o tree constr.
@@ -56,15 +56,15 @@
 //  return prc
 //}
 //
-//pub fn SetException(&self, e: RecognitionException) {
+//pub fn set_exception(&self, e: RecognitionException) {
 //  prc.exception = e
 //}
 //
-//pub fn GetChildren(&self, ) -> []Tree {
+//pub fn get_children(&self, ) -> []Tree {
 //  return prc.children
 //}
 //
-//pub fn CopyFrom(&self, ctx *BaseParserRuleContext) {
+//pub fn copy_from(&self, ctx *BaseParserRuleContext) {
 //  // from RuleContext
 //  prc.parent_ctx = ctx.parent_ctx
 //  prc.invoking_state = ctx.invoking_state
@@ -73,24 +73,24 @@
 //  prc.stop = ctx.stop
 //}
 //
-//pub fn GetText(&self, ) -> &str {
-//  if prc.GetChildCount() == 0 {
+//pub fn get_text(&self, ) -> &str {
+//  if prc.get_child_count() == 0 {
 //    return ""
 //  }
 //
 //  var s &str
 //  for _, let child = range prc.children {;
-//    s += child.(ParseTree).GetText()
+//    s += child.(ParseTree).get_text()
 //  }
 //
 //  return s
 //}
 //
 //// Double dispatch methods for listeners
-//pub fn EnterRule(&self, listener: ParseTreeListener) {
+//pub fn enter_rule(&self, listener: ParseTreeListener) {
 //}
 //
-//pub fn ExitRule(&self, listener: ParseTreeListener) {
+//pub fn exit_rule(&self, listener: ParseTreeListener) {
 //}
 //
 //// * Does not set parent link other add methods do that///
@@ -105,7 +105,7 @@
 //  return child
 //}
 //
-//pub fn AddChild(&self, child: RuleContext) -> RuleContext {
+//pub fn add_child(&self, child: RuleContext) -> RuleContext {
 //  if prc.children == nil {
 //    prc.children = make([]Tree, 0)
 //  }
@@ -120,13 +120,13 @@
 //// we entered a rule. If we have // label, we will need to remove
 //// generic rule_context object.
 //// /
-//pub fn RemoveLastChild(&self, ) {
+//pub fn remove_last_child(&self, ) {
 //  if prc.children != nil && len(prc.children) > 0 {
 //    prc.children = prc.children[0 : len(prc.children)-1]
 //  }
 //}
 //
-//pub fn AddTokenNode(&self, token: Token) -> *TerminalNodeImpl {
+//pub fn add_token_node(&self, token: Token) -> *TerminalNodeImpl {
 //
 //  let node = NewTerminalNodeImpl(token);
 //  prc.add_terminal_node_child(node)
@@ -135,14 +135,14 @@
 //
 //}
 //
-//pub fn AddErrorNode(&self, bad_token: Token) -> *ErrorNodeImpl {
+//pub fn add_error_node(&self, bad_token: Token) -> *ErrorNodeImpl {
 //  let node = NewErrorNodeImpl(badToken);
 //  prc.add_terminal_node_child(node)
 //  node.parent_ctx = prc
 //  return node
 //}
 //
-//pub fn GetChild(&self, i: i32) -> Tree {
+//pub fn get_child(&self, i: i32) -> Tree {
 //  if prc.children != nil && len(prc.children) >= i {
 //    return prc.children[i]
 //  }
@@ -150,14 +150,14 @@
 //  return nil
 //}
 //
-//pub fn GetChildOfType(&self, i: i32, child_type reflect.Type) -> RuleContext {
+//pub fn get_child_of_type(&self, i: i32, child_type reflect.Type) -> RuleContext {
 //  if child_type == nil {
-//    return prc.GetChild(i).(RuleContext)
+//    return prc.get_child(i).(RuleContext)
 //  }
 //
 //  for let j = 0; j < len(prc.children); j++ {;
 //    let child = prc.children[j];
-//    if reflect.TypeOf(child) == child_type {
+//    if reflect.type_of(child) == child_type {
 //      if i == 0 {
 //        return child.(RuleContext)
 //      }
@@ -169,40 +169,40 @@
 //  return nil
 //}
 //
-//pub fn ToStringTree(&self, rule_names []string, recog: Recognizer) -> &str {
+//pub fn to_string_tree(&self, rule_names []string, recog: Recognizer) -> &str {
 //  return TreesStringTree(prc, rule_names, recog)
 //}
 //
-//pub fn GetRuleContext(&self, ) -> RuleContext {
+//pub fn get_rule_context(&self, ) -> RuleContext {
 //  return prc
 //}
 //
 //pub fn Accept(&self, visitor: ParseTreeVisitor) -> i32erface{} {
-//  return visitor.VisitChildren(prc)
+//  return visitor.visit_children(prc)
 //}
 //
-//pub fn SetStart(&self, t: Token) {
+//pub fn set_start(&self, t: Token) {
 //  prc.start = t
 //}
 //
-//pub fn GetStart(&self, ) -> Token {
+//pub fn get_start(&self, ) -> Token {
 //  return prc.start
 //}
 //
-//pub fn SetStop(&self, t: Token) {
+//pub fn set_stop(&self, t: Token) {
 //  prc.stop = t
 //}
 //
-//pub fn GetStop(&self, ) -> Token {
+//pub fn get_stop(&self, ) -> Token {
 //  return prc.stop
 //}
 //
-//pub fn GetToken(&self, ttype: i32, i: i32) -> TerminalNode {
+//pub fn get_token(&self, ttype: i32, i: i32) -> TerminalNode {
 //
 //  for let j = 0; j < len(prc.children); j++ {;
 //    let child = prc.children[j];
 //    if c2, let ok = child.(TerminalNode); ok {;
-//      if c2.GetSymbol().GetTokenType() == ttype {
+//      if c2.get_symbol().get_token_type() == ttype {
 //        if i == 0 {
 //          return c2
 //        }
@@ -214,7 +214,7 @@
 //  return nil
 //}
 //
-//pub fn GetTokens(&self, ttype: i32) -> []TerminalNode {
+//pub fn get_tokens(&self, ttype: i32) -> []TerminalNode {
 //  if prc.children == nil {
 //    return make([]TerminalNode, 0)
 //  }
@@ -224,7 +224,7 @@
 //  for let j = 0; j < len(prc.children); j++ {;
 //    let child = prc.children[j];
 //    if tchild, let ok = child.(TerminalNode); ok {;
-//      if tchild.GetSymbol().GetTokenType() == ttype {
+//      if tchild.get_symbol().get_token_type() == ttype {
 //        tokens = append(tokens, tchild)
 //      }
 //    }
@@ -233,7 +233,7 @@
 //  return tokens
 //}
 //
-//pub fn GetPayload(&self, ) -> i32erface{} {
+//pub fn get_payload(&self, ) -> i32erface{} {
 //  return prc
 //}
 //
@@ -245,7 +245,7 @@
 //  let j = -1 // what element have we found with ctx_type?;
 //  for _, let o = range prc.children {;
 //
-//    let child_type = reflect.TypeOf(o);
+//    let child_type = reflect.type_of(o);
 //
 //    if child_type.Implements(ctxType) {
 //      j++
@@ -260,11 +260,11 @@
 //// Go lacks generics, so it's not possible for us to return the child with the correct type, but we do
 //// check for convertibility
 //
-//pub fn GetTypedRuleContext(&self, ctx_type reflect.Type, i: i32) -> RuleContext {
+//pub fn get_typed_rule_context(&self, ctx_type reflect.Type, i: i32) -> RuleContext {
 //  return prc.get_child(ctxType, i)
 //}
 //
-//pub fn GetTypedRuleContexts(&self, ctx_type reflect.Type) -> []RuleContext {
+//pub fn get_typed_rule_contexts(&self, ctx_type reflect.Type) -> []RuleContext {
 //  if prc.children == nil {
 //    return make([]RuleContext, 0)
 //  }
@@ -272,16 +272,16 @@
 //  let contexts = make([]RuleContext, 0);
 //
 //  for _, let child = range prc.children {;
-//    let child_type = reflect.TypeOf(child);
+//    let child_type = reflect.type_of(child);
 //
-//    if child_type.ConvertibleTo(ctxType) {
+//    if child_type.convertible_to(ctxType) {
 //      contexts = append(contexts, child.(RuleContext))
 //    }
 //  }
 //  return contexts
 //}
 //
-//pub fn GetChildCount(&self, ) -> i32 {
+//pub fn get_child_count(&self, ) -> i32 {
 //  if prc.children == nil {
 //    return 0
 //  }
@@ -289,12 +289,12 @@
 //  return len(prc.children)
 //}
 //
-//pub fn GetSourceInterval(&self, ) -> *Interval {
+//pub fn get_source_interval(&self, ) -> *Interval {
 //  if prc.start == nil || prc.stop == nil {
 //    return TreeInvalidInterval
 //  }
 //
-//  return NewInterval(prc.start.GetTokenIndex(), prc.stop.GetTokenIndex())
+//  return NewInterval(prc.start.get_token_index(), prc.stop.get_token_index())
 //}
 //
 ////need to manage circular dependencies, so export now
@@ -309,11 +309,11 @@
 //  let s = "[";
 //  for p != nil && p != stop {
 //    if rule_names == nil {
-//      if !self.IsEmpty() {
-//        s += strconv.Itoa(self.GetInvokingState())
+//      if !self.is_empty() {
+//        s += strconv.Itoa(self.get_invoking_state())
 //      }
 //    } else {
-//      let ri = self.GetRuleIndex();
+//      let ri = self.get_rule_index();
 //      var rule_name &str
 //      if ri >= 0 && ri < len(ruleNames) {
 //        rule_name = rule_names[ri]
@@ -322,10 +322,10 @@
 //      }
 //      s += rule_name
 //    }
-//    if self.GetParent() != nil && (ruleNames != nil || !self.GetParent().(ParserRuleContext).IsEmpty()) {
+//    if self.get_parent() != nil && (ruleNames != nil || !self.get_parent().(ParserRuleContext).is_empty()) {
 //      s += " "
 //    }
-//    let pi = self.GetParent();
+//    let pi = self.get_parent();
 //    if pi != nil {
 //      p = pi.(ParserRuleContext)
 //    } else {
@@ -350,9 +350,9 @@
 //
 //  let prc = new(BaseInterpreterRuleContext);
 //
-//  prc.BaseParserRuleContext = NewBaseParserRuleContext(parent, invoking_state_number)
+//  prc.base_parser_rule_context = NewBaseParserRuleContext(parent, invoking_state_number)
 //
-//  prc.RuleIndex = rule_index
+//  prc.rule_index = rule_index
 //
 //  return prc
 //}

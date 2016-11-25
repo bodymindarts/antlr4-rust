@@ -48,7 +48,7 @@
 ////
 //// @return A {@link LexerActionExecutor} for executing the combine actions
 //// of {@code lexer_action_executor} and {@code lexer_action}.
-//pub fn LexerActionExecutorappend(lexerActionExecutor *LexerActionExecutor, lexer_action: LexerAction) -> *LexerActionExecutor { // non-member
+//pub fn lexer_action_executorappend(lexerActionExecutor *LexerActionExecutor, lexer_action: LexerAction) -> *LexerActionExecutor { // non-member
 //  if lexer_action_executor == nil {
 //    return NewLexerActionExecutor([]LexerAction{lexerAction})
 //  }

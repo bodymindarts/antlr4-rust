@@ -89,7 +89,7 @@
 //  }
 //}
 //
-//pub fn GetStates(&self, ) -> map[string]*DFAState {
+//pub fn get_states(&self, ) -> map[string]*DFAState {
 //  return self.states
 //}
 //
@@ -120,7 +120,7 @@
 //  return DFASerializer::new(d, literal_names, symbolic_names).String()
 //}
 //
-//pub fn ToLexerString(&self, ) -> &str {
+//pub fn to_lexer_string(&self, ) -> &str {
 //  if self.s0 == nil {
 //    return ""
 //  }

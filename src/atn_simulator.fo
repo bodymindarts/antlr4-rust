@@ -33,14 +33,14 @@
 //  return get_cached_base_prediction_context(context, self.shared_context_cache, visited)
 //}
 //
-//pub fn SharedContextCache(&self, ) -> *PredictionContextCache {
+//pub fn shared_context_cache(&self, ) -> *PredictionContextCache {
 //  return self.shared_context_cache
 //}
 //
-//pub fn ATN(&self, ) -> *ATN {
+//pub fn a_t_n(&self, ) -> *ATN {
 //  return self.atn
 //}
 //
-//pub fn DecisionToDFA(&self, ) -> []*DFA {
+//pub fn decision_to_d_f_a(&self, ) -> []*DFA {
 //  return self.decision_to_d_f_a
 //}

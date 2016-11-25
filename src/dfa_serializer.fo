@@ -45,11 +45,11 @@
 //        let t = self.edges[j];
 //
 //        if t != nil && self.state_number != 0x7FFFFFFF {
-//          buf += self.GetStateString(s)
+//          buf += self.get_state_string(s)
 //          buf += "-"
 //          buf += self.get_edge_label(j)
 //          buf += "->"
-//          buf += self.GetStateString(t)
+//          buf += self.get_state_string(t)
 //          buf += "\n"
 //        }
 //      }
@@ -75,7 +75,7 @@
 //  return strconv.Itoa(i - 1)
 //}
 //
-//pub fn GetStateString(&self, s *DFAState) -> &str {
+//pub fn get_state_string(&self, s *DFAState) -> &str {
 //  var a, b &str
 //
 //  if self.is_accept_state {
@@ -129,11 +129,11 @@
 //        let t = self.edges[j];
 //
 //        if t != nil && self.state_number != 0x7FFFFFFF {
-//          buf += self.GetStateString(s)
+//          buf += self.get_state_string(s)
 //          buf += "-"
 //          buf += self.get_edge_label(j)
 //          buf += "->"
-//          buf += self.GetStateString(t)
+//          buf += self.get_state_string(t)
 //          buf += "\n"
 //        }
 //      }

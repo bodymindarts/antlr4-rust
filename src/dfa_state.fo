@@ -45,13 +45,13 @@
 //  configs:     ATNConfigSet
 //
 //  // edges elements point to the target of the symbol. Shift up by 1 so (-1)
-//  // Token.EOF maps to the first element.
+//  // Token.e_o_f maps to the first element.
 //  edges []*DFAState
 //
 //  is_accept_state: bool
 //
 //  // prediction is the ttype we match or alt we predict if the state is accept.
-//  // Set to ATN.INVALID_ALT_NUMBER when predicates != nil or
+//  // Set to ATN.i_n_v_a_l_iD__a_l_t__n_u_m_bER when predicates != nil or
 //  // requires_full_context.
 //  prediction: i32
 //
@@ -67,7 +67,7 @@
 //  // DFA state during SLL parsing. When we have predicates, requires_full_context
 //  // is false, since full context prediction evaluates predicates on-the-fly. If
 //  // d is
-//  // not nil, then prediction is ATN.INVALID_ALT_NUMBER.
+//  // not nil, then prediction is ATN.i_n_v_a_l_iD__a_l_t__n_u_m_bER.
 //  //
 //  // We only use these for non-requiresFullContext but conflicting states. That
 //  // means we know from the context (it's $ or we don't dip i32o outer context)
@@ -87,12 +87,12 @@
 //}
 //
 //// GetAltSet gets the set of all alts mentioned by all ATN configurations in d.
-//pub fn GetAltSet(&self, ) -> *Set {
+//pub fn get_alt_set(&self, ) -> *Set {
 //  let alts = NewSet(nil, nil);
 //
 //  if self.configs != nil {
-//    for _, let c = range self.configs.GetItems() {;
-//      alts.add(self.GetAlt())
+//    for _, let c = range self.configs.get_items() {;
+//      alts.add(self.get_alt())
 //    }
 //  }
 //

@@ -38,7 +38,7 @@
 //  return n
 //}
 //
-//pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, start_index, stop_index i32, exact: bool, ambig_alts *BitSet, configs: ATNConfigSet) {
+//pub fn report_ambiguity(&self, recognizer Parser, dfa *DFA, start_index, stop_index i32, exact: bool, ambig_alts *BitSet, configs: ATNConfigSet) {
 //  if self.exact_only && !exact {
 //    return
 //  }
@@ -47,32 +47,32 @@
 //    ": ambig_alts=" +
 //    self.get_conflicting_alts(ambigAlts, configs).String() +
 //    ", input='" +
-//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stop_index)) + "'"
-//  recognizer.NotifyErrorListeners(msg, nil, nil)
+//    recognizer.get_token_stream().get_text_from_interval(NewInterval(startIndex, stop_index)) + "'"
+//  recognizer.notify_error_listeners(msg, nil, nil)
 //}
 //
-//pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, start_index, stop_index: i32, conflicting_alts *BitSet, configs: ATNConfigSet) {
+//pub fn report_attempting_full_context(&self, recognizer Parser, dfa *DFA, start_index, stop_index: i32, conflicting_alts *BitSet, configs: ATNConfigSet) {
 //
 //  let msg = "reportAttemptingFullContext d=" +;
 //    self.get_decision_description(recognizer, dfa) +
 //    ", input='" +
-//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stop_index)) + "'"
-//  recognizer.NotifyErrorListeners(msg, nil, nil)
+//    recognizer.get_token_stream().get_text_from_interval(NewInterval(startIndex, stop_index)) + "'"
+//  recognizer.notify_error_listeners(msg, nil, nil)
 //}
 //
-//pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, start_index, stop_index, prediction: i32, configs: ATNConfigSet) {
+//pub fn report_context_sensitivity(&self, recognizer Parser, dfa *DFA, start_index, stop_index, prediction: i32, configs: ATNConfigSet) {
 //  let msg = "reportContextSensitivity d=" +;
 //    self.get_decision_description(recognizer, dfa) +
 //    ", input='" +
-//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stop_index)) + "'"
-//  recognizer.NotifyErrorListeners(msg, nil, nil)
+//    recognizer.get_token_stream().get_text_from_interval(NewInterval(startIndex, stop_index)) + "'"
+//  recognizer.notify_error_listeners(msg, nil, nil)
 //}
 //
 //fn get_decision_description(&self, recognizer: Parser, dfa *DFA) -> &str {
 //  let decision = dfa.decision;
-//  let rule_index = dfa.atn_start_state.GetRuleIndex();
+//  let rule_index = dfa.atn_start_state.get_rule_index();
 //
-//  let rule_names = recognizer.GetRuleNames();
+//  let rule_names = recognizer.get_rule_names();
 //  if rule_index < 0 || rule_index >= len(ruleNames) {
 //    return strconv.Itoa(decision)
 //  }
@@ -99,8 +99,8 @@
 //    return ReportedAlts
 //  }
 //  let result = NewBitSet();
-//  for _, let c = range set.GetItems() {;
-//    result.add(self.GetAlt())
+//  for _, let c = range set.get_items() {;
+//    result.add(self.get_alt())
 //  }
 //
 //  return result

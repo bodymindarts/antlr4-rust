@@ -55,47 +55,47 @@
 //  panic("action not implemented on Recognizer!")
 //}
 //
-//pub fn AddErrorListener(&self, listener: ErrorListener) {
+//pub fn add_error_listener(&self, listener: ErrorListener) {
 //  self.listeners = append(self.listeners, listener)
 //}
 //
-//pub fn RemoveErrorListeners(&self, ) {
+//pub fn remove_error_listeners(&self, ) {
 //  self.listeners = make([]ErrorListener, 0)
 //}
 //
-//pub fn GetRuleNames(&self, ) -> []string {
-//  return self.RuleNames
+//pub fn get_rule_names(&self, ) -> []string {
+//  return self.rule_names
 //}
 //
-//pub fn GetTokenNames(&self, ) -> []string {
-//  return self.LiteralNames
+//pub fn get_token_names(&self, ) -> []string {
+//  return self.literal_names
 //}
 //
-//pub fn GetSymbolicNames(&self, ) -> []string {
-//  return self.SymbolicNames
+//pub fn get_symbolic_names(&self, ) -> []string {
+//  return self.symbolic_names
 //}
 //
-//pub fn GetLiteralNames(&self, ) -> []string {
-//  return self.LiteralNames
+//pub fn get_literal_names(&self, ) -> []string {
+//  return self.literal_names
 //}
 //
-//pub fn GetState(&self, ) -> i32 {
+//pub fn get_state(&self, ) -> i32 {
 //  return self.state
 //}
 //
-//pub fn SetState(&self, v: i32) {
+//pub fn set_state(&self, v: i32) {
 //  self.state = v
 //}
 //
-////pub fn GetTokenTypeMap(&self, ) {
-////    var token_names = self.GetTokenNames()
+////pub fn get_token_type_map(&self, ) {
+////    var token_names = self.get_token_names()
 ////    if (tokenNames==nil) {
 ////        panic("The current recognizer does not provide a list of token names.")
 ////    }
 ////    var result = token_type_map_cache[tokenNames]
 ////    if(result==nil) {
 ////        result = token_names.reduce(function(o, k, i) { o[k] = i })
-////        result.EOF = TokenEOF
+////        result.e_o_f = TokenEOF
 ////        token_type_map_cache[tokenNames] = result
 ////    }
 ////    return result
@@ -105,10 +105,10 @@
 ////
 //// <p>Used for XPath and tree pattern compilation.</p>
 ////
-//pub fn GetRuleIndexMap(&self, ) -> map[string]int {
+//pub fn get_rule_index_map(&self, ) -> map[string]int {
 //
 //  panic("Method not defined!")
-//  //    var rule_names = self.GetRuleNames()
+//  //    var rule_names = self.get_rule_names()
 //  //    if (ruleNames==nil) {
 //  //        panic("The current recognizer does not provide a list of rule names.")
 //  //    }
@@ -121,9 +121,9 @@
 //  //    return result
 //}
 //
-//pub fn GetTokenType(&self, token_name: &str) -> i32 {
+//pub fn get_token_type(&self, token_name: &str) -> i32 {
 //  panic("Method not defined!")
-//  //    var ttype = self.GetTokenTypeMap()[tokenName]
+//  //    var ttype = self.get_token_type_map()[tokenName]
 //  //    if (ttype !=nil) {
 //  //        return ttype
 //  //    } else {
@@ -131,7 +131,7 @@
 //  //    }
 //}
 //
-////pub fn GetTokenTypeMap(&self, ) -> map[string]int {
+////pub fn get_token_type_map(&self, ) -> map[string]int {
 ////    Vocabulary vocabulary = get_vocabulary()
 ////
 ////    Synchronized (tokenTypeMapCache) {
@@ -144,13 +144,13 @@
 ////                    result.put(literalName, i)
 ////                }
 ////
-////                String symbolic_name = vocabulary.GetSymbolicName(i)
+////                String symbolic_name = vocabulary.get_symbolic_name(i)
 ////                if (symbolicName != null) {
 ////                    result.put(symbolicName, i)
 ////                }
 ////            }
 ////
-////            result.put("EOF", Token.EOF)
+////            result.put("EOF", Token.e_o_f)
 ////            result = Collections.unmodifiable_map(result)
 ////            token_type_map_cache.put(vocabulary, result)
 ////        }
@@ -160,9 +160,9 @@
 ////}
 //
 //// What is the error header, normally line/character position information?//
-//pub fn GetErrorHeader(&self, e: RecognitionException) -> &str {
-//  let line = self.GetOffendingToken().GetLine();
-//  let column = self.GetOffendingToken().GetColumn();
+//pub fn get_error_header(&self, e: RecognitionException) -> &str {
+//  let line = self.get_offending_token().get_line();
+//  let column = self.get_offending_token().get_column();
 //  return "line " + strconv.Itoa(line) + ":" + strconv.Itoa(column)
 //}
 //
@@ -179,16 +179,16 @@
 //// feature when necessary. For example, see
 //// {@link DefaultErrorStrategy//GetTokenErrorDisplay}.
 ////
-//pub fn GetTokenErrorDisplay(&self, t: Token) -> &str {
+//pub fn get_token_error_display(&self, t: Token) -> &str {
 //  if t == nil {
 //    return "<no token>"
 //  }
-//  let s = self.GetText();
+//  let s = self.get_text();
 //  if s == "" {
-//    if self.GetTokenType() == TokenEOF {
+//    if self.get_token_type() == TokenEOF {
 //      s = "<EOF>"
 //    } else {
-//      s = "<" + strconv.Itoa(self.GetTokenType()) + ">"
+//      s = "<" + strconv.Itoa(self.get_token_type()) + ">"
 //    }
 //  }
 //  s = &strs.Replace(s, "\t", "\\t", -1)
@@ -198,7 +198,7 @@
 //  return "'" + s + "'"
 //}
 //
-//pub fn GetErrorListenerDispatch(&self, ) -> ErrorListener {
+//pub fn get_error_listener_dispatch(&self, ) -> ErrorListener {
 //  return NewProxyErrorListener(self.listeners)
 //}
 //

@@ -71,51 +71,51 @@
 //  return &BaseATNState{stateNumber: ATNStateInvalidStateNumber, state_type: ATNStateInvalidType}
 //}
 //
-//pub fn GetRuleIndex(&self, ) -> i32 {
+//pub fn get_rule_index(&self, ) -> i32 {
 //  return as.rule_index
 //}
 //
-//pub fn SetRuleIndex(&self, v: i32) {
+//pub fn set_rule_index(&self, v: i32) {
 //  as.rule_index = v
 //}
-//pub fn GetEpsilonOnlyTransitions(&self, ) -> bool {
+//pub fn get_epsilon_only_transitions(&self, ) -> bool {
 //  return as.epsilon_only_transitions
 //}
 //
-//pub fn GetATN(&self, ) -> *ATN {
+//pub fn get_a_t_n(&self, ) -> *ATN {
 //  return as.atn
 //}
 //
-//pub fn SetATN(&self, atn *ATN) {
+//pub fn set_a_t_n(&self, atn *ATN) {
 //  as.atn = atn
 //}
 //
-//pub fn GetTransitions(&self, ) -> []Transition {
+//pub fn get_transitions(&self, ) -> []Transition {
 //  return as.transitions
 //}
 //
-//pub fn SetTransitions(&self, t []Transition) {
+//pub fn set_transitions(&self, t []Transition) {
 //  as.transitions = t
 //}
 //
-//pub fn GetStateType(&self, ) -> i32 {
+//pub fn get_state_type(&self, ) -> i32 {
 //  return as.state_type
 //}
 //
-//pub fn GetStateNumber(&self, ) -> i32 {
+//pub fn get_state_number(&self, ) -> i32 {
 //  return as.state_number
 //}
 //
-//pub fn SetStateNumber(&self, state_number: i32) {
+//pub fn set_state_number(&self, state_number: i32) {
 //  as.state_number = state_number
 //}
 //
-//pub fn GetNextTokenWithinRule(&self, ) -> *IntervalSet {
-//  return as.NextTokenWithinRule
+//pub fn get_next_token_within_rule(&self, ) -> *IntervalSet {
+//  return as.next_token_within_rule
 //}
 //
-//pub fn SetNextTokenWithinRule(&self, v *IntervalSet) {
-//  as.NextTokenWithinRule = v
+//pub fn set_next_token_within_rule(&self, v *IntervalSet) {
+//  as.next_token_within_rule = v
 //}
 //
 //pub fn String(&self, ) -> &str {
@@ -124,7 +124,7 @@
 //
 //fn equals(&self, other i32erface{}) -> bool {
 //  if ot, let ok = other.(ATNState); ok {;
-//    return as.state_number == ot.GetStateNumber()
+//    return as.state_number == ot.get_state_number()
 //  }
 //
 //  return false
@@ -134,7 +134,7 @@
 //  return false
 //}
 //
-//pub fn AddTransition(&self, trans: Transition, index: i32) {
+//pub fn add_transition(&self, trans: Transition, index: i32) {
 //  if len(as.transitions) == 0 {
 //    as.epsilon_only_transitions = trans.get_is_epsilon()
 //  } else if as.epsilon_only_transitions != trans.get_is_epsilon() {

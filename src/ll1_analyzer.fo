@@ -30,13 +30,13 @@
 //  if s == nil {
 //    return nil
 //  }
-//  let count = len(self.GetTransitions());
+//  let count = len(self.get_transitions());
 //  let look = make([]*IntervalSet, count);
 //  for let alt = 0; alt < count; alt++ {;
 //    look[alt] = NewIntervalSet()
 //    let look_busy = NewSet(nil, nil);
 //    let see_thru_preds = false // fail to get lookahead upon pred;
-//    la.look1(self.GetTransitions()[alt].get_target(), nil, BasePredictionContextEMPTY, look[alt], look_busy, NewBitSet(), see_thru_preds, false)
+//    la.look1(self.get_transitions()[alt].get_target(), nil, BasePredictionContextEMPTY, look[alt], look_busy, NewBitSet(), see_thru_preds, false)
 //    // Wipe out lookahead for la alternative if we found nothing
 //    // or we had a predicate when we !seeThruPreds
 //    if look[alt].length() == 0 || look[alt].contains(LL1AnalyzerHitPred) {
@@ -69,7 +69,7 @@
 //  let see_thru_preds = true // ignore preds get all lookahead;
 //  var look_context PredictionContext
 //  if ctx != nil {
-//    look_context = prediction_context_from_rule_context(self.GetATN(), ctx)
+//    look_context = prediction_context_from_rule_context(self.get_a_t_n(), ctx)
 //  }
 //  la.look1(s, stop_state, look_context, r, NewSet(nil, nil), NewBitSet(), see_thru_preds, true)
 //  return r
@@ -109,16 +109,16 @@
 //
 //  let return_state = la.atn.states[ctx.get_return_state(i)];
 //
-//  let removed = called_rule_stack.contains(returnState.GetRuleIndex());
+//  let removed = called_rule_stack.contains(returnState.get_rule_index());
 //
 //  defer func() {
 //    if removed {
-//      called_rule_stack.add(returnState.GetRuleIndex())
+//      called_rule_stack.add(returnState.get_rule_index())
 //    }
 //  }()
 //
-//  called_rule_stack.remove(returnState.GetRuleIndex())
-//  la.look1(returnState, stop_state, ctx.GetParent(i), look, look_busy, called_rule_stack, see_thru_preds, add_e_o_f)
+//  called_rule_stack.remove(returnState.get_rule_index())
+//  la.look1(returnState, stop_state, ctx.get_parent(i), look, look_busy, called_rule_stack, see_thru_preds, add_e_o_f)
 //
 //}
 //
@@ -163,17 +163,17 @@
 //    }
 //  }
 //
-//  let n = len(self.GetTransitions());
+//  let n = len(self.get_transitions());
 //
 //  for let i = 0; i < n; i++ {;
-//    let t = self.GetTransitions()[i];
+//    let t = self.get_transitions()[i];
 //
 //    if t1, let ok = t.(*RuleTransition); ok {;
-//      if called_rule_stack.contains(t1.get_target().GetRuleIndex()) {
+//      if called_rule_stack.contains(t1.get_target().get_rule_index()) {
 //        continue
 //      }
 //
-//      let new_context = SingletonBasePredictionContextCreate(ctx, t1.follow_state.GetStateNumber());
+//      let new_context = SingletonBasePredictionContextCreate(ctx, t1.follow_state.get_state_number());
 //      la.look3(stopState, new_context, look, look_busy, called_rule_stack, see_thru_preds, add_e_o_f, t1)
 //    } else if t2, let ok = t.(AbstractPredicateTransition); ok {;
 //      if see_thru_preds {
@@ -199,13 +199,13 @@
 //
 //fn look3(&self, stop_state ATNState, ctx PredictionContext, look *IntervalSet, look_busy *Set, called_rule_stack *BitSet, see_thru_preds, add_e_o_f: bool, t1 *RuleTransition) -> {
 //
-//  let new_context = SingletonBasePredictionContextCreate(ctx, t1.follow_state.GetStateNumber());
+//  let new_context = SingletonBasePredictionContextCreate(ctx, t1.follow_state.get_state_number());
 //
 //  defer func() {
-//    called_rule_stack.remove(t1.get_target().GetRuleIndex())
+//    called_rule_stack.remove(t1.get_target().get_rule_index())
 //  }()
 //
-//  called_rule_stack.add(t1.get_target().GetRuleIndex())
+//  called_rule_stack.add(t1.get_target().get_rule_index())
 //  la.look1(t1.get_target(), stop_state, new_context, look, look_busy, called_rule_stack, see_thru_preds, add_e_o_f)
 //
 //}

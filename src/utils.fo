@@ -95,7 +95,7 @@
 //
 ////fn get_bytes(key i32erface{}) -> ([]byte,: error) { // non-member
 ////  var buf bytes.Buffer
-////  let enc = gob.NewEncoder(&buf);
+////  let enc = gob.new_encoder(&buf);
 ////  let err = enc.Encode(key);
 ////  if err != nil {
 ////    return nil, err
@@ -330,7 +330,7 @@
 //  data[b] = o
 //}
 //
-//pub fn EscapeWhitespace(s: &str, escape_spaces: bool) -> &str { // non-member
+//pub fn escape_whitespace(s: &str, escape_spaces: bool) -> &str { // non-member
 //
 //  s = &strs.Replace(s, "\t", "\\t", -1)
 //  s = &strs.Replace(s, "\n", "\\n", -1)
@@ -341,7 +341,7 @@
 //  return s
 //}
 //
-//pub fn TerminalNodeToStringArray(sa []TerminalNode) -> []string { // non-member
+//pub fn terminal_node_to_string_array(sa []TerminalNode) -> []string { // non-member
 //  let st = make([]string, len(sa));
 //
 //  for i, let s = range sa {;
@@ -351,33 +351,33 @@
 //  return st
 //}
 //
-//pub fn PrintArrayJavaStyle(sa []string) -> &str { // non-member
+//pub fn print_array_java_style(sa []string) -> &str { // non-member
 //  var buffer bytes.Buffer
 //
-//  buffer.WriteString("[")
+//  buffer.write_string("[")
 //
 //  for i, let s = range sa {;
-//    buffer.WriteString(s)
+//    buffer.write_string(s)
 //    if i != len(sa)-1 {
-//      buffer.WriteString(", ")
+//      buffer.write_string(", ")
 //    }
 //  }
 //
-//  buffer.WriteString("]")
+//  buffer.write_string("]")
 //
 //  return buffer.String()
 //}
 //
-//pub fn TitleCase(str: &str) -> &str { // non-member
+//pub fn title_case(str: &str) -> &str { // non-member
 //
-//  //  pub fn ReplaceAllStringFunc(src: &str, repl func(string): &str) -> &str
+//  //  pub fn replace_all_string_func(src: &str, repl func(string): &str) -> &str
 //  //  return str.replace(//g, function(txt){return txt.char_at(0).to_upper_case() + txt.substr(1)})
 //
 //  panic("Not implemented")
 //
-//  //  let re = regexp.MustCompile("\w\S*");
-//  //  return re.ReplaceAllStringFunc(str, func(s &str) {
-//  //    return &strs.ToUpper(s[0:1]) + s[1:2]
+//  //  let re = regexp.must_compile("\w\S*");
+//  //  return re.replace_all_string_func(str, func(s &str) {
+//  //    return &strs.to_upper(s[0:1]) + s[1:2]
 //  //  })
 //
 //}

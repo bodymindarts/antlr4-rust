@@ -105,11 +105,11 @@
 //    panic("set is read-only")
 //  }
 //
-//  if config.GetSemanticContext() != SemanticContextNone {
+//  if config.get_semantic_context() != SemanticContextNone {
 //    self.has_semantic_context = true
 //  }
 //
-//  if config.GetReachesIntoOuterContext() > 0 {
+//  if config.get_reaches_into_outer_context() > 0 {
 //    self.dips_into_outer_context = true
 //  }
 //
@@ -124,12 +124,12 @@
 //
 //  // Merge a previous (s, i, pi, _) with it and save the result
 //  let root_is_wildcard = !self.full_ctx;
-//  let merged = merge(existing.GetContext(), config.GetContext(), root_is_wildcard, merge_cache);
+//  let merged = merge(existing.get_context(), config.get_context(), root_is_wildcard, merge_cache);
 //
 //  // No need to check for existing.context because config.context is in the cache,
 //  // since the only way to create new graphs is the "call rule" and here. We cache
 //  // at both places.
-//  existing.SetReachesIntoOuterContext(intMax(existing.GetReachesIntoOuterContext(), config.GetReachesIntoOuterContext()))
+//  existing.set_reaches_into_outer_context(intMax(existing.get_reaches_into_outer_context(), config.get_reaches_into_outer_context()))
 //
 //  // Preserve the precedence filter suppression during the merge
 //  if config.get_precedence_filter_suppressed() {
@@ -137,34 +137,34 @@
 //  }
 //
 //  // Replace the context because there is no need to do alt mapping
-//  existing.SetContext(merged)
+//  existing.set_context(merged)
 //
 //  return true
 //}
 //
-//pub fn GetStates(&self, ) -> *Set {
+//pub fn get_states(&self, ) -> *Set {
 //  let states = NewSet(nil, nil);
 //
 //  for let i = 0; i < len(self.configs); i++ {;
-//    states.add(self.configs[i].GetState())
+//    states.add(self.configs[i].get_state())
 //  }
 //
 //  return states
 //}
 //
-//pub fn HasSemanticContext(&self, ) -> bool {
+//pub fn has_semantic_context(&self, ) -> bool {
 //  return self.has_semantic_context
 //}
 //
-//pub fn SetHasSemanticContext(&self, v: bool) {
+//pub fn set_has_semantic_context(&self, v: bool) {
 //  self.has_semantic_context = v
 //}
 //
-//pub fn GetPredicates(&self, ) -> []SemanticContext {
+//pub fn get_predicates(&self, ) -> []SemanticContext {
 //  let preds = make([]SemanticContext, 0);
 //
 //  for let i = 0; i < len(self.configs); i++ {;
-//    let c = self.configs[i].GetSemanticContext();
+//    let c = self.configs[i].get_semantic_context();
 //
 //    if c != SemanticContextNone {
 //      preds = append(preds, c)
@@ -174,11 +174,11 @@
 //  return preds
 //}
 //
-//pub fn GetItems(&self, ) -> []ATNConfig {
+//pub fn get_items(&self, ) -> []ATNConfig {
 //  return self.configs
 //}
 //
-//pub fn OptimizeConfigs(&self, interpreter *BaseATNSimulator) {
+//pub fn optimize_configs(&self, interpreter *BaseATNSimulator) {
 //  if self.read_only {
 //    panic("set is read-only")
 //  }
@@ -190,11 +190,11 @@
 //  for let i = 0; i < len(self.configs); i++ {;
 //    let config = self.configs[i];
 //
-//    config.SetContext(interpreter.get_cached_context(config.GetContext()))
+//    config.set_context(interpreter.get_cached_context(config.get_context()))
 //  }
 //}
 //
-//pub fn AddAll(&self, coll []ATNConfig) -> bool {
+//pub fn add_all(&self, coll []ATNConfig) -> bool {
 //  for let i = 0; i < len(coll); i++ {;
 //    self.Add(coll[i], nil)
 //  }
@@ -246,7 +246,7 @@
 //  return len(self.configs)
 //}
 //
-//pub fn IsEmpty(&self, ) -> bool {
+//pub fn is_empty(&self, ) -> bool {
 //  return len(self.configs) == 0
 //}
 //
@@ -258,7 +258,7 @@
 //  return self.config_lookup.contains(item)
 //}
 //
-//pub fn ContainsFast(&self, item: ATNConfig) -> bool {
+//pub fn contains_fast(&self, item: ATNConfig) -> bool {
 //  if self.config_lookup == nil {
 //    panic("not implemented for read-only sets")
 //  }
@@ -276,39 +276,39 @@
 //  self.config_lookup = Set::new(hashATNConfig, equal_a_t_n_configs)
 //}
 //
-//pub fn FullContext(&self, ) -> bool {
+//pub fn full_context(&self, ) -> bool {
 //  return self.full_ctx
 //}
 //
-//pub fn GetDipsIntoOuterContext(&self, ) -> bool {
+//pub fn get_dips_into_outer_context(&self, ) -> bool {
 //  return self.dips_into_outer_context
 //}
 //
-//pub fn SetDipsIntoOuterContext(&self, v: bool) {
+//pub fn set_dips_into_outer_context(&self, v: bool) {
 //  self.dips_into_outer_context = v
 //}
 //
-//pub fn GetUniqueAlt(&self, ) -> i32 {
+//pub fn get_unique_alt(&self, ) -> i32 {
 //  return self.unique_alt
 //}
 //
-//pub fn SetUniqueAlt(&self, v: i32) {
+//pub fn set_unique_alt(&self, v: i32) {
 //  self.unique_alt = v
 //}
 //
-//pub fn GetConflictingAlts(&self, ) -> *BitSet {
+//pub fn get_conflicting_alts(&self, ) -> *BitSet {
 //  return self.conflicting_alts
 //}
 //
-//pub fn SetConflictingAlts(&self, v *BitSet) {
+//pub fn set_conflicting_alts(&self, v *BitSet) {
 //  self.conflicting_alts = v
 //}
 //
-//pub fn ReadOnly(&self, ) -> bool {
+//pub fn read_only(&self, ) -> bool {
 //  return self.read_only
 //}
 //
-//pub fn SetReadOnly(&self, read_only: bool) {
+//pub fn set_read_only(&self, read_only: bool) {
 //  self.read_only = read_only
 //
 //  if read_only {
@@ -380,9 +380,9 @@
 //    return false
 //  }
 //
-//  let nums = ai.GetState().GetStateNumber() == bi.GetState().GetStateNumber();
-//  let alts = ai.GetAlt() == bi.GetAlt();
-//  let cons = ai.GetSemanticContext().equals(bi.GetSemanticContext());
+//  let nums = ai.get_state().get_state_number() == bi.get_state().get_state_number();
+//  let alts = ai.get_alt() == bi.get_alt();
+//  let cons = ai.get_semantic_context().equals(bi.get_semantic_context());
 //
 //  return nums && alts && cons
 //}
