@@ -105,7 +105,7 @@
 //  let start_state = self.atn.mode_to_start_state[self.mode];
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.println("MatchATN mode " + strconv.itoa(self.mode) + " start: " + start_state.string())
+//    println!("MatchATN mode " + strconv.itoa(self.mode) + " start: " + start_state.string())
 //  }
 //  let old_mode = self.mode;
 //  let s0Closure = self.compute_start_state(input, start_state);
@@ -121,7 +121,7 @@
 //  let predict = self.exec_atn(input, next);
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.println("DFA after MatchATN: " + self.decision_to_dfa[oldMode].to_lexer_string())
+//    println!("DFA after MatchATN: " + self.decision_to_dfa[oldMode].to_lexer_string())
 //  }
 //  return predict
 //}
@@ -129,7 +129,7 @@
 //fn exec_atn(&self, input: CharStream, ds0 *DFAState) -> i32 {
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.println("start state closure=" + ds0.configs.string())
+//    println!("start state closure=" + ds0.configs.string())
 //  }
 //  if ds0.is_accept_state {
 //    // allow zero-length tokens
@@ -140,7 +140,7 @@
 //
 //  for { // while more work
 //    if LexerATNSimulatorDebug {
-//      fmt.println("execATN loop starting closure: " + self.configs.string())
+//      println!("execATN loop starting closure: " + self.configs.string())
 //    }
 //
 //    // As we move src->trg, src->trg, we keep track of the previous trg to
@@ -204,7 +204,7 @@
 //
 //  let target = self.edges[t-LexerATNSimulatorMinDFAEdge];
 //  if LexerATNSimulatorDebug && target != nil {
-//    fmt.println("reuse state " + strconv.itoa(self.state_number) + " edge to " + strconv.itoa(target.state_number))
+//    println!("reuse state " + strconv.itoa(self.state_number) + " edge to " + strconv.itoa(target.state_number))
 //  }
 //  return target
 //}
@@ -337,7 +337,7 @@
 //  current_alt_reached_accept_state, speculative, treat_e_o_f_as_epsilon bool) bool {
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.println("closure(" + config.string() + ")") // config.string(self.recog, true) + ")")
+//    println!("closure(" + config.string() + ")") // config.string(self.recog, true) + ")")
 //  }
 //
 //  _, let ok = config.state.(*RuleStopState);
@@ -425,7 +425,7 @@
 //    let pt = trans.(*PredicateTransition);
 //
 //    if LexerATNSimulatorDebug {
-//      fmt.println("EVAL rule " + strconv.itoa(trans.(*PredicateTransition).rule_index) + ":" + strconv.itoa(pt.pred_index))
+//      println!("EVAL rule " + strconv.itoa(trans.(*PredicateTransition).rule_index) + ":" + strconv.itoa(pt.pred_index))
 //    }
 //    configs.set_has_semantic_context(true)
 //    if self.evaluate_predicate(input, pt.rule_index, pt.pred_index, speculative) {
@@ -544,7 +544,7 @@
 //    return to
 //  }
 //  if LexerATNSimulatorDebug {
-//    fmt.println("EDGE " + from.string() + " -> " + to.string() + " upon " + strconv.itoa(tk))
+//    println!("EDGE " + from.string() + " -> " + to.string() + " upon " + strconv.itoa(tk))
 //  }
 //  if from.edges == nil {
 //    // make room for tokens 1..n and -1 masquerading as index 0

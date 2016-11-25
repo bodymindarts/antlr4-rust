@@ -121,8 +121,8 @@
 //
 //  switch let t = e.(type) {;
 //  default:
-//    fmt.println("unknown recognition error type: " + reflect.type_of(e).name())
-//    //            fmt.println(self.stack)
+//    println!("unknown recognition error type: " + reflect.type_of(e).name())
+//    //            println!(self.stack)
 //    recognizer.notify_error_listeners(self.message(), self.offending_token(), e)
 //  case *NoViableAltException:
 //    self.report_no_viable_alternative(recognizer, t)

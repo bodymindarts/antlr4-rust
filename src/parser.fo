@@ -684,9 +684,9 @@
 //  for _, let dfa = range self.interpreter.decision_to_dfa {;
 //    if len(dfa.states()) > 0 {
 //      if seen_one {
-//        fmt.println()
+//        println!()
 //      }
-//      fmt.println("Decision " + strconv.itoa(dfa.decision) + ":")
+//      println!("Decision " + strconv.itoa(dfa.decision) + ":")
 //      fmt.print(dfa.string(self.literal_names, self.symbolic_names))
 //      seen_one = true
 //    }

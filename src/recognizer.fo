@@ -47,7 +47,7 @@
 //fn check_version(&self, tool_version: &str) {
 //  let runtime_version = "4.6";
 //  if runtime_version != tool_version {
-//    fmt.println("ANTLR runtime and generated code versions disagree: " + runtime_version + "!=" + tool_version)
+//    println!("ANTLR runtime and generated code versions disagree: " + runtime_version + "!=" + tool_version)
 //  }
 //}
 //

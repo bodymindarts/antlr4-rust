@@ -66,7 +66,7 @@
 //
 //pub fn adaptive_predict(&self, input TokenStream, decision: i32, outer_context: ParserRuleContext) -> i32 {
 //  if ParserATNSimulatorDebug || ParserATNSimulatorListATNDecisions {
-//    fmt.println("AdaptivePredict decision " + strconv.itoa(decision) +
+//    println!("AdaptivePredict decision " + strconv.itoa(decision) +
 //      " exec LA(1)==" + self.lookahead_name(input) +
 //      " line " + strconv.itoa(input.l_t(1).line()) + ":" +
 //      strconv.itoa(input.l_t(1).column()))
@@ -105,7 +105,7 @@
 //      outer_context = RuleContextEmpty
 //    }
 //    if ParserATNSimulatorDebug || ParserATNSimulatorListATNDecisions {
-//      fmt.println("predictATN decision " + strconv.itoa(dfa.decision) +
+//      println!("predictATN decision " + strconv.itoa(dfa.decision) +
 //        " exec LA(1)==" + self.lookahead_name(input) +
 //        ", outer_context=" + outer_context.string(self.parser.rule_names(), nil))
 //    }
@@ -141,7 +141,7 @@
 //  }
 //  let alt = self.exec_atn(dfa, s0, input, index, outer_context);
 //  if ParserATNSimulatorDebug {
-//    fmt.println("DFA after predict_atn: " + dfa.string(self.parser.literal_names(), nil))
+//    println!("DFA after predict_atn: " + dfa.string(self.parser.literal_names(), nil))
 //  }
 //  return alt
 //
@@ -180,7 +180,7 @@
 //fn exec_atn(&self, dfa *DFA, s0 *DFAState, input TokenStream, start_index: i32, outer_context: ParserRuleContext) -> i32 {
 //
 //  if ParserATNSimulatorDebug || ParserATNSimulatorListATNDecisions {
-//    fmt.println("execATN decision " + strconv.itoa(dfa.decision) +
+//    println!("execATN decision " + strconv.itoa(dfa.decision) +
 //      " exec LA(1)==" + self.lookahead_name(input) +
 //      " line " + strconv.itoa(input.l_t(1).line()) + ":" + strconv.itoa(input.l_t(1).column()))
 //  }
@@ -188,7 +188,7 @@
 //  let previous_d = s0;
 //
 //  if ParserATNSimulatorDebug {
-//    fmt.println("s0 = " + s0.string())
+//    println!("s0 = " + s0.string())
 //  }
 //  let t = input.l_a(1);
 //  for { // for more work
@@ -220,7 +220,7 @@
 //      let conflicting_alts = D.configs.conflicting_alts();
 //      if D.predicates != nil {
 //        if ParserATNSimulatorDebug {
-//          fmt.println("DFA state has preds in DFA sim LL failover")
+//          println!("DFA state has preds in DFA sim LL failover")
 //        }
 //        let conflict_index = input.index();
 //        if conflict_index != start_index {
@@ -229,7 +229,7 @@
 //        conflicting_alts = self.eval_semantic_context(D.predicates, outer_context, true)
 //        if conflicting_alts.length() == 1 {
 //          if ParserATNSimulatorDebug {
-//            fmt.println("Full LL avoided")
+//            println!("Full LL avoided")
 //          }
 //          return conflicting_alts.min_value()
 //        }
@@ -240,7 +240,7 @@
 //        }
 //      }
 //      if ParserATNSimulatorDFADebug {
-//        fmt.println("ctx sensitive state " + outer_context.string(nil, nil) + " in " + D.string())
+//        println!("ctx sensitive state " + outer_context.string(nil, nil) + " in " + D.string())
 //      }
 //      let full_ctx = true;
 //      let s0Closure = self.compute_start_state(dfa.atn_start_state, outer_context, full_ctx);
@@ -320,7 +320,7 @@
 //
 //  if ParserATNSimulatorDebug {
 //    let alt_sub_sets = PredictionModegetConflictingAltSubsets(reach);
-//    fmt.println("SLL alt_sub_sets=" + fmt.sprint(altSubSets) +
+//    println!("SLL alt_sub_sets=" + fmt.sprint(altSubSets) +
 //      ", previous=" + previous_d.configs.string() +
 //      ", configs=" + reach.string() +
 //      ", predict=" + strconv.itoa(predictedAlt) +
@@ -375,7 +375,7 @@
 //fn exec_atn_with_full_context(&self, dfa *DFA, D *DFAState, s0 ATNConfigSet, input TokenStream, start_index: i32, outer_context: ParserRuleContext) -> i32 {
 //
 //  if ParserATNSimulatorDebug || ParserATNSimulatorListATNDecisions {
-//    fmt.println("execATNWithFullContext " + s0.string())
+//    println!("execATNWithFullContext " + s0.string())
 //  }
 //
 //  let full_ctx = true;
@@ -409,7 +409,7 @@
 //    }
 //    let alt_sub_sets = PredictionModegetConflictingAltSubsets(reach);
 //    if ParserATNSimulatorDebug {
-//      fmt.println("LL alt_sub_sets=" + fmt.sprint(altSubSets) + ", predict=" +
+//      println!("LL alt_sub_sets=" + fmt.sprint(altSubSets) + ", predict=" +
 //        strconv.itoa(PredictionModegetUniqueAlt(altSubSets)) + ", resolves_to_just_one_viable_alt=" +
 //        fmt.sprint(PredictionModeresolvesToJustOneViableAlt(altSubSets)))
 //    }
@@ -482,7 +482,7 @@
 //
 //fn compute_reach_set(&self, closure ATNConfigSet, t: i32, full_ctx: bool) -> ATNConfigSet {
 //  if ParserATNSimulatorDebug {
-//    fmt.println("in compute_reach_set, starting closure: " + closure.string())
+//    println!("in compute_reach_set, starting closure: " + closure.string())
 //  }
 //  if self.merge_cache == nil {
 //    self.merge_cache = NewDoubleDict()
@@ -504,7 +504,7 @@
 //  // First figure out where we can reach on input t
 //  for _, let c = range closure.items() {;
 //    if ParserATNSimulatorDebug {
-//      fmt.println("testing " + self.token_name(t) + " at " + self.string())
+//      println!("testing " + self.token_name(t) + " at " + self.string())
 //    }
 //
 //    _, let ok = self.state().(*RuleStopState);
@@ -516,7 +516,7 @@
 //        }
 //        SkippedStopStates = append(SkippedStopStates, c.(*BaseATNConfig))
 //        if ParserATNSimulatorDebug {
-//          fmt.println("added " + self.string() + " to SkippedStopStates")
+//          println!("added " + self.string() + " to SkippedStopStates")
 //        }
 //      }
 //      continue
@@ -529,7 +529,7 @@
 //        let cfg = NewBaseATNConfig4(c, target);
 //        intermediate.add(cfg, self.merge_cache)
 //        if ParserATNSimulatorDebug {
-//          fmt.println("added " + cfg.string() + " to i32ermediate")
+//          println!("added " + cfg.string() + " to i32ermediate")
 //        }
 //      }
 //    }
@@ -796,7 +796,7 @@
 //    alt_to_pred = nil
 //  }
 //  if ParserATNSimulatorDebug {
-//    fmt.println("getPredsForAmbigAlts result " + fmt.sprint(altToPred))
+//    println!("getPredsForAmbigAlts result " + fmt.sprint(altToPred))
 //  }
 //  return alt_to_pred
 //}
@@ -953,11 +953,11 @@
 //
 //    let predicate_evaluation_result = pair.pred.evaluate(self.parser, outer_context);
 //    if ParserATNSimulatorDebug || ParserATNSimulatorDFADebug {
-//      fmt.println("eval pred " + pair.string() + "=" + fmt.sprint(predicateEvaluationResult))
+//      println!("eval pred " + pair.string() + "=" + fmt.sprint(predicateEvaluationResult))
 //    }
 //    if predicate_evaluation_result {
 //      if ParserATNSimulatorDebug || ParserATNSimulatorDFADebug {
-//        fmt.println("PREDICT " + fmt.sprint(pair.alt))
+//        println!("PREDICT " + fmt.sprint(pair.alt))
 //      }
 //      predictions.add(pair.alt)
 //      if !complete {
@@ -977,8 +977,8 @@
 //fn closure_checking_stop_state(&self, config ATNConfig, configs ATNConfigSet, closure_busy *Set, collect_predicates, full_ctx bool, depth: i32, treat_e_o_f_as_epsilon: bool) {
 //
 //  if ParserATNSimulatorDebug {
-//    fmt.println("closure(" + config.string() + ")")
-//    fmt.println("configs(" + configs.string() + ")")
+//    println!("closure(" + config.string() + ")")
+//    println!("configs(" + configs.string() + ")")
 //    if config.reaches_into_outer_context() > 50 {
 //      panic!("problem")
 //    }
@@ -997,7 +997,7 @@
 //          } else {
 //            // we have no context info, just chase follow links (if greedy)
 //            if ParserATNSimulatorDebug {
-//              fmt.println("FALLING off rule " + self.rule_name(config.state().rule_index()))
+//              println!("FALLING off rule " + self.rule_name(config.state().rule_index()))
 //            }
 //            self.closure_work(config, configs, closure_busy, collect_predicates, full_ctx, depth, treat_e_o_f_as_epsilon)
 //          }
@@ -1021,7 +1021,7 @@
 //    } else {
 //      // else if we have no context info, just chase follow links (if greedy)
 //      if ParserATNSimulatorDebug {
-//        fmt.println("FALLING off rule " + self.rule_name(config.state().rule_index()))
+//        println!("FALLING off rule " + self.rule_name(config.state().rule_index()))
 //      }
 //    }
 //  }
@@ -1072,7 +1072,7 @@
 //        configs.set_dips_into_outer_context(true) // TODO: can remove? only care when we add to set per middle of p method
 //        new_depth--
 //        if ParserATNSimulatorDebug {
-//          fmt.println("dips i32o outer ctx: " + self.string())
+//          println!("dips i32o outer ctx: " + self.string())
 //        }
 //      } else if _, let ok = t.(*RuleTransition); ok {;
 //        // latch when new_depth goes negative - once we step out of the entry context we can't return
@@ -1140,7 +1140,7 @@
 //
 //fn action_transition(&self, config: ATNConfig, t *ActionTransition) -> *BaseATNConfig {
 //  if ParserATNSimulatorDebug {
-//    fmt.println("ACTION edge " + strconv.itoa(self.rule_index) + ":" + strconv.itoa(self.action_index))
+//    println!("ACTION edge " + strconv.itoa(self.rule_index) + ":" + strconv.itoa(self.action_index))
 //  }
 //  return NewBaseATNConfig4(config, self.target())
 //}
@@ -1149,10 +1149,10 @@
 //  pt *PrecedencePredicateTransition, collect_predicates, in_context, full_ctx bool) *BaseATNConfig {
 //
 //  if ParserATNSimulatorDebug {
-//    fmt.println("PRED (collectPredicates=" + fmt.sprint(collectPredicates) + ") " +
+//    println!("PRED (collectPredicates=" + fmt.sprint(collectPredicates) + ") " +
 //      strconv.itoa(pt.precedence) + ">=_p, ctx dependent=true")
 //    if self.parser != nil {
-//      fmt.println("context surrounding pred is " + fmt.sprint(self.parser.rule_invocation_stack(nil)))
+//      println!("context surrounding pred is " + fmt.sprint(self.parser.rule_invocation_stack(nil)))
 //    }
 //  }
 //  var c *BaseATNConfig
@@ -1177,7 +1177,7 @@
 //    c = NewBaseATNConfig4(config, pt.target())
 //  }
 //  if ParserATNSimulatorDebug {
-//    fmt.println("config from pred transition=" + self.string())
+//    println!("config from pred transition=" + self.string())
 //  }
 //  return c
 //}
@@ -1185,10 +1185,10 @@
 //fn pred_transition(&self, config ATNConfig, pt *PredicateTransition, collect_predicates,: in_context, full_ctx: bool) -> *BaseATNConfig {
 //
 //  if ParserATNSimulatorDebug {
-//    fmt.println("PRED (collectPredicates=" + fmt.sprint(collectPredicates) + ") " + strconv.itoa(pt.rule_index) +
+//    println!("PRED (collectPredicates=" + fmt.sprint(collectPredicates) + ") " + strconv.itoa(pt.rule_index) +
 //      ":" + strconv.itoa(pt.pred_index) + ", ctx dependent=" + fmt.sprint(pt.is_ctx_dependent))
 //    if self.parser != nil {
-//      fmt.println("context surrounding pred is " + fmt.sprint(self.parser.rule_invocation_stack(nil)))
+//      println!("context surrounding pred is " + fmt.sprint(self.parser.rule_invocation_stack(nil)))
 //    }
 //  }
 //  var c *BaseATNConfig
@@ -1213,14 +1213,14 @@
 //    c = NewBaseATNConfig4(config, pt.target())
 //  }
 //  if ParserATNSimulatorDebug {
-//    fmt.println("config from pred transition=" + self.string())
+//    println!("config from pred transition=" + self.string())
 //  }
 //  return c
 //}
 //
 //fn rule_transition(&self, config: ATNConfig, t *RuleTransition) -> *BaseATNConfig {
 //  if ParserATNSimulatorDebug {
-//    fmt.println("CALL rule " + self.rule_name(self.target().rule_index()) + ", ctx=" + config.context().string())
+//    println!("CALL rule " + self.rule_name(self.target().rule_index()) + ", ctx=" + config.context().string())
 //  }
 //  let return_state = self.follow_state;
 //  let new_context = SingletonBasePredictionContextCreate(config.context(), return_state.state_number());
@@ -1286,8 +1286,8 @@
 //
 //  if self.parser != nil && self.parser.literal_names() != nil {
 //    if t >= len(self.parser.literal_names()) {
-//      fmt.println(strconv.itoa(t) + " ttype out of range: " + &strs.join(self.parser.literal_names(), ","))
-//      //      fmt.println(self.parser.input_stream().(TokenStream).all_text()) // p seems incorrect
+//      println!(strconv.itoa(t) + " ttype out of range: " + &strs.join(self.parser.literal_names(), ","))
+//      //      println!(self.parser.input_stream().(TokenStream).all_text()) // p seems incorrect
 //    } else {
 //      return self.parser.literal_names()[t] + "<" + strconv.itoa(t) + ">"
 //    }
@@ -1308,7 +1308,7 @@
 //
 //  panic!("Not implemented")
 //
-//  //    fmt.println("dead end configs: ")
+//  //    println!("dead end configs: ")
 //  //    var decs = nvae.dead_end_configs
 //  //
 //  //    for i:=0; i<len(decs); i++ {
@@ -1372,7 +1372,7 @@
 ////
 //fn add_dfa_edge(&self, dfa *DFA, from *DFAState, t: i32, to *DFAState) -> *DFAState {
 //  if ParserATNSimulatorDebug {
-//    fmt.println("EDGE " + from.string() + " -> " + to.string() + " upon " + self.token_name(t))
+//    println!("EDGE " + from.string() + " -> " + to.string() + " upon " + self.token_name(t))
 //  }
 //  if to == nil {
 //    return nil
@@ -1392,7 +1392,7 @@
 //      names = self.parser.literal_names()
 //    }
 //
-//    fmt.println("DFA=\n" + dfa.string(names, nil))
+//    println!("DFA=\n" + dfa.string(names, nil))
 //  }
 //  return to
 //}
@@ -1428,7 +1428,7 @@
 //  }
 //  dfa.states()[hash] = D
 //  if ParserATNSimulatorDebug {
-//    fmt.println("adding NewDFA state: " + D.string())
+//    println!("adding NewDFA state: " + D.string())
 //  }
 //  return D
 //}
@@ -1436,7 +1436,7 @@
 //pub fn report_attempting_full_context(&self, dfa *DFA, conflicting_alts *BitSet, configs ATNConfigSet,: start_index, stop_index: i32) {
 //  if ParserATNSimulatorDebug || ParserATNSimulatorRetryDebug {
 //    let interval = NewInterval(startIndex, stop_index+1);
-//    fmt.println("ReportAttemptingFullContext decision=" + strconv.itoa(dfa.decision) + ":" + configs.string() +
+//    println!("ReportAttemptingFullContext decision=" + strconv.itoa(dfa.decision) + ":" + configs.string() +
 //      ", input=" + self.parser.token_stream().text_from_interval(interval))
 //  }
 //  if self.parser != nil {
@@ -1447,7 +1447,7 @@
 //pub fn report_context_sensitivity(&self, dfa *DFA, prediction i32, configs ATNConfigSet,: start_index, stop_index: i32) {
 //  if ParserATNSimulatorDebug || ParserATNSimulatorRetryDebug {
 //    let interval = NewInterval(startIndex, stop_index+1);
-//    fmt.println("ReportContextSensitivity decision=" + strconv.itoa(dfa.decision) + ":" + configs.string() +
+//    println!("ReportContextSensitivity decision=" + strconv.itoa(dfa.decision) + ":" + configs.string() +
 //      ", input=" + self.parser.token_stream().text_from_interval(interval))
 //  }
 //  if self.parser != nil {
@@ -1460,7 +1460,7 @@
 //  exact bool, ambig_alts *BitSet, configs ATNConfigSet) {
 //  if ParserATNSimulatorDebug || ParserATNSimulatorRetryDebug {
 //    let interval = NewInterval(startIndex, stop_index+1);
-//    fmt.println("ReportAmbiguity " + ambig_alts.string() + ":" + configs.string() +
+//    println!("ReportAmbiguity " + ambig_alts.string() + ":" + configs.string() +
 //      ", input=" + self.parser.token_stream().text_from_interval(interval))
 //  }
 //  if self.parser != nil {

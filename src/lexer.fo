@@ -252,7 +252,7 @@
 //
 //fn push_mode(&self, m: i32) {
 //  if LexerATNSimulatorDebug {
-//    fmt.println("pushMode " + strconv.itoa(m))
+//    println!("pushMode " + strconv.itoa(m))
 //  }
 //  self.mode_stack.push(self.mode)
 //  self.mode = m
@@ -263,7 +263,7 @@
 //    panic!("Empty Stack")
 //  }
 //  if LexerATNSimulatorDebug {
-//    fmt.println("popMode back to " + fmt.sprint(self.mode_stack[0:len(self.mode_stack)-1]))
+//    println!("popMode back to " + fmt.sprint(self.mode_stack[0:len(self.mode_stack)-1]))
 //  }
 //  i, _let  = self.mode_stack.pop();
 //  self.mode = i
