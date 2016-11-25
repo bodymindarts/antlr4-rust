@@ -6,7 +6,7 @@
 //  parser: *BaseParser
 //}
 //
-//impl TraceListener {§//  pub fn new(&self, parser *BaseParser) -> *TraceListener {
+//impl TraceListener {§//  fn new(&self, parser *BaseParser) -> *TraceListener {
 //  let tl = new(TraceListener);
 //  tl.parser = parser
 //  return tl

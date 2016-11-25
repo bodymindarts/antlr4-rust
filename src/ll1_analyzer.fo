@@ -4,7 +4,7 @@
 //  atn: *ATN
 //}
 //
-//impl LL {§//  pub fn new1Analyzer(&self, atn *ATN) -> *LL1Analyzer {
+//impl LL {§//  fn new1Analyzer(&self, atn *ATN) -> *LL1Analyzer {
 //  let la = new(LL1Analyzer);
 //  la.atn = atn
 //  return la
@@ -26,7 +26,7 @@
 ////
 //// @param s the ATN state
 //// @return the expected symbols for each outgoing transition of {@code s}.
-//pub fn get_decision_lookahead(&self, s: ATNState) -> []*IntervalSet {
+//fn get_decision_lookahead(&self, s: ATNState) -> []*IntervalSet {
 //  if s == nil {
 //    return nil
 //  }
@@ -105,7 +105,7 @@
 //// outermost context is reached. This parameter has no effect if {@code ctx}
 //// is {@code nil}.
 //
-//pub fn look2(&self, s, stop_state ATNState, ctx PredictionContext, look *IntervalSet, look_busy *Set, called_rule_stack *BitSet, see_thru_preds, add_e_o_f: bool, i: i32) -> {
+//fn look2(&self, s, stop_state ATNState, ctx PredictionContext, look *IntervalSet, look_busy *Set, called_rule_stack *BitSet, see_thru_preds, add_e_o_f: bool, i: i32) -> {
 //
 //  let return_state = la.atn.states[ctx.get_return_state(i)];
 //
@@ -122,7 +122,7 @@
 //
 //}
 //
-//pub fn look1(&self, s, stop_state ATNState, ctx PredictionContext, look *IntervalSet, look_busy *Set, called_rule_stack *BitSet,: see_thru_preds, add_e_o_f: bool) -> {
+//fn look1(&self, s, stop_state ATNState, ctx PredictionContext, look *IntervalSet, look_busy *Set, called_rule_stack *BitSet,: see_thru_preds, add_e_o_f: bool) -> {
 //
 //  let c = NewBaseATNConfig6(s, 0, ctx);
 //
@@ -197,7 +197,7 @@
 //  }
 //}
 //
-//pub fn look3(&self, stop_state ATNState, ctx PredictionContext, look *IntervalSet, look_busy *Set, called_rule_stack *BitSet, see_thru_preds, add_e_o_f: bool, t1 *RuleTransition) -> {
+//fn look3(&self, stop_state ATNState, ctx PredictionContext, look *IntervalSet, look_busy *Set, called_rule_stack *BitSet, see_thru_preds, add_e_o_f: bool, t1 *RuleTransition) -> {
 //
 //  let new_context = SingletonBasePredictionContextCreate(ctx, t1.follow_state.GetStateNumber());
 //

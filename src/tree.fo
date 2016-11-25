@@ -110,7 +110,7 @@
 //
 //var _ TerminalNode = &TerminalNodeImpl{}
 //
-//impl TerminalNodeImpl {§//  pub fn new(&self, symbol: Token) -> *TerminalNodeImpl {
+//impl TerminalNodeImpl {§//  fn new(&self, symbol: Token) -> *TerminalNodeImpl {
 //  let tn = new(TerminalNodeImpl);
 //
 //  tn.parent_ctx = nil
@@ -191,13 +191,13 @@
 //
 //var _ ErrorNode = &ErrorNodeImpl{}
 //
-//impl ErrorNodeImpl {§//  pub fn new(&self, token: Token) -> *ErrorNodeImpl {
+//impl ErrorNodeImpl {§//  fn new(&self, token: Token) -> *ErrorNodeImpl {
 //  let en = new(ErrorNodeImpl);
 //  en.TerminalNodeImpl = NewTerminalNodeImpl(token)
 //  return en
 //}
 //
-//pub fn error_node() {}
+//fn error_node() {}
 //
 //pub fn Accept(&self, v: ParseTreeVisitor) -> i32erface{} {
 //  return self.VisitErrorNode(e)
@@ -206,7 +206,7 @@
 //pub struct ParseTreeWalker {
 //}
 //
-//impl ParseTreeWalker {§//  pub fn new(&self, ) -> *ParseTreeWalker {
+//impl ParseTreeWalker {§//  fn new(&self, ) -> *ParseTreeWalker {
 //  return new(ParseTreeWalker)
 //}
 //

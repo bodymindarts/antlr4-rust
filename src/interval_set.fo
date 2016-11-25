@@ -5,14 +5,14 @@ pub struct Interval {
 
 /* stop is not included! */
 impl Interval {
-  pub fn new(&self, start: i32, stop: i32) -> Interval {
+  fn new(&self, start: i32, stop: i32) -> Interval {
     Interval {
       start: start,
       stop: stop,
   }
 }
 
-//pub fn contains(&self, item: i32) -> bool {
+//fn contains(&self, item: i32) -> bool {
 //  return item >= self.start && item < self.stop
 //}
 //
@@ -24,7 +24,7 @@ impl Interval {
 //  return strconv.Itoa(self.start) + ".." + strconv.Itoa(self.stop-1)
 //}
 //
-//pub fn length(&self, ) -> i32 {
+//fn length(&self, ) -> i32 {
 //  return self.stop - self.start
 //}
 //
@@ -34,7 +34,7 @@ impl Interval {
 //  read_only:  bool
 //}
 //
-//impl IntervalSet {§//  pub fn new(&self, ) -> *IntervalSet {
+//impl IntervalSet {§//  fn new(&self, ) -> *IntervalSet {
 //
 //  let i = new(IntervalSet);
 //
@@ -44,7 +44,7 @@ impl Interval {
 //  return i
 //}
 //
-//pub fn first(&self, ) -> i32 {
+//fn first(&self, ) -> i32 {
 //  if len(self.intervals) == 0 {
 //    return TokenInvalidType
 //  }
@@ -52,15 +52,15 @@ impl Interval {
 //  return self.intervals[0].start
 //}
 //
-//pub fn add_one(&self, v: i32) {
+//fn add_one(&self, v: i32) {
 //  self.add_interval(NewInterval(v, v+1))
 //}
 //
-//pub fn add_range(&self, l, h: i32) {
+//fn add_range(&self, l, h: i32) {
 //  self.add_interval(NewInterval(l, h+1))
 //}
 //
-//pub fn add_interval(&self, v *Interval) {
+//fn add_interval(&self, v *Interval) {
 //  if self.intervals == nil {
 //    self.intervals = make([]*Interval, 0)
 //    self.intervals = append(self.intervals, v)
@@ -97,7 +97,7 @@ impl Interval {
 //  }
 //}
 //
-//pub fn add_set(&self, other *IntervalSet) -> *IntervalSet {
+//fn add_set(&self, other *IntervalSet) -> *IntervalSet {
 //  if other.intervals != nil {
 //    for let k = 0; k < len(other.intervals); k++ {;
 //      let i2 = other.intervals[k];
@@ -107,7 +107,7 @@ impl Interval {
 //  return i
 //}
 //
-//pub fn complement(&self, start: i32, stop: i32) -> *IntervalSet {
+//fn complement(&self, start: i32, stop: i32) -> *IntervalSet {
 //  let result = NewIntervalSet();
 //  result.add_interval(NewInterval(start, stop+1))
 //  for let j = 0; j < len(self.intervals); j++ {;
@@ -116,7 +116,7 @@ impl Interval {
 //  return result
 //}
 //
-//pub fn contains(&self, item: i32) -> bool {
+//fn contains(&self, item: i32) -> bool {
 //  if self.intervals == nil {
 //    return false
 //  }
@@ -128,7 +128,7 @@ impl Interval {
 //  return false
 //}
 //
-//pub fn length(&self, ) -> i32 {
+//fn length(&self, ) -> i32 {
 //  let len = 0;
 //
 //  for _, let v = range self.intervals {;
@@ -138,7 +138,7 @@ impl Interval {
 //  return len
 //}
 //
-//pub fn remove_range(&self, v *Interval) {
+//fn remove_range(&self, v *Interval) {
 //  if self.start == self.stop-1 {
 //    self.remove_one(self.start)
 //  } else if self.intervals != nil {
@@ -168,7 +168,7 @@ impl Interval {
 //  }
 //}
 //
-//pub fn remove_one(&self, v: i32) {
+//fn remove_one(&self, v: i32) {
 //  if self.intervals != nil {
 //    for let k = 0; k < len(self.intervals); k++ {;
 //      let ki = self.intervals[k];
@@ -213,7 +213,7 @@ impl Interval {
 //  return self.to_index_string()
 //}
 //
-//pub fn to_char_string(&self, ) -> &str {
+//fn to_char_string(&self, ) -> &str {
 //  let names = make([]string, len(self.intervals));
 //
 //  for let j = 0; j < len(self.intervals); j++ {;
@@ -235,7 +235,7 @@ impl Interval {
 //  return names[0]
 //}
 //
-//pub fn to_index_string(&self, ) -> &str {
+//fn to_index_string(&self, ) -> &str {
 //
 //  let names = make([]string, 0);
 //  for let j = 0; j < len(self.intervals); j++ {;
@@ -257,7 +257,7 @@ impl Interval {
 //  return names[0]
 //}
 //
-//pub fn to_token_string(&self, literal_names []string, symbolic_names []string) -> &str {
+//fn to_token_string(&self, literal_names []string, symbolic_names []string) -> &str {
 //  let names = make([]string, 0);
 //  for _, let v = range self.intervals {;
 //    for let j = self.start; j < self.stop; j++ {;
@@ -271,7 +271,7 @@ impl Interval {
 //  return names[0]
 //}
 //
-//pub fn element_name(&self, literal_names []string, symbolic_names []string, a: i32) -> &str {
+//fn element_name(&self, literal_names []string, symbolic_names []string, a: i32) -> &str {
 //  if a == TokenEOF {
 //    return "<EOF>"
 //  } else if a == TokenEpsilon {

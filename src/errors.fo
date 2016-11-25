@@ -21,7 +21,7 @@
 //  input:          IntStream
 //}
 //
-//impl BaseRecognitionException {§//  pub fn new(&self, message &str, recognizer Recognizer, input: IntStream, ctx: RuleContext) -> *BaseRecognitionException {
+//impl BaseRecognitionException {§//  fn new(&self, message &str, recognizer Recognizer, input: IntStream, ctx: RuleContext) -> *BaseRecognitionException {
 //
 //  // todo
 //  //  Error.call(this)
@@ -80,7 +80,7 @@
 //// @return The set of token types that could potentially follow the current
 //// state in the ATN, or {@code nil} if the information is not available.
 //// /
-//pub fn get_expected_tokens(&self, ) -> *IntervalSet {
+//fn get_expected_tokens(&self, ) -> *IntervalSet {
 //  if self.recognizer != nil {
 //    return self.recognizer.GetATN().get_expected_tokens(self.offending_state, self.ctx)
 //  }
@@ -99,7 +99,7 @@
 //  dead_end_configs: ATNConfigSet
 //}
 //
-//impl LexerNoViableAltException {§//  pub fn new(&self, lexer Lexer, input CharStream, start_index: i32, dead_end_configs: ATNConfigSet) -> *LexerNoViableAltException {
+//impl LexerNoViableAltException {§//  fn new(&self, lexer Lexer, input CharStream, start_index: i32, dead_end_configs: ATNConfigSet) -> *LexerNoViableAltException {
 //
 //  let l = new(LexerNoViableAltException);
 //
@@ -133,7 +133,7 @@
 //// of the offending input and also knows where the parser was
 //// in the various paths when the error. Reported by ReportNoViableAlternative()
 ////
-//impl NoViableAltException {§//  pub fn new(&self, recognizer Parser, input TokenStream, start_token Token, offending_token Token, dead_end_configs: ATNConfigSet, ctx: ParserRuleContext) -> *NoViableAltException {
+//impl NoViableAltException {§//  fn new(&self, recognizer Parser, input TokenStream, start_token Token, offending_token Token, dead_end_configs: ATNConfigSet, ctx: ParserRuleContext) -> *NoViableAltException {
 //
 //  if ctx == nil {
 //    ctx = recognizer.GetParserRuleContext()
@@ -174,7 +174,7 @@
 //// This signifies any kind of mismatched input exceptions such as
 //// when the current input does not Match the expected token.
 ////
-//impl InputMisMatchException {§//  pub fn new(&self, recognizer: Parser) -> *InputMisMatchException {
+//impl InputMisMatchException {§//  fn new(&self, recognizer: Parser) -> *InputMisMatchException {
 //
 //  let i = new(InputMisMatchException);
 //  self.BaseRecognitionException = BaseRecognitionException::new("", recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
@@ -198,7 +198,7 @@
 //  predicate:      &str
 //}
 //
-//impl FailedPredicateException {§//  pub fn new(&self, recognizer Parser, predicate: &str, message: &str) -> *FailedPredicateException {
+//impl FailedPredicateException {§//  fn new(&self, recognizer Parser, predicate: &str, message: &str) -> *FailedPredicateException {
 //
 //  let f = new(FailedPredicateException);
 //
@@ -219,7 +219,7 @@
 //  return f
 //}
 //
-//pub fn format_message(&self, predicate, message: &str) -> &str {
+//fn format_message(&self, predicate, message: &str) -> &str {
 //  if message != "" {
 //    return message
 //  }
@@ -230,7 +230,7 @@
 //pub struct ParseCancellationException {
 //}
 //
-//impl ParseCancellationException {§//  pub fn new(&self, ) -> *ParseCancellationException {
+//impl ParseCancellationException {§//  fn new(&self, ) -> *ParseCancellationException {
 //  //  Error.call(this)
 //  //  Error.capture_stack_trace(this, ParseCancellationException)
 //  return new(ParseCancellationException)

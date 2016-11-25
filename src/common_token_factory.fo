@@ -21,7 +21,7 @@
 //  copy_text: bool
 //}
 //
-//impl CommonTokenFactory {§//  pub fn new(&self, copy_text: bool) -> *CommonTokenFactory {
+//impl CommonTokenFactory {§//  fn new(&self, copy_text: bool) -> *CommonTokenFactory {
 //  return &CommonTokenFactory{copyText: copy_text}
 //}
 //
@@ -44,7 +44,7 @@
 //  return t
 //}
 //
-//pub fn create_thin(&self, ttype: i32, text: &str) -> Token {
+//fn create_thin(&self, ttype: i32, text: &str) -> Token {
 //  let t = NewCommonToken(nil, ttype, TokenDefaultChannel, -1, -1);
 //  self.SetText(text)
 //

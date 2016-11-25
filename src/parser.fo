@@ -46,7 +46,7 @@
 //
 //// self.is all the parsing support code essentially most of it is error
 //// recovery stuff.//
-//impl BaseParser {§//  pub fn new(&self, input: TokenStream) -> *BaseParser {
+//impl BaseParser {§//  fn new(&self, input: TokenStream) -> *BaseParser {
 //
 //  let p = new(BaseParser);
 //
@@ -91,7 +91,7 @@
 //var bypass_alts_atn_cache = make(map[string]int)
 //
 //// reset the parser's state//
-//pub fn reset(&self, ) {
+//fn reset(&self, ) {
 //  if self.input != nil {
 //    self.input.Seek(0)
 //  }
@@ -270,7 +270,7 @@
 //}
 //
 //// Remove all parse listeners.
-//pub fn remove_parse_listeners(&self, ) {
+//fn remove_parse_listeners(&self, ) {
 //  self.parse_listeners = nil
 //}
 //
@@ -317,7 +317,7 @@
 //}
 //
 //// Tell our token source and error strategy about a Newway to create tokens.//
-//pub fn set_token_factory(&self, factory: TokenFactory) {
+//fn set_token_factory(&self, factory: TokenFactory) {
 //  self.input.GetTokenSource().set_token_factory(factory)
 //}
 //
@@ -357,7 +357,7 @@
 //// String id = self.Get("ID")
 //// </pre>
 //
-//pub fn compile_parse_tree_pattern(&self, pattern,: pattern_rule_index, lexer: Lexer) {
+//fn compile_parse_tree_pattern(&self, pattern,: pattern_rule_index, lexer: Lexer) {
 //
 //  panic("NewParseTreePatternMatcher not implemented!")
 //  //
@@ -443,7 +443,7 @@
 //  return o
 //}
 //
-//pub fn add_context_to_parse_tree(&self, ) {
+//fn add_context_to_parse_tree(&self, ) {
 //  // add current context to parent if we have a parent
 //  if self.ctx.GetParent() != nil {
 //    self.ctx.GetParent().(ParserRuleContext).AddChild(self.ctx)
@@ -569,7 +569,7 @@
 //  return precedence >= self.precedence_stack[len(self.precedence_stack)-1]
 //}
 //
-//pub fn in_context(&self, context: ParserRuleContext) -> bool {
+//fn in_context(&self, context: ParserRuleContext) -> bool {
 //  // TODO: useful in parser?
 //  return false
 //}

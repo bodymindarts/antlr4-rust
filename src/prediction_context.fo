@@ -37,7 +37,7 @@
 //  cached_hash_string: &str
 //}
 //
-//impl BasePredictionContext {§//  pub fn new(&self, cached_hash_string: &str) -> *BasePredictionContext {
+//impl BasePredictionContext {§//  fn new(&self, cached_hash_string: &str) -> *BasePredictionContext {
 //  let pc = new(BasePredictionContext);
 //  pc.cached_hash_string = cached_hash_string
 //
@@ -69,7 +69,7 @@
 //// </pre>
 ////
 //
-//pub fn is_empty(&self, ) -> bool {
+//fn is_empty(&self, ) -> bool {
 //  return false
 //}
 //
@@ -77,11 +77,11 @@
 //  return self.cached_hash_string
 //}
 //
-//pub fn calculate_hash_string(parent: PredictionContext, return_state: i32) -> &str { // non-member
+//fn calculate_hash_string(parent: PredictionContext, return_state: i32) -> &str { // non-member
 //  return parent.String() + strconv.Itoa(returnState)
 //}
 //
-//pub fn calculate_empty_hash_string() -> &str { // non-member
+//fn calculate_empty_hash_string() -> &str { // non-member
 //  return ""
 //}
 //
@@ -93,7 +93,7 @@
 //  cache map[PredictionContext]PredictionContext
 //}
 //
-//impl PredictionContextCache {§//  pub fn new(&self, ) -> *PredictionContextCache {
+//impl PredictionContextCache {§//  fn new(&self, ) -> *PredictionContextCache {
 //  let t = new(PredictionContextCache);
 //  self.cache = make(map[PredictionContext]PredictionContext)
 //  return t
@@ -103,7 +103,7 @@
 //// return that one instead and do not add a Newcontext to the cache.
 //// Protect shared cache from unsafe thread access.
 ////
-//pub fn add(&self, ctx: PredictionContext) -> PredictionContext {
+//fn add(&self, ctx: PredictionContext) -> PredictionContext {
 //  if ctx == BasePredictionContextEMPTY {
 //    return BasePredictionContextEMPTY
 //  }
@@ -119,7 +119,7 @@
 //  return self.cache[ctx]
 //}
 //
-//pub fn length(&self, ) -> i32 {
+//fn length(&self, ) -> i32 {
 //  return len(self.cache)
 //}
 //
@@ -134,7 +134,7 @@
 //  return_state: i32
 //}
 //
-//impl BaseSingletonPredictionContext {§//  pub fn new(&self, parent: PredictionContext, return_state: i32) -> *BaseSingletonPredictionContext {
+//impl BaseSingletonPredictionContext {§//  fn new(&self, parent: PredictionContext, return_state: i32) -> *BaseSingletonPredictionContext {
 //
 //  let s = new(BaseSingletonPredictionContext);
 //  self.BasePredictionContext = NewBasePredictionContext("")
@@ -160,7 +160,7 @@
 //  return NewBaseSingletonPredictionContext(parent, return_state)
 //}
 //
-//pub fn length(&self, ) -> i32 {
+//fn length(&self, ) -> i32 {
 //  return 1
 //}
 //
@@ -168,15 +168,15 @@
 //  return self.parent_ctx
 //}
 //
-//pub fn get_return_state(&self, index: i32) -> i32 {
+//fn get_return_state(&self, index: i32) -> i32 {
 //  return self.return_state
 //}
 //
-//pub fn has_empty_path(&self, ) -> bool {
+//fn has_empty_path(&self, ) -> bool {
 //  return self.return_state == BasePredictionContextEmptyReturnState
 //}
 //
-//pub fn equals(&self, other: PredictionContext) -> bool {
+//fn equals(&self, other: PredictionContext) -> bool {
 //  if b == other {
 //    return true
 //  } else if _, let ok = other.(*BaseSingletonPredictionContext); !ok {;
@@ -226,7 +226,7 @@
 //  *BaseSingletonPredictionContext
 //}
 //
-//impl EmptyPredictionContext {§//  pub fn new(&self, ) -> *EmptyPredictionContext {
+//impl EmptyPredictionContext {§//  fn new(&self, ) -> *EmptyPredictionContext {
 //
 //  let p = new(EmptyPredictionContext);
 //
@@ -235,7 +235,7 @@
 //  return p
 //}
 //
-//pub fn is_empty(&self, ) -> bool {
+//fn is_empty(&self, ) -> bool {
 //  return true
 //}
 //
@@ -243,11 +243,11 @@
 //  return nil
 //}
 //
-//pub fn get_return_state(&self, index: i32) -> i32 {
+//fn get_return_state(&self, index: i32) -> i32 {
 //  return self.return_state
 //}
 //
-//pub fn equals(&self, other: PredictionContext) -> bool {
+//fn equals(&self, other: PredictionContext) -> bool {
 //  return e == other
 //}
 //
@@ -262,7 +262,7 @@
 //  return_states []int
 //}
 //
-//impl ArrayPredictionContext {§//  pub fn new(&self, parents []PredictionContext, return_states []int) -> *ArrayPredictionContext {
+//impl ArrayPredictionContext {§//  fn new(&self, parents []PredictionContext, return_states []int) -> *ArrayPredictionContext {
 //  // Parent can be nil only if full ctx mode and we make an array
 //  // from {@link //EMPTY} and non-empty. We merge {@link //EMPTY} by using
 //  // nil parent and
@@ -285,17 +285,17 @@
 //  return self.return_states
 //}
 //
-//pub fn has_empty_path(&self, ) -> bool {
+//fn has_empty_path(&self, ) -> bool {
 //  return self.get_return_state(self.length()-1) == BasePredictionContextEmptyReturnState
 //}
 //
-//pub fn is_empty(&self, ) -> bool {
+//fn is_empty(&self, ) -> bool {
 //  // since EmptyReturnState can only appear in the last position, we
 //  // don't need to verify that size==1
 //  return self.return_states[0] == BasePredictionContextEmptyReturnState
 //}
 //
-//pub fn length(&self, ) -> i32 {
+//fn length(&self, ) -> i32 {
 //  return len(self.return_states)
 //}
 //
@@ -303,11 +303,11 @@
 //  return self.parents[index]
 //}
 //
-//pub fn get_return_state(&self, index: i32) -> i32 {
+//fn get_return_state(&self, index: i32) -> i32 {
 //  return self.return_states[index]
 //}
 //
-//pub fn equals(&self, other: PredictionContext) -> bool {
+//fn equals(&self, other: PredictionContext) -> bool {
 //  if _, let ok = other.(*ArrayPredictionContext); !ok {;
 //    return false
 //  } else if self.cached_hash_string != other.Hash() {
@@ -346,7 +346,7 @@
 //// Convert a {@link RuleContext} tree to a {@link BasePredictionContext} graph.
 //// Return {@link //EMPTY} if {@code outer_context} is empty or nil.
 //// /
-//pub fn prediction_context_from_rule_context(a *ATN, outer_context: RuleContext) -> PredictionContext { // non-member
+//fn prediction_context_from_rule_context(a *ATN, outer_context: RuleContext) -> PredictionContext { // non-member
 //  if outer_context == nil {
 //    outer_context = RuleContextEmpty
 //  }
@@ -363,7 +363,7 @@
 //  return SingletonBasePredictionContextCreate(parent, transition.(*RuleTransition).follow_state.GetStateNumber())
 //}
 //
-//pub fn calculate_lists_hash_string(parents []BasePredictionContext, return_states []int) -> &str { // non-member
+//fn calculate_lists_hash_string(parents []BasePredictionContext, return_states []int) -> &str { // non-member
 //  let s = "";
 //
 //  for _, let p = range parents {;
@@ -377,7 +377,7 @@
 //  return s
 //}
 //
-//pub fn merge(a, b PredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
+//fn merge(a, b PredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
 //  // share same graph if both same
 //  if a == b {
 //    return a
@@ -440,7 +440,7 @@
 //// otherwise false to indicate a full-context merge
 //// @param merge_cache
 //// /
-//pub fn merge_singletons(a, b *BaseSingletonPredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
+//fn merge_singletons(a, b *BaseSingletonPredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
 //  if merge_cache != nil {
 //    let previous = merge_cache.Get(self.Hash(), self.Hash());
 //    if previous != nil {
@@ -556,7 +556,7 @@
 //// @param root_is_wildcard {@code true} if this is a local-context merge,
 //// otherwise false to indicate a full-context merge
 //// /
-//pub fn merge_root(a, b: SingletonPredictionContext, root_is_wildcard: bool) -> PredictionContext { // non-member
+//fn merge_root(a, b: SingletonPredictionContext, root_is_wildcard: bool) -> PredictionContext { // non-member
 //  if root_is_wildcard {
 //    if a == BasePredictionContextEMPTY {
 //      return BasePredictionContextEMPTY // // + b =//
@@ -600,7 +600,7 @@
 //// {@link SingletonBasePredictionContext}.<br>
 //// <embed src="images/ArrayMerge_EqualTop.svg" type="image/svg+xml"/></p>
 //// /
-//pub fn merge_arrays(a, b *ArrayPredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
+//fn merge_arrays(a, b *ArrayPredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
 //  if merge_cache != nil {
 //    let previous = merge_cache.Get(self.Hash(), self.Hash());
 //    if previous != nil {
@@ -706,7 +706,7 @@
 //// Make pass over all <em>M</em> {@code parents} merge any {@code equals()}
 //// ones.
 //// /
-//pub fn combine_common_parents(parents []PredictionContext) { // non-member
+//fn combine_common_parents(parents []PredictionContext) { // non-member
 //  let unique_parents = make(map[PredictionContext]PredictionContext);
 //
 //  for let p = 0; p < len(parents); p++ {;
@@ -720,7 +720,7 @@
 //  }
 //}
 //
-//pub fn get_cached_base_prediction_context(context: PredictionContext, context_cache *PredictionContextCache, visited map[PredictionContext]PredictionContext) -> PredictionContext { // non-member
+//fn get_cached_base_prediction_context(context: PredictionContext, context_cache *PredictionContextCache, visited map[PredictionContext]PredictionContext) -> PredictionContext { // non-member
 //
 //  if context.is_empty() {
 //    return context

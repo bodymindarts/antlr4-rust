@@ -67,7 +67,7 @@
 //  transitions []Transition
 //}
 //
-//impl BaseATNState {§//  pub fn new(&self, ) -> *BaseATNState {
+//impl BaseATNState {§//  fn new(&self, ) -> *BaseATNState {
 //  return &BaseATNState{stateNumber: ATNStateInvalidStateNumber, state_type: ATNStateInvalidType}
 //}
 //
@@ -122,7 +122,7 @@
 //  return strconv.Itoa(as.state_number)
 //}
 //
-//pub fn equals(&self, other i32erface{}) -> bool {
+//fn equals(&self, other i32erface{}) -> bool {
 //  if ot, let ok = other.(ATNState); ok {;
 //    return as.state_number == ot.GetStateNumber()
 //  }
@@ -130,7 +130,7 @@
 //  return false
 //}
 //
-//pub fn is_non_greedy_exit_state(&self, ) -> bool {
+//fn is_non_greedy_exit_state(&self, ) -> bool {
 //  return false
 //}
 //
@@ -153,7 +153,7 @@
 //  *BaseATNState
 //}
 //
-//impl BasicState {§//  pub fn new(&self, ) -> *BasicState {
+//impl BasicState {§//  fn new(&self, ) -> *BasicState {
 //  let b = NewBaseATNState();
 //
 //  self.state_type = ATNStateBasic
@@ -177,23 +177,23 @@
 //  non_greedy: bool
 //}
 //
-//impl BaseDecisionState {§//  pub fn new(&self, ) -> *BaseDecisionState {
+//impl BaseDecisionState {§//  fn new(&self, ) -> *BaseDecisionState {
 //  return &BaseDecisionState{BaseATNState: NewBaseATNState(), decision: -1}
 //}
 //
-//pub fn get_decision(&self, ) -> i32 {
+//fn get_decision(&self, ) -> i32 {
 //  return self.decision
 //}
 //
-//pub fn set_decision(&self, b: i32) {
+//fn set_decision(&self, b: i32) {
 //  self.decision = b
 //}
 //
-//pub fn get_non_greedy(&self, ) -> bool {
+//fn get_non_greedy(&self, ) -> bool {
 //  return self.non_greedy
 //}
 //
-//pub fn set_non_greedy(&self, b: bool) {
+//fn set_non_greedy(&self, b: bool) {
 //  self.non_greedy = b
 //}
 //
@@ -210,15 +210,15 @@
 //  end_state: *BlockEndState
 //}
 //
-//impl BlockStartState {§//  pub fn new(&self, ) -> *BaseBlockStartState {
+//impl BlockStartState {§//  fn new(&self, ) -> *BaseBlockStartState {
 //  return &BaseBlockStartState{BaseDecisionState: NewBaseDecisionState()}
 //}
 //
-//pub fn get_end_state(&self, ) -> *BlockEndState {
+//fn get_end_state(&self, ) -> *BlockEndState {
 //  return self.end_state
 //}
 //
-//pub fn set_end_state(&self, b *BlockEndState) {
+//fn set_end_state(&self, b *BlockEndState) {
 //  self.end_state = b
 //}
 //
@@ -226,7 +226,7 @@
 //  *BaseBlockStartState
 //}
 //
-//impl BasicBlockStartState {§//  pub fn new(&self, ) -> *BasicBlockStartState {
+//impl BasicBlockStartState {§//  fn new(&self, ) -> *BasicBlockStartState {
 //  let b = NewBlockStartState();
 //
 //  self.state_type = ATNStateBlockStart
@@ -240,7 +240,7 @@
 //  start_state: ATNState
 //}
 //
-//impl BlockEndState {§//  pub fn new(&self, ) -> *BlockEndState {
+//impl BlockEndState {§//  fn new(&self, ) -> *BlockEndState {
 //  let b = NewBaseATNState();
 //
 //  self.state_type = ATNStateBlockEnd
@@ -256,7 +256,7 @@
 //  *BaseATNState
 //}
 //
-//impl RuleStopState {§//  pub fn new(&self, ) -> *RuleStopState {
+//impl RuleStopState {§//  fn new(&self, ) -> *RuleStopState {
 //  let b = NewBaseATNState();
 //
 //  self.state_type = ATNStateRuleStop
@@ -270,7 +270,7 @@
 //  is_precedence_rule: bool
 //}
 //
-//impl RuleStartState {§//  pub fn new(&self, ) -> *RuleStartState {
+//impl RuleStartState {§//  fn new(&self, ) -> *RuleStartState {
 //  let b = NewBaseATNState();
 //
 //  self.state_type = ATNStateRuleStart
@@ -284,7 +284,7 @@
 //  *BaseDecisionState
 //}
 //
-//impl PlusLoopbackState {§//  pub fn new(&self, ) -> *PlusLoopbackState {
+//impl PlusLoopbackState {§//  fn new(&self, ) -> *PlusLoopbackState {
 //  let b = NewBaseDecisionState();
 //
 //  self.state_type = ATNStatePlusLoopBack
@@ -301,7 +301,7 @@
 //  loop_back_state: ATNState
 //}
 //
-//impl PlusBlockStartState {§//  pub fn new(&self, ) -> *PlusBlockStartState {
+//impl PlusBlockStartState {§//  fn new(&self, ) -> *PlusBlockStartState {
 //  let b = NewBlockStartState();
 //
 //  self.state_type = ATNStatePlusBlockStart
@@ -314,7 +314,7 @@
 //  *BaseBlockStartState
 //}
 //
-//impl StarBlockStartState {§//  pub fn new(&self, ) -> *StarBlockStartState {
+//impl StarBlockStartState {§//  fn new(&self, ) -> *StarBlockStartState {
 //  let b = NewBlockStartState();
 //
 //  self.state_type = ATNStateStarBlockStart
@@ -326,7 +326,7 @@
 //  *BaseATNState
 //}
 //
-//impl StarLoopbackState {§//  pub fn new(&self, ) -> *StarLoopbackState {
+//impl StarLoopbackState {§//  fn new(&self, ) -> *StarLoopbackState {
 //  let b = NewBaseATNState();
 //
 //  self.state_type = ATNStateStarLoopBack
@@ -340,7 +340,7 @@
 //  precedence_rule_decision: bool
 //}
 //
-//impl StarLoopEntryState {§//  pub fn new(&self, ) -> *StarLoopEntryState {
+//impl StarLoopEntryState {§//  fn new(&self, ) -> *StarLoopEntryState {
 //  let b = NewBaseDecisionState();
 //
 //  self.state_type = ATNStateStarLoopEntry
@@ -355,7 +355,7 @@
 //  loop_back_state: ATNState
 //}
 //
-//impl LoopEndState {§//  pub fn new(&self, ) -> *LoopEndState {
+//impl LoopEndState {§//  fn new(&self, ) -> *LoopEndState {
 //  let b = NewBaseATNState();
 //
 //  self.state_type = ATNStateLoopEnd
@@ -368,7 +368,7 @@
 //  *BaseDecisionState
 //}
 //
-//impl TokensStartState {§//  pub fn new(&self, ) -> *TokensStartState {
+//impl TokensStartState {§//  fn new(&self, ) -> *TokensStartState {
 //  let b = NewBaseDecisionState();
 //
 //  self.state_type = ATNStateTokenStart

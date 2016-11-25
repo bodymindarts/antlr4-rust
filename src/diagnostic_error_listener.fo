@@ -29,7 +29,7 @@
 //  exact_only: bool
 //}
 //
-//impl DiagnosticErrorListener {§//  pub fn new(&self, exact_only: bool) -> *DiagnosticErrorListener {
+//impl DiagnosticErrorListener {§//  fn new(&self, exact_only: bool) -> *DiagnosticErrorListener {
 //
 //  let n = new(DiagnosticErrorListener);
 //
@@ -68,7 +68,7 @@
 //  recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
-//pub fn get_decision_description(&self, recognizer: Parser, dfa *DFA) -> &str {
+//fn get_decision_description(&self, recognizer: Parser, dfa *DFA) -> &str {
 //  let decision = dfa.decision;
 //  let rule_index = dfa.atn_start_state.GetRuleIndex();
 //
@@ -94,7 +94,7 @@
 //// @return Returns {@code ReportedAlts} if it is not {@code nil}, otherwise
 //// returns the set of alternatives represented in {@code configs}.
 ////
-//pub fn get_conflicting_alts(&self, ReportedAlts *BitSet, set: ATNConfigSet) -> *BitSet {
+//fn get_conflicting_alts(&self, ReportedAlts *BitSet, set: ATNConfigSet) -> *BitSet {
 //  if ReportedAlts != nil {
 //    return ReportedAlts
 //  }

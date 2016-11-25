@@ -46,7 +46,7 @@
 //  text:                   &str
 //}
 //
-//impl BaseLexer {§//  pub fn new(&self, input: CharStream) -> *BaseLexer {
+//impl BaseLexer {§//  fn new(&self, input: CharStream) -> *BaseLexer {
 //
 //  let lexer = new(BaseLexer);
 //
@@ -114,7 +114,7 @@
 //  LexerMaxCharValue        = '\uFFFE'
 //)
 //
-//pub fn reset(&self, ) {
+//fn reset(&self, ) {
 //  // wack Lexer state variables
 //  if self.input != nil {
 //    self.input.Seek(0) // rewind the input
@@ -146,7 +146,7 @@
 //  return self.GrammarFileName
 //}
 //
-//pub fn set_channel(&self, v: i32) {
+//fn set_channel(&self, v: i32) {
 //  self.channel = v
 //}
 //
@@ -154,7 +154,7 @@
 //  return self.factory
 //}
 //
-//pub fn set_token_factory(&self, f: TokenFactory) {
+//fn set_token_factory(&self, f: TokenFactory) {
 //  self.factory = f
 //}
 //
@@ -246,11 +246,11 @@
 //  self.thetype = LexerMore
 //}
 //
-//pub fn set_mode(&self, m: i32) {
+//fn set_mode(&self, m: i32) {
 //  self.mode = m
 //}
 //
-//pub fn push_mode(&self, m: i32) {
+//fn push_mode(&self, m: i32) {
 //  if LexerATNSimulatorDebug {
 //    fmt.Println("pushMode " + strconv.Itoa(m))
 //  }
@@ -258,7 +258,7 @@
 //  self.mode = m
 //}
 //
-//pub fn pop_mode(&self, ) -> i32 {
+//fn pop_mode(&self, ) -> i32 {
 //  if len(self.mode_stack) == 0 {
 //    panic("Empty Stack")
 //  }
@@ -270,11 +270,11 @@
 //  return self.mode
 //}
 //
-//pub fn input_stream(&self, ) -> CharStream {
+//fn input_stream(&self, ) -> CharStream {
 //  return self.input
 //}
 //
-//pub fn set_input_stream(&self, input: CharStream) {
+//fn set_input_stream(&self, input: CharStream) {
 //  self.input = nil
 //  self.token_factory_source_pair = &TokenSourceCharStreamPair{b, self.input}
 //  self.reset()
@@ -323,7 +323,7 @@
 //  return self.thetype
 //}
 //
-//pub fn set_type(&self, t: i32) {
+//fn set_type(&self, t: i32) {
 //  self.thetype = t
 //}
 //
@@ -353,7 +353,7 @@
 //// Return a list of all Token objects in input char stream.
 //// Forces load of all tokens. Does not include EOF token.
 //// /
-//pub fn get_all_tokens(&self, ) -> []Token {
+//fn get_all_tokens(&self, ) -> []Token {
 //  let vl = self.Virt;
 //  let tokens = make([]Token, 0);
 //  let t = vl.NextToken();
@@ -364,7 +364,7 @@
 //  return tokens
 //}
 //
-//pub fn notify_listeners(&self, e: RecognitionException) {
+//fn notify_listeners(&self, e: RecognitionException) {
 //  let start = self.TokenStartCharIndex;
 //  let stop = self.input.Index();
 //  let text = self.input.GetTextFromInterval(NewInterval(start, stop));
@@ -373,7 +373,7 @@
 //  listener.SyntaxError(b, nil, self.TokenStartLine, self.TokenStartColumn, msg, e)
 //}
 //
-//pub fn get_error_display_for_char(&self, c: rune) -> &str {
+//fn get_error_display_for_char(&self, c: rune) -> &str {
 //  if c == TokenEOF {
 //    return "<EOF>"
 //  } else if c == '\n' {
@@ -387,7 +387,7 @@
 //  }
 //}
 //
-//pub fn get_char_error_display(&self, c: rune) -> &str {
+//fn get_char_error_display(&self, c: rune) -> &str {
 //  return "'" + self.get_error_display_for_char(c) + "'"
 //}
 //

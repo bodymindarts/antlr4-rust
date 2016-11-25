@@ -11,7 +11,7 @@
 //  pred: SemanticContext
 //}
 //
-//impl PredPrediction {§//  pub fn new(&self, pred: SemanticContext, alt: i32) -> *PredPrediction {
+//impl PredPrediction {§//  fn new(&self, pred: SemanticContext, alt: i32) -> *PredPrediction {
 //  return &PredPrediction{alt: alt, pred: pred}
 //}
 //
@@ -78,7 +78,7 @@
 //  predicates []*PredPrediction
 //}
 //
-//impl DFAState {§//  pub fn new(&self, state_number: i32, configs: ATNConfigSet) -> *DFAState {
+//impl DFAState {§//  fn new(&self, state_number: i32, configs: ATNConfigSet) -> *DFAState {
 //  if configs == nil {
 //    configs = BaseATNConfigSet::new(false)
 //  }
@@ -103,7 +103,7 @@
 //  return alts
 //}
 //
-//pub fn set_prediction(&self, v: i32) {
+//fn set_prediction(&self, v: i32) {
 //  self.prediction = v
 //}
 //
@@ -118,7 +118,7 @@
 //// Cannot test the DFA state numbers here because in
 //// ParserATNSimulator.add_d_f_a_state we need to know if any other state exists that
 //// has d exact set of ATN configurations. The state_number is irrelevant.
-//pub fn equals(&self, other i32erface{}) -> bool {
+//fn equals(&self, other i32erface{}) -> bool {
 //  if d == other {
 //    return true
 //  } else if _, let ok = other.(*DFAState); !ok {;

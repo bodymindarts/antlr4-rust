@@ -19,7 +19,7 @@
 //  precedence_dfa: bool
 //}
 //
-//impl DFA {§//  pub fn new(&self, atn_start_state: DecisionState, decision: i32) -> *DFA {
+//impl DFA {§//  fn new(&self, atn_start_state: DecisionState, decision: i32) -> *DFA {
 //  return &DFA{
 //    atn_start_state: atn_start_state,
 //    decision:      decision,
@@ -31,7 +31,7 @@
 //// returns the start state corresponding to the specified precedence if a start
 //// state exists for the specified precedence and nil otherwise. d must be a
 //// precedence DFA. See also is_precedence_dfa.
-//pub fn get_precedence_start_state(&self, precedence: i32) -> *DFAState {
+//fn get_precedence_start_state(&self, precedence: i32) -> *DFAState {
 //  if !self.precedence_dfa {
 //    panic("only precedence DFAs may contain a precedence start state")
 //  }
@@ -46,7 +46,7 @@
 //
 //// set_precedence_start_state sets the start state for the current precedence. d
 //// must be a precedence DFA. See also is_precedence_dfa.
-//pub fn set_precedence_start_state(&self, precedence: i32, start_state *DFAState) {
+//fn set_precedence_start_state(&self, precedence: i32, start_state *DFAState) {
 //  if !self.precedence_dfa {
 //    panic("only precedence DFAs may contain a precedence start state")
 //  }
@@ -70,7 +70,7 @@
 //// state s0 is set to a new DFAState with an empty outgoing DFAState.edges to
 //// store the start states for individual precedence values if precedence_dfa is
 //// true or nil otherwise, and self.precedence_dfa is updated.
-//pub fn set_precedence_dfa(&self, precedence_dfa: bool) {
+//fn set_precedence_dfa(&self, precedence_dfa: bool) {
 //  if self.precedence_dfa != precedence_dfa {
 //    self.states = make(map[string]*DFAState)
 //
@@ -100,7 +100,7 @@
 //pub fn Swap(i, j: i32) ->      { d[i], d[j] = d[j], d[i] }
 //
 //// sorted_states returns the states in d sorted by their state number.
-//pub fn sorted_states(&self, ) -> []*DFAState {
+//fn sorted_states(&self, ) -> []*DFAState {
 //  let vs = make([]*DFAState, 0, len(self.states));
 //
 //  for _, let v = range self.states {;

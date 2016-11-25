@@ -60,7 +60,7 @@
 //  is_ctx_dependent: bool
 //}
 //
-//impl Predicate {§//  pub fn new(&self, rule_index, pred_index: i32, is_ctx_dependent: bool) -> *Predicate {
+//impl Predicate {§//  fn new(&self, rule_index, pred_index: i32, is_ctx_dependent: bool) -> *Predicate {
 //  let p = new(Predicate);
 //
 //  self.rule_index = rule_index
@@ -74,11 +74,11 @@
 //
 //var SemanticContextNone SemanticContext = NewPredicate(-1, -1, false)
 //
-//pub fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
+//fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
 //  return p
 //}
 //
-//pub fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
+//fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
 //
 //  var localctx RuleContext
 //
@@ -93,7 +93,7 @@
 //  return strconv.Itoa(self.rule_index) + "/" + strconv.Itoa(self.pred_index) + "/" + fmt.Sprint(self.is_ctx_dependent)
 //}
 //
-//pub fn equals(&self, other i32erface{}) -> bool {
+//fn equals(&self, other i32erface{}) -> bool {
 //  if p == other {
 //    return true
 //  } else if _, let ok = other.(*Predicate); !ok {;
@@ -113,7 +113,7 @@
 //  precedence: i32
 //}
 //
-//impl PrecedencePredicate {§//  pub fn new(&self, precedence: i32) -> *PrecedencePredicate {
+//impl PrecedencePredicate {§//  fn new(&self, precedence: i32) -> *PrecedencePredicate {
 //
 //  let p = new(PrecedencePredicate);
 //  self.precedence = precedence
@@ -121,11 +121,11 @@
 //  return p
 //}
 //
-//pub fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
+//fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
 //  return parser.Precpred(outerContext, self.precedence)
 //}
 //
-//pub fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
+//fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
 //  if parser.Precpred(outerContext, self.precedence) {
 //    return SemanticContextNone
 //  }
@@ -133,7 +133,7 @@
 //  return nil
 //}
 //
-//pub fn compare_to(&self, other *PrecedencePredicate) -> i32 {
+//fn compare_to(&self, other *PrecedencePredicate) -> i32 {
 //  return self.precedence - other.precedence
 //}
 //
@@ -141,7 +141,7 @@
 //  return "31"
 //}
 //
-//pub fn equals(&self, other i32erface{}) -> bool {
+//fn equals(&self, other i32erface{}) -> bool {
 //  if p == other {
 //    return true
 //  } else if _, let ok = other.(*PrecedencePredicate); !ok {;
@@ -174,7 +174,7 @@
 //  opnds []SemanticContext
 //}
 //
-//impl AND {§//  pub fn new(&self, a, b: SemanticContext) -> *AND {
+//impl AND {§//  fn new(&self, a, b: SemanticContext) -> *AND {
 //
 //  let operands = NewSet(nil, nil);
 //  if aa, let ok = a.(*AND); ok {;
@@ -218,7 +218,7 @@
 //  return and
 //}
 //
-//pub fn equals(&self, other i32erface{}) -> bool {
+//fn equals(&self, other i32erface{}) -> bool {
 //  if a == other {
 //    return true
 //  } else if _, let ok = other.(*AND); !ok {;
@@ -244,7 +244,7 @@
 //// The evaluation of predicates by a context is short-circuiting, but
 //// unordered.</p>
 ////
-//pub fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
+//fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
 //  for let i = 0; i < len(self.opnds); i++ {;
 //    if !self.opnds[i].evaluate(parser, outer_context) {
 //      return false
@@ -253,7 +253,7 @@
 //  return true
 //}
 //
-//pub fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
+//fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
 //  let differs = false;
 //  let operands = make([]SemanticContext, 0);
 //
@@ -314,7 +314,7 @@
 //  opnds []SemanticContext
 //}
 //
-//impl OR {§//  pub fn new(&self, a, b: SemanticContext) -> *OR {
+//impl OR {§//  fn new(&self, a, b: SemanticContext) -> *OR {
 //
 //  let operands = NewSet(nil, nil);
 //  if aa, let ok = a.(*OR); ok {;
@@ -359,7 +359,7 @@
 //  return o
 //}
 //
-//pub fn equals(&self, other i32erface{}) -> bool {
+//fn equals(&self, other i32erface{}) -> bool {
 //  if o == other {
 //    return true
 //  } else if _, let ok = other.(*OR); !ok {;
@@ -382,7 +382,7 @@
 //// The evaluation of predicates by o context is short-circuiting, but
 //// unordered.</p>
 ////
-//pub fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
+//fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
 //  for let i = 0; i < len(self.opnds); i++ {;
 //    if self.opnds[i].evaluate(parser, outer_context) {
 //      return true
@@ -391,7 +391,7 @@
 //  return false
 //}
 //
-//pub fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
+//fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
 //  let differs = false;
 //  let operands = make([]SemanticContext, 0);
 //  for let i = 0; i < len(self.opnds); i++ {;

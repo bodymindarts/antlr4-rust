@@ -42,7 +42,7 @@
 //  RuleIndex:     i32
 //}
 //
-//impl BaseRuleContext {§//  pub fn new(&self, parent: RuleContext, invoking_state: i32) -> *BaseRuleContext {
+//impl BaseRuleContext {§//  fn new(&self, parent: RuleContext, invoking_state: i32) -> *BaseRuleContext {
 //
 //  let rn = new(BaseRuleContext);
 //

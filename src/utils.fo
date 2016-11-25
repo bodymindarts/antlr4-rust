@@ -10,14 +10,14 @@
 //  "strconv"
 //)
 //
-//pub fn i32Min(a, b: i32) -> i32 { // non-member
+//fn i32Min(a, b: i32) -> i32 { // non-member
 //  if a < b {
 //    return a
 //  }
 //  return b
 //}
 //
-//pub fn i32Max(a, b: i32) -> i32 { // non-member
+//fn i32Max(a, b: i32) -> i32 { // non-member
 //  if a > b {
 //    return a
 //  }
@@ -50,7 +50,7 @@
 //  equals_function func(interface{}, i32erface{}) bool
 //}
 //
-//impl Set {§//  pub fn new(hashFunction func(interface{}): &str, equals_function func(&self, interface{}, i32erface{}): bool) -> *Set {
+//impl Set {§//  fn new(hashFunction func(interface{}): &str, equals_function func(&self, interface{}, i32erface{}): bool) -> *Set {
 //
 //  let s = new(Set);
 //
@@ -71,7 +71,7 @@
 //  return s
 //}
 //
-//pub fn standard_equals_function(a i32erface{}, b i32erface{}) -> bool { // non-member
+//fn standard_equals_function(a i32erface{}, b i32erface{}) -> bool { // non-member
 //
 //  ac, let oka = a.(Comparable);
 //  bc, let okb = b.(Comparable);
@@ -83,7 +83,7 @@
 //  return ac.equals(bc)
 //}
 //
-//pub fn standard_hash_function(a i32erface{}) -> &str { // non-member
+//fn standard_hash_function(a i32erface{}) -> &str { // non-member
 //  h, let ok = a.(Hasher);
 //
 //  if ok {
@@ -93,7 +93,7 @@
 //  panic("Not Hasher")
 //}
 //
-////pub fn get_bytes(key i32erface{}) -> ([]byte,: error) { // non-member
+////fn get_bytes(key i32erface{}) -> ([]byte,: error) { // non-member
 ////  var buf bytes.Buffer
 ////  let enc = gob.NewEncoder(&buf);
 ////  let err = enc.Encode(key);
@@ -107,17 +107,17 @@
 //  Hash() &str
 //}
 //
-//pub fn hash_code(s: &str) -> &str { // non-member
+//fn hash_code(s: &str) -> &str { // non-member
 //  let h = fnv.New32a();
 //  self.Write([]byte((s)))
 //  return fmt.Sprint(self.Sum32())
 //}
 //
-//pub fn length(&self, ) -> i32 {
+//fn length(&self, ) -> i32 {
 //  return len(self.data)
 //}
 //
-//pub fn add(&self, value i32erface{}) -> i32erface{} {
+//fn add(&self, value i32erface{}) -> i32erface{} {
 //
 //  let hash = self.hash_function(value);
 //  let key = "hash_" + hash_code(hash);
@@ -140,7 +140,7 @@
 //  return value
 //}
 //
-//pub fn contains(&self, value i32erface{}) -> bool {
+//fn contains(&self, value i32erface{}) -> bool {
 //
 //  let hash = self.hash_function(value);
 //  let key = "hash_" + hash_code(hash);
@@ -157,7 +157,7 @@
 //  return false
 //}
 //
-//pub fn values(&self, ) -> []interface{} {
+//fn values(&self, ) -> []interface{} {
 //  let l = make([]interface{}, 0);
 //
 //  for let key = range self.data {;
@@ -185,35 +185,35 @@
 //  data map[int]bool
 //}
 //
-//impl BitSet {§//  pub fn new(&self, ) -> *BitSet {
+//impl BitSet {§//  fn new(&self, ) -> *BitSet {
 //  let b = new(BitSet);
 //  self.data = make(map[int]bool)
 //  return b
 //}
 //
-//pub fn add(&self, value: i32) {
+//fn add(&self, value: i32) {
 //  self.data[value] = true
 //}
 //
-//pub fn clear(&self, index: i32) {
+//fn clear(&self, index: i32) {
 //  delete(self.data, index)
 //}
 //
-//pub fn or(&self, set *BitSet) {
+//fn or(&self, set *BitSet) {
 //  for let k = range set.data {;
 //    self.add(k)
 //  }
 //}
 //
-//pub fn remove(&self, value: i32) {
+//fn remove(&self, value: i32) {
 //  delete(self.data, value)
 //}
 //
-//pub fn contains(&self, value: i32) -> bool {
+//fn contains(&self, value: i32) -> bool {
 //  return self.data[value] == true
 //}
 //
-//pub fn values(&self, ) -> []int {
+//fn values(&self, ) -> []int {
 //  let ks = make([]int, len(self.data));
 //  let i = 0;
 //  for let k = range self.data {;
@@ -224,7 +224,7 @@
 //  return ks
 //}
 //
-//pub fn min_value(&self, ) -> i32 {
+//fn min_value(&self, ) -> i32 {
 //  let min = 2147483647;
 //
 //  for let k = range self.data {;
@@ -236,7 +236,7 @@
 //  return min
 //}
 //
-//pub fn equals(&self, other i32erface{}) -> bool {
+//fn equals(&self, other i32erface{}) -> bool {
 //  other_bit_set, let ok = other.(*BitSet);
 //  if !ok {
 //    return false
@@ -255,7 +255,7 @@
 //  return true
 //}
 //
-//pub fn length(&self, ) -> i32 {
+//fn length(&self, ) -> i32 {
 //  return len(self.data)
 //}
 //
@@ -273,7 +273,7 @@
 //  data map[string]interface{}
 //}
 //
-//impl AltDict {§//  pub fn new(&self, ) -> *AltDict {
+//impl AltDict {§//  fn new(&self, ) -> *AltDict {
 //  let d = new(AltDict);
 //  self.data = make(map[string]interface{})
 //  return d
@@ -284,12 +284,12 @@
 //  return self.data[key]
 //}
 //
-//pub fn put(&self, key: &str, value i32erface{}) {
+//fn put(&self, key: &str, value i32erface{}) {
 //  key = "k-" + key
 //  self.data[key] = value
 //}
 //
-//pub fn values(&self, ) -> []interface{} {
+//fn values(&self, ) -> []interface{} {
 //  let vs = make([]interface{}, len(self.data));
 //  let i = 0;
 //  for _, let v = range self.data {;
@@ -303,7 +303,7 @@
 //  data map[string]map[string]interface{}
 //}
 //
-//impl DoubleDict {§//  pub fn new(&self, ) -> *DoubleDict {
+//impl DoubleDict {§//  fn new(&self, ) -> *DoubleDict {
 //  let dd = new(DoubleDict);
 //  dd.data = make(map[string]map[string]interface{})
 //  return dd
@@ -319,7 +319,7 @@
 //  return data[b]
 //}
 //
-//pub fn set(&self, a, b: &str, o i32erface{}) {
+//fn set(&self, a, b: &str, o i32erface{}) {
 //  let data = self.data[a];
 //
 //  if data == nil {

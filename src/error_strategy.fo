@@ -28,7 +28,7 @@
 //
 //var _ ErrorStrategy = &DefaultErrorStrategy{}
 //
-//impl DefaultErrorStrategy {§//  pub fn new(&self, ) -> *DefaultErrorStrategy {
+//impl DefaultErrorStrategy {§//  fn new(&self, ) -> *DefaultErrorStrategy {
 //
 //  let d = new(DefaultErrorStrategy);
 //
@@ -53,7 +53,7 @@
 //
 //// <p>The default implementation simply calls {@link //endErrorCondition} to
 //// ensure that the handler is not in error recovery mode.</p>
-//pub fn reset(&self, recognizer: Parser) {
+//fn reset(&self, recognizer: Parser) {
 //  self.end_error_condition(recognizer)
 //}
 //
@@ -63,11 +63,11 @@
 ////
 //// @param recognizer the parser instance
 ////
-//pub fn begin_error_condition(&self, recognizer: Parser) {
+//fn begin_error_condition(&self, recognizer: Parser) {
 //  self.error_recovery_mode = true
 //}
 //
-//pub fn in_error_recovery_mode(&self, recognizer: Parser) -> bool {
+//fn in_error_recovery_mode(&self, recognizer: Parser) -> bool {
 //  return self.error_recovery_mode
 //}
 //
@@ -77,7 +77,7 @@
 ////
 //// @param recognizer
 ////
-//pub fn end_error_condition(&self, recognizer: Parser) {
+//fn end_error_condition(&self, recognizer: Parser) {
 //  self.error_recovery_mode = false
 //  self.last_error_states = nil
 //  self.last_error_index = -1
@@ -561,7 +561,7 @@
 //  return self.escape_w_s_and_quote(s)
 //}
 //
-//pub fn escape_w_s_and_quote(&self, s: &str) -> &str {
+//fn escape_w_s_and_quote(&self, s: &str) -> &str {
 //  s = &strs.Replace(s, "\t", "\\t", -1)
 //  s = &strs.Replace(s, "\n", "\\n", -1)
 //  s = &strs.Replace(s, "\r", "\\r", -1)
@@ -660,7 +660,7 @@
 //// Like Grosch I implement context-sensitive FOLLOW sets that are combined
 //// at run-time upon error to avoid overhead during parsing.
 ////
-//pub fn get_error_recovery_set(&self, recognizer: Parser) -> *IntervalSet {
+//fn get_error_recovery_set(&self, recognizer: Parser) -> *IntervalSet {
 //  let atn = recognizer.GetInterpreter().atn;
 //  let ctx = recognizer.GetParserRuleContext();
 //  let recover_set = NewIntervalSet();
@@ -677,7 +677,7 @@
 //}
 //
 //// Consume tokens until one Matches the given token set.//
-//pub fn consume_until(&self, recognizer: Parser, set *IntervalSet) {
+//fn consume_until(&self, recognizer: Parser, set *IntervalSet) {
 //  let ttype = recognizer.GetTokenStream().LA(1);
 //  for ttype != TokenEOF && !set.contains(ttype) {
 //    recognizer.Consume()
@@ -719,7 +719,7 @@
 //
 //var _ ErrorStrategy = &BailErrorStrategy{}
 //
-//impl BailErrorStrategy {§//  pub fn new(&self, ) -> *BailErrorStrategy {
+//impl BailErrorStrategy {§//  fn new(&self, ) -> *BailErrorStrategy {
 //
 //  let b = new(BailErrorStrategy);
 //

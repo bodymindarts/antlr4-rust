@@ -34,7 +34,7 @@
 //  children    []Tree
 //}
 //
-//impl BaseParserRuleContext {§//  pub fn new(&self, parent: ParserRuleContext, invoking_state_number: i32) -> *BaseParserRuleContext {
+//impl BaseParserRuleContext {§//  fn new(&self, parent: ParserRuleContext, invoking_state_number: i32) -> *BaseParserRuleContext {
 //  let prc = new(BaseParserRuleContext);
 //
 //  prc.BaseRuleContext = NewBaseRuleContext(parent, invoking_state_number)
@@ -94,7 +94,7 @@
 //}
 //
 //// * Does not set parent link other add methods do that///
-//pub fn add_terminal_node_child(&self, child: TerminalNode) -> TerminalNode {
+//fn add_terminal_node_child(&self, child: TerminalNode) -> TerminalNode {
 //  if prc.children == nil {
 //    prc.children = make([]Tree, 0)
 //  }
@@ -237,7 +237,7 @@
 //  return prc
 //}
 //
-//pub fn get_child(&self, ctx_type reflect.Type, i: i32) -> RuleContext {
+//fn get_child(&self, ctx_type reflect.Type, i: i32) -> RuleContext {
 //  if prc.children == nil || i < 0 || i >= len(prc.children) {
 //    return nil
 //  }
@@ -346,7 +346,7 @@
 //  *BaseParserRuleContext
 //}
 //
-//impl BaseInterpreterRuleContext {§//  pub fn new(&self, parent BaseInterpreterRuleContext,: invoking_state_number, rule_index: i32) -> *BaseInterpreterRuleContext {
+//impl BaseInterpreterRuleContext {§//  fn new(&self, parent BaseInterpreterRuleContext,: invoking_state_number, rule_index: i32) -> *BaseInterpreterRuleContext {
 //
 //  let prc = new(BaseInterpreterRuleContext);
 //

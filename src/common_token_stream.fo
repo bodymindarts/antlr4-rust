@@ -40,7 +40,7 @@
 //  tokens []Token
 //}
 //
-//impl CommonTokenStream {§//  pub fn new(&self, lexer: Lexer, channel: i32) -> *CommonTokenStream {
+//impl CommonTokenStream {§//  fn new(&self, lexer: Lexer, channel: i32) -> *CommonTokenStream {
 //  return &CommonTokenStream{
 //    channel:     channel,
 //    index:       -1,
@@ -59,7 +59,7 @@
 //
 //pub fn Release(marker: i32) {}
 //
-//pub fn reset(&self, ) {
+//fn reset(&self, ) {
 //  self.Seek(0)
 //}
 //
@@ -115,7 +115,7 @@
 //
 //// fetch adds n elements to buffer and returns the actual number of elements
 //// added to the buffer.
-//pub fn fetch(&self, n: i32) -> i32 {
+//fn fetch(&self, n: i32) -> i32 {
 //  if self.fetched_e_o_f {
 //    return 0
 //  }
@@ -169,13 +169,13 @@
 //  return self.LT(i).GetTokenType()
 //}
 //
-//pub fn lazy_init(&self, ) {
+//fn lazy_init(&self, ) {
 //  if self.index == -1 {
 //    self.setup()
 //  }
 //}
 //
-//pub fn setup(&self, ) {
+//fn setup(&self, ) {
 //  self.Sync(0)
 //  self.index = self.adjust_seek_index(0)
 //}
@@ -219,7 +219,7 @@
 //// previous_token_on_channel returns the index of the previous token on channel
 //// given a starting index. Returns i if tokens[i] is on channel. Returns -1 if
 //// there are no tokens on channel between i and 0.
-//pub fn previous_token_on_channel(&self, i, channel: i32) -> i32 {
+//fn previous_token_on_channel(&self, i, channel: i32) -> i32 {
 //  for i >= 0 && self.tokens[i].GetChannel() != channel {
 //    i--
 //  }
@@ -230,7 +230,7 @@
 //// get_hidden_tokens_to_right collects all tokens on a specified channel to the
 //// right of the current token up until we see a token on DEFAULT_TOKEN_CHANNEL
 //// or EOF. If channel is -1, it finds any non-default channel token.
-//pub fn get_hidden_tokens_to_right(&self, token_index, channel: i32) -> []Token {
+//fn get_hidden_tokens_to_right(&self, token_index, channel: i32) -> []Token {
 //  self.lazy_init()
 //
 //  if token_index < 0 || token_index >= len(self.tokens) {
@@ -255,7 +255,7 @@
 //// get_hidden_tokens_to_left collects all tokens on channel to the left of the
 //// current token until we see a token on DEFAULT_TOKEN_CHANNEL. If channel is
 //// -1, it finds any non default channel token.
-//pub fn get_hidden_tokens_to_left(&self, token_index, channel: i32) -> []Token {
+//fn get_hidden_tokens_to_left(&self, token_index, channel: i32) -> []Token {
 //  self.lazy_init()
 //
 //  if token_index < 0 || token_index >= len(self.tokens) {
@@ -275,7 +275,7 @@
 //  return self.filter_for_channel(from, to, channel)
 //}
 //
-//pub fn filter_for_channel(&self, left,: right, channel: i32) -> []Token {
+//fn filter_for_channel(&self, left,: right, channel: i32) -> []Token {
 //  let hidden = make([]Token, 0);
 //
 //  for let i = left; i < right+1; i++ {;
@@ -368,7 +368,7 @@
 //  }
 //}
 //
-//pub fn adjust_seek_index(&self, i: i32) -> i32 {
+//fn adjust_seek_index(&self, i: i32) -> i32 {
 //  return self.NextTokenOnChannel(i, self.channel)
 //}
 //
@@ -422,7 +422,7 @@
 //}
 //
 //// get_number_of_on_channel_tokens counts EOF once.
-//pub fn get_number_of_on_channel_tokens(&self, ) -> i32 {
+//fn get_number_of_on_channel_tokens(&self, ) -> i32 {
 //  var n i32
 //
 //  self.Fill()

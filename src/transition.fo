@@ -31,7 +31,7 @@
 //  serialization_type: i32
 //}
 //
-//impl BaseTransition {§//  pub fn new(&self, target: ATNState) -> *BaseTransition {
+//impl BaseTransition {§//  fn new(&self, target: ATNState) -> *BaseTransition {
 //
 //  if target == nil {
 //    panic("target cannot be nil.")
@@ -47,23 +47,23 @@
 //  return t
 //}
 //
-//pub fn get_target(&self, ) -> ATNState {
+//fn get_target(&self, ) -> ATNState {
 //  return self.target
 //}
 //
-//pub fn set_target(&self, s: ATNState) {
+//fn set_target(&self, s: ATNState) {
 //  self.target = s
 //}
 //
-//pub fn get_is_epsilon(&self, ) -> bool {
+//fn get_is_epsilon(&self, ) -> bool {
 //  return self.is_epsilon
 //}
 //
-//pub fn get_label(&self, ) -> *IntervalSet {
+//fn get_label(&self, ) -> *IntervalSet {
 //  return self.interval_set
 //}
 //
-//pub fn get_serialization_type(&self, ) -> i32 {
+//fn get_serialization_type(&self, ) -> i32 {
 //  return self.serialization_type
 //}
 //
@@ -127,7 +127,7 @@
 //  *BaseTransition
 //}
 //
-//impl AtomTransition {§//  pub fn new(&self, target: ATNState, i32ervalSet: i32) -> *AtomTransition {
+//impl AtomTransition {§//  fn new(&self, target: ATNState, i32ervalSet: i32) -> *AtomTransition {
 //
 //  let t = new(AtomTransition);
 //  self.BaseTransition = NewBaseTransition(target)
@@ -139,7 +139,7 @@
 //  return t
 //}
 //
-//pub fn make_label(&self, ) -> *IntervalSet {
+//fn make_label(&self, ) -> *IntervalSet {
 //  let s = NewIntervalSet();
 //  self.add_one(self.label)
 //  return s
@@ -160,7 +160,7 @@
 //  rule_index, precedence i32
 //}
 //
-//impl RuleTransition {§//  pub fn new(&self, rule_start ATNState, rule_index, precedence: i32, follow_state: ATNState) -> *RuleTransition {
+//impl RuleTransition {§//  fn new(&self, rule_start ATNState, rule_index, precedence: i32, follow_state: ATNState) -> *RuleTransition {
 //
 //  let t = new(RuleTransition);
 //  self.BaseTransition = NewBaseTransition(ruleStart)
@@ -184,7 +184,7 @@
 //  outermost_precedence_return: i32
 //}
 //
-//impl EpsilonTransition {§//  pub fn new(&self, target: ATNState, outermost_precedence_return: i32) -> *EpsilonTransition {
+//impl EpsilonTransition {§//  fn new(&self, target: ATNState, outermost_precedence_return: i32) -> *EpsilonTransition {
 //
 //  let t = new(EpsilonTransition);
 //  self.BaseTransition = NewBaseTransition(target)
@@ -209,7 +209,7 @@
 //  start, stop i32
 //}
 //
-//impl RangeTransition {§//  pub fn new(&self, target ATNState,: start, stop: i32) -> *RangeTransition {
+//impl RangeTransition {§//  fn new(&self, target ATNState,: start, stop: i32) -> *RangeTransition {
 //
 //  let t = new(RangeTransition);
 //  self.BaseTransition = NewBaseTransition(target)
@@ -221,7 +221,7 @@
 //  return t
 //}
 //
-//pub fn make_label(&self, ) -> *IntervalSet {
+//fn make_label(&self, ) -> *IntervalSet {
 //  let s = NewIntervalSet();
 //  self.add_range(self.start, self.stop)
 //  return s
@@ -244,7 +244,7 @@
 //  *BaseTransition
 //}
 //
-//impl BasePredicateTransition {§//  pub fn new(&self, target: ATNState) -> *BaseAbstractPredicateTransition {
+//impl BasePredicateTransition {§//  fn new(&self, target: ATNState) -> *BaseAbstractPredicateTransition {
 //
 //  let t = new(BaseAbstractPredicateTransition);
 //  self.BaseTransition = NewBaseTransition(target)
@@ -261,7 +261,7 @@
 //  rule_index, pred_index i32
 //}
 //
-//impl PredicateTransition {§//  pub fn new(&self, target ATNState, rule_index, pred_index: i32, is_ctx_dependent: bool) -> *PredicateTransition {
+//impl PredicateTransition {§//  fn new(&self, target ATNState, rule_index, pred_index: i32, is_ctx_dependent: bool) -> *PredicateTransition {
 //
 //  let t = new(PredicateTransition);
 //  self.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
@@ -278,7 +278,7 @@
 //  return false
 //}
 //
-//pub fn get_predicate(&self, ) -> *Predicate {
+//fn get_predicate(&self, ) -> *Predicate {
 //  return NewPredicate(self.rule_index, self.pred_index, self.is_ctx_dependent)
 //}
 //
@@ -293,7 +293,7 @@
 //  rule_index, action_index, pred_index i32
 //}
 //
-//impl ActionTransition {§//  pub fn new(&self, target ATNState, rule_index, action_index: i32, is_ctx_dependent: bool) -> *ActionTransition {
+//impl ActionTransition {§//  fn new(&self, target ATNState, rule_index, action_index: i32, is_ctx_dependent: bool) -> *ActionTransition {
 //
 //  let t = new(ActionTransition);
 //  self.BaseTransition = NewBaseTransition(target)
@@ -318,7 +318,7 @@
 //  *BaseTransition
 //}
 //
-//impl SetTransition {§//  pub fn new(&self, target: ATNState, set *IntervalSet) -> *SetTransition {
+//impl SetTransition {§//  fn new(&self, target: ATNState, set *IntervalSet) -> *SetTransition {
 //
 //  let t = new(SetTransition);
 //  self.BaseTransition = NewBaseTransition(target)
@@ -346,7 +346,7 @@
 //  *SetTransition
 //}
 //
-//impl NotSetTransition {§//  pub fn new(&self, target: ATNState, set *IntervalSet) -> *NotSetTransition {
+//impl NotSetTransition {§//  fn new(&self, target: ATNState, set *IntervalSet) -> *NotSetTransition {
 //
 //  let t = new(NotSetTransition);
 //
@@ -369,7 +369,7 @@
 //  *BaseTransition
 //}
 //
-//impl WildcardTransition {§//  pub fn new(&self, target: ATNState) -> *WildcardTransition {
+//impl WildcardTransition {§//  fn new(&self, target: ATNState) -> *WildcardTransition {
 //
 //  let t = new(WildcardTransition);
 //  self.BaseTransition = NewBaseTransition(target)
@@ -392,7 +392,7 @@
 //  precedence: i32
 //}
 //
-//impl PrecedencePredicateTransition {§//  pub fn new(&self, target: ATNState, precedence: i32) -> *PrecedencePredicateTransition {
+//impl PrecedencePredicateTransition {§//  fn new(&self, target: ATNState, precedence: i32) -> *PrecedencePredicateTransition {
 //
 //  let t = new(PrecedencePredicateTransition);
 //  self.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
@@ -408,7 +408,7 @@
 //  return false
 //}
 //
-//pub fn get_predicate(&self, ) -> *PrecedencePredicate {
+//fn get_predicate(&self, ) -> *PrecedencePredicate {
 //  return NewPrecedencePredicate(self.precedence)
 //}
 //

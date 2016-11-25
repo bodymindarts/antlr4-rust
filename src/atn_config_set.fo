@@ -88,7 +88,7 @@
 //  unique_alt: i32
 //}
 //
-//impl BaseATNConfigSet {§//  pub fn new(&self, full_ctx: bool) -> *BaseATNConfigSet {
+//impl BaseATNConfigSet {§//  fn new(&self, full_ctx: bool) -> *BaseATNConfigSet {
 //  return &BaseATNConfigSet{
 //    cached_hash_string: "-1",
 //    config_lookup:     NewSet(hashATNConfig, equal_a_t_n_configs),
@@ -232,7 +232,7 @@
 //  return self.hash_configs()
 //}
 //
-//pub fn hash_configs(&self, ) -> &str {
+//fn hash_configs(&self, ) -> &str {
 //  let s = "";
 //
 //  for _, let c = range self.configs {;
@@ -352,7 +352,7 @@
 //  *BaseATNConfigSet
 //}
 //
-//impl OrderedATNConfigSet {§//  pub fn new(&self, ) -> *OrderedATNConfigSet {
+//impl OrderedATNConfigSet {§//  fn new(&self, ) -> *OrderedATNConfigSet {
 //  let b = NewBaseATNConfigSet(false);
 //
 //  self.config_lookup = Set::new(nil, nil)
@@ -360,11 +360,11 @@
 //  return &OrderedATNConfigSet{BaseATNConfigSet: b}
 //}
 //
-//pub fn hash_a_t_n_config(c i32erface{}) -> &str { // non-member
+//fn hash_a_t_n_config(c i32erface{}) -> &str { // non-member
 //  return c.(ATNConfig).short_hash()
 //}
 //
-//pub fn equal_a_t_n_configs(a, b i32erface{}) -> bool { // non-member
+//fn equal_a_t_n_configs(a, b i32erface{}) -> bool { // non-member
 //  if a == nil || b == nil {
 //    return false
 //  }

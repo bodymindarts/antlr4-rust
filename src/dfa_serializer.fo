@@ -13,7 +13,7 @@
 //  symbolic_names []string
 //}
 //
-//impl DFASerializer {§//  pub fn new(&self, dfa *DFA,: literal_names, symbolic_names []string) -> *DFASerializer {
+//impl DFASerializer {§//  fn new(&self, dfa *DFA,: literal_names, symbolic_names []string) -> *DFASerializer {
 //  if literal_names == nil {
 //    literal_names = make([]string, 0)
 //  }
@@ -63,7 +63,7 @@
 //  return buf
 //}
 //
-//pub fn get_edge_label(&self, i: i32) -> &str {
+//fn get_edge_label(&self, i: i32) -> &str {
 //  if i == 0 {
 //    return "EOF"
 //  } else if self.literal_names != nil && i-1 < len(self.literal_names) {
@@ -103,11 +103,11 @@
 //  *DFASerializer
 //}
 //
-//impl LexerDFASerializer {§//  pub fn new(&self, dfa *DFA) -> *LexerDFASerializer {
+//impl LexerDFASerializer {§//  fn new(&self, dfa *DFA) -> *LexerDFASerializer {
 //  return &LexerDFASerializer{DFASerializer: NewDFASerializer(dfa, nil, nil)}
 //}
 //
-//pub fn get_edge_label(&self, i: i32) -> &str {
+//fn get_edge_label(&self, i: i32) -> &str {
 //  return "'" + &str(i) + "'"
 //}
 //

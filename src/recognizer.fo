@@ -34,7 +34,7 @@
 //  GrammarFileName: &str
 //}
 //
-//impl BaseRecognizer {§//  pub fn new(&self, ) -> *BaseRecognizer {
+//impl BaseRecognizer {§//  fn new(&self, ) -> *BaseRecognizer {
 //  let rec = new(BaseRecognizer);
 //  rec.listeners = []ErrorListener{ConsoleErrorListenerINSTANCE}
 //  rec.state = -1
@@ -44,7 +44,7 @@
 //var token_type_map_cache = make(map[string]int)
 //var rule_index_map_cache = make(map[string]int)
 //
-//pub fn check_version(&self, tool_version: &str) {
+//fn check_version(&self, tool_version: &str) {
 //  let runtime_version = "4.6";
 //  if runtime_version != tool_version {
 //    fmt.Println("ANTLR runtime and generated code versions disagree: " + runtime_version + "!=" + tool_version)

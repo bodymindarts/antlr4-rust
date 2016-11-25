@@ -117,7 +117,7 @@
 //  *BaseToken
 //}
 //
-//impl CommonToken {§//  pub fn new(&self, source *TokenSourceCharStreamPair, token_type, channel,: start, stop: i32) -> *CommonToken {
+//impl CommonToken {§//  fn new(&self, source *TokenSourceCharStreamPair, token_type, channel,: start, stop: i32) -> *CommonToken {
 //
 //  let t = new(CommonToken);
 //
@@ -155,7 +155,7 @@
 ////
 //// @param old_token The token to copy.
 ////
-//pub fn clone(&self, ) -> *CommonToken {
+//fn clone(&self, ) -> *CommonToken {
 //  let t = NewCommonToken(self.source, self.token_type, self.channel, self.start, self.stop);
 //  self.token_index = self.GetTokenIndex()
 //  self.line = self.GetLine()

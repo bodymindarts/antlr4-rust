@@ -14,7 +14,7 @@
 //  decision_to_d_f_a  []*DFA
 //}
 //
-//impl BaseATNSimulator {§//  pub fn new(&self, atn *ATN, shared_context_cache *PredictionContextCache) -> *BaseATNSimulator {
+//impl BaseATNSimulator {§//  fn new(&self, atn *ATN, shared_context_cache *PredictionContextCache) -> *BaseATNSimulator {
 //  let b = new(BaseATNSimulator);
 //
 //  self.atn = atn
@@ -23,7 +23,7 @@
 //  return b
 //}
 //
-//pub fn get_cached_context(&self, context: PredictionContext) -> PredictionContext {
+//fn get_cached_context(&self, context: PredictionContext) -> PredictionContext {
 //  if self.shared_context_cache == nil {
 //    return context
 //  }
