@@ -11,7 +11,7 @@
 //pub struct BaseATNSimulator {
 //  atn:                *ATN
 //  shared_context_cache: *PredictionContextCache
-//  decision_to_d_f_a  []*DFA
+//  decision_to_dfa  []*DFA
 //}
 //
 //impl BaseATNSimulator {§//  fn new(&self, atn *ATN, shared_context_cache *PredictionContextCache) -> *BaseATNSimulator {
@@ -37,10 +37,10 @@
 //  return self.shared_context_cache
 //}
 //
-//pub fn a_t_n(&self) -> *ATN {
+//pub fn atn(&self) -> *ATN {
 //  return self.atn
 //}
 //
-//pub fn decision_to_d_f_a(&self) -> []*DFA {
-//  return self.decision_to_d_f_a
+//pub fn decision_to_dfa(&self) -> []*DFA {
+//  return self.decision_to_dfa
 //}

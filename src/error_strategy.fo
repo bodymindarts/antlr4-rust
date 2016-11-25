@@ -213,7 +213,7 @@
 //  let la = recognizer.token_stream().l_a(1);
 //
 //  // try cheaper subset first might get lucky. seems to shave a wee bit off
-//  if la == TokenEOF || recognizer.a_t_n().next_tokens(s, nil).contains(la) {
+//  if la == TokenEOF || recognizer.atn().next_tokens(s, nil).contains(la) {
 //    return
 //  }
 //  // Return but don't end recovery. only do that upon valid token Match

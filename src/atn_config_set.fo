@@ -91,7 +91,7 @@
 //impl BaseATNConfigSet {§//  fn new(&self, full_ctx: bool) -> *BaseATNConfigSet {
 //  return &BaseATNConfigSet{
 //    cached_hash_string: "-1",
-//    config_lookup:     NewSet(hashATNConfig, equal_a_t_n_configs),
+//    config_lookup:     NewSet(hashATNConfig, equal_atn_configs),
 //    full_ctx:          full_ctx,
 //  }
 //}
@@ -273,7 +273,7 @@
 //
 //  self.configs = make([]ATNConfig, 0)
 //  self.cached_hash_string = "-1"
-//  self.config_lookup = Set::new(hashATNConfig, equal_a_t_n_configs)
+//  self.config_lookup = Set::new(hashATNConfig, equal_atn_configs)
 //}
 //
 //pub fn full_context(&self) -> bool {
@@ -360,11 +360,11 @@
 //  return &OrderedATNConfigSet{BaseATNConfigSet: b}
 //}
 //
-//fn hash_a_t_n_config(c i32erface{}) -> &str { // non-member
+//fn hash_atn_config(c i32erface{}) -> &str { // non-member
 //  return c.(ATNConfig).short_hash()
 //}
 //
-//fn equal_a_t_n_configs(a, b i32erface{}) -> bool { // non-member
+//fn equal_atn_configs(a, b i32erface{}) -> bool { // non-member
 //  if a == nil || b == nil {
 //    return false
 //  }

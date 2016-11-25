@@ -82,7 +82,7 @@
 //// /
 //fn expected_tokens(&self) -> *IntervalSet {
 //  if self.recognizer != nil {
-//    return self.recognizer.a_t_n().expected_tokens(self.offending_state, self.ctx)
+//    return self.recognizer.atn().expected_tokens(self.offending_state, self.ctx)
 //  }
 //
 //  return nil

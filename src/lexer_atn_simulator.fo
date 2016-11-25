@@ -40,12 +40,12 @@
 //  MatchCalls:         i32
 //}
 //
-//impl LexerATNSimulator {§//  fn new(&self, recog: Lexer, atn *ATN, decision_to_d_f_a []*DFA, shared_context_cache *PredictionContextCache) -> *LexerATNSimulator {
+//impl LexerATNSimulator {§//  fn new(&self, recog: Lexer, atn *ATN, decision_to_dfa []*DFA, shared_context_cache *PredictionContextCache) -> *LexerATNSimulator {
 //  let l = new(LexerATNSimulator);
 //
-//  self.base_a_t_n_simulator = NewBaseATNSimulator(atn, shared_context_cache)
+//  self.base_atn_simulator = NewBaseATNSimulator(atn, shared_context_cache)
 //
-//  self.decision_to_d_f_a = decision_to_d_f_a
+//  self.decision_to_dfa = decision_to_dfa
 //  self.recog = recog
 //  // The current token's starting index i32o the character stream.
 //  // Shared across DFA to ATN simulation in case the ATN fails and the
@@ -84,13 +84,13 @@
 //  self.start_index = input.Index()
 //  self.prev_accept.reset()
 //
-//  let dfa = self.decision_to_d_f_a[mode];
+//  let dfa = self.decision_to_dfa[mode];
 //
 //  if dfa.s0 == nil {
-//    return self.match_a_t_n(input)
+//    return self.match_atn(input)
 //  }
 //
-//  return self.exec_a_t_n(input, dfa.s0)
+//  return self.exec_atn(input, dfa.s0)
 //}
 //
 //fn reset(&self) {
@@ -101,7 +101,7 @@
 //  self.mode = LexerDefaultMode
 //}
 //
-//pub fn match_a_t_n(&self, input: CharStream) -> i32 {
+//pub fn match_atn(&self, input: CharStream) -> i32 {
 //  let start_state = self.atn.mode_to_start_state[self.mode];
 //
 //  if LexerATNSimulatorDebug {
@@ -112,21 +112,21 @@
 //  let suppress_edge = s0Closure.has_semantic_context;
 //  s0Closure.has_semantic_context = false
 //
-//  let next = self.add_d_f_a_state(s0Closure);
+//  let next = self.add_dfa_state(s0Closure);
 //
 //  if !suppressEdge {
-//    self.decision_to_d_f_a[self.mode].s0 = next
+//    self.decision_to_dfa[self.mode].s0 = next
 //  }
 //
-//  let predict = self.exec_a_t_n(input, next);
+//  let predict = self.exec_atn(input, next);
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("DFA after MatchATN: " + self.decision_to_d_f_a[oldMode].to_lexer_string())
+//    fmt.Println("DFA after MatchATN: " + self.decision_to_dfa[oldMode].to_lexer_string())
 //  }
 //  return predict
 //}
 //
-//fn exec_a_t_n(&self, input: CharStream, ds0 *DFAState) -> i32 {
+//fn exec_atn(&self, input: CharStream, ds0 *DFAState) -> i32 {
 //
 //  if LexerATNSimulatorDebug {
 //    fmt.Println("start state closure=" + ds0.configs.String())
@@ -224,19 +224,19 @@
 //
 //  // if we don't find an existing DFA state
 //  // Fill reach starting from closure, following t transitions
-//  self.reachable_config_set(input, self.configs, reach.base_a_t_n_config_set, t)
+//  self.reachable_config_set(input, self.configs, reach.base_atn_config_set, t)
 //
 //  if len(reach.configs) == 0 { // we got nowhere on t from s
 //    if !reach.has_semantic_context {
 //      // we got nowhere on t, don't panic out l knowledge it'd
 //      // cause a failover from DFA later.
-//      self.add_d_f_a_edge(s, t, ATNSimulatorError, nil)
+//      self.add_dfa_edge(s, t, ATNSimulatorError, nil)
 //    }
 //    // stop when we can't Match any more char
 //    return ATNSimulatorError
 //  }
 //  // Add an edge from s to target DFA found/created for reach
-//  return self.add_d_f_a_edge(s, t, nil, reach.base_a_t_n_config_set)
+//  return self.add_dfa_edge(s, t, nil, reach.base_atn_config_set)
 //}
 //
 //fn fail_or_accept(&self, prev_accept *SimState, input CharStream, reach: ATNConfigSet, t: i32) -> i32 {
@@ -516,13 +516,13 @@
 //  settings.dfa_state = dfa_state
 //}
 //
-//fn add_d_f_a_edge(&self, from *DFAState, tk: i32, to *DFAState, cfgs: ATNConfigSet) -> *DFAState {
+//fn add_dfa_edge(&self, from *DFAState, tk: i32, to *DFAState, cfgs: ATNConfigSet) -> *DFAState {
 //  if to == nil && cfgs != nil {
 //    // leading to l call, ATNConfigSet.has_semantic_context is used as a
 //    // marker indicating dynamic predicate evaluation makes l edge
 //    // dependent on the specific input sequence, so the static edge in the
 //    // DFA should be omitted. The target DFAState is still created since
-//    // exec_a_t_n has the ability to re_synchronize with the DFA state cache
+//    // exec_atn has the ability to re_synchronize with the DFA state cache
 //    // following the predicate evaluation step.
 //    //
 //    // TJP notes: next time through the DFA, we see a pred again and eval.
@@ -532,7 +532,7 @@
 //    let suppress_edge = cfgs.has_semantic_context();
 //    cfgs.set_has_semantic_context(false)
 //
-//    to = self.add_d_f_a_state(cfgs)
+//    to = self.add_dfa_state(cfgs)
 //
 //    if suppress_edge {
 //      return to
@@ -559,7 +559,7 @@
 //// configurations already. This method also detects the first
 //// configuration containing an ATN rule stop state. Later, when
 //// traversing the DFA, we will know which rule to accept.
-//fn add_d_f_a_state(&self, configs: ATNConfigSet) -> *DFAState {
+//fn add_dfa_state(&self, configs: ATNConfigSet) -> *DFAState {
 //
 //  let proposed = NewDFAState(-1, configs);
 //  var first_config_with_rule_stop_state ATNConfig
@@ -579,7 +579,7 @@
 //    proposed.set_prediction(self.atn.rule_to_token_type[firstConfigWithRuleStopState.state().rule_index()])
 //  }
 //  let hash = proposed.Hash();
-//  let dfa = self.decision_to_d_f_a[self.mode];
+//  let dfa = self.decision_to_dfa[self.mode];
 //  let existing = dfa.states()[hash];
 //  if existing != nil {
 //    return existing
@@ -592,8 +592,8 @@
 //  return new_state
 //}
 //
-//fn d_f_a(&self, mode: i32) -> *DFA {
-//  return self.decision_to_d_f_a[mode]
+//fn dfa(&self, mode: i32) -> *DFA {
+//  return self.decision_to_dfa[mode]
 //}
 //
 //// Get the text Matched so far for the current token.

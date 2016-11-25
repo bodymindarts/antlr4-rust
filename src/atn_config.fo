@@ -280,7 +280,7 @@
 //    return false
 //  }
 //
-//  return self.base_a_t_n_config.equals(othert.base_a_t_n_config)
+//  return self.base_atn_config.equals(othert.base_atn_config)
 //}
 //
 //fn check_non_greedy_decision(source *LexerATNConfig, target: ATNState) -> bool { // non-member

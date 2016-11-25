@@ -346,8 +346,8 @@
 //  self.text = text
 //}
 //
-//pub fn a_t_n(&self) -> *ATN {
-//  return self.Interpreter.a_t_n()
+//pub fn atn(&self) -> *ATN {
+//  return self.Interpreter.atn()
 //}
 //
 //// Return a list of all Token objects in input char stream.

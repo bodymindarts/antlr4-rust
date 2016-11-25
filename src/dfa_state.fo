@@ -59,7 +59,7 @@
 //
 //  // requires_full_context indicates it was created during an SLL prediction that
 //  // discovered a conflict between the configurations in the state. Future
-//  // ParserATNSimulator.exec_a_t_n invocations immediately jump doing
+//  // ParserATNSimulator.exec_atn invocations immediately jump doing
 //  // full context prediction if true.
 //  requires_full_context: bool
 //
@@ -74,7 +74,7 @@
 //  // that it's an ambiguity not a conflict.
 //  //
 //  // This list is computed by
-//  // ParserATNSimulator.predicate_d_f_a_state.
+//  // ParserATNSimulator.predicate_dfa_state.
 //  predicates []*PredPrediction
 //}
 //
@@ -116,7 +116,7 @@
 //// necessary to show that the algorithm terminates.
 ////
 //// Cannot test the DFA state numbers here because in
-//// ParserATNSimulator.add_d_f_a_state we need to know if any other state exists that
+//// ParserATNSimulator.add_dfa_state we need to know if any other state exists that
 //// has d exact set of ATN configurations. The state_number is irrelevant.
 //fn equals(&self, other i32erface{}) -> bool {
 //  if d == other {

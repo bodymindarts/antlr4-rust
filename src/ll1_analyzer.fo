@@ -69,7 +69,7 @@
 //  let see_thru_preds = true // ignore preds get all lookahead;
 //  var look_context PredictionContext
 //  if ctx != nil {
-//    look_context = prediction_context_from_rule_context(self.a_t_n(), ctx)
+//    look_context = prediction_context_from_rule_context(self.atn(), ctx)
 //  }
 //  la.look1(s, stop_state, look_context, r, NewSet(nil, nil), NewBitSet(), see_thru_preds, true)
 //  return r

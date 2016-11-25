@@ -82,11 +82,11 @@
 //  return as.epsilon_only_transitions
 //}
 //
-//pub fn a_t_n(&self) -> *ATN {
+//pub fn atn(&self) -> *ATN {
 //  return as.atn
 //}
 //
-//pub fn set_a_t_n(&self, atn *ATN) {
+//pub fn set_atn(&self, atn *ATN) {
 //  as.atn = atn
 //}
 //

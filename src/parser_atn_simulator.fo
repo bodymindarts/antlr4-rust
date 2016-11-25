@@ -25,14 +25,14 @@
 //  outer_context:   ParserRuleContext
 //}
 //
-//impl ParserATNSimulator {§//  fn new(&self, parser: Parser, atn *ATN, decision_to_d_f_a []*DFA, shared_context_cache *PredictionContextCache) -> *ParserATNSimulator {
+//impl ParserATNSimulator {§//  fn new(&self, parser: Parser, atn *ATN, decision_to_dfa []*DFA, shared_context_cache *PredictionContextCache) -> *ParserATNSimulator {
 //
 //  let p = new(ParserATNSimulator);
 //
-//  self.base_a_t_n_simulator = NewBaseATNSimulator(atn, shared_context_cache)
+//  self.base_atn_simulator = NewBaseATNSimulator(atn, shared_context_cache)
 //
 //  self.parser = parser
-//  self.decision_to_d_f_a = decision_to_d_f_a
+//  self.decision_to_dfa = decision_to_dfa
 //  // SLL, LL, or LL + exact ambig detection?//
 //  self.prediction_mode = PredictionModeLL
 //  // LAME globals to avoid parameters!!!!! I need these down deep in pred_transition
@@ -76,7 +76,7 @@
 //  self.start_index = input.Index()
 //  self.outer_context = outer_context
 //
-//  let dfa = self.decision_to_d_f_a[decision];
+//  let dfa = self.decision_to_dfa[decision];
 //  self.dfa = dfa
 //  let m = input.Mark();
 //  let index = input.Index();
@@ -132,16 +132,16 @@
 //      // than simply setting DFA.s0.
 //      //
 //      s0Closure = self.apply_precedence_filter(s0Closure)
-//      s0 = self.add_d_f_a_state(dfa, NewDFAState(-1, s0Closure))
+//      s0 = self.add_dfa_state(dfa, NewDFAState(-1, s0Closure))
 //      dfa.set_precedence_start_state(self.parser.precedence(), s0)
 //    } else {
-//      s0 = self.add_d_f_a_state(dfa, NewDFAState(-1, s0Closure))
+//      s0 = self.add_dfa_state(dfa, NewDFAState(-1, s0Closure))
 //      dfa.s0 = s0
 //    }
 //  }
-//  let alt = self.exec_a_t_n(dfa, s0, input, index, outer_context);
+//  let alt = self.exec_atn(dfa, s0, input, index, outer_context);
 //  if ParserATNSimulatorDebug {
-//    fmt.Println("DFA after predict_a_t_n: " + dfa.String(self.parser.literal_names(), nil))
+//    fmt.Println("DFA after predict_atn: " + dfa.String(self.parser.literal_names(), nil))
 //  }
 //  return alt
 //
@@ -177,7 +177,7 @@
 ////    conflict
 ////    conflict + preds
 ////
-//fn exec_a_t_n(&self, dfa *DFA, s0 *DFAState, input TokenStream, start_index: i32, outer_context: ParserRuleContext) -> i32 {
+//fn exec_atn(&self, dfa *DFA, s0 *DFAState, input TokenStream, start_index: i32, outer_context: ParserRuleContext) -> i32 {
 //
 //  if ParserATNSimulatorDebug || ParserATNSimulatorListATNDecisions {
 //    fmt.Println("execATN decision " + strconv.Itoa(dfa.decision) +
@@ -245,7 +245,7 @@
 //      let full_ctx = true;
 //      let s0Closure = self.compute_start_state(dfa.atn_start_state, outer_context, full_ctx);
 //      self.report_attempting_full_context(dfa, conflicting_alts, D.configs, start_index, input.Index())
-//      let alt = self.exec_a_t_n_with_full_context(dfa, D, s0Closure, input, start_index, outer_context);
+//      let alt = self.exec_atn_with_full_context(dfa, D, s0Closure, input, start_index, outer_context);
 //      return alt
 //    }
 //    if D.is_accept_state {
@@ -310,7 +310,7 @@
 //  let reach = self.compute_reach_set(previousD.configs, t, false);
 //
 //  if reach == nil {
-//    self.add_d_f_a_edge(dfa, previous_d, t, ATNSimulatorError)
+//    self.add_dfa_edge(dfa, previous_d, t, ATNSimulatorError)
 //    return ATNSimulatorError
 //  }
 //  // create Newtarget state we'll add to DFA after it's complete
@@ -342,17 +342,17 @@
 //    D.set_prediction(D.configs.conflicting_alts().min_value())
 //  }
 //  if D.is_accept_state && D.configs.has_semantic_context() {
-//    self.predicate_d_f_a_state(D, self.atn.decision_state(dfa.decision))
+//    self.predicate_dfa_state(D, self.atn.decision_state(dfa.decision))
 //    if D.predicates != nil {
 //      D.set_prediction(ATNInvalidAltNumber)
 //    }
 //  }
 //  // all adds to dfa are done after we've created full D state
-//  D = self.add_d_f_a_edge(dfa, previous_d, t, D)
+//  D = self.add_dfa_edge(dfa, previous_d, t, D)
 //  return D
 //}
 //
-//fn predicate_d_f_a_state(&self, dfa_state *DFAState, decision_state: DecisionState) {
+//fn predicate_dfa_state(&self, dfa_state *DFAState, decision_state: DecisionState) {
 //  // We need to test all predicates, even in DFA states that
 //  // uniquely predict alternative.
 //  let nalts = len(decisionState.transitions());
@@ -372,7 +372,7 @@
 //}
 //
 //// comes back with reach.unique_alt set to a valid alt
-//fn exec_a_t_n_with_full_context(&self, dfa *DFA, D *DFAState, s0 ATNConfigSet, input TokenStream, start_index: i32, outer_context: ParserRuleContext) -> i32 {
+//fn exec_atn_with_full_context(&self, dfa *DFA, D *DFAState, s0 ATNConfigSet, input TokenStream, start_index: i32, outer_context: ParserRuleContext) -> i32 {
 //
 //  if ParserATNSimulatorDebug || ParserATNSimulatorListATNDecisions {
 //    fmt.Println("execATNWithFullContext " + s0.String())
@@ -1300,7 +1300,7 @@
 //  return self.token_name(input.l_a(1))
 //}
 //
-//// Used for debugging in AdaptivePredict around exec_a_t_n but I cut
+//// Used for debugging in AdaptivePredict around exec_atn but I cut
 ////  it out for clarity now that alg. works well. We can leave p
 ////  "dead" code for a bit.
 ////
@@ -1370,14 +1370,14 @@
 //// otherwise p method returns the result of calling {@link //addDFAState}
 //// on {@code to}
 ////
-//fn add_d_f_a_edge(&self, dfa *DFA, from *DFAState, t: i32, to *DFAState) -> *DFAState {
+//fn add_dfa_edge(&self, dfa *DFA, from *DFAState, t: i32, to *DFAState) -> *DFAState {
 //  if ParserATNSimulatorDebug {
 //    fmt.Println("EDGE " + from.String() + " -> " + to.String() + " upon " + self.token_name(t))
 //  }
 //  if to == nil {
 //    return nil
 //  }
-//  to = self.add_d_f_a_state(dfa, to) // used existing if possible not incoming
+//  to = self.add_dfa_state(dfa, to) // used existing if possible not incoming
 //  if from == nil || t < -1 || t > self.atn.max_token_type {
 //    return to
 //  }
@@ -1412,7 +1412,7 @@
 //// state if {@code D} is already in the DFA, or {@code D} itself if the
 //// state was not already present.
 ////
-//fn add_d_f_a_state(&self, dfa *DFA, D *DFAState) -> *DFAState {
+//fn add_dfa_state(&self, dfa *DFA, D *DFAState) -> *DFAState {
 //  if D == ATNSimulatorError {
 //    return D
 //  }
@@ -1423,7 +1423,7 @@
 //  }
 //  D.state_number = len(dfa.states())
 //  if !D.configs.read_only() {
-//    D.configs.optimize_configs(self.base_a_t_n_simulator)
+//    D.configs.optimize_configs(self.base_atn_simulator)
 //    D.configs.set_read_only(true)
 //  }
 //  dfa.states()[hash] = D

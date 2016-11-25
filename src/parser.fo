@@ -308,7 +308,7 @@
 //  return self.Interpreter
 //}
 //
-//pub fn a_t_n(&self) -> *ATN {
+//pub fn atn(&self) -> *ATN {
 //  return self.Interpreter.atn
 //}
 //
@@ -327,12 +327,12 @@
 //// @panics UnsupportedOperationException if the current parser does not
 //// implement the {@link //getSerializedATN()} method.
 ////
-//pub fn a_t_n_with_bypassAlts(&self) {
+//pub fn atn_with_bypassAlts(&self) {
 //
 //  // TODO
 //  panic("Not implemented!")
 //
-//  //  let serialized_atn = self.serialized_a_t_n();
+//  //  let serialized_atn = self.serialized_atn();
 //  //  if (serializedAtn == nil) {
 //  //    panic("The current parser does not support an ATN with bypass alternatives.")
 //  //  }
@@ -674,14 +674,14 @@
 //}
 //
 //// For debugging and other purposes.//
-//pub fn d_f_a_strings(&self) -> &str {
-//  return fmt.Sprint(self.Interpreter.decision_to_d_f_a)
+//pub fn dfa_strings(&self) -> &str {
+//  return fmt.Sprint(self.Interpreter.decision_to_dfa)
 //}
 //
 //// For debugging and other purposes.//
-//pub fn dump_d_f_a(&self) {
+//pub fn dump_dfa(&self) {
 //  let seen_one = false;
-//  for _, let dfa = range self.Interpreter.decision_to_d_f_a {;
+//  for _, let dfa = range self.Interpreter.decision_to_dfa {;
 //    if len(dfa.states()) > 0 {
 //      if seen_one {
 //        fmt.Println()
