@@ -69,11 +69,11 @@
 //// </pre>
 ////
 //
-//fn is_empty(&self, ) -> bool {
+//fn is_empty(&self) -> bool {
 //  return false
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return self.cached_hash_string
 //}
 //
@@ -93,7 +93,7 @@
 //  cache map[PredictionContext]PredictionContext
 //}
 //
-//impl PredictionContextCache {§//  fn new(&self, ) -> *PredictionContextCache {
+//impl PredictionContextCache {§//  fn new(&self) -> *PredictionContextCache {
 //  let t = new(PredictionContextCache);
 //  self.cache = make(map[PredictionContext]PredictionContext)
 //  return t
@@ -119,7 +119,7 @@
 //  return self.cache[ctx]
 //}
 //
-//fn length(&self, ) -> i32 {
+//fn length(&self) -> i32 {
 //  return len(self.cache)
 //}
 //
@@ -160,7 +160,7 @@
 //  return NewBaseSingletonPredictionContext(parent, return_state)
 //}
 //
-//fn length(&self, ) -> i32 {
+//fn length(&self) -> i32 {
 //  return 1
 //}
 //
@@ -172,7 +172,7 @@
 //  return self.return_state
 //}
 //
-//fn has_empty_path(&self, ) -> bool {
+//fn has_empty_path(&self) -> bool {
 //  return self.return_state == BasePredictionContextEmptyReturnState
 //}
 //
@@ -196,11 +196,11 @@
 //  return self.parent_ctx.equals(otherP.parent_ctx)
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return self.cached_hash_string
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  var up &str
 //
 //  if self.parent_ctx == nil {
@@ -226,7 +226,7 @@
 //  *BaseSingletonPredictionContext
 //}
 //
-//impl EmptyPredictionContext {§//  fn new(&self, ) -> *EmptyPredictionContext {
+//impl EmptyPredictionContext {§//  fn new(&self) -> *EmptyPredictionContext {
 //
 //  let p = new(EmptyPredictionContext);
 //
@@ -235,7 +235,7 @@
 //  return p
 //}
 //
-//fn is_empty(&self, ) -> bool {
+//fn is_empty(&self) -> bool {
 //  return true
 //}
 //
@@ -251,7 +251,7 @@
 //  return e == other
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "$"
 //}
 //
@@ -281,21 +281,21 @@
 //  return c
 //}
 //
-//pub fn return_states(&self, ) -> []int {
+//pub fn return_states(&self) -> []int {
 //  return self.return_states
 //}
 //
-//fn has_empty_path(&self, ) -> bool {
+//fn has_empty_path(&self) -> bool {
 //  return self.return_state(self.length()-1) == BasePredictionContextEmptyReturnState
 //}
 //
-//fn is_empty(&self, ) -> bool {
+//fn is_empty(&self) -> bool {
 //  // since EmptyReturnState can only appear in the last position, we
 //  // don't need to verify that size==1
 //  return self.return_states[0] == BasePredictionContextEmptyReturnState
 //}
 //
-//fn length(&self, ) -> i32 {
+//fn length(&self) -> i32 {
 //  return len(self.return_states)
 //}
 //
@@ -318,7 +318,7 @@
 //  }
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  if self.is_empty() {
 //    return "[]"
 //  }

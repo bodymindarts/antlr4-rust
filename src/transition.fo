@@ -47,7 +47,7 @@
 //  return t
 //}
 //
-//fn target(&self, ) -> ATNState {
+//fn target(&self) -> ATNState {
 //  return self.target
 //}
 //
@@ -55,15 +55,15 @@
 //  self.target = s
 //}
 //
-//fn is_epsilon(&self, ) -> bool {
+//fn is_epsilon(&self) -> bool {
 //  return self.is_epsilon
 //}
 //
-//fn label(&self, ) -> *IntervalSet {
+//fn label(&self) -> *IntervalSet {
 //  return self.interval_set
 //}
 //
-//fn serialization_type(&self, ) -> i32 {
+//fn serialization_type(&self) -> i32 {
 //  return self.serialization_type
 //}
 //
@@ -139,7 +139,7 @@
 //  return t
 //}
 //
-//fn make_label(&self, ) -> *IntervalSet {
+//fn make_label(&self) -> *IntervalSet {
 //  let s = NewIntervalSet();
 //  self.add_one(self.label)
 //  return s
@@ -149,7 +149,7 @@
 //  return self.label == symbol
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return strconv.Itoa(self.label)
 //}
 //
@@ -199,7 +199,7 @@
 //  return false
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "epsilon"
 //}
 //
@@ -221,7 +221,7 @@
 //  return t
 //}
 //
-//fn make_label(&self, ) -> *IntervalSet {
+//fn make_label(&self) -> *IntervalSet {
 //  let s = NewIntervalSet();
 //  self.add_range(self.start, self.stop)
 //  return s
@@ -231,7 +231,7 @@
 //  return symbol >= self.start && symbol <= self.stop
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "'" + &str(self.start) + "'..'" + &str(self.stop) + "'"
 //}
 //
@@ -278,11 +278,11 @@
 //  return false
 //}
 //
-//fn predicate(&self, ) -> *Predicate {
+//fn predicate(&self) -> *Predicate {
 //  return NewPredicate(self.rule_index, self.pred_index, self.is_ctx_dependent)
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "pred_" + strconv.Itoa(self.rule_index) + ":" + strconv.Itoa(self.pred_index)
 //}
 //
@@ -310,7 +310,7 @@
 //  return false
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "action_" + strconv.Itoa(self.rule_index) + ":" + strconv.Itoa(self.action_index)
 //}
 //
@@ -338,7 +338,7 @@
 //  return self.interval_set.contains(symbol)
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return self.interval_set.String()
 //}
 //
@@ -361,7 +361,7 @@
 //  return symbol >= min_vocab_symbol && symbol <= max_vocab_symbol && !self.interval_set.contains(symbol)
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "~" + self.interval_set.String()
 //}
 //
@@ -382,7 +382,7 @@
 //  return symbol >= min_vocab_symbol && symbol <= max_vocab_symbol
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "."
 //}
 //
@@ -408,10 +408,10 @@
 //  return false
 //}
 //
-//fn predicate(&self, ) -> *PrecedencePredicate {
+//fn predicate(&self) -> *PrecedencePredicate {
 //  return NewPrecedencePredicate(self.precedence)
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return fmt.Sprint(self.precedence) + " >= _p"
 //}

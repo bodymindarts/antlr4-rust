@@ -114,7 +114,7 @@
 //  LexerMaxCharValue        = '\uFFFE'
 //)
 //
-//fn reset(&self, ) {
+//fn reset(&self) {
 //  // wack Lexer state variables
 //  if self.input != nil {
 //    self.input.Seek(0) // rewind the input
@@ -134,15 +134,15 @@
 //  self.Interpreter.reset()
 //}
 //
-//pub fn interpreter(&self, ) -> ILexerATNSimulator {
+//pub fn interpreter(&self) -> ILexerATNSimulator {
 //  return self.Interpreter
 //}
 //
-//pub fn input_stream(&self, ) -> CharStream {
+//pub fn input_stream(&self) -> CharStream {
 //  return self.input
 //}
 //
-//pub fn source_name(&self, ) -> &str {
+//pub fn source_name(&self) -> &str {
 //  return self.grammar_file_name
 //}
 //
@@ -150,7 +150,7 @@
 //  self.channel = v
 //}
 //
-//pub fn token_factory(&self, ) -> TokenFactory {
+//pub fn token_factory(&self) -> TokenFactory {
 //  return self.factory
 //}
 //
@@ -173,7 +173,7 @@
 //}
 //
 //// Return a token from l source self.e., Match a token on the char stream.
-//pub fn next_token(&self, ) -> Token {
+//pub fn next_token(&self) -> Token {
 //  if self.input == nil {
 //    panic("NextToken requires a non-nil input stream.")
 //  }
@@ -238,11 +238,11 @@
 //// if token==nil at end of any token rule, it creates one for you
 //// and emits it.
 //// /
-//pub fn Skip(&self, ) {
+//pub fn Skip(&self) {
 //  self.thetype = LexerSkip
 //}
 //
-//pub fn More(&self, ) {
+//pub fn More(&self) {
 //  self.thetype = LexerMore
 //}
 //
@@ -258,7 +258,7 @@
 //  self.mode = m
 //}
 //
-//fn pop_mode(&self, ) -> i32 {
+//fn pop_mode(&self) -> i32 {
 //  if len(self.mode_stack) == 0 {
 //    panic("Empty Stack")
 //  }
@@ -270,7 +270,7 @@
 //  return self.mode
 //}
 //
-//fn input_stream(&self, ) -> CharStream {
+//fn input_stream(&self) -> CharStream {
 //  return self.input
 //}
 //
@@ -297,13 +297,13 @@
 //// use that to set the token's text. Override l method to emit
 //// custom Token objects or provide a Newfactory.
 //// /
-//pub fn Emit(&self, ) -> Token {
+//pub fn Emit(&self) -> Token {
 //  let t = self.factory.Create(self.token_factory_source_pair, self.thetype, self.text, self.channel, self.token_start_char_index, self.char_index()-1, self.token_start_line, self.token_start_column);
 //  self.emit_token(t)
 //  return t
 //}
 //
-//pub fn emit_e_o_f(&self, ) -> Token {
+//pub fn emit_e_o_f(&self) -> Token {
 //  let cpos = self.char_position_in_line();
 //  let lpos = self.line();
 //  let eof = self.factory.Create(self.token_factory_source_pair, TokenEOF, "", TokenDefaultChannel, self.input.Index(), self.input.Index()-1, lpos, cpos);
@@ -311,15 +311,15 @@
 //  return eof
 //}
 //
-//pub fn char_position_in_line(&self, ) -> i32 {
+//pub fn char_position_in_line(&self) -> i32 {
 //  return self.Interpreter.char_position_in_line()
 //}
 //
-//pub fn line(&self, ) -> i32 {
+//pub fn line(&self) -> i32 {
 //  return self.Interpreter.line()
 //}
 //
-//pub fn type(&self, ) -> i32 {
+//pub fn type(&self) -> i32 {
 //  return self.thetype
 //}
 //
@@ -328,13 +328,13 @@
 //}
 //
 //// What is the index of the current character of lookahead?///
-//pub fn char_index(&self, ) -> i32 {
+//pub fn char_index(&self) -> i32 {
 //  return self.input.Index()
 //}
 //
 //// Return the text Matched so far for the current token or any text override.
 ////Set the complete text of l token it wipes any previous changes to the text.
-//pub fn text(&self, ) -> &str {
+//pub fn text(&self) -> &str {
 //  if self.text != "" {
 //    return self.text
 //  }
@@ -346,14 +346,14 @@
 //  self.text = text
 //}
 //
-//pub fn a_t_n(&self, ) -> *ATN {
+//pub fn a_t_n(&self) -> *ATN {
 //  return self.Interpreter.a_t_n()
 //}
 //
 //// Return a list of all Token objects in input char stream.
 //// Forces load of all tokens. Does not include EOF token.
 //// /
-//fn all_tokens(&self, ) -> []Token {
+//fn all_tokens(&self) -> []Token {
 //  let vl = self.Virt;
 //  let tokens = make([]Token, 0);
 //  let t = vl.next_token();

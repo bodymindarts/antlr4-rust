@@ -142,7 +142,7 @@
 //  return true
 //}
 //
-//pub fn states(&self, ) -> *Set {
+//pub fn states(&self) -> *Set {
 //  let states = NewSet(nil, nil);
 //
 //  for let i = 0; i < len(self.configs); i++ {;
@@ -152,7 +152,7 @@
 //  return states
 //}
 //
-//pub fn has_semantic_context(&self, ) -> bool {
+//pub fn has_semantic_context(&self) -> bool {
 //  return self.has_semantic_context
 //}
 //
@@ -160,7 +160,7 @@
 //  self.has_semantic_context = v
 //}
 //
-//pub fn predicates(&self, ) -> []SemanticContext {
+//pub fn predicates(&self) -> []SemanticContext {
 //  let preds = make([]SemanticContext, 0);
 //
 //  for let i = 0; i < len(self.configs); i++ {;
@@ -174,7 +174,7 @@
 //  return preds
 //}
 //
-//pub fn items(&self, ) -> []ATNConfig {
+//pub fn items(&self) -> []ATNConfig {
 //  return self.configs
 //}
 //
@@ -220,7 +220,7 @@
 //    self.dips_into_outer_context == other2.dips_into_outer_context
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  if self.read_only {
 //    if self.cached_hash_string == "-1" {
 //      self.cached_hash_string = self.hash_configs()
@@ -232,7 +232,7 @@
 //  return self.hash_configs()
 //}
 //
-//fn hash_configs(&self, ) -> &str {
+//fn hash_configs(&self) -> &str {
 //  let s = "";
 //
 //  for _, let c = range self.configs {;
@@ -242,11 +242,11 @@
 //  return s
 //}
 //
-//pub fn Length(&self, ) -> i32 {
+//pub fn Length(&self) -> i32 {
 //  return len(self.configs)
 //}
 //
-//pub fn is_empty(&self, ) -> bool {
+//pub fn is_empty(&self) -> bool {
 //  return len(self.configs) == 0
 //}
 //
@@ -266,7 +266,7 @@
 //  return self.config_lookup.contains(item) // TODO: contains_fast is not implemented for Set
 //}
 //
-//pub fn Clear(&self, ) {
+//pub fn Clear(&self) {
 //  if self.read_only {
 //    panic("set is read-only")
 //  }
@@ -276,11 +276,11 @@
 //  self.config_lookup = Set::new(hashATNConfig, equal_a_t_n_configs)
 //}
 //
-//pub fn full_context(&self, ) -> bool {
+//pub fn full_context(&self) -> bool {
 //  return self.full_ctx
 //}
 //
-//pub fn dips_into_outer_context(&self, ) -> bool {
+//pub fn dips_into_outer_context(&self) -> bool {
 //  return self.dips_into_outer_context
 //}
 //
@@ -288,7 +288,7 @@
 //  self.dips_into_outer_context = v
 //}
 //
-//pub fn unique_alt(&self, ) -> i32 {
+//pub fn unique_alt(&self) -> i32 {
 //  return self.unique_alt
 //}
 //
@@ -296,7 +296,7 @@
 //  self.unique_alt = v
 //}
 //
-//pub fn conflicting_alts(&self, ) -> *BitSet {
+//pub fn conflicting_alts(&self) -> *BitSet {
 //  return self.conflicting_alts
 //}
 //
@@ -304,7 +304,7 @@
 //  self.conflicting_alts = v
 //}
 //
-//pub fn read_only(&self, ) -> bool {
+//pub fn read_only(&self) -> bool {
 //  return self.read_only
 //}
 //
@@ -316,7 +316,7 @@
 //  }
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  let s = "[";
 //
 //  for i, let c = range self.configs {;
@@ -352,7 +352,7 @@
 //  *BaseATNConfigSet
 //}
 //
-//impl OrderedATNConfigSet {§//  fn new(&self, ) -> *OrderedATNConfigSet {
+//impl OrderedATNConfigSet {§//  fn new(&self) -> *OrderedATNConfigSet {
 //  let b = NewBaseATNConfigSet(false);
 //
 //  self.config_lookup = Set::new(nil, nil)

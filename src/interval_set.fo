@@ -16,7 +16,7 @@ impl Interval {
 //  return item >= self.start && item < self.stop
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  if self.start == self.stop-1 {
 //    return strconv.Itoa(self.start)
 //  }
@@ -24,7 +24,7 @@ impl Interval {
 //  return strconv.Itoa(self.start) + ".." + strconv.Itoa(self.stop-1)
 //}
 //
-//fn length(&self, ) -> i32 {
+//fn length(&self) -> i32 {
 //  return self.stop - self.start
 //}
 //
@@ -34,7 +34,7 @@ impl Interval {
 //  read_only:  bool
 //}
 //
-//impl IntervalSet {§//  fn new(&self, ) -> *IntervalSet {
+//impl IntervalSet {§//  fn new(&self) -> *IntervalSet {
 //
 //  let i = new(IntervalSet);
 //
@@ -44,7 +44,7 @@ impl Interval {
 //  return i
 //}
 //
-//fn first(&self, ) -> i32 {
+//fn first(&self) -> i32 {
 //  if len(self.intervals) == 0 {
 //    return TokenInvalidType
 //  }
@@ -128,7 +128,7 @@ impl Interval {
 //  return false
 //}
 //
-//fn length(&self, ) -> i32 {
+//fn length(&self) -> i32 {
 //  let len = 0;
 //
 //  for _, let v = range self.intervals {;
@@ -196,7 +196,7 @@ impl Interval {
 //  }
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return self.string_verbose(nil, nil, false)
 //}
 //
@@ -213,7 +213,7 @@ impl Interval {
 //  return self.to_index_string()
 //}
 //
-//fn to_char_string(&self, ) -> &str {
+//fn to_char_string(&self) -> &str {
 //  let names = make([]string, len(self.intervals));
 //
 //  for let j = 0; j < len(self.intervals); j++ {;
@@ -235,7 +235,7 @@ impl Interval {
 //  return names[0]
 //}
 //
-//fn to_index_string(&self, ) -> &str {
+//fn to_index_string(&self) -> &str {
 //
 //  let names = make([]string, 0);
 //  for let j = 0; j < len(self.intervals); j++ {;

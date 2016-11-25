@@ -91,7 +91,7 @@
 //var bypass_alts_atn_cache = make(map[string]int)
 //
 //// reset the parser's state//
-//fn reset(&self, ) {
+//fn reset(&self) {
 //  if self.input != nil {
 //    self.input.Seek(0)
 //  }
@@ -106,7 +106,7 @@
 //  }
 //}
 //
-//pub fn error_handler(&self, ) -> ErrorStrategy {
+//pub fn error_handler(&self) -> ErrorStrategy {
 //  return self.err_handler
 //}
 //
@@ -167,7 +167,7 @@
 //// a wildcard and the error strategy could not recover from the mismatched
 //// symbol
 //
-//pub fn match_wildcard(&self, ) -> Token {
+//pub fn match_wildcard(&self) -> Token {
 //  let t = self.current_token();
 //  if self.token_type() > 0 {
 //    self.err_handler.report_match(p)
@@ -184,7 +184,7 @@
 //  return t
 //}
 //
-//pub fn parser_rule_context(&self, ) -> ParserRuleContext {
+//pub fn parser_rule_context(&self) -> ParserRuleContext {
 //  return self.ctx
 //}
 //
@@ -192,7 +192,7 @@
 //  self.ctx = v
 //}
 //
-//pub fn parse_listeners(&self, ) -> []ParseTreeListener {
+//pub fn parse_listeners(&self) -> []ParseTreeListener {
 //  if self.parse_listeners == nil {
 //    return make([]ParseTreeListener, 0)
 //  }
@@ -270,12 +270,12 @@
 //}
 //
 //// Remove all parse listeners.
-//fn remove_parse_listeners(&self, ) {
+//fn remove_parse_listeners(&self) {
 //  self.parse_listeners = nil
 //}
 //
 //// Notify any parse listeners of an enter rule event.
-//pub fn trigger_enter_rule_event(&self, ) {
+//pub fn trigger_enter_rule_event(&self) {
 //  if self.parse_listeners != nil {
 //    let ctx = self.ctx;
 //    for _, let listener = range self.parse_listeners {;
@@ -290,7 +290,7 @@
 ////
 //// @see //addParseListener
 ////
-//pub fn trigger_exit_rule_event(&self, ) {
+//pub fn trigger_exit_rule_event(&self) {
 //  if self.parse_listeners != nil {
 //    // reverse order walk of listeners
 //    let ctx = self.ctx;
@@ -304,15 +304,15 @@
 //  }
 //}
 //
-//pub fn interpreter(&self, ) -> *ParserATNSimulator {
+//pub fn interpreter(&self) -> *ParserATNSimulator {
 //  return self.Interpreter
 //}
 //
-//pub fn a_t_n(&self, ) -> *ATN {
+//pub fn a_t_n(&self) -> *ATN {
 //  return self.Interpreter.atn
 //}
 //
-//pub fn token_factory(&self, ) -> TokenFactory {
+//pub fn token_factory(&self) -> TokenFactory {
 //  return self.input.token_source().token_factory()
 //}
 //
@@ -327,7 +327,7 @@
 //// @panics UnsupportedOperationException if the current parser does not
 //// implement the {@link //getSerializedATN()} method.
 ////
-//pub fn a_t_n_with_bypassAlts(&self, ) {
+//pub fn a_t_n_with_bypassAlts(&self) {
 //
 //  // TODO
 //  panic("Not implemented!")
@@ -377,7 +377,7 @@
 //  //  return self.compile(pattern, pattern_rule_index)
 //}
 //
-//pub fn input_stream(&self, ) -> IntStream {
+//pub fn input_stream(&self) -> IntStream {
 //  return self.token_stream()
 //}
 //
@@ -385,7 +385,7 @@
 //  self.set_token_stream(input)
 //}
 //
-//pub fn token_stream(&self, ) -> TokenStream {
+//pub fn token_stream(&self) -> TokenStream {
 //  return self.input
 //}
 //
@@ -399,7 +399,7 @@
 //// Match needs to return the current input symbol, which gets put
 //// i32o the label for the associated token ref self.g., x=ID.
 ////
-//pub fn current_token(&self, ) -> Token {
+//pub fn current_token(&self) -> Token {
 //  return self.input.l_t(1)
 //}
 //
@@ -414,7 +414,7 @@
 //  listener.syntax_error(p, offending_token, line, column, msg, err)
 //}
 //
-//pub fn Consume(&self, ) -> Token {
+//pub fn Consume(&self) -> Token {
 //  let o = self.current_token();
 //  if self.token_type() != TokenEOF {
 //    self.input_stream().Consume()
@@ -443,7 +443,7 @@
 //  return o
 //}
 //
-//fn add_context_to_parse_tree(&self, ) {
+//fn add_context_to_parse_tree(&self) {
 //  // add current context to parent if we have a parent
 //  if self.ctx.parent() != nil {
 //    self.ctx.parent().(ParserRuleContext).add_child(self.ctx)
@@ -462,7 +462,7 @@
 //  }
 //}
 //
-//pub fn exit_rule(&self, ) {
+//pub fn exit_rule(&self) {
 //  self.ctx.set_stop(self.input.l_t(-1))
 //  // trigger event on ctx, before it reverts to parent
 //  if self.parse_listeners != nil {
@@ -494,7 +494,7 @@
 //// @return The precedence level for the top-most precedence rule, or -1 if
 //// the parser context is not nested within a precedence rule.
 //
-//pub fn precedence(&self, ) -> i32 {
+//pub fn precedence(&self) -> i32 {
 //  if len(self.precedence_stack) == 0 {
 //    return -1
 //  }
@@ -621,11 +621,11 @@
 ////
 //// @see ATN//getExpectedTokens(int, RuleContext)
 ////
-//pub fn expected_tokens(&self, ) -> *IntervalSet {
+//pub fn expected_tokens(&self) -> *IntervalSet {
 //  return self.Interpreter.atn.expected_tokens(self.state, self.ctx)
 //}
 //
-//pub fn expected_tokens_within_current_rule(&self, ) -> *IntervalSet {
+//pub fn expected_tokens_within_current_rule(&self) -> *IntervalSet {
 //  let atn = self.Interpreter.atn;
 //  let s = atn.states[self.state];
 //  return atn.next_tokens(s, nil)
@@ -674,12 +674,12 @@
 //}
 //
 //// For debugging and other purposes.//
-//pub fn d_f_a_strings(&self, ) -> &str {
+//pub fn d_f_a_strings(&self) -> &str {
 //  return fmt.Sprint(self.Interpreter.decision_to_d_f_a)
 //}
 //
 //// For debugging and other purposes.//
-//pub fn dump_d_f_a(&self, ) {
+//pub fn dump_d_f_a(&self) {
 //  let seen_one = false;
 //  for _, let dfa = range self.Interpreter.decision_to_d_f_a {;
 //    if len(dfa.states()) > 0 {
@@ -693,7 +693,7 @@
 //  }
 //}
 //
-//pub fn source_name(&self, ) -> &str {
+//pub fn source_name(&self) -> &str {
 //  return self.grammar_file_name
 //}
 //

@@ -89,7 +89,7 @@
 //  return parser.Sempred(localctx, self.rule_index, self.pred_index)
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return strconv.Itoa(self.rule_index) + "/" + strconv.Itoa(self.pred_index) + "/" + fmt.Sprint(self.is_ctx_dependent)
 //}
 //
@@ -105,7 +105,7 @@
 //  }
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "{" + strconv.Itoa(self.rule_index) + ":" + strconv.Itoa(self.pred_index) + "}?"
 //}
 //
@@ -137,7 +137,7 @@
 //  return self.precedence - other.precedence
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return "31"
 //}
 //
@@ -151,7 +151,7 @@
 //  }
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "{" + strconv.Itoa(self.precedence) + ">=prec}?"
 //}
 //
@@ -233,7 +233,7 @@
 //  }
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return fmt.Sprint(self.opnds) + "/AND"
 //}
 //
@@ -291,7 +291,7 @@
 //  return result
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  let s = "";
 //
 //  for _, let o = range self.opnds {;
@@ -374,7 +374,7 @@
 //  }
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return fmt.Sprint(self.opnds) + "/OR"
 //}
 //
@@ -426,7 +426,7 @@
 //  return result
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  let s = "";
 //
 //  for _, let o = range self.opnds {;

@@ -39,15 +39,15 @@
 //  panic("Not implemented")
 //}
 //
-//fn action_type(&self, ) -> i32 {
+//fn action_type(&self) -> i32 {
 //  return self.action_type
 //}
 //
-//fn is_position_dependent(&self, ) -> bool {
+//fn is_position_dependent(&self) -> bool {
 //  return self.is_position_dependent
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return strconv.Itoa(self.action_type)
 //}
 //
@@ -64,7 +64,7 @@
 //  *BaseLexerAction
 //}
 //
-//impl LexerSkipAction {§//  fn new(&self, ) -> *LexerSkipAction {
+//impl LexerSkipAction {§//  fn new(&self) -> *LexerSkipAction {
 //  let la = new(LexerSkipAction);
 //  la.base_lexer_action = NewBaseLexerAction(LexerActionTypeSkip)
 //  return la
@@ -77,7 +77,7 @@
 //  lexer.Skip()
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "skip"
 //}
 //
@@ -100,7 +100,7 @@
 //  lexer.set_type(self.thetype)
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return strconv.Itoa(self.action_type) + strconv.Itoa(self.thetype)
 //}
 //
@@ -114,7 +114,7 @@
 //  }
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "actionType(" + strconv.Itoa(self.thetype) + ")"
 //}
 //
@@ -141,7 +141,7 @@
 //  lexer.push_mode(self.mode)
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return strconv.Itoa(self.action_type) + strconv.Itoa(self.mode)
 //}
 //
@@ -155,7 +155,7 @@
 //  }
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "pushMode(" + strconv.Itoa(self.mode) + ")"
 //}
 //
@@ -167,7 +167,7 @@
 //  *BaseLexerAction
 //}
 //
-//impl LexerPopModeAction {§//  fn new(&self, ) -> *LexerPopModeAction {
+//impl LexerPopModeAction {§//  fn new(&self) -> *LexerPopModeAction {
 //
 //  let l = new(LexerPopModeAction);
 //
@@ -183,7 +183,7 @@
 //  lexer.pop_mode()
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "popMode"
 //}
 //
@@ -196,7 +196,7 @@
 //  *BaseLexerAction
 //}
 //
-//impl LexerMoreAction {§//  fn new(&self, ) -> *LexerMoreAction {
+//impl LexerMoreAction {§//  fn new(&self) -> *LexerMoreAction {
 //  let l = new(LexerMoreAction);
 //  self.base_lexer_action = NewBaseLexerAction(LexerActionTypeMore)
 //
@@ -210,7 +210,7 @@
 //  lexer.More()
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "more"
 //}
 //
@@ -235,7 +235,7 @@
 //  lexer.set_mode(self.mode)
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return strconv.Itoa(self.action_type) + strconv.Itoa(self.mode)
 //}
 //
@@ -249,7 +249,7 @@
 //  }
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "mode(" + strconv.Itoa(self.mode) + ")"
 //}
 //
@@ -290,7 +290,7 @@
 //  lexer.Action(nil, self.rule_index, self.action_index)
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return strconv.Itoa(self.action_type) + strconv.Itoa(self.rule_index) + strconv.Itoa(self.action_index)
 //}
 //
@@ -327,7 +327,7 @@
 //  lexer.set_channel(self.channel)
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return strconv.Itoa(self.action_type) + strconv.Itoa(self.channel)
 //}
 //
@@ -341,7 +341,7 @@
 //  }
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return "channel(" + strconv.Itoa(self.channel) + ")"
 //}
 //
@@ -392,7 +392,7 @@
 //  self.lexer_action.execute(lexer)
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  return strconv.Itoa(self.action_type) + strconv.Itoa(self.offset) + self.lexer_action.Hash()
 //}
 //

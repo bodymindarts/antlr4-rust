@@ -60,7 +60,7 @@
 //  prc.exception = e
 //}
 //
-//pub fn children(&self, ) -> []Tree {
+//pub fn children(&self) -> []Tree {
 //  return prc.children
 //}
 //
@@ -73,7 +73,7 @@
 //  prc.stop = ctx.stop
 //}
 //
-//pub fn text(&self, ) -> &str {
+//pub fn text(&self) -> &str {
 //  if prc.child_count() == 0 {
 //    return ""
 //  }
@@ -120,7 +120,7 @@
 //// we entered a rule. If we have // label, we will need to remove
 //// generic rule_context object.
 //// /
-//pub fn remove_last_child(&self, ) {
+//pub fn remove_last_child(&self) {
 //  if prc.children != nil && len(prc.children) > 0 {
 //    prc.children = prc.children[0 : len(prc.children)-1]
 //  }
@@ -173,7 +173,7 @@
 //  return TreesStringTree(prc, rule_names, recog)
 //}
 //
-//pub fn rule_context(&self, ) -> RuleContext {
+//pub fn rule_context(&self) -> RuleContext {
 //  return prc
 //}
 //
@@ -185,7 +185,7 @@
 //  prc.start = t
 //}
 //
-//pub fn start(&self, ) -> Token {
+//pub fn start(&self) -> Token {
 //  return prc.start
 //}
 //
@@ -193,7 +193,7 @@
 //  prc.stop = t
 //}
 //
-//pub fn stop(&self, ) -> Token {
+//pub fn stop(&self) -> Token {
 //  return prc.stop
 //}
 //
@@ -233,7 +233,7 @@
 //  return tokens
 //}
 //
-//pub fn payload(&self, ) -> i32erface{} {
+//pub fn payload(&self) -> i32erface{} {
 //  return prc
 //}
 //
@@ -281,7 +281,7 @@
 //  return contexts
 //}
 //
-//pub fn child_count(&self, ) -> i32 {
+//pub fn child_count(&self) -> i32 {
 //  if prc.children == nil {
 //    return 0
 //  }
@@ -289,7 +289,7 @@
 //  return len(prc.children)
 //}
 //
-//pub fn source_interval(&self, ) -> *Interval {
+//pub fn source_interval(&self) -> *Interval {
 //  if prc.start == nil || prc.stop == nil {
 //    return TreeInvalidInterval
 //  }

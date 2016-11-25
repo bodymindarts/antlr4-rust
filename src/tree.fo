@@ -123,7 +123,7 @@
 //  return nil
 //}
 //
-//pub fn children(&self, ) -> []Tree {
+//pub fn children(&self) -> []Tree {
 //  return nil
 //}
 //
@@ -131,11 +131,11 @@
 //  panic("Cannot set children on terminal node")
 //}
 //
-//pub fn symbol(&self, ) -> Token {
+//pub fn symbol(&self) -> Token {
 //  return self.symbol
 //}
 //
-//pub fn parent(&self, ) -> Tree {
+//pub fn parent(&self) -> Tree {
 //  return self.parent_ctx
 //}
 //
@@ -143,11 +143,11 @@
 //  self.parent_ctx = tree.(RuleContext)
 //}
 //
-//pub fn payload(&self, ) -> i32erface{} {
+//pub fn payload(&self) -> i32erface{} {
 //  return self.symbol
 //}
 //
-//pub fn source_interval(&self, ) -> *Interval {
+//pub fn source_interval(&self) -> *Interval {
 //  if self.symbol == nil {
 //    return TreeInvalidInterval
 //  }
@@ -155,7 +155,7 @@
 //  return NewInterval(tokenIndex, token_index)
 //}
 //
-//pub fn child_count(&self, ) -> i32 {
+//pub fn child_count(&self) -> i32 {
 //  return 0
 //}
 //
@@ -163,11 +163,11 @@
 //  return self.visit_terminal(t)
 //}
 //
-//pub fn text(&self, ) -> &str {
+//pub fn text(&self) -> &str {
 //  return self.symbol.text()
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  if self.symbol.token_type() == TokenEOF {
 //    return "<EOF>"
 //  }
@@ -206,7 +206,7 @@
 //pub struct ParseTreeWalker {
 //}
 //
-//impl ParseTreeWalker {§//  fn new(&self, ) -> *ParseTreeWalker {
+//impl ParseTreeWalker {§//  fn new(&self) -> *ParseTreeWalker {
 //  return new(ParseTreeWalker)
 //}
 //

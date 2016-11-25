@@ -49,17 +49,17 @@
 //  }
 //}
 //
-//pub fn all_tokens(&self, ) -> []Token {
+//pub fn all_tokens(&self) -> []Token {
 //  return self.tokens
 //}
 //
-//pub fn Mark(&self, ) -> i32 {
+//pub fn Mark(&self) -> i32 {
 //  return 0
 //}
 //
 //pub fn Release(marker: i32) {}
 //
-//fn reset(&self, ) {
+//fn reset(&self) {
 //  self.Seek(0)
 //}
 //
@@ -74,7 +74,7 @@
 //  return self.tokens[index]
 //}
 //
-//pub fn Consume(&self, ) {
+//pub fn Consume(&self) {
 //  let SkipEOFCheck = false;
 //
 //  if self.index >= 0 {
@@ -169,18 +169,18 @@
 //  return self.l_t(i).token_type()
 //}
 //
-//fn lazy_init(&self, ) {
+//fn lazy_init(&self) {
 //  if self.index == -1 {
 //    self.setup()
 //  }
 //}
 //
-//fn setup(&self, ) {
+//fn setup(&self) {
 //  self.Sync(0)
 //  self.index = self.adjust_seek_index(0)
 //}
 //
-//pub fn token_source(&self, ) -> TokenSource {
+//pub fn token_source(&self) -> TokenSource {
 //  return self.token_source
 //}
 //
@@ -297,19 +297,19 @@
 //  return hidden
 //}
 //
-//pub fn source_name(&self, ) -> &str {
+//pub fn source_name(&self) -> &str {
 //  return self.token_source.source_name()
 //}
 //
-//pub fn Size(&self, ) -> i32 {
+//pub fn Size(&self) -> i32 {
 //  return len(self.tokens)
 //}
 //
-//pub fn Index(&self, ) -> i32 {
+//pub fn Index(&self) -> i32 {
 //  return self.index
 //}
 //
-//pub fn all_text(&self, ) -> &str {
+//pub fn all_text(&self) -> &str {
 //  return self.text_from_interval(nil)
 //}
 //
@@ -360,7 +360,7 @@
 //}
 //
 //// Fill gets all tokens from the lexer until EOF.
-//pub fn Fill(&self, ) {
+//pub fn Fill(&self) {
 //  self.lazy_init()
 //
 //  for self.fetch(1000) == 1000 {
@@ -422,7 +422,7 @@
 //}
 //
 //// number_of_on_channel_tokens counts EOF once.
-//fn number_of_on_channel_tokens(&self, ) -> i32 {
+//fn number_of_on_channel_tokens(&self) -> i32 {
 //  var n i32
 //
 //  self.Fill()

@@ -69,35 +69,35 @@
 //  TokenHiddenChannel = 1
 //)
 //
-//pub fn channel(&self, ) -> i32 {
+//pub fn channel(&self) -> i32 {
 //  return self.channel
 //}
 //
-//pub fn start(&self, ) -> i32 {
+//pub fn start(&self) -> i32 {
 //  return self.start
 //}
 //
-//pub fn stop(&self, ) -> i32 {
+//pub fn stop(&self) -> i32 {
 //  return self.stop
 //}
 //
-//pub fn line(&self, ) -> i32 {
+//pub fn line(&self) -> i32 {
 //  return self.line
 //}
 //
-//pub fn column(&self, ) -> i32 {
+//pub fn column(&self) -> i32 {
 //  return self.column
 //}
 //
-//pub fn token_type(&self, ) -> i32 {
+//pub fn token_type(&self) -> i32 {
 //  return self.token_type
 //}
 //
-//pub fn source(&self, ) -> *TokenSourceCharStreamPair {
+//pub fn source(&self) -> *TokenSourceCharStreamPair {
 //  return self.source
 //}
 //
-//pub fn token_index(&self, ) -> i32 {
+//pub fn token_index(&self) -> i32 {
 //  return self.token_index
 //}
 //
@@ -105,11 +105,11 @@
 //  self.token_index = v
 //}
 //
-//pub fn token_source(&self, ) -> TokenSource {
+//pub fn token_source(&self) -> TokenSource {
 //  return self.source.token_source
 //}
 //
-//pub fn input_stream(&self, ) -> CharStream {
+//pub fn input_stream(&self) -> CharStream {
 //  return self.source.char_stream
 //}
 //
@@ -155,7 +155,7 @@
 ////
 //// @param old_token The token to copy.
 ////
-//fn clone(&self, ) -> *CommonToken {
+//fn clone(&self) -> *CommonToken {
 //  let t = NewCommonToken(self.source, self.token_type, self.channel, self.start, self.stop);
 //  self.token_index = self.token_index()
 //  self.line = self.line()
@@ -164,7 +164,7 @@
 //  return t
 //}
 //
-//pub fn text(&self, ) -> &str {
+//pub fn text(&self) -> &str {
 //  if self.text != "" {
 //    return self.text
 //  }
@@ -183,7 +183,7 @@
 //  self.text = text
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  let txt = self.text();
 //  if txt != "" {
 //    txt = &strs.Replace(txt, "\n", "\\n", -1)

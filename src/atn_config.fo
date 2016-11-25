@@ -98,7 +98,7 @@
 //  }
 //}
 //
-//fn precedence_filter_suppressed(&self, ) -> bool {
+//fn precedence_filter_suppressed(&self) -> bool {
 //  return self.precedence_filter_suppressed
 //}
 //
@@ -106,26 +106,26 @@
 //  self.precedence_filter_suppressed = v
 //}
 //
-//pub fn state(&self, ) -> ATNState {
+//pub fn state(&self) -> ATNState {
 //  return self.state
 //}
 //
-//pub fn alt(&self, ) -> i32 {
+//pub fn alt(&self) -> i32 {
 //  return self.alt
 //}
 //
 //pub fn set_context(&self, v: PredictionContext) {
 //  self.context = v
 //}
-//pub fn context(&self, ) -> PredictionContext {
+//pub fn context(&self) -> PredictionContext {
 //  return self.context
 //}
 //
-//pub fn semantic_context(&self, ) -> SemanticContext {
+//pub fn semantic_context(&self) -> SemanticContext {
 //  return self.semantic_context
 //}
 //
-//pub fn reaches_into_outer_context(&self, ) -> i32 {
+//pub fn reaches_into_outer_context(&self) -> i32 {
 //  return self.reaches_into_outer_context
 //}
 //
@@ -164,11 +164,11 @@
 //  return nums && alts && cons && sups && equal
 //}
 //
-//fn short_hash(&self, ) -> &str {
+//fn short_hash(&self) -> &str {
 //  return strconv.Itoa(self.state.state_number()) + "/" + strconv.Itoa(self.alt) + "/" + self.semantic_context.String()
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  var c &str
 //
 //  if self.context == nil {
@@ -180,7 +180,7 @@
 //  return strconv.Itoa(self.state.state_number()) + "/" + strconv.Itoa(self.alt) + "/" + c + "/" + self.semantic_context.String()
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  var s1, s2, s3 &str
 //
 //  if self.context != nil {
@@ -245,7 +245,7 @@
 //  return &LexerATNConfig{BaseATNConfig: NewBaseATNConfig5(state, alt, context, SemanticContextNone)}
 //}
 //
-//pub fn Hash(&self, ) -> &str {
+//pub fn Hash(&self) -> &str {
 //  var f &str
 //
 //  if self.passed_through_non_greedy_decision {

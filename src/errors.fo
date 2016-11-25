@@ -56,15 +56,15 @@
 //  return t
 //}
 //
-//pub fn message(&self, ) -> &str {
+//pub fn message(&self) -> &str {
 //  return self.message
 //}
 //
-//pub fn offending_token(&self, ) -> Token {
+//pub fn offending_token(&self) -> Token {
 //  return self.offending_token
 //}
 //
-//pub fn input_stream(&self, ) -> IntStream {
+//pub fn input_stream(&self) -> IntStream {
 //  return self.input
 //}
 //
@@ -80,7 +80,7 @@
 //// @return The set of token types that could potentially follow the current
 //// state in the ATN, or {@code nil} if the information is not available.
 //// /
-//fn expected_tokens(&self, ) -> *IntervalSet {
+//fn expected_tokens(&self) -> *IntervalSet {
 //  if self.recognizer != nil {
 //    return self.recognizer.a_t_n().expected_tokens(self.offending_state, self.ctx)
 //  }
@@ -88,7 +88,7 @@
 //  return nil
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  return self.message
 //}
 //
@@ -111,7 +111,7 @@
 //  return l
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  let symbol = "";
 //  if self.start_index >= 0 && self.start_index < self.input.Size() {
 //    symbol = self.input.(CharStream).text_from_interval(NewInterval(self.start_index, self.start_index))
@@ -230,7 +230,7 @@
 //pub struct ParseCancellationException {
 //}
 //
-//impl ParseCancellationException {§//  fn new(&self, ) -> *ParseCancellationException {
+//impl ParseCancellationException {§//  fn new(&self) -> *ParseCancellationException {
 //  //  Error.call(this)
 //  //  Error.capture_stack_trace(this, ParseCancellationException)
 //  return new(ParseCancellationException)

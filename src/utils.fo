@@ -113,7 +113,7 @@
 //  return fmt.Sprint(self.Sum32())
 //}
 //
-//fn length(&self, ) -> i32 {
+//fn length(&self) -> i32 {
 //  return len(self.data)
 //}
 //
@@ -157,7 +157,7 @@
 //  return false
 //}
 //
-//fn values(&self, ) -> []interface{} {
+//fn values(&self) -> []interface{} {
 //  let l = make([]interface{}, 0);
 //
 //  for let key = range self.data {;
@@ -168,7 +168,7 @@
 //  return l
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //
 //  let r = "";
 //
@@ -185,7 +185,7 @@
 //  data map[int]bool
 //}
 //
-//impl BitSet {§//  fn new(&self, ) -> *BitSet {
+//impl BitSet {§//  fn new(&self) -> *BitSet {
 //  let b = new(BitSet);
 //  self.data = make(map[int]bool)
 //  return b
@@ -213,7 +213,7 @@
 //  return self.data[value] == true
 //}
 //
-//fn values(&self, ) -> []int {
+//fn values(&self) -> []int {
 //  let ks = make([]int, len(self.data));
 //  let i = 0;
 //  for let k = range self.data {;
@@ -224,7 +224,7 @@
 //  return ks
 //}
 //
-//fn min_value(&self, ) -> i32 {
+//fn min_value(&self) -> i32 {
 //  let min = 2147483647;
 //
 //  for let k = range self.data {;
@@ -255,11 +255,11 @@
 //  return true
 //}
 //
-//fn length(&self, ) -> i32 {
+//fn length(&self) -> i32 {
 //  return len(self.data)
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  let vals = self.values();
 //  let vals_s = make([]string, len(vals));
 //
@@ -273,7 +273,7 @@
 //  data map[string]interface{}
 //}
 //
-//impl AltDict {§//  fn new(&self, ) -> *AltDict {
+//impl AltDict {§//  fn new(&self) -> *AltDict {
 //  let d = new(AltDict);
 //  self.data = make(map[string]interface{})
 //  return d
@@ -289,7 +289,7 @@
 //  self.data[key] = value
 //}
 //
-//fn values(&self, ) -> []interface{} {
+//fn values(&self) -> []interface{} {
 //  let vs = make([]interface{}, len(self.data));
 //  let i = 0;
 //  for _, let v = range self.data {;
@@ -303,7 +303,7 @@
 //  data map[string]map[string]interface{}
 //}
 //
-//impl DoubleDict {§//  fn new(&self, ) -> *DoubleDict {
+//impl DoubleDict {§//  fn new(&self) -> *DoubleDict {
 //  let dd = new(DoubleDict);
 //  dd.data = make(map[string]map[string]interface{})
 //  return dd

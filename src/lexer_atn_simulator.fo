@@ -93,7 +93,7 @@
 //  return self.exec_a_t_n(input, dfa.s0)
 //}
 //
-//fn reset(&self, ) {
+//fn reset(&self) {
 //  self.prev_accept.reset()
 //  self.start_index = -1
 //  self.Line = 1
@@ -613,11 +613,11 @@
 //  input.Consume()
 //}
 //
-//pub fn char_position_in_line(&self, ) -> i32 {
+//pub fn char_position_in_line(&self) -> i32 {
 //  return self.char_position_in_line
 //}
 //
-//pub fn line(&self, ) -> i32 {
+//pub fn line(&self) -> i32 {
 //  return self.Line
 //}
 //
@@ -643,12 +643,12 @@
 //  dfa_state: *DFAState
 //}
 //
-//impl SimState {§//  fn new(&self, ) -> *SimState {
+//impl SimState {§//  fn new(&self) -> *SimState {
 //  let s = new(SimState);
 //  reset_sim_state(s)
 //  return s
 //}
 //
-//fn reset(&self, ) {
+//fn reset(&self) {
 //  reset_sim_state(s)
 //}

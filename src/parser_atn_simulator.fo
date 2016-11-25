@@ -53,7 +53,7 @@
 //  return p
 //}
 //
-//pub fn prediction_mode(&self, ) -> i32 {
+//pub fn prediction_mode(&self) -> i32 {
 //  return self.prediction_mode
 //}
 //
@@ -61,7 +61,7 @@
 //  self.prediction_mode = v
 //}
 //
-//fn reset(&self, ) {
+//fn reset(&self) {
 //}
 //
 //pub fn adaptive_predict(&self, input TokenStream, decision: i32, outer_context: ParserRuleContext) -> i32 {

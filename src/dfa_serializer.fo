@@ -29,7 +29,7 @@
 //  }
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  if self.dfa.s0 == nil {
 //    return ""
 //  }
@@ -111,7 +111,7 @@
 //  return "'" + &str(i) + "'"
 //}
 //
-//pub fn String(&self, ) -> &str {
+//pub fn String(&self) -> &str {
 //  if self.dfa.s0 == nil {
 //    return ""
 //  }

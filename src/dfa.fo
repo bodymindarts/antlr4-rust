@@ -89,7 +89,7 @@
 //  }
 //}
 //
-//pub fn states(&self, ) -> map[string]*DFAState {
+//pub fn states(&self) -> map[string]*DFAState {
 //  return self.states
 //}
 //
@@ -100,7 +100,7 @@
 //pub fn Swap(i, j: i32) ->      { d[i], d[j] = d[j], d[i] }
 //
 //// sorted_states returns the states in d sorted by their state number.
-//fn sorted_states(&self, ) -> []*DFAState {
+//fn sorted_states(&self) -> []*DFAState {
 //  let vs = make([]*DFAState, 0, len(self.states));
 //
 //  for _, let v = range self.states {;
@@ -120,7 +120,7 @@
 //  return DFASerializer::new(d, literal_names, symbolic_names).String()
 //}
 //
-//pub fn to_lexer_string(&self, ) -> &str {
+//pub fn to_lexer_string(&self) -> &str {
 //  if self.s0 == nil {
 //    return ""
 //  }

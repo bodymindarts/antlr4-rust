@@ -20,7 +20,7 @@
 //pub struct DefaultErrorListener {
 //}
 //
-//impl DefaultErrorListener {§//  fn new(&self, ) -> *DefaultErrorListener {
+//impl DefaultErrorListener {§//  fn new(&self) -> *DefaultErrorListener {
 //  return new(DefaultErrorListener)
 //}
 //
@@ -40,7 +40,7 @@
 //  *DefaultErrorListener
 //}
 //
-//impl ConsoleErrorListener {§//  fn new(&self, ) -> *ConsoleErrorListener {
+//impl ConsoleErrorListener {§//  fn new(&self) -> *ConsoleErrorListener {
 //  return new(ConsoleErrorListener)
 //}
 //

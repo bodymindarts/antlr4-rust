@@ -34,7 +34,7 @@
 //  GrammarFileName: &str
 //}
 //
-//impl BaseRecognizer {§//  fn new(&self, ) -> *BaseRecognizer {
+//impl BaseRecognizer {§//  fn new(&self) -> *BaseRecognizer {
 //  let rec = new(BaseRecognizer);
 //  rec.listeners = []ErrorListener{ConsoleErrorListenerINSTANCE}
 //  rec.state = -1
@@ -59,27 +59,27 @@
 //  self.listeners = append(self.listeners, listener)
 //}
 //
-//pub fn remove_error_listeners(&self, ) {
+//pub fn remove_error_listeners(&self) {
 //  self.listeners = make([]ErrorListener, 0)
 //}
 //
-//pub fn rule_names(&self, ) -> []string {
+//pub fn rule_names(&self) -> []string {
 //  return self.rule_names
 //}
 //
-//pub fn token_names(&self, ) -> []string {
+//pub fn token_names(&self) -> []string {
 //  return self.literal_names
 //}
 //
-//pub fn symbolic_names(&self, ) -> []string {
+//pub fn symbolic_names(&self) -> []string {
 //  return self.symbolic_names
 //}
 //
-//pub fn literal_names(&self, ) -> []string {
+//pub fn literal_names(&self) -> []string {
 //  return self.literal_names
 //}
 //
-//pub fn state(&self, ) -> i32 {
+//pub fn state(&self) -> i32 {
 //  return self.state
 //}
 //
@@ -87,7 +87,7 @@
 //  self.state = v
 //}
 //
-////pub fn token_type_map(&self, ) {
+////pub fn token_type_map(&self) {
 ////    var token_names = self.token_names()
 ////    if (tokenNames==nil) {
 ////        panic("The current recognizer does not provide a list of token names.")
@@ -105,7 +105,7 @@
 ////
 //// <p>Used for XPath and tree pattern compilation.</p>
 ////
-//pub fn rule_index_map(&self, ) -> map[string]int {
+//pub fn rule_index_map(&self) -> map[string]int {
 //
 //  panic("Method not defined!")
 //  //    var rule_names = self.rule_names()
@@ -131,7 +131,7 @@
 //  //    }
 //}
 //
-////pub fn token_type_map(&self, ) -> map[string]int {
+////pub fn token_type_map(&self) -> map[string]int {
 ////    Vocabulary vocabulary = vocabulary()
 ////
 ////    Synchronized (tokenTypeMapCache) {
@@ -198,7 +198,7 @@
 //  return "'" + s + "'"
 //}
 //
-//pub fn error_listener_dispatch(&self, ) -> ErrorListener {
+//pub fn error_listener_dispatch(&self) -> ErrorListener {
 //  return NewProxyErrorListener(self.listeners)
 //}
 //
