@@ -75,30 +75,30 @@
 //    panic("delegates is not provided")
 //  }
 //  let l = new(ProxyErrorListener);
-//  l.delegates = delegates
+//  self.delegates = delegates
 //  return l
 //}
 //
 //pub fn SyntaxError(&self, recognizer Recognizer, offending_symbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
-//  for _, let d = range p.delegates {;
-//    d.SyntaxError(recognizer, offending_symbol, line, column, msg, e)
+//  for _, let d = range self.delegates {;
+//    self.SyntaxError(recognizer, offending_symbol, line, column, msg, e)
 //  }
 //}
 //
 //pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, start_index, stop_index i32, exact: bool, ambig_alts *BitSet, configs: ATNConfigSet) {
-//  for _, let d = range p.delegates {;
-//    d.ReportAmbiguity(recognizer, dfa, start_index, stop_index, exact, ambig_alts, configs)
+//  for _, let d = range self.delegates {;
+//    self.ReportAmbiguity(recognizer, dfa, start_index, stop_index, exact, ambig_alts, configs)
 //  }
 //}
 //
 //pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, start_index, stop_index: i32, conflicting_alts *BitSet, configs: ATNConfigSet) {
-//  for _, let d = range p.delegates {;
-//    d.ReportAttemptingFullContext(recognizer, dfa, start_index, stop_index, conflicting_alts, configs)
+//  for _, let d = range self.delegates {;
+//    self.ReportAttemptingFullContext(recognizer, dfa, start_index, stop_index, conflicting_alts, configs)
 //  }
 //}
 //
 //pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, start_index, stop_index, prediction: i32, configs: ATNConfigSet) {
-//  for _, let d = range p.delegates {;
-//    d.ReportContextSensitivity(recognizer, dfa, start_index, stop_index, prediction, configs)
+//  for _, let d = range self.delegates {;
+//    self.ReportContextSensitivity(recognizer, dfa, start_index, stop_index, prediction, configs)
 //  }
 //}

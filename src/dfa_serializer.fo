@@ -30,26 +30,26 @@
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  if d.dfa.s0 == nil {
+//  if self.dfa.s0 == nil {
 //    return ""
 //  }
 //
 //  let buf = "";
-//  let states = d.dfa.sorted_states();
+//  let states = self.dfa.sorted_states();
 //
 //  for _, let s = range states {;
-//    if s.edges != nil {
-//      let n = len(s.edges);
+//    if self.edges != nil {
+//      let n = len(self.edges);
 //
 //      for let j = 0; j < n; j++ {;
-//        let t = s.edges[j];
+//        let t = self.edges[j];
 //
-//        if t != nil && t.state_number != 0x7FFFFFFF {
-//          buf += d.GetStateString(s)
+//        if t != nil && self.state_number != 0x7FFFFFFF {
+//          buf += self.GetStateString(s)
 //          buf += "-"
-//          buf += d.get_edge_label(j)
+//          buf += self.get_edge_label(j)
 //          buf += "->"
-//          buf += d.GetStateString(t)
+//          buf += self.GetStateString(t)
 //          buf += "\n"
 //        }
 //      }
@@ -66,10 +66,10 @@
 //pub fn get_edge_label(&self, i: i32) -> &str {
 //  if i == 0 {
 //    return "EOF"
-//  } else if d.literal_names != nil && i-1 < len(d.literal_names) {
-//    return d.literal_names[i-1]
-//  } else if d.symbolic_names != nil && i-1 < len(d.symbolic_names) {
-//    return d.symbolic_names[i-1]
+//  } else if self.literal_names != nil && i-1 < len(self.literal_names) {
+//    return self.literal_names[i-1]
+//  } else if self.symbolic_names != nil && i-1 < len(self.symbolic_names) {
+//    return self.symbolic_names[i-1]
 //  }
 //
 //  return strconv.Itoa(i - 1)
@@ -78,22 +78,22 @@
 //pub fn GetStateString(&self, s *DFAState) -> &str {
 //  var a, b &str
 //
-//  if s.is_accept_state {
+//  if self.is_accept_state {
 //    a = ":"
 //  }
 //
-//  if s.requires_full_context {
+//  if self.requires_full_context {
 //    b = "^"
 //  }
 //
-//  let base_state_str = a + "s" + strconv.Itoa(s.state_number) + b;
+//  let base_state_str = a + "s" + strconv.Itoa(self.state_number) + b;
 //
-//  if s.is_accept_state {
-//    if s.predicates != nil {
-//      return base_state_str + "=>" + fmt.Sprint(s.predicates)
+//  if self.is_accept_state {
+//    if self.predicates != nil {
+//      return base_state_str + "=>" + fmt.Sprint(self.predicates)
 //    }
 //
-//    return base_state_str + "=>" + fmt.Sprint(s.prediction)
+//    return base_state_str + "=>" + fmt.Sprint(self.prediction)
 //  }
 //
 //  return base_state_str
@@ -112,28 +112,28 @@
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  if l.dfa.s0 == nil {
+//  if self.dfa.s0 == nil {
 //    return ""
 //  }
 //
 //  let buf = "";
-//  let states = l.dfa.sorted_states();
+//  let states = self.dfa.sorted_states();
 //
 //  for let i = 0; i < len(states); i++ {;
 //    let s = states[i];
 //
-//    if s.edges != nil {
-//      let n = len(s.edges);
+//    if self.edges != nil {
+//      let n = len(self.edges);
 //
 //      for let j = 0; j < n; j++ {;
-//        let t = s.edges[j];
+//        let t = self.edges[j];
 //
-//        if t != nil && t.state_number != 0x7FFFFFFF {
-//          buf += l.GetStateString(s)
+//        if t != nil && self.state_number != 0x7FFFFFFF {
+//          buf += self.GetStateString(s)
 //          buf += "-"
-//          buf += l.get_edge_label(j)
+//          buf += self.get_edge_label(j)
 //          buf += "->"
-//          buf += l.GetStateString(t)
+//          buf += self.GetStateString(t)
 //          buf += "\n"
 //        }
 //      }

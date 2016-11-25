@@ -156,7 +156,7 @@
 //impl BasicState {§//  pub fn new(&self, ) -> *BasicState {
 //  let b = NewBaseATNState();
 //
-//  b.state_type = ATNStateBasic
+//  self.state_type = ATNStateBasic
 //
 //  return &BasicState{BaseATNState: b}
 //}
@@ -182,19 +182,19 @@
 //}
 //
 //pub fn get_decision(&self, ) -> i32 {
-//  return s.decision
+//  return self.decision
 //}
 //
 //pub fn set_decision(&self, b: i32) {
-//  s.decision = b
+//  self.decision = b
 //}
 //
 //pub fn get_non_greedy(&self, ) -> bool {
-//  return s.non_greedy
+//  return self.non_greedy
 //}
 //
 //pub fn set_non_greedy(&self, b: bool) {
-//  s.non_greedy = b
+//  self.non_greedy = b
 //}
 //
 //pub trait BlockStartState {
@@ -215,11 +215,11 @@
 //}
 //
 //pub fn get_end_state(&self, ) -> *BlockEndState {
-//  return s.end_state
+//  return self.end_state
 //}
 //
 //pub fn set_end_state(&self, b *BlockEndState) {
-//  s.end_state = b
+//  self.end_state = b
 //}
 //
 //pub struct BasicBlockStartState {
@@ -229,7 +229,7 @@
 //impl BasicBlockStartState {§//  pub fn new(&self, ) -> *BasicBlockStartState {
 //  let b = NewBlockStartState();
 //
-//  b.state_type = ATNStateBlockStart
+//  self.state_type = ATNStateBlockStart
 //
 //  return &BasicBlockStartState{BaseBlockStartState: b}
 //}
@@ -243,7 +243,7 @@
 //impl BlockEndState {§//  pub fn new(&self, ) -> *BlockEndState {
 //  let b = NewBaseATNState();
 //
-//  b.state_type = ATNStateBlockEnd
+//  self.state_type = ATNStateBlockEnd
 //
 //  return &BlockEndState{BaseATNState: b}
 //}
@@ -259,7 +259,7 @@
 //impl RuleStopState {§//  pub fn new(&self, ) -> *RuleStopState {
 //  let b = NewBaseATNState();
 //
-//  b.state_type = ATNStateRuleStop
+//  self.state_type = ATNStateRuleStop
 //
 //  return &RuleStopState{BaseATNState: b}
 //}
@@ -273,7 +273,7 @@
 //impl RuleStartState {§//  pub fn new(&self, ) -> *RuleStartState {
 //  let b = NewBaseATNState();
 //
-//  b.state_type = ATNStateRuleStart
+//  self.state_type = ATNStateRuleStart
 //
 //  return &RuleStartState{BaseATNState: b}
 //}
@@ -287,7 +287,7 @@
 //impl PlusLoopbackState {§//  pub fn new(&self, ) -> *PlusLoopbackState {
 //  let b = NewBaseDecisionState();
 //
-//  b.state_type = ATNStatePlusLoopBack
+//  self.state_type = ATNStatePlusLoopBack
 //
 //  return &PlusLoopbackState{BaseDecisionState: b}
 //}
@@ -304,7 +304,7 @@
 //impl PlusBlockStartState {§//  pub fn new(&self, ) -> *PlusBlockStartState {
 //  let b = NewBlockStartState();
 //
-//  b.state_type = ATNStatePlusBlockStart
+//  self.state_type = ATNStatePlusBlockStart
 //
 //  return &PlusBlockStartState{BaseBlockStartState: b}
 //}
@@ -317,7 +317,7 @@
 //impl StarBlockStartState {§//  pub fn new(&self, ) -> *StarBlockStartState {
 //  let b = NewBlockStartState();
 //
-//  b.state_type = ATNStateStarBlockStart
+//  self.state_type = ATNStateStarBlockStart
 //
 //  return &StarBlockStartState{BaseBlockStartState: b}
 //}
@@ -329,7 +329,7 @@
 //impl StarLoopbackState {§//  pub fn new(&self, ) -> *StarLoopbackState {
 //  let b = NewBaseATNState();
 //
-//  b.state_type = ATNStateStarLoopBack
+//  self.state_type = ATNStateStarLoopBack
 //
 //  return &StarLoopbackState{BaseATNState: b}
 //}
@@ -343,7 +343,7 @@
 //impl StarLoopEntryState {§//  pub fn new(&self, ) -> *StarLoopEntryState {
 //  let b = NewBaseDecisionState();
 //
-//  b.state_type = ATNStateStarLoopEntry
+//  self.state_type = ATNStateStarLoopEntry
 //
 //  // False precedence_rule_decision indicates whether s state can benefit from a precedence DFA during SLL decision making.
 //  return &StarLoopEntryState{BaseDecisionState: b}
@@ -358,7 +358,7 @@
 //impl LoopEndState {§//  pub fn new(&self, ) -> *LoopEndState {
 //  let b = NewBaseATNState();
 //
-//  b.state_type = ATNStateLoopEnd
+//  self.state_type = ATNStateLoopEnd
 //
 //  return &LoopEndState{BaseATNState: b}
 //}
@@ -371,7 +371,7 @@
 //impl TokensStartState {§//  pub fn new(&self, ) -> *TokensStartState {
 //  let b = NewBaseDecisionState();
 //
-//  b.state_type = ATNStateTokenStart
+//  self.state_type = ATNStateTokenStart
 //
 //  return &TokensStartState{BaseDecisionState: b}
 //}

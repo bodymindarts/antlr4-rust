@@ -39,32 +39,32 @@
 //
 //  let t = new(BaseTransition);
 //
-//  t.target = target
+//  self.target = target
 //  // Are we epsilon, action, sempred?
-//  t.is_epsilon = false
-//  t.interval_set = nil
+//  self.is_epsilon = false
+//  self.interval_set = nil
 //
 //  return t
 //}
 //
 //pub fn get_target(&self, ) -> ATNState {
-//  return t.target
+//  return self.target
 //}
 //
 //pub fn set_target(&self, s: ATNState) {
-//  t.target = s
+//  self.target = s
 //}
 //
 //pub fn get_is_epsilon(&self, ) -> bool {
-//  return t.is_epsilon
+//  return self.is_epsilon
 //}
 //
 //pub fn get_label(&self, ) -> *IntervalSet {
-//  return t.interval_set
+//  return self.interval_set
 //}
 //
 //pub fn get_serialization_type(&self, ) -> i32 {
-//  return t.serialization_type
+//  return self.serialization_type
 //}
 //
 //pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
@@ -75,7 +75,7 @@
 //  TransitionEPSILON    = 1
 //  TransitionRANGE      = 2
 //  TransitionRULE       = 3
-//  TransitionPREDICATE  = 4 // e.g., {isType(input.LT(1))}?
+//  TransitionPREDICATE  = 4 // self.g., {isType(input.LT(1))}?
 //  TransitionATOM       = 5
 //  TransitionACTION     = 6
 //  TransitionSET        = 7 // ~(A|B) or ~atom, wildcard, which convert to next 2
@@ -130,27 +130,27 @@
 //impl AtomTransition {§//  pub fn new(&self, target: ATNState, i32ervalSet: i32) -> *AtomTransition {
 //
 //  let t = new(AtomTransition);
-//  t.BaseTransition = NewBaseTransition(target)
+//  self.BaseTransition = NewBaseTransition(target)
 //
-//  t.label = i32ervalSet // The token type or character value or, signifies special i32ervalSet.
-//  t.interval_set = t.make_label()
-//  t.serialization_type = TransitionATOM
+//  self.label = i32ervalSet // The token type or character value or, signifies special i32ervalSet.
+//  self.interval_set = self.make_label()
+//  self.serialization_type = TransitionATOM
 //
 //  return t
 //}
 //
 //pub fn make_label(&self, ) -> *IntervalSet {
 //  let s = NewIntervalSet();
-//  s.add_one(t.label)
+//  self.add_one(self.label)
 //  return s
 //}
 //
 //pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
-//  return t.label == symbol
+//  return self.label == symbol
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return strconv.Itoa(t.label)
+//  return strconv.Itoa(self.label)
 //}
 //
 //pub struct RuleTransition {
@@ -163,13 +163,13 @@
 //impl RuleTransition {§//  pub fn new(&self, rule_start ATNState, rule_index, precedence: i32, follow_state: ATNState) -> *RuleTransition {
 //
 //  let t = new(RuleTransition);
-//  t.BaseTransition = NewBaseTransition(ruleStart)
+//  self.BaseTransition = NewBaseTransition(ruleStart)
 //
-//  t.rule_index = rule_index
-//  t.precedence = precedence
-//  t.follow_state = follow_state
-//  t.serialization_type = TransitionRULE
-//  t.is_epsilon = true
+//  self.rule_index = rule_index
+//  self.precedence = precedence
+//  self.follow_state = follow_state
+//  self.serialization_type = TransitionRULE
+//  self.is_epsilon = true
 //
 //  return t
 //}
@@ -187,11 +187,11 @@
 //impl EpsilonTransition {§//  pub fn new(&self, target: ATNState, outermost_precedence_return: i32) -> *EpsilonTransition {
 //
 //  let t = new(EpsilonTransition);
-//  t.BaseTransition = NewBaseTransition(target)
+//  self.BaseTransition = NewBaseTransition(target)
 //
-//  t.serialization_type = TransitionEPSILON
-//  t.is_epsilon = true
-//  t.outermost_precedence_return = outermost_precedence_return
+//  self.serialization_type = TransitionEPSILON
+//  self.is_epsilon = true
+//  self.outermost_precedence_return = outermost_precedence_return
 //  return t
 //}
 //
@@ -212,27 +212,27 @@
 //impl RangeTransition {§//  pub fn new(&self, target ATNState,: start, stop: i32) -> *RangeTransition {
 //
 //  let t = new(RangeTransition);
-//  t.BaseTransition = NewBaseTransition(target)
+//  self.BaseTransition = NewBaseTransition(target)
 //
-//  t.serialization_type = TransitionRANGE
-//  t.start = start
-//  t.stop = stop
-//  t.interval_set = t.make_label()
+//  self.serialization_type = TransitionRANGE
+//  self.start = start
+//  self.stop = stop
+//  self.interval_set = self.make_label()
 //  return t
 //}
 //
 //pub fn make_label(&self, ) -> *IntervalSet {
 //  let s = NewIntervalSet();
-//  s.add_range(t.start, t.stop)
+//  self.add_range(self.start, self.stop)
 //  return s
 //}
 //
 //pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
-//  return symbol >= t.start && symbol <= t.stop
+//  return symbol >= self.start && symbol <= self.stop
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "'" + &str(t.start) + "'..'" + &str(t.stop) + "'"
+//  return "'" + &str(self.start) + "'..'" + &str(self.stop) + "'"
 //}
 //
 //pub trait AbstractPredicateTransition {
@@ -247,7 +247,7 @@
 //impl BasePredicateTransition {§//  pub fn new(&self, target: ATNState) -> *BaseAbstractPredicateTransition {
 //
 //  let t = new(BaseAbstractPredicateTransition);
-//  t.BaseTransition = NewBaseTransition(target)
+//  self.BaseTransition = NewBaseTransition(target)
 //
 //  return t
 //}
@@ -264,13 +264,13 @@
 //impl PredicateTransition {§//  pub fn new(&self, target ATNState, rule_index, pred_index: i32, is_ctx_dependent: bool) -> *PredicateTransition {
 //
 //  let t = new(PredicateTransition);
-//  t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
+//  self.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
 //
-//  t.serialization_type = TransitionPREDICATE
-//  t.rule_index = rule_index
-//  t.pred_index = pred_index
-//  t.is_ctx_dependent = is_ctx_dependent // e.g., $i ref in pred
-//  t.is_epsilon = true
+//  self.serialization_type = TransitionPREDICATE
+//  self.rule_index = rule_index
+//  self.pred_index = pred_index
+//  self.is_ctx_dependent = is_ctx_dependent // self.g., $i ref in pred
+//  self.is_epsilon = true
 //  return t
 //}
 //
@@ -279,11 +279,11 @@
 //}
 //
 //pub fn get_predicate(&self, ) -> *Predicate {
-//  return NewPredicate(t.rule_index, t.pred_index, t.is_ctx_dependent)
+//  return NewPredicate(self.rule_index, self.pred_index, self.is_ctx_dependent)
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "pred_" + strconv.Itoa(t.rule_index) + ":" + strconv.Itoa(t.pred_index)
+//  return "pred_" + strconv.Itoa(self.rule_index) + ":" + strconv.Itoa(self.pred_index)
 //}
 //
 //pub struct ActionTransition {
@@ -296,13 +296,13 @@
 //impl ActionTransition {§//  pub fn new(&self, target ATNState, rule_index, action_index: i32, is_ctx_dependent: bool) -> *ActionTransition {
 //
 //  let t = new(ActionTransition);
-//  t.BaseTransition = NewBaseTransition(target)
+//  self.BaseTransition = NewBaseTransition(target)
 //
-//  t.serialization_type = TransitionACTION
-//  t.rule_index = rule_index
-//  t.action_index = action_index
-//  t.is_ctx_dependent = is_ctx_dependent // e.g., $i ref in pred
-//  t.is_epsilon = true
+//  self.serialization_type = TransitionACTION
+//  self.rule_index = rule_index
+//  self.action_index = action_index
+//  self.is_ctx_dependent = is_ctx_dependent // self.g., $i ref in pred
+//  self.is_epsilon = true
 //  return t
 //}
 //
@@ -311,7 +311,7 @@
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "action_" + strconv.Itoa(t.rule_index) + ":" + strconv.Itoa(t.action_index)
+//  return "action_" + strconv.Itoa(self.rule_index) + ":" + strconv.Itoa(self.action_index)
 //}
 //
 //pub struct SetTransition {
@@ -321,25 +321,25 @@
 //impl SetTransition {§//  pub fn new(&self, target: ATNState, set *IntervalSet) -> *SetTransition {
 //
 //  let t = new(SetTransition);
-//  t.BaseTransition = NewBaseTransition(target)
+//  self.BaseTransition = NewBaseTransition(target)
 //
-//  t.serialization_type = TransitionSET
+//  self.serialization_type = TransitionSET
 //  if set != nil {
-//    t.interval_set = set
+//    self.interval_set = set
 //  } else {
-//    t.interval_set = NewIntervalSet()
-//    t.interval_set.add_one(TokenInvalidType)
+//    self.interval_set = NewIntervalSet()
+//    self.interval_set.add_one(TokenInvalidType)
 //  }
 //
 //  return t
 //}
 //
 //pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
-//  return t.interval_set.contains(symbol)
+//  return self.interval_set.contains(symbol)
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return t.interval_set.String()
+//  return self.interval_set.String()
 //}
 //
 //pub struct NotSetTransition {
@@ -350,19 +350,19 @@
 //
 //  let t = new(NotSetTransition);
 //
-//  t.SetTransition = NewSetTransition(target, set)
+//  self.SetTransition = NewSetTransition(target, set)
 //
-//  t.serialization_type = TransitionNOTSET
+//  self.serialization_type = TransitionNOTSET
 //
 //  return t
 //}
 //
 //pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
-//  return symbol >= min_vocab_symbol && symbol <= max_vocab_symbol && !t.interval_set.contains(symbol)
+//  return symbol >= min_vocab_symbol && symbol <= max_vocab_symbol && !self.interval_set.contains(symbol)
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "~" + t.interval_set.String()
+//  return "~" + self.interval_set.String()
 //}
 //
 //pub struct WildcardTransition {
@@ -372,9 +372,9 @@
 //impl WildcardTransition {§//  pub fn new(&self, target: ATNState) -> *WildcardTransition {
 //
 //  let t = new(WildcardTransition);
-//  t.BaseTransition = NewBaseTransition(target)
+//  self.BaseTransition = NewBaseTransition(target)
 //
-//  t.serialization_type = TransitionWILDCARD
+//  self.serialization_type = TransitionWILDCARD
 //  return t
 //}
 //
@@ -395,11 +395,11 @@
 //impl PrecedencePredicateTransition {§//  pub fn new(&self, target: ATNState, precedence: i32) -> *PrecedencePredicateTransition {
 //
 //  let t = new(PrecedencePredicateTransition);
-//  t.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
+//  self.BaseAbstractPredicateTransition = NewBasePredicateTransition(target)
 //
-//  t.serialization_type = TransitionPRECEDENCE
-//  t.precedence = precedence
-//  t.is_epsilon = true
+//  self.serialization_type = TransitionPRECEDENCE
+//  self.precedence = precedence
+//  self.is_epsilon = true
 //
 //  return t
 //}
@@ -409,9 +409,9 @@
 //}
 //
 //pub fn get_predicate(&self, ) -> *PrecedencePredicate {
-//  return NewPrecedencePredicate(t.precedence)
+//  return NewPrecedencePredicate(self.precedence)
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return fmt.Sprint(t.precedence) + " >= _p"
+//  return fmt.Sprint(self.precedence) + " >= _p"
 //}

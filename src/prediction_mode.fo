@@ -21,7 +21,7 @@
 //  //
 //  // <p>
 //  // When using this prediction mode, the parser will either return a correct
-//  // parse tree (i.e. the same parse tree that would be returned with the
+//  // parse tree (self.e. the same parse tree that would be returned with the
 //  // {@link //LL} prediction mode), or it will Report a syntax error. If a
 //  // syntax error is encountered when using the {@link //SLL} prediction mode,
 //  // it may be due to either an actual syntax error in the input or indicate
@@ -94,7 +94,7 @@
 ////
 //// <p>Assuming combined SLL+LL parsing, an SLL configuration set with only
 //// conflicting subsets should fall back to full LL, even if the
-//// configuration sets don't resolve to the same alternative (e.g.
+//// configuration sets don't resolve to the same alternative (self.g.
 //// {@code {1,2}} and {@code {3,4}}. If there is at least one non-conflicting
 //// configuration, SLL could continue with the hopes that more lookahead will
 //// resolve via one of those non-conflicting configurations.</p>
@@ -206,7 +206,7 @@
 //// {@link RuleStopState}, otherwise {@code false}
 //pub fn PredictionModehasConfigInRuleStopState(configs: ATNConfigSet) -> bool { // non-member
 //  for _, let c = range configs.GetItems() {;
-//    if _, let ok = c.GetState().(*RuleStopState); ok {;
+//    if _, let ok = self.GetState().(*RuleStopState); ok {;
 //      return true
 //    }
 //  }
@@ -224,7 +224,7 @@
 //pub fn PredictionModeallConfigsInRuleStopStates(configs: ATNConfigSet) -> bool { // non-member
 //
 //  for _, let c = range configs.GetItems() {;
-//    if _, let ok = c.GetState().(*RuleStopState); !ok {;
+//    if _, let ok = self.GetState().(*RuleStopState); !ok {;
 //      return false
 //    }
 //  }
@@ -247,7 +247,7 @@
 //// conflicting subsets {@code (s, _, ctx, _)} and singleton subsets with
 //// non-conflicting configurations. Two configurations conflict if they have
 //// identical {@link ATNConfig//state} and {@link ATNConfig//context} values
-//// but different {@link ATNConfig//alt} value, e.g. {@code (s, i, ctx, _)}
+//// but different {@link ATNConfig//alt} value, self.g. {@code (s, i, ctx, _)}
 //// and {@code (s, j, ctx, _)} for {@code i!=j}.</p>
 ////
 //// <p>Reduce these configuration subsets to the set of possible alternatives.
@@ -490,13 +490,13 @@
 //  let config_to_alts = make(map[string]*BitSet);
 //
 //  for _, let c = range configs.GetItems() {;
-//    let key = "key_" + strconv.Itoa(c.GetState().GetStateNumber()) + "/" + c.GetContext().String();
+//    let key = "key_" + strconv.Itoa(self.GetState().GetStateNumber()) + "/" + self.GetContext().String();
 //    let alts = config_to_alts[key];
 //    if alts == nil {
 //      alts = NewBitSet()
 //      config_to_alts[key] = alts
 //    }
-//    alts.add(c.GetAlt())
+//    alts.add(self.GetAlt())
 //  }
 //
 //  let values = make([]*BitSet, 0);
@@ -522,12 +522,12 @@
 //  let m = NewAltDict();
 //
 //  for _, let c = range configs.GetItems() {;
-//    let alts = m.Get(c.GetState().String());
+//    let alts = self.Get(self.GetState().String());
 //    if alts == nil {
 //      alts = NewBitSet()
-//      m.put(c.GetState().String(), alts)
+//      self.put(self.GetState().String(), alts)
 //    }
-//    alts.(*BitSet).add(c.GetAlt())
+//    alts.(*BitSet).add(self.GetAlt())
 //  }
 //  return m
 //}

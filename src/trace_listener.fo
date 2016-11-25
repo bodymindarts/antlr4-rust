@@ -16,13 +16,13 @@
 //}
 //
 //pub fn EnterEveryRule(&self, ctx: ParserRuleContext) {
-//  fmt.Println("enter   " + t.parser.GetRuleNames()[ctx.GetRuleIndex()] + ", LT(1)=" + t.parser.input.LT(1).GetText())
+//  fmt.Println("enter   " + self.parser.GetRuleNames()[ctx.GetRuleIndex()] + ", LT(1)=" + self.parser.input.LT(1).GetText())
 //}
 //
 //pub fn VisitTerminal(&self, node: TerminalNode) {
-//  fmt.Println("consume " + fmt.Sprint(node.GetSymbol()) + " rule " + t.parser.GetRuleNames()[t.parser.ctx.GetRuleIndex()])
+//  fmt.Println("consume " + fmt.Sprint(node.GetSymbol()) + " rule " + self.parser.GetRuleNames()[self.parser.ctx.GetRuleIndex()])
 //}
 //
 //pub fn ExitEveryRule(&self, ctx: ParserRuleContext) {
-//  fmt.Println("exit    " + t.parser.GetRuleNames()[ctx.GetRuleIndex()] + ", LT(1)=" + t.parser.input.LT(1).GetText())
+//  fmt.Println("exit    " + self.parser.GetRuleNames()[ctx.GetRuleIndex()] + ", LT(1)=" + self.parser.input.LT(1).GetText())
 //}

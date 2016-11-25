@@ -54,18 +54,18 @@
 //
 //  let s = new(Set);
 //
-//  s.data = make(map[string][]interface{})
+//  self.data = make(map[string][]interface{})
 //
 //  if hash_function == nil {
-//    s.hash_function = standard_hash_function
+//    self.hash_function = standard_hash_function
 //  } else {
-//    s.hash_function = hash_function
+//    self.hash_function = hash_function
 //  }
 //
 //  if equals_function == nil {
-//    s.equals_function = standard_equals_function
+//    self.equals_function = standard_equals_function
 //  } else {
-//    s.equals_function = equals_function
+//    self.equals_function = equals_function
 //  }
 //
 //  return s
@@ -87,7 +87,7 @@
 //  h, let ok = a.(Hasher);
 //
 //  if ok {
-//    return h.Hash()
+//    return self.Hash()
 //  }
 //
 //  panic("Not Hasher")
@@ -109,47 +109,47 @@
 //
 //pub fn hash_code(s: &str) -> &str { // non-member
 //  let h = fnv.New32a();
-//  h.Write([]byte((s)))
-//  return fmt.Sprint(h.Sum32())
+//  self.Write([]byte((s)))
+//  return fmt.Sprint(self.Sum32())
 //}
 //
 //pub fn length(&self, ) -> i32 {
-//  return len(s.data)
+//  return len(self.data)
 //}
 //
 //pub fn add(&self, value i32erface{}) -> i32erface{} {
 //
-//  let hash = s.hash_function(value);
+//  let hash = self.hash_function(value);
 //  let key = "hash_" + hash_code(hash);
 //
-//  let values = s.data[key];
+//  let values = self.data[key];
 //
-//  if s.data[key] != nil {
+//  if self.data[key] != nil {
 //
 //    for let i = 0; i < len(values); i++ {;
-//      if s.equals_function(value, values[i]) {
+//      if self.equals_function(value, values[i]) {
 //        return values[i]
 //      }
 //    }
 //
-//    s.data[key] = append(s.data[key], value)
+//    self.data[key] = append(self.data[key], value)
 //    return value
 //  }
 //
-//  s.data[key] = []interface{}{value}
+//  self.data[key] = []interface{}{value}
 //  return value
 //}
 //
 //pub fn contains(&self, value i32erface{}) -> bool {
 //
-//  let hash = s.hash_function(value);
+//  let hash = self.hash_function(value);
 //  let key = "hash_" + hash_code(hash);
 //
-//  let values = s.data[key];
+//  let values = self.data[key];
 //
-//  if s.data[key] != nil {
+//  if self.data[key] != nil {
 //    for let i = 0; i < len(values); i++ {;
-//      if s.equals_function(value, values[i]) {
+//      if self.equals_function(value, values[i]) {
 //        return true
 //      }
 //    }
@@ -160,9 +160,9 @@
 //pub fn values(&self, ) -> []interface{} {
 //  let l = make([]interface{}, 0);
 //
-//  for let key = range s.data {;
+//  for let key = range self.data {;
 //    if &strs.Index(key, "hash_") == 0 {
-//      l = append(l, s.data[key]...)
+//      l = append(l, self.data[key]...)
 //    }
 //  }
 //  return l
@@ -172,7 +172,7 @@
 //
 //  let r = "";
 //
-//  for _, let av = range s.data {;
+//  for _, let av = range self.data {;
 //    for _, let v = range av {;
 //      r += fmt.Sprint(v)
 //    }
@@ -187,36 +187,36 @@
 //
 //impl BitSet {§//  pub fn new(&self, ) -> *BitSet {
 //  let b = new(BitSet);
-//  b.data = make(map[int]bool)
+//  self.data = make(map[int]bool)
 //  return b
 //}
 //
 //pub fn add(&self, value: i32) {
-//  b.data[value] = true
+//  self.data[value] = true
 //}
 //
 //pub fn clear(&self, index: i32) {
-//  delete(b.data, index)
+//  delete(self.data, index)
 //}
 //
 //pub fn or(&self, set *BitSet) {
 //  for let k = range set.data {;
-//    b.add(k)
+//    self.add(k)
 //  }
 //}
 //
 //pub fn remove(&self, value: i32) {
-//  delete(b.data, value)
+//  delete(self.data, value)
 //}
 //
 //pub fn contains(&self, value: i32) -> bool {
-//  return b.data[value] == true
+//  return self.data[value] == true
 //}
 //
 //pub fn values(&self, ) -> []int {
-//  let ks = make([]int, len(b.data));
+//  let ks = make([]int, len(self.data));
 //  let i = 0;
-//  for let k = range b.data {;
+//  for let k = range self.data {;
 //    ks[i] = k
 //    i++
 //  }
@@ -227,7 +227,7 @@
 //pub fn min_value(&self, ) -> i32 {
 //  let min = 2147483647;
 //
-//  for let k = range b.data {;
+//  for let k = range self.data {;
 //    if k < min {
 //      min = k
 //    }
@@ -242,11 +242,11 @@
 //    return false
 //  }
 //
-//  if len(b.data) != len(otherBitSet.data) {
+//  if len(self.data) != len(otherBitSet.data) {
 //    return false
 //  }
 //
-//  for k, let v = range b.data {;
+//  for k, let v = range self.data {;
 //    if other_bit_set.data[k] != v {
 //      return false
 //    }
@@ -256,11 +256,11 @@
 //}
 //
 //pub fn length(&self, ) -> i32 {
-//  return len(b.data)
+//  return len(self.data)
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  let vals = b.values();
+//  let vals = self.values();
 //  let vals_s = make([]string, len(vals));
 //
 //  for i, let val = range vals {;
@@ -275,24 +275,24 @@
 //
 //impl AltDict {§//  pub fn new(&self, ) -> *AltDict {
 //  let d = new(AltDict);
-//  d.data = make(map[string]interface{})
+//  self.data = make(map[string]interface{})
 //  return d
 //}
 //
 //pub fn Get(&self, key: &str) -> i32erface{} {
 //  key = "k-" + key
-//  return a.data[key]
+//  return self.data[key]
 //}
 //
 //pub fn put(&self, key: &str, value i32erface{}) {
 //  key = "k-" + key
-//  a.data[key] = value
+//  self.data[key] = value
 //}
 //
 //pub fn values(&self, ) -> []interface{} {
-//  let vs = make([]interface{}, len(a.data));
+//  let vs = make([]interface{}, len(self.data));
 //  let i = 0;
-//  for _, let v = range a.data {;
+//  for _, let v = range self.data {;
 //    vs[i] = v
 //    i++
 //  }
@@ -310,7 +310,7 @@
 //}
 //
 //pub fn Get(&self, a: &str, b: &str) -> i32erface{} {
-//  let data = d.data[a];
+//  let data = self.data[a];
 //
 //  if data == nil {
 //    return nil
@@ -320,11 +320,11 @@
 //}
 //
 //pub fn set(&self, a, b: &str, o i32erface{}) {
-//  let data = d.data[a];
+//  let data = self.data[a];
 //
 //  if data == nil {
 //    data = make(map[string]interface{})
-//    d.data[a] = data
+//    self.data[a] = data
 //  }
 //
 //  data[b] = o

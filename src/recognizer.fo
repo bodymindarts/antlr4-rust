@@ -56,39 +56,39 @@
 //}
 //
 //pub fn AddErrorListener(&self, listener: ErrorListener) {
-//  b.listeners = append(b.listeners, listener)
+//  self.listeners = append(self.listeners, listener)
 //}
 //
 //pub fn RemoveErrorListeners(&self, ) {
-//  b.listeners = make([]ErrorListener, 0)
+//  self.listeners = make([]ErrorListener, 0)
 //}
 //
 //pub fn GetRuleNames(&self, ) -> []string {
-//  return b.RuleNames
+//  return self.RuleNames
 //}
 //
 //pub fn GetTokenNames(&self, ) -> []string {
-//  return b.LiteralNames
+//  return self.LiteralNames
 //}
 //
 //pub fn GetSymbolicNames(&self, ) -> []string {
-//  return b.SymbolicNames
+//  return self.SymbolicNames
 //}
 //
 //pub fn GetLiteralNames(&self, ) -> []string {
-//  return b.LiteralNames
+//  return self.LiteralNames
 //}
 //
 //pub fn GetState(&self, ) -> i32 {
-//  return b.state
+//  return self.state
 //}
 //
 //pub fn SetState(&self, v: i32) {
-//  b.state = v
+//  self.state = v
 //}
 //
 ////pub fn GetTokenTypeMap(&self, ) {
-////    var token_names = b.GetTokenNames()
+////    var token_names = self.GetTokenNames()
 ////    if (tokenNames==nil) {
 ////        panic("The current recognizer does not provide a list of token names.")
 ////    }
@@ -108,7 +108,7 @@
 //pub fn GetRuleIndexMap(&self, ) -> map[string]int {
 //
 //  panic("Method not defined!")
-//  //    var rule_names = b.GetRuleNames()
+//  //    var rule_names = self.GetRuleNames()
 //  //    if (ruleNames==nil) {
 //  //        panic("The current recognizer does not provide a list of rule names.")
 //  //    }
@@ -123,7 +123,7 @@
 //
 //pub fn GetTokenType(&self, token_name: &str) -> i32 {
 //  panic("Method not defined!")
-//  //    var ttype = b.GetTokenTypeMap()[tokenName]
+//  //    var ttype = self.GetTokenTypeMap()[tokenName]
 //  //    if (ttype !=nil) {
 //  //        return ttype
 //  //    } else {
@@ -161,15 +161,15 @@
 //
 //// What is the error header, normally line/character position information?//
 //pub fn GetErrorHeader(&self, e: RecognitionException) -> &str {
-//  let line = e.GetOffendingToken().GetLine();
-//  let column = e.GetOffendingToken().GetColumn();
+//  let line = self.GetOffendingToken().GetLine();
+//  let column = self.GetOffendingToken().GetColumn();
 //  return "line " + strconv.Itoa(line) + ":" + strconv.Itoa(column)
 //}
 //
 //// How should a token be displayed in an error message? The default
 ////  is to display just the text, but during development you might
 ////  want to have a lot of information spit out.  Override in that case
-////  to use t.String() (which, for CommonToken, dumps everything about
+////  to use self.String() (which, for CommonToken, dumps everything about
 ////  the token). This is better than forcing you to override a method in
 ////  your token objects because you don't have to go modify your lexer
 ////  so that it creates a NewJava type.
@@ -183,12 +183,12 @@
 //  if t == nil {
 //    return "<no token>"
 //  }
-//  let s = t.GetText();
+//  let s = self.GetText();
 //  if s == "" {
-//    if t.GetTokenType() == TokenEOF {
+//    if self.GetTokenType() == TokenEOF {
 //      s = "<EOF>"
 //    } else {
-//      s = "<" + strconv.Itoa(t.GetTokenType()) + ">"
+//      s = "<" + strconv.Itoa(self.GetTokenType()) + ">"
 //    }
 //  }
 //  s = &strs.Replace(s, "\t", "\\t", -1)
@@ -199,7 +199,7 @@
 //}
 //
 //pub fn GetErrorListenerDispatch(&self, ) -> ErrorListener {
-//  return NewProxyErrorListener(b.listeners)
+//  return NewProxyErrorListener(self.listeners)
 //}
 //
 //// subclass needs to override these if there are sempreds or actions

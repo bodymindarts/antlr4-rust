@@ -20,17 +20,17 @@
 //
 //  let l = new(LexerActionExecutor);
 //
-//  l.lexer_actions = lexer_actions
+//  self.lexer_actions = lexer_actions
 //
 //  // Caches the result of {@link //hashCode} since the hash code is an element
 //  // of the performance-critical {@link LexerATNConfig//hashCode} operation.
 //
 //  var s &str
 //  for _, let a = range lexer_actions {;
-//    s += a.Hash()
+//    s += self.Hash()
 //  }
 //
-//  l.cached_hash_string = s // "".join([str(la) for la in
+//  self.cached_hash_string = s // "".join([str(la) for la in
 //
 //  return l
 //}
@@ -89,18 +89,18 @@
 //// /
 //pub fn fix_offset_before_match(&self, offset: i32) -> *LexerActionExecutor {
 //  var updated_lexer_actions []LexerAction
-//  for let i = 0; i < len(l.lexer_actions); i++ {;
-//    _, let ok = l.lexer_actions[i].(*LexerIndexedCustomAction);
-//    if l.lexer_actions[i].get_is_position_dependent() && !ok {
+//  for let i = 0; i < len(self.lexer_actions); i++ {;
+//    _, let ok = self.lexer_actions[i].(*LexerIndexedCustomAction);
+//    if self.lexer_actions[i].get_is_position_dependent() && !ok {
 //      if updated_lexer_actions == nil {
 //        updated_lexer_actions = make([]LexerAction, 0)
 //
-//        for _, let a = range l.lexer_actions {;
+//        for _, let a = range self.lexer_actions {;
 //          updated_lexer_actions = append(updatedLexerActions, a)
 //        }
 //      }
 //
-//      updated_lexer_actions[i] = NewLexerIndexedCustomAction(offset, l.lexer_actions[i])
+//      updated_lexer_actions[i] = NewLexerIndexedCustomAction(offset, self.lexer_actions[i])
 //    }
 //  }
 //  if updated_lexer_actions == nil {
@@ -122,7 +122,7 @@
 //// @param lexer The lexer instance.
 //// @param input The input stream which is the source for the current token.
 //// When l method is called, the current {@link IntStream//index} for
-//// {@code input} should be the start of the following token, i.e. 1
+//// {@code input} should be the start of the following token, self.e. 1
 //// character past the end of the current token.
 //// @param start_index The token start index. This value may be passed to
 //// {@link IntStream//seek} to set the {@code input} position to the beginning
@@ -138,8 +138,8 @@
 //    }
 //  }()
 //
-//  for let i = 0; i < len(l.lexer_actions); i++ {;
-//    let lexer_action = l.lexer_actions[i];
+//  for let i = 0; i < len(self.lexer_actions); i++ {;
+//    let lexer_action = self.lexer_actions[i];
 //    if la, let ok = lexer_action.(*LexerIndexedCustomAction); ok {;
 //      let offset = la.offset;
 //      input.Seek(startIndex + offset)
@@ -154,7 +154,7 @@
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return l.cached_hash_string
+//  return self.cached_hash_string
 //}
 //
 //pub fn equals(&self, other i32erface{}) -> bool {
@@ -163,7 +163,7 @@
 //  } else if _, let ok = other.(*LexerActionExecutor); !ok {;
 //    return false
 //  } else {
-//    return l.cached_hash_string == other.(*LexerActionExecutor).cached_hash_string &&
-//      &l.lexer_actions == &other.(*LexerActionExecutor).lexer_actions
+//    return self.cached_hash_string == other.(*LexerActionExecutor).cached_hash_string &&
+//      &self.lexer_actions == &other.(*LexerActionExecutor).lexer_actions
 //  }
 //}

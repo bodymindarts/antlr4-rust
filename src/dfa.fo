@@ -32,22 +32,22 @@
 //// state exists for the specified precedence and nil otherwise. d must be a
 //// precedence DFA. See also is_precedence_dfa.
 //pub fn get_precedence_start_state(&self, precedence: i32) -> *DFAState {
-//  if !d.precedence_dfa {
+//  if !self.precedence_dfa {
 //    panic("only precedence DFAs may contain a precedence start state")
 //  }
 //
 //  // s0.edges is never nil for a precedence DFA
-//  if precedence < 0 || precedence >= len(d.s0.edges) {
+//  if precedence < 0 || precedence >= len(self.s0.edges) {
 //    return nil
 //  }
 //
-//  return d.s0.edges[precedence]
+//  return self.s0.edges[precedence]
 //}
 //
 //// set_precedence_start_state sets the start state for the current precedence. d
 //// must be a precedence DFA. See also is_precedence_dfa.
 //pub fn set_precedence_start_state(&self, precedence: i32, start_state *DFAState) {
-//  if !d.precedence_dfa {
+//  if !self.precedence_dfa {
 //    panic("only precedence DFAs may contain a precedence start state")
 //  }
 //
@@ -58,21 +58,21 @@
 //  // Synchronization on s0 here is ok. When the DFA is turned i32o a
 //  // precedence DFA, s0 will be initialized once and not updated again. s0.edges
 //  // is never nil for a precedence DFA.
-//  if precedence >= len(d.s0.edges) {
-//    d.s0.edges = append(d.s0.edges, make([]*DFAState, precedence+1-len(d.s0.edges))...)
+//  if precedence >= len(self.s0.edges) {
+//    self.s0.edges = append(self.s0.edges, make([]*DFAState, precedence+1-len(self.s0.edges))...)
 //  }
 //
-//  d.s0.edges[precedence] = start_state
+//  self.s0.edges[precedence] = start_state
 //}
 //
 //// set_precedence_dfa sets whether d is a precedence DFA. If precedence_dfa differs
-//// from the current DFA configuration, then d.states is cleared, the initial
+//// from the current DFA configuration, then self.states is cleared, the initial
 //// state s0 is set to a new DFAState with an empty outgoing DFAState.edges to
 //// store the start states for individual precedence values if precedence_dfa is
-//// true or nil otherwise, and d.precedence_dfa is updated.
+//// true or nil otherwise, and self.precedence_dfa is updated.
 //pub fn set_precedence_dfa(&self, precedence_dfa: bool) {
-//  if d.precedence_dfa != precedence_dfa {
-//    d.states = make(map[string]*DFAState)
+//  if self.precedence_dfa != precedence_dfa {
+//    self.states = make(map[string]*DFAState)
 //
 //    if precedence_dfa {
 //      let precedence_state = NewDFAState(-1, NewBaseATNConfigSet(false));
@@ -80,17 +80,17 @@
 //      precedence_state.edges = make([]*DFAState, 0)
 //      precedence_state.is_accept_state = false
 //      precedence_state.requires_full_context = false
-//      d.s0 = precedence_state
+//      self.s0 = precedence_state
 //    } else {
-//      d.s0 = nil
+//      self.s0 = nil
 //    }
 //
-//    d.precedence_dfa = precedence_dfa
+//    self.precedence_dfa = precedence_dfa
 //  }
 //}
 //
 //pub fn GetStates(&self, ) -> map[string]*DFAState {
-//  return d.states
+//  return self.states
 //}
 //
 //type DFAStateList []*DFAState
@@ -101,9 +101,9 @@
 //
 //// sorted_states returns the states in d sorted by their state number.
 //pub fn sorted_states(&self, ) -> []*DFAState {
-//  let vs = make([]*DFAState, 0, len(d.states));
+//  let vs = make([]*DFAState, 0, len(self.states));
 //
-//  for _, let v = range d.states {;
+//  for _, let v = range self.states {;
 //    vs = append(vs, v)
 //  }
 //
@@ -113,7 +113,7 @@
 //}
 //
 //pub fn String(&self, literal_names []string, symbolic_names []string) -> &str {
-//  if d.s0 == nil {
+//  if self.s0 == nil {
 //    return ""
 //  }
 //
@@ -121,7 +121,7 @@
 //}
 //
 //pub fn ToLexerString(&self, ) -> &str {
-//  if d.s0 == nil {
+//  if self.s0 == nil {
 //    return ""
 //  }
 //

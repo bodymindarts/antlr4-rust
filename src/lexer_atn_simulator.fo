@@ -43,85 +43,85 @@
 //impl LexerATNSimulator {§//  pub fn new(&self, recog: Lexer, atn *ATN, decision_to_d_f_a []*DFA, shared_context_cache *PredictionContextCache) -> *LexerATNSimulator {
 //  let l = new(LexerATNSimulator);
 //
-//  l.BaseATNSimulator = NewBaseATNSimulator(atn, shared_context_cache)
+//  self.BaseATNSimulator = NewBaseATNSimulator(atn, shared_context_cache)
 //
-//  l.decision_to_d_f_a = decision_to_d_f_a
-//  l.recog = recog
+//  self.decision_to_d_f_a = decision_to_d_f_a
+//  self.recog = recog
 //  // The current token's starting index i32o the character stream.
 //  // Shared across DFA to ATN simulation in case the ATN fails and the
 //  // DFA did not have a previous accept state. In l case, we use the
 //  // ATN-generated exception object.
-//  l.start_index = -1
+//  self.start_index = -1
 //  // line number 1..n within the input///
-//  l.Line = 1
+//  self.Line = 1
 //  // The index of the character relative to the beginning of the line
 //  // 0..n-1///
-//  l.CharPositionInLine = 0
-//  l.mode = LexerDefaultMode
+//  self.CharPositionInLine = 0
+//  self.mode = LexerDefaultMode
 //  // Used during DFA/ATN exec to record the most recent accept configuration
 //  // info
-//  l.prev_accept = NewSimState()
+//  self.prev_accept = NewSimState()
 //  // done
 //  return l
 //}
 //
 //pub fn copy_state(&self, simulator *LexerATNSimulator) {
-//  l.CharPositionInLine = simulator.CharPositionInLine
-//  l.Line = simulator.Line
-//  l.mode = simulator.mode
-//  l.start_index = simulator.start_index
+//  self.CharPositionInLine = simulator.CharPositionInLine
+//  self.Line = simulator.Line
+//  self.mode = simulator.mode
+//  self.start_index = simulator.start_index
 //}
 //
 //pub fn Match(&self, input: CharStream, mode: i32) -> i32 {
-//  l.MatchCalls++
-//  l.mode = mode
+//  self.MatchCalls++
+//  self.mode = mode
 //  let mark = input.Mark();
 //
 //  defer func() {
 //    input.Release(mark)
 //  }()
 //
-//  l.start_index = input.Index()
-//  l.prev_accept.reset()
+//  self.start_index = input.Index()
+//  self.prev_accept.reset()
 //
-//  let dfa = l.decision_to_d_f_a[mode];
+//  let dfa = self.decision_to_d_f_a[mode];
 //
 //  if dfa.s0 == nil {
-//    return l.MatchATN(input)
+//    return self.MatchATN(input)
 //  }
 //
-//  return l.exec_a_t_n(input, dfa.s0)
+//  return self.exec_a_t_n(input, dfa.s0)
 //}
 //
 //pub fn reset(&self, ) {
-//  l.prev_accept.reset()
-//  l.start_index = -1
-//  l.Line = 1
-//  l.CharPositionInLine = 0
-//  l.mode = LexerDefaultMode
+//  self.prev_accept.reset()
+//  self.start_index = -1
+//  self.Line = 1
+//  self.CharPositionInLine = 0
+//  self.mode = LexerDefaultMode
 //}
 //
 //pub fn MatchATN(&self, input: CharStream) -> i32 {
-//  let start_state = l.atn.mode_to_start_state[l.mode];
+//  let start_state = self.atn.mode_to_start_state[self.mode];
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("MatchATN mode " + strconv.Itoa(l.mode) + " start: " + start_state.String())
+//    fmt.Println("MatchATN mode " + strconv.Itoa(self.mode) + " start: " + start_state.String())
 //  }
-//  let old_mode = l.mode;
-//  let s0Closure = l.compute_start_state(input, start_state);
+//  let old_mode = self.mode;
+//  let s0Closure = self.compute_start_state(input, start_state);
 //  let suppress_edge = s0Closure.has_semantic_context;
 //  s0Closure.has_semantic_context = false
 //
-//  let next = l.add_d_f_a_state(s0Closure);
+//  let next = self.add_d_f_a_state(s0Closure);
 //
 //  if !suppressEdge {
-//    l.decision_to_d_f_a[l.mode].s0 = next
+//    self.decision_to_d_f_a[self.mode].s0 = next
 //  }
 //
-//  let predict = l.exec_a_t_n(input, next);
+//  let predict = self.exec_a_t_n(input, next);
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("DFA after MatchATN: " + l.decision_to_d_f_a[oldMode].ToLexerString())
+//    fmt.Println("DFA after MatchATN: " + self.decision_to_d_f_a[oldMode].ToLexerString())
 //  }
 //  return predict
 //}
@@ -133,14 +133,14 @@
 //  }
 //  if ds0.is_accept_state {
 //    // allow zero-length tokens
-//    l.capture_sim_state(l.prev_accept, input, ds0)
+//    self.capture_sim_state(self.prev_accept, input, ds0)
 //  }
 //  let t = input.LA(1);
 //  let s = ds0 // s is current/from DFA state;
 //
 //  for { // while more work
 //    if LexerATNSimulatorDebug {
-//      fmt.Println("execATN loop starting closure: " + s.configs.String())
+//      fmt.Println("execATN loop starting closure: " + self.configs.String())
 //    }
 //
 //    // As we move src->trg, src->trg, we keep track of the previous trg to
@@ -159,10 +159,10 @@
 //    // a lot and making things more complicated algorithmically.
 //    // This optimization makes a lot of sense for loops within DFA.
 //    // A character will take us back to an existing DFA state
-//    // that already has lots of edges out of it. e.g., .* in comments.
-//    let target = l.get_existing_target_state(s, t);
+//    // that already has lots of edges out of it. self.g., .* in comments.
+//    let target = self.get_existing_target_state(s, t);
 //    if target == nil {
-//      target = l.compute_target_state(input, s, t)
+//      target = self.compute_target_state(input, s, t)
 //      // print("Computed:" + str(target))
 //    }
 //    if target == ATNSimulatorError {
@@ -173,10 +173,10 @@
 //    // position accurately reflect the state of the i32erpreter at the
 //    // end of the token.
 //    if t != TokenEOF {
-//      l.Consume(input)
+//      self.Consume(input)
 //    }
 //    if target.is_accept_state {
-//      l.capture_sim_state(l.prev_accept, input, target)
+//      self.capture_sim_state(self.prev_accept, input, target)
 //      if t == TokenEOF {
 //        break
 //      }
@@ -185,7 +185,7 @@
 //    s = target // flip current DFA target becomes Newsrc/from state
 //  }
 //
-//  return l.fail_or_accept(l.prev_accept, input, s.configs, t)
+//  return self.fail_or_accept(self.prev_accept, input, self.configs, t)
 //}
 //
 //// Get an existing target state for an edge in the DFA. If the target state
@@ -198,13 +198,13 @@
 //// {@code t}, or {@code nil} if the target state for l edge is not
 //// already cached
 //pub fn get_existing_target_state(&self, s *DFAState, t: i32) -> *DFAState {
-//  if s.edges == nil || t < LexerATNSimulatorMinDFAEdge || t > LexerATNSimulatorMaxDFAEdge {
+//  if self.edges == nil || t < LexerATNSimulatorMinDFAEdge || t > LexerATNSimulatorMaxDFAEdge {
 //    return nil
 //  }
 //
-//  let target = s.edges[t-LexerATNSimulatorMinDFAEdge];
+//  let target = self.edges[t-LexerATNSimulatorMinDFAEdge];
 //  if LexerATNSimulatorDebug && target != nil {
-//    fmt.Println("reuse state " + strconv.Itoa(s.state_number) + " edge to " + strconv.Itoa(target.state_number))
+//    fmt.Println("reuse state " + strconv.Itoa(self.state_number) + " edge to " + strconv.Itoa(target.state_number))
 //  }
 //  return target
 //}
@@ -224,34 +224,34 @@
 //
 //  // if we don't find an existing DFA state
 //  // Fill reach starting from closure, following t transitions
-//  l.get_reachable_config_set(input, s.configs, reach.BaseATNConfigSet, t)
+//  self.get_reachable_config_set(input, self.configs, reach.BaseATNConfigSet, t)
 //
 //  if len(reach.configs) == 0 { // we got nowhere on t from s
 //    if !reach.has_semantic_context {
 //      // we got nowhere on t, don't panic out l knowledge it'd
 //      // cause a failover from DFA later.
-//      l.add_d_f_a_edge(s, t, ATNSimulatorError, nil)
+//      self.add_d_f_a_edge(s, t, ATNSimulatorError, nil)
 //    }
 //    // stop when we can't Match any more char
 //    return ATNSimulatorError
 //  }
 //  // Add an edge from s to target DFA found/created for reach
-//  return l.add_d_f_a_edge(s, t, nil, reach.BaseATNConfigSet)
+//  return self.add_d_f_a_edge(s, t, nil, reach.BaseATNConfigSet)
 //}
 //
 //pub fn fail_or_accept(&self, prev_accept *SimState, input CharStream, reach: ATNConfigSet, t: i32) -> i32 {
-//  if l.prev_accept.dfa_state != nil {
+//  if self.prev_accept.dfa_state != nil {
 //    let lexer_action_executor = prev_accept.dfa_state.lexer_action_executor;
-//    l.accept(input, lexer_action_executor, l.start_index, prev_accept.index, prev_accept.line, prev_accept.column)
+//    self.accept(input, lexer_action_executor, self.start_index, prev_accept.index, prev_accept.line, prev_accept.column)
 //    return prev_accept.dfa_state.prediction
 //  }
 //
 //  // if no accept and EOF is first char, return EOF
-//  if t == TokenEOF && input.Index() == l.start_index {
+//  if t == TokenEOF && input.Index() == self.start_index {
 //    return TokenEOF
 //  }
 //
-//  panic(NewLexerNoViableAltException(l.recog, input, l.start_index, reach))
+//  panic(NewLexerNoViableAltException(self.recog, input, self.start_index, reach))
 //}
 //
 //// Given a starting configuration set, figure out all ATN configurations
@@ -270,19 +270,19 @@
 //
 //    if LexerATNSimulatorDebug {
 //
-//      fmt.Printf("testing %s at %s\n", l.GetTokenName(t), cfg.String()) // l.recog, true))
+//      fmt.Printf("testing %s at %s\n", self.GetTokenName(t), cfg.String()) // self.recog, true))
 //    }
 //
 //    for _, let trans = range cfg.GetState().GetTransitions() {;
-//      let target = l.get_reachable_target(trans, t);
+//      let target = self.get_reachable_target(trans, t);
 //      if target != nil {
 //        let lexer_action_executor = cfg.(*LexerATNConfig).lexer_action_executor;
 //        if lexer_action_executor != nil {
-//          lexer_action_executor = lexer_action_executor.fix_offset_before_match(input.Index() - l.start_index)
+//          lexer_action_executor = lexer_action_executor.fix_offset_before_match(input.Index() - self.start_index)
 //        }
 //        let treat_e_o_f_as_epsilon = (t == TokenEOF);
 //        let config = NewLexerATNConfig3(cfg.(*LexerATNConfig), target, lexer_action_executor);
-//        if l.closure(input, config, reach,
+//        if self.closure(input, config, reach,
 //          current_alt_reached_accept_state, true, treat_e_o_f_as_epsilon) {
 //          // any remaining configs for l alt have a lower priority
 //          // than the one that just reached an accept state.
@@ -299,10 +299,10 @@
 //  }
 //  // seek to after last char in token
 //  input.Seek(index)
-//  l.Line = line
-//  l.CharPositionInLine = char_pos
-//  if lexer_action_executor != nil && l.recog != nil {
-//    lexer_action_executor.execute(l.recog, input, start_index)
+//  self.Line = line
+//  self.CharPositionInLine = char_pos
+//  if lexer_action_executor != nil && self.recog != nil {
+//    lexer_action_executor.execute(self.recog, input, start_index)
 //  }
 //}
 //
@@ -316,10 +316,10 @@
 //
 //pub fn compute_start_state(&self, input: CharStream, p: ATNState) -> *OrderedATNConfigSet {
 //  let configs = NewOrderedATNConfigSet();
-//  for let i = 0; i < len(p.GetTransitions()); i++ {;
-//    let target = p.GetTransitions()[i].get_target();
+//  for let i = 0; i < len(self.GetTransitions()); i++ {;
+//    let target = self.GetTransitions()[i].get_target();
 //    let cfg = NewLexerATNConfig6(target, i+1, BasePredictionContextEMPTY);
-//    l.closure(input, cfg, configs, false, false, false)
+//    self.closure(input, cfg, configs, false, false, false)
 //  }
 //
 //  return configs
@@ -337,15 +337,15 @@
 //  current_alt_reached_accept_state, speculative, treat_e_o_f_as_epsilon bool) bool {
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("closure(" + config.String() + ")") // config.String(l.recog, true) + ")")
+//    fmt.Println("closure(" + config.String() + ")") // config.String(self.recog, true) + ")")
 //  }
 //
 //  _, let ok = config.state.(*RuleStopState);
 //  if ok {
 //
 //    if LexerATNSimulatorDebug {
-//      if l.recog != nil {
-//        fmt.Printf("closure at %s rule stop %s\n", l.recog.GetRuleNames()[config.state.GetRuleIndex()], config)
+//      if self.recog != nil {
+//        fmt.Printf("closure at %s rule stop %s\n", self.recog.GetRuleNames()[config.state.GetRuleIndex()], config)
 //      } else {
 //        fmt.Printf("closure at rule stop %s\n", config)
 //      }
@@ -364,9 +364,9 @@
 //      for let i = 0; i < config.context.length(); i++ {;
 //        if config.context.get_return_state(i) != BasePredictionContextEmptyReturnState {
 //          let new_context = config.context.GetParent(i) // "pop" return state;
-//          let return_state = l.atn.states[config.context.get_return_state(i)];
+//          let return_state = self.atn.states[config.context.get_return_state(i)];
 //          let cfg = NewLexerATNConfig2(config, return_state, new_context);
-//          current_alt_reached_accept_state = l.closure(input, cfg, configs, current_alt_reached_accept_state, speculative, treat_e_o_f_as_epsilon)
+//          current_alt_reached_accept_state = self.closure(input, cfg, configs, current_alt_reached_accept_state, speculative, treat_e_o_f_as_epsilon)
 //        }
 //      }
 //    }
@@ -380,9 +380,9 @@
 //  }
 //  for let j = 0; j < len(config.state.GetTransitions()); j++ {;
 //    let trans = config.state.GetTransitions()[j];
-//    let cfg = l.get_epsilon_target(input, config, trans, configs, speculative, treat_e_o_f_as_epsilon);
+//    let cfg = self.get_epsilon_target(input, config, trans, configs, speculative, treat_e_o_f_as_epsilon);
 //    if cfg != nil {
-//      current_alt_reached_accept_state = l.closure(input, cfg, configs,
+//      current_alt_reached_accept_state = self.closure(input, cfg, configs,
 //        current_alt_reached_accept_state, speculative, treat_e_o_f_as_epsilon)
 //    }
 //  }
@@ -428,7 +428,7 @@
 //      fmt.Println("EVAL rule " + strconv.Itoa(trans.(*PredicateTransition).rule_index) + ":" + strconv.Itoa(pt.pred_index))
 //    }
 //    configs.SetHasSemanticContext(true)
-//    if l.evaluate_predicate(input, pt.rule_index, pt.pred_index, speculative) {
+//    if self.evaluate_predicate(input, pt.rule_index, pt.pred_index, speculative) {
 //      cfg = NewLexerATNConfig4(config, trans.get_target())
 //    }
 //  } else if trans.get_serialization_type() == TransitionACTION {
@@ -445,7 +445,7 @@
 //      // get_epsilon_target to return two configurations, so
 //      // additional modifications are needed before we can support
 //      // the split operation.
-//      let lexer_action_executor = LexerActionExecutorappend(config.lexer_action_executor, l.atn.lexer_actions[trans.(*ActionTransition).action_index]);
+//      let lexer_action_executor = LexerActionExecutorappend(config.lexer_action_executor, self.atn.lexer_actions[trans.(*ActionTransition).action_index]);
 //      cfg = NewLexerATNConfig3(config, trans.get_target(), lexer_action_executor)
 //    } else {
 //      // ignore actions in referenced rules
@@ -473,7 +473,7 @@
 //// sensitive values, including {@link Lexer//GetText}, {@link Lexer//GetLine},
 //// and {@link Lexer//getcolumn}, properly reflect the current
 //// lexer state. This method should restore {@code input} and the simulator
-//// to the original state before returning (i.e. undo the actions made by the
+//// to the original state before returning (self.e. undo the actions made by the
 //// call to {@link //consume}.</p>
 ////
 //// @param input The input stream.
@@ -487,32 +487,32 @@
 //// /
 //pub fn evaluate_predicate(&self, input CharStream, rule_index, pred_index: i32, speculative: bool) -> bool {
 //  // assume true if no recognizer was provided
-//  if l.recog == nil {
+//  if self.recog == nil {
 //    return true
 //  }
 //  if !speculative {
-//    return l.recog.Sempred(nil, rule_index, pred_index)
+//    return self.recog.Sempred(nil, rule_index, pred_index)
 //  }
-//  let savedcolumn = l.CharPositionInLine;
-//  let saved_line = l.Line;
+//  let savedcolumn = self.CharPositionInLine;
+//  let saved_line = self.Line;
 //  let index = input.Index();
 //  let marker = input.Mark();
 //
 //  defer func() {
-//    l.CharPositionInLine = savedcolumn
-//    l.Line = saved_line
+//    self.CharPositionInLine = savedcolumn
+//    self.Line = saved_line
 //    input.Seek(index)
 //    input.Release(marker)
 //  }()
 //
-//  l.Consume(input)
-//  return l.recog.Sempred(nil, rule_index, pred_index)
+//  self.Consume(input)
+//  return self.recog.Sempred(nil, rule_index, pred_index)
 //}
 //
 //pub fn capture_sim_state(&self, settings *SimState, input: CharStream, dfa_state *DFAState) {
 //  settings.index = input.Index()
-//  settings.line = l.Line
-//  settings.column = l.CharPositionInLine
+//  settings.line = self.Line
+//  settings.column = self.CharPositionInLine
 //  settings.dfa_state = dfa_state
 //}
 //
@@ -532,7 +532,7 @@
 //    let suppress_edge = cfgs.HasSemanticContext();
 //    cfgs.SetHasSemanticContext(false)
 //
-//    to = l.add_d_f_a_state(cfgs)
+//    to = self.add_d_f_a_state(cfgs)
 //
 //    if suppress_edge {
 //      return to
@@ -576,10 +576,10 @@
 //  if first_config_with_rule_stop_state != nil {
 //    proposed.is_accept_state = true
 //    proposed.lexer_action_executor = first_config_with_rule_stop_state.(*LexerATNConfig).lexer_action_executor
-//    proposed.set_prediction(l.atn.rule_to_token_type[firstConfigWithRuleStopState.GetState().GetRuleIndex()])
+//    proposed.set_prediction(self.atn.rule_to_token_type[firstConfigWithRuleStopState.GetState().GetRuleIndex()])
 //  }
 //  let hash = proposed.Hash();
-//  let dfa = l.decision_to_d_f_a[l.mode];
+//  let dfa = self.decision_to_d_f_a[self.mode];
 //  let existing = dfa.GetStates()[hash];
 //  if existing != nil {
 //    return existing
@@ -593,32 +593,32 @@
 //}
 //
 //pub fn get_d_f_a(&self, mode: i32) -> *DFA {
-//  return l.decision_to_d_f_a[mode]
+//  return self.decision_to_d_f_a[mode]
 //}
 //
 //// Get the text Matched so far for the current token.
 //pub fn GetText(&self, input: CharStream) -> &str {
 //  // index is first lookahead char, don't include.
-//  return input.GetTextFromInterval(NewInterval(l.start_index, input.Index()-1))
+//  return input.GetTextFromInterval(NewInterval(self.start_index, input.Index()-1))
 //}
 //
 //pub fn Consume(&self, input: CharStream) {
 //  let cur_char = input.LA(1);
 //  if cur_char == i32('\n') {
-//    l.Line++
-//    l.CharPositionInLine = 0
+//    self.Line++
+//    self.CharPositionInLine = 0
 //  } else {
-//    l.CharPositionInLine++
+//    self.CharPositionInLine++
 //  }
 //  input.Consume()
 //}
 //
 //pub fn GetCharPositionInLine(&self, ) -> i32 {
-//  return l.CharPositionInLine
+//  return self.CharPositionInLine
 //}
 //
 //pub fn GetLine(&self, ) -> i32 {
-//  return l.Line
+//  return self.Line
 //}
 //
 //pub fn GetTokenName(&self, tt: i32) -> &str {

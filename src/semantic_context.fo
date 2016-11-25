@@ -63,9 +63,9 @@
 //impl Predicate {§//  pub fn new(&self, rule_index, pred_index: i32, is_ctx_dependent: bool) -> *Predicate {
 //  let p = new(Predicate);
 //
-//  p.rule_index = rule_index
-//  p.pred_index = pred_index
-//  p.is_ctx_dependent = is_ctx_dependent // e.g., $i ref in pred
+//  self.rule_index = rule_index
+//  self.pred_index = pred_index
+//  self.is_ctx_dependent = is_ctx_dependent // self.g., $i ref in pred
 //  return p
 //}
 //
@@ -82,15 +82,15 @@
 //
 //  var localctx RuleContext
 //
-//  if p.is_ctx_dependent {
+//  if self.is_ctx_dependent {
 //    localctx = outer_context
 //  }
 //
-//  return parser.Sempred(localctx, p.rule_index, p.pred_index)
+//  return parser.Sempred(localctx, self.rule_index, self.pred_index)
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return strconv.Itoa(p.rule_index) + "/" + strconv.Itoa(p.pred_index) + "/" + fmt.Sprint(p.is_ctx_dependent)
+//  return strconv.Itoa(self.rule_index) + "/" + strconv.Itoa(self.pred_index) + "/" + fmt.Sprint(self.is_ctx_dependent)
 //}
 //
 //pub fn equals(&self, other i32erface{}) -> bool {
@@ -99,14 +99,14 @@
 //  } else if _, let ok = other.(*Predicate); !ok {;
 //    return false
 //  } else {
-//    return p.rule_index == other.(*Predicate).rule_index &&
-//      p.pred_index == other.(*Predicate).pred_index &&
-//      p.is_ctx_dependent == other.(*Predicate).is_ctx_dependent
+//    return self.rule_index == other.(*Predicate).rule_index &&
+//      self.pred_index == other.(*Predicate).pred_index &&
+//      self.is_ctx_dependent == other.(*Predicate).is_ctx_dependent
 //  }
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "{" + strconv.Itoa(p.rule_index) + ":" + strconv.Itoa(p.pred_index) + "}?"
+//  return "{" + strconv.Itoa(self.rule_index) + ":" + strconv.Itoa(self.pred_index) + "}?"
 //}
 //
 //pub struct PrecedencePredicate {
@@ -116,17 +116,17 @@
 //impl PrecedencePredicate {§//  pub fn new(&self, precedence: i32) -> *PrecedencePredicate {
 //
 //  let p = new(PrecedencePredicate);
-//  p.precedence = precedence
+//  self.precedence = precedence
 //
 //  return p
 //}
 //
 //pub fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
-//  return parser.Precpred(outerContext, p.precedence)
+//  return parser.Precpred(outerContext, self.precedence)
 //}
 //
 //pub fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
-//  if parser.Precpred(outerContext, p.precedence) {
+//  if parser.Precpred(outerContext, self.precedence) {
 //    return SemanticContextNone
 //  }
 //
@@ -134,7 +134,7 @@
 //}
 //
 //pub fn compare_to(&self, other *PrecedencePredicate) -> i32 {
-//  return p.precedence - other.precedence
+//  return self.precedence - other.precedence
 //}
 //
 //pub fn Hash(&self, ) -> &str {
@@ -147,12 +147,12 @@
 //  } else if _, let ok = other.(*PrecedencePredicate); !ok {;
 //    return false
 //  } else {
-//    return p.precedence == other.(*PrecedencePredicate).precedence
+//    return self.precedence == other.(*PrecedencePredicate).precedence
 //  }
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "{" + strconv.Itoa(p.precedence) + ">=prec}?"
+//  return "{" + strconv.Itoa(self.precedence) + ">=prec}?"
 //}
 //
 //pub fn PrecedencePredicatefilterPrecedencePredicates(set *Set) -> []*PrecedencePredicate { // non-member
@@ -198,7 +198,7 @@
 //    var reduced *PrecedencePredicate
 //
 //    for _, let p = range precedence_predicates {;
-//      if reduced == nil || p.precedence < reduced.precedence {
+//      if reduced == nil || self.precedence < reduced.precedence {
 //        reduced = p
 //      }
 //    }
@@ -225,7 +225,7 @@
 //    return false
 //  } else {
 //    for i, let v = range other.(*AND).opnds {;
-//      if !a.opnds[i].equals(v) {
+//      if !self.opnds[i].equals(v) {
 //        return false
 //      }
 //    }
@@ -234,7 +234,7 @@
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return fmt.Sprint(a.opnds) + "/AND"
+//  return fmt.Sprint(self.opnds) + "/AND"
 //}
 //
 ////
@@ -245,8 +245,8 @@
 //// unordered.</p>
 ////
 //pub fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
-//  for let i = 0; i < len(a.opnds); i++ {;
-//    if !a.opnds[i].evaluate(parser, outer_context) {
+//  for let i = 0; i < len(self.opnds); i++ {;
+//    if !self.opnds[i].evaluate(parser, outer_context) {
 //      return false
 //    }
 //  }
@@ -257,8 +257,8 @@
 //  let differs = false;
 //  let operands = make([]SemanticContext, 0);
 //
-//  for let i = 0; i < len(a.opnds); i++ {;
-//    let context = a.opnds[i];
+//  for let i = 0; i < len(self.opnds); i++ {;
+//    let context = self.opnds[i];
 //    let evaluated = context.eval_precedence(parser, outer_context);
 //    differs = differs || (evaluated != context)
 //    if evaluated == nil {
@@ -294,7 +294,7 @@
 //pub fn String(&self, ) -> &str {
 //  let s = "";
 //
-//  for _, let o = range a.opnds {;
+//  for _, let o = range self.opnds {;
 //    s += "&& " + fmt.Sprint(o)
 //  }
 //
@@ -338,7 +338,7 @@
 //    var reduced *PrecedencePredicate
 //
 //    for _, let p = range precedence_predicates {;
-//      if reduced == nil || p.precedence > reduced.precedence {
+//      if reduced == nil || self.precedence > reduced.precedence {
 //        reduced = p
 //      }
 //    }
@@ -354,7 +354,7 @@
 //  }
 //
 //  let o = new(OR);
-//  o.opnds = opnds
+//  self.opnds = opnds
 //
 //  return o
 //}
@@ -366,7 +366,7 @@
 //    return false
 //  } else {
 //    for i, let v = range other.(*OR).opnds {;
-//      if !o.opnds[i].equals(v) {
+//      if !self.opnds[i].equals(v) {
 //        return false
 //      }
 //    }
@@ -375,7 +375,7 @@
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return fmt.Sprint(o.opnds) + "/OR"
+//  return fmt.Sprint(self.opnds) + "/OR"
 //}
 //
 //// <p>
@@ -383,8 +383,8 @@
 //// unordered.</p>
 ////
 //pub fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
-//  for let i = 0; i < len(o.opnds); i++ {;
-//    if o.opnds[i].evaluate(parser, outer_context) {
+//  for let i = 0; i < len(self.opnds); i++ {;
+//    if self.opnds[i].evaluate(parser, outer_context) {
 //      return true
 //    }
 //  }
@@ -394,8 +394,8 @@
 //pub fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
 //  let differs = false;
 //  let operands = make([]SemanticContext, 0);
-//  for let i = 0; i < len(o.opnds); i++ {;
-//    let context = o.opnds[i];
+//  for let i = 0; i < len(self.opnds); i++ {;
+//    let context = self.opnds[i];
 //    let evaluated = context.eval_precedence(parser, outer_context);
 //    differs = differs || (evaluated != context)
 //    if evaluated == SemanticContextNone {
@@ -429,7 +429,7 @@
 //pub fn String(&self, ) -> &str {
 //  let s = "";
 //
-//  for _, let o = range o.opnds {;
+//  for _, let o = range self.opnds {;
 //    s += "|| " + fmt.Sprint(o)
 //  }
 //

@@ -44,45 +44,45 @@
 //  _SyntaxErrors  i32
 //}
 //
-//// p.is all the parsing support code essentially most of it is error
+//// self.is all the parsing support code essentially most of it is error
 //// recovery stuff.//
 //impl BaseParser {§//  pub fn new(&self, input: TokenStream) -> *BaseParser {
 //
 //  let p = new(BaseParser);
 //
-//  p.BaseRecognizer = NewBaseRecognizer()
+//  self.BaseRecognizer = NewBaseRecognizer()
 //
 //  // The input stream.
-//  p.input = nil
+//  self.input = nil
 //  // The error handling strategy for the parser. The default value is a new
 //  // instance of {@link DefaultErrorStrategy}.
-//  p.err_handler = NewDefaultErrorStrategy()
-//  p.precedence_stack = make([]int, 0)
-//  p.precedence_stack.Push(0)
+//  self.err_handler = NewDefaultErrorStrategy()
+//  self.precedence_stack = make([]int, 0)
+//  self.precedence_stack.Push(0)
 //  // The {@link ParserRuleContext} object for the currently executing rule.
-//  // p.is always non-nil during the parsing process.
-//  p.ctx = nil
+//  // self.is always non-nil during the parsing process.
+//  self.ctx = nil
 //  // Specifies whether or not the parser should construct a parse tree during
 //  // the parsing process. The default value is {@code true}.
-//  p.BuildParseTrees = true
+//  self.BuildParseTrees = true
 //  // When {@link //setTrace}{@code (true)} is called, a reference to the
 //  // {@link TraceListener} is stored here so it can be easily removed in a
 //  // later call to {@link //setTrace}{@code (false)}. The listener itself is
-//  // implemented as a parser listener so p.field is not directly used by
+//  // implemented as a parser listener so self.field is not directly used by
 //  // other parser methods.
-//  p.tracer = nil
+//  self.tracer = nil
 //  // The list of {@link ParseTreeListener} listeners registered to receive
 //  // events during the parse.
-//  p.parse_listeners = nil
-//  // The number of syntax errors Reported during parsing. p.value is
+//  self.parse_listeners = nil
+//  // The number of syntax errors Reported during parsing. self.value is
 //  // incremented each time {@link //NotifyErrorListeners} is called.
 //  p._SyntaxErrors = 0
-//  p.SetInputStream(input)
+//  self.SetInputStream(input)
 //
 //  return p
 //}
 //
-//// p.field maps from the serialized ATN &str to the deserialized {@link
+//// self.field maps from the serialized ATN &str to the deserialized {@link
 //// ATN} with
 //// bypass alternatives.
 ////
@@ -92,26 +92,26 @@
 //
 //// reset the parser's state//
 //pub fn reset(&self, ) {
-//  if p.input != nil {
-//    p.input.Seek(0)
+//  if self.input != nil {
+//    self.input.Seek(0)
 //  }
-//  p.err_handler.reset(p)
-//  p.ctx = nil
+//  self.err_handler.reset(p)
+//  self.ctx = nil
 //  p._SyntaxErrors = 0
-//  p.SetTrace(nil)
-//  p.precedence_stack = make([]int, 0)
-//  p.precedence_stack.Push(0)
-//  if p.Interpreter != nil {
-//    p.Interpreter.reset()
+//  self.SetTrace(nil)
+//  self.precedence_stack = make([]int, 0)
+//  self.precedence_stack.Push(0)
+//  if self.Interpreter != nil {
+//    self.Interpreter.reset()
 //  }
 //}
 //
 //pub fn GetErrorHandler(&self, ) -> ErrorStrategy {
-//  return p.err_handler
+//  return self.err_handler
 //}
 //
 //pub fn SetErrorHandler(&self, e: ErrorStrategy) {
-//  p.err_handler = e
+//  self.err_handler = e
 //}
 //
 //// Match current input symbol against {@code ttype}. If the symbol type
@@ -133,18 +133,18 @@
 //
 //pub fn Match(&self, ttype: i32) -> Token {
 //
-//  let t = p.GetCurrentToken();
+//  let t = self.GetCurrentToken();
 //
-//  if t.GetTokenType() == ttype {
-//    p.err_handler.ReportMatch(p)
-//    p.Consume()
+//  if self.GetTokenType() == ttype {
+//    self.err_handler.ReportMatch(p)
+//    self.Consume()
 //  } else {
-//    t = p.err_handler.RecoverInline(p)
-//    if p.BuildParseTrees && t.GetTokenIndex() == -1 {
+//    t = self.err_handler.RecoverInline(p)
+//    if self.BuildParseTrees && self.GetTokenIndex() == -1 {
 //      // we must have conjured up a Newtoken during single token
 //      // insertion
 //      // if it's not the current symbol
-//      p.ctx.AddErrorNode(t)
+//      self.ctx.AddErrorNode(t)
 //    }
 //  }
 //
@@ -152,7 +152,7 @@
 //}
 //
 //// Match current input symbol as a wildcard. If the symbol type Matches
-//// (i.e. has a value greater than 0), {@link ANTLRErrorStrategy//ReportMatch}
+//// (self.e. has a value greater than 0), {@link ANTLRErrorStrategy//ReportMatch}
 //// and {@link //consume} are called to complete the Match process.
 ////
 //// <p>If the symbol type does not Match,
@@ -168,35 +168,35 @@
 //// symbol
 //
 //pub fn MatchWildcard(&self, ) -> Token {
-//  let t = p.GetCurrentToken();
-//  if t.GetTokenType() > 0 {
-//    p.err_handler.ReportMatch(p)
-//    p.Consume()
+//  let t = self.GetCurrentToken();
+//  if self.GetTokenType() > 0 {
+//    self.err_handler.ReportMatch(p)
+//    self.Consume()
 //  } else {
-//    t = p.err_handler.RecoverInline(p)
-//    if p.BuildParseTrees && t.GetTokenIndex() == -1 {
+//    t = self.err_handler.RecoverInline(p)
+//    if self.BuildParseTrees && self.GetTokenIndex() == -1 {
 //      // we must have conjured up a Newtoken during single token
 //      // insertion
 //      // if it's not the current symbol
-//      p.ctx.AddErrorNode(t)
+//      self.ctx.AddErrorNode(t)
 //    }
 //  }
 //  return t
 //}
 //
 //pub fn GetParserRuleContext(&self, ) -> ParserRuleContext {
-//  return p.ctx
+//  return self.ctx
 //}
 //
 //pub fn SetParserRuleContext(&self, v: ParserRuleContext) {
-//  p.ctx = v
+//  self.ctx = v
 //}
 //
 //pub fn GetParseListeners(&self, ) -> []ParseTreeListener {
-//  if p.parse_listeners == nil {
+//  if self.parse_listeners == nil {
 //    return make([]ParseTreeListener, 0)
 //  }
-//  return p.parse_listeners
+//  return self.parse_listeners
 //}
 //
 //// Registers {@code listener} to receive events during the parsing process.
@@ -211,7 +211,7 @@
 //// rule entry methods may be omitted.</p>
 ////
 //// <p>With the following specific exceptions, calls to listener events are
-//// <em>deterministic</em>, i.e. for identical input the calls to listener
+//// <em>deterministic</em>, self.e. for identical input the calls to listener
 //// methods will be the same.</p>
 ////
 //// <ul>
@@ -231,25 +231,25 @@
 //  if listener == nil {
 //    panic("listener")
 //  }
-//  if p.parse_listeners == nil {
-//    p.parse_listeners = make([]ParseTreeListener, 0)
+//  if self.parse_listeners == nil {
+//    self.parse_listeners = make([]ParseTreeListener, 0)
 //  }
-//  p.parse_listeners = append(p.parse_listeners, listener)
+//  self.parse_listeners = append(self.parse_listeners, listener)
 //}
 //
 ////
 //// Remove {@code listener} from the list of parse listeners.
 ////
 //// <p>If {@code listener} is {@code nil} or has not been added as a parse
-//// listener, p.method does nothing.</p>
+//// listener, self.method does nothing.</p>
 //// @param listener the listener to remove
 ////
 //pub fn RemoveParseListener(&self, listener: ParseTreeListener) {
 //
-//  if p.parse_listeners != nil {
+//  if self.parse_listeners != nil {
 //
 //    let idx = -1;
-//    for i, let v = range p.parse_listeners {;
+//    for i, let v = range self.parse_listeners {;
 //      if v == listener {
 //        idx = i
 //        break
@@ -261,24 +261,24 @@
 //    }
 //
 //    // remove the listener from the slice
-//    p.parse_listeners = append(p.parse_listeners[0:idx], p.parse_listeners[idx+1:]...)
+//    self.parse_listeners = append(self.parse_listeners[0:idx], self.parse_listeners[idx+1:]...)
 //
-//    if len(p.parse_listeners) == 0 {
-//      p.parse_listeners = nil
+//    if len(self.parse_listeners) == 0 {
+//      self.parse_listeners = nil
 //    }
 //  }
 //}
 //
 //// Remove all parse listeners.
 //pub fn remove_parse_listeners(&self, ) {
-//  p.parse_listeners = nil
+//  self.parse_listeners = nil
 //}
 //
 //// Notify any parse listeners of an enter rule event.
 //pub fn TriggerEnterRuleEvent(&self, ) {
-//  if p.parse_listeners != nil {
-//    let ctx = p.ctx;
-//    for _, let listener = range p.parse_listeners {;
+//  if self.parse_listeners != nil {
+//    let ctx = self.ctx;
+//    for _, let listener = range self.parse_listeners {;
 //      listener.EnterEveryRule(ctx)
 //      ctx.EnterRule(listener)
 //    }
@@ -291,13 +291,13 @@
 //// @see //addParseListener
 ////
 //pub fn TriggerExitRuleEvent(&self, ) {
-//  if p.parse_listeners != nil {
+//  if self.parse_listeners != nil {
 //    // reverse order walk of listeners
-//    let ctx = p.ctx;
-//    let l = len(p.parse_listeners) - 1;
+//    let ctx = self.ctx;
+//    let l = len(self.parse_listeners) - 1;
 //
-//    for let i = range p.parse_listeners {;
-//      let listener = p.parse_listeners[l-i];
+//    for let i = range self.parse_listeners {;
+//      let listener = self.parse_listeners[l-i];
 //      ctx.ExitRule(listener)
 //      listener.ExitEveryRule(ctx)
 //    }
@@ -305,20 +305,20 @@
 //}
 //
 //pub fn GetInterpreter(&self, ) -> *ParserATNSimulator {
-//  return p.Interpreter
+//  return self.Interpreter
 //}
 //
 //pub fn GetATN(&self, ) -> *ATN {
-//  return p.Interpreter.atn
+//  return self.Interpreter.atn
 //}
 //
 //pub fn GetTokenFactory(&self, ) -> TokenFactory {
-//  return p.input.GetTokenSource().GetTokenFactory()
+//  return self.input.GetTokenSource().GetTokenFactory()
 //}
 //
 //// Tell our token source and error strategy about a Newway to create tokens.//
 //pub fn set_token_factory(&self, factory: TokenFactory) {
-//  p.input.GetTokenSource().set_token_factory(factory)
+//  self.input.GetTokenSource().set_token_factory(factory)
 //}
 //
 //// The ATN with bypass alternatives is expensive to create so we create it
@@ -332,16 +332,16 @@
 //  // TODO
 //  panic("Not implemented!")
 //
-//  //  let serialized_atn = p.get_serialized_a_t_n();
+//  //  let serialized_atn = self.get_serialized_a_t_n();
 //  //  if (serializedAtn == nil) {
 //  //    panic("The current parser does not support an ATN with bypass alternatives.")
 //  //  }
-//  //  let result = p.bypass_alts_atn_cache[serializedAtn];
+//  //  let result = self.bypass_alts_atn_cache[serializedAtn];
 //  //  if (result == nil) {
 //  //    let deserialization_options = NewATNDeserializationOptions(nil);
 //  //    deserialization_options.generate_rule_bypass_transitions = true
 //  //    result = NewATNDeserializer(deserializationOptions).deserialize(serializedAtn)
-//  //    p.bypass_alts_atn_cache[serializedAtn] = result
+//  //    self.bypass_alts_atn_cache[serializedAtn] = result
 //  //  }
 //  //  return result
 //}
@@ -353,8 +353,8 @@
 //// ParseTree t = parser.expr()
 //// ParseTreePattern p = parser.compile_parse_tree_pattern("&ltID&gt+0",
 //// MyParser.RULE_expr)
-//// ParseTreeMatch m = p.Match(t)
-//// String id = m.Get("ID")
+//// ParseTreeMatch m = self.Match(t)
+//// String id = self.Get("ID")
 //// </pre>
 //
 //pub fn compile_parse_tree_pattern(&self, pattern,: pattern_rule_index, lexer: Lexer) {
@@ -362,8 +362,8 @@
 //  panic("NewParseTreePatternMatcher not implemented!")
 //  //
 //  //  if (lexer == nil) {
-//  //    if (p.GetTokenStream() != nil) {
-//  //      let token_source = p.GetTokenStream().GetTokenSource();
+//  //    if (self.GetTokenStream() != nil) {
+//  //      let token_source = self.GetTokenStream().GetTokenSource();
 //  //      if _, let ok = token_source.(ILexer); ok {;
 //  //        lexer = token_source
 //  //      }
@@ -374,70 +374,70 @@
 //  //  }
 //
 //  //  let m = NewParseTreePatternMatcher(lexer, p);
-//  //  return m.compile(pattern, pattern_rule_index)
+//  //  return self.compile(pattern, pattern_rule_index)
 //}
 //
 //pub fn GetInputStream(&self, ) -> IntStream {
-//  return p.GetTokenStream()
+//  return self.GetTokenStream()
 //}
 //
 //pub fn SetInputStream(&self, input: TokenStream) {
-//  p.SetTokenStream(input)
+//  self.SetTokenStream(input)
 //}
 //
 //pub fn GetTokenStream(&self, ) -> TokenStream {
-//  return p.input
+//  return self.input
 //}
 //
 //// Set the token stream and reset the parser.//
 //pub fn SetTokenStream(&self, input: TokenStream) {
-//  p.input = nil
-//  p.reset()
-//  p.input = input
+//  self.input = nil
+//  self.reset()
+//  self.input = input
 //}
 //
 //// Match needs to return the current input symbol, which gets put
-//// i32o the label for the associated token ref e.g., x=ID.
+//// i32o the label for the associated token ref self.g., x=ID.
 ////
 //pub fn GetCurrentToken(&self, ) -> Token {
-//  return p.input.LT(1)
+//  return self.input.LT(1)
 //}
 //
 //pub fn NotifyErrorListeners(&self, msg &str, offending_token: Token, err: RecognitionException) {
 //  if offending_token == nil {
-//    offending_token = p.GetCurrentToken()
+//    offending_token = self.GetCurrentToken()
 //  }
 //  p._SyntaxErrors++
 //  let line = offending_token.GetLine();
 //  let column = offending_token.GetColumn();
-//  let listener = p.GetErrorListenerDispatch();
+//  let listener = self.GetErrorListenerDispatch();
 //  listener.SyntaxError(p, offending_token, line, column, msg, err)
 //}
 //
 //pub fn Consume(&self, ) -> Token {
-//  let o = p.GetCurrentToken();
-//  if o.GetTokenType() != TokenEOF {
-//    p.GetInputStream().Consume()
+//  let o = self.GetCurrentToken();
+//  if self.GetTokenType() != TokenEOF {
+//    self.GetInputStream().Consume()
 //  }
-//  let has_listener = p.parse_listeners != nil && len(p.parse_listeners) > 0;
-//  if p.BuildParseTrees || has_listener {
-//    if p.err_handler.in_error_recovery_mode(p) {
-//      let node = p.ctx.AddErrorNode(o);
-//      if p.parse_listeners != nil {
-//        for _, let l = range p.parse_listeners {;
-//          l.VisitErrorNode(node)
+//  let has_listener = self.parse_listeners != nil && len(self.parse_listeners) > 0;
+//  if self.BuildParseTrees || has_listener {
+//    if self.err_handler.in_error_recovery_mode(p) {
+//      let node = self.ctx.AddErrorNode(o);
+//      if self.parse_listeners != nil {
+//        for _, let l = range self.parse_listeners {;
+//          self.VisitErrorNode(node)
 //        }
 //      }
 //
 //    } else {
-//      let node = p.ctx.AddTokenNode(o);
-//      if p.parse_listeners != nil {
-//        for _, let l = range p.parse_listeners {;
-//          l.VisitTerminal(node)
+//      let node = self.ctx.AddTokenNode(o);
+//      if self.parse_listeners != nil {
+//        for _, let l = range self.parse_listeners {;
+//          self.VisitTerminal(node)
 //        }
 //      }
 //    }
-//    //        node.invoking_state = p.state
+//    //        node.invoking_state = self.state
 //  }
 //
 //  return o
@@ -445,34 +445,34 @@
 //
 //pub fn add_context_to_parse_tree(&self, ) {
 //  // add current context to parent if we have a parent
-//  if p.ctx.GetParent() != nil {
-//    p.ctx.GetParent().(ParserRuleContext).AddChild(p.ctx)
+//  if self.ctx.GetParent() != nil {
+//    self.ctx.GetParent().(ParserRuleContext).AddChild(self.ctx)
 //  }
 //}
 //
 //pub fn EnterRule(&self, localctx ParserRuleContext,: state, rule_index: i32) {
-//  p.SetState(state)
-//  p.ctx = localctx
-//  p.ctx.SetStart(p.input.LT(1))
-//  if p.BuildParseTrees {
-//    p.add_context_to_parse_tree()
+//  self.SetState(state)
+//  self.ctx = localctx
+//  self.ctx.SetStart(self.input.LT(1))
+//  if self.BuildParseTrees {
+//    self.add_context_to_parse_tree()
 //  }
-//  if p.parse_listeners != nil {
-//    p.TriggerEnterRuleEvent()
+//  if self.parse_listeners != nil {
+//    self.TriggerEnterRuleEvent()
 //  }
 //}
 //
 //pub fn ExitRule(&self, ) {
-//  p.ctx.SetStop(p.input.LT(-1))
+//  self.ctx.SetStop(self.input.LT(-1))
 //  // trigger event on ctx, before it reverts to parent
-//  if p.parse_listeners != nil {
-//    p.TriggerExitRuleEvent()
+//  if self.parse_listeners != nil {
+//    self.TriggerExitRuleEvent()
 //  }
-//  p.SetState(p.ctx.GetInvokingState())
-//  if p.ctx.GetParent() != nil {
-//    p.ctx = p.ctx.GetParent().(ParserRuleContext)
+//  self.SetState(self.ctx.GetInvokingState())
+//  if self.ctx.GetParent() != nil {
+//    self.ctx = self.ctx.GetParent().(ParserRuleContext)
 //  } else {
-//    p.ctx = nil
+//    self.ctx = nil
 //  }
 //}
 //
@@ -480,13 +480,13 @@
 //  localctx.SetAltNumber(altNum)
 //  // if we have Newlocalctx, make sure we replace existing ctx
 //  // that is previous child of parse tree
-//  if p.BuildParseTrees && p.ctx != localctx {
-//    if p.ctx.GetParent() != nil {
-//      p.ctx.GetParent().(ParserRuleContext).RemoveLastChild()
-//      p.ctx.GetParent().(ParserRuleContext).AddChild(localctx)
+//  if self.BuildParseTrees && self.ctx != localctx {
+//    if self.ctx.GetParent() != nil {
+//      self.ctx.GetParent().(ParserRuleContext).RemoveLastChild()
+//      self.ctx.GetParent().(ParserRuleContext).AddChild(localctx)
 //    }
 //  }
-//  p.ctx = localctx
+//  self.ctx = localctx
 //}
 //
 //// Get the precedence level for the top-most precedence rule.
@@ -495,20 +495,20 @@
 //// the parser context is not nested within a precedence rule.
 //
 //pub fn GetPrecedence(&self, ) -> i32 {
-//  if len(p.precedence_stack) == 0 {
+//  if len(self.precedence_stack) == 0 {
 //    return -1
 //  }
 //
-//  return p.precedence_stack[len(p.precedence_stack)-1]
+//  return self.precedence_stack[len(self.precedence_stack)-1]
 //}
 //
 //pub fn EnterRecursionRule(&self, localctx ParserRuleContext, state,: rule_index, precedence: i32) {
-//  p.SetState(state)
-//  p.precedence_stack.Push(precedence)
-//  p.ctx = localctx
-//  p.ctx.SetStart(p.input.LT(1))
-//  if p.parse_listeners != nil {
-//    p.TriggerEnterRuleEvent() // simulates rule entry for
+//  self.SetState(state)
+//  self.precedence_stack.Push(precedence)
+//  self.ctx = localctx
+//  self.ctx.SetStart(self.input.LT(1))
+//  if self.parse_listeners != nil {
+//    self.TriggerEnterRuleEvent() // simulates rule entry for
 //    // left-recursive rules
 //  }
 //}
@@ -517,45 +517,45 @@
 //// Like {@link //EnterRule} but for recursive rules.
 //
 //pub fn PushNewRecursionContext(&self, localctx ParserRuleContext,: state, rule_index: i32) {
-//  let previous = p.ctx;
+//  let previous = self.ctx;
 //  previous.SetParent(localctx)
 //  previous.SetInvokingState(state)
-//  previous.SetStop(p.input.LT(-1))
+//  previous.SetStop(self.input.LT(-1))
 //
-//  p.ctx = localctx
-//  p.ctx.SetStart(previous.GetStart())
-//  if p.BuildParseTrees {
-//    p.ctx.AddChild(previous)
+//  self.ctx = localctx
+//  self.ctx.SetStart(previous.GetStart())
+//  if self.BuildParseTrees {
+//    self.ctx.AddChild(previous)
 //  }
-//  if p.parse_listeners != nil {
-//    p.TriggerEnterRuleEvent() // simulates rule entry for
+//  if self.parse_listeners != nil {
+//    self.TriggerEnterRuleEvent() // simulates rule entry for
 //    // left-recursive rules
 //  }
 //}
 //
 //pub fn UnrollRecursionContexts(&self, parent_ctx: ParserRuleContext) {
-//  p.precedence_stack.Pop()
-//  p.ctx.SetStop(p.input.LT(-1))
-//  let ret_ctx = p.ctx // save current ctx (return value);
+//  self.precedence_stack.Pop()
+//  self.ctx.SetStop(self.input.LT(-1))
+//  let ret_ctx = self.ctx // save current ctx (return value);
 //  // unroll so ctx is as it was before call to recursive method
-//  if p.parse_listeners != nil {
-//    for p.ctx != parent_ctx {
-//      p.TriggerExitRuleEvent()
-//      p.ctx = p.ctx.GetParent().(ParserRuleContext)
+//  if self.parse_listeners != nil {
+//    for self.ctx != parent_ctx {
+//      self.TriggerExitRuleEvent()
+//      self.ctx = self.ctx.GetParent().(ParserRuleContext)
 //    }
 //  } else {
-//    p.ctx = parent_ctx
+//    self.ctx = parent_ctx
 //  }
 //  // hook i32o tree
 //  ret_ctx.SetParent(parentCtx)
-//  if p.BuildParseTrees && parent_ctx != nil {
+//  if self.BuildParseTrees && parent_ctx != nil {
 //    // add return ctx i32o invoking rule's tree
 //    parent_ctx.AddChild(retCtx)
 //  }
 //}
 //
 //pub fn GetInvokingContext(&self, rule_index: i32) -> ParserRuleContext {
-//  let ctx = p.ctx;
+//  let ctx = self.ctx;
 //  for ctx != nil {
 //    if ctx.GetRuleIndex() == rule_index {
 //      return ctx
@@ -566,7 +566,7 @@
 //}
 //
 //pub fn Precpred(&self, localctx: RuleContext, precedence: i32) -> bool {
-//  return precedence >= p.precedence_stack[len(p.precedence_stack)-1]
+//  return precedence >= self.precedence_stack[len(self.precedence_stack)-1]
 //}
 //
 //pub fn in_context(&self, context: ParserRuleContext) -> bool {
@@ -576,7 +576,7 @@
 //
 ////
 //// Checks whether or not {@code symbol} can follow the current state in the
-//// ATN. The behavior of p.method is equivalent to the following, but is
+//// ATN. The behavior of self.method is equivalent to the following, but is
 //// implemented such that the complete context-sensitive follow set does not
 //// need to be explicitly constructed.
 ////
@@ -589,9 +589,9 @@
 //// the ATN, otherwise {@code false}.
 //
 //pub fn IsExpectedToken(&self, symbol: i32) -> bool {
-//  let atn = p.Interpreter.atn;
-//  let ctx = p.ctx;
-//  let s = atn.states[p.state];
+//  let atn = self.Interpreter.atn;
+//  let ctx = self.ctx;
+//  let s = atn.states[self.state];
 //  let following = atn.NextTokens(s, nil);
 //  if following.contains(symbol) {
 //    return true
@@ -622,18 +622,18 @@
 //// @see ATN//getExpectedTokens(int, RuleContext)
 ////
 //pub fn GetExpectedTokens(&self, ) -> *IntervalSet {
-//  return p.Interpreter.atn.get_expected_tokens(p.state, p.ctx)
+//  return self.Interpreter.atn.get_expected_tokens(self.state, self.ctx)
 //}
 //
 //pub fn GetExpectedTokensWithinCurrentRule(&self, ) -> *IntervalSet {
-//  let atn = p.Interpreter.atn;
-//  let s = atn.states[p.state];
+//  let atn = self.Interpreter.atn;
+//  let s = atn.states[self.state];
 //  return atn.NextTokens(s, nil)
 //}
 //
-//// Get a rule's index (i.e., {@code RULE_rule_name} field) or -1 if not found.//
+//// Get a rule's index (self.e., {@code RULE_rule_name} field) or -1 if not found.//
 //pub fn GetRuleIndex(&self, rule_name: &str) -> i32 {
-//  var rule_index, ok = p.GetRuleIndexMap()[ruleName]
+//  var rule_index, ok = self.GetRuleIndexMap()[ruleName]
 //  if ok {
 //    return rule_index
 //  }
@@ -650,19 +650,19 @@
 //
 //pub fn GetRuleInvocationStack(&self, c: ParserRuleContext) -> []string {
 //  if c == nil {
-//    c = p.ctx
+//    c = self.ctx
 //  }
 //  let stack = make([]string, 0);
 //  for c != nil {
 //    // compute what follows who invoked us
-//    let rule_index = c.GetRuleIndex();
+//    let rule_index = self.GetRuleIndex();
 //    if rule_index < 0 {
 //      stack = append(stack, "n/a")
 //    } else {
-//      stack = append(stack, p.GetRuleNames()[ruleIndex])
+//      stack = append(stack, self.GetRuleNames()[ruleIndex])
 //    }
 //
-//    let vp = c.GetParent();
+//    let vp = self.GetParent();
 //
 //    if vp == nil {
 //      break
@@ -675,40 +675,40 @@
 //
 //// For debugging and other purposes.//
 //pub fn GetDFAStrings(&self, ) -> &str {
-//  return fmt.Sprint(p.Interpreter.decision_to_d_f_a)
+//  return fmt.Sprint(self.Interpreter.decision_to_d_f_a)
 //}
 //
 //// For debugging and other purposes.//
 //pub fn DumpDFA(&self, ) {
 //  let seen_one = false;
-//  for _, let dfa = range p.Interpreter.decision_to_d_f_a {;
+//  for _, let dfa = range self.Interpreter.decision_to_d_f_a {;
 //    if len(dfa.GetStates()) > 0 {
 //      if seen_one {
 //        fmt.Println()
 //      }
 //      fmt.Println("Decision " + strconv.Itoa(dfa.decision) + ":")
-//      fmt.Print(dfa.String(p.LiteralNames, p.SymbolicNames))
+//      fmt.Print(dfa.String(self.LiteralNames, self.SymbolicNames))
 //      seen_one = true
 //    }
 //  }
 //}
 //
 //pub fn GetSourceName(&self, ) -> &str {
-//  return p.GrammarFileName
+//  return self.GrammarFileName
 //}
 //
 //// During a parse is sometimes useful to listen in on the rule entry and exit
-//// events as well as token Matches. p.is for quick and dirty debugging.
+//// events as well as token Matches. self.is for quick and dirty debugging.
 ////
 //pub fn SetTrace(&self, trace *TraceListener) {
 //  if trace == nil {
-//    p.RemoveParseListener(p.tracer)
-//    p.tracer = nil
+//    self.RemoveParseListener(self.tracer)
+//    self.tracer = nil
 //  } else {
-//    if p.tracer != nil {
-//      p.RemoveParseListener(p.tracer)
+//    if self.tracer != nil {
+//      self.RemoveParseListener(self.tracer)
 //    }
-//    p.tracer = NewTraceListener(p)
-//    p.AddParseListener(p.tracer)
+//    self.tracer = NewTraceListener(p)
+//    self.AddParseListener(self.tracer)
 //  }
 //}

@@ -67,22 +67,22 @@
 //
 //pub fn SetParent(&self, v: Tree) {
 //  if v == nil {
-//    b.parent_ctx = nil
+//    self.parent_ctx = nil
 //  } else {
-//    b.parent_ctx = v.(RuleContext)
+//    self.parent_ctx = v.(RuleContext)
 //  }
 //}
 //
 //pub fn GetInvokingState(&self, ) -> i32 {
-//  return b.invoking_state
+//  return self.invoking_state
 //}
 //
 //pub fn SetInvokingState(&self, t: i32) {
-//  b.invoking_state = t
+//  self.invoking_state = t
 //}
 //
 //pub fn GetRuleIndex(&self, ) -> i32 {
-//  return b.RuleIndex
+//  return self.RuleIndex
 //}
 //
 //pub fn GetAltNumber(&self, ) -> i32 {
@@ -94,17 +94,17 @@
 //// A context is empty if there is no invoking state meaning nobody call
 //// current context.
 //pub fn IsEmpty(&self, ) -> bool {
-//  return b.invoking_state == -1
+//  return self.invoking_state == -1
 //}
 //
 //// Return the combined text of all child nodes. This method only considers
 //// tokens which have been added to the parse tree.
 //// <p>
-//// Since tokens on hidden channels (e.g. whitespace or comments) are not
+//// Since tokens on hidden channels (self.g. whitespace or comments) are not
 //// added to the parse trees, they will not appear in the output of b
 //// method.
 ////
 //
 //pub fn GetParent(&self, ) -> Tree {
-//  return b.parent_ctx
+//  return self.parent_ctx
 //}

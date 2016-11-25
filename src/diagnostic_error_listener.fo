@@ -34,18 +34,18 @@
 //  let n = new(DiagnosticErrorListener);
 //
 //  // whether all ambiguities or only exact ambiguities are Reported.
-//  n.exact_only = exact_only
+//  self.exact_only = exact_only
 //  return n
 //}
 //
 //pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, start_index, stop_index i32, exact: bool, ambig_alts *BitSet, configs: ATNConfigSet) {
-//  if d.exact_only && !exact {
+//  if self.exact_only && !exact {
 //    return
 //  }
 //  let msg = "reportAmbiguity d=" +;
-//    d.get_decision_description(recognizer, dfa) +
+//    self.get_decision_description(recognizer, dfa) +
 //    ": ambig_alts=" +
-//    d.get_conflicting_alts(ambigAlts, configs).String() +
+//    self.get_conflicting_alts(ambigAlts, configs).String() +
 //    ", input='" +
 //    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stop_index)) + "'"
 //  recognizer.NotifyErrorListeners(msg, nil, nil)
@@ -54,7 +54,7 @@
 //pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, start_index, stop_index: i32, conflicting_alts *BitSet, configs: ATNConfigSet) {
 //
 //  let msg = "reportAttemptingFullContext d=" +;
-//    d.get_decision_description(recognizer, dfa) +
+//    self.get_decision_description(recognizer, dfa) +
 //    ", input='" +
 //    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stop_index)) + "'"
 //  recognizer.NotifyErrorListeners(msg, nil, nil)
@@ -62,7 +62,7 @@
 //
 //pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, start_index, stop_index, prediction: i32, configs: ATNConfigSet) {
 //  let msg = "reportContextSensitivity d=" +;
-//    d.get_decision_description(recognizer, dfa) +
+//    self.get_decision_description(recognizer, dfa) +
 //    ", input='" +
 //    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stop_index)) + "'"
 //  recognizer.NotifyErrorListeners(msg, nil, nil)
@@ -100,7 +100,7 @@
 //  }
 //  let result = NewBitSet();
 //  for _, let c = range set.GetItems() {;
-//    result.add(c.GetAlt())
+//    result.add(self.GetAlt())
 //  }
 //
 //  return result

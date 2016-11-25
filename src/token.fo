@@ -70,47 +70,47 @@
 //)
 //
 //pub fn GetChannel(&self, ) -> i32 {
-//  return b.channel
+//  return self.channel
 //}
 //
 //pub fn GetStart(&self, ) -> i32 {
-//  return b.start
+//  return self.start
 //}
 //
 //pub fn GetStop(&self, ) -> i32 {
-//  return b.stop
+//  return self.stop
 //}
 //
 //pub fn GetLine(&self, ) -> i32 {
-//  return b.line
+//  return self.line
 //}
 //
 //pub fn GetColumn(&self, ) -> i32 {
-//  return b.column
+//  return self.column
 //}
 //
 //pub fn GetTokenType(&self, ) -> i32 {
-//  return b.token_type
+//  return self.token_type
 //}
 //
 //pub fn GetSource(&self, ) -> *TokenSourceCharStreamPair {
-//  return b.source
+//  return self.source
 //}
 //
 //pub fn GetTokenIndex(&self, ) -> i32 {
-//  return b.token_index
+//  return self.token_index
 //}
 //
 //pub fn SetTokenIndex(&self, v: i32) {
-//  b.token_index = v
+//  self.token_index = v
 //}
 //
 //pub fn GetTokenSource(&self, ) -> TokenSource {
-//  return b.source.token_source
+//  return self.source.token_source
 //}
 //
 //pub fn GetInputStream(&self, ) -> CharStream {
-//  return b.source.char_stream
+//  return self.source.char_stream
 //}
 //
 //pub struct CommonToken {
@@ -121,19 +121,19 @@
 //
 //  let t = new(CommonToken);
 //
-//  t.BaseToken = new(BaseToken)
+//  self.BaseToken = new(BaseToken)
 //
-//  t.source = source
-//  t.token_type = token_type
-//  t.channel = channel
-//  t.start = start
-//  t.stop = stop
-//  t.token_index = -1
-//  if t.source.token_source != nil {
-//    t.line = source.token_source.GetLine()
-//    t.column = source.token_source.GetCharPositionInLine()
+//  self.source = source
+//  self.token_type = token_type
+//  self.channel = channel
+//  self.start = start
+//  self.stop = stop
+//  self.token_index = -1
+//  if self.source.token_source != nil {
+//    self.line = source.token_source.GetLine()
+//    self.column = source.token_source.GetCharPositionInLine()
 //  } else {
-//    t.column = -1
+//    self.column = -1
 //  }
 //  return t
 //}
@@ -156,35 +156,35 @@
 //// @param old_token The token to copy.
 ////
 //pub fn clone(&self, ) -> *CommonToken {
-//  let t = NewCommonToken(c.source, c.token_type, c.channel, c.start, c.stop);
-//  t.token_index = c.GetTokenIndex()
-//  t.line = c.GetLine()
-//  t.column = c.GetColumn()
-//  t.text = c.GetText()
+//  let t = NewCommonToken(self.source, self.token_type, self.channel, self.start, self.stop);
+//  self.token_index = self.GetTokenIndex()
+//  self.line = self.GetLine()
+//  self.column = self.GetColumn()
+//  self.text = self.GetText()
 //  return t
 //}
 //
 //pub fn GetText(&self, ) -> &str {
-//  if c.text != "" {
-//    return c.text
+//  if self.text != "" {
+//    return self.text
 //  }
-//  let input = c.GetInputStream();
+//  let input = self.GetInputStream();
 //  if input == nil {
 //    return ""
 //  }
 //  let n = input.Size();
-//  if c.start < n && c.stop < n {
-//    return input.GetTextFromInterval(NewInterval(c.start, c.stop))
+//  if self.start < n && self.stop < n {
+//    return input.GetTextFromInterval(NewInterval(self.start, self.stop))
 //  }
 //  return "<EOF>"
 //}
 //
 //pub fn SetText(&self, text: &str) {
-//  c.text = text
+//  self.text = text
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  let txt = c.GetText();
+//  let txt = self.GetText();
 //  if txt != "" {
 //    txt = &strs.Replace(txt, "\n", "\\n", -1)
 //    txt = &strs.Replace(txt, "\r", "\\r", -1)
@@ -194,13 +194,13 @@
 //  }
 //
 //  var ch &str
-//  if c.channel > 0 {
-//    ch = ",channel=" + strconv.Itoa(c.channel)
+//  if self.channel > 0 {
+//    ch = ",channel=" + strconv.Itoa(self.channel)
 //  } else {
 //    ch = ""
 //  }
 //
-//  return "[@" + strconv.Itoa(c.token_index) + "," + strconv.Itoa(c.start) + ":" + strconv.Itoa(c.stop) + "='" +
-//    txt + "',<" + strconv.Itoa(c.token_type) + ">" +
-//    ch + "," + strconv.Itoa(c.line) + ":" + strconv.Itoa(c.column) + "]"
+//  return "[@" + strconv.Itoa(self.token_index) + "," + strconv.Itoa(self.start) + ":" + strconv.Itoa(self.stop) + "='" +
+//    txt + "',<" + strconv.Itoa(self.token_type) + ">" +
+//    ch + "," + strconv.Itoa(self.line) + ":" + strconv.Itoa(self.column) + "]"
 //}

@@ -101,29 +101,29 @@
 //// ATNConfig.semantic_context. We use (s,i,pi) as the key. Updates
 //// dips_into_outer_context and has_semantic_context when necessary.
 //pub fn Add(&self, config: ATNConfig, merge_cache *DoubleDict) -> bool {
-//  if b.read_only {
+//  if self.read_only {
 //    panic("set is read-only")
 //  }
 //
 //  if config.GetSemanticContext() != SemanticContextNone {
-//    b.has_semantic_context = true
+//    self.has_semantic_context = true
 //  }
 //
 //  if config.GetReachesIntoOuterContext() > 0 {
-//    b.dips_into_outer_context = true
+//    self.dips_into_outer_context = true
 //  }
 //
-//  let existing = b.config_lookup.add(config).(ATNConfig);
+//  let existing = self.config_lookup.add(config).(ATNConfig);
 //
 //  if existing == config {
-//    b.cached_hash_string = "-1"
-//    b.configs = append(b.configs, config) // Track order here
+//    self.cached_hash_string = "-1"
+//    self.configs = append(self.configs, config) // Track order here
 //
 //    return true
 //  }
 //
 //  // Merge a previous (s, i, pi, _) with it and save the result
-//  let root_is_wildcard = !b.full_ctx;
+//  let root_is_wildcard = !self.full_ctx;
 //  let merged = merge(existing.GetContext(), config.GetContext(), root_is_wildcard, merge_cache);
 //
 //  // No need to check for existing.context because config.context is in the cache,
@@ -145,26 +145,26 @@
 //pub fn GetStates(&self, ) -> *Set {
 //  let states = NewSet(nil, nil);
 //
-//  for let i = 0; i < len(b.configs); i++ {;
-//    states.add(b.configs[i].GetState())
+//  for let i = 0; i < len(self.configs); i++ {;
+//    states.add(self.configs[i].GetState())
 //  }
 //
 //  return states
 //}
 //
 //pub fn HasSemanticContext(&self, ) -> bool {
-//  return b.has_semantic_context
+//  return self.has_semantic_context
 //}
 //
 //pub fn SetHasSemanticContext(&self, v: bool) {
-//  b.has_semantic_context = v
+//  self.has_semantic_context = v
 //}
 //
 //pub fn GetPredicates(&self, ) -> []SemanticContext {
 //  let preds = make([]SemanticContext, 0);
 //
-//  for let i = 0; i < len(b.configs); i++ {;
-//    let c = b.configs[i].GetSemanticContext();
+//  for let i = 0; i < len(self.configs); i++ {;
+//    let c = self.configs[i].GetSemanticContext();
 //
 //    if c != SemanticContextNone {
 //      preds = append(preds, c)
@@ -175,20 +175,20 @@
 //}
 //
 //pub fn GetItems(&self, ) -> []ATNConfig {
-//  return b.configs
+//  return self.configs
 //}
 //
 //pub fn OptimizeConfigs(&self, interpreter *BaseATNSimulator) {
-//  if b.read_only {
+//  if self.read_only {
 //    panic("set is read-only")
 //  }
 //
-//  if b.config_lookup.length() == 0 {
+//  if self.config_lookup.length() == 0 {
 //    return
 //  }
 //
-//  for let i = 0; i < len(b.configs); i++ {;
-//    let config = b.configs[i];
+//  for let i = 0; i < len(self.configs); i++ {;
+//    let config = self.configs[i];
 //
 //    config.SetContext(interpreter.get_cached_context(config.GetContext()))
 //  }
@@ -196,7 +196,7 @@
 //
 //pub fn AddAll(&self, coll []ATNConfig) -> bool {
 //  for let i = 0; i < len(coll); i++ {;
-//    b.Add(coll[i], nil)
+//    self.Add(coll[i], nil)
 //  }
 //
 //  return false
@@ -211,31 +211,31 @@
 //
 //  let other2 = other.(*BaseATNConfigSet);
 //
-//  return b.configs != nil &&
-//    // TODO: b.configs.equals(other2.configs) && // TODO: Is b necessary?
-//    b.full_ctx == other2.full_ctx &&
-//    b.unique_alt == other2.unique_alt &&
-//    b.conflicting_alts == other2.conflicting_alts &&
-//    b.has_semantic_context == other2.has_semantic_context &&
-//    b.dips_into_outer_context == other2.dips_into_outer_context
+//  return self.configs != nil &&
+//    // TODO: self.configs.equals(other2.configs) && // TODO: Is b necessary?
+//    self.full_ctx == other2.full_ctx &&
+//    self.unique_alt == other2.unique_alt &&
+//    self.conflicting_alts == other2.conflicting_alts &&
+//    self.has_semantic_context == other2.has_semantic_context &&
+//    self.dips_into_outer_context == other2.dips_into_outer_context
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  if b.read_only {
-//    if b.cached_hash_string == "-1" {
-//      b.cached_hash_string = b.hash_configs()
+//  if self.read_only {
+//    if self.cached_hash_string == "-1" {
+//      self.cached_hash_string = self.hash_configs()
 //    }
 //
-//    return b.cached_hash_string
+//    return self.cached_hash_string
 //  }
 //
-//  return b.hash_configs()
+//  return self.hash_configs()
 //}
 //
 //pub fn hash_configs(&self, ) -> &str {
 //  let s = "";
 //
-//  for _, let c = range b.configs {;
+//  for _, let c = range self.configs {;
 //    s += fmt.Sprint(c)
 //  }
 //
@@ -243,105 +243,105 @@
 //}
 //
 //pub fn Length(&self, ) -> i32 {
-//  return len(b.configs)
+//  return len(self.configs)
 //}
 //
 //pub fn IsEmpty(&self, ) -> bool {
-//  return len(b.configs) == 0
+//  return len(self.configs) == 0
 //}
 //
 //pub fn Contains(&self, item: ATNConfig) -> bool {
-//  if b.config_lookup == nil {
+//  if self.config_lookup == nil {
 //    panic("not implemented for read-only sets")
 //  }
 //
-//  return b.config_lookup.contains(item)
+//  return self.config_lookup.contains(item)
 //}
 //
 //pub fn ContainsFast(&self, item: ATNConfig) -> bool {
-//  if b.config_lookup == nil {
+//  if self.config_lookup == nil {
 //    panic("not implemented for read-only sets")
 //  }
 //
-//  return b.config_lookup.contains(item) // TODO: contains_fast is not implemented for Set
+//  return self.config_lookup.contains(item) // TODO: contains_fast is not implemented for Set
 //}
 //
 //pub fn Clear(&self, ) {
-//  if b.read_only {
+//  if self.read_only {
 //    panic("set is read-only")
 //  }
 //
-//  b.configs = make([]ATNConfig, 0)
-//  b.cached_hash_string = "-1"
-//  b.config_lookup = Set::new(hashATNConfig, equal_a_t_n_configs)
+//  self.configs = make([]ATNConfig, 0)
+//  self.cached_hash_string = "-1"
+//  self.config_lookup = Set::new(hashATNConfig, equal_a_t_n_configs)
 //}
 //
 //pub fn FullContext(&self, ) -> bool {
-//  return b.full_ctx
+//  return self.full_ctx
 //}
 //
 //pub fn GetDipsIntoOuterContext(&self, ) -> bool {
-//  return b.dips_into_outer_context
+//  return self.dips_into_outer_context
 //}
 //
 //pub fn SetDipsIntoOuterContext(&self, v: bool) {
-//  b.dips_into_outer_context = v
+//  self.dips_into_outer_context = v
 //}
 //
 //pub fn GetUniqueAlt(&self, ) -> i32 {
-//  return b.unique_alt
+//  return self.unique_alt
 //}
 //
 //pub fn SetUniqueAlt(&self, v: i32) {
-//  b.unique_alt = v
+//  self.unique_alt = v
 //}
 //
 //pub fn GetConflictingAlts(&self, ) -> *BitSet {
-//  return b.conflicting_alts
+//  return self.conflicting_alts
 //}
 //
 //pub fn SetConflictingAlts(&self, v *BitSet) {
-//  b.conflicting_alts = v
+//  self.conflicting_alts = v
 //}
 //
 //pub fn ReadOnly(&self, ) -> bool {
-//  return b.read_only
+//  return self.read_only
 //}
 //
 //pub fn SetReadOnly(&self, read_only: bool) {
-//  b.read_only = read_only
+//  self.read_only = read_only
 //
 //  if read_only {
-//    b.config_lookup = nil // Read only, so no need for the lookup cache
+//    self.config_lookup = nil // Read only, so no need for the lookup cache
 //  }
 //}
 //
 //pub fn String(&self, ) -> &str {
 //  let s = "[";
 //
-//  for i, let c = range b.configs {;
-//    s += c.String()
+//  for i, let c = range self.configs {;
+//    s += self.String()
 //
-//    if i != len(b.configs)-1 {
+//    if i != len(self.configs)-1 {
 //      s += ", "
 //    }
 //  }
 //
 //  s += "]"
 //
-//  if b.has_semantic_context {
-//    s += ",hasSemanticContext=" + fmt.Sprint(b.has_semantic_context)
+//  if self.has_semantic_context {
+//    s += ",hasSemanticContext=" + fmt.Sprint(self.has_semantic_context)
 //  }
 //
-//  if b.unique_alt != ATNInvalidAltNumber {
-//    s += ",uniqueAlt=" + fmt.Sprint(b.unique_alt)
+//  if self.unique_alt != ATNInvalidAltNumber {
+//    s += ",uniqueAlt=" + fmt.Sprint(self.unique_alt)
 //  }
 //
-//  if b.conflicting_alts != nil {
-//    s += ",conflictingAlts=" + b.conflicting_alts.String()
+//  if self.conflicting_alts != nil {
+//    s += ",conflictingAlts=" + self.conflicting_alts.String()
 //  }
 //
-//  if b.dips_into_outer_context {
+//  if self.dips_into_outer_context {
 //    s += ",dipsIntoOuterContext"
 //  }
 //
@@ -355,7 +355,7 @@
 //impl OrderedATNConfigSet {§//  pub fn new(&self, ) -> *OrderedATNConfigSet {
 //  let b = NewBaseATNConfigSet(false);
 //
-//  b.config_lookup = Set::new(nil, nil)
+//  self.config_lookup = Set::new(nil, nil)
 //
 //  return &OrderedATNConfigSet{BaseATNConfigSet: b}
 //}

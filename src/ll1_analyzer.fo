@@ -30,13 +30,13 @@
 //  if s == nil {
 //    return nil
 //  }
-//  let count = len(s.GetTransitions());
+//  let count = len(self.GetTransitions());
 //  let look = make([]*IntervalSet, count);
 //  for let alt = 0; alt < count; alt++ {;
 //    look[alt] = NewIntervalSet()
 //    let look_busy = NewSet(nil, nil);
 //    let see_thru_preds = false // fail to get lookahead upon pred;
-//    la.look1(s.GetTransitions()[alt].get_target(), nil, BasePredictionContextEMPTY, look[alt], look_busy, NewBitSet(), see_thru_preds, false)
+//    la.look1(self.GetTransitions()[alt].get_target(), nil, BasePredictionContextEMPTY, look[alt], look_busy, NewBitSet(), see_thru_preds, false)
 //    // Wipe out lookahead for la alternative if we found nothing
 //    // or we had a predicate when we !seeThruPreds
 //    if look[alt].length() == 0 || look[alt].contains(LL1AnalyzerHitPred) {
@@ -69,7 +69,7 @@
 //  let see_thru_preds = true // ignore preds get all lookahead;
 //  var look_context PredictionContext
 //  if ctx != nil {
-//    look_context = prediction_context_from_rule_context(s.GetATN(), ctx)
+//    look_context = prediction_context_from_rule_context(self.GetATN(), ctx)
 //  }
 //  la.look1(s, stop_state, look_context, r, NewSet(nil, nil), NewBitSet(), see_thru_preds, true)
 //  return r
@@ -163,10 +163,10 @@
 //    }
 //  }
 //
-//  let n = len(s.GetTransitions());
+//  let n = len(self.GetTransitions());
 //
 //  for let i = 0; i < n; i++ {;
-//    let t = s.GetTransitions()[i];
+//    let t = self.GetTransitions()[i];
 //
 //    if t1, let ok = t.(*RuleTransition); ok {;
 //      if called_rule_stack.contains(t1.get_target().GetRuleIndex()) {
@@ -181,12 +181,12 @@
 //      } else {
 //        look.add_one(LL1AnalyzerHitPred)
 //      }
-//    } else if t.get_is_epsilon() {
-//      la.look1(t.get_target(), stop_state, ctx, look, look_busy, called_rule_stack, see_thru_preds, add_e_o_f)
+//    } else if self.get_is_epsilon() {
+//      la.look1(self.get_target(), stop_state, ctx, look, look_busy, called_rule_stack, see_thru_preds, add_e_o_f)
 //    } else if _, let ok = t.(*WildcardTransition); ok {;
 //      look.add_range(TokenMinUserTokenType, la.atn.max_token_type)
 //    } else {
-//      let set = t.get_label();
+//      let set = self.get_label();
 //      if set != nil {
 //        if _, let ok = t.(*NotSetTransition); ok {;
 //          set = set.complement(TokenMinUserTokenType, la.atn.max_token_type)

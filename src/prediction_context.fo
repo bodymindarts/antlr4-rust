@@ -74,7 +74,7 @@
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return b.cached_hash_string
+//  return self.cached_hash_string
 //}
 //
 //pub fn calculate_hash_string(parent: PredictionContext, return_state: i32) -> &str { // non-member
@@ -95,7 +95,7 @@
 //
 //impl PredictionContextCache {§//  pub fn new(&self, ) -> *PredictionContextCache {
 //  let t = new(PredictionContextCache);
-//  t.cache = make(map[PredictionContext]PredictionContext)
+//  self.cache = make(map[PredictionContext]PredictionContext)
 //  return t
 //}
 //
@@ -107,20 +107,20 @@
 //  if ctx == BasePredictionContextEMPTY {
 //    return BasePredictionContextEMPTY
 //  }
-//  let existing = p.cache[ctx];
+//  let existing = self.cache[ctx];
 //  if existing != nil {
 //    return existing
 //  }
-//  p.cache[ctx] = ctx
+//  self.cache[ctx] = ctx
 //  return ctx
 //}
 //
 //pub fn Get(&self, ctx: PredictionContext) -> PredictionContext {
-//  return p.cache[ctx]
+//  return self.cache[ctx]
 //}
 //
 //pub fn length(&self, ) -> i32 {
-//  return len(p.cache)
+//  return len(self.cache)
 //}
 //
 //pub trait SingletonPredictionContext {
@@ -137,16 +137,16 @@
 //impl BaseSingletonPredictionContext {§//  pub fn new(&self, parent: PredictionContext, return_state: i32) -> *BaseSingletonPredictionContext {
 //
 //  let s = new(BaseSingletonPredictionContext);
-//  s.BasePredictionContext = NewBasePredictionContext("")
+//  self.BasePredictionContext = NewBasePredictionContext("")
 //
 //  if parent != nil {
-//    s.cached_hash_string = calculate_hash_string(parent, return_state)
+//    self.cached_hash_string = calculate_hash_string(parent, return_state)
 //  } else {
-//    s.cached_hash_string = calculate_empty_hash_string()
+//    self.cached_hash_string = calculate_empty_hash_string()
 //  }
 //
-//  s.parent_ctx = parent
-//  s.return_state = return_state
+//  self.parent_ctx = parent
+//  self.return_state = return_state
 //
 //  return s
 //}
@@ -165,15 +165,15 @@
 //}
 //
 //pub fn GetParent(&self, index: i32) -> PredictionContext {
-//  return b.parent_ctx
+//  return self.parent_ctx
 //}
 //
 //pub fn get_return_state(&self, index: i32) -> i32 {
-//  return b.return_state
+//  return self.return_state
 //}
 //
 //pub fn has_empty_path(&self, ) -> bool {
-//  return b.return_state == BasePredictionContextEmptyReturnState
+//  return self.return_state == BasePredictionContextEmptyReturnState
 //}
 //
 //pub fn equals(&self, other: PredictionContext) -> bool {
@@ -181,43 +181,43 @@
 //    return true
 //  } else if _, let ok = other.(*BaseSingletonPredictionContext); !ok {;
 //    return false
-//  } else if b.Hash() != other.Hash() {
+//  } else if self.Hash() != other.Hash() {
 //    return false // can't be same if hash is different
 //  }
 //
 //  let other_p = other.(*BaseSingletonPredictionContext);
 //
-//  if b.return_state != other.get_return_state(0) {
+//  if self.return_state != other.get_return_state(0) {
 //    return false
-//  } else if b.parent_ctx == nil {
+//  } else if self.parent_ctx == nil {
 //    return other_p.parent_ctx == nil
 //  }
 //
-//  return b.parent_ctx.equals(otherP.parent_ctx)
+//  return self.parent_ctx.equals(otherP.parent_ctx)
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return b.cached_hash_string
+//  return self.cached_hash_string
 //}
 //
 //pub fn String(&self, ) -> &str {
 //  var up &str
 //
-//  if b.parent_ctx == nil {
+//  if self.parent_ctx == nil {
 //    up = ""
 //  } else {
-//    up = b.parent_ctx.String()
+//    up = self.parent_ctx.String()
 //  }
 //
 //  if len(up) == 0 {
-//    if b.return_state == BasePredictionContextEmptyReturnState {
+//    if self.return_state == BasePredictionContextEmptyReturnState {
 //      return "$"
 //    }
 //
-//    return strconv.Itoa(b.return_state)
+//    return strconv.Itoa(self.return_state)
 //  }
 //
-//  return strconv.Itoa(b.return_state) + " " + up
+//  return strconv.Itoa(self.return_state) + " " + up
 //}
 //
 //var BasePredictionContextEMPTY = NewEmptyPredictionContext()
@@ -230,7 +230,7 @@
 //
 //  let p = new(EmptyPredictionContext);
 //
-//  p.BaseSingletonPredictionContext = NewBaseSingletonPredictionContext(nil, BasePredictionContextEmptyReturnState)
+//  self.BaseSingletonPredictionContext = NewBaseSingletonPredictionContext(nil, BasePredictionContextEmptyReturnState)
 //
 //  return p
 //}
@@ -244,7 +244,7 @@
 //}
 //
 //pub fn get_return_state(&self, index: i32) -> i32 {
-//  return e.return_state
+//  return self.return_state
 //}
 //
 //pub fn equals(&self, other: PredictionContext) -> bool {
@@ -269,72 +269,72 @@
 //  // return_state == {@link //EmptyReturnState}.
 //
 //  let c = new(ArrayPredictionContext);
-//  c.BasePredictionContext = NewBasePredictionContext("")
+//  self.BasePredictionContext = NewBasePredictionContext("")
 //
 //  for let i = range parents {;
-//    c.cached_hash_string += calculate_hash_string(parents[i], return_states[i])
+//    self.cached_hash_string += calculate_hash_string(parents[i], return_states[i])
 //  }
 //
-//  c.parents = parents
-//  c.return_states = return_states
+//  self.parents = parents
+//  self.return_states = return_states
 //
 //  return c
 //}
 //
 //pub fn GetReturnStates(&self, ) -> []int {
-//  return a.return_states
+//  return self.return_states
 //}
 //
 //pub fn has_empty_path(&self, ) -> bool {
-//  return a.get_return_state(a.length()-1) == BasePredictionContextEmptyReturnState
+//  return self.get_return_state(self.length()-1) == BasePredictionContextEmptyReturnState
 //}
 //
 //pub fn is_empty(&self, ) -> bool {
 //  // since EmptyReturnState can only appear in the last position, we
 //  // don't need to verify that size==1
-//  return a.return_states[0] == BasePredictionContextEmptyReturnState
+//  return self.return_states[0] == BasePredictionContextEmptyReturnState
 //}
 //
 //pub fn length(&self, ) -> i32 {
-//  return len(a.return_states)
+//  return len(self.return_states)
 //}
 //
 //pub fn GetParent(&self, index: i32) -> PredictionContext {
-//  return a.parents[index]
+//  return self.parents[index]
 //}
 //
 //pub fn get_return_state(&self, index: i32) -> i32 {
-//  return a.return_states[index]
+//  return self.return_states[index]
 //}
 //
 //pub fn equals(&self, other: PredictionContext) -> bool {
 //  if _, let ok = other.(*ArrayPredictionContext); !ok {;
 //    return false
-//  } else if a.cached_hash_string != other.Hash() {
+//  } else if self.cached_hash_string != other.Hash() {
 //    return false // can't be same if hash is different
 //  } else {
 //    let other_p = other.(*ArrayPredictionContext);
-//    return &a.return_states == &otherP.return_states && &a.parents == &otherP.parents
+//    return &self.return_states == &otherP.return_states && &self.parents == &otherP.parents
 //  }
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  if a.is_empty() {
+//  if self.is_empty() {
 //    return "[]"
 //  }
 //
 //  let s = "[";
-//  for let i = 0; i < len(a.return_states); i++ {;
+//  for let i = 0; i < len(self.return_states); i++ {;
 //    if i > 0 {
 //      s = s + ", "
 //    }
-//    if a.return_states[i] == BasePredictionContextEmptyReturnState {
+//    if self.return_states[i] == BasePredictionContextEmptyReturnState {
 //      s = s + "$"
 //      continue
 //    }
-//    s = s + strconv.Itoa(a.return_states[i])
-//    if a.parents[i] != nil {
-//      s = s + " " + a.parents[i].String()
+//    s = s + strconv.Itoa(self.return_states[i])
+//    if self.parents[i] != nil {
+//      s = s + " " + self.parents[i].String()
 //    } else {
 //      s = s + "nil"
 //    }
@@ -357,7 +357,7 @@
 //  }
 //  // If we have a parent, convert it to a BasePredictionContext graph
 //  let parent = prediction_context_from_rule_context(a, outer_context.GetParent().(RuleContext));
-//  let state = a.states[outerContext.GetInvokingState()];
+//  let state = self.states[outerContext.GetInvokingState()];
 //  let transition = state.GetTransitions()[0];
 //
 //  return SingletonBasePredictionContextCreate(parent, transition.(*RuleTransition).follow_state.GetStateNumber())
@@ -401,10 +401,10 @@
 //  }
 //  // convert singleton so both are arrays to normalize
 //  if _, let ok = a.(*BaseSingletonPredictionContext); ok {;
-//    a = NewArrayPredictionContext([]PredictionContext{a.GetParent(0)}, []int{a.get_return_state(0)})
+//    a = NewArrayPredictionContext([]PredictionContext{self.GetParent(0)}, []int{self.get_return_state(0)})
 //  }
 //  if _, let ok = b.(*BaseSingletonPredictionContext); ok {;
-//    b = NewArrayPredictionContext([]PredictionContext{b.GetParent(0)}, []int{b.get_return_state(0)})
+//    b = NewArrayPredictionContext([]PredictionContext{self.GetParent(0)}, []int{self.get_return_state(0)})
 //  }
 //  return merge_arrays(a.(*ArrayPredictionContext), b.(*ArrayPredictionContext), root_is_wildcard, merge_cache)
 //}
@@ -442,11 +442,11 @@
 //// /
 //pub fn merge_singletons(a, b *BaseSingletonPredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
 //  if merge_cache != nil {
-//    let previous = merge_cache.Get(a.Hash(), b.Hash());
+//    let previous = merge_cache.Get(self.Hash(), self.Hash());
 //    if previous != nil {
 //      return previous.(PredictionContext)
 //    }
-//    previous = merge_cache.Get(b.Hash(), a.Hash())
+//    previous = merge_cache.Get(self.Hash(), self.Hash())
 //    if previous != nil {
 //      return previous.(PredictionContext)
 //    }
@@ -455,65 +455,65 @@
 //  let root_merge = merge_root(a, b, root_is_wildcard);
 //  if root_merge != nil {
 //    if merge_cache != nil {
-//      merge_cache.set(a.Hash(), b.Hash(), root_merge)
+//      merge_cache.set(self.Hash(), self.Hash(), root_merge)
 //    }
 //    return root_merge
 //  }
-//  if a.return_state == b.return_state {
-//    let parent = merge(a.parent_ctx, b.parent_ctx, root_is_wildcard, merge_cache);
+//  if self.return_state == self.return_state {
+//    let parent = merge(self.parent_ctx, self.parent_ctx, root_is_wildcard, merge_cache);
 //    // if parent is same as existing a or b parent or reduced to a parent,
 //    // return it
-//    if parent == a.parent_ctx {
+//    if parent == self.parent_ctx {
 //      return a // ax + bx = ax, if a=b
 //    }
-//    if parent == b.parent_ctx {
+//    if parent == self.parent_ctx {
 //      return b // ax + bx = bx, if a=b
 //    }
 //    // else: ax + ay = a'[x,y]
 //    // merge parents x and y, giving array node with x,y then remainders
 //    // of those graphs. dup a, a' points at merged array
 //    // Newjoined parent so create Newsingleton pointing to it, a'
-//    let spc = SingletonBasePredictionContextCreate(parent, a.return_state);
+//    let spc = SingletonBasePredictionContextCreate(parent, self.return_state);
 //    if merge_cache != nil {
-//      merge_cache.set(a.Hash(), b.Hash(), spc)
+//      merge_cache.set(self.Hash(), self.Hash(), spc)
 //    }
 //    return spc
 //  }
 //  // a != b payloads differ
 //  // see if we can collapse parents due to $+x parents if local ctx
 //  var single_parent PredictionContext
-//  if a == b || (a.parent_ctx != nil && a.parent_ctx == b.parent_ctx) { // ax +
+//  if a == b || (self.parent_ctx != nil && self.parent_ctx == self.parent_ctx) { // ax +
 //    // bx =
 //    // [a,b]x
-//    single_parent = a.parent_ctx
+//    single_parent = self.parent_ctx
 //  }
 //  if single_parent != nil { // parents are same
 //    // sort payloads and use same parent
-//    let payloads = []int{a.return_state, b.return_state};
-//    if a.return_state > b.return_state {
-//      payloads[0] = b.return_state
-//      payloads[1] = a.return_state
+//    let payloads = []int{self.return_state, self.return_state};
+//    if self.return_state > self.return_state {
+//      payloads[0] = self.return_state
+//      payloads[1] = self.return_state
 //    }
 //    let parents = []PredictionContext{singleParent, single_parent};
 //    let apc = NewArrayPredictionContext(parents, payloads);
 //    if merge_cache != nil {
-//      merge_cache.set(a.Hash(), b.Hash(), apc)
+//      merge_cache.set(self.Hash(), self.Hash(), apc)
 //    }
 //    return apc
 //  }
 //  // parents differ and can't merge them. Just pack together
 //  // i32o array can't merge.
 //  // ax + by = [ax,by]
-//  let payloads = []int{a.return_state, b.return_state};
-//  let parents = []PredictionContext{a.parent_ctx, b.parent_ctx};
-//  if a.return_state > b.return_state { // sort by payload
-//    payloads[0] = b.return_state
-//    payloads[1] = a.return_state
-//    parents = []PredictionContext{b.parent_ctx, a.parent_ctx}
+//  let payloads = []int{self.return_state, self.return_state};
+//  let parents = []PredictionContext{self.parent_ctx, self.parent_ctx};
+//  if self.return_state > self.return_state { // sort by payload
+//    payloads[0] = self.return_state
+//    payloads[1] = self.return_state
+//    parents = []PredictionContext{self.parent_ctx, self.parent_ctx}
 //  }
 //  let apc = NewArrayPredictionContext(parents, payloads);
 //  if merge_cache != nil {
-//    merge_cache.set(a.Hash(), b.Hash(), apc)
+//    merge_cache.set(self.Hash(), self.Hash(), apc)
 //  }
 //  return apc
 //}
@@ -568,12 +568,12 @@
 //    if a == BasePredictionContextEMPTY && b == BasePredictionContextEMPTY {
 //      return BasePredictionContextEMPTY // $ + $ = $
 //    } else if a == BasePredictionContextEMPTY { // $ + x = [$,x]
-//      let payloads = []int{b.get_return_state(-1), BasePredictionContextEmptyReturnState};
-//      let parents = []PredictionContext{b.GetParent(-1), nil};
+//      let payloads = []int{self.get_return_state(-1), BasePredictionContextEmptyReturnState};
+//      let parents = []PredictionContext{self.GetParent(-1), nil};
 //      return NewArrayPredictionContext(parents, payloads)
 //    } else if b == BasePredictionContextEMPTY { // x + $ = [$,x] ($ is always first if present)
-//      let payloads = []int{a.get_return_state(-1), BasePredictionContextEmptyReturnState};
-//      let parents = []PredictionContext{a.GetParent(-1), nil};
+//      let payloads = []int{self.get_return_state(-1), BasePredictionContextEmptyReturnState};
+//      let parents = []PredictionContext{self.GetParent(-1), nil};
 //      return NewArrayPredictionContext(parents, payloads)
 //    }
 //  }
@@ -602,11 +602,11 @@
 //// /
 //pub fn merge_arrays(a, b *ArrayPredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
 //  if merge_cache != nil {
-//    let previous = merge_cache.Get(a.Hash(), b.Hash());
+//    let previous = merge_cache.Get(self.Hash(), self.Hash());
 //    if previous != nil {
 //      return previous.(PredictionContext)
 //    }
-//    previous = merge_cache.Get(b.Hash(), a.Hash())
+//    previous = merge_cache.Get(self.Hash(), self.Hash())
 //    if previous != nil {
 //      return previous.(PredictionContext)
 //    }
@@ -616,15 +616,15 @@
 //  let j = 0 // walks b;
 //  let k = 0 // walks target M array;
 //
-//  let merged_return_states = make([]int, len(a.return_states) + len(b.return_states));
-//  let merged_parents = make([]PredictionContext, len(a.return_states) + len(b.return_states));
+//  let merged_return_states = make([]int, len(self.return_states) + len(self.return_states));
+//  let merged_parents = make([]PredictionContext, len(self.return_states) + len(self.return_states));
 //  // walk and merge to yield merged_parents, merged_return_states
-//  for i < len(a.return_states) && j < len(b.return_states) {
-//    let a_parent = a.parents[i];
-//    let b_parent = b.parents[j];
-//    if a.return_states[i] == b.return_states[j] {
+//  for i < len(self.return_states) && j < len(self.return_states) {
+//    let a_parent = self.parents[i];
+//    let b_parent = self.parents[j];
+//    if self.return_states[i] == self.return_states[j] {
 //      // same payload (stack tops are equal), must yield merged singleton
-//      let payload = a.return_states[i];
+//      let payload = self.return_states[i];
 //      // $+$ = $
 //      let both_dollars = payload == BasePredictionContextEmptyReturnState && a_parent == nil && b_parent == nil;
 //      let ax_a_x = (aParent != nil && b_parent != nil && a_parent == b_parent) // ax+ax;
@@ -640,28 +640,28 @@
 //      }
 //      i++ // hop over left one as usual
 //      j++ // but also Skip one in right side since we merge
-//    } else if a.return_states[i] < b.return_states[j] { // copy a[i] to M
+//    } else if self.return_states[i] < self.return_states[j] { // copy a[i] to M
 //      merged_parents[k] = a_parent
-//      merged_return_states[k] = a.return_states[i]
+//      merged_return_states[k] = self.return_states[i]
 //      i++
 //    } else { // b > a, copy b[j] to M
 //      merged_parents[k] = b_parent
-//      merged_return_states[k] = b.return_states[j]
+//      merged_return_states[k] = self.return_states[j]
 //      j++
 //    }
 //    k++
 //  }
 //  // copy over any payloads remaining in either array
-//  if i < len(a.return_states) {
-//    for let p = i; p < len(a.return_states); p++ {;
-//      merged_parents[k] = a.parents[p]
-//      merged_return_states[k] = a.return_states[p]
+//  if i < len(self.return_states) {
+//    for let p = i; p < len(self.return_states); p++ {;
+//      merged_parents[k] = self.parents[p]
+//      merged_return_states[k] = self.return_states[p]
 //      k++
 //    }
 //  } else {
-//    for let p = j; p < len(b.return_states); p++ {;
-//      merged_parents[k] = b.parents[p]
-//      merged_return_states[k] = b.return_states[p]
+//    for let p = j; p < len(self.return_states); p++ {;
+//      merged_parents[k] = self.parents[p]
+//      merged_return_states[k] = self.return_states[p]
 //      k++
 //    }
 //  }
@@ -670,7 +670,7 @@
 //    if k == 1 { // for just one merged element, return singleton top
 //      let pc = SingletonBasePredictionContextCreate(mergedParents[0], merged_return_states[0]);
 //      if merge_cache != nil {
-//        merge_cache.set(a.Hash(), b.Hash(), pc)
+//        merge_cache.set(self.Hash(), self.Hash(), pc)
 //      }
 //      return pc
 //    }
@@ -684,20 +684,20 @@
 //  // TODO: track whether this is possible above during merge sort for speed
 //  if M == a {
 //    if merge_cache != nil {
-//      merge_cache.set(a.Hash(), b.Hash(), a)
+//      merge_cache.set(self.Hash(), self.Hash(), a)
 //    }
 //    return a
 //  }
 //  if M == b {
 //    if merge_cache != nil {
-//      merge_cache.set(a.Hash(), b.Hash(), b)
+//      merge_cache.set(self.Hash(), self.Hash(), b)
 //    }
 //    return b
 //  }
 //  combine_common_parents(mergedParents)
 //
 //  if merge_cache != nil {
-//    merge_cache.set(a.Hash(), b.Hash(), M)
+//    merge_cache.set(self.Hash(), self.Hash(), M)
 //  }
 //  return M
 //}

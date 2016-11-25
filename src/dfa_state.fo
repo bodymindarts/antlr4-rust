@@ -16,7 +16,7 @@
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "(" + fmt.Sprint(p.pred) + ", " + fmt.Sprint(p.alt) + ")"
+//  return "(" + fmt.Sprint(self.pred) + ", " + fmt.Sprint(self.alt) + ")"
 //}
 //
 //// DFAState represents a set of possible ATN configurations. As Aho, Sethi,
@@ -90,9 +90,9 @@
 //pub fn GetAltSet(&self, ) -> *Set {
 //  let alts = NewSet(nil, nil);
 //
-//  if d.configs != nil {
-//    for _, let c = range d.configs.GetItems() {;
-//      alts.add(c.GetAlt())
+//  if self.configs != nil {
+//    for _, let c = range self.configs.GetItems() {;
+//      alts.add(self.GetAlt())
 //    }
 //  }
 //
@@ -104,7 +104,7 @@
 //}
 //
 //pub fn set_prediction(&self, v: i32) {
-//  d.prediction = v
+//  self.prediction = v
 //}
 //
 //// equals returns whether d equals other. Two DFAStates are equal if their ATN
@@ -125,23 +125,23 @@
 //    return false
 //  }
 //
-//  return d.configs.Equals(other.(*DFAState).configs)
+//  return self.configs.Equals(other.(*DFAState).configs)
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return strconv.Itoa(d.state_number) + ":" + d.Hash()
+//  return strconv.Itoa(self.state_number) + ":" + self.Hash()
 //}
 //
 //pub fn Hash(&self, ) -> &str {
 //  var s &str
 //
-//  if d.is_accept_state {
-//    if d.predicates != nil {
-//      s = "=>" + fmt.Sprint(d.predicates)
+//  if self.is_accept_state {
+//    if self.predicates != nil {
+//      s = "=>" + fmt.Sprint(self.predicates)
 //    } else {
-//      s = "=>" + fmt.Sprint(d.prediction)
+//      s = "=>" + fmt.Sprint(self.prediction)
 //    }
 //  }
 //
-//  return fmt.Sprint(d.configs) + s
+//  return fmt.Sprint(self.configs) + s
 //}

@@ -58,19 +58,19 @@
 //  }
 //
 //  // no recog for rule names
-//  let payload = t.GetPayload();
+//  let payload = self.GetPayload();
 //  if p2, let ok = payload.(Token); ok {;
 //    return p2.GetText()
 //  }
 //
-//  return fmt.Sprint(t.GetPayload())
+//  return fmt.Sprint(self.GetPayload())
 //}
 //
 //// Return ordered list of all children of this node
 //pub fn TreesGetChildren(t: Tree) -> []Tree { // non-member
 //  let list = make([]Tree, 0);
-//  for let i = 0; i < t.GetChildCount(); i++ {;
-//    list = append(list, t.GetChild(i))
+//  for let i = 0; i < self.GetChildCount(); i++ {;
+//    list = append(list, self.GetChild(i))
 //  }
 //  return list
 //}
@@ -80,11 +80,11 @@
 ////
 //pub fn TreesgetAncestors(t: Tree) -> []Tree { // non-member
 //  let ancestors = make([]Tree, 0);
-//  t = t.GetParent()
+//  t = self.GetParent()
 //  for t != nil {
 //    let f = []Tree{t};
 //    ancestors = append(f, ancestors...)
-//    t = t.GetParent()
+//    t = self.GetParent()
 //  }
 //  return ancestors
 //}
@@ -119,15 +119,15 @@
 //    }
 //  }
 //  // check children
-//  for let i = 0; i < t.GetChildCount(); i++ {;
-//    TreesFindAllNodes(t.GetChild(i).(ParseTree), index, find_tokens, nodes)
+//  for let i = 0; i < self.GetChildCount(); i++ {;
+//    TreesFindAllNodes(self.GetChild(i).(ParseTree), index, find_tokens, nodes)
 //  }
 //}
 //
 //pub fn TreesDescendants(t: ParseTree) -> []ParseTree { // non-member
 //  let nodes = []ParseTree{t};
-//  for let i = 0; i < t.GetChildCount(); i++ {;
-//    nodes = append(nodes, TreesDescendants(t.GetChild(i).(ParseTree))...)
+//  for let i = 0; i < self.GetChildCount(); i++ {;
+//    nodes = append(nodes, TreesDescendants(self.GetChild(i).(ParseTree))...)
 //  }
 //  return nodes
 //}

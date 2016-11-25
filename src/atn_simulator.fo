@@ -17,30 +17,30 @@
 //impl BaseATNSimulator {§//  pub fn new(&self, atn *ATN, shared_context_cache *PredictionContextCache) -> *BaseATNSimulator {
 //  let b = new(BaseATNSimulator);
 //
-//  b.atn = atn
-//  b.shared_context_cache = shared_context_cache
+//  self.atn = atn
+//  self.shared_context_cache = shared_context_cache
 //
 //  return b
 //}
 //
 //pub fn get_cached_context(&self, context: PredictionContext) -> PredictionContext {
-//  if b.shared_context_cache == nil {
+//  if self.shared_context_cache == nil {
 //    return context
 //  }
 //
 //  let visited = make(map[PredictionContext]PredictionContext);
 //
-//  return get_cached_base_prediction_context(context, b.shared_context_cache, visited)
+//  return get_cached_base_prediction_context(context, self.shared_context_cache, visited)
 //}
 //
 //pub fn SharedContextCache(&self, ) -> *PredictionContextCache {
-//  return b.shared_context_cache
+//  return self.shared_context_cache
 //}
 //
 //pub fn ATN(&self, ) -> *ATN {
-//  return b.atn
+//  return self.atn
 //}
 //
 //pub fn DecisionToDFA(&self, ) -> []*DFA {
-//  return b.decision_to_d_f_a
+//  return self.decision_to_d_f_a
 //}

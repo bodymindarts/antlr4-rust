@@ -68,19 +68,19 @@
 //}
 //
 //impl BaseATNConfig {§//  pub fn new4(&self, c: ATNConfig, state: ATNState) -> *BaseATNConfig {
-//  return BaseATNConfig::new(c, state, c.GetContext(), c.GetSemanticContext())
+//  return BaseATNConfig::new(c, state, self.GetContext(), self.GetSemanticContext())
 //}
 //
 //impl BaseATNConfig {§//  pub fn new3(&self, c ATNConfig, state: ATNState, semantic_context: SemanticContext) -> *BaseATNConfig {
-//  return BaseATNConfig::new(c, state, c.GetContext(), semantic_context)
+//  return BaseATNConfig::new(c, state, self.GetContext(), semantic_context)
 //}
 //
 //impl BaseATNConfig {§//  pub fn new2(&self, c: ATNConfig, semantic_context: SemanticContext) -> *BaseATNConfig {
-//  return BaseATNConfig::new(c, c.GetState(), c.GetContext(), semantic_context)
+//  return BaseATNConfig::new(c, self.GetState(), self.GetContext(), semantic_context)
 //}
 //
 //impl BaseATNConfig {§//  pub fn new1(&self, c ATNConfig, state: ATNState, context: PredictionContext) -> *BaseATNConfig {
-//  return BaseATNConfig::new(c, state, context, c.GetSemanticContext())
+//  return BaseATNConfig::new(c, state, context, self.GetSemanticContext())
 //}
 //
 //impl BaseATNConfig {§//  pub fn new(&self, c ATNConfig, state ATNState, context: PredictionContext, semantic_context: SemanticContext) -> *BaseATNConfig {
@@ -90,47 +90,47 @@
 //
 //  return &BaseATNConfig{
 //    state:                   state,
-//    alt:                     c.GetAlt(),
+//    alt:                     self.GetAlt(),
 //    context:                 context,
 //    semantic_context:         semantic_context,
-//    reaches_into_outer_context: c.GetReachesIntoOuterContext(),
-//    precedence_filter_suppressed: c.get_precedence_filter_suppressed(),
+//    reaches_into_outer_context: self.GetReachesIntoOuterContext(),
+//    precedence_filter_suppressed: self.get_precedence_filter_suppressed(),
 //  }
 //}
 //
 //pub fn get_precedence_filter_suppressed(&self, ) -> bool {
-//  return b.precedence_filter_suppressed
+//  return self.precedence_filter_suppressed
 //}
 //
 //pub fn set_precedence_filter_suppressed(&self, v: bool) {
-//  b.precedence_filter_suppressed = v
+//  self.precedence_filter_suppressed = v
 //}
 //
 //pub fn GetState(&self, ) -> ATNState {
-//  return b.state
+//  return self.state
 //}
 //
 //pub fn GetAlt(&self, ) -> i32 {
-//  return b.alt
+//  return self.alt
 //}
 //
 //pub fn SetContext(&self, v: PredictionContext) {
-//  b.context = v
+//  self.context = v
 //}
 //pub fn GetContext(&self, ) -> PredictionContext {
-//  return b.context
+//  return self.context
 //}
 //
 //pub fn GetSemanticContext(&self, ) -> SemanticContext {
-//  return b.semantic_context
+//  return self.semantic_context
 //}
 //
 //pub fn GetReachesIntoOuterContext(&self, ) -> i32 {
-//  return b.reaches_into_outer_context
+//  return self.reaches_into_outer_context
 //}
 //
 //pub fn SetReachesIntoOuterContext(&self, v: i32) {
-//  b.reaches_into_outer_context = v
+//  self.reaches_into_outer_context = v
 //}
 //
 //// An ATN configuration is equal to another if both have the same state, they
@@ -148,54 +148,54 @@
 //
 //  var equal bool
 //
-//  if b.context == nil {
+//  if self.context == nil {
 //    equal = other.context == nil
 //  } else {
-//    equal = b.context.equals(other.context)
+//    equal = self.context.equals(other.context)
 //  }
 //
 //  var (
-//    nums = b.state.GetStateNumber() == other.state.GetStateNumber()
-//    alts = b.alt == other.alt
-//    cons = b.semantic_context.equals(other.semantic_context)
-//    sups = b.precedence_filter_suppressed == other.precedence_filter_suppressed
+//    nums = self.state.GetStateNumber() == other.state.GetStateNumber()
+//    alts = self.alt == other.alt
+//    cons = self.semantic_context.equals(other.semantic_context)
+//    sups = self.precedence_filter_suppressed == other.precedence_filter_suppressed
 //  )
 //
 //  return nums && alts && cons && sups && equal
 //}
 //
 //pub fn short_hash(&self, ) -> &str {
-//  return strconv.Itoa(b.state.GetStateNumber()) + "/" + strconv.Itoa(b.alt) + "/" + b.semantic_context.String()
+//  return strconv.Itoa(self.state.GetStateNumber()) + "/" + strconv.Itoa(self.alt) + "/" + self.semantic_context.String()
 //}
 //
 //pub fn Hash(&self, ) -> &str {
 //  var c &str
 //
-//  if b.context == nil {
+//  if self.context == nil {
 //    c = ""
 //  } else {
-//    c = b.context.Hash()
+//    c = self.context.Hash()
 //  }
 //
-//  return strconv.Itoa(b.state.GetStateNumber()) + "/" + strconv.Itoa(b.alt) + "/" + c + "/" + b.semantic_context.String()
+//  return strconv.Itoa(self.state.GetStateNumber()) + "/" + strconv.Itoa(self.alt) + "/" + c + "/" + self.semantic_context.String()
 //}
 //
 //pub fn String(&self, ) -> &str {
 //  var s1, s2, s3 &str
 //
-//  if b.context != nil {
-//    s1 = ",[" + fmt.Sprint(b.context) + "]"
+//  if self.context != nil {
+//    s1 = ",[" + fmt.Sprint(self.context) + "]"
 //  }
 //
-//  if b.semantic_context != SemanticContextNone {
-//    s2 = "," + fmt.Sprint(b.semantic_context)
+//  if self.semantic_context != SemanticContextNone {
+//    s2 = "," + fmt.Sprint(self.semantic_context)
 //  }
 //
-//  if b.reaches_into_outer_context > 0 {
-//    s3 = ",up=" + fmt.Sprint(b.reaches_into_outer_context)
+//  if self.reaches_into_outer_context > 0 {
+//    s3 = ",up=" + fmt.Sprint(self.reaches_into_outer_context)
 //  }
 //
-//  return fmt.Sprintf("(%v,%v%v%v%v)", b.state, b.alt, s1, s2, s3)
+//  return fmt.Sprintf("(%v,%v%v%v%v)", self.state, self.alt, s1, s2, s3)
 //}
 //
 //
@@ -219,15 +219,15 @@
 //
 //impl LexerATNConfig {§//  pub fn new4(&self, c *LexerATNConfig, state: ATNState) -> *LexerATNConfig {
 //  return &LexerATNConfig{
-//    BaseATNConfig:                  NewBaseATNConfig(c, state, c.GetContext(), c.GetSemanticContext()),
-//    lexer_action_executor:            c.lexer_action_executor,
+//    BaseATNConfig:                  NewBaseATNConfig(c, state, self.GetContext(), self.GetSemanticContext()),
+//    lexer_action_executor:            self.lexer_action_executor,
 //    passed_through_non_greedy_decision: check_non_greedy_decision(c, state),
 //  }
 //}
 //
 //impl LexerATNConfig {§//  pub fn new3(&self, c *LexerATNConfig, state: ATNState, lexer_action_executor *LexerActionExecutor) -> *LexerATNConfig {
 //  return &LexerATNConfig{
-//    BaseATNConfig:                  NewBaseATNConfig(c, state, c.GetContext(), c.GetSemanticContext()),
+//    BaseATNConfig:                  NewBaseATNConfig(c, state, self.GetContext(), self.GetSemanticContext()),
 //    lexer_action_executor:            lexer_action_executor,
 //    passed_through_non_greedy_decision: check_non_greedy_decision(c, state),
 //  }
@@ -235,8 +235,8 @@
 //
 //impl LexerATNConfig {§//  pub fn new2(&self, c *LexerATNConfig, state: ATNState, context: PredictionContext) -> *LexerATNConfig {
 //  return &LexerATNConfig{
-//    BaseATNConfig:                  NewBaseATNConfig(c, state, context, c.GetSemanticContext()),
-//    lexer_action_executor:            c.lexer_action_executor,
+//    BaseATNConfig:                  NewBaseATNConfig(c, state, context, self.GetSemanticContext()),
+//    lexer_action_executor:            self.lexer_action_executor,
 //    passed_through_non_greedy_decision: check_non_greedy_decision(c, state),
 //  }
 //}
@@ -248,13 +248,13 @@
 //pub fn Hash(&self, ) -> &str {
 //  var f &str
 //
-//  if l.passed_through_non_greedy_decision {
+//  if self.passed_through_non_greedy_decision {
 //    f = "1"
 //  } else {
 //    f = "0"
 //  }
 //
-//  return fmt.Sprintf("%v%v%v%v%v%v", l.state.GetStateNumber(), l.alt, l.context, l.semantic_context, f, l.lexer_action_executor)
+//  return fmt.Sprintf("%v%v%v%v%v%v", self.state.GetStateNumber(), self.alt, self.context, self.semantic_context, f, self.lexer_action_executor)
 //}
 //
 //pub fn equals(&self, other i32erface{}) -> bool {
@@ -264,14 +264,14 @@
 //    return true
 //  } else if !ok {
 //    return false
-//  } else if l.passed_through_non_greedy_decision != othert.passed_through_non_greedy_decision {
+//  } else if self.passed_through_non_greedy_decision != othert.passed_through_non_greedy_decision {
 //    return false
 //  }
 //
 //  var b bool
 //
-//  if l.lexer_action_executor != nil {
-//    b = !l.lexer_action_executor.equals(othert.lexer_action_executor)
+//  if self.lexer_action_executor != nil {
+//    b = !self.lexer_action_executor.equals(othert.lexer_action_executor)
 //  } else {
 //    b = othert.lexer_action_executor != nil
 //  }
@@ -280,7 +280,7 @@
 //    return false
 //  }
 //
-//  return l.BaseATNConfig.equals(othert.BaseATNConfig)
+//  return self.BaseATNConfig.equals(othert.BaseATNConfig)
 //}
 //
 //pub fn check_non_greedy_decision(source *LexerATNConfig, target: ATNState) -> bool { // non-member

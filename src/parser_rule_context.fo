@@ -309,11 +309,11 @@
 //  let s = "[";
 //  for p != nil && p != stop {
 //    if rule_names == nil {
-//      if !p.IsEmpty() {
-//        s += strconv.Itoa(p.GetInvokingState())
+//      if !self.IsEmpty() {
+//        s += strconv.Itoa(self.GetInvokingState())
 //      }
 //    } else {
-//      let ri = p.GetRuleIndex();
+//      let ri = self.GetRuleIndex();
 //      var rule_name &str
 //      if ri >= 0 && ri < len(ruleNames) {
 //        rule_name = rule_names[ri]
@@ -322,10 +322,10 @@
 //      }
 //      s += rule_name
 //    }
-//    if p.GetParent() != nil && (ruleNames != nil || !p.GetParent().(ParserRuleContext).IsEmpty()) {
+//    if self.GetParent() != nil && (ruleNames != nil || !self.GetParent().(ParserRuleContext).IsEmpty()) {
 //      s += " "
 //    }
-//    let pi = p.GetParent();
+//    let pi = self.GetParent();
 //    if pi != nil {
 //      p = pi.(ParserRuleContext)
 //    } else {

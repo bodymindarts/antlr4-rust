@@ -132,26 +132,26 @@
 //}
 //
 //pub fn GetSymbol(&self, ) -> Token {
-//  return t.symbol
+//  return self.symbol
 //}
 //
 //pub fn GetParent(&self, ) -> Tree {
-//  return t.parent_ctx
+//  return self.parent_ctx
 //}
 //
 //pub fn SetParent(&self, tree: Tree) {
-//  t.parent_ctx = tree.(RuleContext)
+//  self.parent_ctx = tree.(RuleContext)
 //}
 //
 //pub fn GetPayload(&self, ) -> i32erface{} {
-//  return t.symbol
+//  return self.symbol
 //}
 //
 //pub fn GetSourceInterval(&self, ) -> *Interval {
-//  if t.symbol == nil {
+//  if self.symbol == nil {
 //    return TreeInvalidInterval
 //  }
-//  let token_index = t.symbol.GetTokenIndex();
+//  let token_index = self.symbol.GetTokenIndex();
 //  return NewInterval(tokenIndex, token_index)
 //}
 //
@@ -160,23 +160,23 @@
 //}
 //
 //pub fn Accept(&self, v: ParseTreeVisitor) -> i32erface{} {
-//  return v.VisitTerminal(t)
+//  return self.VisitTerminal(t)
 //}
 //
 //pub fn GetText(&self, ) -> &str {
-//  return t.symbol.GetText()
+//  return self.symbol.GetText()
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  if t.symbol.GetTokenType() == TokenEOF {
+//  if self.symbol.GetTokenType() == TokenEOF {
 //    return "<EOF>"
 //  }
 //
-//  return t.symbol.GetText()
+//  return self.symbol.GetText()
 //}
 //
 //pub fn ToStringTree(&self, s []string, r: Recognizer) -> &str {
-//  return t.String()
+//  return self.String()
 //}
 //
 //// Represents a token that was consumed during re_synchronization
@@ -200,7 +200,7 @@
 //pub fn error_node() {}
 //
 //pub fn Accept(&self, v: ParseTreeVisitor) -> i32erface{} {
-//  return v.VisitErrorNode(e)
+//  return self.VisitErrorNode(e)
 //}
 //
 //pub struct ParseTreeWalker {
@@ -217,12 +217,12 @@
 //  case TerminalNode:
 //    listener.VisitTerminal(tt)
 //  default:
-//    p.EnterRule(listener, t.(RuleNode))
-//    for let i = 0; i < t.GetChildCount(); i++ {;
-//      let child = t.GetChild(i);
-//      p.Walk(listener, child)
+//    self.EnterRule(listener, t.(RuleNode))
+//    for let i = 0; i < self.GetChildCount(); i++ {;
+//      let child = self.GetChild(i);
+//      self.Walk(listener, child)
 //    }
-//    p.ExitRule(listener, t.(RuleNode))
+//    self.ExitRule(listener, t.(RuleNode))
 //  }
 //}
 //
@@ -233,13 +233,13 @@
 //// the rule specific. We to them in reverse order upon finishing the node.
 ////
 //pub fn EnterRule(&self, listener: ParseTreeListener, r: RuleNode) {
-//  let ctx = r.GetRuleContext().(ParserRuleContext);
+//  let ctx = self.GetRuleContext().(ParserRuleContext);
 //  listener.EnterEveryRule(ctx)
 //  ctx.EnterRule(listener)
 //}
 //
 //pub fn ExitRule(&self, listener: ParseTreeListener, r: RuleNode) {
-//  let ctx = r.GetRuleContext().(ParserRuleContext);
+//  let ctx = self.GetRuleContext().(ParserRuleContext);
 //  ctx.ExitRule(listener)
 //  listener.ExitEveryRule(ctx)
 //}

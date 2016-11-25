@@ -40,15 +40,15 @@
 //}
 //
 //pub fn get_action_type(&self, ) -> i32 {
-//  return b.action_type
+//  return self.action_type
 //}
 //
 //pub fn get_is_position_dependent(&self, ) -> bool {
-//  return b.is_position_dependent
+//  return self.is_position_dependent
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return strconv.Itoa(b.action_type)
+//  return strconv.Itoa(self.action_type)
 //}
 //
 //pub fn equals(&self, other: LexerAction) -> bool {
@@ -91,17 +91,17 @@
 //
 //impl LexerTypeAction {§//  pub fn new(&self, thetype: i32) -> *LexerTypeAction {
 //  let l = new(LexerTypeAction);
-//  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeType)
-//  l.thetype = thetype
+//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypeType)
+//  self.thetype = thetype
 //  return l
 //}
 //
 //pub fn execute(&self, lexer: Lexer) {
-//  lexer.set_type(l.thetype)
+//  lexer.set_type(self.thetype)
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return strconv.Itoa(l.action_type) + strconv.Itoa(l.thetype)
+//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.thetype)
 //}
 //
 //pub fn equals(&self, other: LexerAction) -> bool {
@@ -110,12 +110,12 @@
 //  } else if _, let ok = other.(*LexerTypeAction); !ok {;
 //    return false
 //  } else {
-//    return l.thetype == other.(*LexerTypeAction).thetype
+//    return self.thetype == other.(*LexerTypeAction).thetype
 //  }
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "actionType(" + strconv.Itoa(l.thetype) + ")"
+//  return "actionType(" + strconv.Itoa(self.thetype) + ")"
 //}
 //
 //// Implements the {@code push_mode} lexer action by calling
@@ -129,20 +129,20 @@
 //impl LexerPushModeAction {§//  pub fn new(&self, mode: i32) -> *LexerPushModeAction {
 //
 //  let l = new(LexerPushModeAction);
-//  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypePushMode)
+//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypePushMode)
 //
-//  l.mode = mode
+//  self.mode = mode
 //  return l
 //}
 //
 //// <p>This action is implemented by calling {@link Lexer//pushMode} with the
 //// value provided by {@link //getMode}.</p>
 //pub fn execute(&self, lexer: Lexer) {
-//  lexer.push_mode(l.mode)
+//  lexer.push_mode(self.mode)
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return strconv.Itoa(l.action_type) + strconv.Itoa(l.mode)
+//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.mode)
 //}
 //
 //pub fn equals(&self, other: LexerAction) -> bool {
@@ -151,12 +151,12 @@
 //  } else if _, let ok = other.(*LexerPushModeAction); !ok {;
 //    return false
 //  } else {
-//    return l.mode == other.(*LexerPushModeAction).mode
+//    return self.mode == other.(*LexerPushModeAction).mode
 //  }
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "pushMode(" + strconv.Itoa(l.mode) + ")"
+//  return "pushMode(" + strconv.Itoa(self.mode) + ")"
 //}
 //
 //// Implements the {@code pop_mode} lexer action by calling {@link Lexer//popMode}.
@@ -171,7 +171,7 @@
 //
 //  let l = new(LexerPopModeAction);
 //
-//  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypePopMode)
+//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypePopMode)
 //
 //  return l
 //}
@@ -198,7 +198,7 @@
 //
 //impl LexerMoreAction {§//  pub fn new(&self, ) -> *LexerMoreAction {
 //  let l = new(LexerMoreAction);
-//  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeMore)
+//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypeMore)
 //
 //  return l
 //}
@@ -224,19 +224,19 @@
 //
 //impl LexerModeAction {§//  pub fn new(&self, mode: i32) -> *LexerModeAction {
 //  let l = new(LexerModeAction);
-//  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeMode)
-//  l.mode = mode
+//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypeMode)
+//  self.mode = mode
 //  return l
 //}
 //
 //// <p>This action is implemented by calling {@link Lexer//mode} with the
 //// value provided by {@link //getMode}.</p>
 //pub fn execute(&self, lexer: Lexer) {
-//  lexer.set_mode(l.mode)
+//  lexer.set_mode(self.mode)
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return strconv.Itoa(l.action_type) + strconv.Itoa(l.mode)
+//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.mode)
 //}
 //
 //pub fn equals(&self, other: LexerAction) -> bool {
@@ -245,12 +245,12 @@
 //  } else if _, let ok = other.(*LexerModeAction); !ok {;
 //    return false
 //  } else {
-//    return l.mode == other.(*LexerModeAction).mode
+//    return self.mode == other.(*LexerModeAction).mode
 //  }
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "mode(" + strconv.Itoa(l.mode) + ")"
+//  return "mode(" + strconv.Itoa(self.mode) + ")"
 //}
 //
 //// Executes a custom lexer action by calling {@link Recognizer//action} with the
@@ -277,21 +277,21 @@
 //
 //impl LexerCustomAction {§//  pub fn new(&self, rule_index, action_index: i32) -> *LexerCustomAction {
 //  let l = new(LexerCustomAction);
-//  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeCustom)
-//  l.rule_index = rule_index
-//  l.action_index = action_index
-//  l.is_position_dependent = true
+//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypeCustom)
+//  self.rule_index = rule_index
+//  self.action_index = action_index
+//  self.is_position_dependent = true
 //  return l
 //}
 //
 //// <p>Custom actions are implemented by calling {@link Lexer//action} with the
 //// appropriate rule and action indexes.</p>
 //pub fn execute(&self, lexer: Lexer) {
-//  lexer.Action(nil, l.rule_index, l.action_index)
+//  lexer.Action(nil, self.rule_index, self.action_index)
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return strconv.Itoa(l.action_type) + strconv.Itoa(l.rule_index) + strconv.Itoa(l.action_index)
+//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.rule_index) + strconv.Itoa(self.action_index)
 //}
 //
 //pub fn equals(&self, other: LexerAction) -> bool {
@@ -300,7 +300,7 @@
 //  } else if _, let ok = other.(*LexerCustomAction); !ok {;
 //    return false
 //  } else {
-//    return l.rule_index == other.(*LexerCustomAction).rule_index && l.action_index == other.(*LexerCustomAction).action_index
+//    return self.rule_index == other.(*LexerCustomAction).rule_index && self.action_index == other.(*LexerCustomAction).action_index
 //  }
 //}
 //
@@ -316,19 +316,19 @@
 //
 //impl LexerChannelAction {§//  pub fn new(&self, channel: i32) -> *LexerChannelAction {
 //  let l = new(LexerChannelAction);
-//  l.BaseLexerAction = NewBaseLexerAction(LexerActionTypeChannel)
-//  l.channel = channel
+//  self.BaseLexerAction = NewBaseLexerAction(LexerActionTypeChannel)
+//  self.channel = channel
 //  return l
 //}
 //
 //// <p>This action is implemented by calling {@link Lexer//setChannel} with the
 //// value provided by {@link //getChannel}.</p>
 //pub fn execute(&self, lexer: Lexer) {
-//  lexer.set_channel(l.channel)
+//  lexer.set_channel(self.channel)
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return strconv.Itoa(l.action_type) + strconv.Itoa(l.channel)
+//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.channel)
 //}
 //
 //pub fn equals(&self, other: LexerAction) -> bool {
@@ -337,12 +337,12 @@
 //  } else if _, let ok = other.(*LexerChannelAction); !ok {;
 //    return false
 //  } else {
-//    return l.channel == other.(*LexerChannelAction).channel
+//    return self.channel == other.(*LexerChannelAction).channel
 //  }
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return "channel(" + strconv.Itoa(l.channel) + ")"
+//  return "channel(" + strconv.Itoa(self.channel) + ")"
 //}
 //
 //// This implementation of {@link LexerAction} is used for tracking input offsets
@@ -376,11 +376,11 @@
 //impl LexerIndexedCustomAction {§//  pub fn new(&self, offset: i32, lexer_action: LexerAction) -> *LexerIndexedCustomAction {
 //
 //  let l = new(LexerIndexedCustomAction);
-//  l.BaseLexerAction = NewBaseLexerAction(lexerAction.get_action_type())
+//  self.BaseLexerAction = NewBaseLexerAction(lexerAction.get_action_type())
 //
-//  l.offset = offset
-//  l.lexer_action = lexer_action
-//  l.is_position_dependent = true
+//  self.offset = offset
+//  self.lexer_action = lexer_action
+//  self.is_position_dependent = true
 //
 //  return l
 //}
@@ -389,11 +389,11 @@
 //// using the provided {@code lexer}.</p>
 //pub fn execute(&self, lexer: Lexer) {
 //  // assume the input stream position was properly set by the calling code
-//  l.lexer_action.execute(lexer)
+//  self.lexer_action.execute(lexer)
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return strconv.Itoa(l.action_type) + strconv.Itoa(l.offset) + l.lexer_action.Hash()
+//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.offset) + self.lexer_action.Hash()
 //}
 //
 //pub fn equals(&self, other: LexerAction) -> bool {
@@ -402,6 +402,6 @@
 //  } else if _, let ok = other.(*LexerIndexedCustomAction); !ok {;
 //    return false
 //  } else {
-//    return l.offset == other.(*LexerIndexedCustomAction).offset && l.lexer_action == other.(*LexerIndexedCustomAction).lexer_action
+//    return self.offset == other.(*LexerIndexedCustomAction).offset && self.lexer_action == other.(*LexerIndexedCustomAction).lexer_action
 //  }
 //}

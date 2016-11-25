@@ -35,37 +35,37 @@
 //
 //  let t = new(BaseRecognitionException);
 //
-//  t.message = message
-//  t.recognizer = recognizer
-//  t.input = input
-//  t.ctx = ctx
+//  self.message = message
+//  self.recognizer = recognizer
+//  self.input = input
+//  self.ctx = ctx
 //  // The current {@link Token} when an error occurred. Since not all streams
 //  // support accessing symbols by index, we have to track the {@link Token}
 //  // instance itself.
-//  t.offending_token = nil
+//  self.offending_token = nil
 //  // Get the ATN state number the parser was in at the time the error
 //  // occurred. For {@link NoViableAltException} and
 //  // {@link LexerNoViableAltException} exceptions, this is the
 //  // {@link DecisionState} number. For others, it is the state whose outgoing
 //  // edge we couldn't Match.
-//  t.offending_state = -1
-//  if t.recognizer != nil {
-//    t.offending_state = t.recognizer.GetState()
+//  self.offending_state = -1
+//  if self.recognizer != nil {
+//    self.offending_state = self.recognizer.GetState()
 //  }
 //
 //  return t
 //}
 //
 //pub fn GetMessage(&self, ) -> &str {
-//  return b.message
+//  return self.message
 //}
 //
 //pub fn GetOffendingToken(&self, ) -> Token {
-//  return b.offending_token
+//  return self.offending_token
 //}
 //
 //pub fn GetInputStream(&self, ) -> IntStream {
-//  return b.input
+//  return self.input
 //}
 //
 //// <p>If the state number is not known, b method returns -1.</p>
@@ -81,15 +81,15 @@
 //// state in the ATN, or {@code nil} if the information is not available.
 //// /
 //pub fn get_expected_tokens(&self, ) -> *IntervalSet {
-//  if b.recognizer != nil {
-//    return b.recognizer.GetATN().get_expected_tokens(b.offending_state, b.ctx)
+//  if self.recognizer != nil {
+//    return self.recognizer.GetATN().get_expected_tokens(self.offending_state, self.ctx)
 //  }
 //
 //  return nil
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return b.message
+//  return self.message
 //}
 //
 //pub struct LexerNoViableAltException {
@@ -103,18 +103,18 @@
 //
 //  let l = new(LexerNoViableAltException);
 //
-//  l.BaseRecognitionException = BaseRecognitionException::new("", lexer, input, nil)
+//  self.BaseRecognitionException = BaseRecognitionException::new("", lexer, input, nil)
 //
-//  l.start_index = start_index
-//  l.dead_end_configs = dead_end_configs
+//  self.start_index = start_index
+//  self.dead_end_configs = dead_end_configs
 //
 //  return l
 //}
 //
 //pub fn String(&self, ) -> &str {
 //  let symbol = "";
-//  if l.start_index >= 0 && l.start_index < l.input.Size() {
-//    symbol = l.input.(CharStream).GetTextFromInterval(NewInterval(l.start_index, l.start_index))
+//  if self.start_index >= 0 && self.start_index < self.input.Size() {
+//    symbol = self.input.(CharStream).GetTextFromInterval(NewInterval(self.start_index, self.start_index))
 //  }
 //  return "LexerNoViableAltException" + symbol
 //}
@@ -152,17 +152,17 @@
 //  }
 //
 //  let n = new(NoViableAltException);
-//  n.BaseRecognitionException = BaseRecognitionException::new("", recognizer, input, ctx)
+//  self.BaseRecognitionException = BaseRecognitionException::new("", recognizer, input, ctx)
 //
 //  // Which configurations did we try at input.Index() that couldn't Match
 //  // input.LT(1)?//
-//  n.dead_end_configs = dead_end_configs
+//  self.dead_end_configs = dead_end_configs
 //  // The token object at the start index the input stream might
 //  // not be buffering tokens so get a reference to it. (At the
 //  // time the error occurred, of course the stream needs to keep a
 //  // buffer all of the tokens but later we might not have access to those.)
-//  n.start_token = start_token
-//  n.offending_token = offending_token
+//  self.start_token = start_token
+//  self.offending_token = offending_token
 //
 //  return n
 //}
@@ -177,9 +177,9 @@
 //impl InputMisMatchException {§//  pub fn new(&self, recognizer: Parser) -> *InputMisMatchException {
 //
 //  let i = new(InputMisMatchException);
-//  i.BaseRecognitionException = BaseRecognitionException::new("", recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
+//  self.BaseRecognitionException = BaseRecognitionException::new("", recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
 //
-//  i.offending_token = recognizer.GetCurrentToken()
+//  self.offending_token = recognizer.GetCurrentToken()
 //
 //  return i
 //
@@ -202,19 +202,19 @@
 //
 //  let f = new(FailedPredicateException);
 //
-//  f.BaseRecognitionException = BaseRecognitionException::new(f.format_message(predicate, message), recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
+//  self.BaseRecognitionException = BaseRecognitionException::new(self.format_message(predicate, message), recognizer, recognizer.GetInputStream(), recognizer.GetParserRuleContext())
 //
 //  let s = recognizer.GetInterpreter().atn.states[recognizer.GetState()];
-//  let trans = s.GetTransitions()[0];
+//  let trans = self.GetTransitions()[0];
 //  if trans2, let ok = trans.(*PredicateTransition); ok {;
-//    f.rule_index = trans2.rule_index
-//    f.predicate_index = trans2.pred_index
+//    self.rule_index = trans2.rule_index
+//    self.predicate_index = trans2.pred_index
 //  } else {
-//    f.rule_index = 0
-//    f.predicate_index = 0
+//    self.rule_index = 0
+//    self.predicate_index = 0
 //  }
-//  f.predicate = predicate
-//  f.offending_token = recognizer.GetCurrentToken()
+//  self.predicate = predicate
+//  self.offending_token = recognizer.GetCurrentToken()
 //
 //  return f
 //}
