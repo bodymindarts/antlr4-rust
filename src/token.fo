@@ -69,35 +69,35 @@
 //  TokenHiddenChannel = 1
 //)
 //
-//pub fn get_channel(&self, ) -> i32 {
+//pub fn channel(&self, ) -> i32 {
 //  return self.channel
 //}
 //
-//pub fn get_start(&self, ) -> i32 {
+//pub fn start(&self, ) -> i32 {
 //  return self.start
 //}
 //
-//pub fn get_stop(&self, ) -> i32 {
+//pub fn stop(&self, ) -> i32 {
 //  return self.stop
 //}
 //
-//pub fn get_line(&self, ) -> i32 {
+//pub fn line(&self, ) -> i32 {
 //  return self.line
 //}
 //
-//pub fn get_column(&self, ) -> i32 {
+//pub fn column(&self, ) -> i32 {
 //  return self.column
 //}
 //
-//pub fn get_token_type(&self, ) -> i32 {
+//pub fn token_type(&self, ) -> i32 {
 //  return self.token_type
 //}
 //
-//pub fn get_source(&self, ) -> *TokenSourceCharStreamPair {
+//pub fn source(&self, ) -> *TokenSourceCharStreamPair {
 //  return self.source
 //}
 //
-//pub fn get_token_index(&self, ) -> i32 {
+//pub fn token_index(&self, ) -> i32 {
 //  return self.token_index
 //}
 //
@@ -105,11 +105,11 @@
 //  self.token_index = v
 //}
 //
-//pub fn get_token_source(&self, ) -> TokenSource {
+//pub fn token_source(&self, ) -> TokenSource {
 //  return self.source.token_source
 //}
 //
-//pub fn get_input_stream(&self, ) -> CharStream {
+//pub fn input_stream(&self, ) -> CharStream {
 //  return self.source.char_stream
 //}
 //
@@ -130,8 +130,8 @@
 //  self.stop = stop
 //  self.token_index = -1
 //  if self.source.token_source != nil {
-//    self.line = source.token_source.get_line()
-//    self.column = source.token_source.get_char_position_in_line()
+//    self.line = source.token_source.line()
+//    self.column = source.token_source.char_position_in_line()
 //  } else {
 //    self.column = -1
 //  }
@@ -157,24 +157,24 @@
 ////
 //fn clone(&self, ) -> *CommonToken {
 //  let t = NewCommonToken(self.source, self.token_type, self.channel, self.start, self.stop);
-//  self.token_index = self.get_token_index()
-//  self.line = self.get_line()
-//  self.column = self.get_column()
-//  self.text = self.get_text()
+//  self.token_index = self.token_index()
+//  self.line = self.line()
+//  self.column = self.column()
+//  self.text = self.text()
 //  return t
 //}
 //
-//pub fn get_text(&self, ) -> &str {
+//pub fn text(&self, ) -> &str {
 //  if self.text != "" {
 //    return self.text
 //  }
-//  let input = self.get_input_stream();
+//  let input = self.input_stream();
 //  if input == nil {
 //    return ""
 //  }
 //  let n = input.Size();
 //  if self.start < n && self.stop < n {
-//    return input.get_text_from_interval(NewInterval(self.start, self.stop))
+//    return input.text_from_interval(NewInterval(self.start, self.stop))
 //  }
 //  return "<EOF>"
 //}
@@ -184,7 +184,7 @@
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  let txt = self.get_text();
+//  let txt = self.text();
 //  if txt != "" {
 //    txt = &strs.Replace(txt, "\n", "\\n", -1)
 //    txt = &strs.Replace(txt, "\r", "\\r", -1)

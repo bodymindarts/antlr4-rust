@@ -87,12 +87,12 @@
 //}
 //
 //// GetAltSet gets the set of all alts mentioned by all ATN configurations in d.
-//pub fn get_alt_set(&self, ) -> *Set {
+//pub fn alt_set(&self, ) -> *Set {
 //  let alts = NewSet(nil, nil);
 //
 //  if self.configs != nil {
-//    for _, let c = range self.configs.get_items() {;
-//      alts.add(self.get_alt())
+//    for _, let c = range self.configs.items() {;
+//      alts.add(self.alt())
 //    }
 //  }
 //

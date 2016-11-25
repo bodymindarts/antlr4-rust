@@ -23,14 +23,14 @@
 //  return b
 //}
 //
-//fn get_cached_context(&self, context: PredictionContext) -> PredictionContext {
+//fn cached_context(&self, context: PredictionContext) -> PredictionContext {
 //  if self.shared_context_cache == nil {
 //    return context
 //  }
 //
 //  let visited = make(map[PredictionContext]PredictionContext);
 //
-//  return get_cached_base_prediction_context(context, self.shared_context_cache, visited)
+//  return cached_base_prediction_context(context, self.shared_context_cache, visited)
 //}
 //
 //pub fn shared_context_cache(&self, ) -> *PredictionContextCache {

@@ -106,7 +106,7 @@
 //  }
 //}
 //
-//pub fn get_error_handler(&self, ) -> ErrorStrategy {
+//pub fn error_handler(&self, ) -> ErrorStrategy {
 //  return self.err_handler
 //}
 //
@@ -133,14 +133,14 @@
 //
 //pub fn Match(&self, ttype: i32) -> Token {
 //
-//  let t = self.get_current_token();
+//  let t = self.current_token();
 //
-//  if self.get_token_type() == ttype {
+//  if self.token_type() == ttype {
 //    self.err_handler.report_match(p)
 //    self.Consume()
 //  } else {
 //    t = self.err_handler.recover_inline(p)
-//    if self.build_parse_trees && self.get_token_index() == -1 {
+//    if self.build_parse_trees && self.token_index() == -1 {
 //      // we must have conjured up a Newtoken during single token
 //      // insertion
 //      // if it's not the current symbol
@@ -168,13 +168,13 @@
 //// symbol
 //
 //pub fn match_wildcard(&self, ) -> Token {
-//  let t = self.get_current_token();
-//  if self.get_token_type() > 0 {
+//  let t = self.current_token();
+//  if self.token_type() > 0 {
 //    self.err_handler.report_match(p)
 //    self.Consume()
 //  } else {
 //    t = self.err_handler.recover_inline(p)
-//    if self.build_parse_trees && self.get_token_index() == -1 {
+//    if self.build_parse_trees && self.token_index() == -1 {
 //      // we must have conjured up a Newtoken during single token
 //      // insertion
 //      // if it's not the current symbol
@@ -184,7 +184,7 @@
 //  return t
 //}
 //
-//pub fn get_parser_rule_context(&self, ) -> ParserRuleContext {
+//pub fn parser_rule_context(&self, ) -> ParserRuleContext {
 //  return self.ctx
 //}
 //
@@ -192,7 +192,7 @@
 //  self.ctx = v
 //}
 //
-//pub fn get_parse_listeners(&self, ) -> []ParseTreeListener {
+//pub fn parse_listeners(&self, ) -> []ParseTreeListener {
 //  if self.parse_listeners == nil {
 //    return make([]ParseTreeListener, 0)
 //  }
@@ -304,21 +304,21 @@
 //  }
 //}
 //
-//pub fn get_interpreter(&self, ) -> *ParserATNSimulator {
+//pub fn interpreter(&self, ) -> *ParserATNSimulator {
 //  return self.Interpreter
 //}
 //
-//pub fn get_a_t_n(&self, ) -> *ATN {
+//pub fn a_t_n(&self, ) -> *ATN {
 //  return self.Interpreter.atn
 //}
 //
-//pub fn get_token_factory(&self, ) -> TokenFactory {
-//  return self.input.get_token_source().get_token_factory()
+//pub fn token_factory(&self, ) -> TokenFactory {
+//  return self.input.token_source().token_factory()
 //}
 //
 //// Tell our token source and error strategy about a Newway to create tokens.//
 //fn set_token_factory(&self, factory: TokenFactory) {
-//  self.input.get_token_source().set_token_factory(factory)
+//  self.input.token_source().set_token_factory(factory)
 //}
 //
 //// The ATN with bypass alternatives is expensive to create so we create it
@@ -327,12 +327,12 @@
 //// @panics UnsupportedOperationException if the current parser does not
 //// implement the {@link //getSerializedATN()} method.
 ////
-//pub fn get_a_t_n_with_bypassAlts(&self, ) {
+//pub fn a_t_n_with_bypassAlts(&self, ) {
 //
 //  // TODO
 //  panic("Not implemented!")
 //
-//  //  let serialized_atn = self.get_serialized_a_t_n();
+//  //  let serialized_atn = self.serialized_a_t_n();
 //  //  if (serializedAtn == nil) {
 //  //    panic("The current parser does not support an ATN with bypass alternatives.")
 //  //  }
@@ -362,8 +362,8 @@
 //  panic("NewParseTreePatternMatcher not implemented!")
 //  //
 //  //  if (lexer == nil) {
-//  //    if (self.get_token_stream() != nil) {
-//  //      let token_source = self.get_token_stream().get_token_source();
+//  //    if (self.token_stream() != nil) {
+//  //      let token_source = self.token_stream().token_source();
 //  //      if _, let ok = token_source.(ILexer); ok {;
 //  //        lexer = token_source
 //  //      }
@@ -377,15 +377,15 @@
 //  //  return self.compile(pattern, pattern_rule_index)
 //}
 //
-//pub fn get_input_stream(&self, ) -> IntStream {
-//  return self.get_token_stream()
+//pub fn input_stream(&self, ) -> IntStream {
+//  return self.token_stream()
 //}
 //
 //pub fn set_input_stream(&self, input: TokenStream) {
 //  self.set_token_stream(input)
 //}
 //
-//pub fn get_token_stream(&self, ) -> TokenStream {
+//pub fn token_stream(&self, ) -> TokenStream {
 //  return self.input
 //}
 //
@@ -399,25 +399,25 @@
 //// Match needs to return the current input symbol, which gets put
 //// i32o the label for the associated token ref self.g., x=ID.
 ////
-//pub fn get_current_token(&self, ) -> Token {
+//pub fn current_token(&self, ) -> Token {
 //  return self.input.l_t(1)
 //}
 //
 //pub fn notify_error_listeners(&self, msg &str, offending_token: Token, err: RecognitionException) {
 //  if offending_token == nil {
-//    offending_token = self.get_current_token()
+//    offending_token = self.current_token()
 //  }
 //  p.__syntax_errors++
-//  let line = offending_token.get_line();
-//  let column = offending_token.get_column();
-//  let listener = self.get_error_listener_dispatch();
+//  let line = offending_token.line();
+//  let column = offending_token.column();
+//  let listener = self.error_listener_dispatch();
 //  listener.syntax_error(p, offending_token, line, column, msg, err)
 //}
 //
 //pub fn Consume(&self, ) -> Token {
-//  let o = self.get_current_token();
-//  if self.get_token_type() != TokenEOF {
-//    self.get_input_stream().Consume()
+//  let o = self.current_token();
+//  if self.token_type() != TokenEOF {
+//    self.input_stream().Consume()
 //  }
 //  let has_listener = self.parse_listeners != nil && len(self.parse_listeners) > 0;
 //  if self.build_parse_trees || has_listener {
@@ -445,8 +445,8 @@
 //
 //fn add_context_to_parse_tree(&self, ) {
 //  // add current context to parent if we have a parent
-//  if self.ctx.get_parent() != nil {
-//    self.ctx.get_parent().(ParserRuleContext).add_child(self.ctx)
+//  if self.ctx.parent() != nil {
+//    self.ctx.parent().(ParserRuleContext).add_child(self.ctx)
 //  }
 //}
 //
@@ -468,9 +468,9 @@
 //  if self.parse_listeners != nil {
 //    self.trigger_exit_rule_event()
 //  }
-//  self.set_state(self.ctx.get_invoking_state())
-//  if self.ctx.get_parent() != nil {
-//    self.ctx = self.ctx.get_parent().(ParserRuleContext)
+//  self.set_state(self.ctx.invoking_state())
+//  if self.ctx.parent() != nil {
+//    self.ctx = self.ctx.parent().(ParserRuleContext)
 //  } else {
 //    self.ctx = nil
 //  }
@@ -481,9 +481,9 @@
 //  // if we have Newlocalctx, make sure we replace existing ctx
 //  // that is previous child of parse tree
 //  if self.build_parse_trees && self.ctx != localctx {
-//    if self.ctx.get_parent() != nil {
-//      self.ctx.get_parent().(ParserRuleContext).remove_last_child()
-//      self.ctx.get_parent().(ParserRuleContext).add_child(localctx)
+//    if self.ctx.parent() != nil {
+//      self.ctx.parent().(ParserRuleContext).remove_last_child()
+//      self.ctx.parent().(ParserRuleContext).add_child(localctx)
 //    }
 //  }
 //  self.ctx = localctx
@@ -494,7 +494,7 @@
 //// @return The precedence level for the top-most precedence rule, or -1 if
 //// the parser context is not nested within a precedence rule.
 //
-//pub fn get_precedence(&self, ) -> i32 {
+//pub fn precedence(&self, ) -> i32 {
 //  if len(self.precedence_stack) == 0 {
 //    return -1
 //  }
@@ -523,7 +523,7 @@
 //  previous.set_stop(self.input.l_t(-1))
 //
 //  self.ctx = localctx
-//  self.ctx.set_start(previous.get_start())
+//  self.ctx.set_start(previous.start())
 //  if self.build_parse_trees {
 //    self.ctx.add_child(previous)
 //  }
@@ -541,7 +541,7 @@
 //  if self.parse_listeners != nil {
 //    for self.ctx != parent_ctx {
 //      self.trigger_exit_rule_event()
-//      self.ctx = self.ctx.get_parent().(ParserRuleContext)
+//      self.ctx = self.ctx.parent().(ParserRuleContext)
 //    }
 //  } else {
 //    self.ctx = parent_ctx
@@ -554,13 +554,13 @@
 //  }
 //}
 //
-//pub fn get_invoking_context(&self, rule_index: i32) -> ParserRuleContext {
+//pub fn invoking_context(&self, rule_index: i32) -> ParserRuleContext {
 //  let ctx = self.ctx;
 //  for ctx != nil {
-//    if ctx.get_rule_index() == rule_index {
+//    if ctx.rule_index() == rule_index {
 //      return ctx
 //    }
-//    ctx = ctx.get_parent().(ParserRuleContext)
+//    ctx = ctx.parent().(ParserRuleContext)
 //  }
 //  return nil
 //}
@@ -581,7 +581,7 @@
 //// need to be explicitly constructed.
 ////
 //// <pre>
-//// return get_expected_tokens().contains(symbol)
+//// return expected_tokens().contains(symbol)
 //// </pre>
 ////
 //// @param symbol the symbol type to check
@@ -599,14 +599,14 @@
 //  if !following.contains(TokenEpsilon) {
 //    return false
 //  }
-//  for ctx != nil && ctx.get_invoking_state() >= 0 && following.contains(TokenEpsilon) {
-//    let invoking_state = atn.states[ctx.get_invoking_state()];
-//    let rt = invoking_state.get_transitions()[0];
+//  for ctx != nil && ctx.invoking_state() >= 0 && following.contains(TokenEpsilon) {
+//    let invoking_state = atn.states[ctx.invoking_state()];
+//    let rt = invoking_state.transitions()[0];
 //    following = atn.next_tokens(rt.(*RuleTransition).follow_state, nil)
 //    if following.contains(symbol) {
 //      return true
 //    }
-//    ctx = ctx.get_parent().(ParserRuleContext)
+//    ctx = ctx.parent().(ParserRuleContext)
 //  }
 //  if following.contains(TokenEpsilon) && symbol == TokenEOF {
 //    return true
@@ -621,19 +621,19 @@
 ////
 //// @see ATN//getExpectedTokens(int, RuleContext)
 ////
-//pub fn get_expected_tokens(&self, ) -> *IntervalSet {
-//  return self.Interpreter.atn.get_expected_tokens(self.state, self.ctx)
+//pub fn expected_tokens(&self, ) -> *IntervalSet {
+//  return self.Interpreter.atn.expected_tokens(self.state, self.ctx)
 //}
 //
-//pub fn get_expected_tokens_within_current_rule(&self, ) -> *IntervalSet {
+//pub fn expected_tokens_within_current_rule(&self, ) -> *IntervalSet {
 //  let atn = self.Interpreter.atn;
 //  let s = atn.states[self.state];
 //  return atn.next_tokens(s, nil)
 //}
 //
 //// Get a rule's index (self.e., {@code RULE_rule_name} field) or -1 if not found.//
-//pub fn get_rule_index(&self, rule_name: &str) -> i32 {
-//  var rule_index, ok = self.get_rule_index_map()[ruleName]
+//pub fn rule_index(&self, rule_name: &str) -> i32 {
+//  var rule_index, ok = self.rule_index_map()[ruleName]
 //  if ok {
 //    return rule_index
 //  }
@@ -648,21 +648,21 @@
 ////
 //// this very useful for error messages.
 //
-//pub fn get_rule_invocation_stack(&self, c: ParserRuleContext) -> []string {
+//pub fn rule_invocation_stack(&self, c: ParserRuleContext) -> []string {
 //  if c == nil {
 //    c = self.ctx
 //  }
 //  let stack = make([]string, 0);
 //  for c != nil {
 //    // compute what follows who invoked us
-//    let rule_index = self.get_rule_index();
+//    let rule_index = self.rule_index();
 //    if rule_index < 0 {
 //      stack = append(stack, "n/a")
 //    } else {
-//      stack = append(stack, self.get_rule_names()[ruleIndex])
+//      stack = append(stack, self.rule_names()[ruleIndex])
 //    }
 //
-//    let vp = self.get_parent();
+//    let vp = self.parent();
 //
 //    if vp == nil {
 //      break
@@ -674,7 +674,7 @@
 //}
 //
 //// For debugging and other purposes.//
-//pub fn get_d_f_a_strings(&self, ) -> &str {
+//pub fn d_f_a_strings(&self, ) -> &str {
 //  return fmt.Sprint(self.Interpreter.decision_to_d_f_a)
 //}
 //
@@ -682,7 +682,7 @@
 //pub fn dump_d_f_a(&self, ) {
 //  let seen_one = false;
 //  for _, let dfa = range self.Interpreter.decision_to_d_f_a {;
-//    if len(dfa.get_states()) > 0 {
+//    if len(dfa.states()) > 0 {
 //      if seen_one {
 //        fmt.Println()
 //      }
@@ -693,7 +693,7 @@
 //  }
 //}
 //
-//pub fn get_source_name(&self, ) -> &str {
+//pub fn source_name(&self, ) -> &str {
 //  return self.grammar_file_name
 //}
 //

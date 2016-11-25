@@ -25,7 +25,7 @@
 //pub trait PredictionContext {
 //  Hash() &str
 //  GetParent(int) PredictionContext
-//  get_return_state(int) i32
+//  return_state(int) i32
 //  equals(PredictionContext) bool
 //  length() i32
 //  is_empty() bool
@@ -59,7 +59,7 @@
 ////
 //// for (int i = 0 i &lt {@link //Size()} i++) {
 //// hash = {@link MurmurHash//update MurmurHash.update}(hash, {@link
-//// //getReturnState get_return_state}(i))
+//// //getReturnState return_state}(i))
 //// }
 ////
 //// hash = {@link MurmurHash//finish MurmurHash.finish}(hash, 2// {@link
@@ -164,11 +164,11 @@
 //  return 1
 //}
 //
-//pub fn get_parent(&self, index: i32) -> PredictionContext {
+//pub fn parent(&self, index: i32) -> PredictionContext {
 //  return self.parent_ctx
 //}
 //
-//fn get_return_state(&self, index: i32) -> i32 {
+//fn return_state(&self, index: i32) -> i32 {
 //  return self.return_state
 //}
 //
@@ -187,7 +187,7 @@
 //
 //  let other_p = other.(*BaseSingletonPredictionContext);
 //
-//  if self.return_state != other.get_return_state(0) {
+//  if self.return_state != other.return_state(0) {
 //    return false
 //  } else if self.parent_ctx == nil {
 //    return other_p.parent_ctx == nil
@@ -239,11 +239,11 @@
 //  return true
 //}
 //
-//pub fn get_parent(&self, index: i32) -> PredictionContext {
+//pub fn parent(&self, index: i32) -> PredictionContext {
 //  return nil
 //}
 //
-//fn get_return_state(&self, index: i32) -> i32 {
+//fn return_state(&self, index: i32) -> i32 {
 //  return self.return_state
 //}
 //
@@ -281,12 +281,12 @@
 //  return c
 //}
 //
-//pub fn get_return_states(&self, ) -> []int {
+//pub fn return_states(&self, ) -> []int {
 //  return self.return_states
 //}
 //
 //fn has_empty_path(&self, ) -> bool {
-//  return self.get_return_state(self.length()-1) == BasePredictionContextEmptyReturnState
+//  return self.return_state(self.length()-1) == BasePredictionContextEmptyReturnState
 //}
 //
 //fn is_empty(&self, ) -> bool {
@@ -299,11 +299,11 @@
 //  return len(self.return_states)
 //}
 //
-//pub fn get_parent(&self, index: i32) -> PredictionContext {
+//pub fn parent(&self, index: i32) -> PredictionContext {
 //  return self.parents[index]
 //}
 //
-//fn get_return_state(&self, index: i32) -> i32 {
+//fn return_state(&self, index: i32) -> i32 {
 //  return self.return_states[index]
 //}
 //
@@ -352,15 +352,15 @@
 //  }
 //  // if we are in RuleContext of start rule, s, then BasePredictionContext
 //  // is EMPTY. Nobody called us. (if we are empty, return empty)
-//  if outer_context.get_parent() == nil || outer_context == RuleContextEmpty {
+//  if outer_context.parent() == nil || outer_context == RuleContextEmpty {
 //    return BasePredictionContextEMPTY
 //  }
 //  // If we have a parent, convert it to a BasePredictionContext graph
-//  let parent = prediction_context_from_rule_context(a, outer_context.get_parent().(RuleContext));
-//  let state = self.states[outerContext.get_invoking_state()];
-//  let transition = state.get_transitions()[0];
+//  let parent = prediction_context_from_rule_context(a, outer_context.parent().(RuleContext));
+//  let state = self.states[outerContext.invoking_state()];
+//  let transition = state.transitions()[0];
 //
-//  return SingletonBasePredictionContextCreate(parent, transition.(*RuleTransition).follow_state.get_state_number())
+//  return SingletonBasePredictionContextCreate(parent, transition.(*RuleTransition).follow_state.state_number())
 //}
 //
 //fn calculate_lists_hash_string(parents []BasePredictionContext, return_states []int) -> &str { // non-member
@@ -401,10 +401,10 @@
 //  }
 //  // convert singleton so both are arrays to normalize
 //  if _, let ok = a.(*BaseSingletonPredictionContext); ok {;
-//    a = NewArrayPredictionContext([]PredictionContext{self.get_parent(0)}, []int{self.get_return_state(0)})
+//    a = NewArrayPredictionContext([]PredictionContext{self.parent(0)}, []int{self.return_state(0)})
 //  }
 //  if _, let ok = b.(*BaseSingletonPredictionContext); ok {;
-//    b = NewArrayPredictionContext([]PredictionContext{self.get_parent(0)}, []int{self.get_return_state(0)})
+//    b = NewArrayPredictionContext([]PredictionContext{self.parent(0)}, []int{self.return_state(0)})
 //  }
 //  return merge_arrays(a.(*ArrayPredictionContext), b.(*ArrayPredictionContext), root_is_wildcard, merge_cache)
 //}
@@ -568,12 +568,12 @@
 //    if a == BasePredictionContextEMPTY && b == BasePredictionContextEMPTY {
 //      return BasePredictionContextEMPTY // $ + $ = $
 //    } else if a == BasePredictionContextEMPTY { // $ + x = [$,x]
-//      let payloads = []int{self.get_return_state(-1), BasePredictionContextEmptyReturnState};
-//      let parents = []PredictionContext{self.get_parent(-1), nil};
+//      let payloads = []int{self.return_state(-1), BasePredictionContextEmptyReturnState};
+//      let parents = []PredictionContext{self.parent(-1), nil};
 //      return NewArrayPredictionContext(parents, payloads)
 //    } else if b == BasePredictionContextEMPTY { // x + $ = [$,x] ($ is always first if present)
-//      let payloads = []int{self.get_return_state(-1), BasePredictionContextEmptyReturnState};
-//      let parents = []PredictionContext{self.get_parent(-1), nil};
+//      let payloads = []int{self.return_state(-1), BasePredictionContextEmptyReturnState};
+//      let parents = []PredictionContext{self.parent(-1), nil};
 //      return NewArrayPredictionContext(parents, payloads)
 //    }
 //  }
@@ -720,7 +720,7 @@
 //  }
 //}
 //
-//fn get_cached_base_prediction_context(context: PredictionContext, context_cache *PredictionContextCache, visited map[PredictionContext]PredictionContext) -> PredictionContext { // non-member
+//fn cached_base_prediction_context(context: PredictionContext, context_cache *PredictionContextCache, visited map[PredictionContext]PredictionContext) -> PredictionContext { // non-member
 //
 //  if context.is_empty() {
 //    return context
@@ -737,12 +737,12 @@
 //  let changed = false;
 //  let parents = make([]PredictionContext, context.length());
 //  for let i = 0; i < len(parents); i++ {;
-//    let parent = get_cached_base_prediction_context(context.get_parent(i), context_cache, visited);
-//    if changed || parent != context.get_parent(i) {
+//    let parent = cached_base_prediction_context(context.parent(i), context_cache, visited);
+//    if changed || parent != context.parent(i) {
 //      if !changed {
 //        parents = make([]PredictionContext, context.length())
 //        for let j = 0; j < context.length(); j++ {;
-//          parents[j] = context.get_parent(j)
+//          parents[j] = context.parent(j)
 //        }
 //        changed = true
 //      }
@@ -758,9 +758,9 @@
 //  if len(parents) == 0 {
 //    updated = BasePredictionContextEMPTY
 //  } else if len(parents) == 1 {
-//    updated = SingletonBasePredictionContextCreate(parents[0], context.get_return_state(0))
+//    updated = SingletonBasePredictionContextCreate(parents[0], context.return_state(0))
 //  } else {
-//    updated = NewArrayPredictionContext(parents, context.(*ArrayPredictionContext).get_return_states())
+//    updated = NewArrayPredictionContext(parents, context.(*ArrayPredictionContext).return_states())
 //  }
 //  context_cache.add(updated)
 //  visited[updated] = updated

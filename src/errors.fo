@@ -50,21 +50,21 @@
 //  // edge we couldn't Match.
 //  self.offending_state = -1
 //  if self.recognizer != nil {
-//    self.offending_state = self.recognizer.get_state()
+//    self.offending_state = self.recognizer.state()
 //  }
 //
 //  return t
 //}
 //
-//pub fn get_message(&self, ) -> &str {
+//pub fn message(&self, ) -> &str {
 //  return self.message
 //}
 //
-//pub fn get_offending_token(&self, ) -> Token {
+//pub fn offending_token(&self, ) -> Token {
 //  return self.offending_token
 //}
 //
-//pub fn get_input_stream(&self, ) -> IntStream {
+//pub fn input_stream(&self, ) -> IntStream {
 //  return self.input
 //}
 //
@@ -80,9 +80,9 @@
 //// @return The set of token types that could potentially follow the current
 //// state in the ATN, or {@code nil} if the information is not available.
 //// /
-//fn get_expected_tokens(&self, ) -> *IntervalSet {
+//fn expected_tokens(&self, ) -> *IntervalSet {
 //  if self.recognizer != nil {
-//    return self.recognizer.get_a_t_n().get_expected_tokens(self.offending_state, self.ctx)
+//    return self.recognizer.a_t_n().expected_tokens(self.offending_state, self.ctx)
 //  }
 //
 //  return nil
@@ -114,7 +114,7 @@
 //pub fn String(&self, ) -> &str {
 //  let symbol = "";
 //  if self.start_index >= 0 && self.start_index < self.input.Size() {
-//    symbol = self.input.(CharStream).get_text_from_interval(NewInterval(self.start_index, self.start_index))
+//    symbol = self.input.(CharStream).text_from_interval(NewInterval(self.start_index, self.start_index))
 //  }
 //  return "LexerNoViableAltException" + symbol
 //}
@@ -136,19 +136,19 @@
 //impl NoViableAltException {§//  fn new(&self, recognizer Parser, input TokenStream, start_token Token, offending_token Token, dead_end_configs: ATNConfigSet, ctx: ParserRuleContext) -> *NoViableAltException {
 //
 //  if ctx == nil {
-//    ctx = recognizer.get_parser_rule_context()
+//    ctx = recognizer.parser_rule_context()
 //  }
 //
 //  if offending_token == nil {
-//    offending_token = recognizer.get_current_token()
+//    offending_token = recognizer.current_token()
 //  }
 //
 //  if start_token == nil {
-//    start_token = recognizer.get_current_token()
+//    start_token = recognizer.current_token()
 //  }
 //
 //  if input == nil {
-//    input = recognizer.get_input_stream().(TokenStream)
+//    input = recognizer.input_stream().(TokenStream)
 //  }
 //
 //  let n = new(NoViableAltException);
@@ -177,9 +177,9 @@
 //impl InputMisMatchException {§//  fn new(&self, recognizer: Parser) -> *InputMisMatchException {
 //
 //  let i = new(InputMisMatchException);
-//  self.base_recognition_exception = BaseRecognitionException::new("", recognizer, recognizer.get_input_stream(), recognizer.get_parser_rule_context())
+//  self.base_recognition_exception = BaseRecognitionException::new("", recognizer, recognizer.input_stream(), recognizer.parser_rule_context())
 //
-//  self.offending_token = recognizer.get_current_token()
+//  self.offending_token = recognizer.current_token()
 //
 //  return i
 //
@@ -202,10 +202,10 @@
 //
 //  let f = new(FailedPredicateException);
 //
-//  self.base_recognition_exception = BaseRecognitionException::new(self.format_message(predicate, message), recognizer, recognizer.get_input_stream(), recognizer.get_parser_rule_context())
+//  self.base_recognition_exception = BaseRecognitionException::new(self.format_message(predicate, message), recognizer, recognizer.input_stream(), recognizer.parser_rule_context())
 //
-//  let s = recognizer.get_interpreter().atn.states[recognizer.get_state()];
-//  let trans = self.get_transitions()[0];
+//  let s = recognizer.interpreter().atn.states[recognizer.state()];
+//  let trans = self.transitions()[0];
 //  if trans2, let ok = trans.(*PredicateTransition); ok {;
 //    self.rule_index = trans2.rule_index
 //    self.predicate_index = trans2.pred_index
@@ -214,7 +214,7 @@
 //    self.predicate_index = 0
 //  }
 //  self.predicate = predicate
-//  self.offending_token = recognizer.get_current_token()
+//  self.offending_token = recognizer.current_token()
 //
 //  return f
 //}

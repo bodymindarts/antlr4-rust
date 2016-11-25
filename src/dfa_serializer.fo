@@ -45,11 +45,11 @@
 //        let t = self.edges[j];
 //
 //        if t != nil && self.state_number != 0x7FFFFFFF {
-//          buf += self.get_state_string(s)
+//          buf += self.state_string(s)
 //          buf += "-"
-//          buf += self.get_edge_label(j)
+//          buf += self.edge_label(j)
 //          buf += "->"
-//          buf += self.get_state_string(t)
+//          buf += self.state_string(t)
 //          buf += "\n"
 //        }
 //      }
@@ -63,7 +63,7 @@
 //  return buf
 //}
 //
-//fn get_edge_label(&self, i: i32) -> &str {
+//fn edge_label(&self, i: i32) -> &str {
 //  if i == 0 {
 //    return "EOF"
 //  } else if self.literal_names != nil && i-1 < len(self.literal_names) {
@@ -75,7 +75,7 @@
 //  return strconv.Itoa(i - 1)
 //}
 //
-//pub fn get_state_string(&self, s *DFAState) -> &str {
+//pub fn state_string(&self, s *DFAState) -> &str {
 //  var a, b &str
 //
 //  if self.is_accept_state {
@@ -107,7 +107,7 @@
 //  return &LexerDFASerializer{DFASerializer: NewDFASerializer(dfa, nil, nil)}
 //}
 //
-//fn get_edge_label(&self, i: i32) -> &str {
+//fn edge_label(&self, i: i32) -> &str {
 //  return "'" + &str(i) + "'"
 //}
 //
@@ -129,11 +129,11 @@
 //        let t = self.edges[j];
 //
 //        if t != nil && self.state_number != 0x7FFFFFFF {
-//          buf += self.get_state_string(s)
+//          buf += self.state_string(s)
 //          buf += "-"
-//          buf += self.get_edge_label(j)
+//          buf += self.edge_label(j)
 //          buf += "->"
-//          buf += self.get_state_string(t)
+//          buf += self.state_string(t)
 //          buf += "\n"
 //        }
 //      }

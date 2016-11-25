@@ -160,7 +160,7 @@
 //    // This optimization makes a lot of sense for loops within DFA.
 //    // A character will take us back to an existing DFA state
 //    // that already has lots of edges out of it. self.g., .* in comments.
-//    let target = self.get_existing_target_state(s, t);
+//    let target = self.existing_target_state(s, t);
 //    if target == nil {
 //      target = self.compute_target_state(input, s, t)
 //      // print("Computed:" + str(target))
@@ -197,7 +197,7 @@
 //// @return The existing target DFA state for the given input symbol
 //// {@code t}, or {@code nil} if the target state for l edge is not
 //// already cached
-//fn get_existing_target_state(&self, s *DFAState, t: i32) -> *DFAState {
+//fn existing_target_state(&self, s *DFAState, t: i32) -> *DFAState {
 //  if self.edges == nil || t < LexerATNSimulatorMinDFAEdge || t > LexerATNSimulatorMaxDFAEdge {
 //    return nil
 //  }
@@ -224,7 +224,7 @@
 //
 //  // if we don't find an existing DFA state
 //  // Fill reach starting from closure, following t transitions
-//  self.get_reachable_config_set(input, self.configs, reach.base_a_t_n_config_set, t)
+//  self.reachable_config_set(input, self.configs, reach.base_a_t_n_config_set, t)
 //
 //  if len(reach.configs) == 0 { // we got nowhere on t from s
 //    if !reach.has_semantic_context {
@@ -257,24 +257,24 @@
 //// Given a starting configuration set, figure out all ATN configurations
 //// we can reach upon input {@code t}. Parameter {@code reach} is a return
 //// parameter.
-//fn get_reachable_config_set(&self, input CharStream, closure ATNConfigSet, reach: ATNConfigSet, t: i32) {
+//fn reachable_config_set(&self, input CharStream, closure ATNConfigSet, reach: ATNConfigSet, t: i32) {
 //  // l is used to Skip processing for configs which have a lower priority
 //  // than a config that already reached an accept state for the same rule
 //  let SkipAlt = ATNInvalidAltNumber;
 //
-//  for _, let cfg = range closure.get_items() {;
-//    let current_alt_reached_accept_state = (cfg.get_alt() == SkipAlt);
+//  for _, let cfg = range closure.items() {;
+//    let current_alt_reached_accept_state = (cfg.alt() == SkipAlt);
 //    if current_alt_reached_accept_state && cfg.(*LexerATNConfig).passed_through_non_greedy_decision {
 //      continue
 //    }
 //
 //    if LexerATNSimulatorDebug {
 //
-//      fmt.Printf("testing %s at %s\n", self.get_token_name(t), cfg.String()) // self.recog, true))
+//      fmt.Printf("testing %s at %s\n", self.token_name(t), cfg.String()) // self.recog, true))
 //    }
 //
-//    for _, let trans = range cfg.get_state().get_transitions() {;
-//      let target = self.get_reachable_target(trans, t);
+//    for _, let trans = range cfg.state().transitions() {;
+//      let target = self.reachable_target(trans, t);
 //      if target != nil {
 //        let lexer_action_executor = cfg.(*LexerATNConfig).lexer_action_executor;
 //        if lexer_action_executor != nil {
@@ -286,7 +286,7 @@
 //          current_alt_reached_accept_state, true, treat_e_o_f_as_epsilon) {
 //          // any remaining configs for l alt have a lower priority
 //          // than the one that just reached an accept state.
-//          SkipAlt = cfg.get_alt()
+//          SkipAlt = cfg.alt()
 //        }
 //      }
 //    }
@@ -306,9 +306,9 @@
 //  }
 //}
 //
-//fn get_reachable_target(&self, trans: Transition, t: i32) -> ATNState {
+//fn reachable_target(&self, trans: Transition, t: i32) -> ATNState {
 //  if trans.Matches(t, 0, 0xFFFE) {
-//    return trans.get_target()
+//    return trans.target()
 //  }
 //
 //  return nil
@@ -316,8 +316,8 @@
 //
 //fn compute_start_state(&self, input: CharStream, p: ATNState) -> *OrderedATNConfigSet {
 //  let configs = NewOrderedATNConfigSet();
-//  for let i = 0; i < len(self.get_transitions()); i++ {;
-//    let target = self.get_transitions()[i].get_target();
+//  for let i = 0; i < len(self.transitions()); i++ {;
+//    let target = self.transitions()[i].target();
 //    let cfg = NewLexerATNConfig6(target, i+1, BasePredictionContextEMPTY);
 //    self.closure(input, cfg, configs, false, false, false)
 //  }
@@ -345,7 +345,7 @@
 //
 //    if LexerATNSimulatorDebug {
 //      if self.recog != nil {
-//        fmt.Printf("closure at %s rule stop %s\n", self.recog.get_rule_names()[config.state.get_rule_index()], config)
+//        fmt.Printf("closure at %s rule stop %s\n", self.recog.rule_names()[config.state.rule_index()], config)
 //      } else {
 //        fmt.Printf("closure at rule stop %s\n", config)
 //      }
@@ -362,9 +362,9 @@
 //    }
 //    if config.context != nil && !config.context.is_empty() {
 //      for let i = 0; i < config.context.length(); i++ {;
-//        if config.context.get_return_state(i) != BasePredictionContextEmptyReturnState {
-//          let new_context = config.context.get_parent(i) // "pop" return state;
-//          let return_state = self.atn.states[config.context.get_return_state(i)];
+//        if config.context.return_state(i) != BasePredictionContextEmptyReturnState {
+//          let new_context = config.context.parent(i) // "pop" return state;
+//          let return_state = self.atn.states[config.context.return_state(i)];
 //          let cfg = NewLexerATNConfig2(config, return_state, new_context);
 //          current_alt_reached_accept_state = self.closure(input, cfg, configs, current_alt_reached_accept_state, speculative, treat_e_o_f_as_epsilon)
 //        }
@@ -373,14 +373,14 @@
 //    return current_alt_reached_accept_state
 //  }
 //  // optimization
-//  if !config.state.get_epsilon_only_transitions() {
+//  if !config.state.epsilon_only_transitions() {
 //    if !currentAltReachedAcceptState || !config.passed_through_non_greedy_decision {
 //      configs.Add(config, nil)
 //    }
 //  }
-//  for let j = 0; j < len(config.state.get_transitions()); j++ {;
-//    let trans = config.state.get_transitions()[j];
-//    let cfg = self.get_epsilon_target(input, config, trans, configs, speculative, treat_e_o_f_as_epsilon);
+//  for let j = 0; j < len(config.state.transitions()); j++ {;
+//    let trans = config.state.transitions()[j];
+//    let cfg = self.epsilon_target(input, config, trans, configs, speculative, treat_e_o_f_as_epsilon);
 //    if cfg != nil {
 //      current_alt_reached_accept_state = self.closure(input, cfg, configs,
 //        current_alt_reached_accept_state, speculative, treat_e_o_f_as_epsilon)
@@ -390,20 +390,20 @@
 //}
 //
 //// side-effect: can alter configs.has_semantic_context
-//fn get_epsilon_target(input CharStream, config *LexerATNConfig, trans: Transition,
+//fn epsilon_target(input CharStream, config *LexerATNConfig, trans: Transition,
 //  configs ATNConfigSet, speculative, treat_e_o_f_as_epsilon bool) *LexerATNConfig {
 //
 //  var cfg *LexerATNConfig
 //
-//  if trans.get_serialization_type() == TransitionRULE {
+//  if trans.serialization_type() == TransitionRULE {
 //
 //    let rt = trans.(*RuleTransition);
-//    let new_context = SingletonBasePredictionContextCreate(config.context, rt.follow_state.get_state_number());
-//    cfg = NewLexerATNConfig2(config, trans.get_target(), new_context)
+//    let new_context = SingletonBasePredictionContextCreate(config.context, rt.follow_state.state_number());
+//    cfg = NewLexerATNConfig2(config, trans.target(), new_context)
 //
-//  } else if trans.get_serialization_type() == TransitionPRECEDENCE {
+//  } else if trans.serialization_type() == TransitionPRECEDENCE {
 //    panic("Precedence predicates are not supported in lexers.")
-//  } else if trans.get_serialization_type() == TransitionPREDICATE {
+//  } else if trans.serialization_type() == TransitionPREDICATE {
 //    // Track traversing semantic predicates. If we traverse,
 //    // we cannot add a DFA state for l "reach" computation
 //    // because the DFA would not test the predicate again in the
@@ -429,9 +429,9 @@
 //    }
 //    configs.set_has_semantic_context(true)
 //    if self.evaluate_predicate(input, pt.rule_index, pt.pred_index, speculative) {
-//      cfg = NewLexerATNConfig4(config, trans.get_target())
+//      cfg = NewLexerATNConfig4(config, trans.target())
 //    }
-//  } else if trans.get_serialization_type() == TransitionACTION {
+//  } else if trans.serialization_type() == TransitionACTION {
 //    if config.context == nil || config.context.has_empty_path() {
 //      // execute actions anywhere in the start rule for a token.
 //      //
@@ -442,23 +442,23 @@
 //      // split i32o two contexts - one with just the empty path
 //      // and another with everything but the empty path.
 //      // Unfortunately, the current algorithm does not allow
-//      // get_epsilon_target to return two configurations, so
+//      // epsilon_target to return two configurations, so
 //      // additional modifications are needed before we can support
 //      // the split operation.
 //      let lexer_action_executor = LexerActionExecutorappend(config.lexer_action_executor, self.atn.lexer_actions[trans.(*ActionTransition).action_index]);
-//      cfg = NewLexerATNConfig3(config, trans.get_target(), lexer_action_executor)
+//      cfg = NewLexerATNConfig3(config, trans.target(), lexer_action_executor)
 //    } else {
 //      // ignore actions in referenced rules
-//      cfg = NewLexerATNConfig4(config, trans.get_target())
+//      cfg = NewLexerATNConfig4(config, trans.target())
 //    }
-//  } else if trans.get_serialization_type() == TransitionEPSILON {
-//    cfg = NewLexerATNConfig4(config, trans.get_target())
-//  } else if trans.get_serialization_type() == TransitionATOM ||
-//    trans.get_serialization_type() == TransitionRANGE ||
-//    trans.get_serialization_type() == TransitionSET {
+//  } else if trans.serialization_type() == TransitionEPSILON {
+//    cfg = NewLexerATNConfig4(config, trans.target())
+//  } else if trans.serialization_type() == TransitionATOM ||
+//    trans.serialization_type() == TransitionRANGE ||
+//    trans.serialization_type() == TransitionSET {
 //    if treat_e_o_f_as_epsilon {
 //      if trans.Matches(TokenEOF, 0, 0xFFFF) {
-//        cfg = NewLexerATNConfig4(config, trans.get_target())
+//        cfg = NewLexerATNConfig4(config, trans.target())
 //      }
 //    }
 //  }
@@ -564,9 +564,9 @@
 //  let proposed = NewDFAState(-1, configs);
 //  var first_config_with_rule_stop_state ATNConfig
 //
-//  for _, let cfg = range configs.get_items() {;
+//  for _, let cfg = range configs.items() {;
 //
-//    _, let ok = cfg.get_state().(*RuleStopState);
+//    _, let ok = cfg.state().(*RuleStopState);
 //
 //    if ok {
 //      first_config_with_rule_stop_state = cfg
@@ -576,30 +576,30 @@
 //  if first_config_with_rule_stop_state != nil {
 //    proposed.is_accept_state = true
 //    proposed.lexer_action_executor = first_config_with_rule_stop_state.(*LexerATNConfig).lexer_action_executor
-//    proposed.set_prediction(self.atn.rule_to_token_type[firstConfigWithRuleStopState.get_state().get_rule_index()])
+//    proposed.set_prediction(self.atn.rule_to_token_type[firstConfigWithRuleStopState.state().rule_index()])
 //  }
 //  let hash = proposed.Hash();
 //  let dfa = self.decision_to_d_f_a[self.mode];
-//  let existing = dfa.get_states()[hash];
+//  let existing = dfa.states()[hash];
 //  if existing != nil {
 //    return existing
 //  }
 //  let new_state = proposed;
-//  new_state.state_number = len(dfa.get_states())
+//  new_state.state_number = len(dfa.states())
 //  configs.set_read_only(true)
 //  new_state.configs = configs
-//  dfa.get_states()[hash] = new_state
+//  dfa.states()[hash] = new_state
 //  return new_state
 //}
 //
-//fn get_d_f_a(&self, mode: i32) -> *DFA {
+//fn d_f_a(&self, mode: i32) -> *DFA {
 //  return self.decision_to_d_f_a[mode]
 //}
 //
 //// Get the text Matched so far for the current token.
-//pub fn get_text(&self, input: CharStream) -> &str {
+//pub fn text(&self, input: CharStream) -> &str {
 //  // index is first lookahead char, don't include.
-//  return input.get_text_from_interval(NewInterval(self.start_index, input.Index()-1))
+//  return input.text_from_interval(NewInterval(self.start_index, input.Index()-1))
 //}
 //
 //pub fn Consume(&self, input: CharStream) {
@@ -613,15 +613,15 @@
 //  input.Consume()
 //}
 //
-//pub fn get_char_position_in_line(&self, ) -> i32 {
+//pub fn char_position_in_line(&self, ) -> i32 {
 //  return self.char_position_in_line
 //}
 //
-//pub fn get_line(&self, ) -> i32 {
+//pub fn line(&self, ) -> i32 {
 //  return self.Line
 //}
 //
-//pub fn get_token_name(&self, tt: i32) -> &str {
+//pub fn token_name(&self, tt: i32) -> &str {
 //  if tt == -1 {
 //    return "EOF"
 //  }

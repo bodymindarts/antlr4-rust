@@ -63,23 +63,23 @@
 //  self.listeners = make([]ErrorListener, 0)
 //}
 //
-//pub fn get_rule_names(&self, ) -> []string {
+//pub fn rule_names(&self, ) -> []string {
 //  return self.rule_names
 //}
 //
-//pub fn get_token_names(&self, ) -> []string {
+//pub fn token_names(&self, ) -> []string {
 //  return self.literal_names
 //}
 //
-//pub fn get_symbolic_names(&self, ) -> []string {
+//pub fn symbolic_names(&self, ) -> []string {
 //  return self.symbolic_names
 //}
 //
-//pub fn get_literal_names(&self, ) -> []string {
+//pub fn literal_names(&self, ) -> []string {
 //  return self.literal_names
 //}
 //
-//pub fn get_state(&self, ) -> i32 {
+//pub fn state(&self, ) -> i32 {
 //  return self.state
 //}
 //
@@ -87,8 +87,8 @@
 //  self.state = v
 //}
 //
-////pub fn get_token_type_map(&self, ) {
-////    var token_names = self.get_token_names()
+////pub fn token_type_map(&self, ) {
+////    var token_names = self.token_names()
 ////    if (tokenNames==nil) {
 ////        panic("The current recognizer does not provide a list of token names.")
 ////    }
@@ -105,10 +105,10 @@
 ////
 //// <p>Used for XPath and tree pattern compilation.</p>
 ////
-//pub fn get_rule_index_map(&self, ) -> map[string]int {
+//pub fn rule_index_map(&self, ) -> map[string]int {
 //
 //  panic("Method not defined!")
-//  //    var rule_names = self.get_rule_names()
+//  //    var rule_names = self.rule_names()
 //  //    if (ruleNames==nil) {
 //  //        panic("The current recognizer does not provide a list of rule names.")
 //  //    }
@@ -121,9 +121,9 @@
 //  //    return result
 //}
 //
-//pub fn get_token_type(&self, token_name: &str) -> i32 {
+//pub fn token_type(&self, token_name: &str) -> i32 {
 //  panic("Method not defined!")
-//  //    var ttype = self.get_token_type_map()[tokenName]
+//  //    var ttype = self.token_type_map()[tokenName]
 //  //    if (ttype !=nil) {
 //  //        return ttype
 //  //    } else {
@@ -131,20 +131,20 @@
 //  //    }
 //}
 //
-////pub fn get_token_type_map(&self, ) -> map[string]int {
-////    Vocabulary vocabulary = get_vocabulary()
+////pub fn token_type_map(&self, ) -> map[string]int {
+////    Vocabulary vocabulary = vocabulary()
 ////
 ////    Synchronized (tokenTypeMapCache) {
 ////        Map<String, Integer> result = token_type_map_cache.Get(vocabulary)
 ////        if (result == null) {
 ////            result = new HashMap<String, Integer>()
 ////            for (int i = 0; i < GetATN().max_token_type; i++) {
-////                String literal_name = vocabulary.get_literal_name(i)
+////                String literal_name = vocabulary.literal_name(i)
 ////                if (literalName != null) {
 ////                    result.put(literalName, i)
 ////                }
 ////
-////                String symbolic_name = vocabulary.get_symbolic_name(i)
+////                String symbolic_name = vocabulary.symbolic_name(i)
 ////                if (symbolicName != null) {
 ////                    result.put(symbolicName, i)
 ////                }
@@ -160,9 +160,9 @@
 ////}
 //
 //// What is the error header, normally line/character position information?//
-//pub fn get_error_header(&self, e: RecognitionException) -> &str {
-//  let line = self.get_offending_token().get_line();
-//  let column = self.get_offending_token().get_column();
+//pub fn error_header(&self, e: RecognitionException) -> &str {
+//  let line = self.offending_token().line();
+//  let column = self.offending_token().column();
 //  return "line " + strconv.Itoa(line) + ":" + strconv.Itoa(column)
 //}
 //
@@ -179,16 +179,16 @@
 //// feature when necessary. For example, see
 //// {@link DefaultErrorStrategy//GetTokenErrorDisplay}.
 ////
-//pub fn get_token_error_display(&self, t: Token) -> &str {
+//pub fn token_error_display(&self, t: Token) -> &str {
 //  if t == nil {
 //    return "<no token>"
 //  }
-//  let s = self.get_text();
+//  let s = self.text();
 //  if s == "" {
-//    if self.get_token_type() == TokenEOF {
+//    if self.token_type() == TokenEOF {
 //      s = "<EOF>"
 //    } else {
-//      s = "<" + strconv.Itoa(self.get_token_type()) + ">"
+//      s = "<" + strconv.Itoa(self.token_type()) + ">"
 //    }
 //  }
 //  s = &strs.Replace(s, "\t", "\\t", -1)
@@ -198,7 +198,7 @@
 //  return "'" + s + "'"
 //}
 //
-//pub fn get_error_listener_dispatch(&self, ) -> ErrorListener {
+//pub fn error_listener_dispatch(&self, ) -> ErrorListener {
 //  return NewProxyErrorListener(self.listeners)
 //}
 //

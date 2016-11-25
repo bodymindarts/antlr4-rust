@@ -7,7 +7,7 @@
 //// CommonTokenStream is an implementation of TokenStream that loads tokens from
 //// a TokenSource on-demand and places the tokens in a buffer to provide access
 //// to any previous token by index. This token stream ignores the value of
-//// Token.get_channel. If your parser requires the token stream filter tokens to
+//// Token.channel. If your parser requires the token stream filter tokens to
 //// only those on a particular channel, such as Token.d_e_f_a_u_lT__c_h_a_nNEL or
 //// Token.h_i_d_d_e_n__c_h_a_nNEL, use a filtering token stream such a CommonTokenStream.
 //pub struct CommonTokenStream {
@@ -49,7 +49,7 @@
 //  }
 //}
 //
-//pub fn get_all_tokens(&self, ) -> []Token {
+//pub fn all_tokens(&self, ) -> []Token {
 //  return self.tokens
 //}
 //
@@ -126,7 +126,7 @@
 //    self.set_token_index(len(self.tokens))
 //    self.tokens = append(self.tokens, t)
 //
-//    if self.get_token_type() == TokenEOF {
+//    if self.token_type() == TokenEOF {
 //      self.fetched_e_o_f = true
 //
 //      return i + 1
@@ -137,7 +137,7 @@
 //}
 //
 //// GetTokens gets all tokens from start to stop inclusive.
-//pub fn get_tokens(&self, start i32, stop: i32, types *IntervalSet) -> []Token {
+//pub fn tokens(&self, start i32, stop: i32, types *IntervalSet) -> []Token {
 //  if start < 0 || stop < 0 {
 //    return nil
 //  }
@@ -153,11 +153,11 @@
 //  for let i = start; i < stop; i++ {;
 //    let t = self.tokens[i];
 //
-//    if self.get_token_type() == TokenEOF {
+//    if self.token_type() == TokenEOF {
 //      break
 //    }
 //
-//    if types == nil || types.contains(self.get_token_type()) {
+//    if types == nil || types.contains(self.token_type()) {
 //      subset = append(subset, t)
 //    }
 //  }
@@ -166,7 +166,7 @@
 //}
 //
 //pub fn l_a(&self, i: i32) -> i32 {
-//  return self.l_t(i).get_token_type()
+//  return self.l_t(i).token_type()
 //}
 //
 //fn lazy_init(&self, ) {
@@ -180,7 +180,7 @@
 //  self.index = self.adjust_seek_index(0)
 //}
 //
-//pub fn get_token_source(&self, ) -> TokenSource {
+//pub fn token_source(&self, ) -> TokenSource {
 //  return self.token_source
 //}
 //
@@ -203,8 +203,8 @@
 //
 //  let token = self.tokens[i];
 //
-//  for token.get_channel() != self.channel {
-//    if token.get_token_type() == TokenEOF {
+//  for token.channel() != self.channel {
+//    if token.token_type() == TokenEOF {
 //      return -1
 //    }
 //
@@ -220,17 +220,17 @@
 //// given a starting index. Returns i if tokens[i] is on channel. Returns -1 if
 //// there are no tokens on channel between i and 0.
 //fn previous_token_on_channel(&self, i, channel: i32) -> i32 {
-//  for i >= 0 && self.tokens[i].get_channel() != channel {
+//  for i >= 0 && self.tokens[i].channel() != channel {
 //    i--
 //  }
 //
 //  return i
 //}
 //
-//// get_hidden_tokens_to_right collects all tokens on a specified channel to the
+//// hidden_tokens_to_right collects all tokens on a specified channel to the
 //// right of the current token up until we see a token on DEFAULT__t_o_k_eN__c_h_a_nNEL
 //// or EOF. If channel is -1, it finds any non-default channel token.
-//fn get_hidden_tokens_to_right(&self, token_index, channel: i32) -> []Token {
+//fn hidden_tokens_to_right(&self, token_index, channel: i32) -> []Token {
 //  self.lazy_init()
 //
 //  if token_index < 0 || token_index >= len(self.tokens) {
@@ -252,10 +252,10 @@
 //  return self.filter_for_channel(from, to, channel)
 //}
 //
-//// get_hidden_tokens_to_left collects all tokens on channel to the left of the
+//// hidden_tokens_to_left collects all tokens on channel to the left of the
 //// current token until we see a token on DEFAULT__t_o_k_eN__c_h_a_nNEL. If channel is
 //// -1, it finds any non default channel token.
-//fn get_hidden_tokens_to_left(&self, token_index, channel: i32) -> []Token {
+//fn hidden_tokens_to_left(&self, token_index, channel: i32) -> []Token {
 //  self.lazy_init()
 //
 //  if token_index < 0 || token_index >= len(self.tokens) {
@@ -282,10 +282,10 @@
 //    let t = self.tokens[i];
 //
 //    if channel == -1 {
-//      if self.get_channel() != LexerDefaultTokenChannel {
+//      if self.channel() != LexerDefaultTokenChannel {
 //        hidden = append(hidden, t)
 //      }
-//    } else if self.get_channel() == channel {
+//    } else if self.channel() == channel {
 //      hidden = append(hidden, t)
 //    }
 //  }
@@ -297,8 +297,8 @@
 //  return hidden
 //}
 //
-//pub fn get_source_name(&self, ) -> &str {
-//  return self.token_source.get_source_name()
+//pub fn source_name(&self, ) -> &str {
+//  return self.token_source.source_name()
 //}
 //
 //pub fn Size(&self, ) -> i32 {
@@ -309,23 +309,23 @@
 //  return self.index
 //}
 //
-//pub fn get_all_text(&self, ) -> &str {
-//  return self.get_text_from_interval(nil)
+//pub fn all_text(&self, ) -> &str {
+//  return self.text_from_interval(nil)
 //}
 //
-//pub fn get_text_from_tokens(&self, start, end: Token) -> &str {
+//pub fn text_from_tokens(&self, start, end: Token) -> &str {
 //  if start == nil || end == nil {
 //    return ""
 //  }
 //
-//  return self.get_text_from_interval(NewInterval(start.get_token_index(), end.get_token_index()))
+//  return self.text_from_interval(NewInterval(start.token_index(), end.token_index()))
 //}
 //
-//pub fn get_text_from_rule_context(&self, interval: RuleContext) -> &str {
-//  return self.get_text_from_interval(interval.get_source_interval())
+//pub fn text_from_rule_context(&self, interval: RuleContext) -> &str {
+//  return self.text_from_interval(interval.source_interval())
 //}
 //
-//pub fn get_text_from_interval(&self, interval *Interval) -> &str {
+//pub fn text_from_interval(&self, interval *Interval) -> &str {
 //  self.lazy_init()
 //  self.Fill()
 //
@@ -349,11 +349,11 @@
 //  for let i = start; i < stop+1; i++ {;
 //    let t = self.tokens[i];
 //
-//    if self.get_token_type() == TokenEOF {
+//    if self.token_type() == TokenEOF {
 //      break
 //    }
 //
-//    s += self.get_text()
+//    s += self.text()
 //  }
 //
 //  return s
@@ -421,8 +421,8 @@
 //  return self.tokens[i]
 //}
 //
-//// get_number_of_on_channel_tokens counts EOF once.
-//fn get_number_of_on_channel_tokens(&self, ) -> i32 {
+//// number_of_on_channel_tokens counts EOF once.
+//fn number_of_on_channel_tokens(&self, ) -> i32 {
 //  var n i32
 //
 //  self.Fill()
@@ -430,11 +430,11 @@
 //  for let i = 0; i < len(self.tokens); i++ {;
 //    let t = self.tokens[i];
 //
-//    if self.get_channel() == self.channel {
+//    if self.channel() == self.channel {
 //      n++
 //    }
 //
-//    if self.get_token_type() == TokenEOF {
+//    if self.token_type() == TokenEOF {
 //      break
 //    }
 //  }

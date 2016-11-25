@@ -134,15 +134,15 @@
 //  self.Interpreter.reset()
 //}
 //
-//pub fn get_interpreter(&self, ) -> ILexerATNSimulator {
+//pub fn interpreter(&self, ) -> ILexerATNSimulator {
 //  return self.Interpreter
 //}
 //
-//pub fn get_input_stream(&self, ) -> CharStream {
+//pub fn input_stream(&self, ) -> CharStream {
 //  return self.input
 //}
 //
-//pub fn get_source_name(&self, ) -> &str {
+//pub fn source_name(&self, ) -> &str {
 //  return self.grammar_file_name
 //}
 //
@@ -150,7 +150,7 @@
 //  self.channel = v
 //}
 //
-//pub fn get_token_factory(&self, ) -> TokenFactory {
+//pub fn token_factory(&self, ) -> TokenFactory {
 //  return self.factory
 //}
 //
@@ -195,8 +195,8 @@
 //    self.token = nil
 //    self.channel = TokenDefaultChannel
 //    self.token_start_char_index = self.input.Index()
-//    self.token_start_column = self.Interpreter.get_char_position_in_line()
-//    self.token_start_line = self.Interpreter.get_line()
+//    self.token_start_column = self.Interpreter.char_position_in_line()
+//    self.token_start_line = self.Interpreter.line()
 //    self.text = ""
 //    let continue_outer = false;
 //    for {
@@ -298,28 +298,28 @@
 //// custom Token objects or provide a Newfactory.
 //// /
 //pub fn Emit(&self, ) -> Token {
-//  let t = self.factory.Create(self.token_factory_source_pair, self.thetype, self.text, self.channel, self.token_start_char_index, self.get_char_index()-1, self.token_start_line, self.token_start_column);
+//  let t = self.factory.Create(self.token_factory_source_pair, self.thetype, self.text, self.channel, self.token_start_char_index, self.char_index()-1, self.token_start_line, self.token_start_column);
 //  self.emit_token(t)
 //  return t
 //}
 //
 //pub fn emit_e_o_f(&self, ) -> Token {
-//  let cpos = self.get_char_position_in_line();
-//  let lpos = self.get_line();
+//  let cpos = self.char_position_in_line();
+//  let lpos = self.line();
 //  let eof = self.factory.Create(self.token_factory_source_pair, TokenEOF, "", TokenDefaultChannel, self.input.Index(), self.input.Index()-1, lpos, cpos);
 //  self.emit_token(eof)
 //  return eof
 //}
 //
-//pub fn get_char_position_in_line(&self, ) -> i32 {
-//  return self.Interpreter.get_char_position_in_line()
+//pub fn char_position_in_line(&self, ) -> i32 {
+//  return self.Interpreter.char_position_in_line()
 //}
 //
-//pub fn get_line(&self, ) -> i32 {
-//  return self.Interpreter.get_line()
+//pub fn line(&self, ) -> i32 {
+//  return self.Interpreter.line()
 //}
 //
-//pub fn get_type(&self, ) -> i32 {
+//pub fn type(&self, ) -> i32 {
 //  return self.thetype
 //}
 //
@@ -328,36 +328,36 @@
 //}
 //
 //// What is the index of the current character of lookahead?///
-//pub fn get_char_index(&self, ) -> i32 {
+//pub fn char_index(&self, ) -> i32 {
 //  return self.input.Index()
 //}
 //
 //// Return the text Matched so far for the current token or any text override.
 ////Set the complete text of l token it wipes any previous changes to the text.
-//pub fn get_text(&self, ) -> &str {
+//pub fn text(&self, ) -> &str {
 //  if self.text != "" {
 //    return self.text
 //  }
 //
-//  return self.Interpreter.get_text(self.input)
+//  return self.Interpreter.text(self.input)
 //}
 //
 //pub fn set_text(&self, text: &str) {
 //  self.text = text
 //}
 //
-//pub fn get_a_t_n(&self, ) -> *ATN {
+//pub fn a_t_n(&self, ) -> *ATN {
 //  return self.Interpreter.a_t_n()
 //}
 //
 //// Return a list of all Token objects in input char stream.
 //// Forces load of all tokens. Does not include EOF token.
 //// /
-//fn get_all_tokens(&self, ) -> []Token {
+//fn all_tokens(&self, ) -> []Token {
 //  let vl = self.Virt;
 //  let tokens = make([]Token, 0);
 //  let t = vl.next_token();
-//  for self.get_token_type() != TokenEOF {
+//  for self.token_type() != TokenEOF {
 //    tokens = append(tokens, t)
 //    t = vl.next_token()
 //  }
@@ -367,13 +367,13 @@
 //fn notify_listeners(&self, e: RecognitionException) {
 //  let start = self.token_start_char_index;
 //  let stop = self.input.Index();
-//  let text = self.input.get_text_from_interval(NewInterval(start, stop));
+//  let text = self.input.text_from_interval(NewInterval(start, stop));
 //  let msg = "token recognition error at: '" + text + "'";
-//  let listener = self.get_error_listener_dispatch();
+//  let listener = self.error_listener_dispatch();
 //  listener.syntax_error(b, nil, self.token_start_line, self.token_start_column, msg, e)
 //}
 //
-//fn get_error_display_for_char(&self, c: rune) -> &str {
+//fn error_display_for_char(&self, c: rune) -> &str {
 //  if c == TokenEOF {
 //    return "<EOF>"
 //  } else if c == '\n' {
@@ -387,8 +387,8 @@
 //  }
 //}
 //
-//fn get_char_error_display(&self, c: rune) -> &str {
-//  return "'" + self.get_error_display_for_char(c) + "'"
+//fn char_error_display(&self, c: rune) -> &str {
+//  return "'" + self.error_display_for_char(c) + "'"
 //}
 //
 //// Lexers can normally Match any char in it's vocabulary after Matching

@@ -43,36 +43,36 @@
 //    return
 //  }
 //  let msg = "reportAmbiguity d=" +;
-//    self.get_decision_description(recognizer, dfa) +
+//    self.decision_description(recognizer, dfa) +
 //    ": ambig_alts=" +
-//    self.get_conflicting_alts(ambigAlts, configs).String() +
+//    self.conflicting_alts(ambigAlts, configs).String() +
 //    ", input='" +
-//    recognizer.get_token_stream().get_text_from_interval(NewInterval(startIndex, stop_index)) + "'"
+//    recognizer.token_stream().text_from_interval(NewInterval(startIndex, stop_index)) + "'"
 //  recognizer.notify_error_listeners(msg, nil, nil)
 //}
 //
 //pub fn report_attempting_full_context(&self, recognizer Parser, dfa *DFA, start_index, stop_index: i32, conflicting_alts *BitSet, configs: ATNConfigSet) {
 //
 //  let msg = "reportAttemptingFullContext d=" +;
-//    self.get_decision_description(recognizer, dfa) +
+//    self.decision_description(recognizer, dfa) +
 //    ", input='" +
-//    recognizer.get_token_stream().get_text_from_interval(NewInterval(startIndex, stop_index)) + "'"
+//    recognizer.token_stream().text_from_interval(NewInterval(startIndex, stop_index)) + "'"
 //  recognizer.notify_error_listeners(msg, nil, nil)
 //}
 //
 //pub fn report_context_sensitivity(&self, recognizer Parser, dfa *DFA, start_index, stop_index, prediction: i32, configs: ATNConfigSet) {
 //  let msg = "reportContextSensitivity d=" +;
-//    self.get_decision_description(recognizer, dfa) +
+//    self.decision_description(recognizer, dfa) +
 //    ", input='" +
-//    recognizer.get_token_stream().get_text_from_interval(NewInterval(startIndex, stop_index)) + "'"
+//    recognizer.token_stream().text_from_interval(NewInterval(startIndex, stop_index)) + "'"
 //  recognizer.notify_error_listeners(msg, nil, nil)
 //}
 //
-//fn get_decision_description(&self, recognizer: Parser, dfa *DFA) -> &str {
+//fn decision_description(&self, recognizer: Parser, dfa *DFA) -> &str {
 //  let decision = dfa.decision;
-//  let rule_index = dfa.atn_start_state.get_rule_index();
+//  let rule_index = dfa.atn_start_state.rule_index();
 //
-//  let rule_names = recognizer.get_rule_names();
+//  let rule_names = recognizer.rule_names();
 //  if rule_index < 0 || rule_index >= len(ruleNames) {
 //    return strconv.Itoa(decision)
 //  }
@@ -94,13 +94,13 @@
 //// @return Returns {@code ReportedAlts} if it is not {@code nil}, otherwise
 //// returns the set of alternatives represented in {@code configs}.
 ////
-//fn get_conflicting_alts(&self, ReportedAlts *BitSet, set: ATNConfigSet) -> *BitSet {
+//fn conflicting_alts(&self, ReportedAlts *BitSet, set: ATNConfigSet) -> *BitSet {
 //  if ReportedAlts != nil {
 //    return ReportedAlts
 //  }
 //  let result = NewBitSet();
-//  for _, let c = range set.get_items() {;
-//    result.add(self.get_alt())
+//  for _, let c = range set.items() {;
+//    result.add(self.alt())
 //  }
 //
 //  return result

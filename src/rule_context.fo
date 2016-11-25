@@ -61,7 +61,7 @@
 //  return rn
 //}
 //
-//pub fn get_base_rule_context(&self, ) -> *BaseRuleContext {
+//pub fn base_rule_context(&self, ) -> *BaseRuleContext {
 //  return b
 //}
 //
@@ -73,7 +73,7 @@
 //  }
 //}
 //
-//pub fn get_invoking_state(&self, ) -> i32 {
+//pub fn invoking_state(&self, ) -> i32 {
 //  return self.invoking_state
 //}
 //
@@ -81,11 +81,11 @@
 //  self.invoking_state = t
 //}
 //
-//pub fn get_rule_index(&self, ) -> i32 {
+//pub fn rule_index(&self, ) -> i32 {
 //  return self.rule_index
 //}
 //
-//pub fn get_alt_number(&self, ) -> i32 {
+//pub fn alt_number(&self, ) -> i32 {
 //  return ATNInvalidAltNumber
 //}
 //
@@ -105,6 +105,6 @@
 //// method.
 ////
 //
-//pub fn get_parent(&self, ) -> Tree {
+//pub fn parent(&self, ) -> Tree {
 //  return self.parent_ctx
 //}

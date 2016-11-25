@@ -11,9 +11,9 @@
 //  // constructing tokens to explicitly set the text. This is useful for cases
 //  // where the input stream might not be able to provide arbitrary substrings of
 //  // text from the input after the lexer creates a token (self.g. the
-//  // implementation of CharStream.get_text in UnbufferedCharStream panics an
+//  // implementation of CharStream.text in UnbufferedCharStream panics an
 //  // UnsupportedOperationException). Explicitly setting the token text allows
-//  // Token.get_text to be called at any time regardless of the input stream
+//  // Token.text to be called at any time regardless of the input stream
 //  // implementation.
 //  //
 //  // The default value is false to avoid the performance and memory overhead of
@@ -38,7 +38,7 @@
 //  if text != "" {
 //    self.set_text(text)
 //  } else if self.copy_text && source.char_stream != nil {
-//    self.set_text(source.char_stream.get_text_from_interval(NewInterval(start, stop)))
+//    self.set_text(source.char_stream.text_from_interval(NewInterval(start, stop)))
 //  }
 //
 //  return t

@@ -91,7 +91,7 @@
 //  var updated_lexer_actions []LexerAction
 //  for let i = 0; i < len(self.lexer_actions); i++ {;
 //    _, let ok = self.lexer_actions[i].(*LexerIndexedCustomAction);
-//    if self.lexer_actions[i].get_is_position_dependent() && !ok {
+//    if self.lexer_actions[i].is_position_dependent() && !ok {
 //      if updated_lexer_actions == nil {
 //        updated_lexer_actions = make([]LexerAction, 0)
 //
@@ -145,7 +145,7 @@
 //      input.Seek(startIndex + offset)
 //      lexer_action = la.lexer_action
 //      requires_seek = (startIndex + offset) != stop_index
-//    } else if lexer_action.get_is_position_dependent() {
+//    } else if lexer_action.is_position_dependent() {
 //      input.Seek(stopIndex)
 //      requires_seek = false
 //    }

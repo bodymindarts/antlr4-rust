@@ -27,11 +27,11 @@
 //  }
 //}
 //
-//// get_precedence_start_state gets the start state for the current precedence and
+//// precedence_start_state gets the start state for the current precedence and
 //// returns the start state corresponding to the specified precedence if a start
 //// state exists for the specified precedence and nil otherwise. d must be a
 //// precedence DFA. See also is_precedence_dfa.
-//fn get_precedence_start_state(&self, precedence: i32) -> *DFAState {
+//fn precedence_start_state(&self, precedence: i32) -> *DFAState {
 //  if !self.precedence_dfa {
 //    panic("only precedence DFAs may contain a precedence start state")
 //  }
@@ -89,7 +89,7 @@
 //  }
 //}
 //
-//pub fn get_states(&self, ) -> map[string]*DFAState {
+//pub fn states(&self, ) -> map[string]*DFAState {
 //  return self.states
 //}
 //

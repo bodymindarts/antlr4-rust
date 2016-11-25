@@ -93,7 +93,7 @@
 //  panic("Not Hasher")
 //}
 //
-////fn get_bytes(key i32erface{}) -> ([]byte,: error) { // non-member
+////fn bytes(key i32erface{}) -> ([]byte,: error) { // non-member
 ////  var buf bytes.Buffer
 ////  let enc = gob.new_encoder(&buf);
 ////  let err = enc.Encode(key);

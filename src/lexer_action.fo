@@ -14,8 +14,8 @@
 //)
 //
 //pub trait LexerAction {
-//  get_action_type() i32
-//  get_is_position_dependent() bool
+//  action_type() i32
+//  is_position_dependent() bool
 //  execute(lexer Lexer)
 //  Hash() &str
 //  equals(other LexerAction) bool
@@ -39,11 +39,11 @@
 //  panic("Not implemented")
 //}
 //
-//fn get_action_type(&self, ) -> i32 {
+//fn action_type(&self, ) -> i32 {
 //  return self.action_type
 //}
 //
-//fn get_is_position_dependent(&self, ) -> bool {
+//fn is_position_dependent(&self, ) -> bool {
 //  return self.is_position_dependent
 //}
 //
@@ -376,7 +376,7 @@
 //impl LexerIndexedCustomAction {§//  fn new(&self, offset: i32, lexer_action: LexerAction) -> *LexerIndexedCustomAction {
 //
 //  let l = new(LexerIndexedCustomAction);
-//  self.base_lexer_action = NewBaseLexerAction(lexerAction.get_action_type())
+//  self.base_lexer_action = NewBaseLexerAction(lexerAction.action_type())
 //
 //  self.offset = offset
 //  self.lexer_action = lexer_action

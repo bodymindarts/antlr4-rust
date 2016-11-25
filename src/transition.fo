@@ -15,11 +15,11 @@
 ////  ATN transitions.</p>
 //
 //pub trait Transition {
-//  get_target() ATNState
+//  target() ATNState
 //  set_target(ATNState)
-//  get_is_epsilon() bool
-//  get_label() *IntervalSet
-//  get_serialization_type() i32
+//  is_epsilon() bool
+//  label() *IntervalSet
+//  serialization_type() i32
 //  Matches(int, i32, i32) bool
 //}
 //
@@ -47,7 +47,7 @@
 //  return t
 //}
 //
-//fn get_target(&self, ) -> ATNState {
+//fn target(&self, ) -> ATNState {
 //  return self.target
 //}
 //
@@ -55,15 +55,15 @@
 //  self.target = s
 //}
 //
-//fn get_is_epsilon(&self, ) -> bool {
+//fn is_epsilon(&self, ) -> bool {
 //  return self.is_epsilon
 //}
 //
-//fn get_label(&self, ) -> *IntervalSet {
+//fn label(&self, ) -> *IntervalSet {
 //  return self.interval_set
 //}
 //
-//fn get_serialization_type(&self, ) -> i32 {
+//fn serialization_type(&self, ) -> i32 {
 //  return self.serialization_type
 //}
 //
@@ -278,7 +278,7 @@
 //  return false
 //}
 //
-//fn get_predicate(&self, ) -> *Predicate {
+//fn predicate(&self, ) -> *Predicate {
 //  return NewPredicate(self.rule_index, self.pred_index, self.is_ctx_dependent)
 //}
 //
@@ -408,7 +408,7 @@
 //  return false
 //}
 //
-//fn get_predicate(&self, ) -> *PrecedencePredicate {
+//fn predicate(&self, ) -> *PrecedencePredicate {
 //  return NewPrecedencePredicate(self.precedence)
 //}
 //

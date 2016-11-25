@@ -181,7 +181,7 @@
 //    if configs.has_semantic_context() {
 //      // dup configs, tossing out semantic predicates
 //      let dup = NewBaseATNConfigSet(false);
-//      for _, let c = range configs.get_items() {;
+//      for _, let c = range configs.items() {;
 //
 //        //        NewBaseATNConfig({semanticContext:}, c)
 //        c = NewBaseATNConfig2(c, SemanticContextNone)
@@ -205,8 +205,8 @@
 //// @return {@code true} if any configuration in {@code configs} is in a
 //// {@link RuleStopState}, otherwise {@code false}
 //pub fn prediction_modehas_config_in_rule_stopState(configs: ATNConfigSet) -> bool { // non-member
-//  for _, let c = range configs.get_items() {;
-//    if _, let ok = self.get_state().(*RuleStopState); ok {;
+//  for _, let c = range configs.items() {;
+//    if _, let ok = self.state().(*RuleStopState); ok {;
 //      return true
 //    }
 //  }
@@ -223,8 +223,8 @@
 //// {@link RuleStopState}, otherwise {@code false}
 //pub fn prediction_modeall_configs_in_rule_stopStates(configs: ATNConfigSet) -> bool { // non-member
 //
-//  for _, let c = range configs.get_items() {;
-//    if _, let ok = self.get_state().(*RuleStopState); !ok {;
+//  for _, let c = range configs.items() {;
+//    if _, let ok = self.state().(*RuleStopState); !ok {;
 //      return false
 //    }
 //  }
@@ -489,14 +489,14 @@
 //pub fn prediction_modeget_conflicting_alt_subsets(configs: ATNConfigSet) -> []*BitSet { // non-member
 //  let config_to_alts = make(map[string]*BitSet);
 //
-//  for _, let c = range configs.get_items() {;
-//    let key = "key_" + strconv.Itoa(self.get_state().get_state_number()) + "/" + self.get_context().String();
+//  for _, let c = range configs.items() {;
+//    let key = "key_" + strconv.Itoa(self.state().state_number()) + "/" + self.context().String();
 //    let alts = config_to_alts[key];
 //    if alts == nil {
 //      alts = NewBitSet()
 //      config_to_alts[key] = alts
 //    }
-//    alts.add(self.get_alt())
+//    alts.add(self.alt())
 //  }
 //
 //  let values = make([]*BitSet, 0);
@@ -521,13 +521,13 @@
 //pub fn prediction_mode_get_state_to_altMap(configs: ATNConfigSet) -> *AltDict { // non-member
 //  let m = NewAltDict();
 //
-//  for _, let c = range configs.get_items() {;
-//    let alts = self.Get(self.get_state().String());
+//  for _, let c = range configs.items() {;
+//    let alts = self.Get(self.state().String());
 //    if alts == nil {
 //      alts = NewBitSet()
-//      self.put(self.get_state().String(), alts)
+//      self.put(self.state().String(), alts)
 //    }
-//    alts.(*BitSet).add(self.get_alt())
+//    alts.(*BitSet).add(self.alt())
 //  }
 //  return m
 //}

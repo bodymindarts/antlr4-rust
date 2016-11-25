@@ -119,11 +119,11 @@
 //  return tn
 //}
 //
-//pub fn get_child(&self, i: i32) -> Tree {
+//pub fn child(&self, i: i32) -> Tree {
 //  return nil
 //}
 //
-//pub fn get_children(&self, ) -> []Tree {
+//pub fn children(&self, ) -> []Tree {
 //  return nil
 //}
 //
@@ -131,11 +131,11 @@
 //  panic("Cannot set children on terminal node")
 //}
 //
-//pub fn get_symbol(&self, ) -> Token {
+//pub fn symbol(&self, ) -> Token {
 //  return self.symbol
 //}
 //
-//pub fn get_parent(&self, ) -> Tree {
+//pub fn parent(&self, ) -> Tree {
 //  return self.parent_ctx
 //}
 //
@@ -143,19 +143,19 @@
 //  self.parent_ctx = tree.(RuleContext)
 //}
 //
-//pub fn get_payload(&self, ) -> i32erface{} {
+//pub fn payload(&self, ) -> i32erface{} {
 //  return self.symbol
 //}
 //
-//pub fn get_source_interval(&self, ) -> *Interval {
+//pub fn source_interval(&self, ) -> *Interval {
 //  if self.symbol == nil {
 //    return TreeInvalidInterval
 //  }
-//  let token_index = self.symbol.get_token_index();
+//  let token_index = self.symbol.token_index();
 //  return NewInterval(tokenIndex, token_index)
 //}
 //
-//pub fn get_child_count(&self, ) -> i32 {
+//pub fn child_count(&self, ) -> i32 {
 //  return 0
 //}
 //
@@ -163,16 +163,16 @@
 //  return self.visit_terminal(t)
 //}
 //
-//pub fn get_text(&self, ) -> &str {
-//  return self.symbol.get_text()
+//pub fn text(&self, ) -> &str {
+//  return self.symbol.text()
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  if self.symbol.get_token_type() == TokenEOF {
+//  if self.symbol.token_type() == TokenEOF {
 //    return "<EOF>"
 //  }
 //
-//  return self.symbol.get_text()
+//  return self.symbol.text()
 //}
 //
 //pub fn to_string_tree(&self, s []string, r: Recognizer) -> &str {
@@ -218,8 +218,8 @@
 //    listener.visit_terminal(tt)
 //  default:
 //    self.enter_rule(listener, t.(RuleNode))
-//    for let i = 0; i < self.get_child_count(); i++ {;
-//      let child = self.get_child(i);
+//    for let i = 0; i < self.child_count(); i++ {;
+//      let child = self.child(i);
 //      self.Walk(listener, child)
 //    }
 //    self.exit_rule(listener, t.(RuleNode))
@@ -233,13 +233,13 @@
 //// the rule specific. We to them in reverse order upon finishing the node.
 ////
 //pub fn enter_rule(&self, listener: ParseTreeListener, r: RuleNode) {
-//  let ctx = self.get_rule_context().(ParserRuleContext);
+//  let ctx = self.rule_context().(ParserRuleContext);
 //  listener.enter_every_rule(ctx)
 //  ctx.enter_rule(listener)
 //}
 //
 //pub fn exit_rule(&self, listener: ParseTreeListener, r: RuleNode) {
-//  let ctx = self.get_rule_context().(ParserRuleContext);
+//  let ctx = self.rule_context().(ParserRuleContext);
 //  ctx.exit_rule(listener)
 //  listener.exit_every_rule(ctx)
 //}
