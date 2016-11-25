@@ -8,6 +8,6 @@
 //  GetCharPositionInLine() i32
 //  GetInputStream() CharStream
 //  GetSourceName() &str
-//  setTokenFactory(factory TokenFactory)
+//  set_token_factory(factory TokenFactory)
 //  GetTokenFactory() TokenFactory
 //}

@@ -8,54 +8,54 @@
 //// not cause bloating of the {@link DFA} created for the lexer.</p>
 //
 //pub struct LexerActionExecutor {
-//  lexerActions     []LexerAction
-//  cachedHashString: &str
+//  lexer_actions     []LexerAction
+//  cached_hash_string: &str
 //}
 //
-//impl LexerActionExecutor {§//  pub fn new(&self, lexerActions []LexerAction) -> *LexerActionExecutor {
+//impl LexerActionExecutor {§//  pub fn new(&self, lexer_actions []LexerAction) -> *LexerActionExecutor {
 //
-//  if lexerActions == nil {
-//    lexerActions = make([]LexerAction, 0)
+//  if lexer_actions == nil {
+//    lexer_actions = make([]LexerAction, 0)
 //  }
 //
 //  let l = new(LexerActionExecutor);
 //
-//  l.lexerActions = lexerActions
+//  l.lexer_actions = lexer_actions
 //
 //  // Caches the result of {@link //hashCode} since the hash code is an element
 //  // of the performance-critical {@link LexerATNConfig//hashCode} operation.
 //
 //  var s &str
-//  for _, let a = range lexerActions {;
+//  for _, let a = range lexer_actions {;
 //    s += a.Hash()
 //  }
 //
-//  l.cachedHashString = s // "".join([str(la) for la in
+//  l.cached_hash_string = s // "".join([str(la) for la in
 //
 //  return l
 //}
 //
 //// Creates a {@link LexerActionExecutor} which executes the actions for
-//// the input {@code lexerActionExecutor} followed by a specified
-//// {@code lexerAction}.
+//// the input {@code lexer_action_executor} followed by a specified
+//// {@code lexer_action}.
 ////
-//// @param lexerActionExecutor The executor for actions already traversed by
+//// @param lexer_action_executor The executor for actions already traversed by
 //// the lexer while Matching a token within a particular
 //// {@link LexerATNConfig}. If this is {@code nil}, the method behaves as
 //// though it were an empty executor.
-//// @param lexerAction The lexer action to execute after the actions
-//// specified in {@code lexerActionExecutor}.
+//// @param lexer_action The lexer action to execute after the actions
+//// specified in {@code lexer_action_executor}.
 ////
 //// @return A {@link LexerActionExecutor} for executing the combine actions
-//// of {@code lexerActionExecutor} and {@code lexerAction}.
-//pub fn LexerActionExecutorappend(lexerActionExecutor *LexerActionExecutor, lexerAction: LexerAction) -> *LexerActionExecutor { // non-member
-//  if lexerActionExecutor == nil {
+//// of {@code lexer_action_executor} and {@code lexer_action}.
+//pub fn LexerActionExecutorappend(lexerActionExecutor *LexerActionExecutor, lexer_action: LexerAction) -> *LexerActionExecutor { // non-member
+//  if lexer_action_executor == nil {
 //    return NewLexerActionExecutor([]LexerAction{lexerAction})
 //  }
 //
-//  let lexerActions = append(lexerActionExecutor.lexerActions, lexerAction);
+//  let lexer_actions = append(lexerActionExecutor.lexer_actions, lexer_action);
 //
-//  //  let lexerActions = lexerActionExecutor.lexerActions.concat([ lexerAction ]);
+//  //  let lexer_actions = lexer_action_executor.lexer_actions.concat([ lexer_action ]);
 //  return NewLexerActionExecutor(lexerActions)
 //}
 //
@@ -87,23 +87,23 @@
 //// @return A {@link LexerActionExecutor} which stores input stream offsets
 //// for all position-dependent lexer actions.
 //// /
-//pub fn fixOffsetBeforeMatch(&self, offset: i32) -> *LexerActionExecutor {
-//  var updatedLexerActions []LexerAction
-//  for let i = 0; i < len(l.lexerActions); i++ {;
-//    _, let ok = l.lexerActions[i].(*LexerIndexedCustomAction);
-//    if l.lexerActions[i].getIsPositionDependent() && !ok {
-//      if updatedLexerActions == nil {
-//        updatedLexerActions = make([]LexerAction, 0)
+//pub fn fix_offset_before_match(&self, offset: i32) -> *LexerActionExecutor {
+//  var updated_lexer_actions []LexerAction
+//  for let i = 0; i < len(l.lexer_actions); i++ {;
+//    _, let ok = l.lexer_actions[i].(*LexerIndexedCustomAction);
+//    if l.lexer_actions[i].get_is_position_dependent() && !ok {
+//      if updated_lexer_actions == nil {
+//        updated_lexer_actions = make([]LexerAction, 0)
 //
-//        for _, let a = range l.lexerActions {;
-//          updatedLexerActions = append(updatedLexerActions, a)
+//        for _, let a = range l.lexer_actions {;
+//          updated_lexer_actions = append(updatedLexerActions, a)
 //        }
 //      }
 //
-//      updatedLexerActions[i] = NewLexerIndexedCustomAction(offset, l.lexerActions[i])
+//      updated_lexer_actions[i] = NewLexerIndexedCustomAction(offset, l.lexer_actions[i])
 //    }
 //  }
-//  if updatedLexerActions == nil {
+//  if updated_lexer_actions == nil {
 //    return l
 //  }
 //
@@ -124,37 +124,37 @@
 //// When l method is called, the current {@link IntStream//index} for
 //// {@code input} should be the start of the following token, i.e. 1
 //// character past the end of the current token.
-//// @param startIndex The token start index. This value may be passed to
+//// @param start_index The token start index. This value may be passed to
 //// {@link IntStream//seek} to set the {@code input} position to the beginning
 //// of the token.
 //// /
-//pub fn execute(&self, lexer Lexer, input: CharStream, startIndex: i32) {
-//  let requiresSeek = false;
-//  let stopIndex = input.Index();
+//pub fn execute(&self, lexer Lexer, input: CharStream, start_index: i32) {
+//  let requires_seek = false;
+//  let stop_index = input.Index();
 //
 //  defer func() {
-//    if requiresSeek {
+//    if requires_seek {
 //      input.Seek(stopIndex)
 //    }
 //  }()
 //
-//  for let i = 0; i < len(l.lexerActions); i++ {;
-//    let lexerAction = l.lexerActions[i];
-//    if la, let ok = lexerAction.(*LexerIndexedCustomAction); ok {;
+//  for let i = 0; i < len(l.lexer_actions); i++ {;
+//    let lexer_action = l.lexer_actions[i];
+//    if la, let ok = lexer_action.(*LexerIndexedCustomAction); ok {;
 //      let offset = la.offset;
 //      input.Seek(startIndex + offset)
-//      lexerAction = la.lexerAction
-//      requiresSeek = (startIndex + offset) != stopIndex
-//    } else if lexerAction.getIsPositionDependent() {
+//      lexer_action = la.lexer_action
+//      requires_seek = (startIndex + offset) != stop_index
+//    } else if lexer_action.get_is_position_dependent() {
 //      input.Seek(stopIndex)
-//      requiresSeek = false
+//      requires_seek = false
 //    }
-//    lexerAction.execute(lexer)
+//    lexer_action.execute(lexer)
 //  }
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  return l.cachedHashString
+//  return l.cached_hash_string
 //}
 //
 //pub fn equals(&self, other i32erface{}) -> bool {
@@ -163,7 +163,7 @@
 //  } else if _, let ok = other.(*LexerActionExecutor); !ok {;
 //    return false
 //  } else {
-//    return l.cachedHashString == other.(*LexerActionExecutor).cachedHashString &&
-//      &l.lexerActions == &other.(*LexerActionExecutor).lexerActions
+//    return l.cached_hash_string == other.(*LexerActionExecutor).cached_hash_string &&
+//      &l.lexer_actions == &other.(*LexerActionExecutor).lexer_actions
 //  }
 //}

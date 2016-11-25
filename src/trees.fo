@@ -7,13 +7,13 @@
 //// Print out a whole tree in LISP form. {@link //getNodeText} is used on the
 ////  node payloads to get the text for the nodes.  Detect
 ////  parse trees and extract data appropriately.
-//pub fn TreesStringTree(tree: Tree, ruleNames []string, recog: Recognizer) -> &str { // non-member
+//pub fn TreesStringTree(tree: Tree, rule_names []string, recog: Recognizer) -> &str { // non-member
 //
 //  if recog != nil {
-//    ruleNames = recog.GetRuleNames()
+//    rule_names = recog.GetRuleNames()
 //  }
 //
-//  let s = TreesGetNodeText(tree, ruleNames, nil);
+//  let s = TreesGetNodeText(tree, rule_names, nil);
 //
 //  s = EscapeWhitespace(s, false)
 //  let c = tree.GetChildCount();
@@ -22,32 +22,32 @@
 //  }
 //  let res = "(" + s + " ";
 //  if c > 0 {
-//    s = TreesStringTree(tree.GetChild(0), ruleNames, nil)
+//    s = TreesStringTree(tree.GetChild(0), rule_names, nil)
 //    res += s
 //  }
 //  for let i = 1; i < c; i++ {;
-//    s = TreesStringTree(tree.GetChild(i), ruleNames, nil)
+//    s = TreesStringTree(tree.GetChild(i), rule_names, nil)
 //    res += (" " + s)
 //  }
 //  res += ")"
 //  return res
 //}
 //
-//pub fn TreesGetNodeText(t: Tree, ruleNames []string, recog: Parser) -> &str { // non-member
+//pub fn TreesGetNodeText(t: Tree, rule_names []string, recog: Parser) -> &str { // non-member
 //  if recog != nil {
-//    ruleNames = recog.GetRuleNames()
+//    rule_names = recog.GetRuleNames()
 //  }
 //
-//  if ruleNames != nil {
+//  if rule_names != nil {
 //    switch let t2 = t.(type) {;
 //    case RuleNode:
 //      let t3 = t2.GetRuleContext();
-//      let altNumber = t3.GetAltNumber();
+//      let alt_number = t3.GetAltNumber();
 //
-//      if altNumber != ATNInvalidAltNumber {
-//        return fmt.Sprintf("%s:%d", ruleNames[t3.GetRuleIndex()], altNumber)
+//      if alt_number != ATNInvalidAltNumber {
+//        return fmt.Sprintf("%s:%d", rule_names[t3.GetRuleIndex()], alt_number)
 //      }
-//      return ruleNames[t3.GetRuleIndex()]
+//      return rule_names[t3.GetRuleIndex()]
 //    case ErrorNode:
 //      return fmt.Sprint(t2)
 //    case TerminalNode:
@@ -93,23 +93,23 @@
 //  return TreesfindAllNodes(t, ttype, true)
 //}
 //
-//pub fn TreesfindAllRuleNodes(t: ParseTree, ruleIndex: i32) -> []ParseTree { // non-member
-//  return TreesfindAllNodes(t, ruleIndex, false)
+//pub fn TreesfindAllRuleNodes(t: ParseTree, rule_index: i32) -> []ParseTree { // non-member
+//  return TreesfindAllNodes(t, rule_index, false)
 //}
 //
-//pub fn TreesfindAllNodes(t ParseTree, index: i32, findTokens: bool) -> []ParseTree { // non-member
+//pub fn TreesfindAllNodes(t ParseTree, index: i32, find_tokens: bool) -> []ParseTree { // non-member
 //  let nodes = make([]ParseTree, 0);
-//  TreesFindAllNodes(t, index, findTokens, nodes)
+//  TreesFindAllNodes(t, index, find_tokens, nodes)
 //  return nodes
 //}
 //
-//pub fn TreesFindAllNodes(t ParseTree, index i32, findTokens: bool, nodes []ParseTree) { // non-member
+//pub fn TreesFindAllNodes(t ParseTree, index i32, find_tokens: bool, nodes []ParseTree) { // non-member
 //  // check this node (the root) first
 //
 //  t2, let ok = t.(TerminalNode);
 //  t3, let ok2 = t.(ParserRuleContext);
 //
-//  if findTokens && ok {
+//  if find_tokens && ok {
 //    if t2.GetSymbol().GetTokenType() == index {
 //      nodes = append(nodes, t2)
 //    }
@@ -120,7 +120,7 @@
 //  }
 //  // check children
 //  for let i = 0; i < t.GetChildCount(); i++ {;
-//    TreesFindAllNodes(t.GetChild(i).(ParseTree), index, findTokens, nodes)
+//    TreesFindAllNodes(t.GetChild(i).(ParseTree), index, find_tokens, nodes)
 //  }
 //}
 //

@@ -41,17 +41,17 @@
 //  return rec
 //}
 //
-//var tokenTypeMapCache = make(map[string]int)
-//var ruleIndexMapCache = make(map[string]int)
+//var token_type_map_cache = make(map[string]int)
+//var rule_index_map_cache = make(map[string]int)
 //
-//pub fn checkVersion(&self, toolVersion: &str) {
-//  let runtimeVersion = "4.6";
-//  if runtimeVersion != toolVersion {
-//    fmt.Println("ANTLR runtime and generated code versions disagree: " + runtimeVersion + "!=" + toolVersion)
+//pub fn check_version(&self, tool_version: &str) {
+//  let runtime_version = "4.6";
+//  if runtime_version != tool_version {
+//    fmt.Println("ANTLR runtime and generated code versions disagree: " + runtime_version + "!=" + tool_version)
 //  }
 //}
 //
-//pub fn Action(&self, context RuleContext,: ruleIndex, actionIndex: i32) {
+//pub fn Action(&self, context RuleContext,: rule_index, action_index: i32) {
 //  panic("action not implemented on Recognizer!")
 //}
 //
@@ -88,15 +88,15 @@
 //}
 //
 ////pub fn GetTokenTypeMap(&self, ) {
-////    var tokenNames = b.GetTokenNames()
+////    var token_names = b.GetTokenNames()
 ////    if (tokenNames==nil) {
 ////        panic("The current recognizer does not provide a list of token names.")
 ////    }
-////    var result = tokenTypeMapCache[tokenNames]
+////    var result = token_type_map_cache[tokenNames]
 ////    if(result==nil) {
-////        result = tokenNames.reduce(function(o, k, i) { o[k] = i })
+////        result = token_names.reduce(function(o, k, i) { o[k] = i })
 ////        result.EOF = TokenEOF
-////        tokenTypeMapCache[tokenNames] = result
+////        token_type_map_cache[tokenNames] = result
 ////    }
 ////    return result
 ////}
@@ -108,20 +108,20 @@
 //pub fn GetRuleIndexMap(&self, ) -> map[string]int {
 //
 //  panic("Method not defined!")
-//  //    var ruleNames = b.GetRuleNames()
+//  //    var rule_names = b.GetRuleNames()
 //  //    if (ruleNames==nil) {
 //  //        panic("The current recognizer does not provide a list of rule names.")
 //  //    }
 //  //
-//  //    var result = ruleIndexMapCache[ruleNames]
+//  //    var result = rule_index_map_cache[ruleNames]
 //  //    if(result==nil) {
-//  //        result = ruleNames.reduce(function(o, k, i) { o[k] = i })
-//  //        ruleIndexMapCache[ruleNames] = result
+//  //        result = rule_names.reduce(function(o, k, i) { o[k] = i })
+//  //        rule_index_map_cache[ruleNames] = result
 //  //    }
 //  //    return result
 //}
 //
-//pub fn GetTokenType(&self, tokenName: &str) -> i32 {
+//pub fn GetTokenType(&self, token_name: &str) -> i32 {
 //  panic("Method not defined!")
 //  //    var ttype = b.GetTokenTypeMap()[tokenName]
 //  //    if (ttype !=nil) {
@@ -132,27 +132,27 @@
 //}
 //
 ////pub fn GetTokenTypeMap(&self, ) -> map[string]int {
-////    Vocabulary vocabulary = getVocabulary()
+////    Vocabulary vocabulary = get_vocabulary()
 ////
 ////    Synchronized (tokenTypeMapCache) {
-////        Map<String, Integer> result = tokenTypeMapCache.Get(vocabulary)
+////        Map<String, Integer> result = token_type_map_cache.Get(vocabulary)
 ////        if (result == null) {
 ////            result = new HashMap<String, Integer>()
-////            for (int i = 0; i < GetATN().maxTokenType; i++) {
-////                String literalName = vocabulary.getLiteralName(i)
+////            for (int i = 0; i < GetATN().max_token_type; i++) {
+////                String literal_name = vocabulary.get_literal_name(i)
 ////                if (literalName != null) {
 ////                    result.put(literalName, i)
 ////                }
 ////
-////                String symbolicName = vocabulary.GetSymbolicName(i)
+////                String symbolic_name = vocabulary.GetSymbolicName(i)
 ////                if (symbolicName != null) {
 ////                    result.put(symbolicName, i)
 ////                }
 ////            }
 ////
 ////            result.put("EOF", Token.EOF)
-////            result = Collections.unmodifiableMap(result)
-////            tokenTypeMapCache.put(vocabulary, result)
+////            result = Collections.unmodifiable_map(result)
+////            token_type_map_cache.put(vocabulary, result)
 ////        }
 ////
 ////        return result
@@ -204,7 +204,7 @@
 //
 //// subclass needs to override these if there are sempreds or actions
 //// that the ATN i32erp needs to execute
-//pub fn Sempred(&self, localctx RuleContext, ruleIndex: i32, actionIndex: i32) -> bool {
+//pub fn Sempred(&self, localctx RuleContext, rule_index: i32, action_index: i32) -> bool {
 //  return true
 //}
 //

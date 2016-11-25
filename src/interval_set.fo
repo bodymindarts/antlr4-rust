@@ -31,7 +31,7 @@ impl Interval {
 }
 //pub struct IntervalSet {
 //  intervals []*Interval
-//  readOnly:  bool
+//  read_only:  bool
 //}
 //
 //impl IntervalSet {§//  pub fn new(&self, ) -> *IntervalSet {
@@ -39,7 +39,7 @@ impl Interval {
 //  let i = new(IntervalSet);
 //
 //  i.intervals = nil
-//  i.readOnly = false
+//  i.read_only = false
 //
 //  return i
 //}
@@ -52,15 +52,15 @@ impl Interval {
 //  return i.intervals[0].start
 //}
 //
-//pub fn addOne(&self, v: i32) {
-//  i.addInterval(NewInterval(v, v+1))
+//pub fn add_one(&self, v: i32) {
+//  i.add_interval(NewInterval(v, v+1))
 //}
 //
-//pub fn addRange(&self, l, h: i32) {
-//  i.addInterval(NewInterval(l, h+1))
+//pub fn add_range(&self, l, h: i32) {
+//  i.add_interval(NewInterval(l, h+1))
 //}
 //
-//pub fn addInterval(&self, v *Interval) {
+//pub fn add_interval(&self, v *Interval) {
 //  if i.intervals == nil {
 //    i.intervals = make([]*Interval, 0)
 //    i.intervals = append(i.intervals, v)
@@ -97,11 +97,11 @@ impl Interval {
 //  }
 //}
 //
-//pub fn addSet(&self, other *IntervalSet) -> *IntervalSet {
+//pub fn add_set(&self, other *IntervalSet) -> *IntervalSet {
 //  if other.intervals != nil {
 //    for let k = 0; k < len(other.intervals); k++ {;
 //      let i2 = other.intervals[k];
-//      i.addInterval(NewInterval(i2.start, i2.stop))
+//      i.add_interval(NewInterval(i2.start, i2.stop))
 //    }
 //  }
 //  return i
@@ -109,9 +109,9 @@ impl Interval {
 //
 //pub fn complement(&self, start: i32, stop: i32) -> *IntervalSet {
 //  let result = NewIntervalSet();
-//  result.addInterval(NewInterval(start, stop+1))
+//  result.add_interval(NewInterval(start, stop+1))
 //  for let j = 0; j < len(i.intervals); j++ {;
-//    result.removeRange(i.intervals[j])
+//    result.remove_range(i.intervals[j])
 //  }
 //  return result
 //}
@@ -138,9 +138,9 @@ impl Interval {
 //  return len
 //}
 //
-//pub fn removeRange(&self, v *Interval) {
+//pub fn remove_range(&self, v *Interval) {
 //  if v.start == v.stop-1 {
-//    i.removeOne(v.start)
+//    i.remove_one(v.start)
 //  } else if i.intervals != nil {
 //    let k = 0;
 //    for let n = 0; n < len(i.intervals); n++ {;
@@ -168,7 +168,7 @@ impl Interval {
 //  }
 //}
 //
-//pub fn removeOne(&self, v: i32) {
+//pub fn remove_one(&self, v: i32) {
 //  if i.intervals != nil {
 //    for let k = 0; k < len(i.intervals); k++ {;
 //      let ki = i.intervals[k];
@@ -200,20 +200,20 @@ impl Interval {
 //  return i.StringVerbose(nil, nil, false)
 //}
 //
-//pub fn StringVerbose(&self, literalNames []string, symbolicNames []string, elemsAreChar: bool) -> &str {
+//pub fn StringVerbose(&self, literal_names []string, symbolic_names []string, elems_are_char: bool) -> &str {
 //
 //  if i.intervals == nil {
 //    return "{}"
-//  } else if literalNames != nil || symbolicNames != nil {
-//    return i.toTokenString(literalNames, symbolicNames)
-//  } else if elemsAreChar {
-//    return i.toCharString()
+//  } else if literal_names != nil || symbolic_names != nil {
+//    return i.to_token_string(literalNames, symbolic_names)
+//  } else if elems_are_char {
+//    return i.to_char_string()
 //  }
 //
-//  return i.toIndexString()
+//  return i.to_index_string()
 //}
 //
-//pub fn toCharString(&self, ) -> &str {
+//pub fn to_char_string(&self, ) -> &str {
 //  let names = make([]string, len(i.intervals));
 //
 //  for let j = 0; j < len(i.intervals); j++ {;
@@ -235,7 +235,7 @@ impl Interval {
 //  return names[0]
 //}
 //
-//pub fn toIndexString(&self, ) -> &str {
+//pub fn to_index_string(&self, ) -> &str {
 //
 //  let names = make([]string, 0);
 //  for let j = 0; j < len(i.intervals); j++ {;
@@ -257,11 +257,11 @@ impl Interval {
 //  return names[0]
 //}
 //
-//pub fn toTokenString(&self, literalNames []string, symbolicNames []string) -> &str {
+//pub fn to_token_string(&self, literal_names []string, symbolic_names []string) -> &str {
 //  let names = make([]string, 0);
 //  for _, let v = range i.intervals {;
 //    for let j = v.start; j < v.stop; j++ {;
-//      names = append(names, i.elementName(literalNames, symbolicNames, j))
+//      names = append(names, i.element_name(literalNames, symbolic_names, j))
 //    }
 //  }
 //  if len(names) > 1 {
@@ -271,16 +271,16 @@ impl Interval {
 //  return names[0]
 //}
 //
-//pub fn elementName(&self, literalNames []string, symbolicNames []string, a: i32) -> &str {
+//pub fn element_name(&self, literal_names []string, symbolic_names []string, a: i32) -> &str {
 //  if a == TokenEOF {
 //    return "<EOF>"
 //  } else if a == TokenEpsilon {
 //    return "<EPSILON>"
 //  } else {
-//    if a < len(literalNames) && literalNames[a] != "" {
-//      return literalNames[a]
+//    if a < len(literalNames) && literal_names[a] != "" {
+//      return literal_names[a]
 //    }
 //
-//    return symbolicNames[a]
+//    return symbolic_names[a]
 //  }
 //}

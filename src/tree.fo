@@ -46,7 +46,7 @@
 //pub trait ErrorNode {
 //  TerminalNode
 //
-//  errorNode()
+//  error_node()
 //}
 //
 //pub trait ParseTreeVisitor {
@@ -67,7 +67,7 @@
 //
 //// TODO
 ////pub fn Visit(&self, ctx) {
-////  if (Utils.isArray(ctx)) {
+////  if (Utils.is_array(ctx)) {
 ////    let self = this;
 ////    return ctx.map(function(child) { return VisitAtom(self, child)})
 ////  } else {
@@ -80,8 +80,8 @@
 ////    return
 ////  }
 ////
-////  let name = ctx.parser.ruleNames[ctx.ruleIndex];
-////  let funcName = "Visit" + Utils.titleCase(name);
+////  let name = ctx.parser.rule_names[ctx.rule_index];
+////  let func_name = "Visit" + Utils.title_case(name);
 ////
 ////  return Visitor[funcName](ctx)
 ////}
@@ -103,7 +103,7 @@
 //pub fn ExitEveryRule(ctx: ParserRuleContext) ->  {}
 //
 //pub struct TerminalNodeImpl {
-//  parentCtx: RuleContext
+//  parent_ctx: RuleContext
 //
 //  symbol: Token
 //}
@@ -113,7 +113,7 @@
 //impl TerminalNodeImpl {§//  pub fn new(&self, symbol: Token) -> *TerminalNodeImpl {
 //  let tn = new(TerminalNodeImpl);
 //
-//  tn.parentCtx = nil
+//  tn.parent_ctx = nil
 //  tn.symbol = symbol
 //
 //  return tn
@@ -136,11 +136,11 @@
 //}
 //
 //pub fn GetParent(&self, ) -> Tree {
-//  return t.parentCtx
+//  return t.parent_ctx
 //}
 //
 //pub fn SetParent(&self, tree: Tree) {
-//  t.parentCtx = tree.(RuleContext)
+//  t.parent_ctx = tree.(RuleContext)
 //}
 //
 //pub fn GetPayload(&self, ) -> i32erface{} {
@@ -151,8 +151,8 @@
 //  if t.symbol == nil {
 //    return TreeInvalidInterval
 //  }
-//  let tokenIndex = t.symbol.GetTokenIndex();
-//  return NewInterval(tokenIndex, tokenIndex)
+//  let token_index = t.symbol.GetTokenIndex();
+//  return NewInterval(tokenIndex, token_index)
 //}
 //
 //pub fn GetChildCount(&self, ) -> i32 {
@@ -179,7 +179,7 @@
 //  return t.String()
 //}
 //
-//// Represents a token that was consumed during reSynchronization
+//// Represents a token that was consumed during re_synchronization
 //// rather than during a valid Match operation. For example,
 //// we will create this kind of a node during single token insertion
 //// and deletion as well as during "consume until error recovery set"
@@ -197,7 +197,7 @@
 //  return en
 //}
 //
-//pub fn errorNode() {}
+//pub fn error_node() {}
 //
 //pub fn Accept(&self, v: ParseTreeVisitor) -> i32erface{} {
 //  return v.VisitErrorNode(e)

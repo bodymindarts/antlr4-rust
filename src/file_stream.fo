@@ -15,7 +15,7 @@
 //  filename: &str
 //}
 //
-//impl FileStream {§//  pub fn new(&self, fileName: &str) -> *FileStream {
+//impl FileStream {§//  pub fn new(&self, file_name: &str) -> *FileStream {
 //
 //  let buf = bytes.NewBuffer(nil);
 //
@@ -25,7 +25,7 @@
 //
 //  let fs = new(FileStream);
 //
-//  fs.filename = fileName
+//  fs.filename = file_name
 //  let s = &str(buf.Bytes());
 //
 //  fs.InputStream = NewInputStream(s)

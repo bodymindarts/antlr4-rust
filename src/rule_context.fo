@@ -37,25 +37,25 @@
 //}
 //
 //pub struct BaseRuleContext {
-//  parentCtx:     RuleContext
-//  invokingState: i32
+//  parent_ctx:     RuleContext
+//  invoking_state: i32
 //  RuleIndex:     i32
 //}
 //
-//impl BaseRuleContext {§//  pub fn new(&self, parent: RuleContext, invokingState: i32) -> *BaseRuleContext {
+//impl BaseRuleContext {§//  pub fn new(&self, parent: RuleContext, invoking_state: i32) -> *BaseRuleContext {
 //
 //  let rn = new(BaseRuleContext);
 //
 //  // What context invoked b rule?
-//  rn.parentCtx = parent
+//  rn.parent_ctx = parent
 //
 //  // What state invoked the rule associated with b context?
-//  // The "return address" is the followState of invokingState
+//  // The "return address" is the follow_state of invoking_state
 //  // If parent is nil, b should be -1.
 //  if parent == nil {
-//    rn.invokingState = -1
+//    rn.invoking_state = -1
 //  } else {
-//    rn.invokingState = invokingState
+//    rn.invoking_state = invoking_state
 //  }
 //
 //  return rn
@@ -67,18 +67,18 @@
 //
 //pub fn SetParent(&self, v: Tree) {
 //  if v == nil {
-//    b.parentCtx = nil
+//    b.parent_ctx = nil
 //  } else {
-//    b.parentCtx = v.(RuleContext)
+//    b.parent_ctx = v.(RuleContext)
 //  }
 //}
 //
 //pub fn GetInvokingState(&self, ) -> i32 {
-//  return b.invokingState
+//  return b.invoking_state
 //}
 //
 //pub fn SetInvokingState(&self, t: i32) {
-//  b.invokingState = t
+//  b.invoking_state = t
 //}
 //
 //pub fn GetRuleIndex(&self, ) -> i32 {
@@ -94,7 +94,7 @@
 //// A context is empty if there is no invoking state meaning nobody call
 //// current context.
 //pub fn IsEmpty(&self, ) -> bool {
-//  return b.invokingState == -1
+//  return b.invoking_state == -1
 //}
 //
 //// Return the combined text of all child nodes. This method only considers
@@ -106,5 +106,5 @@
 ////
 //
 //pub fn GetParent(&self, ) -> Tree {
-//  return b.parentCtx
+//  return b.parent_ctx
 //}

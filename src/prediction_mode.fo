@@ -456,7 +456,7 @@
 //pub fn PredictionModegetUniqueAlt(altsets []*BitSet) -> i32 { // non-member
 //  let all = PredictionModeGetAlts(altsets);
 //  if all.length() == 1 {
-//    return all.minValue()
+//    return all.min_value()
 //  }
 //
 //  return ATNInvalidAltNumber
@@ -487,25 +487,25 @@
 //// </pre>
 ////
 //pub fn PredictionModegetConflictingAltSubsets(configs: ATNConfigSet) -> []*BitSet { // non-member
-//  let configToAlts = make(map[string]*BitSet);
+//  let config_to_alts = make(map[string]*BitSet);
 //
 //  for _, let c = range configs.GetItems() {;
 //    let key = "key_" + strconv.Itoa(c.GetState().GetStateNumber()) + "/" + c.GetContext().String();
-//    let alts = configToAlts[key];
+//    let alts = config_to_alts[key];
 //    if alts == nil {
 //      alts = NewBitSet()
-//      configToAlts[key] = alts
+//      config_to_alts[key] = alts
 //    }
 //    alts.add(c.GetAlt())
 //  }
 //
 //  let values = make([]*BitSet, 0);
 //
-//  for let k = range configToAlts {;
+//  for let k = range config_to_alts {;
 //    if &strs.Index(k, "key_") != 0 {
 //      continue
 //    }
-//    values = append(values, configToAlts[k])
+//    values = append(values, config_to_alts[k])
 //  }
 //  return values
 //}
@@ -547,10 +547,10 @@
 //
 //  for let i = 0; i < len(altsets); i++ {;
 //    let alts = altsets[i];
-//    let minAlt = alts.minValue();
+//    let min_alt = alts.min_value();
 //    if result == ATNInvalidAltNumber {
-//      result = minAlt
-//    } else if result != minAlt { // more than 1 viable alt
+//      result = min_alt
+//    } else if result != min_alt { // more than 1 viable alt
 //      return ATNInvalidAltNumber
 //    }
 //  }

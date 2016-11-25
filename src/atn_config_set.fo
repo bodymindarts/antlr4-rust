@@ -45,14 +45,14 @@
 //// about its elements and can combine similar configurations using a
 //// graph-structured stack.
 //pub struct BaseATNConfigSet {
-//  cachedHashString: &str
+//  cached_hash_string: &str
 //
-//  // configLookup is used to determine whether two BaseATNConfigSets are equal. We
+//  // config_lookup is used to determine whether two BaseATNConfigSets are equal. We
 //  // need all configurations with the same (s, i, _, semctx) to be equal. A key
 //  // effectively doubles the number of objects associated with ATNConfigs. All
 //  // keys are hashed by (s, i, _, pi), not including the context. Wiped out when
 //  // read-only because a set becomes a DFA state.
-//  configLookup: *Set
+//  config_lookup: *Set
 //
 //  // configs is the added elements.
 //  configs []ATNConfig
@@ -60,71 +60,71 @@
 //  // TODO: These fields make me pretty uncomfortable, but it is nice to pack up
 //  // info together because it saves recomputation. Can we track conflicts as they
 //  // are added to save scanning configs later?
-//  conflictingAlts: *BitSet
+//  conflicting_alts: *BitSet
 //
-//  // dipsIntoOuterContext is used by parsers and lexers. In a lexer, it indicates
+//  // dips_into_outer_context is used by parsers and lexers. In a lexer, it indicates
 //  // we hit a pred while computing a closure operation. Do not make a DFA state
 //  // from the BaseATNConfigSet in this case. TODO: How is this used by parsers?
-//  dipsIntoOuterContext: bool
+//  dips_into_outer_context: bool
 //
-//  // fullCtx is whether it is part of a full context LL prediction. Used to
+//  // full_ctx is whether it is part of a full context LL prediction. Used to
 //  // determine how to merge $. It is a wildcard with SLL, but not for an LL
 //  // context merge.
-//  fullCtx: bool
+//  full_ctx: bool
 //
 //  // Used in parser and lexer. In lexer, it indicates we hit a pred
 //  // while computing a closure operation. Don't make a DFA state from a.
-//  hasSemanticContext: bool
+//  has_semantic_context: bool
 //
-//  // readOnly is whether it is read-only. Do not
+//  // read_only is whether it is read-only. Do not
 //  // allow any code to manipulate the set if true because DFA states will point at
-//  // sets and those must not change. It not protect other fields; conflictingAlts
-//  // in particular, which is assigned after readOnly.
-//  readOnly: bool
+//  // sets and those must not change. It not protect other fields; conflicting_alts
+//  // in particular, which is assigned after read_only.
+//  read_only: bool
 //
 //  // TODO: These fields make me pretty uncomfortable, but it is nice to pack up
 //  // info together because it saves recomputation. Can we track conflicts as they
 //  // are added to save scanning configs later?
-//  uniqueAlt: i32
+//  unique_alt: i32
 //}
 //
-//impl BaseATNConfigSet {§//  pub fn new(&self, fullCtx: bool) -> *BaseATNConfigSet {
+//impl BaseATNConfigSet {§//  pub fn new(&self, full_ctx: bool) -> *BaseATNConfigSet {
 //  return &BaseATNConfigSet{
-//    cachedHashString: "-1",
-//    configLookup:     NewSet(hashATNConfig, equalATNConfigs),
-//    fullCtx:          fullCtx,
+//    cached_hash_string: "-1",
+//    config_lookup:     NewSet(hashATNConfig, equal_a_t_n_configs),
+//    full_ctx:          full_ctx,
 //  }
 //}
 //
 //// Add merges contexts with existing configs for (s, i, pi, _), where s is the
 //// ATNConfig.state, i is the ATNConfig.alt, and pi is the
-//// ATNConfig.semanticContext. We use (s,i,pi) as the key. Updates
-//// dipsIntoOuterContext and hasSemanticContext when necessary.
-//pub fn Add(&self, config: ATNConfig, mergeCache *DoubleDict) -> bool {
-//  if b.readOnly {
+//// ATNConfig.semantic_context. We use (s,i,pi) as the key. Updates
+//// dips_into_outer_context and has_semantic_context when necessary.
+//pub fn Add(&self, config: ATNConfig, merge_cache *DoubleDict) -> bool {
+//  if b.read_only {
 //    panic("set is read-only")
 //  }
 //
 //  if config.GetSemanticContext() != SemanticContextNone {
-//    b.hasSemanticContext = true
+//    b.has_semantic_context = true
 //  }
 //
 //  if config.GetReachesIntoOuterContext() > 0 {
-//    b.dipsIntoOuterContext = true
+//    b.dips_into_outer_context = true
 //  }
 //
-//  let existing = b.configLookup.add(config).(ATNConfig);
+//  let existing = b.config_lookup.add(config).(ATNConfig);
 //
 //  if existing == config {
-//    b.cachedHashString = "-1"
+//    b.cached_hash_string = "-1"
 //    b.configs = append(b.configs, config) // Track order here
 //
 //    return true
 //  }
 //
 //  // Merge a previous (s, i, pi, _) with it and save the result
-//  let rootIsWildcard = !b.fullCtx;
-//  let merged = merge(existing.GetContext(), config.GetContext(), rootIsWildcard, mergeCache);
+//  let root_is_wildcard = !b.full_ctx;
+//  let merged = merge(existing.GetContext(), config.GetContext(), root_is_wildcard, merge_cache);
 //
 //  // No need to check for existing.context because config.context is in the cache,
 //  // since the only way to create new graphs is the "call rule" and here. We cache
@@ -132,8 +132,8 @@
 //  existing.SetReachesIntoOuterContext(intMax(existing.GetReachesIntoOuterContext(), config.GetReachesIntoOuterContext()))
 //
 //  // Preserve the precedence filter suppression during the merge
-//  if config.getPrecedenceFilterSuppressed() {
-//    existing.setPrecedenceFilterSuppressed(true)
+//  if config.get_precedence_filter_suppressed() {
+//    existing.set_precedence_filter_suppressed(true)
 //  }
 //
 //  // Replace the context because there is no need to do alt mapping
@@ -153,11 +153,11 @@
 //}
 //
 //pub fn HasSemanticContext(&self, ) -> bool {
-//  return b.hasSemanticContext
+//  return b.has_semantic_context
 //}
 //
 //pub fn SetHasSemanticContext(&self, v: bool) {
-//  b.hasSemanticContext = v
+//  b.has_semantic_context = v
 //}
 //
 //pub fn GetPredicates(&self, ) -> []SemanticContext {
@@ -179,18 +179,18 @@
 //}
 //
 //pub fn OptimizeConfigs(&self, interpreter *BaseATNSimulator) {
-//  if b.readOnly {
+//  if b.read_only {
 //    panic("set is read-only")
 //  }
 //
-//  if b.configLookup.length() == 0 {
+//  if b.config_lookup.length() == 0 {
 //    return
 //  }
 //
 //  for let i = 0; i < len(b.configs); i++ {;
 //    let config = b.configs[i];
 //
-//    config.SetContext(interpreter.getCachedContext(config.GetContext()))
+//    config.SetContext(interpreter.get_cached_context(config.GetContext()))
 //  }
 //}
 //
@@ -213,26 +213,26 @@
 //
 //  return b.configs != nil &&
 //    // TODO: b.configs.equals(other2.configs) && // TODO: Is b necessary?
-//    b.fullCtx == other2.fullCtx &&
-//    b.uniqueAlt == other2.uniqueAlt &&
-//    b.conflictingAlts == other2.conflictingAlts &&
-//    b.hasSemanticContext == other2.hasSemanticContext &&
-//    b.dipsIntoOuterContext == other2.dipsIntoOuterContext
+//    b.full_ctx == other2.full_ctx &&
+//    b.unique_alt == other2.unique_alt &&
+//    b.conflicting_alts == other2.conflicting_alts &&
+//    b.has_semantic_context == other2.has_semantic_context &&
+//    b.dips_into_outer_context == other2.dips_into_outer_context
 //}
 //
 //pub fn Hash(&self, ) -> &str {
-//  if b.readOnly {
-//    if b.cachedHashString == "-1" {
-//      b.cachedHashString = b.hashConfigs()
+//  if b.read_only {
+//    if b.cached_hash_string == "-1" {
+//      b.cached_hash_string = b.hash_configs()
 //    }
 //
-//    return b.cachedHashString
+//    return b.cached_hash_string
 //  }
 //
-//  return b.hashConfigs()
+//  return b.hash_configs()
 //}
 //
-//pub fn hashConfigs(&self, ) -> &str {
+//pub fn hash_configs(&self, ) -> &str {
 //  let s = "";
 //
 //  for _, let c = range b.configs {;
@@ -251,68 +251,68 @@
 //}
 //
 //pub fn Contains(&self, item: ATNConfig) -> bool {
-//  if b.configLookup == nil {
+//  if b.config_lookup == nil {
 //    panic("not implemented for read-only sets")
 //  }
 //
-//  return b.configLookup.contains(item)
+//  return b.config_lookup.contains(item)
 //}
 //
 //pub fn ContainsFast(&self, item: ATNConfig) -> bool {
-//  if b.configLookup == nil {
+//  if b.config_lookup == nil {
 //    panic("not implemented for read-only sets")
 //  }
 //
-//  return b.configLookup.contains(item) // TODO: containsFast is not implemented for Set
+//  return b.config_lookup.contains(item) // TODO: contains_fast is not implemented for Set
 //}
 //
 //pub fn Clear(&self, ) {
-//  if b.readOnly {
+//  if b.read_only {
 //    panic("set is read-only")
 //  }
 //
 //  b.configs = make([]ATNConfig, 0)
-//  b.cachedHashString = "-1"
-//  b.configLookup = Set::new(hashATNConfig, equalATNConfigs)
+//  b.cached_hash_string = "-1"
+//  b.config_lookup = Set::new(hashATNConfig, equal_a_t_n_configs)
 //}
 //
 //pub fn FullContext(&self, ) -> bool {
-//  return b.fullCtx
+//  return b.full_ctx
 //}
 //
 //pub fn GetDipsIntoOuterContext(&self, ) -> bool {
-//  return b.dipsIntoOuterContext
+//  return b.dips_into_outer_context
 //}
 //
 //pub fn SetDipsIntoOuterContext(&self, v: bool) {
-//  b.dipsIntoOuterContext = v
+//  b.dips_into_outer_context = v
 //}
 //
 //pub fn GetUniqueAlt(&self, ) -> i32 {
-//  return b.uniqueAlt
+//  return b.unique_alt
 //}
 //
 //pub fn SetUniqueAlt(&self, v: i32) {
-//  b.uniqueAlt = v
+//  b.unique_alt = v
 //}
 //
 //pub fn GetConflictingAlts(&self, ) -> *BitSet {
-//  return b.conflictingAlts
+//  return b.conflicting_alts
 //}
 //
 //pub fn SetConflictingAlts(&self, v *BitSet) {
-//  b.conflictingAlts = v
+//  b.conflicting_alts = v
 //}
 //
 //pub fn ReadOnly(&self, ) -> bool {
-//  return b.readOnly
+//  return b.read_only
 //}
 //
-//pub fn SetReadOnly(&self, readOnly: bool) {
-//  b.readOnly = readOnly
+//pub fn SetReadOnly(&self, read_only: bool) {
+//  b.read_only = read_only
 //
-//  if readOnly {
-//    b.configLookup = nil // Read only, so no need for the lookup cache
+//  if read_only {
+//    b.config_lookup = nil // Read only, so no need for the lookup cache
 //  }
 //}
 //
@@ -329,19 +329,19 @@
 //
 //  s += "]"
 //
-//  if b.hasSemanticContext {
-//    s += ",hasSemanticContext=" + fmt.Sprint(b.hasSemanticContext)
+//  if b.has_semantic_context {
+//    s += ",hasSemanticContext=" + fmt.Sprint(b.has_semantic_context)
 //  }
 //
-//  if b.uniqueAlt != ATNInvalidAltNumber {
-//    s += ",uniqueAlt=" + fmt.Sprint(b.uniqueAlt)
+//  if b.unique_alt != ATNInvalidAltNumber {
+//    s += ",uniqueAlt=" + fmt.Sprint(b.unique_alt)
 //  }
 //
-//  if b.conflictingAlts != nil {
-//    s += ",conflictingAlts=" + b.conflictingAlts.String()
+//  if b.conflicting_alts != nil {
+//    s += ",conflictingAlts=" + b.conflicting_alts.String()
 //  }
 //
-//  if b.dipsIntoOuterContext {
+//  if b.dips_into_outer_context {
 //    s += ",dipsIntoOuterContext"
 //  }
 //
@@ -355,16 +355,16 @@
 //impl OrderedATNConfigSet {§//  pub fn new(&self, ) -> *OrderedATNConfigSet {
 //  let b = NewBaseATNConfigSet(false);
 //
-//  b.configLookup = Set::new(nil, nil)
+//  b.config_lookup = Set::new(nil, nil)
 //
 //  return &OrderedATNConfigSet{BaseATNConfigSet: b}
 //}
 //
-//pub fn hashATNConfig(c i32erface{}) -> &str { // non-member
-//  return c.(ATNConfig).shortHash()
+//pub fn hash_a_t_n_config(c i32erface{}) -> &str { // non-member
+//  return c.(ATNConfig).short_hash()
 //}
 //
-//pub fn equalATNConfigs(a, b i32erface{}) -> bool { // non-member
+//pub fn equal_a_t_n_configs(a, b i32erface{}) -> bool { // non-member
 //  if a == nil || b == nil {
 //    return false
 //  }

@@ -6,8 +6,8 @@
 //)
 //
 //pub struct TokenSourceCharStreamPair {
-//  tokenSource: TokenSource
-//  charStream:  CharStream
+//  token_source: TokenSource
+//  char_stream:  CharStream
 //}
 //
 //// A token has properties: text, type, line, character position in the line
@@ -35,15 +35,15 @@
 //
 //pub struct BaseToken {
 //  source:     *TokenSourceCharStreamPair
-//  tokenType  i32    // token type of the token
+//  token_type  i32    // token type of the token
 //  channel    i32    // The parser ignores everything not on DEFAULT_CHANNEL
 //  start      i32    // optional return -1 if not implemented.
 //  stop       i32    // optional return -1 if not implemented.
-//  tokenIndex i32    // from 0..n-1 of the token object in the input stream
+//  token_index i32    // from 0..n-1 of the token object in the input stream
 //  line       i32    // line=1..n of the 1st character
 //  column     i32    // beginning of the line at which it occurs, 0..n-1
 //  text       &str // text of the token.
-//  readOnly:   bool
+//  read_only:   bool
 //}
 //
 //const (
@@ -90,7 +90,7 @@
 //}
 //
 //pub fn GetTokenType(&self, ) -> i32 {
-//  return b.tokenType
+//  return b.token_type
 //}
 //
 //pub fn GetSource(&self, ) -> *TokenSourceCharStreamPair {
@@ -98,40 +98,40 @@
 //}
 //
 //pub fn GetTokenIndex(&self, ) -> i32 {
-//  return b.tokenIndex
+//  return b.token_index
 //}
 //
 //pub fn SetTokenIndex(&self, v: i32) {
-//  b.tokenIndex = v
+//  b.token_index = v
 //}
 //
 //pub fn GetTokenSource(&self, ) -> TokenSource {
-//  return b.source.tokenSource
+//  return b.source.token_source
 //}
 //
 //pub fn GetInputStream(&self, ) -> CharStream {
-//  return b.source.charStream
+//  return b.source.char_stream
 //}
 //
 //pub struct CommonToken {
 //  *BaseToken
 //}
 //
-//impl CommonToken {§//  pub fn new(&self, source *TokenSourceCharStreamPair, tokenType, channel,: start, stop: i32) -> *CommonToken {
+//impl CommonToken {§//  pub fn new(&self, source *TokenSourceCharStreamPair, token_type, channel,: start, stop: i32) -> *CommonToken {
 //
 //  let t = new(CommonToken);
 //
 //  t.BaseToken = new(BaseToken)
 //
 //  t.source = source
-//  t.tokenType = tokenType
+//  t.token_type = token_type
 //  t.channel = channel
 //  t.start = start
 //  t.stop = stop
-//  t.tokenIndex = -1
-//  if t.source.tokenSource != nil {
-//    t.line = source.tokenSource.GetLine()
-//    t.column = source.tokenSource.GetCharPositionInLine()
+//  t.token_index = -1
+//  if t.source.token_source != nil {
+//    t.line = source.token_source.GetLine()
+//    t.column = source.token_source.GetCharPositionInLine()
 //  } else {
 //    t.column = -1
 //  }
@@ -146,18 +146,18 @@
 //// Constructs a New{@link CommonToken} as a copy of another {@link Token}.
 ////
 //// <p>
-//// If {@code oldToken} is also a {@link CommonToken} instance, the newly
+//// If {@code old_token} is also a {@link CommonToken} instance, the newly
 //// constructed token will share a reference to the {@link //text} field and
 //// the {@link Pair} stored in {@link //source}. Otherwise, {@link //text} will
 //// be assigned the result of calling {@link //GetText}, and {@link //source}
 //// will be constructed from the result of {@link Token//GetTokenSource} and
 //// {@link Token//GetInputStream}.</p>
 ////
-//// @param oldToken The token to copy.
+//// @param old_token The token to copy.
 ////
 //pub fn clone(&self, ) -> *CommonToken {
-//  let t = NewCommonToken(c.source, c.tokenType, c.channel, c.start, c.stop);
-//  t.tokenIndex = c.GetTokenIndex()
+//  let t = NewCommonToken(c.source, c.token_type, c.channel, c.start, c.stop);
+//  t.token_index = c.GetTokenIndex()
 //  t.line = c.GetLine()
 //  t.column = c.GetColumn()
 //  t.text = c.GetText()
@@ -200,7 +200,7 @@
 //    ch = ""
 //  }
 //
-//  return "[@" + strconv.Itoa(c.tokenIndex) + "," + strconv.Itoa(c.start) + ":" + strconv.Itoa(c.stop) + "='" +
-//    txt + "',<" + strconv.Itoa(c.tokenType) + ">" +
+//  return "[@" + strconv.Itoa(c.token_index) + "," + strconv.Itoa(c.start) + ":" + strconv.Itoa(c.stop) + "='" +
+//    txt + "',<" + strconv.Itoa(c.token_type) + ">" +
 //    ch + "," + strconv.Itoa(c.line) + ":" + strconv.Itoa(c.column) + "]"
 //}

@@ -7,22 +7,22 @@
 //// CommonTokenStream is an implementation of TokenStream that loads tokens from
 //// a TokenSource on-demand and places the tokens in a buffer to provide access
 //// to any previous token by index. This token stream ignores the value of
-//// Token.getChannel. If your parser requires the token stream filter tokens to
+//// Token.get_channel. If your parser requires the token stream filter tokens to
 //// only those on a particular channel, such as Token.DEFAULT_CHANNEL or
 //// Token.HIDDEN_CHANNEL, use a filtering token stream such a CommonTokenStream.
 //pub struct CommonTokenStream {
 //  channel: i32
 //
-//  // fetchedEOF indicates whether the Token.EOF token has been fetched from
-//  // tokenSource and added to tokens. This field improves performance for the
+//  // fetched_e_o_f indicates whether the Token.EOF token has been fetched from
+//  // token_source and added to tokens. This field improves performance for the
 //  // following cases:
 //  //
 //  // consume: The lookahead check in consume to preven consuming the EOF symbol is
-//  // optimized by checking the values of fetchedEOF and p instead of calling LA.
+//  // optimized by checking the values of fetched_e_o_f and p instead of calling LA.
 //  //
 //  // fetch: The check to prevent adding multiple EOF symbols i32o tokens is
 //  // trivial with bt field.
-//  fetchedEOF: bool
+//  fetched_e_o_f: bool
 //
 //  // index indexs i32o tokens of the current token (next token to consume).
 //  // tokens[p] should be LT(1). It is set to -1 when the stream is first
@@ -31,12 +31,12 @@
 //  // see the documentation of IntStream for a description of initializing methods.
 //  index: i32
 //
-//  // tokenSource is the TokenSource from which tokens for the bt stream are
+//  // token_source is the TokenSource from which tokens for the bt stream are
 //  // fetched.
-//  tokenSource: TokenSource
+//  token_source: TokenSource
 //
 //  // tokens is all tokens fetched from the token source. The list is considered a
-//  // complete view of the input once fetchedEOF is set to true.
+//  // complete view of the input once fetched_e_o_f is set to true.
 //  tokens []Token
 //}
 //
@@ -44,7 +44,7 @@
 //  return &CommonTokenStream{
 //    channel:     channel,
 //    index:       -1,
-//    tokenSource: lexer,
+//    token_source: lexer,
 //    tokens:      make([]Token, 0),
 //  }
 //}
@@ -64,12 +64,12 @@
 //}
 //
 //pub fn Seek(&self, index: i32) {
-//  c.lazyInit()
-//  c.index = c.adjustSeekIndex(index)
+//  c.lazy_init()
+//  c.index = c.adjust_seek_index(index)
 //}
 //
 //pub fn Get(&self, index: i32) -> Token {
-//  c.lazyInit()
+//  c.lazy_init()
 //
 //  return c.tokens[index]
 //}
@@ -78,7 +78,7 @@
 //  let SkipEOFCheck = false;
 //
 //  if c.index >= 0 {
-//    if c.fetchedEOF {
+//    if c.fetched_e_o_f {
 //      // The last token in tokens is EOF. Skip the check if p indexes any fetched.
 //      // token except the last.
 //      SkipEOFCheck = c.index < len(c.tokens)-1
@@ -96,7 +96,7 @@
 //  }
 //
 //  if c.Sync(c.index + 1) {
-//    c.index = c.adjustSeekIndex(c.index + 1)
+//    c.index = c.adjust_seek_index(c.index + 1)
 //  }
 //}
 //
@@ -116,18 +116,18 @@
 //// fetch adds n elements to buffer and returns the actual number of elements
 //// added to the buffer.
 //pub fn fetch(&self, n: i32) -> i32 {
-//  if c.fetchedEOF {
+//  if c.fetched_e_o_f {
 //    return 0
 //  }
 //
 //  for let i = 0; i < n; i++ {;
-//    let t = c.tokenSource.NextToken();
+//    let t = c.token_source.NextToken();
 //
 //    t.SetTokenIndex(len(c.tokens))
 //    c.tokens = append(c.tokens, t)
 //
 //    if t.GetTokenType() == TokenEOF {
-//      c.fetchedEOF = true
+//      c.fetched_e_o_f = true
 //
 //      return i + 1
 //    }
@@ -142,7 +142,7 @@
 //    return nil
 //  }
 //
-//  c.lazyInit()
+//  c.lazy_init()
 //
 //  let subset = make([]Token, 0);
 //
@@ -169,7 +169,7 @@
 //  return c.LT(i).GetTokenType()
 //}
 //
-//pub fn lazyInit(&self, ) {
+//pub fn lazy_init(&self, ) {
 //  if c.index == -1 {
 //    c.setup()
 //  }
@@ -177,16 +177,16 @@
 //
 //pub fn setup(&self, ) {
 //  c.Sync(0)
-//  c.index = c.adjustSeekIndex(0)
+//  c.index = c.adjust_seek_index(0)
 //}
 //
 //pub fn GetTokenSource(&self, ) -> TokenSource {
-//  return c.tokenSource
+//  return c.token_source
 //}
 //
 //// SetTokenSource resets the c token stream by setting its token source.
-//pub fn SetTokenSource(&self, tokenSource: TokenSource) {
-//  c.tokenSource = tokenSource
+//pub fn SetTokenSource(&self, token_source: TokenSource) {
+//  c.token_source = token_source
 //  c.tokens = make([]Token, 0)
 //  c.index = -1
 //}
@@ -216,10 +216,10 @@
 //  return i
 //}
 //
-//// previousTokenOnChannel returns the index of the previous token on channel
+//// previous_token_on_channel returns the index of the previous token on channel
 //// given a starting index. Returns i if tokens[i] is on channel. Returns -1 if
 //// there are no tokens on channel between i and 0.
-//pub fn previousTokenOnChannel(&self, i, channel: i32) -> i32 {
+//pub fn previous_token_on_channel(&self, i, channel: i32) -> i32 {
 //  for i >= 0 && c.tokens[i].GetChannel() != channel {
 //    i--
 //  }
@@ -227,55 +227,55 @@
 //  return i
 //}
 //
-//// getHiddenTokensToRight collects all tokens on a specified channel to the
+//// get_hidden_tokens_to_right collects all tokens on a specified channel to the
 //// right of the current token up until we see a token on DEFAULT_TOKEN_CHANNEL
 //// or EOF. If channel is -1, it finds any non-default channel token.
-//pub fn getHiddenTokensToRight(&self, tokenIndex, channel: i32) -> []Token {
-//  c.lazyInit()
+//pub fn get_hidden_tokens_to_right(&self, token_index, channel: i32) -> []Token {
+//  c.lazy_init()
 //
-//  if tokenIndex < 0 || tokenIndex >= len(c.tokens) {
+//  if token_index < 0 || token_index >= len(c.tokens) {
 //    panic(strconv.Itoa(tokenIndex) + " not in 0.." + strconv.Itoa(len(c.tokens)-1))
 //  }
 //
-//  let nextOnChannel = c.NextTokenOnChannel(tokenIndex+1, LexerDefaultTokenChannel);
-//  let from = tokenIndex + 1;
+//  let next_on_channel = c.NextTokenOnChannel(tokenIndex+1, LexerDefaultTokenChannel);
+//  let from = token_index + 1;
 //
-//  // If no onchannel to the right, then nextOnChannel == -1, so set to to last token
+//  // If no onchannel to the right, then next_on_channel == -1, so set to to last token
 //  var to i32
 //
-//  if nextOnChannel == -1 {
+//  if next_on_channel == -1 {
 //    to = len(c.tokens) - 1
 //  } else {
-//    to = nextOnChannel
+//    to = next_on_channel
 //  }
 //
-//  return c.filterForChannel(from, to, channel)
+//  return c.filter_for_channel(from, to, channel)
 //}
 //
-//// getHiddenTokensToLeft collects all tokens on channel to the left of the
+//// get_hidden_tokens_to_left collects all tokens on channel to the left of the
 //// current token until we see a token on DEFAULT_TOKEN_CHANNEL. If channel is
 //// -1, it finds any non default channel token.
-//pub fn getHiddenTokensToLeft(&self, tokenIndex, channel: i32) -> []Token {
-//  c.lazyInit()
+//pub fn get_hidden_tokens_to_left(&self, token_index, channel: i32) -> []Token {
+//  c.lazy_init()
 //
-//  if tokenIndex < 0 || tokenIndex >= len(c.tokens) {
+//  if token_index < 0 || token_index >= len(c.tokens) {
 //    panic(strconv.Itoa(tokenIndex) + " not in 0.." + strconv.Itoa(len(c.tokens)-1))
 //  }
 //
-//  let prevOnChannel = c.previousTokenOnChannel(tokenIndex-1, LexerDefaultTokenChannel);
+//  let prev_on_channel = c.previous_token_on_channel(tokenIndex-1, LexerDefaultTokenChannel);
 //
-//  if prevOnChannel == tokenIndex-1 {
+//  if prev_on_channel == token_index-1 {
 //    return nil
 //  }
 //
-//  // If there are none on channel to the left and prevOnChannel == -1 then from = 0
-//  let from = prevOnChannel + 1;
-//  let to = tokenIndex - 1;
+//  // If there are none on channel to the left and prev_on_channel == -1 then from = 0
+//  let from = prev_on_channel + 1;
+//  let to = token_index - 1;
 //
-//  return c.filterForChannel(from, to, channel)
+//  return c.filter_for_channel(from, to, channel)
 //}
 //
-//pub fn filterForChannel(&self, left,: right, channel: i32) -> []Token {
+//pub fn filter_for_channel(&self, left,: right, channel: i32) -> []Token {
 //  let hidden = make([]Token, 0);
 //
 //  for let i = left; i < right+1; i++ {;
@@ -298,7 +298,7 @@
 //}
 //
 //pub fn GetSourceName(&self, ) -> &str {
-//  return c.tokenSource.GetSourceName()
+//  return c.token_source.GetSourceName()
 //}
 //
 //pub fn Size(&self, ) -> i32 {
@@ -326,7 +326,7 @@
 //}
 //
 //pub fn GetTextFromInterval(&self, interval *Interval) -> &str {
-//  c.lazyInit()
+//  c.lazy_init()
 //  c.Fill()
 //
 //  if i32erval == nil {
@@ -361,14 +361,14 @@
 //
 //// Fill gets all tokens from the lexer until EOF.
 //pub fn Fill(&self, ) {
-//  c.lazyInit()
+//  c.lazy_init()
 //
 //  for c.fetch(1000) == 1000 {
 //    continue
 //  }
 //}
 //
-//pub fn adjustSeekIndex(&self, i: i32) -> i32 {
+//pub fn adjust_seek_index(&self, i: i32) -> i32 {
 //  return c.NextTokenOnChannel(i, c.channel)
 //}
 //
@@ -383,7 +383,7 @@
 //  // Find k good tokens looking backward
 //  for n <= k {
 //    // Skip off-channel tokens
-//    i = c.previousTokenOnChannel(i-1, c.channel)
+//    i = c.previous_token_on_channel(i-1, c.channel)
 //    n++
 //  }
 //
@@ -395,7 +395,7 @@
 //}
 //
 //pub fn LT(&self, k: i32) -> Token {
-//  c.lazyInit()
+//  c.lazy_init()
 //
 //  if k == 0 {
 //    return nil
@@ -421,8 +421,8 @@
 //  return c.tokens[i]
 //}
 //
-//// getNumberOfOnChannelTokens counts EOF once.
-//pub fn getNumberOfOnChannelTokens(&self, ) -> i32 {
+//// get_number_of_on_channel_tokens counts EOF once.
+//pub fn get_number_of_on_channel_tokens(&self, ) -> i32 {
 //  var n i32
 //
 //  c.Fill()

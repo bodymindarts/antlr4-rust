@@ -7,7 +7,7 @@
 //
 //// CommonTokenFactory is the default TokenFactory implementation.
 //pub struct CommonTokenFactory {
-//  // copyText indicates whether CommonToken.setText should be called after
+//  // copy_text indicates whether CommonToken.set_text should be called after
 //  // constructing tokens to explicitly set the text. This is useful for cases
 //  // where the input stream might not be able to provide arbitrary substrings of
 //  // text from the input after the lexer creates a token (e.g. the
@@ -18,11 +18,11 @@
 //  //
 //  // The default value is false to avoid the performance and memory overhead of
 //  // copying text for every token unless explicitly requested.
-//  copyText: bool
+//  copy_text: bool
 //}
 //
-//impl CommonTokenFactory {§//  pub fn new(&self, copyText: bool) -> *CommonTokenFactory {
-//  return &CommonTokenFactory{copyText: copyText}
+//impl CommonTokenFactory {§//  pub fn new(&self, copy_text: bool) -> *CommonTokenFactory {
+//  return &CommonTokenFactory{copyText: copy_text}
 //}
 //
 //// CommonTokenFactoryDEFAULT is the default CommonTokenFactory. It does not
@@ -37,14 +37,14 @@
 //
 //  if text != "" {
 //    t.SetText(text)
-//  } else if c.copyText && source.charStream != nil {
-//    t.SetText(source.charStream.GetTextFromInterval(NewInterval(start, stop)))
+//  } else if c.copy_text && source.char_stream != nil {
+//    t.SetText(source.char_stream.GetTextFromInterval(NewInterval(start, stop)))
 //  }
 //
 //  return t
 //}
 //
-//pub fn createThin(&self, ttype: i32, text: &str) -> Token {
+//pub fn create_thin(&self, ttype: i32, text: &str) -> Token {
 //  let t = NewCommonToken(nil, ttype, TokenDefaultChannel, -1, -1);
 //  t.SetText(text)
 //

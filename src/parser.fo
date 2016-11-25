@@ -35,12 +35,12 @@
 //  BuildParseTrees: bool
 //
 //  input:           TokenStream
-//  errHandler:      ErrorStrategy
-//  precedenceStack: IntStack
+//  err_handler:      ErrorStrategy
+//  precedence_stack: IntStack
 //  ctx:             ParserRuleContext
 //
 //  tracer:         *TraceListener
-//  parseListeners []ParseTreeListener
+//  parse_listeners []ParseTreeListener
 //  _SyntaxErrors  i32
 //}
 //
@@ -56,9 +56,9 @@
 //  p.input = nil
 //  // The error handling strategy for the parser. The default value is a new
 //  // instance of {@link DefaultErrorStrategy}.
-//  p.errHandler = NewDefaultErrorStrategy()
-//  p.precedenceStack = make([]int, 0)
-//  p.precedenceStack.Push(0)
+//  p.err_handler = NewDefaultErrorStrategy()
+//  p.precedence_stack = make([]int, 0)
+//  p.precedence_stack.Push(0)
 //  // The {@link ParserRuleContext} object for the currently executing rule.
 //  // p.is always non-nil during the parsing process.
 //  p.ctx = nil
@@ -73,7 +73,7 @@
 //  p.tracer = nil
 //  // The list of {@link ParseTreeListener} listeners registered to receive
 //  // events during the parse.
-//  p.parseListeners = nil
+//  p.parse_listeners = nil
 //  // The number of syntax errors Reported during parsing. p.value is
 //  // incremented each time {@link //NotifyErrorListeners} is called.
 //  p._SyntaxErrors = 0
@@ -88,30 +88,30 @@
 ////
 //// @see ATNDeserializationOptions//isGenerateRuleBypassTransitions()
 ////
-//var bypassAltsAtnCache = make(map[string]int)
+//var bypass_alts_atn_cache = make(map[string]int)
 //
 //// reset the parser's state//
 //pub fn reset(&self, ) {
 //  if p.input != nil {
 //    p.input.Seek(0)
 //  }
-//  p.errHandler.reset(p)
+//  p.err_handler.reset(p)
 //  p.ctx = nil
 //  p._SyntaxErrors = 0
 //  p.SetTrace(nil)
-//  p.precedenceStack = make([]int, 0)
-//  p.precedenceStack.Push(0)
+//  p.precedence_stack = make([]int, 0)
+//  p.precedence_stack.Push(0)
 //  if p.Interpreter != nil {
 //    p.Interpreter.reset()
 //  }
 //}
 //
 //pub fn GetErrorHandler(&self, ) -> ErrorStrategy {
-//  return p.errHandler
+//  return p.err_handler
 //}
 //
 //pub fn SetErrorHandler(&self, e: ErrorStrategy) {
-//  p.errHandler = e
+//  p.err_handler = e
 //}
 //
 //// Match current input symbol against {@code ttype}. If the symbol type
@@ -136,10 +136,10 @@
 //  let t = p.GetCurrentToken();
 //
 //  if t.GetTokenType() == ttype {
-//    p.errHandler.ReportMatch(p)
+//    p.err_handler.ReportMatch(p)
 //    p.Consume()
 //  } else {
-//    t = p.errHandler.RecoverInline(p)
+//    t = p.err_handler.RecoverInline(p)
 //    if p.BuildParseTrees && t.GetTokenIndex() == -1 {
 //      // we must have conjured up a Newtoken during single token
 //      // insertion
@@ -170,10 +170,10 @@
 //pub fn MatchWildcard(&self, ) -> Token {
 //  let t = p.GetCurrentToken();
 //  if t.GetTokenType() > 0 {
-//    p.errHandler.ReportMatch(p)
+//    p.err_handler.ReportMatch(p)
 //    p.Consume()
 //  } else {
-//    t = p.errHandler.RecoverInline(p)
+//    t = p.err_handler.RecoverInline(p)
 //    if p.BuildParseTrees && t.GetTokenIndex() == -1 {
 //      // we must have conjured up a Newtoken during single token
 //      // insertion
@@ -193,10 +193,10 @@
 //}
 //
 //pub fn GetParseListeners(&self, ) -> []ParseTreeListener {
-//  if p.parseListeners == nil {
+//  if p.parse_listeners == nil {
 //    return make([]ParseTreeListener, 0)
 //  }
-//  return p.parseListeners
+//  return p.parse_listeners
 //}
 //
 //// Registers {@code listener} to receive events during the parsing process.
@@ -225,16 +225,16 @@
 ////
 //// @param listener the listener to add
 ////
-//// @panics nilPointerException if {@code} listener is {@code nil}
+//// @panics nil_pointer_exception if {@code} listener is {@code nil}
 ////
 //pub fn AddParseListener(&self, listener: ParseTreeListener) {
 //  if listener == nil {
 //    panic("listener")
 //  }
-//  if p.parseListeners == nil {
-//    p.parseListeners = make([]ParseTreeListener, 0)
+//  if p.parse_listeners == nil {
+//    p.parse_listeners = make([]ParseTreeListener, 0)
 //  }
-//  p.parseListeners = append(p.parseListeners, listener)
+//  p.parse_listeners = append(p.parse_listeners, listener)
 //}
 //
 ////
@@ -246,10 +246,10 @@
 ////
 //pub fn RemoveParseListener(&self, listener: ParseTreeListener) {
 //
-//  if p.parseListeners != nil {
+//  if p.parse_listeners != nil {
 //
 //    let idx = -1;
-//    for i, let v = range p.parseListeners {;
+//    for i, let v = range p.parse_listeners {;
 //      if v == listener {
 //        idx = i
 //        break
@@ -261,24 +261,24 @@
 //    }
 //
 //    // remove the listener from the slice
-//    p.parseListeners = append(p.parseListeners[0:idx], p.parseListeners[idx+1:]...)
+//    p.parse_listeners = append(p.parse_listeners[0:idx], p.parse_listeners[idx+1:]...)
 //
-//    if len(p.parseListeners) == 0 {
-//      p.parseListeners = nil
+//    if len(p.parse_listeners) == 0 {
+//      p.parse_listeners = nil
 //    }
 //  }
 //}
 //
 //// Remove all parse listeners.
-//pub fn removeParseListeners(&self, ) {
-//  p.parseListeners = nil
+//pub fn remove_parse_listeners(&self, ) {
+//  p.parse_listeners = nil
 //}
 //
 //// Notify any parse listeners of an enter rule event.
 //pub fn TriggerEnterRuleEvent(&self, ) {
-//  if p.parseListeners != nil {
+//  if p.parse_listeners != nil {
 //    let ctx = p.ctx;
-//    for _, let listener = range p.parseListeners {;
+//    for _, let listener = range p.parse_listeners {;
 //      listener.EnterEveryRule(ctx)
 //      ctx.EnterRule(listener)
 //    }
@@ -291,13 +291,13 @@
 //// @see //addParseListener
 ////
 //pub fn TriggerExitRuleEvent(&self, ) {
-//  if p.parseListeners != nil {
+//  if p.parse_listeners != nil {
 //    // reverse order walk of listeners
 //    let ctx = p.ctx;
-//    let l = len(p.parseListeners) - 1;
+//    let l = len(p.parse_listeners) - 1;
 //
-//    for let i = range p.parseListeners {;
-//      let listener = p.parseListeners[l-i];
+//    for let i = range p.parse_listeners {;
+//      let listener = p.parse_listeners[l-i];
 //      ctx.ExitRule(listener)
 //      listener.ExitEveryRule(ctx)
 //    }
@@ -317,8 +317,8 @@
 //}
 //
 //// Tell our token source and error strategy about a Newway to create tokens.//
-//pub fn setTokenFactory(&self, factory: TokenFactory) {
-//  p.input.GetTokenSource().setTokenFactory(factory)
+//pub fn set_token_factory(&self, factory: TokenFactory) {
+//  p.input.GetTokenSource().set_token_factory(factory)
 //}
 //
 //// The ATN with bypass alternatives is expensive to create so we create it
@@ -332,16 +332,16 @@
 //  // TODO
 //  panic("Not implemented!")
 //
-//  //  let serializedAtn = p.getSerializedATN();
+//  //  let serialized_atn = p.get_serialized_a_t_n();
 //  //  if (serializedAtn == nil) {
 //  //    panic("The current parser does not support an ATN with bypass alternatives.")
 //  //  }
-//  //  let result = p.bypassAltsAtnCache[serializedAtn];
+//  //  let result = p.bypass_alts_atn_cache[serializedAtn];
 //  //  if (result == nil) {
-//  //    let deserializationOptions = NewATNDeserializationOptions(nil);
-//  //    deserializationOptions.generateRuleBypassTransitions = true
+//  //    let deserialization_options = NewATNDeserializationOptions(nil);
+//  //    deserialization_options.generate_rule_bypass_transitions = true
 //  //    result = NewATNDeserializer(deserializationOptions).deserialize(serializedAtn)
-//  //    p.bypassAltsAtnCache[serializedAtn] = result
+//  //    p.bypass_alts_atn_cache[serializedAtn] = result
 //  //  }
 //  //  return result
 //}
@@ -351,21 +351,21 @@
 ////
 //// <pre>
 //// ParseTree t = parser.expr()
-//// ParseTreePattern p = parser.compileParseTreePattern("&ltID&gt+0",
+//// ParseTreePattern p = parser.compile_parse_tree_pattern("&ltID&gt+0",
 //// MyParser.RULE_expr)
 //// ParseTreeMatch m = p.Match(t)
 //// String id = m.Get("ID")
 //// </pre>
 //
-//pub fn compileParseTreePattern(&self, pattern,: patternRuleIndex, lexer: Lexer) {
+//pub fn compile_parse_tree_pattern(&self, pattern,: pattern_rule_index, lexer: Lexer) {
 //
 //  panic("NewParseTreePatternMatcher not implemented!")
 //  //
 //  //  if (lexer == nil) {
 //  //    if (p.GetTokenStream() != nil) {
-//  //      let tokenSource = p.GetTokenStream().GetTokenSource();
-//  //      if _, let ok = tokenSource.(ILexer); ok {;
-//  //        lexer = tokenSource
+//  //      let token_source = p.GetTokenStream().GetTokenSource();
+//  //      if _, let ok = token_source.(ILexer); ok {;
+//  //        lexer = token_source
 //  //      }
 //  //    }
 //  //  }
@@ -374,7 +374,7 @@
 //  //  }
 //
 //  //  let m = NewParseTreePatternMatcher(lexer, p);
-//  //  return m.compile(pattern, patternRuleIndex)
+//  //  return m.compile(pattern, pattern_rule_index)
 //}
 //
 //pub fn GetInputStream(&self, ) -> IntStream {
@@ -403,15 +403,15 @@
 //  return p.input.LT(1)
 //}
 //
-//pub fn NotifyErrorListeners(&self, msg &str, offendingToken: Token, err: RecognitionException) {
-//  if offendingToken == nil {
-//    offendingToken = p.GetCurrentToken()
+//pub fn NotifyErrorListeners(&self, msg &str, offending_token: Token, err: RecognitionException) {
+//  if offending_token == nil {
+//    offending_token = p.GetCurrentToken()
 //  }
 //  p._SyntaxErrors++
-//  let line = offendingToken.GetLine();
-//  let column = offendingToken.GetColumn();
+//  let line = offending_token.GetLine();
+//  let column = offending_token.GetColumn();
 //  let listener = p.GetErrorListenerDispatch();
-//  listener.SyntaxError(p, offendingToken, line, column, msg, err)
+//  listener.SyntaxError(p, offending_token, line, column, msg, err)
 //}
 //
 //pub fn Consume(&self, ) -> Token {
@@ -419,45 +419,45 @@
 //  if o.GetTokenType() != TokenEOF {
 //    p.GetInputStream().Consume()
 //  }
-//  let hasListener = p.parseListeners != nil && len(p.parseListeners) > 0;
-//  if p.BuildParseTrees || hasListener {
-//    if p.errHandler.inErrorRecoveryMode(p) {
+//  let has_listener = p.parse_listeners != nil && len(p.parse_listeners) > 0;
+//  if p.BuildParseTrees || has_listener {
+//    if p.err_handler.in_error_recovery_mode(p) {
 //      let node = p.ctx.AddErrorNode(o);
-//      if p.parseListeners != nil {
-//        for _, let l = range p.parseListeners {;
+//      if p.parse_listeners != nil {
+//        for _, let l = range p.parse_listeners {;
 //          l.VisitErrorNode(node)
 //        }
 //      }
 //
 //    } else {
 //      let node = p.ctx.AddTokenNode(o);
-//      if p.parseListeners != nil {
-//        for _, let l = range p.parseListeners {;
+//      if p.parse_listeners != nil {
+//        for _, let l = range p.parse_listeners {;
 //          l.VisitTerminal(node)
 //        }
 //      }
 //    }
-//    //        node.invokingState = p.state
+//    //        node.invoking_state = p.state
 //  }
 //
 //  return o
 //}
 //
-//pub fn addContextToParseTree(&self, ) {
+//pub fn add_context_to_parse_tree(&self, ) {
 //  // add current context to parent if we have a parent
 //  if p.ctx.GetParent() != nil {
 //    p.ctx.GetParent().(ParserRuleContext).AddChild(p.ctx)
 //  }
 //}
 //
-//pub fn EnterRule(&self, localctx ParserRuleContext,: state, ruleIndex: i32) {
+//pub fn EnterRule(&self, localctx ParserRuleContext,: state, rule_index: i32) {
 //  p.SetState(state)
 //  p.ctx = localctx
 //  p.ctx.SetStart(p.input.LT(1))
 //  if p.BuildParseTrees {
-//    p.addContextToParseTree()
+//    p.add_context_to_parse_tree()
 //  }
-//  if p.parseListeners != nil {
+//  if p.parse_listeners != nil {
 //    p.TriggerEnterRuleEvent()
 //  }
 //}
@@ -465,7 +465,7 @@
 //pub fn ExitRule(&self, ) {
 //  p.ctx.SetStop(p.input.LT(-1))
 //  // trigger event on ctx, before it reverts to parent
-//  if p.parseListeners != nil {
+//  if p.parse_listeners != nil {
 //    p.TriggerExitRuleEvent()
 //  }
 //  p.SetState(p.ctx.GetInvokingState())
@@ -476,7 +476,7 @@
 //  }
 //}
 //
-//pub fn EnterOuterAlt(&self, localctx: ParserRuleContext, altNum: i32) {
+//pub fn EnterOuterAlt(&self, localctx: ParserRuleContext, alt_num: i32) {
 //  localctx.SetAltNumber(altNum)
 //  // if we have Newlocalctx, make sure we replace existing ctx
 //  // that is previous child of parse tree
@@ -495,19 +495,19 @@
 //// the parser context is not nested within a precedence rule.
 //
 //pub fn GetPrecedence(&self, ) -> i32 {
-//  if len(p.precedenceStack) == 0 {
+//  if len(p.precedence_stack) == 0 {
 //    return -1
 //  }
 //
-//  return p.precedenceStack[len(p.precedenceStack)-1]
+//  return p.precedence_stack[len(p.precedence_stack)-1]
 //}
 //
-//pub fn EnterRecursionRule(&self, localctx ParserRuleContext, state,: ruleIndex, precedence: i32) {
+//pub fn EnterRecursionRule(&self, localctx ParserRuleContext, state,: rule_index, precedence: i32) {
 //  p.SetState(state)
-//  p.precedenceStack.Push(precedence)
+//  p.precedence_stack.Push(precedence)
 //  p.ctx = localctx
 //  p.ctx.SetStart(p.input.LT(1))
-//  if p.parseListeners != nil {
+//  if p.parse_listeners != nil {
 //    p.TriggerEnterRuleEvent() // simulates rule entry for
 //    // left-recursive rules
 //  }
@@ -516,7 +516,7 @@
 ////
 //// Like {@link //EnterRule} but for recursive rules.
 //
-//pub fn PushNewRecursionContext(&self, localctx ParserRuleContext,: state, ruleIndex: i32) {
+//pub fn PushNewRecursionContext(&self, localctx ParserRuleContext,: state, rule_index: i32) {
 //  let previous = p.ctx;
 //  previous.SetParent(localctx)
 //  previous.SetInvokingState(state)
@@ -527,37 +527,37 @@
 //  if p.BuildParseTrees {
 //    p.ctx.AddChild(previous)
 //  }
-//  if p.parseListeners != nil {
+//  if p.parse_listeners != nil {
 //    p.TriggerEnterRuleEvent() // simulates rule entry for
 //    // left-recursive rules
 //  }
 //}
 //
-//pub fn UnrollRecursionContexts(&self, parentCtx: ParserRuleContext) {
-//  p.precedenceStack.Pop()
+//pub fn UnrollRecursionContexts(&self, parent_ctx: ParserRuleContext) {
+//  p.precedence_stack.Pop()
 //  p.ctx.SetStop(p.input.LT(-1))
-//  let retCtx = p.ctx // save current ctx (return value);
+//  let ret_ctx = p.ctx // save current ctx (return value);
 //  // unroll so ctx is as it was before call to recursive method
-//  if p.parseListeners != nil {
-//    for p.ctx != parentCtx {
+//  if p.parse_listeners != nil {
+//    for p.ctx != parent_ctx {
 //      p.TriggerExitRuleEvent()
 //      p.ctx = p.ctx.GetParent().(ParserRuleContext)
 //    }
 //  } else {
-//    p.ctx = parentCtx
+//    p.ctx = parent_ctx
 //  }
 //  // hook i32o tree
-//  retCtx.SetParent(parentCtx)
-//  if p.BuildParseTrees && parentCtx != nil {
+//  ret_ctx.SetParent(parentCtx)
+//  if p.BuildParseTrees && parent_ctx != nil {
 //    // add return ctx i32o invoking rule's tree
-//    parentCtx.AddChild(retCtx)
+//    parent_ctx.AddChild(retCtx)
 //  }
 //}
 //
-//pub fn GetInvokingContext(&self, ruleIndex: i32) -> ParserRuleContext {
+//pub fn GetInvokingContext(&self, rule_index: i32) -> ParserRuleContext {
 //  let ctx = p.ctx;
 //  for ctx != nil {
-//    if ctx.GetRuleIndex() == ruleIndex {
+//    if ctx.GetRuleIndex() == rule_index {
 //      return ctx
 //    }
 //    ctx = ctx.GetParent().(ParserRuleContext)
@@ -566,10 +566,10 @@
 //}
 //
 //pub fn Precpred(&self, localctx: RuleContext, precedence: i32) -> bool {
-//  return precedence >= p.precedenceStack[len(p.precedenceStack)-1]
+//  return precedence >= p.precedence_stack[len(p.precedence_stack)-1]
 //}
 //
-//pub fn inContext(&self, context: ParserRuleContext) -> bool {
+//pub fn in_context(&self, context: ParserRuleContext) -> bool {
 //  // TODO: useful in parser?
 //  return false
 //}
@@ -581,7 +581,7 @@
 //// need to be explicitly constructed.
 ////
 //// <pre>
-//// return getExpectedTokens().contains(symbol)
+//// return get_expected_tokens().contains(symbol)
 //// </pre>
 ////
 //// @param symbol the symbol type to check
@@ -600,9 +600,9 @@
 //    return false
 //  }
 //  for ctx != nil && ctx.GetInvokingState() >= 0 && following.contains(TokenEpsilon) {
-//    let invokingState = atn.states[ctx.GetInvokingState()];
-//    let rt = invokingState.GetTransitions()[0];
-//    following = atn.NextTokens(rt.(*RuleTransition).followState, nil)
+//    let invoking_state = atn.states[ctx.GetInvokingState()];
+//    let rt = invoking_state.GetTransitions()[0];
+//    following = atn.NextTokens(rt.(*RuleTransition).follow_state, nil)
 //    if following.contains(symbol) {
 //      return true
 //    }
@@ -622,7 +622,7 @@
 //// @see ATN//getExpectedTokens(int, RuleContext)
 ////
 //pub fn GetExpectedTokens(&self, ) -> *IntervalSet {
-//  return p.Interpreter.atn.getExpectedTokens(p.state, p.ctx)
+//  return p.Interpreter.atn.get_expected_tokens(p.state, p.ctx)
 //}
 //
 //pub fn GetExpectedTokensWithinCurrentRule(&self, ) -> *IntervalSet {
@@ -631,11 +631,11 @@
 //  return atn.NextTokens(s, nil)
 //}
 //
-//// Get a rule's index (i.e., {@code RULE_ruleName} field) or -1 if not found.//
-//pub fn GetRuleIndex(&self, ruleName: &str) -> i32 {
-//  var ruleIndex, ok = p.GetRuleIndexMap()[ruleName]
+//// Get a rule's index (i.e., {@code RULE_rule_name} field) or -1 if not found.//
+//pub fn GetRuleIndex(&self, rule_name: &str) -> i32 {
+//  var rule_index, ok = p.GetRuleIndexMap()[ruleName]
 //  if ok {
-//    return ruleIndex
+//    return rule_index
 //  }
 //
 //  return -1
@@ -655,8 +655,8 @@
 //  let stack = make([]string, 0);
 //  for c != nil {
 //    // compute what follows who invoked us
-//    let ruleIndex = c.GetRuleIndex();
-//    if ruleIndex < 0 {
+//    let rule_index = c.GetRuleIndex();
+//    if rule_index < 0 {
 //      stack = append(stack, "n/a")
 //    } else {
 //      stack = append(stack, p.GetRuleNames()[ruleIndex])
@@ -675,20 +675,20 @@
 //
 //// For debugging and other purposes.//
 //pub fn GetDFAStrings(&self, ) -> &str {
-//  return fmt.Sprint(p.Interpreter.decisionToDFA)
+//  return fmt.Sprint(p.Interpreter.decision_to_d_f_a)
 //}
 //
 //// For debugging and other purposes.//
 //pub fn DumpDFA(&self, ) {
-//  let seenOne = false;
-//  for _, let dfa = range p.Interpreter.decisionToDFA {;
+//  let seen_one = false;
+//  for _, let dfa = range p.Interpreter.decision_to_d_f_a {;
 //    if len(dfa.GetStates()) > 0 {
-//      if seenOne {
+//      if seen_one {
 //        fmt.Println()
 //      }
 //      fmt.Println("Decision " + strconv.Itoa(dfa.decision) + ":")
 //      fmt.Print(dfa.String(p.LiteralNames, p.SymbolicNames))
-//      seenOne = true
+//      seen_one = true
 //    }
 //  }
 //}

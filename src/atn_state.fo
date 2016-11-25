@@ -54,32 +54,32 @@
 //  // atn is the current ATN.
 //  atn: *ATN
 //
-//  epsilonOnlyTransitions: bool
+//  epsilon_only_transitions: bool
 //
-//  // ruleIndex tracks the Rule index because there are no Rule objects at runtime.
-//  ruleIndex: i32
+//  // rule_index tracks the Rule index because there are no Rule objects at runtime.
+//  rule_index: i32
 //
-//  stateNumber: i32
+//  state_number: i32
 //
-//  stateType: i32
+//  state_type: i32
 //
 //  // Track the transitions emanating from this ATN state.
 //  transitions []Transition
 //}
 //
 //impl BaseATNState {§//  pub fn new(&self, ) -> *BaseATNState {
-//  return &BaseATNState{stateNumber: ATNStateInvalidStateNumber, stateType: ATNStateInvalidType}
+//  return &BaseATNState{stateNumber: ATNStateInvalidStateNumber, state_type: ATNStateInvalidType}
 //}
 //
 //pub fn GetRuleIndex(&self, ) -> i32 {
-//  return as.ruleIndex
+//  return as.rule_index
 //}
 //
 //pub fn SetRuleIndex(&self, v: i32) {
-//  as.ruleIndex = v
+//  as.rule_index = v
 //}
 //pub fn GetEpsilonOnlyTransitions(&self, ) -> bool {
-//  return as.epsilonOnlyTransitions
+//  return as.epsilon_only_transitions
 //}
 //
 //pub fn GetATN(&self, ) -> *ATN {
@@ -99,15 +99,15 @@
 //}
 //
 //pub fn GetStateType(&self, ) -> i32 {
-//  return as.stateType
+//  return as.state_type
 //}
 //
 //pub fn GetStateNumber(&self, ) -> i32 {
-//  return as.stateNumber
+//  return as.state_number
 //}
 //
-//pub fn SetStateNumber(&self, stateNumber: i32) {
-//  as.stateNumber = stateNumber
+//pub fn SetStateNumber(&self, state_number: i32) {
+//  as.state_number = state_number
 //}
 //
 //pub fn GetNextTokenWithinRule(&self, ) -> *IntervalSet {
@@ -119,26 +119,26 @@
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return strconv.Itoa(as.stateNumber)
+//  return strconv.Itoa(as.state_number)
 //}
 //
 //pub fn equals(&self, other i32erface{}) -> bool {
 //  if ot, let ok = other.(ATNState); ok {;
-//    return as.stateNumber == ot.GetStateNumber()
+//    return as.state_number == ot.GetStateNumber()
 //  }
 //
 //  return false
 //}
 //
-//pub fn isNonGreedyExitState(&self, ) -> bool {
+//pub fn is_non_greedy_exit_state(&self, ) -> bool {
 //  return false
 //}
 //
 //pub fn AddTransition(&self, trans: Transition, index: i32) {
 //  if len(as.transitions) == 0 {
-//    as.epsilonOnlyTransitions = trans.getIsEpsilon()
-//  } else if as.epsilonOnlyTransitions != trans.getIsEpsilon() {
-//    as.epsilonOnlyTransitions = false
+//    as.epsilon_only_transitions = trans.get_is_epsilon()
+//  } else if as.epsilon_only_transitions != trans.get_is_epsilon() {
+//    as.epsilon_only_transitions = false
 //  }
 //
 //  if index == -1 {
@@ -156,7 +156,7 @@
 //impl BasicState {§//  pub fn new(&self, ) -> *BasicState {
 //  let b = NewBaseATNState();
 //
-//  b.stateType = ATNStateBasic
+//  b.state_type = ATNStateBasic
 //
 //  return &BasicState{BaseATNState: b}
 //}
@@ -164,62 +164,62 @@
 //pub trait DecisionState {
 //  ATNState
 //
-//  getDecision() i32
-//  setDecision(int)
+//  get_decision() i32
+//  set_decision(int)
 //
-//  getNonGreedy() bool
-//  setNonGreedy(bool)
+//  get_non_greedy() bool
+//  set_non_greedy(bool)
 //}
 //
 //pub struct BaseDecisionState {
 //  *BaseATNState
 //  decision:  i32
-//  nonGreedy: bool
+//  non_greedy: bool
 //}
 //
 //impl BaseDecisionState {§//  pub fn new(&self, ) -> *BaseDecisionState {
 //  return &BaseDecisionState{BaseATNState: NewBaseATNState(), decision: -1}
 //}
 //
-//pub fn getDecision(&self, ) -> i32 {
+//pub fn get_decision(&self, ) -> i32 {
 //  return s.decision
 //}
 //
-//pub fn setDecision(&self, b: i32) {
+//pub fn set_decision(&self, b: i32) {
 //  s.decision = b
 //}
 //
-//pub fn getNonGreedy(&self, ) -> bool {
-//  return s.nonGreedy
+//pub fn get_non_greedy(&self, ) -> bool {
+//  return s.non_greedy
 //}
 //
-//pub fn setNonGreedy(&self, b: bool) {
-//  s.nonGreedy = b
+//pub fn set_non_greedy(&self, b: bool) {
+//  s.non_greedy = b
 //}
 //
 //pub trait BlockStartState {
 //  DecisionState
 //
-//  getEndState() *BlockEndState
-//  setEndState(*BlockEndState)
+//  get_end_state() *BlockEndState
+//  set_end_state(*BlockEndState)
 //}
 //
 //// BaseBlockStartState is the start of a regular (...) block.
 //pub struct BaseBlockStartState {
 //  *BaseDecisionState
-//  endState: *BlockEndState
+//  end_state: *BlockEndState
 //}
 //
 //impl BlockStartState {§//  pub fn new(&self, ) -> *BaseBlockStartState {
 //  return &BaseBlockStartState{BaseDecisionState: NewBaseDecisionState()}
 //}
 //
-//pub fn getEndState(&self, ) -> *BlockEndState {
-//  return s.endState
+//pub fn get_end_state(&self, ) -> *BlockEndState {
+//  return s.end_state
 //}
 //
-//pub fn setEndState(&self, b *BlockEndState) {
-//  s.endState = b
+//pub fn set_end_state(&self, b *BlockEndState) {
+//  s.end_state = b
 //}
 //
 //pub struct BasicBlockStartState {
@@ -229,7 +229,7 @@
 //impl BasicBlockStartState {§//  pub fn new(&self, ) -> *BasicBlockStartState {
 //  let b = NewBlockStartState();
 //
-//  b.stateType = ATNStateBlockStart
+//  b.state_type = ATNStateBlockStart
 //
 //  return &BasicBlockStartState{BaseBlockStartState: b}
 //}
@@ -237,13 +237,13 @@
 //// BlockEndState is a terminal node of a simple (a|b|c) block.
 //pub struct BlockEndState {
 //  *BaseATNState
-//  startState: ATNState
+//  start_state: ATNState
 //}
 //
 //impl BlockEndState {§//  pub fn new(&self, ) -> *BlockEndState {
 //  let b = NewBaseATNState();
 //
-//  b.stateType = ATNStateBlockEnd
+//  b.state_type = ATNStateBlockEnd
 //
 //  return &BlockEndState{BaseATNState: b}
 //}
@@ -259,21 +259,21 @@
 //impl RuleStopState {§//  pub fn new(&self, ) -> *RuleStopState {
 //  let b = NewBaseATNState();
 //
-//  b.stateType = ATNStateRuleStop
+//  b.state_type = ATNStateRuleStop
 //
 //  return &RuleStopState{BaseATNState: b}
 //}
 //
 //pub struct RuleStartState {
 //  *BaseATNState
-//  stopState:        ATNState
-//  isPrecedenceRule: bool
+//  stop_state:        ATNState
+//  is_precedence_rule: bool
 //}
 //
 //impl RuleStartState {§//  pub fn new(&self, ) -> *RuleStartState {
 //  let b = NewBaseATNState();
 //
-//  b.stateType = ATNStateRuleStart
+//  b.state_type = ATNStateRuleStart
 //
 //  return &RuleStartState{BaseATNState: b}
 //}
@@ -287,7 +287,7 @@
 //impl PlusLoopbackState {§//  pub fn new(&self, ) -> *PlusLoopbackState {
 //  let b = NewBaseDecisionState();
 //
-//  b.stateType = ATNStatePlusLoopBack
+//  b.state_type = ATNStatePlusLoopBack
 //
 //  return &PlusLoopbackState{BaseDecisionState: b}
 //}
@@ -298,13 +298,13 @@
 //// decision-making node for A+.
 //pub struct PlusBlockStartState {
 //  *BaseBlockStartState
-//  loopBackState: ATNState
+//  loop_back_state: ATNState
 //}
 //
 //impl PlusBlockStartState {§//  pub fn new(&self, ) -> *PlusBlockStartState {
 //  let b = NewBlockStartState();
 //
-//  b.stateType = ATNStatePlusBlockStart
+//  b.state_type = ATNStatePlusBlockStart
 //
 //  return &PlusBlockStartState{BaseBlockStartState: b}
 //}
@@ -317,7 +317,7 @@
 //impl StarBlockStartState {§//  pub fn new(&self, ) -> *StarBlockStartState {
 //  let b = NewBlockStartState();
 //
-//  b.stateType = ATNStateStarBlockStart
+//  b.state_type = ATNStateStarBlockStart
 //
 //  return &StarBlockStartState{BaseBlockStartState: b}
 //}
@@ -329,36 +329,36 @@
 //impl StarLoopbackState {§//  pub fn new(&self, ) -> *StarLoopbackState {
 //  let b = NewBaseATNState();
 //
-//  b.stateType = ATNStateStarLoopBack
+//  b.state_type = ATNStateStarLoopBack
 //
 //  return &StarLoopbackState{BaseATNState: b}
 //}
 //
 //pub struct StarLoopEntryState {
 //  *BaseDecisionState
-//  loopBackState:          ATNState
-//  precedenceRuleDecision: bool
+//  loop_back_state:          ATNState
+//  precedence_rule_decision: bool
 //}
 //
 //impl StarLoopEntryState {§//  pub fn new(&self, ) -> *StarLoopEntryState {
 //  let b = NewBaseDecisionState();
 //
-//  b.stateType = ATNStateStarLoopEntry
+//  b.state_type = ATNStateStarLoopEntry
 //
-//  // False precedenceRuleDecision indicates whether s state can benefit from a precedence DFA during SLL decision making.
+//  // False precedence_rule_decision indicates whether s state can benefit from a precedence DFA during SLL decision making.
 //  return &StarLoopEntryState{BaseDecisionState: b}
 //}
 //
 //// LoopEndState marks the end of a * or + loop.
 //pub struct LoopEndState {
 //  *BaseATNState
-//  loopBackState: ATNState
+//  loop_back_state: ATNState
 //}
 //
 //impl LoopEndState {§//  pub fn new(&self, ) -> *LoopEndState {
 //  let b = NewBaseATNState();
 //
-//  b.stateType = ATNStateLoopEnd
+//  b.state_type = ATNStateLoopEnd
 //
 //  return &LoopEndState{BaseATNState: b}
 //}
@@ -371,7 +371,7 @@
 //impl TokensStartState {§//  pub fn new(&self, ) -> *TokensStartState {
 //  let b = NewBaseDecisionState();
 //
-//  b.stateType = ATNStateTokenStart
+//  b.state_type = ATNStateTokenStart
 //
 //  return &TokensStartState{BaseDecisionState: b}
 //}

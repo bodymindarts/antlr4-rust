@@ -30,19 +30,19 @@
 //
 //  String() &str
 //
-//  getPrecedenceFilterSuppressed() bool
-//  setPrecedenceFilterSuppressed(bool)
+//  get_precedence_filter_suppressed() bool
+//  set_precedence_filter_suppressed(bool)
 //
-//  shortHash() &str
+//  short_hash() &str
 //}
 //
 //pub struct BaseATNConfig {
-//  precedenceFilterSuppressed: bool
+//  precedence_filter_suppressed: bool
 //  state:                      ATNState
 //  alt:                        i32
 //  context:                    PredictionContext
-//  semanticContext:            SemanticContext
-//  reachesIntoOuterContext:    i32
+//  semantic_context:            SemanticContext
+//  reaches_into_outer_context:    i32
 //}
 //
 //impl BaseATNConfig {§//  pub fn new7(old *BaseATNConfig) -> *BaseATNConfig { // TODO: Dup
@@ -50,8 +50,8 @@
 //    state:                   old.state,
 //    alt:                     old.alt,
 //    context:                 old.context,
-//    semanticContext:         old.semanticContext,
-//    reachesIntoOuterContext: old.reachesIntoOuterContext,
+//    semantic_context:         old.semantic_context,
+//    reaches_into_outer_context: old.reaches_into_outer_context,
 //  }
 //}
 //
@@ -59,32 +59,32 @@
 //  return BaseATNConfig5::new(state, alt, context, SemanticContextNone)
 //}
 //
-//impl BaseATNConfig {§//  pub fn new5(&self, state ATNState, alt i32, context: PredictionContext, semanticContext: SemanticContext) -> *BaseATNConfig {
-//  if semanticContext == nil {
+//impl BaseATNConfig {§//  pub fn new5(&self, state ATNState, alt i32, context: PredictionContext, semantic_context: SemanticContext) -> *BaseATNConfig {
+//  if semantic_context == nil {
 //    panic("semanticContext cannot be nil") // TODO: Necessary?
 //  }
 //
-//  return &BaseATNConfig{state: state, alt: alt, context: context, semanticContext: semanticContext}
+//  return &BaseATNConfig{state: state, alt: alt, context: context, semantic_context: semantic_context}
 //}
 //
 //impl BaseATNConfig {§//  pub fn new4(&self, c: ATNConfig, state: ATNState) -> *BaseATNConfig {
 //  return BaseATNConfig::new(c, state, c.GetContext(), c.GetSemanticContext())
 //}
 //
-//impl BaseATNConfig {§//  pub fn new3(&self, c ATNConfig, state: ATNState, semanticContext: SemanticContext) -> *BaseATNConfig {
-//  return BaseATNConfig::new(c, state, c.GetContext(), semanticContext)
+//impl BaseATNConfig {§//  pub fn new3(&self, c ATNConfig, state: ATNState, semantic_context: SemanticContext) -> *BaseATNConfig {
+//  return BaseATNConfig::new(c, state, c.GetContext(), semantic_context)
 //}
 //
-//impl BaseATNConfig {§//  pub fn new2(&self, c: ATNConfig, semanticContext: SemanticContext) -> *BaseATNConfig {
-//  return BaseATNConfig::new(c, c.GetState(), c.GetContext(), semanticContext)
+//impl BaseATNConfig {§//  pub fn new2(&self, c: ATNConfig, semantic_context: SemanticContext) -> *BaseATNConfig {
+//  return BaseATNConfig::new(c, c.GetState(), c.GetContext(), semantic_context)
 //}
 //
 //impl BaseATNConfig {§//  pub fn new1(&self, c ATNConfig, state: ATNState, context: PredictionContext) -> *BaseATNConfig {
 //  return BaseATNConfig::new(c, state, context, c.GetSemanticContext())
 //}
 //
-//impl BaseATNConfig {§//  pub fn new(&self, c ATNConfig, state ATNState, context: PredictionContext, semanticContext: SemanticContext) -> *BaseATNConfig {
-//  if semanticContext == nil {
+//impl BaseATNConfig {§//  pub fn new(&self, c ATNConfig, state ATNState, context: PredictionContext, semantic_context: SemanticContext) -> *BaseATNConfig {
+//  if semantic_context == nil {
 //    panic("semanticContext cannot be nil")
 //  }
 //
@@ -92,18 +92,18 @@
 //    state:                   state,
 //    alt:                     c.GetAlt(),
 //    context:                 context,
-//    semanticContext:         semanticContext,
-//    reachesIntoOuterContext: c.GetReachesIntoOuterContext(),
-//    precedenceFilterSuppressed: c.getPrecedenceFilterSuppressed(),
+//    semantic_context:         semantic_context,
+//    reaches_into_outer_context: c.GetReachesIntoOuterContext(),
+//    precedence_filter_suppressed: c.get_precedence_filter_suppressed(),
 //  }
 //}
 //
-//pub fn getPrecedenceFilterSuppressed(&self, ) -> bool {
-//  return b.precedenceFilterSuppressed
+//pub fn get_precedence_filter_suppressed(&self, ) -> bool {
+//  return b.precedence_filter_suppressed
 //}
 //
-//pub fn setPrecedenceFilterSuppressed(&self, v: bool) {
-//  b.precedenceFilterSuppressed = v
+//pub fn set_precedence_filter_suppressed(&self, v: bool) {
+//  b.precedence_filter_suppressed = v
 //}
 //
 //pub fn GetState(&self, ) -> ATNState {
@@ -122,15 +122,15 @@
 //}
 //
 //pub fn GetSemanticContext(&self, ) -> SemanticContext {
-//  return b.semanticContext
+//  return b.semantic_context
 //}
 //
 //pub fn GetReachesIntoOuterContext(&self, ) -> i32 {
-//  return b.reachesIntoOuterContext
+//  return b.reaches_into_outer_context
 //}
 //
 //pub fn SetReachesIntoOuterContext(&self, v: i32) {
-//  b.reachesIntoOuterContext = v
+//  b.reaches_into_outer_context = v
 //}
 //
 //// An ATN configuration is equal to another if both have the same state, they
@@ -157,15 +157,15 @@
 //  var (
 //    nums = b.state.GetStateNumber() == other.state.GetStateNumber()
 //    alts = b.alt == other.alt
-//    cons = b.semanticContext.equals(other.semanticContext)
-//    sups = b.precedenceFilterSuppressed == other.precedenceFilterSuppressed
+//    cons = b.semantic_context.equals(other.semantic_context)
+//    sups = b.precedence_filter_suppressed == other.precedence_filter_suppressed
 //  )
 //
 //  return nums && alts && cons && sups && equal
 //}
 //
-//pub fn shortHash(&self, ) -> &str {
-//  return strconv.Itoa(b.state.GetStateNumber()) + "/" + strconv.Itoa(b.alt) + "/" + b.semanticContext.String()
+//pub fn short_hash(&self, ) -> &str {
+//  return strconv.Itoa(b.state.GetStateNumber()) + "/" + strconv.Itoa(b.alt) + "/" + b.semantic_context.String()
 //}
 //
 //pub fn Hash(&self, ) -> &str {
@@ -177,7 +177,7 @@
 //    c = b.context.Hash()
 //  }
 //
-//  return strconv.Itoa(b.state.GetStateNumber()) + "/" + strconv.Itoa(b.alt) + "/" + c + "/" + b.semanticContext.String()
+//  return strconv.Itoa(b.state.GetStateNumber()) + "/" + strconv.Itoa(b.alt) + "/" + c + "/" + b.semantic_context.String()
 //}
 //
 //pub fn String(&self, ) -> &str {
@@ -187,12 +187,12 @@
 //    s1 = ",[" + fmt.Sprint(b.context) + "]"
 //  }
 //
-//  if b.semanticContext != SemanticContextNone {
-//    s2 = "," + fmt.Sprint(b.semanticContext)
+//  if b.semantic_context != SemanticContextNone {
+//    s2 = "," + fmt.Sprint(b.semantic_context)
 //  }
 //
-//  if b.reachesIntoOuterContext > 0 {
-//    s3 = ",up=" + fmt.Sprint(b.reachesIntoOuterContext)
+//  if b.reaches_into_outer_context > 0 {
+//    s3 = ",up=" + fmt.Sprint(b.reaches_into_outer_context)
 //  }
 //
 //  return fmt.Sprintf("(%v,%v%v%v%v)", b.state, b.alt, s1, s2, s3)
@@ -202,42 +202,42 @@
 //
 //pub struct LexerATNConfig {
 //  *BaseATNConfig
-//  lexerActionExecutor:            *LexerActionExecutor
-//  passedThroughNonGreedyDecision: bool
+//  lexer_action_executor:            *LexerActionExecutor
+//  passed_through_non_greedy_decision: bool
 //}
 //
 //impl LexerATNConfig {§//  pub fn new6(&self, state ATNState, alt: i32, context: PredictionContext) -> *LexerATNConfig {
 //  return &LexerATNConfig{BaseATNConfig: NewBaseATNConfig5(state, alt, context, SemanticContextNone)}
 //}
 //
-//impl LexerATNConfig {§//  pub fn new5(&self, state ATNState, alt i32, context: PredictionContext, lexerActionExecutor *LexerActionExecutor) -> *LexerATNConfig {
+//impl LexerATNConfig {§//  pub fn new5(&self, state ATNState, alt i32, context: PredictionContext, lexer_action_executor *LexerActionExecutor) -> *LexerATNConfig {
 //  return &LexerATNConfig{
 //    BaseATNConfig:       NewBaseATNConfig5(state, alt, context, SemanticContextNone),
-//    lexerActionExecutor: lexerActionExecutor,
+//    lexer_action_executor: lexer_action_executor,
 //  }
 //}
 //
 //impl LexerATNConfig {§//  pub fn new4(&self, c *LexerATNConfig, state: ATNState) -> *LexerATNConfig {
 //  return &LexerATNConfig{
 //    BaseATNConfig:                  NewBaseATNConfig(c, state, c.GetContext(), c.GetSemanticContext()),
-//    lexerActionExecutor:            c.lexerActionExecutor,
-//    passedThroughNonGreedyDecision: checkNonGreedyDecision(c, state),
+//    lexer_action_executor:            c.lexer_action_executor,
+//    passed_through_non_greedy_decision: check_non_greedy_decision(c, state),
 //  }
 //}
 //
-//impl LexerATNConfig {§//  pub fn new3(&self, c *LexerATNConfig, state: ATNState, lexerActionExecutor *LexerActionExecutor) -> *LexerATNConfig {
+//impl LexerATNConfig {§//  pub fn new3(&self, c *LexerATNConfig, state: ATNState, lexer_action_executor *LexerActionExecutor) -> *LexerATNConfig {
 //  return &LexerATNConfig{
 //    BaseATNConfig:                  NewBaseATNConfig(c, state, c.GetContext(), c.GetSemanticContext()),
-//    lexerActionExecutor:            lexerActionExecutor,
-//    passedThroughNonGreedyDecision: checkNonGreedyDecision(c, state),
+//    lexer_action_executor:            lexer_action_executor,
+//    passed_through_non_greedy_decision: check_non_greedy_decision(c, state),
 //  }
 //}
 //
 //impl LexerATNConfig {§//  pub fn new2(&self, c *LexerATNConfig, state: ATNState, context: PredictionContext) -> *LexerATNConfig {
 //  return &LexerATNConfig{
 //    BaseATNConfig:                  NewBaseATNConfig(c, state, context, c.GetSemanticContext()),
-//    lexerActionExecutor:            c.lexerActionExecutor,
-//    passedThroughNonGreedyDecision: checkNonGreedyDecision(c, state),
+//    lexer_action_executor:            c.lexer_action_executor,
+//    passed_through_non_greedy_decision: check_non_greedy_decision(c, state),
 //  }
 //}
 //
@@ -248,13 +248,13 @@
 //pub fn Hash(&self, ) -> &str {
 //  var f &str
 //
-//  if l.passedThroughNonGreedyDecision {
+//  if l.passed_through_non_greedy_decision {
 //    f = "1"
 //  } else {
 //    f = "0"
 //  }
 //
-//  return fmt.Sprintf("%v%v%v%v%v%v", l.state.GetStateNumber(), l.alt, l.context, l.semanticContext, f, l.lexerActionExecutor)
+//  return fmt.Sprintf("%v%v%v%v%v%v", l.state.GetStateNumber(), l.alt, l.context, l.semantic_context, f, l.lexer_action_executor)
 //}
 //
 //pub fn equals(&self, other i32erface{}) -> bool {
@@ -264,16 +264,16 @@
 //    return true
 //  } else if !ok {
 //    return false
-//  } else if l.passedThroughNonGreedyDecision != othert.passedThroughNonGreedyDecision {
+//  } else if l.passed_through_non_greedy_decision != othert.passed_through_non_greedy_decision {
 //    return false
 //  }
 //
 //  var b bool
 //
-//  if l.lexerActionExecutor != nil {
-//    b = !l.lexerActionExecutor.equals(othert.lexerActionExecutor)
+//  if l.lexer_action_executor != nil {
+//    b = !l.lexer_action_executor.equals(othert.lexer_action_executor)
 //  } else {
-//    b = othert.lexerActionExecutor != nil
+//    b = othert.lexer_action_executor != nil
 //  }
 //
 //  if b {
@@ -283,8 +283,8 @@
 //  return l.BaseATNConfig.equals(othert.BaseATNConfig)
 //}
 //
-//pub fn checkNonGreedyDecision(source *LexerATNConfig, target: ATNState) -> bool { // non-member
+//pub fn check_non_greedy_decision(source *LexerATNConfig, target: ATNState) -> bool { // non-member
 //  var ds, ok = target.(DecisionState)
 //
-//  return source.passedThroughNonGreedyDecision || (ok && ds.getNonGreedy())
+//  return source.passed_through_non_greedy_decision || (ok && ds.get_non_greedy())
 //}

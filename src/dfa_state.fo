@@ -41,30 +41,30 @@
 //// different ATN contexts (with same or different alts) meaning that state was
 //// reached via a different set of rule invocations.
 //pub struct DFAState {
-//  stateNumber: i32
+//  state_number: i32
 //  configs:     ATNConfigSet
 //
 //  // edges elements point to the target of the symbol. Shift up by 1 so (-1)
 //  // Token.EOF maps to the first element.
 //  edges []*DFAState
 //
-//  isAcceptState: bool
+//  is_accept_state: bool
 //
 //  // prediction is the ttype we match or alt we predict if the state is accept.
 //  // Set to ATN.INVALID_ALT_NUMBER when predicates != nil or
-//  // requiresFullContext.
+//  // requires_full_context.
 //  prediction: i32
 //
-//  lexerActionExecutor: *LexerActionExecutor
+//  lexer_action_executor: *LexerActionExecutor
 //
-//  // requiresFullContext indicates it was created during an SLL prediction that
+//  // requires_full_context indicates it was created during an SLL prediction that
 //  // discovered a conflict between the configurations in the state. Future
-//  // ParserATNSimulator.execATN invocations immediately jump doing
+//  // ParserATNSimulator.exec_a_t_n invocations immediately jump doing
 //  // full context prediction if true.
-//  requiresFullContext: bool
+//  requires_full_context: bool
 //
 //  // predicates is the predicates associated with the ATN configurations of the
-//  // DFA state during SLL parsing. When we have predicates, requiresFullContext
+//  // DFA state during SLL parsing. When we have predicates, requires_full_context
 //  // is false, since full context prediction evaluates predicates on-the-fly. If
 //  // d is
 //  // not nil, then prediction is ATN.INVALID_ALT_NUMBER.
@@ -74,16 +74,16 @@
 //  // that it's an ambiguity not a conflict.
 //  //
 //  // This list is computed by
-//  // ParserATNSimulator.predicateDFAState.
+//  // ParserATNSimulator.predicate_d_f_a_state.
 //  predicates []*PredPrediction
 //}
 //
-//impl DFAState {§//  pub fn new(&self, stateNumber: i32, configs: ATNConfigSet) -> *DFAState {
+//impl DFAState {§//  pub fn new(&self, state_number: i32, configs: ATNConfigSet) -> *DFAState {
 //  if configs == nil {
 //    configs = BaseATNConfigSet::new(false)
 //  }
 //
-//  return &DFAState{configs: configs, stateNumber: stateNumber}
+//  return &DFAState{configs: configs, state_number: state_number}
 //}
 //
 //// GetAltSet gets the set of all alts mentioned by all ATN configurations in d.
@@ -103,7 +103,7 @@
 //  return alts
 //}
 //
-//pub fn setPrediction(&self, v: i32) {
+//pub fn set_prediction(&self, v: i32) {
 //  d.prediction = v
 //}
 //
@@ -116,8 +116,8 @@
 //// necessary to show that the algorithm terminates.
 ////
 //// Cannot test the DFA state numbers here because in
-//// ParserATNSimulator.addDFAState we need to know if any other state exists that
-//// has d exact set of ATN configurations. The stateNumber is irrelevant.
+//// ParserATNSimulator.add_d_f_a_state we need to know if any other state exists that
+//// has d exact set of ATN configurations. The state_number is irrelevant.
 //pub fn equals(&self, other i32erface{}) -> bool {
 //  if d == other {
 //    return true
@@ -129,13 +129,13 @@
 //}
 //
 //pub fn String(&self, ) -> &str {
-//  return strconv.Itoa(d.stateNumber) + ":" + d.Hash()
+//  return strconv.Itoa(d.state_number) + ":" + d.Hash()
 //}
 //
 //pub fn Hash(&self, ) -> &str {
 //  var s &str
 //
-//  if d.isAcceptState {
+//  if d.is_accept_state {
 //    if d.predicates != nil {
 //      s = "=>" + fmt.Sprint(d.predicates)
 //    } else {

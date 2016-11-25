@@ -26,61 +26,61 @@
 //pub struct DiagnosticErrorListener {
 //  *DefaultErrorListener
 //
-//  exactOnly: bool
+//  exact_only: bool
 //}
 //
-//impl DiagnosticErrorListener {§//  pub fn new(&self, exactOnly: bool) -> *DiagnosticErrorListener {
+//impl DiagnosticErrorListener {§//  pub fn new(&self, exact_only: bool) -> *DiagnosticErrorListener {
 //
 //  let n = new(DiagnosticErrorListener);
 //
 //  // whether all ambiguities or only exact ambiguities are Reported.
-//  n.exactOnly = exactOnly
+//  n.exact_only = exact_only
 //  return n
 //}
 //
-//pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex i32, exact: bool, ambigAlts *BitSet, configs: ATNConfigSet) {
-//  if d.exactOnly && !exact {
+//pub fn ReportAmbiguity(&self, recognizer Parser, dfa *DFA, start_index, stop_index i32, exact: bool, ambig_alts *BitSet, configs: ATNConfigSet) {
+//  if d.exact_only && !exact {
 //    return
 //  }
 //  let msg = "reportAmbiguity d=" +;
-//    d.getDecisionDescription(recognizer, dfa) +
-//    ": ambigAlts=" +
-//    d.getConflictingAlts(ambigAlts, configs).String() +
+//    d.get_decision_description(recognizer, dfa) +
+//    ": ambig_alts=" +
+//    d.get_conflicting_alts(ambigAlts, configs).String() +
 //    ", input='" +
-//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
+//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stop_index)) + "'"
 //  recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
-//pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex: i32, conflictingAlts *BitSet, configs: ATNConfigSet) {
+//pub fn ReportAttemptingFullContext(&self, recognizer Parser, dfa *DFA, start_index, stop_index: i32, conflicting_alts *BitSet, configs: ATNConfigSet) {
 //
 //  let msg = "reportAttemptingFullContext d=" +;
-//    d.getDecisionDescription(recognizer, dfa) +
+//    d.get_decision_description(recognizer, dfa) +
 //    ", input='" +
-//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
+//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stop_index)) + "'"
 //  recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
-//pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, startIndex, stopIndex, prediction: i32, configs: ATNConfigSet) {
+//pub fn ReportContextSensitivity(&self, recognizer Parser, dfa *DFA, start_index, stop_index, prediction: i32, configs: ATNConfigSet) {
 //  let msg = "reportContextSensitivity d=" +;
-//    d.getDecisionDescription(recognizer, dfa) +
+//    d.get_decision_description(recognizer, dfa) +
 //    ", input='" +
-//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stopIndex)) + "'"
+//    recognizer.GetTokenStream().GetTextFromInterval(NewInterval(startIndex, stop_index)) + "'"
 //  recognizer.NotifyErrorListeners(msg, nil, nil)
 //}
 //
-//pub fn getDecisionDescription(&self, recognizer: Parser, dfa *DFA) -> &str {
+//pub fn get_decision_description(&self, recognizer: Parser, dfa *DFA) -> &str {
 //  let decision = dfa.decision;
-//  let ruleIndex = dfa.atnStartState.GetRuleIndex();
+//  let rule_index = dfa.atn_start_state.GetRuleIndex();
 //
-//  let ruleNames = recognizer.GetRuleNames();
-//  if ruleIndex < 0 || ruleIndex >= len(ruleNames) {
+//  let rule_names = recognizer.GetRuleNames();
+//  if rule_index < 0 || rule_index >= len(ruleNames) {
 //    return strconv.Itoa(decision)
 //  }
-//  let ruleName = ruleNames[ruleIndex];
-//  if ruleName == "" {
+//  let rule_name = rule_names[ruleIndex];
+//  if rule_name == "" {
 //    return strconv.Itoa(decision)
 //  }
-//  return strconv.Itoa(decision) + " (" + ruleName + ")"
+//  return strconv.Itoa(decision) + " (" + rule_name + ")"
 //}
 //
 ////
@@ -94,7 +94,7 @@
 //// @return Returns {@code ReportedAlts} if it is not {@code nil}, otherwise
 //// returns the set of alternatives represented in {@code configs}.
 ////
-//pub fn getConflictingAlts(&self, ReportedAlts *BitSet, set: ATNConfigSet) -> *BitSet {
+//pub fn get_conflicting_alts(&self, ReportedAlts *BitSet, set: ATNConfigSet) -> *BitSet {
 //  if ReportedAlts != nil {
 //    return ReportedAlts
 //  }
