@@ -45,7 +45,7 @@
 //  let msg = "reportAmbiguity d=" +;
 //    self.decision_description(recognizer, dfa) +
 //    ": ambig_alts=" +
-//    self.conflicting_alts(ambigAlts, configs).String() +
+//    self.conflicting_alts(ambigAlts, configs).string() +
 //    ", input='" +
 //    recognizer.token_stream().text_from_interval(NewInterval(startIndex, stop_index)) + "'"
 //  recognizer.notify_error_listeners(msg, nil, nil)
@@ -74,13 +74,13 @@
 //
 //  let rule_names = recognizer.rule_names();
 //  if rule_index < 0 || rule_index >= len(ruleNames) {
-//    return strconv.Itoa(decision)
+//    return strconv.itoa(decision)
 //  }
 //  let rule_name = rule_names[ruleIndex];
 //  if rule_name == "" {
-//    return strconv.Itoa(decision)
+//    return strconv.itoa(decision)
 //  }
-//  return strconv.Itoa(decision) + " (" + rule_name + ")"
+//  return strconv.itoa(decision) + " (" + rule_name + ")"
 //}
 //
 ////

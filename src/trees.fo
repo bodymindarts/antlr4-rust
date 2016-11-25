@@ -45,11 +45,11 @@
 //      let alt_number = t3.alt_number();
 //
 //      if alt_number != ATNInvalidAltNumber {
-//        return fmt.Sprintf("%s:%d", rule_names[t3.rule_index()], alt_number)
+//        return fmt.sprintf("%s:%d", rule_names[t3.rule_index()], alt_number)
 //      }
 //      return rule_names[t3.rule_index()]
 //    case ErrorNode:
-//      return fmt.Sprint(t2)
+//      return fmt.sprint(t2)
 //    case TerminalNode:
 //      if t2.symbol() != nil {
 //        return t2.symbol().text()
@@ -63,7 +63,7 @@
 //    return p2.text()
 //  }
 //
-//  return fmt.Sprint(self.payload())
+//  return fmt.sprint(self.payload())
 //}
 //
 //// Return ordered list of all children of this node

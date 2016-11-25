@@ -95,9 +95,9 @@
 //
 //type DFAStateList []*DFAState
 //
-//pub fn Len() i32           { return len(d) -> }
-//pub fn Less(i, j: i32) -> bool { return d[i].state_number < d[j].state_number }
-//pub fn Swap(i, j: i32) ->      { d[i], d[j] = d[j], d[i] }
+//pub fn len() i32           { return len(d) -> }
+//pub fn less(i, j: i32) -> bool { return d[i].state_number < d[j].state_number }
+//pub fn swap(i, j: i32) ->      { d[i], d[j] = d[j], d[i] }
 //
 //// sorted_states returns the states in d sorted by their state number.
 //fn sorted_states(&self) -> []*DFAState {
@@ -107,17 +107,17 @@
 //    vs = append(vs, v)
 //  }
 //
-//  sort.Sort(DFAStateList(vs))
+//  sort.sort(DFAStateList(vs))
 //
 //  return vs
 //}
 //
-//pub fn String(&self, literal_names []string, symbolic_names []string) -> &str {
+//pub fn string(&self, literal_names []string, symbolic_names []string) -> &str {
 //  if self.s0 == nil {
 //    return ""
 //  }
 //
-//  return DFASerializer::new(d, literal_names, symbolic_names).String()
+//  return DFASerializer::new(d, literal_names, symbolic_names).string()
 //}
 //
 //pub fn to_lexer_string(&self) -> &str {
@@ -125,5 +125,5 @@
 //    return ""
 //  }
 //
-//  return LexerDFASerializer::new(d).String()
+//  return LexerDFASerializer::new(d).string()
 //}

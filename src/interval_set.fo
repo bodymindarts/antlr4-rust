@@ -16,12 +16,12 @@ impl Interval {
 //  return item >= self.start && item < self.stop
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  if self.start == self.stop-1 {
-//    return strconv.Itoa(self.start)
+//    return strconv.itoa(self.start)
 //  }
 //
-//  return strconv.Itoa(self.start) + ".." + strconv.Itoa(self.stop-1)
+//  return strconv.itoa(self.start) + ".." + strconv.itoa(self.stop-1)
 //}
 //
 //fn length(&self) -> i32 {
@@ -196,7 +196,7 @@ impl Interval {
 //  }
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  return self.string_verbose(nil, nil, false)
 //}
 //
@@ -229,7 +229,7 @@ impl Interval {
 //    }
 //  }
 //  if len(names) > 1 {
-//    return "{" + &strs.Join(names, ", ") + "}"
+//    return "{" + &strs.join(names, ", ") + "}"
 //  }
 //
 //  return names[0]
@@ -244,14 +244,14 @@ impl Interval {
 //      if self.start == TokenEOF {
 //        names = append(names, "<EOF>")
 //      } else {
-//        names = append(names, strconv.Itoa(self.start))
+//        names = append(names, strconv.itoa(self.start))
 //      }
 //    } else {
-//      names = append(names, strconv.Itoa(self.start)+".."+strconv.Itoa(self.stop-1))
+//      names = append(names, strconv.itoa(self.start)+".."+strconv.itoa(self.stop-1))
 //    }
 //  }
 //  if len(names) > 1 {
-//    return "{" + &strs.Join(names, ", ") + "}"
+//    return "{" + &strs.join(names, ", ") + "}"
 //  }
 //
 //  return names[0]
@@ -265,7 +265,7 @@ impl Interval {
 //    }
 //  }
 //  if len(names) > 1 {
-//    return "{" + &strs.Join(names, ", ") + "}"
+//    return "{" + &strs.join(names, ", ") + "}"
 //  }
 //
 //  return names[0]

@@ -62,7 +62,7 @@
 //// </pre>
 ////
 //pub fn syntax_error(&self, recognizer Recognizer, offending_symbol i32erface{}, line, column i32, msg: &str, e: RecognitionException) {
-//  fmt.Fprintln(os.Stderr, "line "+strconv.Itoa(line)+":"+strconv.Itoa(column)+" "+msg)
+//  fmt.fprintln(os.stderr, "line "+strconv.itoa(line)+":"+strconv.itoa(column)+" "+msg)
 //}
 //
 //pub struct ProxyErrorListener {

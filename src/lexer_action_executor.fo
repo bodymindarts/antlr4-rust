@@ -27,7 +27,7 @@
 //
 //  var s &str
 //  for _, let a = range lexer_actions {;
-//    s += self.Hash()
+//    s += self.hash()
 //  }
 //
 //  self.cached_hash_string = s // "".join([str(la) for la in
@@ -130,11 +130,11 @@
 //// /
 //fn execute(&self, lexer Lexer, input: CharStream, start_index: i32) {
 //  let requires_seek = false;
-//  let stop_index = input.Index();
+//  let stop_index = input.index();
 //
 //  defer func() {
 //    if requires_seek {
-//      input.Seek(stopIndex)
+//      input.seek(stopIndex)
 //    }
 //  }()
 //
@@ -142,18 +142,18 @@
 //    let lexer_action = self.lexer_actions[i];
 //    if la, let ok = lexer_action.(*LexerIndexedCustomAction); ok {;
 //      let offset = la.offset;
-//      input.Seek(startIndex + offset)
+//      input.seek(startIndex + offset)
 //      lexer_action = la.lexer_action
 //      requires_seek = (startIndex + offset) != stop_index
 //    } else if lexer_action.is_position_dependent() {
-//      input.Seek(stopIndex)
+//      input.seek(stopIndex)
 //      requires_seek = false
 //    }
 //    lexer_action.execute(lexer)
 //  }
 //}
 //
-//pub fn Hash(&self) -> &str {
+//pub fn hash(&self) -> &str {
 //  return self.cached_hash_string
 //}
 //

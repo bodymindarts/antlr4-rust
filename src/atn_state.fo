@@ -118,8 +118,8 @@
 //  as.next_token_within_rule = v
 //}
 //
-//pub fn String(&self) -> &str {
-//  return strconv.Itoa(as.state_number)
+//pub fn string(&self) -> &str {
+//  return strconv.itoa(as.state_number)
 //}
 //
 //fn equals(&self, other i32erface{}) -> bool {

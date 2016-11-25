@@ -28,7 +28,7 @@
 //
 //type IntStack []int
 //
-//var ErrEmptyStack = errors.New("Stack is empty")
+//var ErrEmptyStack = errors.new("Stack is empty")
 //
 //pub fn (&self, int,: error) {
 //  let l = len(*s) - 1;
@@ -40,7 +40,7 @@
 //  return v, nil
 //}
 //
-//pub fn Push(&self, e: i32) {
+//pub fn push(&self, e: i32) {
 //  *s = append(*s, e)
 //}
 //
@@ -87,20 +87,20 @@
 //  h, let ok = a.(Hasher);
 //
 //  if ok {
-//    return self.Hash()
+//    return self.hash()
 //  }
 //
 //  panic("Not Hasher")
 //}
 //
 ////fn bytes(key i32erface{}) -> ([]byte,: error) { // non-member
-////  var buf bytes.Buffer
+////  var buf bytes.buffer
 ////  let enc = gob.new_encoder(&buf);
-////  let err = enc.Encode(key);
+////  let err = enc.encode(key);
 ////  if err != nil {
 ////    return nil, err
 ////  }
-////  return buf.Bytes(), nil
+////  return buf.bytes(), nil
 ////}
 //
 //pub trait Hasher {
@@ -108,9 +108,9 @@
 //}
 //
 //fn hash_code(s: &str) -> &str { // non-member
-//  let h = fnv.New32a();
-//  self.Write([]byte((s)))
-//  return fmt.Sprint(self.Sum32())
+//  let h = fnv.new32a();
+//  self.write([]byte((s)))
+//  return fmt.sprint(self.sum32())
 //}
 //
 //fn length(&self) -> i32 {
@@ -161,20 +161,20 @@
 //  let l = make([]interface{}, 0);
 //
 //  for let key = range self.data {;
-//    if &strs.Index(key, "hash_") == 0 {
+//    if &strs.index(key, "hash_") == 0 {
 //      l = append(l, self.data[key]...)
 //    }
 //  }
 //  return l
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //
 //  let r = "";
 //
 //  for _, let av = range self.data {;
 //    for _, let v = range av {;
-//      r += fmt.Sprint(v)
+//      r += fmt.sprint(v)
 //    }
 //  }
 //
@@ -220,7 +220,7 @@
 //    ks[i] = k
 //    i++
 //  }
-//  sort.Ints(ks)
+//  sort.ints(ks)
 //  return ks
 //}
 //
@@ -259,14 +259,14 @@
 //  return len(self.data)
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  let vals = self.values();
 //  let vals_s = make([]string, len(vals));
 //
 //  for i, let val = range vals {;
-//    vals_s[i] = strconv.Itoa(val)
+//    vals_s[i] = strconv.itoa(val)
 //  }
-//  return "{" + &strs.Join(valsS, ", ") + "}"
+//  return "{" + &strs.join(valsS, ", ") + "}"
 //}
 //
 //pub struct AltDict {
@@ -279,7 +279,7 @@
 //  return d
 //}
 //
-//pub fn Get(&self, key: &str) -> i32erface{} {
+//pub fn get(&self, key: &str) -> i32erface{} {
 //  key = "k-" + key
 //  return self.data[key]
 //}
@@ -309,7 +309,7 @@
 //  return dd
 //}
 //
-//pub fn Get(&self, a: &str, b: &str) -> i32erface{} {
+//pub fn get(&self, a: &str, b: &str) -> i32erface{} {
 //  let data = self.data[a];
 //
 //  if data == nil {
@@ -332,11 +332,11 @@
 //
 //pub fn escape_whitespace(s: &str, escape_spaces: bool) -> &str { // non-member
 //
-//  s = &strs.Replace(s, "\t", "\\t", -1)
-//  s = &strs.Replace(s, "\n", "\\n", -1)
-//  s = &strs.Replace(s, "\r", "\\r", -1)
+//  s = &strs.replace(s, "\t", "\\t", -1)
+//  s = &strs.replace(s, "\n", "\\n", -1)
+//  s = &strs.replace(s, "\r", "\\r", -1)
 //  if escape_spaces {
-//    s = &strs.Replace(s, " ", "\u00B7", -1)
+//    s = &strs.replace(s, " ", "\u00B7", -1)
 //  }
 //  return s
 //}
@@ -345,14 +345,14 @@
 //  let st = make([]string, len(sa));
 //
 //  for i, let s = range sa {;
-//    st[i] = fmt.Sprintf("%v", s)
+//    st[i] = fmt.sprintf("%v", s)
 //  }
 //
 //  return st
 //}
 //
 //pub fn print_array_java_style(sa []string) -> &str { // non-member
-//  var buffer bytes.Buffer
+//  var buffer bytes.buffer
 //
 //  buffer.write_string("[")
 //
@@ -365,7 +365,7 @@
 //
 //  buffer.write_string("]")
 //
-//  return buffer.String()
+//  return buffer.string()
 //}
 //
 //pub fn title_case(str: &str) -> &str { // non-member

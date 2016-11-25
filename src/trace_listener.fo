@@ -16,13 +16,13 @@
 //}
 //
 //pub fn enter_every_rule(&self, ctx: ParserRuleContext) {
-//  fmt.Println("enter   " + self.parser.rule_names()[ctx.rule_index()] + ", LT(1)=" + self.parser.input.l_t(1).text())
+//  fmt.println("enter   " + self.parser.rule_names()[ctx.rule_index()] + ", LT(1)=" + self.parser.input.l_t(1).text())
 //}
 //
 //pub fn visit_terminal(&self, node: TerminalNode) {
-//  fmt.Println("consume " + fmt.Sprint(node.symbol()) + " rule " + self.parser.rule_names()[self.parser.ctx.rule_index()])
+//  fmt.println("consume " + fmt.sprint(node.symbol()) + " rule " + self.parser.rule_names()[self.parser.ctx.rule_index()])
 //}
 //
 //pub fn exit_every_rule(&self, ctx: ParserRuleContext) {
-//  fmt.Println("exit    " + self.parser.rule_names()[ctx.rule_index()] + ", LT(1)=" + self.parser.input.l_t(1).text())
+//  fmt.println("exit    " + self.parser.rule_names()[ctx.rule_index()] + ", LT(1)=" + self.parser.input.l_t(1).text())
 //}

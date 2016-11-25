@@ -185,7 +185,7 @@
 //
 //        //        NewBaseATNConfig({semanticContext:}, c)
 //        c = NewBaseATNConfig2(c, SemanticContextNone)
-//        dup.Add(c, nil)
+//        dup.add(c, nil)
 //      }
 //      configs = dup
 //    }
@@ -490,7 +490,7 @@
 //  let config_to_alts = make(map[string]*BitSet);
 //
 //  for _, let c = range configs.items() {;
-//    let key = "key_" + strconv.Itoa(self.state().state_number()) + "/" + self.context().String();
+//    let key = "key_" + strconv.itoa(self.state().state_number()) + "/" + self.context().string();
 //    let alts = config_to_alts[key];
 //    if alts == nil {
 //      alts = NewBitSet()
@@ -502,7 +502,7 @@
 //  let values = make([]*BitSet, 0);
 //
 //  for let k = range config_to_alts {;
-//    if &strs.Index(k, "key_") != 0 {
+//    if &strs.index(k, "key_") != 0 {
 //      continue
 //    }
 //    values = append(values, config_to_alts[k])
@@ -522,10 +522,10 @@
 //  let m = NewAltDict();
 //
 //  for _, let c = range configs.items() {;
-//    let alts = self.Get(self.state().String());
+//    let alts = self.get(self.state().string());
 //    if alts == nil {
 //      alts = NewBitSet()
-//      self.put(self.state().String(), alts)
+//      self.put(self.state().string(), alts)
 //    }
 //    alts.(*BitSet).add(self.alt())
 //  }

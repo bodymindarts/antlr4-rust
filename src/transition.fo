@@ -67,7 +67,7 @@
 //  return self.serialization_type
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  panic("Not implemented")
 //}
 //
@@ -145,12 +145,12 @@
 //  return s
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  return self.label == symbol
 //}
 //
-//pub fn String(&self) -> &str {
-//  return strconv.Itoa(self.label)
+//pub fn string(&self) -> &str {
+//  return strconv.itoa(self.label)
 //}
 //
 //pub struct RuleTransition {
@@ -174,7 +174,7 @@
 //  return t
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  return false
 //}
 //
@@ -195,11 +195,11 @@
 //  return t
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  return false
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  return "epsilon"
 //}
 //
@@ -227,11 +227,11 @@
 //  return s
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  return symbol >= self.start && symbol <= self.stop
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  return "'" + &str(self.start) + "'..'" + &str(self.stop) + "'"
 //}
 //
@@ -274,7 +274,7 @@
 //  return t
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  return false
 //}
 //
@@ -282,8 +282,8 @@
 //  return NewPredicate(self.rule_index, self.pred_index, self.is_ctx_dependent)
 //}
 //
-//pub fn String(&self) -> &str {
-//  return "pred_" + strconv.Itoa(self.rule_index) + ":" + strconv.Itoa(self.pred_index)
+//pub fn string(&self) -> &str {
+//  return "pred_" + strconv.itoa(self.rule_index) + ":" + strconv.itoa(self.pred_index)
 //}
 //
 //pub struct ActionTransition {
@@ -306,12 +306,12 @@
 //  return t
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  return false
 //}
 //
-//pub fn String(&self) -> &str {
-//  return "action_" + strconv.Itoa(self.rule_index) + ":" + strconv.Itoa(self.action_index)
+//pub fn string(&self) -> &str {
+//  return "action_" + strconv.itoa(self.rule_index) + ":" + strconv.itoa(self.action_index)
 //}
 //
 //pub struct SetTransition {
@@ -334,12 +334,12 @@
 //  return t
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  return self.interval_set.contains(symbol)
 //}
 //
-//pub fn String(&self) -> &str {
-//  return self.interval_set.String()
+//pub fn string(&self) -> &str {
+//  return self.interval_set.string()
 //}
 //
 //pub struct NotSetTransition {
@@ -357,12 +357,12 @@
 //  return t
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  return symbol >= min_vocab_symbol && symbol <= max_vocab_symbol && !self.interval_set.contains(symbol)
 //}
 //
-//pub fn String(&self) -> &str {
-//  return "~" + self.interval_set.String()
+//pub fn string(&self) -> &str {
+//  return "~" + self.interval_set.string()
 //}
 //
 //pub struct WildcardTransition {
@@ -378,11 +378,11 @@
 //  return t
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  return symbol >= min_vocab_symbol && symbol <= max_vocab_symbol
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  return "."
 //}
 //
@@ -404,7 +404,7 @@
 //  return t
 //}
 //
-//pub fn Matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
+//pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
 //  return false
 //}
 //
@@ -412,6 +412,6 @@
 //  return NewPrecedencePredicate(self.precedence)
 //}
 //
-//pub fn String(&self) -> &str {
-//  return fmt.Sprint(self.precedence) + " >= _p"
+//pub fn string(&self) -> &str {
+//  return fmt.sprint(self.precedence) + " >= _p"
 //}

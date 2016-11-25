@@ -165,37 +165,37 @@
 //}
 //
 //fn short_hash(&self) -> &str {
-//  return strconv.Itoa(self.state.state_number()) + "/" + strconv.Itoa(self.alt) + "/" + self.semantic_context.String()
+//  return strconv.itoa(self.state.state_number()) + "/" + strconv.itoa(self.alt) + "/" + self.semantic_context.string()
 //}
 //
-//pub fn Hash(&self) -> &str {
+//pub fn hash(&self) -> &str {
 //  var c &str
 //
 //  if self.context == nil {
 //    c = ""
 //  } else {
-//    c = self.context.Hash()
+//    c = self.context.hash()
 //  }
 //
-//  return strconv.Itoa(self.state.state_number()) + "/" + strconv.Itoa(self.alt) + "/" + c + "/" + self.semantic_context.String()
+//  return strconv.itoa(self.state.state_number()) + "/" + strconv.itoa(self.alt) + "/" + c + "/" + self.semantic_context.string()
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  var s1, s2, s3 &str
 //
 //  if self.context != nil {
-//    s1 = ",[" + fmt.Sprint(self.context) + "]"
+//    s1 = ",[" + fmt.sprint(self.context) + "]"
 //  }
 //
 //  if self.semantic_context != SemanticContextNone {
-//    s2 = "," + fmt.Sprint(self.semantic_context)
+//    s2 = "," + fmt.sprint(self.semantic_context)
 //  }
 //
 //  if self.reaches_into_outer_context > 0 {
-//    s3 = ",up=" + fmt.Sprint(self.reaches_into_outer_context)
+//    s3 = ",up=" + fmt.sprint(self.reaches_into_outer_context)
 //  }
 //
-//  return fmt.Sprintf("(%v,%v%v%v%v)", self.state, self.alt, s1, s2, s3)
+//  return fmt.sprintf("(%v,%v%v%v%v)", self.state, self.alt, s1, s2, s3)
 //}
 //
 //
@@ -245,7 +245,7 @@
 //  return &LexerATNConfig{BaseATNConfig: NewBaseATNConfig5(state, alt, context, SemanticContextNone)}
 //}
 //
-//pub fn Hash(&self) -> &str {
+//pub fn hash(&self) -> &str {
 //  var f &str
 //
 //  if self.passed_through_non_greedy_decision {
@@ -254,7 +254,7 @@
 //    f = "0"
 //  }
 //
-//  return fmt.Sprintf("%v%v%v%v%v%v", self.state.state_number(), self.alt, self.context, self.semantic_context, f, self.lexer_action_executor)
+//  return fmt.sprintf("%v%v%v%v%v%v", self.state.state_number(), self.alt, self.context, self.semantic_context, f, self.lexer_action_executor)
 //}
 //
 //fn equals(&self, other i32erface{}) -> bool {

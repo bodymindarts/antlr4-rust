@@ -56,9 +56,9 @@
 //  lexer.factory = CommonTokenFactoryDEFAULT
 //  lexer.token_factory_source_pair = &TokenSourceCharStreamPair{lexer, input}
 //
-//  lexer.Virt = lexer
+//  lexer.virt = lexer
 //
-//  lexer.Interpreter = nil // child classes must populate it
+//  lexer.interpreter = nil // child classes must populate it
 //
 //  // The goal of all lexer rules/methods is to create a token object.
 //  // l is an instance variable as multiple rules may collaborate to
@@ -117,7 +117,7 @@
 //fn reset(&self) {
 //  // wack Lexer state variables
 //  if self.input != nil {
-//    self.input.Seek(0) // rewind the input
+//    self.input.seek(0) // rewind the input
 //  }
 //  self.token = nil
 //  self.thetype = TokenInvalidType
@@ -131,11 +131,11 @@
 //  self.mode = LexerDefaultMode
 //  self.mode_stack = make([]int, 0)
 //
-//  self.Interpreter.reset()
+//  self.interpreter.reset()
 //}
 //
 //pub fn interpreter(&self) -> ILexerATNSimulator {
-//  return self.Interpreter
+//  return self.interpreter
 //}
 //
 //pub fn input_stream(&self) -> CharStream {
@@ -163,13 +163,13 @@
 //    if let e = recover(); e != nil {;
 //      if re, let ok = e.(RecognitionException); ok {;
 //        self.notify_listeners(re) // Report error
-//        self.Recover(re)
+//        self.recover(re)
 //        ret = LexerSkip // default
 //      }
 //    }
 //  }()
 //
-//  return self.Interpreter.Match(self.input, self.mode)
+//  return self.interpreter.match(self.input, self.mode)
 //}
 //
 //// Return a token from l source self.e., Match a token on the char stream.
@@ -178,13 +178,13 @@
 //    panic("NextToken requires a non-nil input stream.")
 //  }
 //
-//  let token_start_marker = self.input.Mark();
+//  let token_start_marker = self.input.mark();
 //
 //  // previously in finally block
 //  defer func() {
 //    // make sure we release marker after Match or
 //    // unbuffered char stream will keep buffering
-//    self.input.Release(tokenStartMarker)
+//    self.input.release(tokenStartMarker)
 //  }()
 //
 //  for {
@@ -194,9 +194,9 @@
 //    }
 //    self.token = nil
 //    self.channel = TokenDefaultChannel
-//    self.token_start_char_index = self.input.Index()
-//    self.token_start_column = self.Interpreter.char_position_in_line()
-//    self.token_start_line = self.Interpreter.line()
+//    self.token_start_char_index = self.input.index()
+//    self.token_start_column = self.interpreter.char_position_in_line()
+//    self.token_start_line = self.interpreter.line()
 //    self.text = ""
 //    let continue_outer = false;
 //    for {
@@ -224,7 +224,7 @@
 //      continue
 //    }
 //    if self.token == nil {
-//      self.Virt.Emit()
+//      self.virt.emit()
 //    }
 //    return self.token
 //  }
@@ -238,11 +238,11 @@
 //// if token==nil at end of any token rule, it creates one for you
 //// and emits it.
 //// /
-//pub fn Skip(&self) {
+//pub fn skip(&self) {
 //  self.thetype = LexerSkip
 //}
 //
-//pub fn More(&self) {
+//pub fn more(&self) {
 //  self.thetype = LexerMore
 //}
 //
@@ -252,9 +252,9 @@
 //
 //fn push_mode(&self, m: i32) {
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("pushMode " + strconv.Itoa(m))
+//    fmt.println("pushMode " + strconv.itoa(m))
 //  }
-//  self.mode_stack.Push(self.mode)
+//  self.mode_stack.push(self.mode)
 //  self.mode = m
 //}
 //
@@ -263,9 +263,9 @@
 //    panic("Empty Stack")
 //  }
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("popMode back to " + fmt.Sprint(self.mode_stack[0:len(self.mode_stack)-1]))
+//    fmt.println("popMode back to " + fmt.sprint(self.mode_stack[0:len(self.mode_stack)-1]))
 //  }
-//  i, _let  = self.mode_stack.Pop();
+//  i, _let  = self.mode_stack.pop();
 //  self.mode = i
 //  return self.mode
 //}
@@ -297,8 +297,8 @@
 //// use that to set the token's text. Override l method to emit
 //// custom Token objects or provide a Newfactory.
 //// /
-//pub fn Emit(&self) -> Token {
-//  let t = self.factory.Create(self.token_factory_source_pair, self.thetype, self.text, self.channel, self.token_start_char_index, self.char_index()-1, self.token_start_line, self.token_start_column);
+//pub fn emit(&self) -> Token {
+//  let t = self.factory.create(self.token_factory_source_pair, self.thetype, self.text, self.channel, self.token_start_char_index, self.char_index()-1, self.token_start_line, self.token_start_column);
 //  self.emit_token(t)
 //  return t
 //}
@@ -306,17 +306,17 @@
 //pub fn emit_e_o_f(&self) -> Token {
 //  let cpos = self.char_position_in_line();
 //  let lpos = self.line();
-//  let eof = self.factory.Create(self.token_factory_source_pair, TokenEOF, "", TokenDefaultChannel, self.input.Index(), self.input.Index()-1, lpos, cpos);
+//  let eof = self.factory.create(self.token_factory_source_pair, TokenEOF, "", TokenDefaultChannel, self.input.index(), self.input.index()-1, lpos, cpos);
 //  self.emit_token(eof)
 //  return eof
 //}
 //
 //pub fn char_position_in_line(&self) -> i32 {
-//  return self.Interpreter.char_position_in_line()
+//  return self.interpreter.char_position_in_line()
 //}
 //
 //pub fn line(&self) -> i32 {
-//  return self.Interpreter.line()
+//  return self.interpreter.line()
 //}
 //
 //pub fn type(&self) -> i32 {
@@ -329,7 +329,7 @@
 //
 //// What is the index of the current character of lookahead?///
 //pub fn char_index(&self) -> i32 {
-//  return self.input.Index()
+//  return self.input.index()
 //}
 //
 //// Return the text Matched so far for the current token or any text override.
@@ -339,7 +339,7 @@
 //    return self.text
 //  }
 //
-//  return self.Interpreter.text(self.input)
+//  return self.interpreter.text(self.input)
 //}
 //
 //pub fn set_text(&self, text: &str) {
@@ -347,14 +347,14 @@
 //}
 //
 //pub fn atn(&self) -> *ATN {
-//  return self.Interpreter.atn()
+//  return self.interpreter.atn()
 //}
 //
 //// Return a list of all Token objects in input char stream.
 //// Forces load of all tokens. Does not include EOF token.
 //// /
 //fn all_tokens(&self) -> []Token {
-//  let vl = self.Virt;
+//  let vl = self.virt;
 //  let tokens = make([]Token, 0);
 //  let t = vl.next_token();
 //  for self.token_type() != TokenEOF {
@@ -366,7 +366,7 @@
 //
 //fn notify_listeners(&self, e: RecognitionException) {
 //  let start = self.token_start_char_index;
-//  let stop = self.input.Index();
+//  let stop = self.input.index();
 //  let text = self.input.text_from_interval(NewInterval(start, stop));
 //  let msg = "token recognition error at: '" + text + "'";
 //  let listener = self.error_listener_dispatch();
@@ -396,14 +396,14 @@
 //// it all works out. You can instead use the rule invocation stack
 //// to do sophisticated error recovery if you are in a fragment rule.
 //// /
-//pub fn Recover(&self, re: RecognitionException) {
+//pub fn recover(&self, re: RecognitionException) {
 //  if self.input.l_a(1) != TokenEOF {
 //    if _, let ok = re.(*LexerNoViableAltException); ok {;
 //      // Skip a char and try again
-//      self.Interpreter.Consume(self.input)
+//      self.interpreter.consume(self.input)
 //    } else {
 //      // TODO: Do we lose character or line position information?
-//      self.input.Consume()
+//      self.input.consume()
 //    }
 //  }
 //}

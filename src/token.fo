@@ -172,7 +172,7 @@
 //  if input == nil {
 //    return ""
 //  }
-//  let n = input.Size();
+//  let n = input.size();
 //  if self.start < n && self.stop < n {
 //    return input.text_from_interval(NewInterval(self.start, self.stop))
 //  }
@@ -183,24 +183,24 @@
 //  self.text = text
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  let txt = self.text();
 //  if txt != "" {
-//    txt = &strs.Replace(txt, "\n", "\\n", -1)
-//    txt = &strs.Replace(txt, "\r", "\\r", -1)
-//    txt = &strs.Replace(txt, "\t", "\\t", -1)
+//    txt = &strs.replace(txt, "\n", "\\n", -1)
+//    txt = &strs.replace(txt, "\r", "\\r", -1)
+//    txt = &strs.replace(txt, "\t", "\\t", -1)
 //  } else {
 //    txt = "<no text>"
 //  }
 //
 //  var ch &str
 //  if self.channel > 0 {
-//    ch = ",channel=" + strconv.Itoa(self.channel)
+//    ch = ",channel=" + strconv.itoa(self.channel)
 //  } else {
 //    ch = ""
 //  }
 //
-//  return "[@" + strconv.Itoa(self.token_index) + "," + strconv.Itoa(self.start) + ":" + strconv.Itoa(self.stop) + "='" +
-//    txt + "',<" + strconv.Itoa(self.token_type) + ">" +
-//    ch + "," + strconv.Itoa(self.line) + ":" + strconv.Itoa(self.column) + "]"
+//  return "[@" + strconv.itoa(self.token_index) + "," + strconv.itoa(self.start) + ":" + strconv.itoa(self.stop) + "='" +
+//    txt + "',<" + strconv.itoa(self.token_type) + ">" +
+//    ch + "," + strconv.itoa(self.line) + ":" + strconv.itoa(self.column) + "]"
 //}

@@ -29,7 +29,7 @@
 //// explicitly copy token text when constructing tokens.
 //var CommonTokenFactoryDEFAULT = CommonTokenFactory::new(false)
 //
-//pub fn Create(&self, source *TokenSourceCharStreamPair, ttype i32, text &str, channel, start, stop,: line, column: i32) -> Token {
+//pub fn create(&self, source *TokenSourceCharStreamPair, ttype i32, text &str, channel, start, stop,: line, column: i32) -> Token {
 //  let t = NewCommonToken(source, ttype, channel, start, stop);
 //
 //  self.line = line

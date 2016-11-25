@@ -58,7 +58,7 @@
 //  // instance of {@link DefaultErrorStrategy}.
 //  self.err_handler = NewDefaultErrorStrategy()
 //  self.precedence_stack = make([]int, 0)
-//  self.precedence_stack.Push(0)
+//  self.precedence_stack.push(0)
 //  // The {@link ParserRuleContext} object for the currently executing rule.
 //  // self.is always non-nil during the parsing process.
 //  self.ctx = nil
@@ -93,16 +93,16 @@
 //// reset the parser's state//
 //fn reset(&self) {
 //  if self.input != nil {
-//    self.input.Seek(0)
+//    self.input.seek(0)
 //  }
 //  self.err_handler.reset(p)
 //  self.ctx = nil
 //  p.__syntax_errors = 0
 //  self.set_trace(nil)
 //  self.precedence_stack = make([]int, 0)
-//  self.precedence_stack.Push(0)
-//  if self.Interpreter != nil {
-//    self.Interpreter.reset()
+//  self.precedence_stack.push(0)
+//  if self.interpreter != nil {
+//    self.interpreter.reset()
 //  }
 //}
 //
@@ -131,13 +131,13 @@
 //// {@code ttype} and the error strategy could not recover from the
 //// mismatched symbol
 //
-//pub fn Match(&self, ttype: i32) -> Token {
+//pub fn match(&self, ttype: i32) -> Token {
 //
 //  let t = self.current_token();
 //
 //  if self.token_type() == ttype {
 //    self.err_handler.report_match(p)
-//    self.Consume()
+//    self.consume()
 //  } else {
 //    t = self.err_handler.recover_inline(p)
 //    if self.build_parse_trees && self.token_index() == -1 {
@@ -171,7 +171,7 @@
 //  let t = self.current_token();
 //  if self.token_type() > 0 {
 //    self.err_handler.report_match(p)
-//    self.Consume()
+//    self.consume()
 //  } else {
 //    t = self.err_handler.recover_inline(p)
 //    if self.build_parse_trees && self.token_index() == -1 {
@@ -305,11 +305,11 @@
 //}
 //
 //pub fn interpreter(&self) -> *ParserATNSimulator {
-//  return self.Interpreter
+//  return self.interpreter
 //}
 //
 //pub fn atn(&self) -> *ATN {
-//  return self.Interpreter.atn
+//  return self.interpreter.atn
 //}
 //
 //pub fn token_factory(&self) -> TokenFactory {
@@ -353,8 +353,8 @@
 //// ParseTree t = parser.expr()
 //// ParseTreePattern p = parser.compile_parse_tree_pattern("&ltID&gt+0",
 //// MyParser.r_u_l_e_expr)
-//// ParseTreeMatch m = self.Match(t)
-//// String id = self.Get("ID")
+//// ParseTreeMatch m = self.match(t)
+//// String id = self.get("ID")
 //// </pre>
 //
 //fn compile_parse_tree_pattern(&self, pattern,: pattern_rule_index, lexer: Lexer) {
@@ -414,10 +414,10 @@
 //  listener.syntax_error(p, offending_token, line, column, msg, err)
 //}
 //
-//pub fn Consume(&self) -> Token {
+//pub fn consume(&self) -> Token {
 //  let o = self.current_token();
 //  if self.token_type() != TokenEOF {
-//    self.input_stream().Consume()
+//    self.input_stream().consume()
 //  }
 //  let has_listener = self.parse_listeners != nil && len(self.parse_listeners) > 0;
 //  if self.build_parse_trees || has_listener {
@@ -504,7 +504,7 @@
 //
 //pub fn enter_recursion_rule(&self, localctx ParserRuleContext, state,: rule_index, precedence: i32) {
 //  self.set_state(state)
-//  self.precedence_stack.Push(precedence)
+//  self.precedence_stack.push(precedence)
 //  self.ctx = localctx
 //  self.ctx.set_start(self.input.l_t(1))
 //  if self.parse_listeners != nil {
@@ -534,7 +534,7 @@
 //}
 //
 //pub fn unroll_recursion_contexts(&self, parent_ctx: ParserRuleContext) {
-//  self.precedence_stack.Pop()
+//  self.precedence_stack.pop()
 //  self.ctx.set_stop(self.input.l_t(-1))
 //  let ret_ctx = self.ctx // save current ctx (return value);
 //  // unroll so ctx is as it was before call to recursive method
@@ -565,7 +565,7 @@
 //  return nil
 //}
 //
-//pub fn Precpred(&self, localctx: RuleContext, precedence: i32) -> bool {
+//pub fn precpred(&self, localctx: RuleContext, precedence: i32) -> bool {
 //  return precedence >= self.precedence_stack[len(self.precedence_stack)-1]
 //}
 //
@@ -589,7 +589,7 @@
 //// the ATN, otherwise {@code false}.
 //
 //pub fn is_expected_token(&self, symbol: i32) -> bool {
-//  let atn = self.Interpreter.atn;
+//  let atn = self.interpreter.atn;
 //  let ctx = self.ctx;
 //  let s = atn.states[self.state];
 //  let following = atn.next_tokens(s, nil);
@@ -622,11 +622,11 @@
 //// @see ATN//getExpectedTokens(int, RuleContext)
 ////
 //pub fn expected_tokens(&self) -> *IntervalSet {
-//  return self.Interpreter.atn.expected_tokens(self.state, self.ctx)
+//  return self.interpreter.atn.expected_tokens(self.state, self.ctx)
 //}
 //
 //pub fn expected_tokens_within_current_rule(&self) -> *IntervalSet {
-//  let atn = self.Interpreter.atn;
+//  let atn = self.interpreter.atn;
 //  let s = atn.states[self.state];
 //  return atn.next_tokens(s, nil)
 //}
@@ -675,19 +675,19 @@
 //
 //// For debugging and other purposes.//
 //pub fn dfa_strings(&self) -> &str {
-//  return fmt.Sprint(self.Interpreter.decision_to_dfa)
+//  return fmt.sprint(self.interpreter.decision_to_dfa)
 //}
 //
 //// For debugging and other purposes.//
 //pub fn dump_dfa(&self) {
 //  let seen_one = false;
-//  for _, let dfa = range self.Interpreter.decision_to_dfa {;
+//  for _, let dfa = range self.interpreter.decision_to_dfa {;
 //    if len(dfa.states()) > 0 {
 //      if seen_one {
-//        fmt.Println()
+//        fmt.println()
 //      }
-//      fmt.Println("Decision " + strconv.Itoa(dfa.decision) + ":")
-//      fmt.Print(dfa.String(self.literal_names, self.symbolic_names))
+//      fmt.println("Decision " + strconv.itoa(dfa.decision) + ":")
+//      fmt.print(dfa.string(self.literal_names, self.symbolic_names))
 //      seen_one = true
 //    }
 //  }

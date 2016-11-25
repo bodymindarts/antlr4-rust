@@ -88,7 +88,7 @@
 //  return nil
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  return self.message
 //}
 //
@@ -111,9 +111,9 @@
 //  return l
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  let symbol = "";
-//  if self.start_index >= 0 && self.start_index < self.input.Size() {
+//  if self.start_index >= 0 && self.start_index < self.input.size() {
 //    symbol = self.input.(CharStream).text_from_interval(NewInterval(self.start_index, self.start_index))
 //  }
 //  return "LexerNoViableAltException" + symbol
@@ -154,7 +154,7 @@
 //  let n = new(NoViableAltException);
 //  self.base_recognition_exception = BaseRecognitionException::new("", recognizer, input, ctx)
 //
-//  // Which configurations did we try at input.Index() that couldn't Match
+//  // Which configurations did we try at input.index() that couldn't Match
 //  // input.l_t(1)?//
 //  self.dead_end_configs = dead_end_configs
 //  // The token object at the start index the input stream might

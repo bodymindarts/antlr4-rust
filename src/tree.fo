@@ -60,13 +60,13 @@
 //
 //var _ ParseTreeVisitor = &BaseParseTreeVisitor{}
 //
-//pub fn Visit(tree: ParseTree) -> i32erface{}            { return nil }
+//pub fn visit(tree: ParseTree) -> i32erface{}            { return nil }
 //pub fn visit_children(node: RuleNode) -> i32erface{}     { return nil }
 //pub fn visit_terminal(node: TerminalNode) -> i32erface{} { return nil }
 //pub fn visit_error_node(node: ErrorNode) -> i32erface{}   { return nil }
 //
 //// TODO
-////pub fn Visit(&self, ctx) {
+////pub fn visit(&self, ctx) {
 ////  if (Utils.is_array(ctx)) {
 ////    let self = this;
 ////    return ctx.map(function(child) { return VisitAtom(self, child)})
@@ -159,7 +159,7 @@
 //  return 0
 //}
 //
-//pub fn Accept(&self, v: ParseTreeVisitor) -> i32erface{} {
+//pub fn accept(&self, v: ParseTreeVisitor) -> i32erface{} {
 //  return self.visit_terminal(t)
 //}
 //
@@ -167,7 +167,7 @@
 //  return self.symbol.text()
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  if self.symbol.token_type() == TokenEOF {
 //    return "<EOF>"
 //  }
@@ -176,7 +176,7 @@
 //}
 //
 //pub fn to_string_tree(&self, s []string, r: Recognizer) -> &str {
-//  return self.String()
+//  return self.string()
 //}
 //
 //// Represents a token that was consumed during re_synchronization
@@ -199,7 +199,7 @@
 //
 //fn error_node() {}
 //
-//pub fn Accept(&self, v: ParseTreeVisitor) -> i32erface{} {
+//pub fn accept(&self, v: ParseTreeVisitor) -> i32erface{} {
 //  return self.visit_error_node(e)
 //}
 //
@@ -210,7 +210,7 @@
 //  return new(ParseTreeWalker)
 //}
 //
-//pub fn Walk(&self, listener: ParseTreeListener, t: Tree) {
+//pub fn walk(&self, listener: ParseTreeListener, t: Tree) {
 //  switch let tt = t.(type) {;
 //  case ErrorNode:
 //    listener.visit_error_node(tt)
@@ -220,7 +220,7 @@
 //    self.enter_rule(listener, t.(RuleNode))
 //    for let i = 0; i < self.child_count(); i++ {;
 //      let child = self.child(i);
-//      self.Walk(listener, child)
+//      self.walk(listener, child)
 //    }
 //    self.exit_rule(listener, t.(RuleNode))
 //  }

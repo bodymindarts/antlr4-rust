@@ -53,28 +53,28 @@
 //  return self.tokens
 //}
 //
-//pub fn Mark(&self) -> i32 {
+//pub fn mark(&self) -> i32 {
 //  return 0
 //}
 //
-//pub fn Release(marker: i32) {}
+//pub fn release(marker: i32) {}
 //
 //fn reset(&self) {
-//  self.Seek(0)
+//  self.seek(0)
 //}
 //
-//pub fn Seek(&self, index: i32) {
+//pub fn seek(&self, index: i32) {
 //  self.lazy_init()
 //  self.index = self.adjust_seek_index(index)
 //}
 //
-//pub fn Get(&self, index: i32) -> Token {
+//pub fn get(&self, index: i32) -> Token {
 //  self.lazy_init()
 //
 //  return self.tokens[index]
 //}
 //
-//pub fn Consume(&self) {
+//pub fn consume(&self) {
 //  let SkipEOFCheck = false;
 //
 //  if self.index >= 0 {
@@ -95,14 +95,14 @@
 //    panic("cannot consume EOF")
 //  }
 //
-//  if self.Sync(self.index + 1) {
+//  if self.sync(self.index + 1) {
 //    self.index = self.adjust_seek_index(self.index + 1)
 //  }
 //}
 //
 //// Sync makes sure index i in tokens has a token and returns true if a token is
 //// located at index i and otherwise false.
-//pub fn Sync(&self, i: i32) -> bool {
+//pub fn sync(&self, i: i32) -> bool {
 //  let n = i - len(self.tokens) + 1 // TODO: How many more elements do we need?;
 //
 //  if n > 0 {
@@ -176,7 +176,7 @@
 //}
 //
 //fn setup(&self) {
-//  self.Sync(0)
+//  self.sync(0)
 //  self.index = self.adjust_seek_index(0)
 //}
 //
@@ -195,7 +195,7 @@
 //// starting index. Returns i if tokens[i] is on channel. Returns -1 if there are
 //// no tokens on channel between i and EOF.
 //pub fn next_token_on_channel(&self, i, channel: i32) -> i32 {
-//  self.Sync(i)
+//  self.sync(i)
 //
 //  if i >= len(self.tokens) {
 //    return -1
@@ -209,7 +209,7 @@
 //    }
 //
 //    i++
-//    self.Sync(i)
+//    self.sync(i)
 //    token = self.tokens[i]
 //  }
 //
@@ -234,7 +234,7 @@
 //  self.lazy_init()
 //
 //  if token_index < 0 || token_index >= len(self.tokens) {
-//    panic(strconv.Itoa(tokenIndex) + " not in 0.." + strconv.Itoa(len(self.tokens)-1))
+//    panic(strconv.itoa(tokenIndex) + " not in 0.." + strconv.itoa(len(self.tokens)-1))
 //  }
 //
 //  let next_on_channel = self.next_token_on_channel(tokenIndex+1, LexerDefaultTokenChannel);
@@ -259,7 +259,7 @@
 //  self.lazy_init()
 //
 //  if token_index < 0 || token_index >= len(self.tokens) {
-//    panic(strconv.Itoa(tokenIndex) + " not in 0.." + strconv.Itoa(len(self.tokens)-1))
+//    panic(strconv.itoa(tokenIndex) + " not in 0.." + strconv.itoa(len(self.tokens)-1))
 //  }
 //
 //  let prev_on_channel = self.previous_token_on_channel(tokenIndex-1, LexerDefaultTokenChannel);
@@ -301,11 +301,11 @@
 //  return self.token_source.source_name()
 //}
 //
-//pub fn Size(&self) -> i32 {
+//pub fn size(&self) -> i32 {
 //  return len(self.tokens)
 //}
 //
-//pub fn Index(&self) -> i32 {
+//pub fn index(&self) -> i32 {
 //  return self.index
 //}
 //
@@ -327,7 +327,7 @@
 //
 //pub fn text_from_interval(&self, interval *Interval) -> &str {
 //  self.lazy_init()
-//  self.Fill()
+//  self.fill()
 //
 //  if i32erval == nil {
 //    interval = Interval::new(0, len(self.tokens)-1)
@@ -360,7 +360,7 @@
 //}
 //
 //// Fill gets all tokens from the lexer until EOF.
-//pub fn Fill(&self) {
+//pub fn fill(&self) {
 //  self.lazy_init()
 //
 //  for self.fetch(1000) == 1000 {
@@ -411,7 +411,7 @@
 //  // Find k good tokens
 //  for n < k {
 //    // Skip off-channel tokens, but make sure to not look past EOF
-//    if self.Sync(i + 1) {
+//    if self.sync(i + 1) {
 //      i = self.next_token_on_channel(i+1, self.channel)
 //    }
 //
@@ -425,7 +425,7 @@
 //fn number_of_on_channel_tokens(&self) -> i32 {
 //  var n i32
 //
-//  self.Fill()
+//  self.fill()
 //
 //  for let i = 0; i < len(self.tokens); i++ {;
 //    let t = self.tokens[i];

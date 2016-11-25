@@ -86,11 +86,11 @@
 //    localctx = outer_context
 //  }
 //
-//  return parser.Sempred(localctx, self.rule_index, self.pred_index)
+//  return parser.sempred(localctx, self.rule_index, self.pred_index)
 //}
 //
-//pub fn Hash(&self) -> &str {
-//  return strconv.Itoa(self.rule_index) + "/" + strconv.Itoa(self.pred_index) + "/" + fmt.Sprint(self.is_ctx_dependent)
+//pub fn hash(&self) -> &str {
+//  return strconv.itoa(self.rule_index) + "/" + strconv.itoa(self.pred_index) + "/" + fmt.sprint(self.is_ctx_dependent)
 //}
 //
 //fn equals(&self, other i32erface{}) -> bool {
@@ -105,8 +105,8 @@
 //  }
 //}
 //
-//pub fn String(&self) -> &str {
-//  return "{" + strconv.Itoa(self.rule_index) + ":" + strconv.Itoa(self.pred_index) + "}?"
+//pub fn string(&self) -> &str {
+//  return "{" + strconv.itoa(self.rule_index) + ":" + strconv.itoa(self.pred_index) + "}?"
 //}
 //
 //pub struct PrecedencePredicate {
@@ -122,11 +122,11 @@
 //}
 //
 //fn evaluate(&self, parser: Recognizer, outer_context: RuleContext) -> bool {
-//  return parser.Precpred(outerContext, self.precedence)
+//  return parser.precpred(outerContext, self.precedence)
 //}
 //
 //fn eval_precedence(&self, parser: Recognizer, outer_context: RuleContext) -> SemanticContext {
-//  if parser.Precpred(outerContext, self.precedence) {
+//  if parser.precpred(outerContext, self.precedence) {
 //    return SemanticContextNone
 //  }
 //
@@ -137,7 +137,7 @@
 //  return self.precedence - other.precedence
 //}
 //
-//pub fn Hash(&self) -> &str {
+//pub fn hash(&self) -> &str {
 //  return "31"
 //}
 //
@@ -151,8 +151,8 @@
 //  }
 //}
 //
-//pub fn String(&self) -> &str {
-//  return "{" + strconv.Itoa(self.precedence) + ">=prec}?"
+//pub fn string(&self) -> &str {
+//  return "{" + strconv.itoa(self.precedence) + ">=prec}?"
 //}
 //
 //pub fn precedence_predicatefilter_precedence_predicates(set *Set) -> []*PrecedencePredicate { // non-member
@@ -233,8 +233,8 @@
 //  }
 //}
 //
-//pub fn Hash(&self) -> &str {
-//  return fmt.Sprint(self.opnds) + "/AND"
+//pub fn hash(&self) -> &str {
+//  return fmt.sprint(self.opnds) + "/AND"
 //}
 //
 ////
@@ -291,11 +291,11 @@
 //  return result
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  let s = "";
 //
 //  for _, let o = range self.opnds {;
-//    s += "&& " + fmt.Sprint(o)
+//    s += "&& " + fmt.sprint(o)
 //  }
 //
 //  if len(s) > 3 {
@@ -374,8 +374,8 @@
 //  }
 //}
 //
-//pub fn Hash(&self) -> &str {
-//  return fmt.Sprint(self.opnds) + "/OR"
+//pub fn hash(&self) -> &str {
+//  return fmt.sprint(self.opnds) + "/OR"
 //}
 //
 //// <p>
@@ -426,11 +426,11 @@
 //  return result
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  let s = "";
 //
 //  for _, let o = range self.opnds {;
-//    s += "|| " + fmt.Sprint(o)
+//    s += "|| " + fmt.sprint(o)
 //  }
 //
 //  if len(s) > 3 {

@@ -64,7 +64,7 @@
 //// @return The set of tokens that can follow {@code s} in the ATN in the
 //// specified {@code ctx}.
 /////
-//pub fn Look(&self, s, stop_state: ATNState, ctx: RuleContext) -> *IntervalSet {
+//pub fn look(&self, s, stop_state: ATNState, ctx: RuleContext) -> *IntervalSet {
 //  let r = NewIntervalSet();
 //  let see_thru_preds = true // ignore preds get all lookahead;
 //  var look_context PredictionContext

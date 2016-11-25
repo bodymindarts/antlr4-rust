@@ -100,7 +100,7 @@
 //// ATNConfig.state, i is the ATNConfig.alt, and pi is the
 //// ATNConfig.semantic_context. We use (s,i,pi) as the key. Updates
 //// dips_into_outer_context and has_semantic_context when necessary.
-//pub fn Add(&self, config: ATNConfig, merge_cache *DoubleDict) -> bool {
+//pub fn add(&self, config: ATNConfig, merge_cache *DoubleDict) -> bool {
 //  if self.read_only {
 //    panic("set is read-only")
 //  }
@@ -196,13 +196,13 @@
 //
 //pub fn add_all(&self, coll []ATNConfig) -> bool {
 //  for let i = 0; i < len(coll); i++ {;
-//    self.Add(coll[i], nil)
+//    self.add(coll[i], nil)
 //  }
 //
 //  return false
 //}
 //
-//pub fn Equals(&self, other i32erface{}) -> bool {
+//pub fn equals(&self, other i32erface{}) -> bool {
 //  if b == other {
 //    return true
 //  } else if _, let ok = other.(*BaseATNConfigSet); !ok {;
@@ -220,7 +220,7 @@
 //    self.dips_into_outer_context == other2.dips_into_outer_context
 //}
 //
-//pub fn Hash(&self) -> &str {
+//pub fn hash(&self) -> &str {
 //  if self.read_only {
 //    if self.cached_hash_string == "-1" {
 //      self.cached_hash_string = self.hash_configs()
@@ -236,13 +236,13 @@
 //  let s = "";
 //
 //  for _, let c = range self.configs {;
-//    s += fmt.Sprint(c)
+//    s += fmt.sprint(c)
 //  }
 //
 //  return s
 //}
 //
-//pub fn Length(&self) -> i32 {
+//pub fn length(&self) -> i32 {
 //  return len(self.configs)
 //}
 //
@@ -250,7 +250,7 @@
 //  return len(self.configs) == 0
 //}
 //
-//pub fn Contains(&self, item: ATNConfig) -> bool {
+//pub fn contains(&self, item: ATNConfig) -> bool {
 //  if self.config_lookup == nil {
 //    panic("not implemented for read-only sets")
 //  }
@@ -266,7 +266,7 @@
 //  return self.config_lookup.contains(item) // TODO: contains_fast is not implemented for Set
 //}
 //
-//pub fn Clear(&self) {
+//pub fn clear(&self) {
 //  if self.read_only {
 //    panic("set is read-only")
 //  }
@@ -316,11 +316,11 @@
 //  }
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  let s = "[";
 //
 //  for i, let c = range self.configs {;
-//    s += self.String()
+//    s += self.string()
 //
 //    if i != len(self.configs)-1 {
 //      s += ", "
@@ -330,15 +330,15 @@
 //  s += "]"
 //
 //  if self.has_semantic_context {
-//    s += ",hasSemanticContext=" + fmt.Sprint(self.has_semantic_context)
+//    s += ",hasSemanticContext=" + fmt.sprint(self.has_semantic_context)
 //  }
 //
 //  if self.unique_alt != ATNInvalidAltNumber {
-//    s += ",uniqueAlt=" + fmt.Sprint(self.unique_alt)
+//    s += ",uniqueAlt=" + fmt.sprint(self.unique_alt)
 //  }
 //
 //  if self.conflicting_alts != nil {
-//    s += ",conflictingAlts=" + self.conflicting_alts.String()
+//    s += ",conflictingAlts=" + self.conflicting_alts.string()
 //  }
 //
 //  if self.dips_into_outer_context {

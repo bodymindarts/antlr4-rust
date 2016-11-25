@@ -53,7 +53,7 @@
 //  // ATN-generated exception object.
 //  self.start_index = -1
 //  // line number 1..n within the input///
-//  self.Line = 1
+//  self.line = 1
 //  // The index of the character relative to the beginning of the line
 //  // 0..n-1///
 //  self.char_position_in_line = 0
@@ -67,21 +67,21 @@
 //
 //fn copy_state(&self, simulator *LexerATNSimulator) {
 //  self.char_position_in_line = simulator.char_position_in_line
-//  self.Line = simulator.Line
+//  self.line = simulator.line
 //  self.mode = simulator.mode
 //  self.start_index = simulator.start_index
 //}
 //
-//pub fn Match(&self, input: CharStream, mode: i32) -> i32 {
+//pub fn match(&self, input: CharStream, mode: i32) -> i32 {
 //  self.match_calls++
 //  self.mode = mode
-//  let mark = input.Mark();
+//  let mark = input.mark();
 //
 //  defer func() {
-//    input.Release(mark)
+//    input.release(mark)
 //  }()
 //
-//  self.start_index = input.Index()
+//  self.start_index = input.index()
 //  self.prev_accept.reset()
 //
 //  let dfa = self.decision_to_dfa[mode];
@@ -96,7 +96,7 @@
 //fn reset(&self) {
 //  self.prev_accept.reset()
 //  self.start_index = -1
-//  self.Line = 1
+//  self.line = 1
 //  self.char_position_in_line = 0
 //  self.mode = LexerDefaultMode
 //}
@@ -105,7 +105,7 @@
 //  let start_state = self.atn.mode_to_start_state[self.mode];
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("MatchATN mode " + strconv.Itoa(self.mode) + " start: " + start_state.String())
+//    fmt.println("MatchATN mode " + strconv.itoa(self.mode) + " start: " + start_state.string())
 //  }
 //  let old_mode = self.mode;
 //  let s0Closure = self.compute_start_state(input, start_state);
@@ -121,7 +121,7 @@
 //  let predict = self.exec_atn(input, next);
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("DFA after MatchATN: " + self.decision_to_dfa[oldMode].to_lexer_string())
+//    fmt.println("DFA after MatchATN: " + self.decision_to_dfa[oldMode].to_lexer_string())
 //  }
 //  return predict
 //}
@@ -129,7 +129,7 @@
 //fn exec_atn(&self, input: CharStream, ds0 *DFAState) -> i32 {
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("start state closure=" + ds0.configs.String())
+//    fmt.println("start state closure=" + ds0.configs.string())
 //  }
 //  if ds0.is_accept_state {
 //    // allow zero-length tokens
@@ -140,7 +140,7 @@
 //
 //  for { // while more work
 //    if LexerATNSimulatorDebug {
-//      fmt.Println("execATN loop starting closure: " + self.configs.String())
+//      fmt.println("execATN loop starting closure: " + self.configs.string())
 //    }
 //
 //    // As we move src->trg, src->trg, we keep track of the previous trg to
@@ -173,7 +173,7 @@
 //    // position accurately reflect the state of the i32erpreter at the
 //    // end of the token.
 //    if t != TokenEOF {
-//      self.Consume(input)
+//      self.consume(input)
 //    }
 //    if target.is_accept_state {
 //      self.capture_sim_state(self.prev_accept, input, target)
@@ -204,7 +204,7 @@
 //
 //  let target = self.edges[t-LexerATNSimulatorMinDFAEdge];
 //  if LexerATNSimulatorDebug && target != nil {
-//    fmt.Println("reuse state " + strconv.Itoa(self.state_number) + " edge to " + strconv.Itoa(target.state_number))
+//    fmt.println("reuse state " + strconv.itoa(self.state_number) + " edge to " + strconv.itoa(target.state_number))
 //  }
 //  return target
 //}
@@ -247,7 +247,7 @@
 //  }
 //
 //  // if no accept and EOF is first char, return EOF
-//  if t == TokenEOF && input.Index() == self.start_index {
+//  if t == TokenEOF && input.index() == self.start_index {
 //    return TokenEOF
 //  }
 //
@@ -270,7 +270,7 @@
 //
 //    if LexerATNSimulatorDebug {
 //
-//      fmt.Printf("testing %s at %s\n", self.token_name(t), cfg.String()) // self.recog, true))
+//      fmt.printf("testing %s at %s\n", self.token_name(t), cfg.string()) // self.recog, true))
 //    }
 //
 //    for _, let trans = range cfg.state().transitions() {;
@@ -278,7 +278,7 @@
 //      if target != nil {
 //        let lexer_action_executor = cfg.(*LexerATNConfig).lexer_action_executor;
 //        if lexer_action_executor != nil {
-//          lexer_action_executor = lexer_action_executor.fix_offset_before_match(input.Index() - self.start_index)
+//          lexer_action_executor = lexer_action_executor.fix_offset_before_match(input.index() - self.start_index)
 //        }
 //        let treat_e_o_f_as_epsilon = (t == TokenEOF);
 //        let config = NewLexerATNConfig3(cfg.(*LexerATNConfig), target, lexer_action_executor);
@@ -295,11 +295,11 @@
 //
 //fn accept(&self, input CharStream, lexer_action_executor *LexerActionExecutor, start_index, index,: line, char_pos: i32) {
 //  if LexerATNSimulatorDebug {
-//    fmt.Printf("ACTION %s\n", lexer_action_executor)
+//    fmt.printf("ACTION %s\n", lexer_action_executor)
 //  }
 //  // seek to after last char in token
-//  input.Seek(index)
-//  self.Line = line
+//  input.seek(index)
+//  self.line = line
 //  self.char_position_in_line = char_pos
 //  if lexer_action_executor != nil && self.recog != nil {
 //    lexer_action_executor.execute(self.recog, input, start_index)
@@ -307,7 +307,7 @@
 //}
 //
 //fn reachable_target(&self, trans: Transition, t: i32) -> ATNState {
-//  if trans.Matches(t, 0, 0xFFFE) {
+//  if trans.matches(t, 0, 0xFFFE) {
 //    return trans.target()
 //  }
 //
@@ -337,7 +337,7 @@
 //  current_alt_reached_accept_state, speculative, treat_e_o_f_as_epsilon bool) bool {
 //
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("closure(" + config.String() + ")") // config.String(self.recog, true) + ")")
+//    fmt.println("closure(" + config.string() + ")") // config.string(self.recog, true) + ")")
 //  }
 //
 //  _, let ok = config.state.(*RuleStopState);
@@ -345,19 +345,19 @@
 //
 //    if LexerATNSimulatorDebug {
 //      if self.recog != nil {
-//        fmt.Printf("closure at %s rule stop %s\n", self.recog.rule_names()[config.state.rule_index()], config)
+//        fmt.printf("closure at %s rule stop %s\n", self.recog.rule_names()[config.state.rule_index()], config)
 //      } else {
-//        fmt.Printf("closure at rule stop %s\n", config)
+//        fmt.printf("closure at rule stop %s\n", config)
 //      }
 //    }
 //
 //    if config.context == nil || config.context.has_empty_path() {
 //      if config.context == nil || config.context.is_empty() {
-//        configs.Add(config, nil)
+//        configs.add(config, nil)
 //        return true
 //      }
 //
-//      configs.Add(NewLexerATNConfig2(config, config.state, BasePredictionContextEMPTY), nil)
+//      configs.add(NewLexerATNConfig2(config, config.state, BasePredictionContextEMPTY), nil)
 //      current_alt_reached_accept_state = true
 //    }
 //    if config.context != nil && !config.context.is_empty() {
@@ -375,7 +375,7 @@
 //  // optimization
 //  if !config.state.epsilon_only_transitions() {
 //    if !currentAltReachedAcceptState || !config.passed_through_non_greedy_decision {
-//      configs.Add(config, nil)
+//      configs.add(config, nil)
 //    }
 //  }
 //  for let j = 0; j < len(config.state.transitions()); j++ {;
@@ -425,7 +425,7 @@
 //    let pt = trans.(*PredicateTransition);
 //
 //    if LexerATNSimulatorDebug {
-//      fmt.Println("EVAL rule " + strconv.Itoa(trans.(*PredicateTransition).rule_index) + ":" + strconv.Itoa(pt.pred_index))
+//      fmt.println("EVAL rule " + strconv.itoa(trans.(*PredicateTransition).rule_index) + ":" + strconv.itoa(pt.pred_index))
 //    }
 //    configs.set_has_semantic_context(true)
 //    if self.evaluate_predicate(input, pt.rule_index, pt.pred_index, speculative) {
@@ -457,7 +457,7 @@
 //    trans.serialization_type() == TransitionRANGE ||
 //    trans.serialization_type() == TransitionSET {
 //    if treat_e_o_f_as_epsilon {
-//      if trans.Matches(TokenEOF, 0, 0xFFFF) {
+//      if trans.matches(TokenEOF, 0, 0xFFFF) {
 //        cfg = NewLexerATNConfig4(config, trans.target())
 //      }
 //    }
@@ -491,27 +491,27 @@
 //    return true
 //  }
 //  if !speculative {
-//    return self.recog.Sempred(nil, rule_index, pred_index)
+//    return self.recog.sempred(nil, rule_index, pred_index)
 //  }
 //  let savedcolumn = self.char_position_in_line;
-//  let saved_line = self.Line;
-//  let index = input.Index();
-//  let marker = input.Mark();
+//  let saved_line = self.line;
+//  let index = input.index();
+//  let marker = input.mark();
 //
 //  defer func() {
 //    self.char_position_in_line = savedcolumn
-//    self.Line = saved_line
-//    input.Seek(index)
-//    input.Release(marker)
+//    self.line = saved_line
+//    input.seek(index)
+//    input.release(marker)
 //  }()
 //
-//  self.Consume(input)
-//  return self.recog.Sempred(nil, rule_index, pred_index)
+//  self.consume(input)
+//  return self.recog.sempred(nil, rule_index, pred_index)
 //}
 //
 //fn capture_sim_state(&self, settings *SimState, input: CharStream, dfa_state *DFAState) {
-//  settings.index = input.Index()
-//  settings.line = self.Line
+//  settings.index = input.index()
+//  settings.line = self.line
 //  settings.column = self.char_position_in_line
 //  settings.dfa_state = dfa_state
 //}
@@ -544,7 +544,7 @@
 //    return to
 //  }
 //  if LexerATNSimulatorDebug {
-//    fmt.Println("EDGE " + from.String() + " -> " + to.String() + " upon " + strconv.Itoa(tk))
+//    fmt.println("EDGE " + from.string() + " -> " + to.string() + " upon " + strconv.itoa(tk))
 //  }
 //  if from.edges == nil {
 //    // make room for tokens 1..n and -1 masquerading as index 0
@@ -578,7 +578,7 @@
 //    proposed.lexer_action_executor = first_config_with_rule_stop_state.(*LexerATNConfig).lexer_action_executor
 //    proposed.set_prediction(self.atn.rule_to_token_type[firstConfigWithRuleStopState.state().rule_index()])
 //  }
-//  let hash = proposed.Hash();
+//  let hash = proposed.hash();
 //  let dfa = self.decision_to_dfa[self.mode];
 //  let existing = dfa.states()[hash];
 //  if existing != nil {
@@ -599,18 +599,18 @@
 //// Get the text Matched so far for the current token.
 //pub fn text(&self, input: CharStream) -> &str {
 //  // index is first lookahead char, don't include.
-//  return input.text_from_interval(NewInterval(self.start_index, input.Index()-1))
+//  return input.text_from_interval(NewInterval(self.start_index, input.index()-1))
 //}
 //
-//pub fn Consume(&self, input: CharStream) {
+//pub fn consume(&self, input: CharStream) {
 //  let cur_char = input.l_a(1);
 //  if cur_char == i32('\n') {
-//    self.Line++
+//    self.line++
 //    self.char_position_in_line = 0
 //  } else {
 //    self.char_position_in_line++
 //  }
-//  input.Consume()
+//  input.consume()
 //}
 //
 //pub fn char_position_in_line(&self) -> i32 {
@@ -618,7 +618,7 @@
 //}
 //
 //pub fn line(&self) -> i32 {
-//  return self.Line
+//  return self.line
 //}
 //
 //pub fn token_name(&self, tt: i32) -> &str {

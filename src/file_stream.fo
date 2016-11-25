@@ -19,14 +19,14 @@
 //
 //  let buf = bytes.new_buffer(nil);
 //
-//  f, _let  = os.Open(fileName) // Error handling elided for brevity.;
-//  io.Copy(buf, f)           // Error handling elided for brevity.
-//  self.Close()
+//  f, _let  = os.open(fileName) // Error handling elided for brevity.;
+//  io.copy(buf, f)           // Error handling elided for brevity.
+//  self.close()
 //
 //  let fs = new(FileStream);
 //
 //  fs.filename = file_name
-//  let s = &str(buf.Bytes());
+//  let s = &str(buf.bytes());
 //
 //  fs.input_stream = NewInputStream(s)
 //

@@ -150,7 +150,7 @@
 //  return nil
 //}
 //
-//pub fn child_of_type(&self, i: i32, child_type reflect.Type) -> RuleContext {
+//pub fn child_of_type(&self, i: i32, child_type reflect.type) -> RuleContext {
 //  if child_type == nil {
 //    return prc.child(i).(RuleContext)
 //  }
@@ -177,7 +177,7 @@
 //  return prc
 //}
 //
-//pub fn Accept(&self, visitor: ParseTreeVisitor) -> i32erface{} {
+//pub fn accept(&self, visitor: ParseTreeVisitor) -> i32erface{} {
 //  return visitor.visit_children(prc)
 //}
 //
@@ -237,7 +237,7 @@
 //  return prc
 //}
 //
-//fn child(&self, ctx_type reflect.Type, i: i32) -> RuleContext {
+//fn child(&self, ctx_type reflect.type, i: i32) -> RuleContext {
 //  if prc.children == nil || i < 0 || i >= len(prc.children) {
 //    return nil
 //  }
@@ -247,7 +247,7 @@
 //
 //    let child_type = reflect.type_of(o);
 //
-//    if child_type.Implements(ctxType) {
+//    if child_type.implements(ctxType) {
 //      j++
 //      if j == i {
 //        return o.(RuleContext)
@@ -260,11 +260,11 @@
 //// Go lacks generics, so it's not possible for us to return the child with the correct type, but we do
 //// check for convertibility
 //
-//pub fn typed_rule_context(&self, ctx_type reflect.Type, i: i32) -> RuleContext {
+//pub fn typed_rule_context(&self, ctx_type reflect.type, i: i32) -> RuleContext {
 //  return prc.child(ctxType, i)
 //}
 //
-//pub fn typed_rule_contexts(&self, ctx_type reflect.Type) -> []RuleContext {
+//pub fn typed_rule_contexts(&self, ctx_type reflect.type) -> []RuleContext {
 //  if prc.children == nil {
 //    return make([]RuleContext, 0)
 //  }
@@ -303,14 +303,14 @@
 //// (root child1 .. child_n). Print just a node if b is a leaf.
 ////
 //
-//pub fn String(&self, rule_names []string, stop: RuleContext) -> &str {
+//pub fn string(&self, rule_names []string, stop: RuleContext) -> &str {
 //
 //  var p ParserRuleContext = prc
 //  let s = "[";
 //  for p != nil && p != stop {
 //    if rule_names == nil {
 //      if !self.is_empty() {
-//        s += strconv.Itoa(self.invoking_state())
+//        s += strconv.itoa(self.invoking_state())
 //      }
 //    } else {
 //      let ri = self.rule_index();
@@ -318,7 +318,7 @@
 //      if ri >= 0 && ri < len(ruleNames) {
 //        rule_name = rule_names[ri]
 //      } else {
-//        rule_name = strconv.Itoa(ri)
+//        rule_name = strconv.itoa(ri)
 //      }
 //      s += rule_name
 //    }

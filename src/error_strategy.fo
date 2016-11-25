@@ -121,8 +121,8 @@
 //
 //  switch let t = e.(type) {;
 //  default:
-//    fmt.Println("unknown recognition error type: " + reflect.type_of(e).Name())
-//    //            fmt.Println(self.stack)
+//    fmt.println("unknown recognition error type: " + reflect.type_of(e).name())
+//    //            fmt.println(self.stack)
 //    recognizer.notify_error_listeners(self.message(), self.offending_token(), e)
 //  case *NoViableAltException:
 //    self.report_no_viable_alternative(recognizer, t)
@@ -139,17 +139,17 @@
 //// until we find one in the re_synchronization set--loosely the set of tokens
 //// that can follow the current rule.</p>
 ////
-//pub fn Recover(&self, recognizer: Parser, e: RecognitionException) {
+//pub fn recover(&self, recognizer: Parser, e: RecognitionException) {
 //
-//  if self.last_error_index == recognizer.input_stream().Index() &&
+//  if self.last_error_index == recognizer.input_stream().index() &&
 //    self.last_error_states != nil && self.last_error_states.contains(recognizer.state()) {
 //    // uh oh, another error at same token index and previously-Visited
 //    // state in ATN must be a case where LT(1) is in the recovery
 //    // token set so nothing got consumed. Consume a single token
 //    // at least to prevent an infinite loop d is a failsafe.
-//    recognizer.Consume()
+//    recognizer.consume()
 //  }
-//  self.last_error_index = recognizer.input_stream().Index()
+//  self.last_error_index = recognizer.input_stream().index()
 //  if self.last_error_states == nil {
 //    self.last_error_states = IntervalSet::new()
 //  }
@@ -203,7 +203,7 @@
 //// some reason speed is suffering for you, you can turn off d
 //// functionality by simply overriding d method as a blank { }.</p>
 ////
-//pub fn Sync(&self, recognizer: Parser) {
+//pub fn sync(&self, recognizer: Parser) {
 //  // If already recovering, don't try to Sync
 //  if self.in_error_recovery_mode(recognizer) {
 //    return
@@ -406,7 +406,7 @@
 //  if MatchedSymbol != nil {
 //    // we have deleted the extra token.
 //    // now, move past ttype token as if all were ok
-//    recognizer.Consume()
+//    recognizer.consume()
 //    return MatchedSymbol
 //  }
 //  // SINGLE TOKEN INSERTION
@@ -478,7 +478,7 @@
 //    // + str(recognizer.token_stream().l_t(1)) \
 //    // + " since " + str(recognizer.token_stream().l_t(2)) \
 //    // + " is what we want", file=sys.stderr)
-//    recognizer.Consume() // simply delete extra token
+//    recognizer.consume() // simply delete extra token
 //    // we want to return the token we're actually Matching
 //    let MatchedSymbol = recognizer.current_token();
 //    self.report_match(recognizer) // we know current token is correct
@@ -531,7 +531,7 @@
 //
 //  let tf = recognizer.token_factory();
 //
-//  return tf.Create(current.source(), expected_token_type, token_text, TokenDefaultChannel, -1, -1, current.line(), current.column())
+//  return tf.create(current.source(), expected_token_type, token_text, TokenDefaultChannel, -1, -1, current.line(), current.column())
 //}
 //
 //pub fn expected_tokens(&self, recognizer: Parser) -> *IntervalSet {
@@ -541,7 +541,7 @@
 //// How should a token be displayed in an error message? The default
 //// is to display just the text, but during development you might
 //// want to have a lot of information spit out. Override in that case
-//// to use self.String() (which, for CommonToken, dumps everything about
+//// to use self.string() (which, for CommonToken, dumps everything about
 //// the token). This is better than forcing you to override a method in
 //// your token objects because you don't have to go modify your lexer
 //// so that it creates a NewJava type.
@@ -555,16 +555,16 @@
 //    if self.token_type() == TokenEOF {
 //      s = "<EOF>"
 //    } else {
-//      s = "<" + strconv.Itoa(self.token_type()) + ">"
+//      s = "<" + strconv.itoa(self.token_type()) + ">"
 //    }
 //  }
 //  return self.escape_w_s_and_quote(s)
 //}
 //
 //fn escape_w_s_and_quote(&self, s: &str) -> &str {
-//  s = &strs.Replace(s, "\t", "\\t", -1)
-//  s = &strs.Replace(s, "\n", "\\n", -1)
-//  s = &strs.Replace(s, "\r", "\\r", -1)
+//  s = &strs.replace(s, "\t", "\\t", -1)
+//  s = &strs.replace(s, "\n", "\\n", -1)
+//  s = &strs.replace(s, "\r", "\\r", -1)
 //  return "'" + s + "'"
 //}
 //
@@ -680,7 +680,7 @@
 //fn consume_until(&self, recognizer: Parser, set *IntervalSet) {
 //  let ttype = recognizer.token_stream().l_a(1);
 //  for ttype != TokenEOF && !set.contains(ttype) {
-//    recognizer.Consume()
+//    recognizer.consume()
 //    ttype = recognizer.token_stream().l_a(1)
 //  }
 //}
@@ -733,7 +733,7 @@
 //// rule func catches. Use {@link Exception//getCause()} to get the
 //// original {@link RecognitionException}.
 ////
-//pub fn Recover(&self, recognizer: Parser, e: RecognitionException) {
+//pub fn recover(&self, recognizer: Parser, e: RecognitionException) {
 //  let context = recognizer.parser_rule_context();
 //  for context != nil {
 //    context.set_exception(e)
@@ -746,12 +746,12 @@
 //// successfully recovers, it won't panic an exception.
 ////
 //pub fn recover_inline(&self, recognizer: Parser) -> Token {
-//  self.Recover(recognizer, InputMisMatchException::new(recognizer))
+//  self.recover(recognizer, InputMisMatchException::new(recognizer))
 //
 //  return nil
 //}
 //
 //// Make sure we don't attempt to recover from problems in subrules.//
-//pub fn Sync(&self, recognizer: Parser) {
+//pub fn sync(&self, recognizer: Parser) {
 //  // pass
 //}

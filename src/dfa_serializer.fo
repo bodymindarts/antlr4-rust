@@ -29,7 +29,7 @@
 //  }
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  if self.dfa.s0 == nil {
 //    return ""
 //  }
@@ -72,7 +72,7 @@
 //    return self.symbolic_names[i-1]
 //  }
 //
-//  return strconv.Itoa(i - 1)
+//  return strconv.itoa(i - 1)
 //}
 //
 //pub fn state_string(&self, s *DFAState) -> &str {
@@ -86,14 +86,14 @@
 //    b = "^"
 //  }
 //
-//  let base_state_str = a + "s" + strconv.Itoa(self.state_number) + b;
+//  let base_state_str = a + "s" + strconv.itoa(self.state_number) + b;
 //
 //  if self.is_accept_state {
 //    if self.predicates != nil {
-//      return base_state_str + "=>" + fmt.Sprint(self.predicates)
+//      return base_state_str + "=>" + fmt.sprint(self.predicates)
 //    }
 //
-//    return base_state_str + "=>" + fmt.Sprint(self.prediction)
+//    return base_state_str + "=>" + fmt.sprint(self.prediction)
 //  }
 //
 //  return base_state_str
@@ -111,7 +111,7 @@
 //  return "'" + &str(i) + "'"
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  if self.dfa.s0 == nil {
 //    return ""
 //  }

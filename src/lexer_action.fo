@@ -47,8 +47,8 @@
 //  return self.is_position_dependent
 //}
 //
-//pub fn Hash(&self) -> &str {
-//  return strconv.Itoa(self.action_type)
+//pub fn hash(&self) -> &str {
+//  return strconv.itoa(self.action_type)
 //}
 //
 //fn equals(&self, other: LexerAction) -> bool {
@@ -74,10 +74,10 @@
 //var LexerSkipActionINSTANCE = NewLexerSkipAction()
 //
 //fn execute(&self, lexer: Lexer) {
-//  lexer.Skip()
+//  lexer.skip()
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  return "skip"
 //}
 //
@@ -100,8 +100,8 @@
 //  lexer.set_type(self.thetype)
 //}
 //
-//pub fn Hash(&self) -> &str {
-//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.thetype)
+//pub fn hash(&self) -> &str {
+//  return strconv.itoa(self.action_type) + strconv.itoa(self.thetype)
 //}
 //
 //fn equals(&self, other: LexerAction) -> bool {
@@ -114,8 +114,8 @@
 //  }
 //}
 //
-//pub fn String(&self) -> &str {
-//  return "actionType(" + strconv.Itoa(self.thetype) + ")"
+//pub fn string(&self) -> &str {
+//  return "actionType(" + strconv.itoa(self.thetype) + ")"
 //}
 //
 //// Implements the {@code push_mode} lexer action by calling
@@ -141,8 +141,8 @@
 //  lexer.push_mode(self.mode)
 //}
 //
-//pub fn Hash(&self) -> &str {
-//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.mode)
+//pub fn hash(&self) -> &str {
+//  return strconv.itoa(self.action_type) + strconv.itoa(self.mode)
 //}
 //
 //fn equals(&self, other: LexerAction) -> bool {
@@ -155,8 +155,8 @@
 //  }
 //}
 //
-//pub fn String(&self) -> &str {
-//  return "pushMode(" + strconv.Itoa(self.mode) + ")"
+//pub fn string(&self) -> &str {
+//  return "pushMode(" + strconv.itoa(self.mode) + ")"
 //}
 //
 //// Implements the {@code pop_mode} lexer action by calling {@link Lexer//popMode}.
@@ -183,7 +183,7 @@
 //  lexer.pop_mode()
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  return "popMode"
 //}
 //
@@ -207,10 +207,10 @@
 //
 //// <p>This action is implemented by calling {@link Lexer//popMode}.</p>
 //fn execute(&self, lexer: Lexer) {
-//  lexer.More()
+//  lexer.more()
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  return "more"
 //}
 //
@@ -235,8 +235,8 @@
 //  lexer.set_mode(self.mode)
 //}
 //
-//pub fn Hash(&self) -> &str {
-//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.mode)
+//pub fn hash(&self) -> &str {
+//  return strconv.itoa(self.action_type) + strconv.itoa(self.mode)
 //}
 //
 //fn equals(&self, other: LexerAction) -> bool {
@@ -249,8 +249,8 @@
 //  }
 //}
 //
-//pub fn String(&self) -> &str {
-//  return "mode(" + strconv.Itoa(self.mode) + ")"
+//pub fn string(&self) -> &str {
+//  return "mode(" + strconv.itoa(self.mode) + ")"
 //}
 //
 //// Executes a custom lexer action by calling {@link Recognizer//action} with the
@@ -287,11 +287,11 @@
 //// <p>Custom actions are implemented by calling {@link Lexer//action} with the
 //// appropriate rule and action indexes.</p>
 //fn execute(&self, lexer: Lexer) {
-//  lexer.Action(nil, self.rule_index, self.action_index)
+//  lexer.action(nil, self.rule_index, self.action_index)
 //}
 //
-//pub fn Hash(&self) -> &str {
-//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.rule_index) + strconv.Itoa(self.action_index)
+//pub fn hash(&self) -> &str {
+//  return strconv.itoa(self.action_type) + strconv.itoa(self.rule_index) + strconv.itoa(self.action_index)
 //}
 //
 //fn equals(&self, other: LexerAction) -> bool {
@@ -327,8 +327,8 @@
 //  lexer.set_channel(self.channel)
 //}
 //
-//pub fn Hash(&self) -> &str {
-//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.channel)
+//pub fn hash(&self) -> &str {
+//  return strconv.itoa(self.action_type) + strconv.itoa(self.channel)
 //}
 //
 //fn equals(&self, other: LexerAction) -> bool {
@@ -341,8 +341,8 @@
 //  }
 //}
 //
-//pub fn String(&self) -> &str {
-//  return "channel(" + strconv.Itoa(self.channel) + ")"
+//pub fn string(&self) -> &str {
+//  return "channel(" + strconv.itoa(self.channel) + ")"
 //}
 //
 //// This implementation of {@link LexerAction} is used for tracking input offsets
@@ -392,8 +392,8 @@
 //  self.lexer_action.execute(lexer)
 //}
 //
-//pub fn Hash(&self) -> &str {
-//  return strconv.Itoa(self.action_type) + strconv.Itoa(self.offset) + self.lexer_action.Hash()
+//pub fn hash(&self) -> &str {
+//  return strconv.itoa(self.action_type) + strconv.itoa(self.offset) + self.lexer_action.hash()
 //}
 //
 //fn equals(&self, other: LexerAction) -> bool {

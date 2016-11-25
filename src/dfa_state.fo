@@ -15,8 +15,8 @@
 //  return &PredPrediction{alt: alt, pred: pred}
 //}
 //
-//pub fn String(&self) -> &str {
-//  return "(" + fmt.Sprint(self.pred) + ", " + fmt.Sprint(self.alt) + ")"
+//pub fn string(&self) -> &str {
+//  return "(" + fmt.sprint(self.pred) + ", " + fmt.sprint(self.alt) + ")"
 //}
 //
 //// DFAState represents a set of possible ATN configurations. As Aho, Sethi,
@@ -125,23 +125,23 @@
 //    return false
 //  }
 //
-//  return self.configs.Equals(other.(*DFAState).configs)
+//  return self.configs.equals(other.(*DFAState).configs)
 //}
 //
-//pub fn String(&self) -> &str {
-//  return strconv.Itoa(self.state_number) + ":" + self.Hash()
+//pub fn string(&self) -> &str {
+//  return strconv.itoa(self.state_number) + ":" + self.hash()
 //}
 //
-//pub fn Hash(&self) -> &str {
+//pub fn hash(&self) -> &str {
 //  var s &str
 //
 //  if self.is_accept_state {
 //    if self.predicates != nil {
-//      s = "=>" + fmt.Sprint(self.predicates)
+//      s = "=>" + fmt.sprint(self.predicates)
 //    } else {
-//      s = "=>" + fmt.Sprint(self.prediction)
+//      s = "=>" + fmt.sprint(self.prediction)
 //    }
 //  }
 //
-//  return fmt.Sprint(self.configs) + s
+//  return fmt.sprint(self.configs) + s
 //}

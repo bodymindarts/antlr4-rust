@@ -73,12 +73,12 @@
 //  return false
 //}
 //
-//pub fn Hash(&self) -> &str {
+//pub fn hash(&self) -> &str {
 //  return self.cached_hash_string
 //}
 //
 //fn calculate_hash_string(parent: PredictionContext, return_state: i32) -> &str { // non-member
-//  return parent.String() + strconv.Itoa(returnState)
+//  return parent.string() + strconv.itoa(returnState)
 //}
 //
 //fn calculate_empty_hash_string() -> &str { // non-member
@@ -115,7 +115,7 @@
 //  return ctx
 //}
 //
-//pub fn Get(&self, ctx: PredictionContext) -> PredictionContext {
+//pub fn get(&self, ctx: PredictionContext) -> PredictionContext {
 //  return self.cache[ctx]
 //}
 //
@@ -181,7 +181,7 @@
 //    return true
 //  } else if _, let ok = other.(*BaseSingletonPredictionContext); !ok {;
 //    return false
-//  } else if self.Hash() != other.Hash() {
+//  } else if self.hash() != other.hash() {
 //    return false // can't be same if hash is different
 //  }
 //
@@ -196,17 +196,17 @@
 //  return self.parent_ctx.equals(otherP.parent_ctx)
 //}
 //
-//pub fn Hash(&self) -> &str {
+//pub fn hash(&self) -> &str {
 //  return self.cached_hash_string
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  var up &str
 //
 //  if self.parent_ctx == nil {
 //    up = ""
 //  } else {
-//    up = self.parent_ctx.String()
+//    up = self.parent_ctx.string()
 //  }
 //
 //  if len(up) == 0 {
@@ -214,10 +214,10 @@
 //      return "$"
 //    }
 //
-//    return strconv.Itoa(self.return_state)
+//    return strconv.itoa(self.return_state)
 //  }
 //
-//  return strconv.Itoa(self.return_state) + " " + up
+//  return strconv.itoa(self.return_state) + " " + up
 //}
 //
 //var BasePredictionContextEMPTY = NewEmptyPredictionContext()
@@ -251,7 +251,7 @@
 //  return e == other
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  return "$"
 //}
 //
@@ -310,7 +310,7 @@
 //fn equals(&self, other: PredictionContext) -> bool {
 //  if _, let ok = other.(*ArrayPredictionContext); !ok {;
 //    return false
-//  } else if self.cached_hash_string != other.Hash() {
+//  } else if self.cached_hash_string != other.hash() {
 //    return false // can't be same if hash is different
 //  } else {
 //    let other_p = other.(*ArrayPredictionContext);
@@ -318,7 +318,7 @@
 //  }
 //}
 //
-//pub fn String(&self) -> &str {
+//pub fn string(&self) -> &str {
 //  if self.is_empty() {
 //    return "[]"
 //  }
@@ -332,9 +332,9 @@
 //      s = s + "$"
 //      continue
 //    }
-//    s = s + strconv.Itoa(self.return_states[i])
+//    s = s + strconv.itoa(self.return_states[i])
 //    if self.parents[i] != nil {
-//      s = s + " " + self.parents[i].String()
+//      s = s + " " + self.parents[i].string()
 //    } else {
 //      s = s + "nil"
 //    }
@@ -367,11 +367,11 @@
 //  let s = "";
 //
 //  for _, let p = range parents {;
-//    s += fmt.Sprint(p)
+//    s += fmt.sprint(p)
 //  }
 //
 //  for _, let r = range return_states {;
-//    s += fmt.Sprint(r)
+//    s += fmt.sprint(r)
 //  }
 //
 //  return s
@@ -442,11 +442,11 @@
 //// /
 //fn merge_singletons(a, b *BaseSingletonPredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
 //  if merge_cache != nil {
-//    let previous = merge_cache.Get(self.Hash(), self.Hash());
+//    let previous = merge_cache.get(self.hash(), self.hash());
 //    if previous != nil {
 //      return previous.(PredictionContext)
 //    }
-//    previous = merge_cache.Get(self.Hash(), self.Hash())
+//    previous = merge_cache.get(self.hash(), self.hash())
 //    if previous != nil {
 //      return previous.(PredictionContext)
 //    }
@@ -455,7 +455,7 @@
 //  let root_merge = merge_root(a, b, root_is_wildcard);
 //  if root_merge != nil {
 //    if merge_cache != nil {
-//      merge_cache.set(self.Hash(), self.Hash(), root_merge)
+//      merge_cache.set(self.hash(), self.hash(), root_merge)
 //    }
 //    return root_merge
 //  }
@@ -475,7 +475,7 @@
 //    // Newjoined parent so create Newsingleton pointing to it, a'
 //    let spc = SingletonBasePredictionContextCreate(parent, self.return_state);
 //    if merge_cache != nil {
-//      merge_cache.set(self.Hash(), self.Hash(), spc)
+//      merge_cache.set(self.hash(), self.hash(), spc)
 //    }
 //    return spc
 //  }
@@ -497,7 +497,7 @@
 //    let parents = []PredictionContext{singleParent, single_parent};
 //    let apc = NewArrayPredictionContext(parents, payloads);
 //    if merge_cache != nil {
-//      merge_cache.set(self.Hash(), self.Hash(), apc)
+//      merge_cache.set(self.hash(), self.hash(), apc)
 //    }
 //    return apc
 //  }
@@ -513,7 +513,7 @@
 //  }
 //  let apc = NewArrayPredictionContext(parents, payloads);
 //  if merge_cache != nil {
-//    merge_cache.set(self.Hash(), self.Hash(), apc)
+//    merge_cache.set(self.hash(), self.hash(), apc)
 //  }
 //  return apc
 //}
@@ -602,11 +602,11 @@
 //// /
 //fn merge_arrays(a, b *ArrayPredictionContext, root_is_wildcard: bool, merge_cache *DoubleDict) -> PredictionContext { // non-member
 //  if merge_cache != nil {
-//    let previous = merge_cache.Get(self.Hash(), self.Hash());
+//    let previous = merge_cache.get(self.hash(), self.hash());
 //    if previous != nil {
 //      return previous.(PredictionContext)
 //    }
-//    previous = merge_cache.Get(self.Hash(), self.Hash())
+//    previous = merge_cache.get(self.hash(), self.hash())
 //    if previous != nil {
 //      return previous.(PredictionContext)
 //    }
@@ -670,7 +670,7 @@
 //    if k == 1 { // for just one merged element, return singleton top
 //      let pc = SingletonBasePredictionContextCreate(mergedParents[0], merged_return_states[0]);
 //      if merge_cache != nil {
-//        merge_cache.set(self.Hash(), self.Hash(), pc)
+//        merge_cache.set(self.hash(), self.hash(), pc)
 //      }
 //      return pc
 //    }
@@ -684,20 +684,20 @@
 //  // TODO: track whether this is possible above during merge sort for speed
 //  if M == a {
 //    if merge_cache != nil {
-//      merge_cache.set(self.Hash(), self.Hash(), a)
+//      merge_cache.set(self.hash(), self.hash(), a)
 //    }
 //    return a
 //  }
 //  if M == b {
 //    if merge_cache != nil {
-//      merge_cache.set(self.Hash(), self.Hash(), b)
+//      merge_cache.set(self.hash(), self.hash(), b)
 //    }
 //    return b
 //  }
 //  combine_common_parents(mergedParents)
 //
 //  if merge_cache != nil {
-//    merge_cache.set(self.Hash(), self.Hash(), M)
+//    merge_cache.set(self.hash(), self.hash(), M)
 //  }
 //  return M
 //}
@@ -729,7 +729,7 @@
 //  if existing != nil {
 //    return existing
 //  }
-//  existing = context_cache.Get(context)
+//  existing = context_cache.get(context)
 //  if existing != nil {
 //    visited[context] = existing
 //    return existing
