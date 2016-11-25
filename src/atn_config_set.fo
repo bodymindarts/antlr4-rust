@@ -102,7 +102,7 @@
 //// dips_into_outer_context and has_semantic_context when necessary.
 //pub fn add(&self, config: ATNConfig, merge_cache *DoubleDict) -> bool {
 //  if self.read_only {
-//    panic("set is read-only")
+//    panic!("set is read-only")
 //  }
 //
 //  if config.semantic_context() != SemanticContextNone {
@@ -180,7 +180,7 @@
 //
 //pub fn optimize_configs(&self, interpreter *BaseATNSimulator) {
 //  if self.read_only {
-//    panic("set is read-only")
+//    panic!("set is read-only")
 //  }
 //
 //  if self.config_lookup.length() == 0 {
@@ -252,7 +252,7 @@
 //
 //pub fn contains(&self, item: ATNConfig) -> bool {
 //  if self.config_lookup == nil {
-//    panic("not implemented for read-only sets")
+//    panic!("not implemented for read-only sets")
 //  }
 //
 //  return self.config_lookup.contains(item)
@@ -260,7 +260,7 @@
 //
 //pub fn contains_fast(&self, item: ATNConfig) -> bool {
 //  if self.config_lookup == nil {
-//    panic("not implemented for read-only sets")
+//    panic!("not implemented for read-only sets")
 //  }
 //
 //  return self.config_lookup.contains(item) // TODO: contains_fast is not implemented for Set
@@ -268,7 +268,7 @@
 //
 //pub fn clear(&self) {
 //  if self.read_only {
-//    panic("set is read-only")
+//    panic!("set is read-only")
 //  }
 //
 //  self.configs = make([]ATNConfig, 0)

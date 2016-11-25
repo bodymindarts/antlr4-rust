@@ -34,7 +34,7 @@
 //impl BaseTransition {§//  fn new(&self, target: ATNState) -> *BaseTransition {
 //
 //  if target == nil {
-//    panic("target cannot be nil.")
+//    panic!("target cannot be nil.")
 //  }
 //
 //  let t = new(BaseTransition);
@@ -68,7 +68,7 @@
 //}
 //
 //pub fn matches(&self, symbol,: min_vocab_symbol, max_vocab_symbol: i32) -> bool {
-//  panic("Not implemented")
+//  panic!("Not implemented")
 //}
 //
 //const (

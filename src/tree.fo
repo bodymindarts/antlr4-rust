@@ -128,7 +128,7 @@
 //}
 //
 //pub fn set_children(&self, tree []Tree) {
-//  panic("Cannot set children on terminal node")
+//  panic!("Cannot set children on terminal node")
 //}
 //
 //pub fn symbol(&self) -> Token {

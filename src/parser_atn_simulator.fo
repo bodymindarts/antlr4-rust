@@ -213,7 +213,7 @@
 //        return alt
 //      }
 //
-//      panic(e)
+//      panic!(e)
 //    }
 //    if D.requires_full_context && self.prediction_mode != PredictionModeSLL {
 //      // IF PREDS, MIGHT RESOLVE TO SINGLE ALT => SLL (or syntax error)
@@ -256,7 +256,7 @@
 //      input.seek(startIndex)
 //      let alts = self.eval_semantic_context(D.predicates, outer_context, true);
 //      if alts.length() == 0 {
-//        panic(self.no_viable_alt(input, outer_context, D.configs, start_index))
+//        panic!(self.no_viable_alt(input, outer_context, D.configs, start_index))
 //      } else if alts.length() == 1 {
 //        return alts.min_value()
 //      } else {
@@ -273,7 +273,7 @@
 //    }
 //  }
 //
-//  panic("Should not have reached p state")
+//  panic!("Should not have reached p state")
 //}
 //
 //// Get an existing target state for an edge in the DFA. If the target state
@@ -405,7 +405,7 @@
 //        return alt
 //      }
 //
-//      panic(e)
+//      panic!(e)
 //    }
 //    let alt_sub_sets = PredictionModegetConflictingAltSubsets(reach);
 //    if ParserATNSimulatorDebug {
@@ -980,7 +980,7 @@
 //    fmt.println("closure(" + config.string() + ")")
 //    fmt.println("configs(" + configs.string() + ")")
 //    if config.reaches_into_outer_context() > 50 {
-//      panic("problem")
+//      panic!("problem")
 //    }
 //  }
 //
@@ -1306,7 +1306,7 @@
 ////
 //fn dump_dead_end_configs(&self, nvae *NoViableAltException) {
 //
-//  panic("Not implemented")
+//  panic!("Not implemented")
 //
 //  //    fmt.println("dead end configs: ")
 //  //    var decs = nvae.dead_end_configs

@@ -175,7 +175,7 @@
 //// Return a token from l source self.e., Match a token on the char stream.
 //pub fn next_token(&self) -> Token {
 //  if self.input == nil {
-//    panic("NextToken requires a non-nil input stream.")
+//    panic!("NextToken requires a non-nil input stream.")
 //  }
 //
 //  let token_start_marker = self.input.mark();
@@ -260,7 +260,7 @@
 //
 //fn pop_mode(&self) -> i32 {
 //  if len(self.mode_stack) == 0 {
-//    panic("Empty Stack")
+//    panic!("Empty Stack")
 //  }
 //  if LexerATNSimulatorDebug {
 //    fmt.println("popMode back to " + fmt.sprint(self.mode_stack[0:len(self.mode_stack)-1]))

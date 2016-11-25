@@ -227,7 +227,7 @@
 //    if self.single_token_deletion(recognizer) != nil {
 //      return
 //    }
-//    panic(NewInputMisMatchException(recognizer))
+//    panic!(NewInputMisMatchException(recognizer))
 //  case ATNStatePlusLoopBack, ATNStateStarLoopBack:
 //    self.report_unwanted_token(recognizer)
 //    let expecting = NewIntervalSet();
@@ -414,7 +414,7 @@
 //    return self.missing_symbol(recognizer)
 //  }
 //  // even that didn't work must panic the exception
-//  panic(NewInputMisMatchException(recognizer))
+//  panic!(NewInputMisMatchException(recognizer))
 //}
 //
 ////
@@ -739,7 +739,7 @@
 //    context.set_exception(e)
 //    context = context.parent().(ParserRuleContext)
 //  }
-//  panic(NewParseCancellationException()) // TODO we don't emit e properly
+//  panic!(NewParseCancellationException()) // TODO we don't emit e properly
 //}
 //
 //// Make sure we don't attempt to recover inline if the parser

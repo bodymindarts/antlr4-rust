@@ -251,7 +251,7 @@
 //    return TokenEOF
 //  }
 //
-//  panic(NewLexerNoViableAltException(self.recog, input, self.start_index, reach))
+//  panic!(NewLexerNoViableAltException(self.recog, input, self.start_index, reach))
 //}
 //
 //// Given a starting configuration set, figure out all ATN configurations
@@ -402,7 +402,7 @@
 //    cfg = NewLexerATNConfig2(config, trans.target(), new_context)
 //
 //  } else if trans.serialization_type() == TransitionPRECEDENCE {
-//    panic("Precedence predicates are not supported in lexers.")
+//    panic!("Precedence predicates are not supported in lexers.")
 //  } else if trans.serialization_type() == TransitionPREDICATE {
 //    // Track traversing semantic predicates. If we traverse,
 //    // we cannot add a DFA state for l "reach" computation

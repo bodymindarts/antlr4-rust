@@ -77,7 +77,7 @@
 //  bc, let okb = b.(Comparable);
 //
 //  if !oka || !okb {
-//    panic("Not Comparable")
+//    panic!("Not Comparable")
 //  }
 //
 //  return ac.equals(bc)
@@ -90,7 +90,7 @@
 //    return self.hash()
 //  }
 //
-//  panic("Not Hasher")
+//  panic!("Not Hasher")
 //}
 //
 ////fn bytes(key i32erface{}) -> ([]byte,: error) { // non-member
@@ -373,7 +373,7 @@
 //  //  pub fn replace_all_string_func(src: &str, repl func(string): &str) -> &str
 //  //  return str.replace(//g, function(txt){return txt.char_at(0).to_upper_case() + txt.substr(1)})
 //
-//  panic("Not implemented")
+//  panic!("Not implemented")
 //
 //  //  let re = regexp.must_compile("\w\S*");
 //  //  return re.replace_all_string_func(str, func(s &str) {

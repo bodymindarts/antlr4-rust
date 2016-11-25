@@ -229,7 +229,7 @@
 ////
 //pub fn add_parse_listener(&self, listener: ParseTreeListener) {
 //  if listener == nil {
-//    panic("listener")
+//    panic!("listener")
 //  }
 //  if self.parse_listeners == nil {
 //    self.parse_listeners = make([]ParseTreeListener, 0)
@@ -330,11 +330,11 @@
 //pub fn atn_with_bypassAlts(&self) {
 //
 //  // TODO
-//  panic("Not implemented!")
+//  panic!("Not implemented!")
 //
 //  //  let serialized_atn = self.serialized_atn();
 //  //  if (serializedAtn == nil) {
-//  //    panic("The current parser does not support an ATN with bypass alternatives.")
+//  //    panic!("The current parser does not support an ATN with bypass alternatives.")
 //  //  }
 //  //  let result = self.bypass_alts_atn_cache[serializedAtn];
 //  //  if (result == nil) {
@@ -359,7 +359,7 @@
 //
 //fn compile_parse_tree_pattern(&self, pattern,: pattern_rule_index, lexer: Lexer) {
 //
-//  panic("NewParseTreePatternMatcher not implemented!")
+//  panic!("NewParseTreePatternMatcher not implemented!")
 //  //
 //  //  if (lexer == nil) {
 //  //    if (self.token_stream() != nil) {
@@ -370,7 +370,7 @@
 //  //    }
 //  //  }
 //  //  if (lexer == nil) {
-//  //    panic("Parser can't discover a lexer to use")
+//  //    panic!("Parser can't discover a lexer to use")
 //  //  }
 //
 //  //  let m = NewParseTreePatternMatcher(lexer, p);

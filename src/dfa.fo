@@ -33,7 +33,7 @@
 //// precedence DFA. See also is_precedence_dfa.
 //fn precedence_start_state(&self, precedence: i32) -> *DFAState {
 //  if !self.precedence_dfa {
-//    panic("only precedence DFAs may contain a precedence start state")
+//    panic!("only precedence DFAs may contain a precedence start state")
 //  }
 //
 //  // s0.edges is never nil for a precedence DFA
@@ -48,7 +48,7 @@
 //// must be a precedence DFA. See also is_precedence_dfa.
 //fn set_precedence_start_state(&self, precedence: i32, start_state *DFAState) {
 //  if !self.precedence_dfa {
-//    panic("only precedence DFAs may contain a precedence start state")
+//    panic!("only precedence DFAs may contain a precedence start state")
 //  }
 //
 //  if precedence < 0 {

@@ -99,7 +99,7 @@
 //    prc.children = make([]Tree, 0)
 //  }
 //  if child == nil {
-//    panic("Child may not be null")
+//    panic!("Child may not be null")
 //  }
 //  prc.children = append(prc.children, child)
 //  return child
@@ -110,7 +110,7 @@
 //    prc.children = make([]Tree, 0)
 //  }
 //  if child == nil {
-//    panic("Child may not be null")
+//    panic!("Child may not be null")
 //  }
 //  prc.children = append(prc.children, child)
 //  return child

@@ -36,7 +36,7 @@
 //}
 //
 //fn execute(&self, lexer: Lexer) {
-//  panic("Not implemented")
+//  panic!("Not implemented")
 //}
 //
 //fn action_type(&self) -> i32 {

@@ -61,7 +61,7 @@
 //
 //impl BaseATNConfig {§//  fn new5(&self, state ATNState, alt i32, context: PredictionContext, semantic_context: SemanticContext) -> *BaseATNConfig {
 //  if semantic_context == nil {
-//    panic("semanticContext cannot be nil") // TODO: Necessary?
+//    panic!("semanticContext cannot be nil") // TODO: Necessary?
 //  }
 //
 //  return &BaseATNConfig{state: state, alt: alt, context: context, semantic_context: semantic_context}
@@ -85,7 +85,7 @@
 //
 //impl BaseATNConfig {§//  fn new(&self, c ATNConfig, state ATNState, context: PredictionContext, semantic_context: SemanticContext) -> *BaseATNConfig {
 //  if semantic_context == nil {
-//    panic("semanticContext cannot be nil")
+//    panic!("semanticContext cannot be nil")
 //  }
 //
 //  return &BaseATNConfig{

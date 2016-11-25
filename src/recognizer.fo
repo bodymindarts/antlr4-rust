@@ -52,7 +52,7 @@
 //}
 //
 //pub fn action(&self, context RuleContext,: rule_index, action_index: i32) {
-//  panic("action not implemented on Recognizer!")
+//  panic!("action not implemented on Recognizer!")
 //}
 //
 //pub fn add_error_listener(&self, listener: ErrorListener) {
@@ -90,7 +90,7 @@
 ////pub fn token_type_map(&self) {
 ////    var token_names = self.token_names()
 ////    if (tokenNames==nil) {
-////        panic("The current recognizer does not provide a list of token names.")
+////        panic!("The current recognizer does not provide a list of token names.")
 ////    }
 ////    var result = token_type_map_cache[tokenNames]
 ////    if(result==nil) {
@@ -107,10 +107,10 @@
 ////
 //pub fn rule_index_map(&self) -> map[string]int {
 //
-//  panic("Method not defined!")
+//  panic!("Method not defined!")
 //  //    var rule_names = self.rule_names()
 //  //    if (ruleNames==nil) {
-//  //        panic("The current recognizer does not provide a list of rule names.")
+//  //        panic!("The current recognizer does not provide a list of rule names.")
 //  //    }
 //  //
 //  //    var result = rule_index_map_cache[ruleNames]
@@ -122,7 +122,7 @@
 //}
 //
 //pub fn token_type(&self, token_name: &str) -> i32 {
-//  panic("Method not defined!")
+//  panic!("Method not defined!")
 //  //    var ttype = self.token_type_map()[tokenName]
 //  //    if (ttype !=nil) {
 //  //        return ttype

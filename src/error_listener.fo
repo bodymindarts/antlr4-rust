@@ -72,7 +72,7 @@
 //
 //impl ProxyErrorListener {§//  fn new(&self, delegates []ErrorListener) -> *ProxyErrorListener {
 //  if delegates == nil {
-//    panic("delegates is not provided")
+//    panic!("delegates is not provided")
 //  }
 //  let l = new(ProxyErrorListener);
 //  self.delegates = delegates

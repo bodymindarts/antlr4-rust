@@ -92,7 +92,7 @@
 //  }
 //
 //  if !SkipEOFCheck && self.l_a(1) == TokenEOF {
-//    panic("cannot consume EOF")
+//    panic!("cannot consume EOF")
 //  }
 //
 //  if self.sync(self.index + 1) {
@@ -234,7 +234,7 @@
 //  self.lazy_init()
 //
 //  if token_index < 0 || token_index >= len(self.tokens) {
-//    panic(strconv.itoa(tokenIndex) + " not in 0.." + strconv.itoa(len(self.tokens)-1))
+//    panic!(strconv.itoa(tokenIndex) + " not in 0.." + strconv.itoa(len(self.tokens)-1))
 //  }
 //
 //  let next_on_channel = self.next_token_on_channel(tokenIndex+1, LexerDefaultTokenChannel);
@@ -259,7 +259,7 @@
 //  self.lazy_init()
 //
 //  if token_index < 0 || token_index >= len(self.tokens) {
-//    panic(strconv.itoa(tokenIndex) + " not in 0.." + strconv.itoa(len(self.tokens)-1))
+//    panic!(strconv.itoa(tokenIndex) + " not in 0.." + strconv.itoa(len(self.tokens)-1))
 //  }
 //
 //  let prev_on_channel = self.previous_token_on_channel(tokenIndex-1, LexerDefaultTokenChannel);
